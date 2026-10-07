@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Kiss - Meet & Date Nearby</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#fff;color:#1a1a2e;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+
+.header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #f0f0f0}
+.logo-area{display:flex;align-items:center;gap:10px}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,#ff416c,#ff4b2b);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff}
+.logo-text{font-size:22px;font-weight:800;background:linear-gradient(135deg,#ff416c,#ff4b2b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header-right{display:flex;gap:12px;align-items:center}
+.header-btn{background:none;border:none;font-size:20px;cursor:pointer;color:#666;padding:4px}
+
+.hero{background:linear-gradient(135deg,#ff416c 0%,#ff4b2b 50%,#ff6b35 100%);padding:32px 20px 28px;text-align:center;color:#fff;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:30px;background:#fff;border-radius:50% 50% 0 0 / 100% 100% 0 0}
+.hero h1{font-size:26px;font-weight:800;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,.15)}
+.hero p{font-size:14px;opacity:.9;max-width:300px;margin:0 auto 16px}
+.hero-stats{display:flex;justify-content:center;gap:28px;margin-top:12px}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:22px;font-weight:800}
+.hero-stat .lbl{font-size:11px;opacity:.8;margin-top:2px}
+
+.online-bar{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px;background:#fff5f5;border-bottom:1px solid #ffe0e0}
+.pulse{width:8px;height:8px;background:#4caf50;border-radius:50%;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+.online-bar span{font-size:13px;color:#333;font-weight:500}
+.online-bar strong{color:#ff416c}
+
+.section-title{padding:18px 16px 12px;font-size:15px;font-weight:700;color:#1a1a2e;display:flex;align-items:center;gap:8px}
+
+.profiles-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:0 12px 12px}
+.profile-card{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:3/4;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.profile-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.profile-card:active img{transform:scale(1.03)}
+.profile-info{position:absolute;bottom:0;left:0;right:0;padding:40px 12px 12px;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#fff}
+.profile-name{font-size:15px;font-weight:700;display:flex;align-items:center;gap:5px}
+.profile-name .verified{width:16px;height:16px;background:#4fc3f7;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px}
+.profile-meta{font-size:11px;opacity:.85;margin-top:3px;display:flex;align-items:center;gap:6px}
+.online-dot{width:6px;height:6px;background:#4caf50;border-radius:50%;display:inline-block}
+.new-badge{position:absolute;top:10px;left:10px;background:#ff416c;color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;letter-spacing:.5px}
+.like-btn{position:absolute;top:10px;right:10px;width:32px;height:32px;background:rgba(255,255,255,.25);backdrop-filter:blur(4px);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer}
+
+.features{padding:20px 16px;background:#fafafa}
+.features-title{font-size:15px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.feature-list{display:flex;flex-direction:column;gap:10px}
+.feature-item{display:flex;align-items:center;gap:12px;background:#fff;padding:14px;border-radius:14px;border:1px solid #f0f0f0}
+.feature-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.feature-item:nth-child(1) .feature-icon{background:#fff0f0}
+.feature-item:nth-child(2) .feature-icon{background:#f0f0ff}
+.feature-item:nth-child(3) .feature-icon{background:#f0fff0}
+.feature-item:nth-child(4) .feature-icon{background:#fff8f0}
+.feature-text h4{font-size:13px;font-weight:700;margin-bottom:2px}
+.feature-text p{font-size:11px;color:#888;line-height:1.4}
+
+.reviews{padding:20px 16px}
+.review-scroll{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.review-scroll::-webkit-scrollbar{display:none}
+.review-card{min-width:260px;background:#fff;border:1px solid #f0f0f0;border-radius:16px;padding:16px;flex-shrink:0}
+.review-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.review-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#ff416c,#ff4b2b);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px}
+.review-name{font-size:13px;font-weight:600}
+.review-stars{color:#ffb300;font-size:12px}
+.review-text{font-size:12px;color:#555;line-height:1.5}
+
+.cta-section{padding:24px 16px;text-align:center}
+.cta-section p{font-size:13px;color:#888;margin-bottom:14px}
+
+.float-cta{position:fixed;bottom:0;left:0;right:0;padding:12px 16px 28px;background:linear-gradient(transparent,rgba(255,255,255,.95) 20%);z-index:99;text-align:center}
+.download-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#ff416c,#ff4b2b);color:#fff;border:none;padding:16px 48px;border-radius:50px;font-size:17px;font-weight:700;cursor:pointer;box-shadow:0 4px 20px rgba(255,65,108,.4);width:calc(100% - 32px);max-width:400px;animation:cta-pulse 2s infinite;text-decoration:none}
+@keyframes cta-pulse{0%,100%{box-shadow:0 4px 20px rgba(255,65,108,.4)}50%{box-shadow:0 4px 30px rgba(255,65,108,.6)}}
+.download-btn:active{transform:scale(.97)}
+
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:rgba(26,26,46,.9);color:#fff;padding:10px 20px;border-radius:25px;font-size:12px;z-index:200;opacity:0;transition:opacity .4s;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1}
+
+.footer{text-align:center;padding:20px 16px 100px;font-size:11px;color:#bbb}
+
+@media(min-width:420px){.profiles-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:768px){.profiles-grid{grid-template-columns:repeat(4,1fr);max-width:800px;margin:0 auto}}
+</style>
+</head>
+<body>
+
+<header class="header">
+    <div class="logo-area">
+        <div class="logo-icon">💋</div>
+        <span class="logo-text">Kiss</span>
+    </div>
+    <div class="header-right">
+        <button class="header-btn">🔔</button>
+        <button class="header-btn">💬</button>
+    </div>
+</header>
+
+<section class="hero">
+    <h1 id="heroTitle">Find Your Match Tonight</h1>
+    <p id="heroSub">Real people near you looking for real connections</p>
+    <div class="hero-stats">
+        <div class="hero-stat"><div class="num" id="statUsers">2.8M+</div><div class="lbl" id="lblUsers">Active Users</div></div>
+        <div class="hero-stat"><div class="num">89%</div><div class="lbl" id="lblMatch">Match Rate</div></div>
+        <div class="hero-stat"><div class="num" id="statOnline">12K</div><div class="lbl" id="lblOnline">Online Now</div></div>
+    </div>
+</section>
+
+<div class="online-bar">
+    <div class="pulse"></div>
+    <span id="onlineText"><strong id="onlineCount">847</strong> people near you are online right now</span>
+</div>
+
+<div class="section-title" id="nearbyTitle">🔥 Nearby & Ready to Chat</div>
+
+<div class="profiles-grid" id="profilesGrid">
+</div>
+
+<section class="features">
+    <div class="features-title" id="featTitle">✨ Why Kiss?</div>
+    <div class="feature-list">
+        <div class="feature-item">
+            <div class="feature-icon">📍</div>
+            <div class="feature-text"><h4 id="f1t">Location Based</h4><p id="f1d">Find real people within miles of you</p></div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🔒</div>
+            <div class="feature-text"><h4 id="f2t">Verified Profiles</h4><p id="f2d">Every profile is photo-verified for safety</p></div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">💬</div>
+            <div class="feature-text"><h4 id="f3t">Instant Chat</h4><p id="f3d">Match and start chatting in seconds</p></div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🎁</div>
+            <div class="feature-text"><h4 id="f4t">100% Free</h4><p id="f4d">No subscriptions, no hidden fees</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="reviews">
+    <div class="section-title" id="reviewTitle">💬 User Reviews</div>
+    <div class="review-scroll" id="reviewScroll">
+    </div>
+</section>
+
+<div class="cta-section">
+    <p id="ctaText">Join millions finding love on Kiss</p>
+</div>
+
+<div class="float-cta">
+    <a href="/api/apk/download" class="download-btn" id="downloadBtn" onclick="trackDownload()">
+        <span>📥</span> <span id="dlText">Download Kiss Free</span>
+    </a>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer class="footer">
+    <p>Kiss &copy; 2024 · Privacy · Terms</p>
+</footer>
+
+<script>
+var PROFILES_MX = [
+{name:"Valentina",age:22,dist:"2.5",img:"images/kiss/kiss_01.webp",online:true,isNew:true},
+{name:"Sofia",age:24,dist:"1.8",img:"images/kiss/kiss_02.webp",online:true,isNew:true},
+{name:"Camila",age:21,dist:"3.2",img:"images/kiss/kiss_03.webp",online:false,isNew:true},
+{name:"Isabella",age:23,dist:"0.8",img:"images/kiss/kiss_04.webp",online:true,isNew:true},
+{name:"Mariana",age:25,dist:"4.1",img:"images/kiss/kiss_05.webp",online:true,isNew:false},
+{name:"Lucia",age:22,dist:"2.9",img:"images/kiss/kiss_06.webp",online:false,isNew:false},
+{name:"Ana",age:23,dist:"1.5",img:"images/kiss/kiss_07.webp",online:true,isNew:false},
+{name:"Gabriela",age:24,dist:"3.7",img:"images/kiss/kiss_08.webp",online:true,isNew:false},
+{name:"Daniela",age:22,dist:"2.1",img:"images/kiss/kiss_09.webp",online:false,isNew:false},
+{name:"Paula",age:25,dist:"0.5",img:"images/kiss/kiss_10.webp",online:true,isNew:false},
+{name:"Elena",age:26,dist:"1.2",img:"images/kiss/kiss_11.webp",online:true,isNew:false},
+{name:"Rosa",age:22,dist:"3.8",img:"images/kiss/kiss_12.webp",online:false,isNew:false},
+{name:"Carmen",age:24,dist:"2.7",img:"images/kiss/kiss_13.webp",online:true,isNew:false},
+{name:"Alejandra",age:23,dist:"1.1",img:"images/kiss/kiss_14.webp",online:true,isNew:false},
+{name:"Natalia",age:22,dist:"4.5",img:"images/kiss/kiss_15.webp",online:false,isNew:false},
+{name:"Diana",age:23,dist:"2.3",img:"images/kiss/kiss_16.webp",online:true,isNew:false},
+{name:"Carolina",age:25,dist:"1.9",img:"images/kiss/kiss_17.webp",online:true,isNew:false},
+{name:"Andrea",age:22,dist:"3.3",img:"images/kiss/kiss_18.webp",online:false,isNew:false},
+{name:"Maria",age:24,dist:"0.9",img:"images/kiss/kiss_19.webp",online:true,isNew:false},
+{name:"Laura",age:23,dist:"2.6",img:"images/kiss/kiss_20.webp",online:true,isNew:false}
+];
+
+var PROFILES_ZA = [
+{name:"Ashley",age:22,dist:"2.5",img:"images/kiss/kiss_01.webp",online:true,isNew:true},
+{name:"Jessica",age:24,dist:"1.8",img:"images/kiss/kiss_02.webp",online:true,isNew:true},
+{name:"Sarah",age:21,dist:"3.2",img:"images/kiss/kiss_03.webp",online:false,isNew:true},
+{name:"Emily",age:23,dist:"0.8",img:"images/kiss/kiss_04.webp",online:true,isNew:true},
+{name:"Chloe",age:25,dist:"4.1",img:"images/kiss/kiss_05.webp",online:true,isNew:false},
+{name:"Destiny",age:22,dist:"2.9",img:"images/kiss/kiss_06.webp",online:false,isNew:false},
+{name:"Zara",age:23,dist:"1.5",img:"images/kiss/kiss_07.webp",online:true,isNew:false},
+{name:"Jade",age:24,dist:"3.7",img:"images/kiss/kiss_08.webp",online:true,isNew:false},
+{name:"Kimani",age:22,dist:"2.1",img:"images/kiss/kiss_09.webp",online:false,isNew:false},
+{name:"Lisa",age:25,dist:"0.5",img:"images/kiss/kiss_10.webp",online:true,isNew:false},
+{name:"Nicole",age:26,dist:"1.2",img:"images/kiss/kiss_11.webp",online:true,isNew:false},
+{name:"Amber",age:22,dist:"3.8",img:"images/kiss/kiss_12.webp",online:false,isNew:false},
+{name:"Tiffany",age:24,dist:"2.7",img:"images/kiss/kiss_13.webp",online:true,isNew:false},
+{name:"Crystal",age:23,dist:"1.1",img:"images/kiss/kiss_14.webp",online:true,isNew:false},
+{name:"Ruby",age:22,dist:"4.5",img:"images/kiss/kiss_15.webp",online:false,isNew:false},
+{name:"Sierra",age:23,dist:"2.3",img:"images/kiss/kiss_16.webp",online:true,isNew:false},
+{name:"Brianna",age:25,dist:"1.9",img:"images/kiss/kiss_17.webp",online:true,isNew:false},
+{name:"Maya",age:22,dist:"3.3",img:"images/kiss/kiss_18.webp",online:false,isNew:false},
+{name:"Keisha",age:24,dist:"0.9",img:"images/kiss/kiss_19.webp",online:true,isNew:false},
+{name:"Trinity",age:23,dist:"2.6",img:"images/kiss/kiss_20.webp",online:true,isNew:false}
+];
+
+var locale = {
+    MX: {
+        heroTitle: "Encuentra tu pareja esta noche",
+        heroSub: "Personas reales cerca de ti buscando conexiones reales",
+        lblUsers: "Usuarios Activos",
+        lblMatch: "Tasa de Match",
+        lblOnline: "En Linea",
+        nearbyTitle: "\ud83d\udd25 Cerca y Listos para Chatear",
+        featTitle: "\u2728 \u00bfPor qu\u00e9 Kiss?",
+        f1t: "Basado en Ubicaci\u00f3n", f1d: "Encuentra personas reales a pocos km de ti",
+        f2t: "Perfiles Verificados", f2d: "Cada perfil tiene foto verificada por seguridad",
+        f3t: "Chat Instant\u00e1neo", f3d: "Haz match y empieza a chatear en segundos",
+        f4t: "100% Gratis", f4d: "Sin suscripciones, sin cargos ocultos",
+        onlineText: ' personas cerca de ti est\u00e1n en l\u00ednea ahora',
+        reviewTitle: "\ud83d\udcac Rese\u00f1as de Usuarios",
+        ctaText: "\u00danete a millones encontrando amor en Kiss",
+        dlText: "Descargar Kiss Gratis",
+        unit: "km"
+    },
+    EN: {
+        heroTitle: "Find Your Match Tonight",
+        heroSub: "Real people near you looking for real connections",
+        lblUsers: "Active Users",
+        lblMatch: "Match Rate",
+        lblOnline: "Online Now",
+        nearbyTitle: "\ud83d\udd25 Nearby & Ready to Chat",
+        featTitle: "\u2728 Why Kiss?",
+        f1t: "Location Based", f1d: "Find real people within miles of you",
+        f2t: "Verified Profiles", f2d: "Every profile is photo-verified for safety",
+        f3t: "Instant Chat", f3d: "Match and start chatting in seconds",
+        f4t: "100% Free", f4d: "No subscriptions, no hidden fees",
+        onlineText: ' people near you are online right now',
+        reviewTitle: "\ud83d\udcac User Reviews",
+        ctaText: "Join millions finding love on Kiss",
+        dlText: "Download Kiss Free",
+        unit: "mi"
+    }
+};
+
+var reviews_MX = [
+    {name:"Maria G.",init:"MG",stars:5,text:"Conoc\u00ed a mi novio aqu\u00ed. \u00a1App incre\u00edble! Muy f\u00e1cil de usar y la gente es real."},
+    {name:"Carlos R.",init:"CR",stars:5,text:"Mucho mejor que Tinder. Las chicas son reales y puedes chatear gratis."},
+    {name:"Ana L.",init:"AL",stars:4,text:"Me encanta que es gratis. Ya tuve 3 citas esta semana."},
+    {name:"Diego M.",init:"DM",stars:5,text:"La mejor app de citas. Encontr\u00e9 personas cerca de mi casa."},
+    {name:"Lucia P.",init:"LP",stars:5,text:"Segura y divertida. Los perfiles verificados me dan confianza."}
+];
+var reviews_EN = [
+    {name:"Sarah K.",init:"SK",stars:5,text:"Met my boyfriend here! Amazing app, so easy to use and people are real."},
+    {name:"James T.",init:"JT",stars:5,text:"Way better than Tinder. Girls are real and you can chat for free."},
+    {name:"Zara M.",init:"ZM",stars:4,text:"Love that it's free. Already had 3 dates this week!"},
+    {name:"Michael B.",init:"MB",stars:5,text:"Best dating app. Found people right in my neighborhood."},
+    {name:"Destiny N.",init:"DN",stars:5,text:"Safe and fun. Verified profiles give me confidence."}
+];
+
+var cc = 'MX';
+var profiles = PROFILES_MX;
+var lang = locale.MX;
+var reviewData = reviews_MX;
+
+fetch('/api/geo').then(function(r){return r.json()}).then(function(d){
+    var c = d.country_code || '';
+    if(c === 'ZA' || c === 'NG' || c === 'KE' || c === 'GH' || c === 'TZ' || c === 'UG' || c === 'GB' || c === 'US'){
+        cc = 'EN'; profiles = PROFILES_ZA; lang = locale.EN; reviewData = reviews_EN;
+    }
+    renderPage();
+}).catch(function(){ renderPage(); });
+
+function renderPage(){
+    document.getElementById('heroTitle').textContent = lang.heroTitle;
+    document.getElementById('heroSub').textContent = lang.heroSub;
+    document.getElementById('lblUsers').textContent = lang.lblUsers;
+    document.getElementById('lblMatch').textContent = lang.lblMatch;
+    document.getElementById('lblOnline').textContent = lang.lblOnline;
+    document.getElementById('nearbyTitle').innerHTML = lang.nearbyTitle;
+    document.getElementById('featTitle').innerHTML = lang.featTitle;
+    document.getElementById('f1t').textContent = lang.f1t;
+    document.getElementById('f1d').textContent = lang.f1d;
+    document.getElementById('f2t').textContent = lang.f2t;
+    document.getElementById('f2d').textContent = lang.f2d;
+    document.getElementById('f3t').textContent = lang.f3t;
+    document.getElementById('f3d').textContent = lang.f3d;
+    document.getElementById('f4t').textContent = lang.f4t;
+    document.getElementById('f4d').textContent = lang.f4d;
+    document.getElementById('reviewTitle').innerHTML = lang.reviewTitle;
+    document.getElementById('ctaText').textContent = lang.ctaText;
+    document.getElementById('dlText').textContent = lang.dlText;
+
+    var onlineN = Math.floor(Math.random()*300)+600;
+    document.getElementById('onlineCount').textContent = onlineN;
+    document.getElementById('onlineText').innerHTML = '<strong>'+onlineN+'</strong>'+lang.onlineText;
+
+    var grid = document.getElementById('profilesGrid');
+    grid.innerHTML = profiles.map(function(p){
+        return '<div class="profile-card">' +
+            '<img src="'+p.img+'" alt="'+p.name+'" loading="lazy">' +
+            (p.isNew ? '<span class="new-badge">NEW</span>' : '') +
+            '<button class="like-btn">\u2764\ufe0f</button>' +
+            '<div class="profile-info">' +
+            '<div class="profile-name">'+p.name+', '+p.age+' <span class="verified">\u2713</span></div>' +
+            '<div class="profile-meta">'+(p.online?'<span class="online-dot"></span> Online · ':'')+p.dist+' '+lang.unit+'</div>' +
+            '</div></div>';
+    }).join('');
+
+    var rs = document.getElementById('reviewScroll');
+    rs.innerHTML = reviewData.map(function(r){
+        return '<div class="review-card">' +
+            '<div class="review-header"><div class="review-avatar">'+r.init+'</div><div><div class="review-name">'+r.name+'</div><div class="review-stars">'+'\u2b50'.repeat(r.stars)+'</div></div></div>' +
+            '<div class="review-text">'+r.text+'</div></div>';
+    }).join('');
+
+    startToasts();
+}
+
+// Social proof toasts
+var toastNames = cc==='EN' ?
+    ["Destiny","Zara","Ashley","Kimani","Jessica","Sarah","Maya","Brianna","Crystal"] :
+    ["Valentina","Sofia","Camila","Isabella","Mariana","Lucia","Ana","Gabriela","Elena"];
+var toastMsgs_en = [" just joined from nearby"," liked your area"," is online now"," wants to chat"," sent a wink"];
+var toastMsgs_es = [" se acaba de unir cerca"," le gust\u00f3 tu zona"," est\u00e1 en l\u00ednea ahora"," quiere chatear"," envi\u00f3 un gui\u00f1o"];
+
+function startToasts(){
+    var msgs = cc==='EN'?toastMsgs_en:toastMsgs_es;
+    setInterval(function(){
+        var name = toastNames[Math.floor(Math.random()*toastNames.length)];
+        var msg = msgs[Math.floor(Math.random()*msgs.length)];
+        var t = document.getElementById('toast');
+        t.textContent = '\ud83d\udc8c '+name+msg;
+        t.classList.add('show');
+        setTimeout(function(){t.classList.remove('show')},3000);
+    },8000);
+}
+
+// Download
+var apkUrl = '';
+fetch('/api/apk-url').then(function(r){return r.json()}).then(function(d){
+    apkUrl = (d.url || d.apk_url || '/api/apk/download');
+    document.getElementById('downloadBtn').href = apkUrl || '/api/apk/download';
+}).catch(function(){});
+
+function trackDownload(){
+    if(typeof fbq!=='undefined') fbq('trackCustom','Download');
+    fetch('/api/track/click',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sid:window._sid||''})}).catch(function(){});
+}
+
+// Visit tracking
+(function(){
+    var sid = 'k_'+Math.random().toString(36).substr(2,12)+'_'+Date.now().toString(36);
+    window._sid = sid;
+    fetch('/api/track/start',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({sid:sid,lang:navigator.language||'',url:location.href})}).catch(function(){});
+    setInterval(function(){
+        fetch('/api/track/heartbeat',{method:'POST',headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({sid:sid})}).catch(function(){});
+    },15000);
+})();
+
+// Facebook Pixel
+fetch('/api/pixel-config').then(function(r){return r.json()}).then(function(d){
+    var ids=d.pixel_ids||[];
+    if(!ids.length) return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    ids.forEach(function(id){fbq('init',id)});
+    fbq('track','PageView');
+    fbq('track','ViewContent',{content_name:'Kiss Dating App',content_category:'dating'});
+    setTimeout(function(){fbq('track','Lead')},10000);
+}).catch(function(){});
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

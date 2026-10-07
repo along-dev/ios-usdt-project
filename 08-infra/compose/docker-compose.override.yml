@@ -1,0 +1,10 @@
+# T125 容器化 —— 本地部署 override（⌛2026-10-08 由 Claude 以「部署方」角色补齐）
+# ★ 仅补充 compose 主文件的部署缺口，⛔ 不改主文件、⛔ 不影响本机 Windows 运行方式。
+# 用法： docker compose -f docker-compose.yml -f docker-compose.override.yml up -d
+services:
+  server:
+    # ★ 缺口：gasleak-server.Dockerfile 未 COPY templates/，而 app.js:76 取
+    #   path.join(process.cwd(),'templates/payloads') ⇒ 不挂载会跳过载荷注册。
+    #   ⇒ 以只读 volume 挂载模板目录（不重建镜像）。
+    volumes:
+      - ../../02-backend-node/templates:/app/templates:ro

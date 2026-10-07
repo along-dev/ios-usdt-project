@@ -1,0 +1,149 @@
+[
+ {
+  "method": "GET",
+  "path": "/api/Agent/Subordinates",
+  "tag": "代理商下级商户",
+  "status": -2,
+  "resp": "no client"
+ },
+ {
+  "method": "POST",
+  "path": "/api/Agent/Subordinates",
+  "tag": "代理商下级商户",
+  "status": -2,
+  "resp": "no client"
+ },
+ {
+  "method": "GET",
+  "path": "/api/Home/AgentDashboard",
+  "tag": "代理仪表盘",
+  "status": -2,
+  "resp": "no client"
+ },
+ {
+  "method": "POST",
+  "path": "/api/AgentDailyReport/List",
+  "tag": "代理日报",
+  "status": -2,
+  "resp": "no client"
+ },
+ {
+  "method": "POST",
+  "path": "/api/AgentReviewMerchantOrderList/List",
+  "tag": "代理审核商户订单",
+  "status": -2,
+  "resp": "no client"
+ },
+ {
+  "method": "POST",
+  "path": "/api/Commission/List",
+  "tag": "佣金列表",
+  "status": -2,
+  "resp": "no client"
+ },
+ {
+  "method": "POST",
+  "path": "/api/CommissionSettlement/List",
+  "tag": "佣金结算",
+  "status": -2,
+  "resp": "no client"
+ },
+ {
+  "method": "GET",
+  "path": "/api/CommissionSettlement/Balance",
+  "tag": "佣金余额",
+  "status": -2,
+  "resp": "no client"
+ },
+ {
+  "method": "POST",
+  "path": "/api/BalanceRecord/List",
+  "tag": "资金流水",
+  "status": -2,
+  "resp": "no client"
+ },
+ {
+  "method": "POST",
+  "path": "/api/Transaction/List",
+  "tag": "交易流水",
+  "status": -2,
+  "resp": "no client"
+ },
+ {
+  "method": "POST",
+  "path": "/api/MerchantOrder/List",
+  "tag": "商户订单",
+  "status": -2,
+  "resp": "no client"
+ },
+ {
+  "method": "POST",
+  "path": "/api/MerchantDailyReport/List",
+  "tag": "商户日报",
+  "status": -2,
+  "resp": "no client"
+ },
+ {
+  "method": "GET",
+  "path": "/api/MerchantChannel/List",
+  "tag": "商户通道",
+  "status": -2,
+  "resp": "no client"
+ },
+ {
+  "method": "GET",
+  "path": "/api/ApiKey/List",
+  "tag": "API密钥",
+  "status": -2,
+  "resp": "no client"
+ },
+ {
+  "method": "GET",
+  "path": "/api/AuthorizedIp/List",
+  "tag": "IP白名单",
+  "status": -2,
+  "resp": "no client"
+ },
+ {
+  "method": "GET",
+  "path": "/api/System/Settings",
+  "tag": "系统设置",
+  "status": -2,
+  "resp": "no client"
+ },
+ {
+  "method": "GET",
+  "path": "/api/Permission/Query",
+  "tag": "权限查询",
+  "status": -2,
+  "resp": "no client"
+ },
+ {
+  "method": "POST",
+  "path": "/api/BalanceRecord/List",
+  "tag": "资金流水 (MerchantId=1)",
+  "status": -2,
+  "resp": "no client"
+ },
+ {
+  "method": "POST",
+  "path": "/api/MerchantOrder/List",
+  "tag": "商户订单 (MerchantId=1)",
+  "status": -2,
+  "resp": "no client"
+ },
+ {
+  "method": "POST",
+  "path": "/api/MerchantOrder/List",
+  "tag": "商户订单 (admin)",
+  "status": -2,
+  "resp": "no client"
+ },
+ {
+  "method": "POST",
+  "path": "/api/Transaction/List",
+  "tag": "交易 (已知APIKey)",
+  "status": -2,
+  "resp": "no client"
+ }
+]

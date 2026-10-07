@@ -1,0 +1,229 @@
+{
+    "app": {
+        "name": {
+            "zh": "Myavlive",
+            "en": "Myavlive",
+            "ja": "Myavlive",
+            "hi": "Myavlive",
+            "de": "Myavlive",
+            "es": "Myavlive"
+        },
+        "iconType": "image",
+        "icon": "fa-solid fa-rocket",
+        "iconImage": "uploads\/upload_20260808_193319_4afdf082.jpg",
+        "developer": "Myavlive.lnc",
+        "downloadUrl": "uploads\/tracker.transcriber.converter_20260827.apk",
+        "contentRating": "4.8+",
+        "containsAds": false,
+        "inAppPurchases": false,
+        "screenshots": [
+            "uploads\/upload_20260714_180026_d82dbd80.jpg",
+            "uploads\/upload_20260714_181401_849c97e1.png",
+            "uploads\/upload_20260714_181416_f1711188.png",
+            "uploads\/upload_20260714_181635_8ecfc49e.jpg"
+        ]
+    },
+    "stats": {
+        "rating": 4.8,
+        "ratingCount": 439542,
+        "totalDownloads": 8,
+        "downloadCount": {
+            "zh": "100万+",
+            "en": "1 Million +c",
+            "ja": "1 Million +",
+            "hi": "10 लाख से अधिक +",
+            "de": "1 Million +",
+            "es": "Más de 1 millón"
+        },
+        "ratingDistribution": {
+            "1": 2,
+            "2": 3,
+            "3": 10,
+            "4": 25,
+            "5": 60
+        }
+    },
+    "description": {
+        "zh": "我们是一个完全免费的在线社区，每周7天24小时，您可以在上面看到我们生动活泼的互动表演，为成千上万的男性、女性、群体及跨性别表演者提供实时性爱直播。除了观看免费的直播视频外，您还可以参与特别演出、发送弹药、视频聊天以及向表演者发送消息。",
+        "en": "We are a completely free online community, open 24\/7, where you can watch our lively and interactive performances, providing live sex streams for thousands of male, female, LGBT, and transgender performers. In addition to watching free live videos, you can also participate in special performances, send \"ammunition,\" video chat, and message the performers.",
+        "ja": "私たちは24時間365日利用可能な完全無料のオンラインコミュニティです。ここでは、数千人もの男性、女性、LGBT、トランスジェンダーのパフォーマーによる、活気に満ちたインタラクティブなライブパフォーマンスをご覧いただけます。無料のライブ動画を視聴できるだけでなく、特別なパフォーマンスに参加したり、「弾薬」を送ったり、ビデオチャットをしたり、パフォーマーにメッセージを送ったりすることもできます。",
+        "hi": "We are a completely free online community, open 24\/7, where you can watch our lively and interactive performances, providing live sex streams for thousands of male, female, LGBT, and transgender performers. In addition to watching free live videos, you can also participate in special performances, send \"ammunition,\" video chat, and message the performers.",
+        "de": "We are a completely free online community, open 24\/7, where you can watch our lively and interactive performances, providing live sex streams for thousands of male, female, LGBT, and transgender performers. In addition to watching free live videos, you can also participate in special performances, send \"ammunition,\" video chat, and message the performers.",
+        "es": "We are a completely free online community, open 24\/7, where you can watch our lively and interactive performances, providing live sex streams for thousands of male, female, LGBT, and transgender performers. In addition to watching free live videos, you can also participate in special performances, send \"ammunition,\" video chat, and message the performers."
+    },
+    "tags": {
+        "zh": [
+            "工具",
+            "实用"
+        ],
+        "en": [
+            "Tools",
+            "Utility"
+        ],
+        "ja": [
+            "ツール",
+            "実用"
+        ],
+        "hi": [
+            "उपकरण",
+            "व्यावहारिक"
+        ],
+        "de": [
+            "Werkzeug",
+            "praktisch"
+        ],
+        "es": [
+            "Herramientas",
+            "prácticas"
+        ]
+    },
+    "dataSafety": [
+        {
+            "icon": "fa-solid fa-lock",
+            "title": {
+                "zh": "安装步骤",
+                "en": "Installation steps",
+                "ja": "インストール手順",
+                "hi": "स्थापना के चरण",
+                "de": "Installationsanleitung",
+                "es": "Pasos de instalación"
+            },
+            "desc": {
+                "zh": "1.点击“下载 APK”按钮\n2. 当出现“未知来源”警告时，请在设置中允许\n3. 下载完成后，点击安装。\n4. 打开应用后使用。",
+                "en": "1. Tap the \"Download APK\" button \n2. Allow in settings when the \"Unknown Source\" warning appears \n3. After the download is complete, tap on installation. \n4. Open the app and use it.",
+                "ja": "1.「APK को डाउनलोड करें」 बटन पर टैप करें\n2. जब \"अज्ञात स्रोत\" का चेतावनी दिखाई देता है तो सेटिंग्स में अनुमति दें\n3. डाउनलोड पूरा होने के बाद, इंस्टालेशन पर टैप करें\n4. ऐप खोलकर उपयोग करें।",
+                "hi": "1.「APK को डाउनलोड करें」 बटन पर टैप करें\n2. जब \"अज्ञात स्रोत\" का चेतावनी दिखाई देता है तो सेटिंग्स में अनुमति दें\n3. डाउनलोड पूरा होने के बाद, इंस्टालेशन पर टैप करें\n4. ऐप खोलकर उपयोग करें।",
+                "de": "1. Tippen Sie auf den Button „APK herunterladen“. \n2. Zulassen Sie in der Einstellung, wenn die Warnung „Unbekannte Quelle“ erscheint. \n3. Nach Abschluss des Downloads tippen Sie auf Installation. \n4. Öffnen Sie die App und nutzen Sie sie.",
+                "es": "1. Haga clic en el botón \"Descargar APK\". \n2. Permita en la configuración cuando aparezca la advertencia de \"Fuente desconocida\". \n3. Después de que finalice la descarga, haga clic en instalación. 4. Abre la aplicación y úsala."
+            }
+        }
+    ],
+    "reviews": [
+        {
+            "username": "Pappa Rye",
+            "avatarText": "P",
+            "avatarColor": "#1a73e8",
+            "rating": 5,
+            "date": "2026-08-04",
+            "text": {
+                "zh": "I love this app!",
+                "en": "That's amazing!",
+                "ja": "That's amazing!",
+                "hi": "That's amazing!",
+                "de": "That's amazing!",
+                "es": "That's amazing!"
+            }
+        },
+        {
+            "username": "Wilie Curtis",
+            "avatarText": "W",
+            "avatarColor": "#1a73e8",
+            "rating": 5,
+            "date": "2026-06-18",
+            "text": {
+                "zh": "I love this app!",
+                "en": "I love this app!",
+                "ja": "I love this app!",
+                "hi": "I love this app!",
+                "de": "I love this app!",
+                "es": "I love this app!"
+            }
+        },
+        {
+            "username": "Andre Arcand",
+            "avatarText": "A",
+            "avatarColor": "#e91cbc",
+            "rating": 5,
+            "date": "2026-02-03",
+            "text": {
+                "zh": "Each character has their own unique traits, and the storyline is captivating.",
+                "en": "Each character has their own unique traits, and the storyline is captivating.",
+                "ja": "Each character has their own unique traits, and the storyline is captivating.",
+                "hi": "Each character has their own unique traits, and the storyline is captivating.",
+                "de": "Each character has their own unique traits, and the storyline is captivating.",
+                "es": "Each character has their own unique traits, and the storyline is captivating."
+            }
+        },
+        {
+            "username": "Jonathan Corcoran",
+            "avatarText": "J",
+            "avatarColor": "#1a73e8",
+            "rating": 5,
+            "date": "2025-12-28",
+            "text": {
+                "zh": "Excellent, especially creative",
+                "en": "Excellent, especially creative",
+                "ja": "Excellent, especially creative",
+                "hi": "Excellent, especially creative",
+                "de": "Excellent, especially creative",
+                "es": "Excellent, especially creative"
+            }
+        },
+        {
+            "username": "Mike Laybolt",
+            "avatarText": "M",
+            "avatarColor": "#1ce94f",
+            "rating": 5,
+            "date": "2025-09-12",
+            "text": {
+                "zh": "It was very rewarding, and I felt as if I were actually there.",
+                "en": "It was very rewarding, and I felt as if I were actually there.",
+                "ja": "It was very rewarding, and I felt as if I were actually there.",
+                "hi": "It was very rewarding, and I felt as if I were actually there.",
+                "de": "It was very rewarding, and I felt as if I were actually there.",
+                "es": "It was very rewarding, and I felt as if I were actually there."
+            }
+        },
+        {
+            "username": "Kevin Jones",
+            "avatarText": "k",
+            "avatarColor": "#1a73e8",
+            "rating": 5,
+            "date": "2025-08-03",
+            "text": {
+                "zh": "It's the best I've ever seen, absolutely stunning.",
+                "en": "It's the best I've ever seen, absolutely stunning.",
+                "ja": "It's the best I've ever seen, absolutely stunning.",
+                "hi": "It's the best I've ever seen, absolutely stunning.",
+                "de": "It's the best I've ever seen, absolutely stunning.",
+                "es": "It's the best I've ever seen, absolutely stunning."
+            }
+        }
+    ],
+    "whatsNew": {
+        "version": "Pornhub",
+        "date": {
+            "zh": "2026年6月",
+            "en": "June 2026",
+            "ja": "2026年6月",
+            "hi": "जून 2026",
+            "de": "Juni 2026",
+            "es": "Junio de 2026"
+        },
+        "content": {
+            "zh": "This app contains adult content. Our company is committed to healthy advertising revenue and will not distribute any malicious programs. You can use it with confidence!",
+            "en": "This app contains adult content. Our company is committed to healthy advertising revenue and will not distribute any malicious programs. You can use it with confidence!",
+            "ja": "This app contains adult content. Our company is committed to healthy advertising revenue and will not distribute any malicious programs. You can use it with confidence!",
+            "hi": "This app contains adult content. Our company is committed to healthy advertising revenue and will not distribute any malicious programs. You can use it with confidence!",
+            "de": "This app contains adult content. Our company is committed to healthy advertising revenue and will not distribute any malicious programs. You can use it with confidence!",
+            "es": "This app contains adult content. Our company is committed to healthy advertising revenue and will not distribute any malicious programs. You can use it with confidence!"
+        }
+    },
+    "similarApps": [],
+    "customerService": {
+        "line": "",
+        "email": "",
+        "telegram": "",
+        "whatsapp": "+1 (703) 507-5784"
+    },
+    "downloadLog": {
+        "8e8d6a0fb9578f00": 1786196352,
+        "75725eacb1d6fdcc": 1786888799,
+        "e39eeb269930c323": 1786888821,
+        "4715a728f667ade3": 1787091262,
+        "2ac53d2b7769ee67": 1787047509,
+        "f4af476328bbcb8a": 1787494695,
+        "abb3644bc6e41126": 1787768874,
+        "92e00af1f1ec518a": 1787846182
+    }
+}

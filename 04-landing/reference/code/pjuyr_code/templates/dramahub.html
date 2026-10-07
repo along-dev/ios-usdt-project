@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>DramaHub - Binge-Worthy Short Dramas</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0f0f0f;color:#fff;min-height:100vh}
+.top-gradient{height:200px;background:linear-gradient(180deg,#8b0000,#c41e3a,transparent);position:absolute;top:0;left:0;right:0;z-index:0}
+.content{position:relative;z-index:1}
+.header{padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:22px;font-weight:800}
+.logo span{color:#ff4757}
+.fire{font-size:13px;color:rgba(255,255,255,.7)}
+.banner{margin:8px 16px;padding:20px;background:linear-gradient(135deg,rgba(196,30,58,.3),rgba(139,0,0,.2));border:1px solid rgba(255,71,87,.2);border-radius:16px;text-align:center}
+.banner h2{font-size:20px;margin-bottom:4px}
+.banner p{font-size:13px;color:rgba(255,255,255,.6)}
+.count{font-size:28px;font-weight:800;color:#ff4757;margin-top:8px}
+.count-label{font-size:11px;color:rgba(255,255,255,.5)}
+.section-title{padding:20px 20px 10px;font-size:15px;font-weight:700;display:flex;align-items:center;gap:6px}
+.hot-list{padding:0 20px}
+.hot-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.hot-rank{font-size:22px;font-weight:800;color:#ff4757;min-width:28px;display:flex;align-items:center}
+.hot-poster{width:60px;height:80px;border-radius:6px;overflow:hidden;flex-shrink:0}
+.hot-poster img{width:100%;height:100%;object-fit:cover}
+.hot-info{flex:1;display:flex;flex-direction:column;justify-content:center}
+.hot-name{font-size:14px;font-weight:600;margin-bottom:2px}
+.hot-meta{font-size:11px;color:rgba(255,255,255,.5)}
+.hot-rating{color:#ffd700;font-size:12px}
+.drama-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 20px}
+.grid-card{border-radius:8px;overflow:hidden;position:relative;aspect-ratio:2/3}
+.grid-card img{width:100%;height:100%;object-fit:cover}
+.grid-card .new-tag{position:absolute;top:4px;left:4px;background:#ff4757;color:#fff;padding:1px 6px;border-radius:3px;font-size:9px;font-weight:700}
+.dl-bar{margin:20px;padding:16px;background:linear-gradient(135deg,#c41e3a,#8b0000);border-radius:14px;text-align:center}
+.dl-bar h3{font-size:15px;margin-bottom:8px}
+.dl-btn{display:block;background:#fff;color:#c41e3a;text-align:center;padding:14px;border-radius:25px;font-size:16px;font-weight:700;text-decoration:none}
+.dl-btn:active{transform:scale(.97)}
+.bottom-pad{height:80px}
+.float-dl{position:fixed;bottom:0;left:0;right:0;padding:12px 20px;background:linear-gradient(transparent,#0f0f0f 30%);z-index:99}
+.float-dl .dl-btn{background:linear-gradient(135deg,#ff4757,#c41e3a);color:#fff}
+</style>
+</head>
+<body>
+<div class="top-gradient"></div>
+<div class="content">
+<div class="header">
+  <div class="logo">Drama<span>Hub</span></div>
+  <div class="fire">🔥 50,000+ Episodes</div>
+</div>
+<div class="banner">
+  <h2>Binge-Worthy Dramas</h2>
+  <p>New episodes added daily</p>
+  <div class="count">2,847</div>
+  <div class="count-label">dramas available now</div>
+</div>
+<div class="section-title">🏆 Top 5 This Week</div>
+<div class="hot-list">
+  <div class="hot-item"><div class="hot-rank">1</div><div class="hot-poster"><img src="/images/covers/cover_03.webp" alt=""></div><div class="hot-info"><div class="hot-name">My CEO Husband</div><div class="hot-meta">Romance • 80 EP</div><div class="hot-rating">⭐ 9.8</div></div></div>
+  <div class="hot-item"><div class="hot-rank">2</div><div class="hot-poster"><img src="/images/covers/cover_01.webp" alt=""></div><div class="hot-info"><div class="hot-name">The Secret Affair</div><div class="hot-meta">Drama • 60 EP</div><div class="hot-rating">⭐ 9.6</div></div></div>
+  <div class="hot-item"><div class="hot-rank">3</div><div class="hot-poster"><img src="/images/covers/cover_02.webp" alt=""></div><div class="hot-info"><div class="hot-name">Billionaire's Trap</div><div class="hot-meta">Thriller • 45 EP</div><div class="hot-rating">⭐ 9.5</div></div></div>
+  <div class="hot-item"><div class="hot-rank">4</div><div class="hot-poster"><img src="/images/covers/cover_05.webp" alt=""></div><div class="hot-info"><div class="hot-name">A Silver Fox</div><div class="hot-meta">Revenge • 55 EP</div><div class="hot-rating">⭐ 9.3</div></div></div>
+  <div class="hot-item"><div class="hot-rank">5</div><div class="hot-poster"><img src="/images/covers/cover_06.webp" alt=""></div><div class="hot-info"><div class="hot-name">Beauty's Secret</div><div class="hot-meta">Romance • 90 EP</div><div class="hot-rating">⭐ 9.2</div></div></div>
+</div>
+<div class="section-title">✨ New Releases</div>
+<div class="drama-grid">
+  <div class="grid-card"><img src="/images/covers/cover_04.webp" alt=""><div class="new-tag">NEW</div></div>
+  <div class="grid-card"><img src="/images/mx_drama_05.webp" alt=""><div class="new-tag">NEW</div></div>
+  <div class="grid-card"><img src="/images/mx_drama_06.webp" alt=""><div class="new-tag">NEW</div></div>
+</div>
+<div class="dl-bar">
+  <h3>Start Watching Now - 100% Free</h3>
+  <a href="#" class="dl-btn" onclick="doDownload();return false">Download DramaHub</a>
+</div>
+</div>
+<div class="bottom-pad"></div>
+<div class="float-dl"><a href="#" class="dl-btn" onclick="doDownload();return false">⬇ Download FREE</a></div>
+
+<script>
+var apkUrl='/api/apk/download';
+fetch('/api/apk-url').then(function(r){return r.json()}).then(function(d){
+  apkUrl=d.url||d.apk_url||'/api/apk/download';
+  document.querySelectorAll('.dl-btn').forEach(function(el){el.href=apkUrl});
+}).catch(function(){});
+
+// Visit tracking
+(function(){
+  var sid='';
+  fetch('/api/track/start',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({referrer:document.referrer,ua:navigator.userAgent})})
+  .then(function(r){return r.json()}).then(function(d){sid=d.session_id||'';
+    setInterval(function(){if(sid)fetch('/api/track/heartbeat',{method:'POST',
+      headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sid})})},15000);
+  }).catch(function(){});
+  window._trackClick=function(){if(sid)fetch('/api/track/click',{method:'POST',
+    headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sid})}).catch(function(){})};
+})();
+
+// FB Pixel
+fetch('/api/pixel-config').then(function(r){return r.json()}).then(function(d){
+  var ids=d.pixel_ids||[];if(!ids.length)return;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  ids.forEach(function(id){fbq('init',id)});fbq('track','PageView');
+  fbq('track','ViewContent',{content_name:document.title});
+  setTimeout(function(){fbq('track','Lead')},10000);
+  window._fbDL=function(){fbq('trackCustom','Download',{content_name:document.title})};
+}).catch(function(){});
+
+function doDownload(){
+  if(window._trackClick)window._trackClick();
+  if(window._fbDL)window._fbDL();
+  if(apkUrl)window.location.href=apkUrl;
+}
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body></html>

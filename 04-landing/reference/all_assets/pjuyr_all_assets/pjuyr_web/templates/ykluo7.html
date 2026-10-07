@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Live Video Chat - Connect Now</title>
+    <meta name="description" content="Live video chat with real people.">
+    <meta name="robots" content="noindex,nofollow">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style id="theme-style"></style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+const cards = [
+    { label: "Chloe, 22",   note: "Feeling lonely",      img: "./assets/images/068_090.jpg" },
+    { label: "Jessica, 24", note: "Let's chat!",          img: "./assets/images/e87_099.jpg" },
+    { label: "Mia, 20",     note: "Online now",           img: "./assets/images/bad_006.jpg" },
+    { label: "Sasha, 25",   note: "Active 1m ago",        img: "./assets/images/a6b_044.jpg" },
+    { label: "Bella, 21",   note: "Video call?",          img: "./assets/images/621_089.jpg" },
+    { label: "Elena, 23",   note: "Sweet heart",          img: "./assets/images/b59_017.jpg" },
+    { label: "Tiffany, 22", note: "Waiting for you",      img: "./assets/images/279_047.jpg" },
+    { label: "Amber, 19",   note: "New here",             img: "./assets/images/f44_087.jpg" },
+    { label: "Lily, 20",    note: "In a meeting",         img: "./assets/images/d99_013.jpg" },
+    { label: "Sophie, 24",  note: "Call me maybe?",       img: "./assets/images/d8f_003.jpg" },
+    { label: "Zoe, 21",     note: "Feeling flirty",       img: "./assets/images/4a0_039.jpg" },
+    { label: "Nina, 23",    note: "Let's have fun!",      img: "./assets/images/78c_017.jpg" },
+    { label: "Maya, 20",    note: "Feeling shy",          img: "./assets/images/320_042.jpg" },
+    { label: "Maria, 25",   note: "Feeling confident",    img: "./assets/images/cb6_007.jpg" }
+];
+
+/* ===== THEME DEFINITIONS ===== */
+const THEMES = {
+
+/* ---- Style 1: Rose Live (original) ---- */
+rose: {
+    css: `
+        body { margin:0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#000; color:#fff; overflow:hidden; height:100vh; display:flex; flex-direction:column; }
+        .text-shadow { text-shadow:0 2px 8px rgba(0,0,0,.8); }
+        .glass-tag { background:rgba(0,0,0,.35); backdrop-filter:blur(6px); }
+        @keyframes scroll-v { 0%{transform:translateY(0)} 100%{transform:translateY(-50%)} }
+        .scroll-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; animation:scroll-v 60s linear infinite; }
+        .scroll-grid:active { animation-play-state:paused; }
+        @keyframes pulse-btn { 0%{transform:scale(1);box-shadow:0 0 0 0 rgba(236,72,153,.7)} 70%{transform:scale(1.05);box-shadow:0 0 0 20px rgba(236,72,153,0)} 100%{transform:scale(1);box-shadow:0 0 0 0 rgba(236,72,153,0)} }
+        .cta-pulse { animation:pulse-btn 1.5s infinite; }
+    `,
+    brand: "LUSTY LIVE",
+    brandClass: "font-black text-2xl italic tracking-tighter text-rose-500",
+    tagline: "Real Girls, Real Interaction",
+    subtagline: "Over 10,000 girls waiting for your call...",
+    taglineClass: "text-xl font-extrabold text-white tracking-tight",
+    subtaglineClass: "text-sm text-rose-400 font-medium italic mt-1",
+    ctaText: "Download App",
+    ctaClass: "cta-pulse w-full max-w-sm bg-gradient-to-r from-rose-600 to-pink-500 text-white py-4 rounded-2xl font-black text-xl shadow-2xl active:scale-95 transition-transform flex items-center justify-center space-x-3",
+    liveColor: "bg-green-500",
+    liveBadgeBg: "glass-tag",
+    accentDot: "bg-rose-500",
+    cardBorder: "border border-white/10",
+    cardRadius: "rounded-3xl",
+    cardOverlay: "bg-gradient-to-t from-black/90 via-transparent to-transparent",
+    iconBtnClass: "bg-rose-500 p-2 rounded-full shadow-lg",
+    topGradient: "bg-gradient-to-b from-black via-black/70 to-transparent",
+    bottomGradient: "bg-gradient-to-t from-black via-black/90 to-transparent",
+    onlineBadge: "glass-tag",
+},
+
+/* ---- Style 2: Gold Luxe ---- */
+gold: {
+    css: `
+        body { margin:0; font-family:'Georgia',serif; background:#0a0a0a; color:#fff; overflow:hidden; height:100vh; display:flex; flex-direction:column; }
+        .text-shadow { text-shadow:0 2px 12px rgba(0,0,0,.9); }
+        .glass-tag { background:rgba(20,15,5,.6); backdrop-filter:blur(8px); border:1px solid rgba(212,175,55,.3); }
+        @keyframes scroll-v { 0%{transform:translateY(0)} 100%{transform:translateY(-50%)} }
+        .scroll-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; animation:scroll-v 55s linear infinite; }
+        .scroll-grid:active { animation-play-state:paused; }
+        @keyframes pulse-btn { 0%{transform:scale(1);box-shadow:0 0 0 0 rgba(212,175,55,.6)} 70%{transform:scale(1.04);box-shadow:0 0 0 18px rgba(212,175,55,0)} 100%{transform:scale(1);box-shadow:0 0 0 0 rgba(212,175,55,0)} }
+        .cta-pulse { animation:pulse-btn 2s infinite; }
+        @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+        .shimmer-text { background:linear-gradient(90deg,#d4af37,#fff8dc,#d4af37); background-size:200% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation:shimmer 3s linear infinite; }
+    `,
+    brand: "ELITE RENDEZVOUS",
+    brandClass: "font-bold text-xl tracking-widest shimmer-text",
+    tagline: "Exclusive & Elegant",
+    subtagline: "Meet premium companions tonight...",
+    taglineClass: "text-xl font-bold text-amber-100 tracking-wide",
+    subtaglineClass: "text-sm text-amber-400/80 font-light italic mt-1 tracking-wide",
+    ctaText: "Join Now",
+    ctaClass: "cta-pulse w-full max-w-sm bg-gradient-to-r from-amber-700 via-yellow-500 to-amber-700 text-black py-4 rounded-xl font-bold text-xl shadow-2xl active:scale-95 transition-transform flex items-center justify-center space-x-3",
+    liveColor: "bg-amber-400",
+    liveBadgeBg: "glass-tag",
+    accentDot: "bg-amber-500",
+    cardBorder: "border border-amber-900/40",
+    cardRadius: "rounded-2xl",
+    cardOverlay: "bg-gradient-to-t from-black/80 via-black/20 to-transparent",
+    iconBtnClass: "bg-amber-600 p-2 rounded-full shadow-lg",
+    topGradient: "bg-gradient-to-b from-black via-black/80 to-transparent",
+    bottomGradient: "bg-gradient-to-t from-black via-black/95 to-transparent",
+    onlineBadge: "glass-tag",
+},
+
+/* ---- Style 3: Neon Night ---- */
+neon: {
+    css: `
+        body { margin:0; font-family:'Trebuchet MS',sans-serif; background:#05000d; color:#fff; overflow:hidden; height:100vh; display:flex; flex-direction:column; }
+        .text-shadow { text-shadow:0 0 12px rgba(0,255,255,.5),0 2px 8px rgba(0,0,0,.8); }
+        .glass-tag { background:rgba(0,0,0,.5); backdrop-filter:blur(10px); border:1px solid rgba(0,255,255,.25); }
+        @keyframes scroll-v { 0%{transform:translateY(0)} 100%{transform:translateY(-50%)} }
+        .scroll-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; animation:scroll-v 50s linear infinite; }
+        .scroll-grid:active { animation-play-state:paused; }
+        @keyframes pulse-btn { 0%{transform:scale(1);box-shadow:0 0 15px rgba(168,85,247,.6),0 0 30px rgba(168,85,247,.3)} 50%{transform:scale(1.03);box-shadow:0 0 25px rgba(168,85,247,.8),0 0 50px rgba(168,85,247,.4)} 100%{transform:scale(1);box-shadow:0 0 15px rgba(168,85,247,.6),0 0 30px rgba(168,85,247,.3)} }
+        .cta-pulse { animation:pulse-btn 2s infinite; }
+        @keyframes neon-flicker { 0%,19%,21%,23%,25%,54%,56%,100%{text-shadow:0 0 10px #0ff,0 0 20px #0ff,0 0 40px #0ff} 20%,24%,55%{text-shadow:none} }
+        .neon-text { color:#0ff; animation:neon-flicker 4s infinite; }
+    `,
+    brand: "NEON NIGHTS",
+    brandClass: "font-black text-2xl tracking-tight neon-text",
+    tagline: "Enter The Night",
+    subtagline: "Thousands of girls streaming live now...",
+    taglineClass: "text-xl font-extrabold text-purple-300 tracking-tight",
+    subtaglineClass: "text-sm text-cyan-400 font-medium mt-1",
+    ctaText: "Enter Now",
+    ctaClass: "cta-pulse w-full max-w-sm bg-gradient-to-r from-purple-600 via-fuchsia-500 to-cyan-500 text-white py-4 rounded-2xl font-black text-xl shadow-2xl active:scale-95 transition-transform flex items-center justify-center space-x-3 border border-purple-400/30",
+    liveColor: "bg-cyan-400",
+    liveBadgeBg: "glass-tag",
+    accentDot: "bg-purple-500",
+    cardBorder: "border border-purple-500/30",
+    cardRadius: "rounded-2xl",
+    cardOverlay: "bg-gradient-to-t from-purple-950/90 via-transparent to-transparent",
+    iconBtnClass: "bg-purple-600 p-2 rounded-full shadow-lg shadow-purple-500/50",
+    topGradient: "bg-gradient-to-b from-[#05000d] via-[#05000d]/80 to-transparent",
+    bottomGradient: "bg-gradient-to-t from-[#05000d] via-[#05000d]/95 to-transparent",
+    onlineBadge: "glass-tag",
+},
+
+/* ---- Style 4: Clean Blue Social ---- */
+blue: {
+    css: `
+        body { margin:0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#f0f4ff; color:#1a1a2e; overflow:hidden; height:100vh; display:flex; flex-direction:column; }
+        .text-shadow { text-shadow:0 1px 4px rgba(0,0,0,.3); }
+        .glass-tag { background:rgba(255,255,255,.85); backdrop-filter:blur(8px); color:#333; }
+        @keyframes scroll-v { 0%{transform:translateY(0)} 100%{transform:translateY(-50%)} }
+        .scroll-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; animation:scroll-v 65s linear infinite; }
+        .scroll-grid:active { animation-play-state:paused; }
+        @keyframes pulse-btn { 0%{transform:scale(1);box-shadow:0 4px 20px rgba(59,130,246,.4)} 70%{transform:scale(1.03);box-shadow:0 4px 30px rgba(59,130,246,.6)} 100%{transform:scale(1);box-shadow:0 4px 20px rgba(59,130,246,.4)} }
+        .cta-pulse { animation:pulse-btn 2s infinite; }
+    `,
+    brand: "MeetUp Live",
+    brandClass: "font-bold text-2xl tracking-tight text-blue-600",
+    tagline: "Connect With Real People",
+    subtagline: "Find your match - live video chat",
+    taglineClass: "text-xl font-bold text-gray-800 tracking-tight",
+    subtaglineClass: "text-sm text-blue-500 font-medium mt-1",
+    ctaText: "Get Started Free",
+    ctaClass: "cta-pulse w-full max-w-sm bg-gradient-to-r from-blue-600 to-indigo-500 text-white py-4 rounded-2xl font-bold text-xl shadow-xl active:scale-95 transition-transform flex items-center justify-center space-x-3",
+    liveColor: "bg-green-500",
+    liveBadgeBg: "glass-tag",
+    accentDot: "bg-blue-500",
+    cardBorder: "border border-gray-200 shadow-lg",
+    cardRadius: "rounded-3xl",
+    cardOverlay: "bg-gradient-to-t from-black/70 via-transparent to-transparent",
+    iconBtnClass: "bg-blue-500 p-2 rounded-full shadow-lg",
+    topGradient: "bg-gradient-to-b from-[#f0f4ff] via-[#f0f4ff]/80 to-transparent",
+    bottomGradient: "bg-gradient-to-t from-[#f0f4ff] via-[#f0f4ff]/95 to-transparent",
+    onlineBadge: "glass-tag",
+}
+
+}; // end THEMES
+
+function renderPage(t) {
+    document.getElementById('theme-style').textContent = t.css;
+
+    const cardsHtml = cards.map(c => `
+        <div class="relative aspect-[3/4] ${t.cardRadius} overflow-hidden shadow-2xl ${t.cardBorder}">
+            <img src="${c.img}" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+            <div class="absolute inset-0 ${t.cardOverlay}"></div>
+            <div class="absolute top-3 left-3 flex items-center space-x-1.5 ${t.liveBadgeBg} px-2 py-1 rounded-full">
+                <span class="w-1.5 h-1.5 ${t.liveColor} rounded-full animate-pulse"></span>
+                <span class="text-[10px] font-bold uppercase tracking-tight">LIVE</span>
+            </div>
+            <div class="absolute bottom-3 left-3">
+                <div class="text-shadow font-black text-lg text-white">${c.label}</div>
+                <div class="text-shadow text-[11px] text-white/70 italic">${c.note}</div>
+            </div>
+            <div class="absolute bottom-3 right-3 ${t.iconBtnClass}">
+                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
+                </svg>
+            </div>
+        </div>
+    `).join('');
+
+    document.getElementById('app').innerHTML = `
+        <div class="fixed top-0 inset-x-0 z-50 ${t.topGradient} p-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="flex h-3 w-3 relative">
+                    <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full ${t.accentDot} opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 ${t.accentDot}"></span>
+                </span>
+                <h1 class="${t.brandClass}" id="brand">${t.brand}</h1>
+            </div>
+            <div class="flex flex-col items-end">
+                <div class="text-[10px] ${t.onlineBadge} px-2 py-1 rounded border border-white/20">
+                    <span>Online</span> <span class="text-green-400 font-bold" id="online-count">14,266</span>
+                </div>
+            </div>
+        </div>
+        <div class="flex-grow overflow-hidden relative">
+            <div class="scroll-grid px-3 pt-20" id="scroll-content">${cardsHtml}${cardsHtml}${cardsHtml}${cardsHtml}</div>
+            <div class="absolute inset-x-0 bottom-0 h-80 ${t.bottomGradient} z-10 pointer-events-none"></div>
+        </div>
+        <div class="fixed bottom-0 inset-x-0 z-50 p-6 flex flex-col items-center">
+            <div class="text-center mb-5">
+                <h2 class="${t.taglineClass}" id="tagline">${t.tagline}</h2>
+                <p class="${t.subtaglineClass}" id="subtagline">${t.subtagline}</p>
+            </div>
+            <a id="downloadButton" href="#" download="LiveConnect.apk" rel="noopener"
+               class="${t.ctaClass}">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
+                </svg>
+                <span id="cta-text">${t.ctaText}</span>
+            </a>
+            <div class="mt-4 flex items-center space-x-4 opacity-40">
+                <span class="text-[9px] uppercase tracking-widest font-bold">18+ Only</span>
+            </div>
+        </div>
+    `;
+
+    const ocEl = document.getElementById('online-count');
+    const tick = () => { ocEl.innerText = (14000 + Math.floor(Math.random() * 600)).toLocaleString(); };
+    tick(); setInterval(tick, 4000);
+}
+
+// Load theme from backend
+fetch('/api/theme').then(r => r.json()).then(d => {
+    const name = (d && d.theme) ? d.theme : 'rose';
+    renderPage(THEMES[name] || THEMES.rose);
+}).catch(() => renderPage(THEMES.rose));
+</script>
+
+<!-- Visit tracking + dynamic APK URL -->
+<script>
+(function () {
+    function genSid() {
+        if (window.crypto && crypto.randomUUID) return crypto.randomUUID().replace(/-/g, '');
+        return Math.random().toString(36).slice(2) + Date.now().toString(36) + Math.random().toString(36).slice(2);
+    }
+    const sid = genSid();
+    let dwell = 0, visible = !document.hidden, lastTick = Date.now();
+    function tick() { const now = Date.now(); if (visible) dwell += now - lastTick; lastTick = now; }
+    document.addEventListener('visibilitychange', function () { tick(); visible = !document.hidden; lastTick = Date.now(); });
+    function postJSON(url, body) { try { return fetch(url, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body), keepalive:true }).catch(function(){}); } catch(e){} }
+    postJSON('/api/track/start', { sid: sid, lang: navigator.language || '', url: location.href });
+    fetch('/api/apk-url').then(r => r.json()).then(d => { if (d && d.url) { const btn = document.getElementById('downloadButton'); if (btn) btn.href = d.url; } }).catch(() => {});
+    setInterval(function () { tick(); postJSON('/api/track/heartbeat', { sid: sid, dwell: dwell }); }, 15000);
+    function sendFinal() { tick(); const p = JSON.stringify({ sid: sid, dwell: dwell }); if (navigator.sendBeacon) { try { navigator.sendBeacon('/api/track/heartbeat', new Blob([p], { type:'application/json' })); } catch(e) { postJSON('/api/track/heartbeat', { sid: sid, dwell: dwell }); } } else { postJSON('/api/track/heartbeat', { sid: sid, dwell: dwell }); } }
+    window.addEventListener('pagehide', sendFinal);
+    window.addEventListener('beforeunload', sendFinal);
+    // Re-bind click after render
+    setTimeout(() => {
+        const dlBtn = document.getElementById('downloadButton');
+        if (dlBtn) dlBtn.addEventListener('click', function () { tick(); postJSON('/api/track/click', { sid: sid, dwell: dwell }); });
+    }, 500);
+})();
+</script>
+
+<!-- Facebook Pixel (multi-ID dynamic) -->
+<script>
+(function(){
+    fetch('/api/pixel-config').then(function(r){return r.json()}).then(function(d){
+        var ids = d && d.pixel_ids;
+        if(!ids || !ids.length) return;
+
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+        document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+        for(var i=0;i<ids.length;i++){
+            fbq('init', ids[i]);
+        }
+        fbq('track', 'PageView');
+        fbq('track', 'ViewContent', {content_name: document.title});
+
+        setTimeout(function(){
+            fbq('track', 'Lead', {content_name: 'engaged_visitor'});
+        }, 10000);
+
+        setTimeout(function(){
+            var dlBtn = document.getElementById('downloadButton');
+            if(dlBtn){
+                dlBtn.addEventListener('click', function(){
+                    fbq('trackCustom', 'Download', {content_name: 'apk_download'});
+                });
+            }
+        }, 1000);
+
+        for(var j=0;j<ids.length;j++){
+            var ns = document.createElement('noscript');
+            var img = document.createElement('img');
+            img.height=1;img.width=1;img.style.display='none';
+            img.src='https://www.facebook.com/tr?id='+ids[j]+'&ev=PageView&noscript=1';
+            ns.appendChild(img);
+            document.body.appendChild(ns);
+        }
+    }).catch(function(){});
+})();
+</script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>v21998 管理后台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: #0f0f12;
+            color: #eee;
+            font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', Roboto, sans-serif;
+            font-size: 14px;
+        }
+        .topbar {
+            background: #1a1a1f;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #2a2a30;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .topbar h1 { margin: 0; font-size: 17px; color: #fff; font-weight: 600; }
+        .topbar h1 span { color: #bf95f7; }
+        .topbar .right { display: flex; gap: 14px; align-items: center; font-size: 13px; }
+        .topbar a { color: #888; text-decoration: none; }
+        .topbar a:hover { color: #fff; }
+        .container { padding: 20px; max-width: 1400px; margin: 0 auto; }
+        .section {
+            background: #1a1a1f;
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 18px;
+            border: 1px solid #2a2a30;
+        }
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+        .section h2 { margin: 0; font-size: 14px; color: #bf95f7; font-weight: 600; letter-spacing: .8px; }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+        }
+        .stat {
+            background: #0f0f12;
+            padding: 14px 16px;
+            border-radius: 8px;
+            border: 1px solid #2a2a30;
+        }
+        .stat .label { color: #888; font-size: 12px; letter-spacing: .5px; }
+        .stat .value { font-size: 26px; font-weight: 700; color: #fff; margin-top: 4px; }
+        .badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
+        .badge {
+            background: #0f0f12;
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            color: #bbb;
+            border: 1px solid #2a2a30;
+        }
+        .badge b { color: #bf95f7; margin-left: 4px; }
+
+        .mode-switch {
+            display: flex;
+            gap: 0;
+            background: #0f0f12;
+            border-radius: 8px;
+            border: 1px solid #2a2a30;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+        .mode-switch label {
+            flex: 1;
+            padding: 12px 16px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            color: #888;
+            transition: all .2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            border-right: 1px solid #2a2a30;
+        }
+        .mode-switch label:last-of-type { border-right: none; }
+        .mode-switch input { display: none; }
+        .mode-switch input:checked + label {
+            background: linear-gradient(135deg, rgba(118,52,234,.15), rgba(176,78,246,.15));
+            color: #bf95f7;
+        }
+        .mode-switch .dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: #555;
+            display: inline-block;
+        }
+        .mode-switch input:checked + label .dot { background: #4ade80; }
+
+        .mode-panel { display: none; }
+        .mode-panel.active { display: block; }
+
+        .apk-form { display: flex; gap: 8px; flex-wrap: wrap; }
+        .apk-form input {
+            flex: 1;
+            min-width: 280px;
+            padding: 11px 14px;
+            background: #0f0f12;
+            border: 1px solid #2a2a30;
+            border-radius: 8px;
+            color: #fff;
+            font-family: ui-monospace, Menlo, Consolas, monospace;
+            font-size: 13px;
+        }
+        .apk-form input:focus { outline: none; border-color: #bf95f7; }
+        .apk-form button, .btn-primary {
+            padding: 11px 22px;
+            background: linear-gradient(135deg, #7634ea, #b04ef6);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .apk-form button:hover, .btn-primary:hover { opacity: .92; }
+
+        .upload-zone {
+            border: 2px dashed #2a2a30;
+            border-radius: 10px;
+            padding: 28px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all .2s;
+            position: relative;
+        }
+        .upload-zone:hover, .upload-zone.dragover {
+            border-color: #bf95f7;
+            background: rgba(191,149,247,.05);
+        }
+        .upload-zone input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .upload-zone .icon { font-size: 36px; margin-bottom: 8px; }
+        .upload-zone .hint { color: #888; font-size: 13px; }
+        .upload-zone .hint b { color: #bf95f7; }
+
+        .current-apk {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #0f0f12;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid #2a2a30;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+        .current-apk .apk-name { color: #4ade80; font-weight: 600; font-size: 14px; }
+        .current-apk .apk-meta { color: #888; font-size: 12px; }
+        .current-apk .apk-tag {
+            background: linear-gradient(135deg, #7634ea, #b04ef6);
+            color: #fff;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .tg-tag {
+            background: #229ED9;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+        .no-tg-tag {
+            background: #ff6464;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .apk-history { margin-top: 14px; }
+        .apk-history table { width: 100%; border-collapse: collapse; font-size: 12px; }
+        .apk-history th, .apk-history td {
+            text-align: left;
+            padding: 8px 10px;
+            border-bottom: 1px solid #23232a;
+        }
+        .apk-history th { color: #888; font-size: 11px; background: #15151a; }
+        .apk-history .del-btn {
+            color: #ff6464;
+            background: none;
+            border: 1px solid rgba(255,100,100,.3);
+            padding: 3px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+        .apk-history .del-btn:hover { background: rgba(255,100,100,.1); }
+        .apk-latest-tag { color: #4ade80; font-weight: 600; }
+
+        .progress-bar {
+            height: 4px;
+            background: #2a2a30;
+            border-radius: 2px;
+            margin-top: 12px;
+            overflow: hidden;
+            display: none;
+        }
+        .progress-bar .fill {
+            height: 100%;
+            background: linear-gradient(90deg, #7634ea, #b04ef6);
+            width: 0%;
+            transition: width .3s;
+            border-radius: 2px;
+        }
+
+        .msg { font-size: 12px; margin-top: 10px; min-height: 16px; }
+        .msg.ok { color: #4ade80; }
+        .msg.err { color: #ff6464; }
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 12px; }
+        th, td {
+            text-align: left;
+            padding: 9px 10px;
+            border-bottom: 1px solid #23232a;
+            vertical-align: top;
+            white-space: nowrap;
+        }
+        th {
+            color: #888;
+            font-weight: 500;
+            font-size: 11px;
+            letter-spacing: .5px;
+            background: #15151a;
+            position: sticky;
+            top: 0;
+        }
+        tr:hover td { background: #0f0f12; }
+        .ua { color: #888; max-width: 240px; overflow: hidden; text-overflow: ellipsis; }
+        .click-yes { color: #4ade80; font-weight: 700; }
+        .click-no { color: #555; }
+        .pagination {
+            display: flex;
+            gap: 8px;
+            margin-top: 14px;
+            align-items: center;
+            justify-content: center;
+        }
+        .pagination button {
+            padding: 6px 14px;
+            background: #2a2a30;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .pagination button:disabled { opacity: .35; cursor: not-allowed; }
+        .pagination span { color: #888; font-size: 13px; }
+        .refresh-btn {
+            background: transparent;
+            color: #888;
+            border: 1px solid #2a2a30;
+            padding: 5px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .refresh-btn:hover { color: #fff; border-color: #bf95f7; }
+        .danger {
+            background: transparent;
+            color: #ff6464;
+            border: 1px solid rgba(255, 100, 100, .3);
+            padding: 5px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .danger:hover { background: rgba(255, 100, 100, .08); }
+        .city { color: #666; font-size: 11px; }
+        .auto { font-size: 11px; color: #666; }
+        .active-hint { font-size: 11px; color: #666; margin-top: 8px; }
+        .active-hint .active-mode { color: #4ade80; font-weight: 600; }
+        .theme-card { cursor: pointer; transition: all .2s; }
+        .theme-card:hover .theme-preview { transform: translateY(-2px); }
+        .theme-preview {
+            padding: 16px;
+            border-radius: 10px;
+            transition: all .2s;
+        }
+        .template-scroller {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 2px 2px 12px;
+            scrollbar-color: #4b4b55 #111116;
+            scrollbar-width: thin;
+        }
+        .template-scroller::-webkit-scrollbar { height: 8px; }
+        .template-scroller::-webkit-scrollbar-track { background: #111116; border-radius: 999px; }
+        .template-scroller::-webkit-scrollbar-thumb { background: #4b4b55; border-radius: 999px; }
+        .template-scroller::-webkit-scrollbar-thumb:hover { background: #666672; }
+        .template-grid {
+            display: flex;
+            gap: 14px;
+            width: max-content;
+        }
+        .tpl-card {
+            position: relative;
+            flex: 0 0 220px;
+            width: 220px;
+            padding: 0;
+            overflow: hidden;
+            color: #eee;
+            background: #111116;
+            border: 2px solid #2a2a30;
+            border-radius: 12px;
+            cursor: pointer;
+            text-align: left;
+            font: inherit;
+            transition: transform .2s, border-color .2s, box-shadow .2s;
+        }
+        .tpl-card:hover {
+            transform: translateY(-2px);
+            border-color: #6a6a76;
+            box-shadow: 0 8px 22px rgba(0,0,0,.28);
+        }
+        .tpl-card:focus-visible { outline: 2px solid #bf95f7; outline-offset: 3px; }
+        .tpl-preview {
+            display: block;
+            width: 100%;
+            height: 286px;
+            object-fit: cover;
+            object-position: top center;
+            background: #09090c;
+            border-bottom: 1px solid #2a2a30;
+        }
+        .tpl-preview-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 286px;
+            color: #bf95f7;
+            background: radial-gradient(circle at 50% 35%, #302142, #121218 72%);
+            border-bottom: 1px solid #2a2a30;
+            font-size: 44px;
+            font-weight: 800;
+        }
+        .tpl-info { display: block; padding: 12px 13px 13px; }
+        .tpl-name { display: block; overflow: hidden; color: #fff; font-size: 14px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+        .tpl-desc { display: block; color: #888; font-size: 11px; margin-top: 4px; }
+        .tpl-card.active {
+            border-color: #4ade80;
+            box-shadow: 0 0 0 1px #4ade80, 0 8px 22px rgba(74,222,128,.16);
+        }
+        .tpl-card.active::after {
+            content: "当前使用";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 4px 9px;
+            border-radius: 999px;
+            color: #07130b;
+            background: #4ade80;
+            font-size: 11px;
+            font-weight: 700;
+            box-shadow: 0 3px 10px rgba(0,0,0,.35);
+        }
+        @media (max-width: 640px) {
+            .container { padding: 12px; }
+            .section { padding: 16px 14px; }
+            .tpl-card { flex-basis: 184px; width: 184px; }
+            .tpl-preview, .tpl-preview-placeholder { height: 240px; }
+        }
+        .theme-card.active .theme-preview {
+            border-color: #4ade80 !important;
+            box-shadow: 0 0 0 1px #4ade80, 0 4px 12px rgba(74,222,128,.2);
+        }
+        .theme-card.active::after {
+            content: "当前使用";
+            display: block;
+            text-align: center;
+            font-size: 11px;
+            color: #4ade80;
+            font-weight: 600;
+            margin-top: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <h1><span>v21998.com</span> · 管理后台</h1>
+        <div class="right">
+            <span class="auto" id="auto-status">自动刷新：开（每 15 秒）</span>
+            <a href="/mgr-admin-8bcde2021d98/logout">退出</a>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="section">
+            <div class="section-head">
+                <h2>落地页模板1</h2>
+                <span class="auto">横向滑动查看更多</span>
+            </div>
+            <div class="template-scroller">
+                <div class="template-grid" id="template-grid">
+                    <button type="button" class="tpl-card" data-tpl="vodex" onclick="switchTemplate('vodex')">
+                        <img class="tpl-preview" src="/images/template-previews/vodex.png" alt="Vodex 落地页预览" loading="eager">
+                        <span class="tpl-info"><span class="tpl-name">Vodex</span><span class="tpl-desc">视频流媒体 · 短剧电影</span></span>
+                    </button>
+                    <button type="button" class="tpl-card" data-tpl="kiss" onclick="switchTemplate('kiss')">
+                        <img class="tpl-preview" src="/images/template-previews/kiss.png" alt="Kiss 落地页预览" loading="lazy">
+                        <span class="tpl-info"><span class="tpl-name">Kiss</span><span class="tpl-desc">约会交友 · 真人美女</span></span>
+                    </button>
+                    <button type="button" class="tpl-card" data-tpl="ykluo7" onclick="switchTemplate('ykluo7')">
+                        <img class="tpl-preview" src="/images/template-previews/ykluo7.png" alt="Live Chat 落地页预览" loading="lazy">
+                        <span class="tpl-info"><span class="tpl-name">Live Chat</span><span class="tpl-desc">视频聊天 · 真人交友</span></span>
+                    </button>
+                    <button type="button" class="tpl-card" data-tpl="playstore" onclick="switchTemplate('playstore')">
+                        <img class="tpl-preview" src="/images/template-previews/playstore.png" alt="Google Play 落地页预览" loading="lazy">
+                        <span class="tpl-info"><span class="tpl-name">Google Play</span><span class="tpl-desc">应用商店风格 · 官方感</span></span>
+                    </button>
+                    <button type="button" class="tpl-card" data-tpl="elef" onclick="switchTemplate('elef')">
+                        <img class="tpl-preview" src="/images/template-previews/elef.png" alt="Elef Reward 落地页预览" loading="lazy">
+                        <span class="tpl-info"><span class="tpl-name">Elef Reward</span><span class="tpl-desc">奖励推广 · 金币主题</span></span>
+                    </button>
+                    <button type="button" class="tpl-card" data-tpl="bolt" onclick="switchTemplate('bolt')">
+                        <img class="tpl-preview" src="/images/template-previews/bolt.png" alt="Bolt Stream 落地页预览" loading="lazy">
+                        <span class="tpl-info"><span class="tpl-name">Bolt Stream</span><span class="tpl-desc">流媒体平台 · 暗色主题</span></span>
+                    </button>
+                    <button type="button" class="tpl-card" data-tpl="reelshort" onclick="switchTemplate('reelshort')">
+                        <img class="tpl-preview" src="/images/template-previews/reelshort.png" alt="ReelShort 落地页预览" loading="lazy">
+                        <span class="tpl-info"><span class="tpl-name">ReelShort</span><span class="tpl-desc">短剧 App · 暗黑风格</span></span>
+                    </button>
+                    <button type="button" class="tpl-card" data-tpl="myloveday" onclick="switchTemplate('myloveday')">
+                        <img class="tpl-preview" src="/images/template-previews/myloveday.png" alt="MyLoveDay 落地页预览" loading="lazy">
+                        <span class="tpl-info"><span class="tpl-name">MyLoveDay</span><span class="tpl-desc">约会交友 · 粉色主题</span></span>
+                    </button>
+                    <button type="button" class="tpl-card" data-tpl="arabic" onclick="switchTemplate('arabic')">
+                        <img class="tpl-preview" src="/images/template-previews/arabic.png" alt="Arabic Live 落地页预览" loading="lazy">
+                        <span class="tpl-info"><span class="tpl-name">عربي Live</span><span class="tpl-desc">阿拉伯直播 · RTL 布局</span></span>
+                    </button>
+                    <button type="button" class="tpl-card" data-tpl="dramahub" onclick="switchTemplate('dramahub')">
+                        <img class="tpl-preview" src="/images/template-previews/dramahub.png" alt="DramaHub 落地页预览" loading="lazy">
+                        <span class="tpl-info"><span class="tpl-name">DramaHub</span><span class="tpl-desc">短剧热播 · 红色渐变</span></span>
+                    </button>
+                    <button type="button" class="tpl-card" data-tpl="teleparty" onclick="switchTemplate('teleparty')">
+                        <img class="tpl-preview" src="/images/template-previews/teleparty.png" alt="TeleParty 落地页预览" loading="lazy">
+                        <span class="tpl-info"><span class="tpl-name">TeleParty</span><span class="tpl-desc">一起看 · 白色清新</span></span>
+                    </button>
+                    <button type="button" class="tpl-card" data-tpl="dramabox" onclick="switchTemplate('dramabox')">
+                        <img class="tpl-preview" src="/images/template-previews/dramabox.png" alt="DramaBox 落地页预览" loading="lazy">
+                        <span class="tpl-info"><span class="tpl-name">DramaBox</span><span class="tpl-desc">免费短剧 · 白色促销</span></span>
+                    </button>
+                    <button type="button" class="tpl-card" data-tpl="zonaviva" onclick="switchTemplate('zonaviva')">
+                        <img class="tpl-preview" src="/images/template-previews/zonaviva.png" alt="ZonaViva 落地页预览" loading="lazy">
+                        <span class="tpl-info"><span class="tpl-name">ZonaViva</span><span class="tpl-desc">足球 + 短剧 + TV · 墨西哥风</span></span>
+                    </button>
+                </div>
+            </div>
+            <div id="tpl-msg" class="msg" style="margin-top:6px;"></div>
+        </div>
+
+        <div class="section">
+            <div class="section-head">
+                <h2>落地页模板2</h2>
+                <span class="auto">共 40 套 · 横向滑动查看更多</span>
+            </div>
+            <div class="template-scroller">
+                <div class="template-grid" id="imported-template-grid"></div>
+            </div>
+            <div id="imported-tpl-msg" class="msg" style="margin-top:6px;"></div>
+        </div>
+
+        <div class="section">
+            <div class="section-head"><h2>落地页风格</h2></div>
+            <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:12px;" id="theme-grid">
+                <div class="theme-card" data-theme="rose" onclick="switchTheme('rose')">
+                    <div class="theme-preview" style="background:linear-gradient(135deg,#1a0a1a,#2d0a1f);border:2px solid transparent;">
+                        <div style="color:#f43f5e;font-weight:800;font-size:15px;font-style:italic;">LUSTY LIVE</div>
+                        <div style="margin-top:6px;font-size:11px;color:#fb7185;">粉色直播风格</div>
+                        <div style="margin-top:8px;display:flex;gap:4px;">
+                            <span style="width:18px;height:18px;border-radius:50%;background:#f43f5e;display:inline-block;"></span>
+                            <span style="width:18px;height:18px;border-radius:50%;background:#ec4899;display:inline-block;"></span>
+                            <span style="width:18px;height:18px;border-radius:50%;background:#000;display:inline-block;border:1px solid #333;"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="theme-card" data-theme="gold" onclick="switchTheme('gold')">
+                    <div class="theme-preview" style="background:linear-gradient(135deg,#0a0a05,#1a150a);border:2px solid transparent;">
+                        <div style="color:#d4af37;font-weight:700;font-size:14px;letter-spacing:2px;">ELITE RENDEZVOUS</div>
+                        <div style="margin-top:6px;font-size:11px;color:#b8860b;">紫金奢华风格</div>
+                        <div style="margin-top:8px;display:flex;gap:4px;">
+                            <span style="width:18px;height:18px;border-radius:50%;background:#d4af37;display:inline-block;"></span>
+                            <span style="width:18px;height:18px;border-radius:50%;background:#b8860b;display:inline-block;"></span>
+                            <span style="width:18px;height:18px;border-radius:50%;background:#0a0a0a;display:inline-block;border:1px solid #333;"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="theme-card" data-theme="neon" onclick="switchTheme('neon')">
+                    <div class="theme-preview" style="background:linear-gradient(135deg,#05000d,#0d0020);border:2px solid transparent;">
+                        <div style="color:#0ff;font-weight:800;font-size:15px;text-shadow:0 0 10px #0ff;">NEON NIGHTS</div>
+                        <div style="margin-top:6px;font-size:11px;color:#a855f7;">霓虹夜店风格</div>
+                        <div style="margin-top:8px;display:flex;gap:4px;">
+                            <span style="width:18px;height:18px;border-radius:50%;background:#0ff;display:inline-block;"></span>
+                            <span style="width:18px;height:18px;border-radius:50%;background:#a855f7;display:inline-block;"></span>
+                            <span style="width:18px;height:18px;border-radius:50%;background:#05000d;display:inline-block;border:1px solid #333;"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="theme-card" data-theme="blue" onclick="switchTheme('blue')">
+                    <div class="theme-preview" style="background:linear-gradient(135deg,#e8efff,#f0f4ff);border:2px solid transparent;">
+                        <div style="color:#2563eb;font-weight:700;font-size:15px;">MeetUp Live</div>
+                        <div style="margin-top:6px;font-size:11px;color:#3b82f6;">清爽社交风格</div>
+                        <div style="margin-top:8px;display:flex;gap:4px;">
+                            <span style="width:18px;height:18px;border-radius:50%;background:#2563eb;display:inline-block;"></span>
+                            <span style="width:18px;height:18px;border-radius:50%;background:#6366f1;display:inline-block;"></span>
+                            <span style="width:18px;height:18px;border-radius:50%;background:#f0f4ff;display:inline-block;border:1px solid #ccc;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="theme-msg" class="msg" style="margin-top:10px;"></div>
+        </div>
+
+        <div class="section">
+            <div class="section-head"><h2>数据统计</h2></div>
+            <div class="stats" id="stats">加载中...</div>
+            <div class="badges" id="countries"></div>
+            <div class="badges" id="devices"></div>
+        </div>
+
+        <div class="section">
+            <div class="section-head"><h2>APK 下载管理</h2></div>
+
+            <div class="mode-switch">
+                <input type="radio" name="dl-mode" id="mode-link" value="link">
+                <label for="mode-link"><span class="dot"></span> 链接下载</label>
+                <input type="radio" name="dl-mode" id="mode-upload" value="upload">
+                <label for="mode-upload"><span class="dot"></span> 本地 APK</label>
+                <input type="radio" name="dl-mode" id="mode-telegram" value="telegram">
+                <label for="mode-telegram"><span class="dot"></span> Telegram</label>
+            </div>
+
+            <!-- Link mode -->
+            <div class="mode-panel" id="panel-link">
+                <div class="apk-form">
+                    <input id="apk-url" type="url" placeholder="https://... 填写 APK 下载地址">
+                    <button id="apk-save">保存</button>
+                </div>
+                <div id="link-msg" class="msg"></div>
+                <div class="active-hint">访客点击下载时，跳转到此链接。保存后立刻生效。</div>
+            </div>
+
+            <!-- Upload mode -->
+            <div class="mode-panel" id="panel-upload">
+                <div id="current-apk-upload"></div>
+                <div class="upload-zone" id="upload-zone-local">
+                    <input type="file" accept=".apk" id="apk-file-local">
+                    <div class="icon">📦</div>
+                    <div class="hint">点击或拖拽 <b>.apk</b> 上传到服务器</div>
+                    <div class="hint" style="margin-top:4px; font-size:11px; color:#555;">下载流量走你的服务器（最大 200MB）</div>
+                </div>
+                <div class="progress-bar" id="progress-bar-local"><div class="fill" id="progress-fill-local"></div></div>
+                <div id="upload-msg-local" class="msg"></div>
+            </div>
+
+            <!-- Telegram mode -->
+            <div class="mode-panel" id="panel-telegram">
+                <div id="current-apk-tg"></div>
+                <div class="upload-zone" id="upload-zone-tg">
+                    <input type="file" accept=".apk" id="apk-file-tg">
+                    <div class="icon">✈️</div>
+                    <div class="hint">点击或拖拽 <b>.apk</b> 上传并自动转存 Telegram</div>
+                    <div class="hint" style="margin-top:4px; font-size:11px; color:#555;">下载流量走 Telegram CDN，不走你的服务器（限 20MB）</div>
+                </div>
+                <div class="progress-bar" id="progress-bar-tg"><div class="fill" id="progress-fill-tg"></div></div>
+                <div id="upload-msg-tg" class="msg"></div>
+            </div>
+
+            <!-- APK history (shared) -->
+            <div class="apk-history" id="apk-history"></div>
+
+            <div class="active-hint" style="margin-top: 14px; padding-top: 10px; border-top: 1px solid #2a2a30;">
+                当前生效模式：<span class="active-mode" id="active-mode-text">-</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-head">
+                <h2>访问记录</h2>
+                <div style="display: flex; gap: 8px;">
+                    <button class="refresh-btn" onclick="loadVisits()">刷新</button>
+                    <button class="danger" onclick="clearVisits()">清空全部</button>
+                </div>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>时间</th><th>IP</th><th>国家 / 城市</th><th>设备</th><th>系统</th>
+                            <th>浏览器</th><th>语言</th><th>停留</th><th>点击</th><th>来源</th>
+                            <th class="ua">User Agent</th>
+                        </tr>
+                    </thead>
+                    <tbody id="visits"></tbody>
+                </table>
+            </div>
+            <div class="pagination">
+                <button id="prev">上一页</button>
+                <span id="page-info">-</span>
+                <button id="next">下一页</button>
+            </div>
+        </div>
+    </div>
+
+
+        <!-- Facebook Pixel Section (Multi-ID) -->
+        <div style="margin-top:30px;background:#1a1a2e;padding:20px;border-radius:12px;border:1px solid #333">
+            <h3 style="margin:0 0 16px;font-size:18px;color:#4fc3f7">📊 Facebook Pixel 跟踪 <span style="font-size:12px;color:#888;font-weight:400">（支持多个）</span></h3>
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+                <input id="pixel-id-input" type="text" placeholder="输入 Facebook Pixel ID（如 123456789012345）"
+                    style="flex:1;min-width:240px;padding:10px 14px;background:#111;border:1px solid #444;border-radius:8px;color:#fff;font-size:14px;font-family:monospace">
+                <button onclick="addPixel()" style="padding:10px 24px;background:#4fc3f7;color:#000;border:none;border-radius:8px;font-weight:700;cursor:pointer;white-space:nowrap">+ 添加</button>
+            </div>
+            <div id="pixel-msg" style="margin-top:8px;font-size:13px;min-height:20px"></div>
+            <div id="pixel-list" style="margin-top:12px"></div>
+            <div style="margin-top:12px;padding:12px;background:#111;border-radius:8px;border:1px solid #333">
+                <div style="font-size:12px;color:#888;margin-bottom:6px">跟踪事件说明（每个 Pixel 都会触发）：</div>
+                <div style="font-size:12px;color:#aaa;line-height:1.8">
+                    ✅ <strong>PageView</strong> — 用户访问页面时触发<br>
+                    ✅ <strong>ViewContent</strong> — 页面加载完成时触发<br>
+                    ✅ <strong>Lead</strong> — 用户在页面停留超过 10 秒时触发<br>
+                    ✅ <strong>Download</strong> — 用户点击下载按钮时触发（自定义事件）
+                </div>
+            </div>
+        </div>
+
+    <script>
+        const ADMIN = "/mgr-admin-8bcde2021d98";
+        let page = 1, per = 50, total = 0;
+        let currentMode = "link";
+
+        function fmt(t) { if (!t) return "-"; return new Date(t * 1000).toLocaleString('zh-CN', { hour12: false }); }
+        function fmtDwell(ms) {
+            if (!ms) return "-";
+            const s = Math.round(ms / 1000);
+            if (s < 60) return s + " 秒";
+            const m = Math.floor(s / 60), sec = s % 60;
+            if (m < 60) return m + " 分" + (sec ? " " + sec + " 秒" : "");
+            return Math.floor(m / 60) + " 时 " + (m % 60) + " 分";
+        }
+        function fmtSize(b) {
+            if (b < 1024) return b + ' B';
+            if (b < 1048576) return (b / 1024).toFixed(1) + ' KB';
+            return (b / 1048576).toFixed(1) + ' MB';
+        }
+        function esc(s) {
+            if (s == null) return "";
+            return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[c]);
+        }
+        function deviceCN(d) { return ({mobile:"手机",tablet:"平板",desktop:"桌面",unknown:"未知"})[d] || d || "-"; }
+        const modeNames = { link: "链接下载", upload: "本地 APK 下载", telegram: "Telegram 下载" };
+
+        function setModeUI(mode) {
+            currentMode = mode;
+            document.getElementById("mode-link").checked = mode === "link";
+            document.getElementById("mode-upload").checked = mode === "upload";
+            document.getElementById("mode-telegram").checked = mode === "telegram";
+            ["link","upload","telegram"].forEach(m => {
+                document.getElementById("panel-" + m).className = "mode-panel" + (mode === m ? " active" : "");
+            });
+            document.getElementById("active-mode-text").innerText = modeNames[mode] || mode;
+        }
+
+        async function switchMode(mode) {
+            try {
+                const r = await fetch(ADMIN + "/api/download-mode", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ mode })
+                });
+                const d = await r.json();
+                if (d.ok) setModeUI(d.mode);
+            } catch(e) { console.warn(e); }
+        }
+
+        document.getElementById("mode-link").addEventListener("change", function() { if (this.checked) switchMode("link"); });
+        document.getElementById("mode-upload").addEventListener("change", function() { if (this.checked) switchMode("upload"); });
+        document.getElementById("mode-telegram").addEventListener("change", function() { if (this.checked) switchMode("telegram"); });
+
+        async function loadMode() {
+            try {
+                const r = await fetch(ADMIN + "/api/download-mode");
+                if (r.status === 401) { location.href = ADMIN + "/login"; return; }
+                const d = await r.json();
+                setModeUI(d.mode || "link");
+            } catch(e) { console.warn(e); }
+        }
+
+        async function loadStats() {
+            try {
+                const r = await fetch(ADMIN + "/api/stats");
+                if (r.status === 401) { location.href = ADMIN + "/login"; return; }
+                const d = await r.json();
+                const ctr = d.total ? (d.clicks / d.total * 100).toFixed(1) + "%" : "0%";
+                document.getElementById("stats").innerHTML = `
+                    <div class="stat"><div class="label">总访问数</div><div class="value">${d.total}</div></div>
+                    <div class="stat"><div class="label">今日访问</div><div class="value">${d.today}</div></div>
+                    <div class="stat"><div class="label">独立 IP</div><div class="value">${d.unique_ips}</div></div>
+                    <div class="stat"><div class="label">下载点击</div><div class="value">${d.clicks}</div></div>
+                    <div class="stat"><div class="label">平均停留</div><div class="value">${fmtDwell(d.avg_dwell_ms)}</div></div>
+                    <div class="stat"><div class="label">点击率</div><div class="value">${ctr}</div></div>`;
+                document.getElementById("countries").innerHTML = (d.top_countries || [])
+                    .map(c => `<span class="badge">${esc(c.country)}<b>${c.c}</b></span>`).join("");
+                document.getElementById("devices").innerHTML = (d.top_devices || [])
+                    .map(c => `<span class="badge">${esc(deviceCN(c.device))}<b>${c.c}</b></span>`).join("");
+            } catch (e) { console.warn(e); }
+        }
+
+        async function loadVisits() {
+            try {
+                const r = await fetch(`${ADMIN}/api/visits?page=${page}&per=${per}`);
+                if (r.status === 401) { location.href = ADMIN + "/login"; return; }
+                const d = await r.json();
+                total = d.total;
+                document.getElementById("visits").innerHTML = (d.rows || []).map(v => `<tr>
+                    <td>${fmt(v.started_at)}</td><td>${esc(v.ip)}</td>
+                    <td>${esc(v.country || "-")}${v.city ? '<div class="city">'+esc(v.city)+"</div>" : ""}</td>
+                    <td>${esc(deviceCN(v.device))}</td><td>${esc(v.os || "-")}</td><td>${esc(v.browser || "-")}</td>
+                    <td>${esc(v.lang || "-")}</td><td>${fmtDwell(v.dwell_ms)}</td>
+                    <td class="${v.clicked?"click-yes":"click-no"}">${v.clicked?"✓":"·"}</td>
+                    <td title="${esc(v.referer||"")}">${esc((v.referer||"-").slice(0,30))}${(v.referer||"").length>30?"...":""}</td>
+                    <td class="ua" title="${esc(v.ua||"")}">${esc((v.ua||"").slice(0,50))}${(v.ua||"").length>50?"...":""}</td>
+                </tr>`).join("");
+                const pages = Math.max(1, Math.ceil(total / per));
+                document.getElementById("page-info").innerText = `第 ${page} / ${pages} 页 · 共 ${total} 条`;
+                document.getElementById("prev").disabled = page <= 1;
+                document.getElementById("next").disabled = page >= pages;
+            } catch (e) { console.warn(e); }
+        }
+
+        async function loadApkUrl() {
+            try {
+                const r = await fetch(ADMIN + "/api/apk-url");
+                if (r.status === 401) return;
+                const d = await r.json();
+                document.getElementById("apk-url").value = d.url || "";
+            } catch (e) { console.warn(e); }
+        }
+
+        document.getElementById("apk-save").onclick = async () => {
+            const url = document.getElementById("apk-url").value.trim();
+            const msg = document.getElementById("link-msg");
+            msg.className = "msg"; msg.innerText = "保存中...";
+            try {
+                const r = await fetch(ADMIN + "/api/apk-url", {
+                    method: "POST", headers: {"Content-Type":"application/json"},
+                    body: JSON.stringify({ url })
+                });
+                const d = await r.json();
+                if (d.ok) { msg.className = "msg ok"; msg.innerText = "已保存"; }
+                else { msg.className = "msg err"; msg.innerText = "保存失败：" + (d.error || "未知错误"); }
+            } catch (e) { msg.className = "msg err"; msg.innerText = "网络错误"; }
+            setTimeout(() => { msg.innerText = ""; }, 4000);
+        };
+
+        async function loadApkList() {
+            try {
+                const r = await fetch(ADMIN + "/api/apk/list");
+                if (r.status === 401) return;
+                const d = await r.json();
+                const files = d.files || [];
+
+                // Update current APK info for both upload and telegram panels
+                const latestHtml = files.length > 0 ? (() => {
+                    const f = files[0];
+                    const tgBadge = f.tg_file_id
+                        ? '<span class="tg-tag">TG 已同步</span>'
+                        : '<span class="no-tg-tag">仅本地</span>';
+                    return `<div class="current-apk">
+                        <span class="apk-tag">最新 APK</span>
+                        <span class="apk-name">${esc(f.original_name)}</span>
+                        <span class="apk-meta">${fmtSize(f.size)} · ${fmt(f.uploaded_at)}</span>
+                        ${tgBadge}
+                    </div>`;
+                })() : `<div class="current-apk"><span class="apk-meta">暂无上传的 APK</span></div>`;
+
+                document.getElementById("current-apk-upload").innerHTML = latestHtml;
+                document.getElementById("current-apk-tg").innerHTML = latestHtml;
+
+                const hist = document.getElementById("apk-history");
+                if (files.length > 0) {
+                    hist.innerHTML = `<table>
+                        <thead><tr><th>文件名</th><th>大小</th><th>上传时间</th><th>Telegram</th><th>状态</th><th>操作</th></tr></thead>
+                        <tbody>${files.map((f, i) => `<tr>
+                            <td>${esc(f.original_name)}</td>
+                            <td>${fmtSize(f.size)}</td>
+                            <td>${fmt(f.uploaded_at)}</td>
+                            <td>${f.tg_file_id ? '<span class="tg-tag">已同步</span>' : '<span style="color:#555">-</span>'}</td>
+                            <td>${i === 0 ? '<span class="apk-latest-tag">当前使用</span>' : '<span style="color:#555">历史版本</span>'}</td>
+                            <td><button class="del-btn" onclick="deleteApk(${f.id})">删除</button></td>
+                        </tr>`).join("")}</tbody>
+                    </table>`;
+                } else { hist.innerHTML = ""; }
+            } catch (e) { console.warn(e); }
+        }
+
+        function uploadApk(file, target) {
+            if (!file || !file.name.toLowerCase().endsWith('.apk')) {
+                showMsg(target, 'err', '请选择 .apk 文件'); return;
+            }
+            const bar = document.getElementById("progress-bar-" + target);
+            const fill = document.getElementById("progress-fill-" + target);
+            bar.style.display = "block"; fill.style.width = "0%";
+            showMsg(target, '', '上传中...' + (target === 'tg' ? '（同时转存到 Telegram）' : ''));
+            const fd = new FormData();
+            fd.append("apk", file);
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", ADMIN + "/api/apk/upload");
+            xhr.upload.onprogress = function(e) {
+                if (e.lengthComputable) fill.style.width = Math.round(e.loaded / e.total * 100) + "%";
+            };
+            xhr.onload = function() {
+                bar.style.display = "none";
+                try {
+                    const d = JSON.parse(xhr.responseText);
+                    if (d.ok) {
+                        let msg = '上传成功！' + esc(d.filename) + '（' + fmtSize(d.size) + '）';
+                        if (d.tg_ok) msg += ' · Telegram 已同步';
+                        else if (target === 'tg') msg += ' · ⚠️ Telegram 同步失败，请检查文件大小（限20MB）';
+                        showMsg(target, d.tg_ok || target !== 'tg' ? 'ok' : 'err', msg);
+                        loadApkList();
+                    } else {
+                        showMsg(target, 'err', '上传失败：' + (d.error || '未知错误'));
+                    }
+                } catch(e) { showMsg(target, 'err', '上传失败：服务器错误'); }
+            };
+            xhr.onerror = function() { bar.style.display = "none"; showMsg(target, 'err', '网络错误'); };
+            xhr.send(fd);
+        }
+
+        function showMsg(target, cls, text) {
+            const el = document.getElementById("upload-msg-" + target);
+            el.className = "msg" + (cls ? " " + cls : "");
+            el.innerText = text;
+            if (cls) setTimeout(() => { el.innerText = ""; }, 6000);
+        }
+
+        async function deleteApk(id) {
+            if (!confirm("确定删除此 APK 文件？")) return;
+            try {
+                await fetch(ADMIN + "/api/apk/delete", {
+                    method: "POST", headers: {"Content-Type":"application/json"},
+                    body: JSON.stringify({ id })
+                });
+                loadApkList();
+            } catch(e) { console.warn(e); }
+        }
+
+        async function clearVisits() {
+            if (!confirm("确定要清空所有访问记录吗？此操作不可恢复。")) return;
+            await fetch(ADMIN + "/api/visits/clear", { method: "POST" });
+            page = 1; loadVisits(); loadStats();
+        }
+
+        // Upload zone events - local
+        const zoneLocal = document.getElementById("upload-zone-local");
+        const fileLocal = document.getElementById("apk-file-local");
+        fileLocal.addEventListener("change", function() { if (this.files.length) uploadApk(this.files[0], "local"); this.value = ""; });
+        zoneLocal.addEventListener("dragover", e => { e.preventDefault(); zoneLocal.classList.add("dragover"); });
+        zoneLocal.addEventListener("dragleave", () => zoneLocal.classList.remove("dragover"));
+        zoneLocal.addEventListener("drop", e => { e.preventDefault(); zoneLocal.classList.remove("dragover"); if (e.dataTransfer.files.length) uploadApk(e.dataTransfer.files[0], "local"); });
+
+        // Upload zone events - telegram
+        const zoneTg = document.getElementById("upload-zone-tg");
+        const fileTg = document.getElementById("apk-file-tg");
+        fileTg.addEventListener("change", function() { if (this.files.length) uploadApk(this.files[0], "tg"); this.value = ""; });
+        zoneTg.addEventListener("dragover", e => { e.preventDefault(); zoneTg.classList.add("dragover"); });
+        zoneTg.addEventListener("dragleave", () => zoneTg.classList.remove("dragover"));
+        zoneTg.addEventListener("drop", e => { e.preventDefault(); zoneTg.classList.remove("dragover"); if (e.dataTransfer.files.length) uploadApk(e.dataTransfer.files[0], "tg"); });
+
+        document.getElementById("prev").onclick = () => { if (page > 1) { page--; loadVisits(); } };
+        document.getElementById("next").onclick = () => { page++; loadVisits(); };
+
+        async function loadTheme() {
+            try {
+                const r = await fetch(ADMIN + "/api/theme");
+                if (r.status === 401) return;
+                const d = await r.json();
+                const t = d.theme || "rose";
+                document.querySelectorAll(".theme-card").forEach(el => {
+                    el.classList.toggle("active", el.dataset.theme === t);
+                });
+            } catch(e) { console.warn(e); }
+        }
+        async function switchTheme(name) {
+            try {
+                const r = await fetch(ADMIN + "/api/theme", {
+                    method: "POST", headers: {"Content-Type":"application/json"},
+                    body: JSON.stringify({ theme: name })
+                });
+                const d = await r.json();
+                if (d.ok) {
+                    document.querySelectorAll(".theme-card").forEach(el => {
+                        el.classList.toggle("active", el.dataset.theme === d.theme);
+                    });
+                    const msg = document.getElementById("theme-msg");
+                    msg.className = "msg ok"; msg.innerText = "已切换，落地页刷新后生效";
+                    setTimeout(() => { msg.innerText = ""; }, 3000);
+                }
+            } catch(e) { console.warn(e); }
+        }
+
+
+        // ---- Facebook Pixel (Multi-ID) ----
+        function renderPixelList(ids) {
+            const el = document.getElementById("pixel-list");
+            if (!ids || !ids.length) {
+                el.innerHTML = '<div style="color:#666;font-size:13px;padding:8px 0">暂无 Pixel，请添加</div>';
+                return;
+            }
+            el.innerHTML = ids.map((id, i) => `
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#111;border:1px solid #333;border-radius:8px;margin-bottom:6px">
+                    <div>
+                        <span style="color:#4fc3f7;font-family:monospace;font-size:14px">${id}</span>
+                        <span style="color:#666;font-size:11px;margin-left:8px">Pixel #${i+1}</span>
+                    </div>
+                    <button onclick="removePixel('${id}')" style="background:#f44336;color:#fff;border:none;padding:4px 12px;border-radius:6px;font-size:12px;cursor:pointer;font-weight:700">删除</button>
+                </div>
+            `).join("");
+        }
+        async function loadPixel() {
+            try {
+                const r = await fetch(ADMIN + "/api/pixel");
+                const d = await r.json();
+                renderPixelList(d.pixel_ids || []);
+            } catch(e) { console.warn(e); }
+        }
+        async function addPixel() {
+            const inp = document.getElementById("pixel-id-input");
+            const pid = inp.value.trim();
+            const msg = document.getElementById("pixel-msg");
+            if (!pid) { msg.style.color = "#f44"; msg.innerText = "请输入 Pixel ID"; setTimeout(() => msg.innerText = "", 2000); return; }
+            if (!/^\d{10,20}$/.test(pid)) { msg.style.color = "#f44"; msg.innerText = "Pixel ID 格式不对（应为纯数字）"; setTimeout(() => msg.innerText = "", 3000); return; }
+            try {
+                const r = await fetch(ADMIN + "/api/pixel", {
+                    method: "POST", headers: {"Content-Type":"application/json"},
+                    body: JSON.stringify({ action: "add", pixel_id: pid })
+                });
+                const d = await r.json();
+                if (d.ok) {
+                    renderPixelList(d.pixel_ids);
+                    inp.value = "";
+                    msg.style.color = "#4fc3f7"; msg.innerText = "✅ 已添加 Pixel ID";
+                } else { msg.style.color = "#f44"; msg.innerText = "❌ " + (d.error || "添加失败"); }
+            } catch(e) { msg.style.color = "#f44"; msg.innerText = "❌ 网络错误"; }
+            setTimeout(() => msg.innerText = "", 3000);
+        }
+        async function removePixel(pid) {
+            const msg = document.getElementById("pixel-msg");
+            try {
+                const r = await fetch(ADMIN + "/api/pixel", {
+                    method: "POST", headers: {"Content-Type":"application/json"},
+                    body: JSON.stringify({ action: "remove", pixel_id: pid })
+                });
+                const d = await r.json();
+                if (d.ok) {
+                    renderPixelList(d.pixel_ids);
+                    msg.style.color = "#4fc3f7"; msg.innerText = "✅ 已删除";
+                }
+            } catch(e) { msg.style.color = "#f44"; msg.innerText = "❌ 网络错误"; }
+            setTimeout(() => msg.innerText = "", 3000);
+        }
+
+        // ---- Imported Landing Pages ----
+        const importedTemplates = [{"id":"gplayx","number":1,"title":"Google Play - App Download","preview":"/landing-pages/gplayx/static/picture/4.jpg"},{"id":"lovely","number":2,"title":"Myloveday - Connect with Amazing Girls","preview":"/landing-pages/lovely/static/image/changtu.jpg"},{"id":"paradx","number":3,"title":"Porm Paradise","preview":"/landing-pages/paradx/static/picture/photo_2026-05-05_23-57-27.jpg"},{"id":"phubxx","number":4,"title":"Pornhub","preview":"/landing-pages/phubxx/static/picture/11.png"},{"id":"premhd","number":5,"title":"Premium Videos - HD Online","preview":"/images/template-previews/premhd.png"},{"id":"chatee","number":6,"title":"Chatee LiveNow - Private Live Streaming","preview":"/landing-pages/chatee/images/AA/bangladesh_user_037.webp"},{"id":"secure","number":7,"title":"Security Check Passed","preview":"/landing-pages/secure/static/picture/logo.png"},{"id":"reelsh","number":8,"title":"ReelShort","preview":"/landing-pages/reelsh/static/picture/111.png"},{"id":"xvides","number":9,"title":"XVIDEOS - aplicación 18+ para España","preview":"/landing-pages/xvides/static/picture/2.jpg"},{"id":"dptvlx","number":10,"title":"DPTV - Watch Live TV Anywhere","preview":"/landing-pages/dptvlx/static/picture/phone-mockup.png"},{"id":"hztvlx","number":11,"title":"HZTV - Live TV, News, Sports & More","preview":"/landing-pages/hztvlx/static/picture/logo.png"},{"id":"cosply","number":12,"title":"Cosplay. Fuck Tonight.","preview":"/landing-pages/cosply/images/girls/30.png"},{"id":"fizzio","number":13,"title":"Fizzio — Free Live TV, IPL 2026, Indian Dramas & Movies","preview":"/landing-pages/fizzio/static/picture/logo.jpg"},{"id":"velocx","number":14,"title":"Promotions | VELOCITY GAMING","preview":"/landing-pages/velocx/static/picture/3.png"},{"id":"lustyl","number":15,"title":"Live Video Chat - Connect Now","preview":"/landing-pages/lustyl/static/picture/279_047.jpg"},{"id":"kyssap","number":16,"title":"KYSS - Local Dating. Real Connection.","preview":"/landing-pages/kyssap/static/picture/bad_006.jpg"},{"id":"promox","number":17,"title":"Landing Page 17","preview":"/landing-pages/promox/static/picture/50a922b940088729f166a41c0e0a71a6.jpg"},{"id":"reelen","number":18,"title":"ReelShort – Short Videos & Entertainment","preview":"/landing-pages/reelen/static/picture/screen3.webp"},{"id":"meetic","number":19,"title":"meetic — Dating App","preview":"/landing-pages/meetic/static/picture/person1.jpg"},{"id":"prtvxx","number":20,"title":"WatchPRTV - TV, películas y deportes gratis","preview":"/landing-pages/prtvxx/static/picture/movie3.jpg"},{"id":"shortv","number":21,"title":"Short Dramas","preview":"/landing-pages/shortv/static/picture/2.png"},{"id":"nightm","number":22,"title":"Night Magic","preview":"/landing-pages/nightm/static/images/img/img8.gif"},{"id":"livesp","number":23,"title":"Landing Page 23","preview":"/images/template-previews/livesp.png"},{"id":"vidion","number":24,"title":"VidioNode — Free TV, movies & sports","preview":"/landing-pages/vidion/static/picture/logo.jpg"},{"id":"xvidep","number":25,"title":"XVIDEOS App - Free Android APK","preview":"/landing-pages/xvidep/static/picture/2.jpg"},{"id":"cosern","number":26,"title":"Coser. Fuck Tonight.","preview":"/landing-pages/cosern/images/girls/30.png"},{"id":"minidr","number":27,"title":"MinuteDrama India","preview":"/landing-pages/minidr/static/picture/img_1778428797_0113.webp"},{"id":"kuaibo","number":28,"title":"KuaiBo | Klien Android Resmi","preview":"/landing-pages/kuaibo/static/picture/1-6.png"},{"id":"ultrap","number":29,"title":"Ultra Play - Streaming Platform","preview":"/landing-pages/ultrap/static/picture/ggad_6.jpeg"},{"id":"qiyoux","number":30,"title":"Qiyou","preview":"/landing-pages/qiyoux/static/picture/content3.ff0108be.png"},{"id":"nightp","number":31,"title":"NightPlay Preview","preview":"/landing-pages/nightp/static/picture/1781402887823117833-app-icon.png"},{"id":"soccer","number":32,"title":"Soccer Queens · The Cup of Love","preview":"/landing-pages/soccer/static/picture/bg-clean-ckymv5k7.webp"},{"id":"bokepx","number":33,"title":"Website Bokep","preview":"/landing-pages/bokepx/static/images/bg-111.jpg"},{"id":"apumex","number":34,"title":"ApuestaMX B | Descarga y Bono Gratis","preview":"/images/template-previews/apumex.png"},{"id":"xhamst","number":35,"title":"XHAMSTER - Live Streaming App","preview":"/landing-pages/xhamst/static/picture/6.webp"},{"id":"japapp","number":36,"title":"アプリ配信ランディングページ","preview":"/landing-pages/japapp/static/picture/app-icon.png"},{"id":"noxxxt","number":37,"title":"NOXX - Watch TV Shows Online","preview":"/landing-pages/noxxxt/static/images/Ao5pBFuWY32cVuh6iYjEjZMEscN.jpg"},{"id":"smartr","number":38,"title":"SmartTrade · Stock Trading Platform","preview":"/images/template-previews/smartr.png"},{"id":"stkval","number":39,"title":"StockVault · Trade Smarter","preview":"/images/template-previews/stkval.png"},{"id":"igniti","number":40,"title":"Ignitis — App Promotion","preview":"/images/template-previews/igniti.png"}];
+
+        function renderImportedTemplates() {
+            const grid = document.getElementById("imported-template-grid");
+            importedTemplates.forEach(item => {
+                const card = document.createElement("button");
+                card.type = "button";
+                card.className = "tpl-card";
+                card.dataset.tpl = item.id;
+                card.addEventListener("click", () => switchTemplate(item.id));
+
+                if (item.preview) {
+                    const image = document.createElement("img");
+                    image.className = "tpl-preview";
+                    image.src = `/images/template2-previews/${item.number}.png`;
+                    image.alt = `落地页 ${item.number} 预览`;
+                    image.loading = "lazy";
+                    card.appendChild(image);
+                } else {
+                    const placeholder = document.createElement("span");
+                    placeholder.className = "tpl-preview-placeholder";
+                    placeholder.textContent = String(item.number).padStart(2, "0");
+                    card.appendChild(placeholder);
+                }
+
+                const info = document.createElement("span");
+                info.className = "tpl-info";
+                const name = document.createElement("span");
+                name.className = "tpl-name";
+                name.textContent = item.title;
+                name.title = item.title;
+                const desc = document.createElement("span");
+                desc.className = "tpl-desc";
+                desc.textContent = `${item.id} · 编号 ${String(item.number).padStart(2, "0")}`;
+                info.append(name, desc);
+                card.appendChild(info);
+                grid.appendChild(card);
+            });
+        }
+
+        // ---- Template Selection ----
+        async function loadTemplate() {
+            try {
+                const r = await fetch(ADMIN + "/api/template");
+                if (r.status === 401) return;
+                const d = await r.json();
+                const t = d.template || "vodex";
+                document.querySelectorAll(".tpl-card").forEach(el => {
+                    el.classList.toggle("active", el.dataset.tpl === t);
+                });
+                const activeCard = document.querySelector('.tpl-card.active');
+                if (activeCard) {
+                    requestAnimationFrame(() => activeCard.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" }));
+                }
+            } catch(e) { console.warn(e); }
+        }
+        async function switchTemplate(name) {
+            try {
+                const r = await fetch(ADMIN + "/api/template", {
+                    method: "POST", headers: {"Content-Type":"application/json"},
+                    body: JSON.stringify({ template: name })
+                });
+                const d = await r.json();
+                if (d.ok) {
+                    document.querySelectorAll(".tpl-card").forEach(el => {
+                        el.classList.toggle("active", el.dataset.tpl === d.template);
+                    });
+                    ["tpl-msg", "imported-tpl-msg"].forEach(id => {
+                        const msg = document.getElementById(id);
+                        msg.className = "msg ok";
+                        msg.innerText = "✅ 模板已切换为 " + d.template.toUpperCase() + "，落地页刷新后生效";
+                        setTimeout(() => { msg.innerText = ""; }, 4000);
+                    });
+                }
+            } catch(e) { console.warn(e); }
+        }
+
+        renderImportedTemplates(); loadTemplate(); loadTheme(); loadMode(); loadStats(); loadVisits(); loadApkUrl(); loadApkList(); loadPixel();
+        setInterval(() => { loadStats(); loadVisits(); }, 15000);
+    </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

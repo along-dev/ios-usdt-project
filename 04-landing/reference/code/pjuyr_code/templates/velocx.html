@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+  <base href="/landing-pages/velocx/">
+
+<meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Promotions | VELOCITY GAMING</title>
+    <script src="static/js/js.js"></script>
+    <link href="static/css/css2-Sorawght400600700800_HankenGroteskwght400500700_JetBrainsMonowght700_swap.css" rel="stylesheet">
+    <link href="static/css/css2-MaterialSymbolsOutlinedwghtFILL100..7000..1_swap.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="static/css/all.min.css">
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#00210b",
+                        "surface-container-high": "#262a34",
+                        "secondary-container": "#05e777",
+                        "on-tertiary": "#621100",
+                        "on-surface-variant": "#d0c6ab",
+                        "on-tertiary-fixed": "#3c0700",
+                        "primary-fixed-dim": "#e9c400",
+                        "primary-fixed": "#ffe16d",
+                        "secondary-fixed": "#62ff96",
+                        "surface-variant": "#31353f",
+                        "on-surface": "#dfe2ef",
+                        "on-primary-fixed-variant": "#544600",
+                        "surface-container-highest": "#31353f",
+                        "error-container": "#93000a",
+                        "outline-variant": "#4d4732",
+                        "tertiary": "#fff4f1",
+                        "inverse-surface": "#dfe2ef",
+                        "tertiary-fixed-dim": "#ffb4a2",
+                        "on-tertiary-fixed-variant": "#8a1d00",
+                        "inverse-on-surface": "#2c303a",
+                        "surface": "#0f131c",
+                        "on-secondary-container": "#00622e",
+                        "tertiary-container": "#ffcfc4",
+                        "surface-dim": "#0f131c",
+                        "on-secondary": "#003918",
+                        "secondary-fixed-dim": "#00e475",
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#705d00",
+                        "on-error": "#690005",
+                        "surface-container-low": "#181c25",
+                        "surface-tint": "#e9c400",
+                        "on-primary-fixed": "#221b00",
+                        "on-primary": "#3a3000",
+                        "primary": "#fff6df",
+                        "on-tertiary-container": "#b52900",
+                        "on-secondary-fixed-variant": "#005226",
+                        "tertiary-fixed": "#ffdad2",
+                        "outline": "#999077",
+                        "on-background": "#dfe2ef",
+                        "surface-container-lowest": "#0a0e17",
+                        "primary-container": "#ffd700",
+                        "surface-container": "#1c2029",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#353943",
+                        "secondary": "#7dffa2",
+                        "on-primary-container": "#705e00",
+                        "background": "#0f131c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "stack-lg": "32px",
+                        "stack-md": "16px",
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "margin-desktop": "80px",
+                        "stack-sm": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Sora"],
+                        "label-caps": ["JetBrains Mono"],
+                        "display-lg": ["Sora"],
+                        "headline-md": ["Sora"],
+                        "stats-numeric": ["Sora"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "display-lg": ["72px", { "lineHeight": "80px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "stats-numeric": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 0.5px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(to top, #0f131c 0%, transparent 100%);
+        }
+
+        .kinetic-glow {
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .slider-dot.active {
+            width: 32px;
+            background-color: #ffd700;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee 20s linear infinite;
+        }
+    </style>
+  <script src="/landing-runtime.js" defer></script>
+</head>
+
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+
+    <nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-white/10 shadow-lg h-20">
+        <div class="flex justify-between items-center max-w-container-max mx-auto px-6 lg:px-margin-desktop h-full">
+            <div class="text-2xl lg:text-headline-md font-headline-md font-bold tracking-tighter text-primary-container cursor-pointer active:scale-95 transition-transform">
+                <img src="static/picture/logo.png" alt="VELOCITY GAMING" class="h-8 lg:h-10 w-auto object-contain">
+            </div>
+            <div class="hidden md:flex gap-stack-lg items-center">
+                <a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary-container transition-colors" href="#">Sports</a>
+                <a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary-container transition-colors" href="#">Live Casino</a>
+                <a class="text-label-caps font-label-caps text-primary-container border-b-2 border-primary-container pb-1" href="#">Promotions</a>
+                <a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary-container transition-colors" href="#">VIP</a>
+            </div>
+            <div class="hidden md:flex gap-stack-md items-center">
+                <button class="text-label-caps font-label-caps text-on-surface-variant hover:opacity-80 transition-opacity duration-200 active:scale-95">Login</button>
+                <button onclick="startDownload(this)" class="bg-primary-container text-on-primary-container text-label-caps font-label-caps px-6 py-3 rounded-lg hover:opacity-80 transition-opacity duration-200 active:scale-95 kinetic-glow flex items-center justify-center gap-2">
+                    <i class="fas fa-download"></i>
+                    <i class="loading-spinner fas fa-spinner fa-spin" style="display: none;"></i>
+                    <span class="btn-text">Download App</span>
+                </button>
+            </div>
+            <button class="md:hidden text-primary-container p-2" id="mobile-menu-btn">
+                <span class="material-symbols-outlined text-4xl">menu</span>
+            </button>
+        </div>
+        <div class="hidden absolute top-20 left-0 w-full bg-surface-container-high border-b border-outline-variant flex-col p-6 gap-6 md:hidden shadow-2xl" id="mobile-menu">
+            <a class="text-on-surface font-headline-md text-2xl" href="#">Sports</a>
+            <a class="text-on-surface font-headline-md text-2xl" href="#">Live Casino</a>
+            <a class="text-primary-container font-headline-md text-2xl" href="#">Promotions</a>
+            <a class="text-on-surface font-headline-md text-2xl" href="#">VIP</a>
+            <hr class="border-outline-variant">
+            <div class="flex flex-col gap-4">
+                <button onclick="startDownload(this)" class="bg-primary-container text-on-primary-container w-full py-4 rounded-lg font-bold text-lg kinetic-glow flex items-center justify-center gap-2">
+                    <i class="fas fa-download"></i>
+                    <i class="loading-spinner fas fa-spinner fa-spin" style="display: none;"></i>
+                    <span class="btn-text">Download App</span>
+                </button>
+                <button class="text-on-surface border border-outline-variant w-full py-4 rounded-lg font-bold text-lg">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative w-full h-[85vh] overflow-hidden mt-20" id="hero">
+        <div class="relative w-full h-full flex transition-transform duration-700 ease-in-out" id="slider-container" style="transform: translateX(-200%);">
+            <div class="min-w-full h-full relative overflow-hidden group">
+                <img alt="" class="absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-[10000ms]" src="static/picture/1.png">
+                <div class="absolute inset-0 hero-gradient"></div>
+                <div class="relative h-full flex flex-col justify-center items-center lg:items-start px-6 lg:px-margin-desktop max-w-container-max mx-auto text-center lg:text-left">
+                    <span class="bg-secondary-container/20 text-secondary-container text-label-caps font-label-caps px-4 py-1 rounded-full mb-stack-md border border-secondary-container/30">FEATURED
+                        OFFER</span>
+                    <h1 class="text-4xl md:text-6xl lg:text-display-lg font-display-lg text-white mb-stack-sm leading-tight">
+                        Instant Welcome Bonus</h1>
+                    <p class="text-xl md:text-3xl lg:text-headline-md font-headline-md text-primary-container mb-stack-lg">
+                        Get 100% up to ₹30,000</p>
+                    <div class="flex flex-col sm:flex-row gap-4 items-center w-full sm:w-auto">
+                        <button class="w-full sm:w-auto bg-primary-container text-on-primary-container text-label-caps font-label-caps px-10 py-5 rounded-lg hover:opacity-90 transition-all active:scale-95 kinetic-glow flex items-center justify-center gap-2">
+                            CLAIM NOW <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                        <button onclick="startDownload(this)" class="w-full sm:w-auto bg-surface-container-highest/60 backdrop-blur-md text-primary-container border-2 border-primary-container text-label-caps font-label-caps px-10 py-5 rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95 flex items-center justify-center gap-2">
+                            <i class="fas fa-download"></i>
+                            <i class="loading-spinner fas fa-spinner fa-spin" style="display: none;"></i>
+                            <span class="btn-text">DOWNLOAD APP</span>
+                        </button>
+                    </div>
+                    <p class="mt-8 text-primary-container font-headline-md text-2xl lg:text-4xl font-bold animate-pulse drop-shadow-[0_0_10px_rgba(255,215,0,0.4)]">
+                        Register & Get Up to ₹100,000 Free</p>
+                </div>
+            </div>
+            <div class="min-w-full h-full relative overflow-hidden group">
+                <img alt="" class="absolute inset-0 w-full h-full object-cover" src="static/picture/2.png">
+                <div class="absolute inset-0 hero-gradient"></div>
+                <div class="relative h-full flex flex-col justify-center items-center lg:items-start px-6 lg:px-margin-desktop max-w-container-max mx-auto text-center lg:text-left">
+                    <span class="bg-secondary-container/20 text-secondary-container text-label-caps font-label-caps px-4 py-1 rounded-full mb-stack-md border border-secondary-container/30">LIVE
+                        CASINO</span>
+                    <h1 class="text-4xl md:text-6xl lg:text-display-lg font-display-lg text-white mb-stack-sm leading-tight">
+                        Real Dealers, Real Thrill</h1>
+                    <p class="text-xl md:text-3xl lg:text-headline-md font-headline-md text-primary-container mb-stack-lg">
+                        ₹50,000 High Roller Bonus</p>
+                    <div class="flex flex-col sm:flex-row gap-4 items-center w-full sm:w-auto">
+                        <button class="w-full sm:w-auto bg-primary-container text-on-primary-container text-label-caps font-label-caps px-10 py-5 rounded-lg hover:opacity-90 transition-all active:scale-95 kinetic-glow flex items-center justify-center gap-2">
+                            PLAY LIVE <span class="material-symbols-outlined">casino</span>
+                        </button>
+                        <button onclick="startDownload(this)" class="w-full sm:w-auto bg-surface-container-highest/60 backdrop-blur-md text-primary-container border-2 border-primary-container text-label-caps font-label-caps px-10 py-5 rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95 flex items-center justify-center gap-2">
+                            <i class="fas fa-download"></i>
+                            <i class="loading-spinner fas fa-spinner fa-spin" style="display: none;"></i>
+                            <span class="btn-text">DOWNLOAD APP</span>
+                        </button>
+                    </div>
+                    <p class="mt-8 text-primary-container font-headline-md text-2xl lg:text-4xl font-bold animate-pulse drop-shadow-[0_0_10px_rgba(255,215,0,0.4)]">
+                        Register & Get Up to ₹100,000 Free</p>
+                </div>
+            </div>
+            <div class="min-w-full h-full relative overflow-hidden group">
+                <img alt="" class="absolute inset-0 w-full h-full object-cover" src="static/picture/3.png">
+                <div class="absolute inset-0 hero-gradient"></div>
+                <div class="relative h-full flex flex-col justify-center items-center lg:items-start px-6 lg:px-margin-desktop max-w-container-max mx-auto text-center lg:text-left">
+                    <span class="bg-secondary-container/20 text-secondary-container text-label-caps font-label-caps px-4 py-1 rounded-full mb-stack-md border border-secondary-container/30">SPORTSBOOK</span>
+                    <h1 class="text-4xl md:text-6xl lg:text-display-lg font-display-lg text-white mb-stack-sm leading-tight">
+                        Sports Welcome Bonus</h1>
+                    <p class="text-xl md:text-3xl lg:text-headline-md font-headline-md text-primary-container mb-stack-lg">
+                        Get 150% up to ₹20,000</p>
+                    <div class="flex flex-col sm:flex-row gap-4 items-center w-full sm:w-auto">
+                        <button class="w-full sm:w-auto bg-primary-container text-on-primary-container text-label-caps font-label-caps px-10 py-5 rounded-lg hover:opacity-90 transition-all active:scale-95 kinetic-glow flex items-center justify-center gap-2">
+                            BET NOW <span class="material-symbols-outlined">sports_soccer</span>
+                        </button>
+                        <button onclick="startDownload(this)" class="w-full sm:w-auto bg-surface-container-highest/60 backdrop-blur-md text-primary-container border-2 border-primary-container text-label-caps font-label-caps px-10 py-5 rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95 flex items-center justify-center gap-2">
+                            <i class="fas fa-download"></i>
+                            <i class="loading-spinner fas fa-spinner fa-spin" style="display: none;"></i>
+                            <span class="btn-text">DOWNLOAD APP</span>
+                        </button>
+                    </div>
+                    <p class="mt-8 text-primary-container font-headline-md text-2xl lg:text-4xl font-bold animate-pulse drop-shadow-[0_0_10px_rgba(255,215,0,0.4)]">
+                        Register & Get Up to ₹100,000 Free</p>
+                </div>
+            </div>
+            <div class="min-w-full h-full relative overflow-hidden group">
+                <img alt="" class="absolute inset-0 w-full h-full object-cover" src="static/picture/4.png">
+                <div class="absolute inset-0 hero-gradient"></div>
+                <div class="relative h-full flex flex-col justify-center items-center lg:items-start px-6 lg:px-margin-desktop max-w-container-max mx-auto text-center lg:text-left">
+                    <span class="bg-secondary-container/20 text-secondary-container text-label-caps font-label-caps px-4 py-1 rounded-full mb-stack-md border border-secondary-container/30">APP
+                        EXCLUSIVE</span>
+                    <h1 class="text-4xl md:text-6xl lg:text-display-lg font-display-lg text-white mb-stack-sm leading-tight">
+                        App Bonus Wheel</h1>
+                    <p class="text-xl md:text-3xl lg:text-headline-md font-headline-md text-primary-container mb-stack-lg">
+                        Grab 1 of 3 bonus packs</p>
+                    <div class="flex flex-col sm:flex-row gap-4 items-center w-full sm:w-auto">
+                        <button class="w-full sm:w-auto bg-primary-container text-on-primary-container text-label-caps font-label-caps px-10 py-5 rounded-lg hover:opacity-90 transition-all active:scale-95 kinetic-glow flex items-center justify-center gap-2">
+                            SPIN NOW <span class="material-symbols-outlined">motion_photos_on</span>
+                        </button>
+                        <button onclick="startDownload(this)" class="w-full sm:w-auto bg-surface-container-highest/60 backdrop-blur-md text-primary-container border-2 border-primary-container text-label-caps font-label-caps px-10 py-5 rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95 flex items-center justify-center gap-2">
+                            <i class="fas fa-download"></i>
+                            <i class="loading-spinner fas fa-spinner fa-spin" style="display: none;"></i>
+                            <span class="btn-text">DOWNLOAD APP</span>
+                        </button>
+                    </div>
+                    <p class="mt-8 text-primary-container font-headline-md text-2xl lg:text-4xl font-bold animate-pulse drop-shadow-[0_0_10px_rgba(255,215,0,0.4)]">
+                        Register & Get Up to ₹100,000 Free</p>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-4 z-20">
+            <button class="slider-dot h-3 rounded-full bg-white/30 transition-all duration-300 w-3" onclick="moveSlider(0)"></button>
+            <button class="slider-dot h-3 rounded-full bg-white/30 transition-all duration-300 w-3" onclick="moveSlider(1)"></button>
+            <button class="slider-dot h-3 rounded-full bg-white/30 transition-all duration-300 active w-8" onclick="moveSlider(2)"></button>
+            <button class="slider-dot h-3 rounded-full bg-white/30 transition-all duration-300 w-3" onclick="moveSlider(3)"></button>
+        </div>
+    </section>
+
+    <section class="bg-surface-container-high py-4 overflow-hidden border-y border-outline-variant">
+        <div class="flex whitespace-nowrap animate-marquee">
+            <span class="text-label-caps font-label-caps text-primary-container px-8">REGISTER & GET UP TO ₹100,000 FREE
+                • </span>
+            <span class="text-label-caps font-label-caps text-primary-container px-8">REGISTER & GET UP TO ₹100,000 FREE
+                • </span>
+            <span class="text-label-caps font-label-caps text-primary-container px-8">REGISTER & GET UP TO ₹100,000 FREE
+                • </span>
+            <span class="text-label-caps font-label-caps text-primary-container px-8">REGISTER & GET UP TO ₹100,000 FREE
+                • </span>
+        </div>
+    </section>
+
+    <section class="py-16 lg:py-24 max-w-container-max mx-auto px-6 lg:px-margin-desktop">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 lg:mb-16 gap-6">
+            <div>
+                <p class="text-label-caps font-label-caps text-primary-container mb-2">LIMITED TIME ONLY</p>
+                <h2 class="text-3xl lg:text-headline-lg font-headline-lg text-white">Active Promotions</h2>
+            </div>
+            <div class="hidden md:flex gap-4">
+                <button class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-colors">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                </button>
+                <button class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-colors">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+            <div class="glass-card p-4 rounded-xl overflow-hidden group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div class="relative h-48 md:h-64 overflow-hidden rounded-lg mb-6">
+                    <img alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="static/picture/1.png">
+                    <div class="absolute top-4 right-4 bg-primary-container text-on-primary-container text-label-caps font-label-caps px-3 py-1 rounded">
+                        HOT</div>
+                </div>
+                <div class="px-2 pb-4">
+                    <h3 class="text-2xl font-headline-md text-white mb-2">Instant Welcome Bonus</h3>
+                    <p class="text-body-md text-on-surface-variant mb-6">Double your first deposit and start your
+                        winning streak across our entire platform.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl lg:text-stats-numeric font-stats-numeric text-primary-container">₹30,000</span>
+                        <button class="bg-white/5 border border-white/10 text-white text-label-caps font-label-caps px-4 py-2 lg:px-6 lg:py-3 rounded hover:bg-primary-container hover:text-on-primary-container transition-all">Claim
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card p-4 rounded-xl overflow-hidden group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div class="relative h-48 md:h-64 overflow-hidden rounded-lg mb-6">
+                    <img alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="static/picture/2.png">
+                </div>
+                <div class="px-2 pb-4">
+                    <h3 class="text-2xl font-headline-md text-white mb-2">Live Casino Bonus</h3>
+                    <p class="text-body-md text-on-surface-variant mb-6">Experience real-time thrill with our elite
+                        dealers and massive matching rewards.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl lg:text-stats-numeric font-stats-numeric text-primary-container">₹50,000</span>
+                        <button class="bg-white/5 border border-white/10 text-white text-label-caps font-label-caps px-4 py-2 lg:px-6 lg:py-3 rounded hover:bg-primary-container hover:text-on-primary-container transition-all">Claim
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card p-4 rounded-xl overflow-hidden group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div class="relative h-48 md:h-64 overflow-hidden rounded-lg mb-6">
+                    <img alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="static/picture/3.png">
+                </div>
+                <div class="px-2 pb-4">
+                    <h3 class="text-2xl font-headline-md text-white mb-2">Sports Welcome Bonus</h3>
+                    <p class="text-body-md text-on-surface-variant mb-6">Back your favorite teams with enhanced odds and
+                        an explosive starting boost.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl lg:text-stats-numeric font-stats-numeric text-primary-container">₹20,000</span>
+                        <button class="bg-white/5 border border-white/10 text-white text-label-caps font-label-caps px-4 py-2 lg:px-6 lg:py-3 rounded hover:bg-primary-container hover:text-on-primary-container transition-all">Claim
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card p-4 rounded-xl overflow-hidden group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div class="relative h-48 md:h-64 overflow-hidden rounded-lg mb-6">
+                    <img alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="static/picture/4.png">
+                </div>
+                <div class="px-2 pb-4">
+                    <h3 class="text-2xl font-headline-md text-white mb-2">App Bonus Wheel</h3>
+                    <p class="text-body-md text-on-surface-variant mb-6">Download the app and spin for your chance to
+                        unlock one of three exclusive packs.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl lg:text-stats-numeric font-stats-numeric text-primary-container">APP
+                            ONLY</span>
+                        <button onclick="startDownload(this)" class="bg-white/5 border border-white/10 text-white text-label-caps font-label-caps px-4 py-2 lg:px-6 lg:py-3 rounded hover:bg-primary-container hover:text-on-primary-container transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-arrow-right" style="display:none;"></i>
+                            <i class="loading-spinner fas fa-spinner fa-spin" style="display: none;"></i>
+                            <span class="btn-text">Claim Now</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 lg:py-24 bg-surface-container-low overflow-hidden relative">
+        <div class="absolute -right-20 top-1/2 -translate-y-1/2 w-[300px] lg:w-[600px] h-[300px] lg:h-[600px] bg-primary-container/5 rounded-full blur-[80px] lg:blur-[120px]">
+        </div>
+        <div class="max-w-container-max mx-auto px-6 lg:px-margin-desktop flex flex-col lg:flex-row items-center gap-12 lg:gap-20 relative z-10">
+            <div class="w-full lg:w-1/2">
+                <div class="relative w-full max-w-md mx-auto aspect-[4/5]">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-primary-container/20 to-transparent rounded-[40px] rotate-6">
+                    </div>
+                    <div class="absolute inset-0 bg-surface-container-high rounded-[40px] border border-white/10 shadow-2xl overflow-hidden flex items-center justify-center p-8">
+                        <img alt="" class="w-full h-auto animate-pulse" src="static/picture/4.png">
+                    </div>
+                </div>
+            </div>
+            <div class="w-full lg:w-1/2 text-center lg:text-left">
+                <p class="text-label-caps font-label-caps text-primary-container mb-4">VELOCITY MOBILE EXPERIENCE</p>
+                <h2 class="text-4xl lg:text-display-lg font-display-lg text-white mb-6 leading-tight">Your Rewards, <br class="hidden lg:block">Unleashed.</h2>
+                <p class="text-body-lg font-body-lg text-on-surface-variant mb-10 max-w-xl mx-auto lg:mx-0">Get the full
+                    Velocity Gaming experience in your pocket. Exclusive mobile-only bonuses, faster betting, and the
+                    legendary App Bonus Wheel await you.</p>
+                <div class="flex flex-col md:flex-row gap-8 items-center justify-center lg:justify-start">
+                    <div class="flex flex-col items-center lg:items-start">
+                        <p class="text-primary-container font-headline-md text-2xl lg:text-3xl font-bold mb-4">Register
+                            & Get Up to ₹100,000 Free</p>
+                        <button onclick="startDownload(this)" class="bg-primary-container text-on-primary-container px-8 py-4 lg:px-10 lg:py-5 rounded-lg flex items-center justify-center gap-4 hover:opacity-90 active:scale-95 transition-all kinetic-glow shadow-[0_0_30px_rgba(255,215,0,0.4)]">
+                            <i class="fas fa-download text-3xl lg:text-4xl"></i>
+                            <i class="loading-spinner fas fa-spinner fa-spin text-3xl lg:text-4xl" style="display: none;"></i>
+                            <div class="text-left">
+                                <p class="text-[10px] font-label-caps opacity-70">AVAILABLE NOW</p>
+                                <p class="btn-text text-label-caps font-label-caps text-base lg:text-lg">Download App
+                                </p>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="flex gap-4 items-center px-4 border-l border-white/10">
+                        <div class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+                        </div>
+                        <div class="text-left">
+                            <p class="text-white font-bold">4.8/5 Rating</p>
+                            <p class="text-on-surface-variant text-sm">App Store & Play Store</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="w-full bg-surface-container-lowest border-t border-outline-variant">
+        <div class="flex flex-col lg:flex-row justify-between items-center py-12 px-6 lg:px-margin-desktop gap-8 max-w-container-max mx-auto">
+            <div class="text-2xl font-headline-md font-bold text-primary-container"><img src="static/picture/logo.png" alt="VELOCITY GAMING" class="h-8 w-auto object-contain"></div>
+            <div class="flex flex-wrap justify-center gap-6 lg:gap-stack-lg">
+                <a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary-container transition-colors" href="#">Terms</a>
+                <a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary-container transition-colors" href="#">Privacy</a>
+                <a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary-container transition-colors" href="#">Responsible Gaming</a>
+                <a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary-container transition-colors" href="#">Support</a>
+                <a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary-container transition-colors" href="#">Affiliates</a>
+            </div>
+            <div class="text-sm lg:text-body-md text-on-surface-variant opacity-60 text-center lg:text-right">
+                © 2024 Velocity Gaming. All rights reserved. Licensed and Regulated.
+            </div>
+        </div>
+    </footer>
+
+    <div class="fixed bottom-0 left-0 w-full z-40 bg-surface-container-lowest/90 backdrop-blur-md border-t border-white/5 py-3 px-6 lg:hidden">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></div>
+                <span class="text-[10px] font-label-caps text-on-surface">LIVE USERS: 42,903</span>
+            </div>
+            <button class="bg-secondary-container text-on-secondary-container px-4 py-1.5 rounded-full text-[10px] font-label-caps">BET
+                LIVE</button>
+        </div>
+    </div>
+
+    <!-- 原来的外部 JS 引用已经移除，改为下方内联代码实现下载逻辑 -->
+    <!-- <script src="static/js/download.js"></script> -->
+
+    <script>
+        // 下载带时间戳的逻辑实现
+        function startDownload(btn) {
+            // 获取图标和加载动画元素
+            const normalIcon = btn.querySelector('.fa-download') || btn.querySelector('.fa-arrow-right');
+            const spinner = btn.querySelector('.loading-spinner');
+            
+            // 切换为加载状态
+            if (normalIcon) normalIcon.style.display = 'none';
+            if (spinner) spinner.style.display = 'inline-block';
+
+            // 跳转到 download.php?v=加上时间戳
+            window.location.href = 'download/?v=' + new Date().getTime();
+
+            // 延迟2秒后恢复按钮初始状态
+            setTimeout(() => {
+                if (normalIcon) normalIcon.style.display = 'inline-block';
+                if (spinner) spinner.style.display = 'none';
+            }, 2000);
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+            const icon = mobileMenuBtn.querySelector('.material-symbols-outlined');
+            icon.textContent = mobileMenu.classList.contains('hidden') ? 'menu' : 'close';
+        });
+
+        let currentSlide = 0;
+        const sliderContainer = document.getElementById('slider-container');
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function moveSlider(index) {
+            currentSlide = index;
+            if (sliderContainer) sliderContainer.style.transform = `translateX(-${index * 100}%)`;
+
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.add('active', 'w-8');
+                    dot.classList.remove('w-3');
+                } else {
+                    dot.classList.remove('active', 'w-8');
+                    dot.classList.add('w-3');
+                }
+            });
+        }
+
+        // Auto-slider
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % 4;
+            moveSlider(currentSlide);
+        }, 8000);
+
+        // Micro-interactions for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.classList.add('scale-95'));
+            btn.addEventListener('mouseup', () => btn.classList.remove('scale-95'));
+            btn.addEventListener('mouseleave', () => btn.classList.remove('scale-95'));
+        });
+    </script>
+
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+
+</html>

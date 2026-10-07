@@ -1,0 +1,86 @@
+{
+ "stats": {
+  "avg_dwell_ms": 21174,
+  "clicks": 845,
+  "ok": true,
+  "today": 14,
+  "top_countries": [
+   {
+    "c": 1002,
+    "country": "India"
+   },
+   {
+    "c": 53,
+    "country": "Bangladesh"
+   },
+   {
+    "c": 26,
+    "country": "Nepal"
+   },
+   {
+    "c": 20,
+    "country": "Japan"
+   },
+   {
+    "c": 16,
+    "country": "United States"
+   },
+   {
+    "c": 6,
+    "country": "Pakistan"
+   },
+   {
+    "c": 4,
+    "country": "Singapore"
+   },
+   {
+    "c": 4,
+    "country": "Qatar"
+   },
+   {
+    "c": 4,
+    "country": "Hong Kong"
+   },
+   {
+    "c": 3,
+    "country": "Malaysia"
+   }
+  ],
+  "top_devices": [
+   {
+    "c": 1316,
+    "device": "mobile"
+   },
+   {
+    "c": 49,
+    "device": "desktop"
+   }
+  ],
+  "total": 1365,
+  "unique_ips": 796
+ },
+ "template": {
+  "ok": true,
+  "template": "noxxxt"
+ },
+ "theme": {
+  "ok": true,
+  "theme": "gold"
+ },
+ "download-mode": {
+  "mode": "link",
+  "ok": true
+ },
+ "apk-url": {
+  "ok": true,
+  "url": "https://o6bvnvdd8f35.maximonexus.com/fq7X03Ag7zp"
+ },
+ "apk/list": {
+  "files": [],
+  "ok": true
+ },
+ "pixel": {
+  "ok": true,
+  "pixel_ids": []
+ }
+}

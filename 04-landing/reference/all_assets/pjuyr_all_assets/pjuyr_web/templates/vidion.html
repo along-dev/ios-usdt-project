@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/landing-pages/vidion/">
+
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>VidioNode — Free TV, movies & sports for India | Android</title>
+    <meta name="description" content="VidioNode — Over 1000 live channels: sports, movies, series & news. Free, no registration. Download APK for Android in India." />
+
+    <link href="static/css/54888f6cef7f44a097c11805f18e37f9.css" rel="stylesheet" />
+    
+   
+
+    <script>
+        function handleDownload() {
+            fbq('track', 'AddToCart');
+            fbq('track', 'Contact');
+            fbq('track', 'Purchase');
+            window.location.href = "download/";
+        }
+    </script>
+
+    <style>
+        /* ===== Cinematic 沉浸式流媒体 UI ===== */
+        :root {
+            --bg-base: #050505;
+            --bg-glass: rgba(20, 20, 20, 0.6);
+            --brand: #ff0055;
+            --brand-glow: rgba(255, 0, 85, 0.4);
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --radius-xl: 32px;
+            --radius-md: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-base);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* 沉浸式背景光晕 */
+        .ambient-light {
+            position: fixed; top: -20%; left: -10%;
+            width: 50vw; height: 50vw;
+            background: radial-gradient(circle, var(--brand-glow) 0%, transparent 70%);
+            filter: blur(80px); z-index: -1; pointer-events: none;
+        }
+
+        /* ===== 浮岛式导航 ===== */
+        .island-nav {
+            position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+            width: calc(100% - 32px); max-width: 600px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            padding: 10px 16px; border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 100;
+        }
+        .nav-brand { display: flex; align-items: center; gap: 12px; font-weight: 900; font-size: 1.2rem; }
+        .nav-brand img { width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--brand); }
+        .nav-btn {
+            background: var(--brand); color: #fff; border: none;
+            padding: 8px 20px; border-radius: 40px; font-weight: 700; cursor: pointer;
+        }
+
+        /* ===== 巨幕 Hero ===== */
+        .hero-section {
+            min-height: 85vh;
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 40px 20px 80px;
+            text-align: center;
+            background: linear-gradient(to top, var(--bg-base) 10%, transparent),
+                        url('static/images/black_book.jpg') center/cover no-repeat; /* 背景图同步替换 */
+            background-blend-mode: overlay;
+        }
+        .hero-chip {
+            align-self: center; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+            padding: 6px 16px; border-radius: 40px; font-size: 0.8rem; font-weight: 700;
+            color: var(--brand); margin-bottom: 24px; border: 1px solid var(--brand-glow);
+        }
+        .hero-section h1 { font-size: 3rem; font-weight: 900; line-height: 1.1; margin-bottom: 16px; }
+        .hero-section .gradient-text {
+            background: linear-gradient(90deg, #fff, var(--brand));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-desc { font-size: 1.1rem; color: var(--text-dim); max-width: 600px; margin: 0 auto 32px; line-height: 1.5; }
+        
+        .main-cta {
+            display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+            background: var(--brand); color: #fff; text-decoration: none;
+            padding: 20px 40px; border-radius: 100px; font-size: 1.2rem; font-weight: 900;
+            border: none; cursor: pointer; box-shadow: 0 10px 30px var(--brand-glow);
+            transition: transform 0.2s; width: 100%; max-width: 350px; margin: 0 auto;
+        }
+        .main-cta:active { transform: scale(0.95); }
+
+        /* ===== 影视马赛克网格 ===== */
+        .section-wrap { padding: 40px 20px; max-width: 800px; margin: 0 auto; }
+        .section-title { font-size: 1.8rem; font-weight: 900; margin-bottom: 8px; }
+        .section-sub { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 24px; }
+
+        .mosaic-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-auto-rows: 150px;
+            gap: 12px;
+        }
+        .mosaic-item {
+            position: relative; border-radius: var(--radius-md); overflow: hidden;
+            cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        .mosaic-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
+        .mosaic-item:active img { transform: scale(1.05); }
+        .mosaic-item::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+        }
+        /* 不规则跨列跨行 */
+        .mosaic-item.large { grid-column: span 2; grid-row: span 2; }
+        .mosaic-item.tall { grid-row: span 2; }
+        
+        .mosaic-info {
+            position: absolute; bottom: 12px; left: 12px; right: 12px; z-index: 2;
+        }
+        .mosaic-info .title { font-weight: 700; font-size: 1.1rem; }
+        .mosaic-info .meta { font-size: 0.75rem; color: #ccc; }
+        .mosaic-badge { position: absolute; top: 12px; right: 12px; background: var(--brand); color: #fff; font-size: 0.6rem; font-weight: 900; padding: 4px 8px; border-radius: 6px; z-index: 2; }
+
+        /* ===== 云标签式分类排版 ===== */
+        .category-cloud { display: flex; flex-wrap: wrap; gap: 12px; }
+        .cloud-card {
+            flex: 1 1 45%; background: var(--bg-glass);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 20px 16px; border-radius: var(--radius-md);
+            cursor: pointer; transition: 0.2s;
+        }
+        .cloud-card:active { background: rgba(255,255,255,0.1); }
+        .cloud-card .emoji { font-size: 2rem; margin-bottom: 8px; display: block; }
+        .cloud-card h3 { font-size: 1.1rem; margin-bottom: 4px; }
+        .cloud-card p { font-size: 0.75rem; color: var(--text-dim); }
+        
+        .cloud-card.full-width { flex: 1 1 100%; display: flex; align-items: center; gap: 20px; background: linear-gradient(45deg, #1a0008, var(--bg-glass)); border-color: var(--brand-glow); }
+        .cloud-card.full-width .emoji { margin: 0; font-size: 3rem; }
+
+        /* ===== 层叠式对比卡片 ===== */
+        .compare-stack { position: relative; margin-top: 30px; padding-bottom: 40px; }
+        .c-card {
+            background: #111; padding: 24px; border-radius: var(--radius-xl);
+            border: 1px solid rgba(255,255,255,0.1); position: relative;
+        }
+        .c-card.vidionode {
+            background: linear-gradient(135deg, rgba(255,0,85,0.1), #111);
+            border: 1px solid var(--brand);
+            z-index: 2; box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+        }
+        .c-card.others {
+            transform: scale(0.9) translateY(-60px);
+            opacity: 0.5; z-index: 1; margin-bottom: -60px;
+        }
+        .c-header { font-size: 1.4rem; font-weight: 900; margin-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; }
+        .c-row { display: flex; justify-content: space-between; padding: 10px 0; font-size: 0.9rem; }
+        .c-row span:last-child { font-weight: 700; }
+        .text-brand { color: var(--brand); }
+
+        /* ===== 亮点滚动带 ===== */
+        .cat-scroll {
+            overflow-x: auto; scrollbar-width: none;
+            padding: 10px 0 20px; margin: 0 -20px; padding-left: 20px;
+        }
+        .cat-scroll::-webkit-scrollbar { display: none; }
+        .scroll-track { display: flex; gap: 16px; width: max-content; padding-right: 20px; }
+        .hl-pill {
+            background: #1a1a1a; padding: 16px 24px; border-radius: 100px;
+            display: flex; align-items: center; gap: 12px; font-weight: 700;
+            border: 1px solid rgba(255,255,255,0.05); white-space: nowrap;
+        }
+
+        .footer { text-align: center; padding: 40px 20px; color: #555; font-size: 0.8rem; }
+        .footer a { color: #888; margin: 0 10px; }
+    </style>
+  <script src="/landing-runtime.js" defer></script>
+</head>
+<body>
+
+    <div class="ambient-light"></div>
+
+    <!-- 浮岛导航 -->
+    <nav class="island-nav">
+        <div class="nav-brand">
+            <img src="static/picture/logo.jpg" alt="Logo" />
+            <span>VidioNode</span>
+        </div>
+        <button class="nav-btn" onclick="handleDownload()" data-i18n="nav_inst">Install</button>
+    </nav>
+
+    <!-- 巨幕区块 -->
+    <header class="hero-section">
+<div class="hero-chip" data-i18n="chip">✦ Watch free now</div>
+        <h1>
+            <span data-i18n="h1a">TV and sports</span><br />
+            <span class="gradient-text" data-i18n="h1b">Movies, series & shows</span><br />
+            <span data-i18n="h1c">— Always free</span>
+        </h1>
+		
+        <p class="hero-desc" data-i18n="hero_sub">Over 1000 channels at no cost — Football, PSL and world leagues, movies, series and India news. HD quality, no ads and no registration.</p>
+        <button class="main-cta" onclick="handleDownload()">
+            <span data-i18n="cta_dl">Download APK Free</span>
+        </button>
+    </header>
+
+    <!-- 电影马赛克瀑布流 (图片和文案替换为尼日利亚热门影视) -->
+    <section class="section-wrap">
+        <h2 class="section-title" data-i18n="cat1_h">Trending Movies</h2>
+        <p class="section-sub" data-i18n="cat1_sub">New global releases and favorite movies • 2026 premieres • Watch free</p>
+        
+        <div class="mosaic-grid">
+            <!-- 大图占两行两列 -->
+            <div class="mosaic-item large" onclick="handleDownload()">
+                <img src="static/picture/b1.jpg" alt="A Tribe Called Judah" loading="lazy" />
+                <div class="mosaic-badge">4K</div>
+                <div class="mosaic-info">
+                    <div class="title" data-i18n="m1">A Tribe Called Judah</div> 
+                </div>
+            </div>
+            <!-- 竖图占两行 -->
+            <div class="mosaic-item tall" onclick="handleDownload()">
+                <img src="static/picture/1a.jpg" alt="The Black Book" loading="lazy" />
+                <div class="mosaic-badge">HD</div>
+                <div class="mosaic-info">
+                    <div class="title" data-i18n="m6">The Black Book</div>
+                </div>
+            </div>
+            <!-- 普通方块图 -->
+            <div class="mosaic-item" onclick="handleDownload()">
+                <img src="static/picture/2a.jpg" alt="Gangs of Lagos" loading="lazy" />
+                <div class="mosaic-badge">HD</div>
+                <div class="mosaic-info">
+                    <div class="title" data-i18n="m2">Gangs of Lagos</div>
+                </div>
+            </div>
+            <div class="mosaic-item" onclick="handleDownload()">
+                <img src="static/picture/3a.jpg" alt="Aníkúlápó" loading="lazy" />
+                <div class="mosaic-badge">4K</div>
+                <div class="mosaic-info">
+                    <div class="title" data-i18n="m3">Call of My Life</div> 
+                </div>
+            </div>
+            <!-- 底边两张图 -->
+            <div class="mosaic-item" onclick="handleDownload()">
+                <img src="static/picture/4a.jpg" alt="Battle on Buka Street" loading="lazy" />
+                <div class="mosaic-badge">4K</div>
+                <div class="mosaic-info">
+                    <div class="title" data-i18n="m4">The Boy Who Gave</div>
+                  
+                </div>
+            </div>
+            <div class="mosaic-item" onclick="handleDownload()">
+                <img src="static/picture/5a.jpg" alt="King of Boys" loading="lazy" />
+                <div class="mosaic-badge">HD</div>
+                <div class="mosaic-info">
+                    <div class="title" data-i18n="m5">Ajosepo</div> 
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 云端卡片式内容导航 -->
+    <section class="section-wrap" style="padding-top: 0;">
+        <h2 class="section-title">Explore Categories</h2>
+        <div class="category-cloud">
+            <div class="cloud-card" onclick="handleDownload()">
+                <span class="emoji">⚽</span>
+                <h3 data-i18n="cat2_h">Live Sports</h3>
+                <p data-i18n="cat2_sub">PSL, European football, Cricket</p>
+            </div>
+            <div class="cloud-card" onclick="handleDownload()">
+                <span class="emoji">📺</span>
+                <h3 data-i18n="cat7_h">Popular Series</h3>
+                <p data-i18n="cat7_sub">Asian and global hits</p>
+            </div>
+            <div class="cloud-card" onclick="handleDownload()">
+                <span class="emoji">🎥</span>
+                <h3 data-i18n="cat9_h">Blockbusters</h3>
+                <p data-i18n="cat9_sub">Pushpa, KGF, RRR</p>
+            </div>
+            <div class="cloud-card" onclick="handleDownload()">
+                <span class="emoji">🇰🇷</span>
+                <h3 data-i18n="cat8_h">K-Dramas & Anime</h3>
+                <p data-i18n="cat8_sub">Squid Game, Demon Slayer</p>
+            </div>
+            <!-- 私密专属横排宽卡 -->
+            <div class="cloud-card full-width" onclick="handleDownload()">
+                <span class="emoji">🔞</span>
+                <div>
+                    <h3 data-i18n="priv_h">+18 Private Content</h3>
+                    <p data-i18n="priv_sub">Adults only • Separate section • Free in the app</p>
+                </div>
+            </div>
+            <div class="cloud-card full-width" onclick="handleDownload()" style="background: var(--bg-glass); border-color: rgba(255,255,255,0.05);">
+                <span class="emoji">📈</span>
+                <div>
+                    <h3 data-i18n="cat5_h">Finance & News</h3>
+                    <p data-i18n="cat3_sub">PTV News, Geo TV, Global feeds & Markets</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 横向滚动高亮条 -->
+    <section class="section-wrap" style="padding-top: 0;">
+        <h2 class="section-title" data-i18n="why_h">Why VidioNode?</h2>
+        <div class="cat-scroll">
+            <div class="scroll-track">
+                <div class="hl-pill"><span style="font-size:1.5rem">📡</span> <span data-i18n="w1">1000+ Channels</span></div>
+                <div class="hl-pill"><span style="font-size:1.5rem">🚫</span> <span data-i18n="w4">No Ads</span></div>
+                <div class="hl-pill"><span style="font-size:1.5rem">📱</span> <span data-i18n="w5">4K Quality</span></div>
+                <div class="hl-pill"><span style="font-size:1.5rem">⚽</span> <span data-i18n="w3">Live Sports</span></div>
+                <div class="hl-pill"><span style="font-size:1.5rem">🌍</span> <span data-i18n="w6">Urdu Interface</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 层叠式对比卡片 -->
+    <section class="section-wrap" style="padding-top: 0;">
+        <h2 class="section-title" style="text-align:center" data-i18n="vs_h">VidioNode vs Others</h2>
+        <div class="compare-stack">
+            <!-- 竞品卡片 (压在下方，缩小变暗) -->
+            <div class="c-card others">
+                <div class="c-header" data-i18n="vs_others">Paid Services</div>
+                <div class="c-row"><span data-i18n="vs1">Monthly fee</span> <span data-i18n="vs1b">Paid</span></div>
+                <div class="c-row"><span data-i18n="vs3">TV channels</span> <span data-i18n="vs3b">50–200</span></div>
+                <div class="c-row"><span data-i18n="vs4">Ads</span> <span data-i18n="vs_yes">Yes</span></div>
+            </div>
+            
+            <!-- VidioNode 卡片 (浮在上层) -->
+            <div class="c-card vidionode">
+                <div class="c-header text-brand">VidioNode</div>
+                <div class="c-row"><span data-i18n="vs1">Monthly fee</span> <span class="text-brand" data-i18n="vs1a">100% Free</span></div>
+                <div class="c-row"><span data-i18n="vs2">Live sports</span> <span data-i18n="vs2a">Wide selection</span></div>
+                <div class="c-row"><span data-i18n="vs3">TV channels</span> <span data-i18n="vs3a">1000+ Channels</span></div>
+                <div class="c-row"><span data-i18n="vs4">Ads</span> <span data-i18n="vs_no">No</span></div>
+                <div class="c-row"><span data-i18n="vs5">Registration required</span> <span data-i18n="vs_no">No</span></div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <button class="main-cta" onclick="handleDownload()" style="width: 100%;">
+                Start Watching Now
+            </button>
+            <p style="margin-top: 16px; color: var(--text-dim); font-size: 0.85rem;" data-i18n="cta_p">Over 500 thousand users are watching for free</p>
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer class="footer">
+        🇵🇰 © 2026 VidioNode — For the Indiai audience<br /><br />
+        <a href="#" data-i18n="footer_priv">Privacy Policy</a> |
+        <a href="/terms.php" data-i18n="footer_terms">Terms</a>
+    </footer>
+
+    <!-- 自动滑动脚本 -->
+    <script>
+        (function initAutoSliders() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            function attachAutoScroll(el, staggerMs) {
+                var track = el.querySelector('.scroll-track');
+                if (!track || !track.firstElementChild) return;
+                var intervalMs = 3000;
+                var timer = null;
+                var paused = false;
+                
+                el.addEventListener('touchstart', function(){ paused = true; }, { passive: true });
+                el.addEventListener('touchend', function(){ setTimeout(function(){ paused=false;}, 2000); });
+
+                function step() {
+                    if (paused) return;
+                    var maxScroll = el.scrollWidth - el.clientWidth;
+                    if (maxScroll <= 4) return;
+                    var first = track.firstElementChild;
+                    var stride = first.offsetWidth + 16;
+                    var next = el.scrollLeft + stride;
+                    if (next >= maxScroll - 4) { el.scrollTo({ left: 0, behavior: 'smooth' }); } 
+                    else { el.scrollBy({ left: stride, behavior: 'smooth' }); }
+                }
+
+                if ('IntersectionObserver' in window) {
+                    var obs = new IntersectionObserver(function (entries) {
+                        entries.forEach(function (e) {
+                            if (e.isIntersecting) { if (!timer) timer = setInterval(step, intervalMs); } 
+                            else { if (timer) { clearInterval(timer); timer = null; } }
+                        });
+                    }, { rootMargin: '80px', threshold: 0.01 });
+                    obs.observe(el);
+                } else { timer = setInterval(step, intervalMs); }
+            }
+            document.querySelectorAll('.cat-scroll').forEach(function (el, i) { attachAutoScroll(el, i * 450); });
+        })();
+    </script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

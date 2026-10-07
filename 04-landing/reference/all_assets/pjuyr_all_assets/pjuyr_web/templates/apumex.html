@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <base href="/landing-pages/apumex/">
+
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ApuestaMX B | Descarga y Bono Gratis</title>
+  <meta
+    name="description"
+    content="B版高转化落地页：下载APP领彩金，限时倒计时和剩余名额，适配移动端。"
+  />
+  <style>
+    :root {
+      --bg: #10060a;
+      --bg2: #240b14;
+      --panel: rgba(40, 13, 20, 0.78);
+      --line: rgba(255, 255, 255, 0.16);
+      --text: #fff3e9;
+      --muted: #ffd1bd;
+      --gold: #ffd24a;
+      --gold-dark: #ffb400;
+      --hot: #ff3f5e;
+      --hot-dark: #d81842;
+      --ok: #49ffb7;
+      --max: 1120px;
+      --radius: 18px;
+      --shadow: 0 22px 45px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.5;
+      background:
+        radial-gradient(circle at 10% -10%, #5c1f2f 0%, transparent 35%),
+        radial-gradient(circle at 100% 0%, #842212 0%, transparent 35%),
+        linear-gradient(180deg, var(--bg2), var(--bg));
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(var(--max), 92%);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(20, 7, 12, 0.9);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+    }
+
+    .topbar-inner {
+      padding: 12px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 900;
+      letter-spacing: 0.4px;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 999px;
+      font-weight: 800;
+      cursor: pointer;
+      padding: 12px 22px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-main {
+      color: #2d1200;
+      background: linear-gradient(180deg, var(--gold), var(--gold-dark));
+      box-shadow: 0 14px 28px rgba(255, 180, 0, 0.35);
+    }
+
+    .btn-hot {
+      color: #fff6f7;
+      background: linear-gradient(180deg, var(--hot), var(--hot-dark));
+      box-shadow: 0 14px 28px rgba(255, 63, 94, 0.35);
+    }
+
+    .btn-ghost {
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .hero {
+      padding: 50px 0 28px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+    }
+
+    .card {
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-main {
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      top: -30px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(255, 210, 74, 0.24), transparent 70%);
+      pointer-events: none;
+    }
+
+    .promo-chip {
+      display: inline-block;
+      border-radius: 999px;
+      background: rgba(255, 63, 94, 0.2);
+      border: 1px solid rgba(255, 63, 94, 0.5);
+      color: #ffd8e0;
+      font-size: 0.8rem;
+      letter-spacing: 0.3px;
+      padding: 7px 12px;
+      margin-bottom: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5.8vw, 4rem);
+      line-height: 0.98;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      max-width: 12ch;
+    }
+
+    .hero-main p {
+      color: var(--muted);
+      font-size: 1.02rem;
+      max-width: 52ch;
+      margin-bottom: 16px;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .pulse-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #ffe8d8;
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--ok);
+      box-shadow: 0 0 0 0 rgba(73, 255, 183, 0.8);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(73, 255, 183, 0.8); }
+      70% { box-shadow: 0 0 0 10px rgba(73, 255, 183, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(73, 255, 183, 0); }
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 12px;
+    }
+
+    .bonus {
+      padding: 22px;
+      background: linear-gradient(170deg, rgba(255, 63, 94, 0.16), rgba(255, 180, 0, 0.08));
+    }
+
+    .bonus h2 {
+      color: var(--gold);
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 6px;
+    }
+
+    .bonus-amount {
+      font-size: clamp(2.2rem, 4.5vw, 3rem);
+      font-weight: 900;
+      margin-bottom: 7px;
+      line-height: 1;
+    }
+
+    .bonus p {
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .bonus ul {
+      list-style: none;
+      display: grid;
+      gap: 7px;
+      margin-bottom: 14px;
+    }
+
+    .bonus li::before {
+      content: "◆";
+      color: var(--gold);
+      margin-right: 7px;
+    }
+
+    .urgency {
+      padding: 16px;
+      border: 1px solid rgba(255, 63, 94, 0.6);
+      background: rgba(255, 63, 94, 0.14);
+    }
+
+    .urgency-title {
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #ffd3db;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    .urgency-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .metric {
+      border-radius: 12px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      text-align: center;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.45rem;
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+
+    .metric span {
+      color: #ffe2d1;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .section {
+      padding: 24px 0;
+    }
+
+    .section h3 {
+      font-size: 1.42rem;
+      margin-bottom: 13px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .feature {
+      padding: 16px;
+    }
+
+    .feature h4 {
+      margin-bottom: 7px;
+      color: #ffe8dd;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .strip {
+      margin-top: 10px;
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+      background: linear-gradient(130deg, rgba(255, 180, 0, 0.12), rgba(255, 63, 94, 0.14));
+    }
+
+    .strip p {
+      color: #ffe6da;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .step {
+      padding: 15px;
+    }
+
+    .step b {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-bottom: 7px;
+      color: #2b1200;
+      background: linear-gradient(180deg, var(--gold), var(--gold-dark));
+    }
+
+    .step p {
+      font-size: 0.91rem;
+      color: var(--muted);
+    }
+
+    .faq details {
+      margin-bottom: 8px;
+      border-radius: 12px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .faq summary {
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .faq p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .cta-final {
+      text-align: center;
+      padding: 22px;
+      background: linear-gradient(130deg, rgba(255, 63, 94, 0.2), rgba(255, 180, 0, 0.14));
+    }
+
+    .cta-final p {
+      color: var(--muted);
+      margin: 7px 0 13px;
+    }
+
+    footer {
+      padding: 18px 0 90px;
+      font-size: 0.83rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #f3bca7;
+    }
+
+    .warn {
+      color: #ff8398;
+      margin-top: 4px;
+      font-weight: 700;
+    }
+
+    .mobile-bar {
+      display: none;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding-bottom: 84px;
+      }
+
+      .nav a:not(.btn-ghost) {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 38px;
+      }
+
+      .hero-main,
+      .bonus,
+      .urgency {
+        padding: 18px;
+      }
+
+      h1 {
+        font-size: clamp(2.35rem, 11vw, 3rem);
+      }
+
+      .hero-cta .btn,
+      .bonus .btn,
+      .strip .btn {
+        width: 100%;
+        min-height: 52px;
+      }
+
+      .hero-cta .btn-ghost {
+        display: none;
+      }
+
+      .urgency-grid,
+      .strip {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .mobile-bar {
+        display: block;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 60;
+        padding: 10px 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgba(22, 8, 13, 0.95);
+        backdrop-filter: blur(8px);
+      }
+
+      .mobile-bar .btn {
+        width: 100%;
+        min-height: 50px;
+      }
+    }
+  </style>
+  <script src="/landing-runtime.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+<div class="container topbar-inner">
+      <a class="logo" href="#">Apuesta<span>MX</span></a>
+      <nav class="nav">
+        <a href="#ventajas">Ventajas</a>
+        <a href="#pasos">Pasos</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn btn-ghost" href="download/">Iniciar sesion</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <article class="hero-main card">
+          <span class="promo-chip">Alta conversion</span>
+          <h1>Descarga y gana bono gratis al instante</h1>
+          <p>
+            Activa tu cuenta en 2 minutos y recibe saldo de regalo para empezar hoy.
+            Solo para nuevos usuarios en Mexico.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-main" href="download/">Descargar APP + Bono</a>
+            <a class="btn btn-hot" href="download/">Reclamar cupo ahora</a>
+            <a class="btn btn-ghost" href="download/">Ver detalles</a>
+          </div>
+          <div class="pulse-tag">
+            <span class="dot"></span>
+            <span>Usuarios reclamando bono en este momento</span>
+          </div>
+        </article>
+
+        <aside class="hero-side">
+          <div class="bonus card">
+            <h2>Bono por descarga</h2>
+            <p class="bonus-amount">$500 MXN GRATIS</p>
+            <p>Sin deposito para activar el beneficio inicial.</p>
+            <ul>
+              <li>Registro rapido desde celular</li>
+              <li>Disponible Android e iOS</li>
+              <li>Retiros y pagos seguros</li>
+            </ul>
+            <a class="btn btn-main" href="download/" style="width:100%;">Descargar y activar bono</a>
+          </div>
+
+          <div class="urgency card">
+            <p class="urgency-title">Limite de tiempo + cupos restantes</p>
+            <div class="urgency-grid">
+              <div class="metric">
+                <strong id="countdown">14:59</strong>
+                <span>Tiempo restante</span>
+              </div>
+              <div class="metric">
+                <strong id="slotsLeft">37</strong>
+                <span>Cupos disponibles</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="ventajas">
+      <div class="container">
+        <h3>Por que esta B version convierte mejor</h3>
+        <div class="features">
+          <article class="feature card">
+            <h4>Mensaje directo</h4>
+            <p>La propuesta principal aparece arriba del pliegue: descarga + bono gratis.</p>
+          </article>
+          <article class="feature card">
+            <h4>Doble CTA fuerte</h4>
+            <p>Botones contrastados para captura rapida en desktop y en movil.</p>
+          </article>
+          <article class="feature card">
+            <h4>Urgencia visible</h4>
+            <p>Contador y cupos restantes en bloque destacado para disparar accion.</p>
+          </article>
+        </div>
+        <div class="strip card">
+          <p>Promocion activa para Mexico: descarga hoy y participa por bono extra semanal.</p>
+          <a class="btn btn-hot" href="download/">Descargar ahora</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pasos">
+      <div class="container">
+        <h3>Empieza rapido</h3>
+        <div class="steps">
+          <article class="step card">
+            <b>1</b>
+            <h4>Descarga</h4>
+            <p>Instala ApuestaMX desde tu dispositivo.</p>
+          </article>
+          <article class="step card">
+            <b>2</b>
+            <h4>Registro</h4>
+            <p>Crea tu cuenta con datos basicos.</p>
+          </article>
+          <article class="step card">
+            <b>3</b>
+            <h4>Activa bono</h4>
+            <p>Reclama el saldo gratis en un clic.</p>
+          </article>
+          <article class="step card">
+            <b>4</b>
+            <h4>Juega</h4>
+            <p>Apuesta en vivo y retira cuando quieras.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <h3>Preguntas frecuentes</h3>
+        <div class="faq">
+          <details>
+            <summary>Cuanto tarda en verse el bono?</summary>
+            <p>Usualmente se refleja en pocos minutos tras completar el registro.</p>
+          </details>
+          <details>
+            <summary>Hay limite de usuarios?</summary>
+            <p>Si, por eso mostramos cupos restantes en tiempo real.</p>
+          </details>
+          <details>
+            <summary>Puedo usarlo solo en movil?</summary>
+            <p>La promocion esta orientada a descarga APP para Android y iOS.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container cta-final card">
+        <h3>Ultima llamada: bono por descarga activo</h3>
+        <p>Completa tu registro antes de que termine el contador.</p>
+        <a class="btn btn-main" href="download/">Descargar y reclamar bono gratis</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="mobile-bar">
+    <a class="btn btn-hot" href="download/">Descargar APP y cobrar bono</a>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>ApuestaMX es entretenimiento en linea. Verifica regulacion local aplicable.</p>
+      <p class="warn">Solo para mayores de 18 anos. Juega con responsabilidad.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var secondsLeft = 14 * 60 + 59;
+      var slots = 37;
+      var countdownEl = document.getElementById("countdown");
+      var slotsEl = document.getElementById("slotsLeft");
+
+      function formatCountdown(totalSeconds) {
+        var min = Math.floor(totalSeconds / 60);
+        var sec = totalSeconds % 60;
+        return String(min).padStart(2, "0") + ":" + String(sec).padStart(2, "0");
+      }
+
+      function render() {
+        countdownEl.textContent = formatCountdown(secondsLeft);
+        slotsEl.textContent = String(slots);
+      }
+
+      setInterval(function () {
+        if (secondsLeft > 0) {
+          secondsLeft -= 1;
+        } else {
+          secondsLeft = 14 * 60 + 59;
+          slots = 37;
+        }
+        render();
+      }, 1000);
+
+      setInterval(function () {
+        if (slots > 8 && Math.random() > 0.4) {
+          slots -= 1;
+          render();
+        }
+      }, 5000);
+
+      render();
+    })();
+  </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

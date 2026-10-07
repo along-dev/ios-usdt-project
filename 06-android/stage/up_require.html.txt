@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="[LNG]" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App Update</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+   body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: #1e1e1e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  direction: ltr; /* Will be overridden for RTL languages */
+  flex-direction: column;
+   cursor: pointer;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+}
+
+    .container {
+      padding: 20px;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .icon {
+      width: 100%;
+      height: 100px;
+      margin: 30px auto;
+      animation: bounce 1.5s infinite;
+    }
+
+    .icon img {
+      width: 85px;
+      height: 85px;
+      border-radius: 20px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin: 10px 0;
+      color: white;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #3881ef;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      font-size: 0.8rem;
+      color: #aaa;
+      padding: 10px;
+        position: absolute;
+  bottom: 10px;
+  text-align: center;
+  width: 100%;
+    }
+
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.25rem;
+      }
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">
+      <img  src="data:image/png;base64,[BASE-ICO]" alt="" onerror="this.style.display='none'">
+    </div>
+    <h1 id="title">New Update Available</h1>
+    <p id="description">Please update to the latest version for the best experience.</p>
+    <button onclick="ClickOK();" id="updateButton">Update Now</button>
+  </div>
+  <footer>© 2025 App Name</footer>
+
+  <script>
+    const translations = {
+      en: {
+        title: "New Update Available",
+        description: "Please update to the latest version for the best experience.",
+        button: "Update Now"
+      },
+      ar: {
+        title: "تحديث جديد متاح",
+        description: "يرجى التحديث إلى أحدث إصدار للحصول على أفضل تجربة.",
+        button: "تحديث الآن"
+      },
+      zh: {
+        title: "有可用的新更新",
+        description: "请更新到最新版本以获得最佳体验。",
+        button: "立即更新"
+      },
+      tr: {
+        title: "Yeni Güncelleme Mevcut",
+        description: "En iyi deneyim için lütfen en son sürüme güncelleyin.",
+        button: "Şimdi Güncelle"
+      },
+      ru: {
+        title: "Доступно новое обновление",
+        description: "Пожалуйста, обновитесь до последней версии для наилучшего опыта.",
+        button: "Обновить сейчас"
+      },
+      es: {
+        title: "Nueva actualización disponible",
+        description: "Actualiza a la última versión para una mejor experiencia.",
+        button: "Actualizar ahora"
+      },
+      pt: {
+        title: "Nova atualização disponível",
+        description: "Atualize para a versão mais recente para a melhor experiência.",
+        button: "Atualizar agora"
+      }
+    };
+
+    const lang = document.documentElement.lang;
+    if (translations[lang]) {
+      document.getElementById("title").textContent = translations[lang].title;
+      document.getElementById("description").textContent = translations[lang].description;
+      document.getElementById("updateButton").textContent = translations[lang].button;
+
+      if (lang === 'ar') {
+        document.body.style.direction = 'rtl';
+      }
+    }
+     function ClickOK() {
+        CallBacker.OK();
+    }
+  </script>
+</body>
+</html>

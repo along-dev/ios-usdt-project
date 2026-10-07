@@ -1,0 +1,3 @@
+UNAUTH(1234): HTTP=200 code=7 msg=权限不足 attempts=1
+AUTH(888):    HTTP=200 code=7 msg=权限不足 attempts=1
+V2_DEVICE_LIST=RED

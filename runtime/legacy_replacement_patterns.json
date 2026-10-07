@@ -1,0 +1,10 @@
+[
+  { "value": "586840011f5435723fdfb28b849b53c31dbb91a858c2137fa7fb9f7e7b904e03", "placeholder": "${JWT_SECRET}" },
+  { "value": "0b8a4f36-90f4-49d5-98e2-2f772cd23e24", "placeholder": "${SIGNING_KEY}" },
+  { "value": "HCRs35JHX7kuKHWh4ZBZBsPH3EiiBH4u", "placeholder": "${EXPORT_ENCRYPTION_KEY}" },
+  { "value": "DEFAULT_ADMIN_PASSWORD=admin", "placeholder": "DEFAULT_ADMIN_PASSWORD=${DEFAULT_ADMIN_PASSWORD}" },
+  { "value": "586840011f", "placeholder": "${JWT_SECRET:0:8}" },
+  { "value": "58684001", "placeholder": "${JWT_SECRET:0:8}" },
+  { "value": "HCRs35JH", "placeholder": "${EXPORT_ENCRYPTION_KEY:0:8}" },
+  { "value": "0b8a4f36", "placeholder": "${SIGNING_KEY:0:8}" }
+]

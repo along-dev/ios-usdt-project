@@ -1,0 +1,212 @@
+[
+ {
+  "method": "POST",
+  "path": "/api/MerchantOrder/List",
+  "tag": "IDOR 订单 MerchantId=1",
+  "status": 200,
+  "resp": "{\"Data\": {\"Summary\": {\"TotalCount\": 0, \"TotalPays\": 0, \"TotalBalance\": 0, \"TotalFee\": 0, \"TotalTotalCost\": 0, \"TotalCommission\": 0, \"Profit\": 0, \"OrderCount\": 0, \"SuccessCount\": 0, \"TotalAmount\": 0, \"TotalOriginAmount\": 0, \"TotalCost\": 0, \"SuccessRatio\": 0, \"TotalForzenBalance\": 0, \"TotalPaysAmount\": 0}, \"Items\": [], \"TotalCount\": 0, \"PageIndex\": 1, \"PageSize\": 50}, \"Code\": 0, \"Message\": \"\"}"
+ },
+ {
+  "method": "POST",
+  "path": "/api/MerchantOrder/List",
+  "tag": "IDOR 订单 MerchantId=1370",
+  "status": 200,
+  "resp": "{\"Data\": {\"Summary\": {\"TotalCount\": 0, \"TotalPays\": 0, \"TotalBalance\": 0, \"TotalFee\": 0, \"TotalTotalCost\": 0, \"TotalCommission\": 0, \"Profit\": 0, \"OrderCount\": 0, \"SuccessCount\": 0, \"TotalAmount\": 0, \"TotalOriginAmount\": 0, \"TotalCost\": 0, \"SuccessRatio\": 0, \"TotalForzenBalance\": 0, \"TotalPaysAmount\": 0}, \"Items\": [], \"TotalCount\": 0, \"PageIndex\": 1, \"PageSize\": 50}, \"Code\": 0, \"Message\": \"\"}"
+ },
+ {
+  "method": "POST",
+  "path": "/api/MerchantOrder/List",
+  "tag": "IDOR 订单 admin",
+  "status": 200,
+  "resp": "{\"Data\": {\"Summary\": {\"TotalCount\": 0, \"TotalPays\": 0, \"TotalBalance\": 0, \"TotalFee\": 0, \"TotalTotalCost\": 0, \"TotalCommission\": 0, \"Profit\": 0, \"OrderCount\": 0, \"SuccessCount\": 0, \"TotalAmount\": 0, \"TotalOriginAmount\": 0, \"TotalCost\": 0, \"SuccessRatio\": 0, \"TotalForzenBalance\": 0, \"TotalPaysAmount\": 0}, \"Items\": [], \"TotalCount\": 0, \"PageIndex\": 1, \"PageSize\": 50}, \"Code\": 0, \"Message\": \"\"}"
+ },
+ {
+  "method": "POST",
+  "path": "/api/MerchantOrder/List",
+  "tag": "代付订单 PayDirection=2",
+  "status": 200,
+  "resp": "{\"Data\": {\"Summary\": {\"TotalCount\": 0, \"TotalPays\": 0, \"TotalBalance\": 0, \"TotalFee\": 0, \"TotalTotalCost\": 0, \"TotalCommission\": 0, \"Profit\": 0, \"OrderCount\": 0, \"SuccessCount\": 0, \"TotalAmount\": 0, \"TotalOriginAmount\": 0, \"TotalCost\": 0, \"SuccessRatio\": 0, \"TotalForzenBalance\": 0, \"TotalPaysAmount\": 0}, \"Items\": [], \"TotalCount\": 0, \"PageIndex\": 1, \"PageSize\": 50}, \"Code\": 0, \"Message\": \"\"}"
+ },
+ {
+  "method": "POST",
+  "path": "/api/MerchantOrder/List",
+  "tag": "代收订单 默认",
+  "status": 200,
+  "resp": "{\"Data\": {\"Summary\": {\"TotalCount\": 0, \"TotalPays\": 0, \"TotalBalance\": 0, \"TotalFee\": 0, \"TotalTotalCost\": 0, \"TotalCommission\": 0, \"Profit\": 0, \"OrderCount\": 0, \"SuccessCount\": 0, \"TotalAmount\": 0, \"TotalOriginAmount\": 0, \"TotalCost\": 0, \"SuccessRatio\": 0, \"TotalForzenBalance\": 0, \"TotalPaysAmount\": 0}, \"Items\": [], \"TotalCount\": 0, \"PageIndex\": 1, \"PageSize\": 50}, \"Code\": 0, \"Message\": \"\"}"
+ },
+ {
+  "method": "POST",
+  "path": "/api/Transaction/List",
+  "tag": "IDOR 流水 MerchantId=1",
+  "status": 200,
+  "resp": "{\"Data\": {\"Summary\": {\"TotalCount\": 0, \"TotalPays\": 0, \"TotalBalance\": 0, \"TotalFee\": 0, \"TotalTotalCost\": 0, \"TotalCommission\": 0, \"Profit\": 0, \"OrderCount\": 0, \"SuccessCount\": 0, \"TotalAmount\": 0, \"TotalOriginAmount\": 0, \"TotalCost\": 0, \"SuccessRatio\": 100}, \"Items\": [], \"TotalCount\": 0, \"PageIndex\": 1, \"PageSize\": 50}, \"Code\": 0, \"Message\": \"\"}"
+ },
+ {
+  "method": "POST",
+  "path": "/api/BalanceRecord/List",
+  "tag": "IDOR 余额记录 MerchantId=1",
+  "status": 200,
+  "resp": "{\"Data\": {\"Summary\": {\"TotalCount\": 0, \"TotalPays\": 0, \"TotalBalance\": 0, \"TotalFee\": 0, \"TotalTotalCost\": 0, \"TotalCommission\": 0, \"Profit\": 0, \"OrderCount\": 0, \"SuccessCount\": 0, \"TotalAmount\": 0, \"TotalOriginAmount\": 0, \"TotalCost\": 0, \"SuccessRatio\": 100}, \"Items\": [], \"TotalCount\": 0, \"PageIndex\": 1, \"PageSize\": 50}, \"Code\": 0, \"Message\": \"\"}"
+ },
+ {
+  "method": "POST",
+  "path": "/api/BalanceRecord/List",
+  "tag": "余额记录 嵌套 Condition",
+  "status": 200,
+  "resp": "{\"Code\": -13, \"Message\": \"操作频繁，请重试\", \"Data\": null}"
+ },
+ {
+  "method": "POST",
+  "path": "/api/Transaction/List",
+  "tag": "已知 APIKey 查流水",
+  "status": 200,
+  "resp": "{\"Code\": -13, \"Message\": \"操作频繁，请重试\", \"Data\": null}"
+ },
+ {
+  "method": "POST",
+  "path": "/api/MerchantOrder/List",
+  "tag": "订单空条件",
+  "status": 200,
+  "resp": "{\"Data\": {\"Summary\": {\"TotalCount\": 0, \"TotalPays\": 0, \"TotalBalance\": 0, \"TotalFee\": 0, \"TotalTotalCost\": 0, \"TotalCommission\": 0, \"Profit\": 0, \"OrderCount\": 0, \"SuccessCount\": 0, \"TotalAmount\": 0, \"TotalOriginAmount\": 0, \"TotalCost\": 0, \"SuccessRatio\": 0, \"TotalForzenBalance\": 0, \"TotalPaysAmount\": 0}, \"Items\": [], \"TotalCount\": 0, \"PageIndex\": 1, \"PageSize\": 50}, \"Code\": 0, \"Message\": \"\"}"
+ },
+ {
+  "method": "POST",
+  "path": "/api/MerchantOrder/Export",
+  "tag": "导出 全部订单",
+  "status": 200,
+  "resp": "{\"Code\": -13, \"Message\": \"操作频繁，请重试\", \"Data\": null}"
+ },
+ {
+  "method": "POST",
+  "path": "/api/Transaction/Export",
+  "tag": "导出 全部流水",
+  "status": 200,
+  "resp": "{\"Code\": -13, \"Message\": \"操作频繁，请重试\", \"Data\": null}"
+ },
+ {
+  "method": "POST",
+  "path": "/api/Commission/export",
+  "tag": "导出 佣金",
+  "status": 402,
+  "resp": "\"2026-09-26 01:08:12 ERROR --- [nio-8080-exec-2] o.s.w.s.h.SimpleUrlHandlerMapping        : No mapping for Commission/export\\n\\norg.springframework.web.servlet.NoHandlerFoundException: No handler found for Commission/export\\n    at org.springframework.web.servlet.DispatcherServlet.noHandlerFound(Dispatc\""
+ },
+ {
+  "method": "GET",
+  "path": "/api/Agent/Subordinates",
+  "tag": "代理下级商户",
+  "status": 200,
+  "resp": "{\"Code\": 0, \"Message\": \"ok\"}"
+ },
+ {
+  "method": "POST",
+  "path": "/api/Agent/Subordinates",
+  "tag": "代理下级商户 POST",
+  "status": 200,
+  "resp": "{\"Code\": 0, \"Message\": \"ok\"}"
+ },
+ {
+  "method": "GET",
+  "path": "/api/Home/AgentDashboard",
+  "tag": "代理仪表盘",
+  "status": 402,
+  "resp": "\"2026-09-26 01:08:13 ERROR --- [nio-8080-exec-2] o.s.w.s.h.SimpleUrlHandlerMapping        : No mapping for Home/AgentDashboard\\n\\norg.springframework.web.servlet.NoHandlerFoundException: No handler found for Home/AgentDashboard\\n    at org.springframework.web.servlet.DispatcherServlet.noHandlerFound(Dis\""
+ },
+ {
+  "method": "POST",
+  "path": "/api/AgentDailyReport/List",
+  "tag": "代理日报",
+  "status": 402,
+  "resp": "{\"Data\": {\"Summary\": {\"TotalFee\": 0, \"TotalAmount\": 0, \"TotalNetAmount\": 0, \"TotalCount\": 0}, \"Items\": [], \"TotalCount\": 0, \"PageIndex\": 1, \"PageSize\": 11, \"PageTotal\": 1}, \"Code\": 0, \"Message\": \"\"}"
+ },
+ {
+  "method": "POST",
+  "path": "/api/AgentReviewMerchantOrderList/List",
+  "tag": "代理审单",
+  "status": 402,
+  "resp": "{\"Data\": {\"Summary\": {\"TotalFee\": 0, \"TotalAmount\": 0, \"TotalNetAmount\": 0, \"TotalCount\": 0}, \"Items\": [], \"TotalCount\": 0, \"PageIndex\": 1, \"PageSize\": 11, \"PageTotal\": 1}, \"Code\": 0, \"Message\": \"\"}"
+ },
+ {
+  "method": "POST",
+  "path": "/api/Commission/List",
+  "tag": "佣金列表",
+  "status": 402,
+  "resp": "{\"Data\": {\"Summary\": {\"TotalFee\": 0, \"TotalAmount\": 0, \"TotalNetAmount\": 0, \"TotalCount\": 0}, \"Items\": [], \"TotalCount\": 0, \"PageIndex\": 1, \"PageSize\": 11, \"PageTotal\": 1}, \"Code\": 0, \"Message\": \"\"}"
+ },
+ {
+  "method": "POST",
+  "path": "/api/CommissionSettlement/List",
+  "tag": "佣金结算",
+  "status": 402,
+  "resp": "{\"Data\": {\"Summary\": {\"TotalFee\": 0, \"TotalAmount\": 0, \"TotalNetAmount\": 0, \"TotalCount\": 0}, \"Items\": [], \"TotalCount\": 0, \"PageIndex\": 1, \"PageSize\": 11, \"PageTotal\": 1}, \"Code\": 0, \"Message\": \"\"}"
+ },
+ {
+  "method": "GET",
+  "path": "/api/CommissionSettlement/Balance",
+  "tag": "佣金余额",
+  "status": 402,
+  "resp": "\"2026-09-26 01:08:14 ERROR --- [nio-8080-exec-2] o.s.w.s.h.SimpleUrlHandlerMapping        : No mapping for CommissionSettlement/Balance\\n\\norg.springframework.web.servlet.NoHandlerFoundException: No handler found for CommissionSettlement/Balance\\n    at org.springframework.web.servlet.DispatcherServlet.\""
+ },
+ {
+  "method": "POST",
+  "path": "/api/CommissionSettlement/List",
+  "tag": "佣金结算 MerchantId=1",
+  "status": 402,
+  "resp": "{\"Data\": {\"Summary\": {\"TotalFee\": 0, \"TotalAmount\": 0, \"TotalNetAmount\": 0, \"TotalCount\": 0}, \"Items\": [], \"TotalCount\": 0, \"PageIndex\": 1, \"PageSize\": 11, \"PageTotal\": 1}, \"Code\": 0, \"Message\": \"\"}"
+ },
+ {
+  "method": "GET",
+  "path": "/api/ApiKey/List",
+  "tag": "API密钥列表",
+  "status": 200,
+  "resp": "{\"Data\": {\"AccessKey\": \"<REDACTED_ACCESSKEY>\", \"SecretKey\": \"<REDACTED_SECRETKEY>\"}, \"Code\": 0, \"Message\": \"\"}"
+ },
+ {
+  "method": "GET",
+  "path": "/api/AuthorizedIp/List",
+  "tag": "IP白名单",
+  "status": 200,
+  "resp": "{\"Code\": 0, \"Data\": [{\"Id\": 646, \"OwnerId\": 1371, \"Ip\": \"172.83.158.190\", \"Comment\": \"Telegram拉单IP加白\", \"OwnerName\": \"冠军\", \"Status\": 0, \"IpType\": 0, \"CreatedOn\": 1788430874, \"LatestUpdatedOn\": 0, \"OperatorName\": \"telegram:-5144209300\"}, {\"Id\": 645, \"OwnerId\": 1371, \"Ip\": \"217.114.47.60\", \"Comment\": \"Telegram拉单IP加白\", \"OwnerName\": \"冠军\", \"Status\": 0, \"IpType\": 0, \"CreatedOn\": 1788430874, \"LatestUpdatedOn\": 0, \"OperatorName\": \"telegram:-5144209300\"}, {\"Id\": 644, \"OwnerId\": 1371, \"Ip\": \"45.154.213.40\", \"Comment\": \"Telegram拉单IP加白\", \"OwnerName\": \"冠军\", \"Status\": 0, \"IpType\": 0, \"CreatedOn\": 1788430874, \"LatestUpdatedOn\": 0, \"OperatorName\": \"telegram:-5144209300\"}]}"
+ },
+ {
+  "method": "GET",
+  "path": "/api/System/Settings",
+  "tag": "系统设置",
+  "status": 200,
+  "resp": "{\"Data\": [{\"Key\": \"WebSiteName\", \"Title\": \"拉姆支付\", \"Value\": \"-\", \"ReadOnly\": false}, {\"Key\": \"IsDemo\", \"Title\": \"是否为测试环境\", \"Value\": \"false\", \"ReadOnly\": true}, {\"Key\": \"System_Mode\", \"Title\": \"系统模型\", \"Value\": \"3\", \"ReadOnly\": false}, {\"Key\": \"Merchant_BatchApply_CountLimit\", \"Title\": \"代付UI批次提交最大代付数量限制\", \"Value\": \"20\", \"ReadOnly\": false}, {\"Key\": \"Merchant_GatewayUrl\", \"Title\": \"商户后台地址\", \"Value\": \"\", \"ReadOnly\": false}, {\"Key\": \"Merchant_CallbackIp\", \"Title\": \"回调商户Ip地址\", \"Value\": \"\", \"ReadOnly\": false}], \"Code\": 0, \"Message\": \"\"}"
+ },
+ {
+  "method": "GET",
+  "path": "/api/Permission/Query",
+  "tag": "权限查询",
+  "status": 402,
+  "resp": "\"2026-09-26 01:08:15 ERROR --- [nio-8080-exec-2] o.s.w.s.h.SimpleUrlHandlerMapping        : No mapping for Permission/Query\\n\\norg.springframework.web.servlet.NoHandlerFoundException: No handler found for Permission/Query\\n    at org.springframework.web.servlet.DispatcherServlet.noHandlerFound(Dispatche\""
+ },
+ {
+  "method": "GET",
+  "path": "/api/MerchantChannel/List",
+  "tag": "商户通道",
+  "status": 200,
+  "resp": "{\"Data\": {\"Summary\": {\"TotalCount\": 18, \"TotalPays\": 18, \"TotalBalance\": 0, \"TotalFee\": 0, \"TotalTotalCost\": 0, \"TotalCommission\": 0, \"Profit\": 0, \"OrderCount\": 0, \"SuccessCount\": 0, \"TotalAmount\": 0, \"TotalOriginAmount\": 0, \"TotalCost\": 0, \"SuccessRatio\": 100}, \"Items\": [{\"Id\": 5396, \"Status\": 0, \"Comment\": null, \"Name\": \"特价超大额     限额：2000-20000\", \"MerchantId\": 1371, \"Merchant\": {\"Id\": 1371, \"Status\": 0, \"LoginName\": \"冠军\", \"MerchantType\": 0}, \"ChannelId\": 4084, \"Channel\": {\"Id\": 4084, \"Code\": \"4084\", \"Name\": \"特价超大额     限额：2000-20000\", \"DisplayName\": \"[4084]-特价超大额     限额：2000-20000\", \"Status\": 0, \"Selector\": \"SupplierLruNoAmountCheckSelector\", \"EnableSupplierEditLimit\": true, \"CollectPayerName\": true, \"CollectPayPasscode\": false, \"LimitFromAmount\": 2000, \"LimitToAmount\": 20000, \"LimitTotalUsageCount\": 0, \"LimitTotalUsageAmount\": 0, \"CountType\": 0, \"CreatedOn\": 1779073295, \"LatestUpdatedOn\": 1780056836, \"DataStructure\": \"{\\\"Qrcode\\\":\\\"支付宝名片二维码\\\",\\\"Image\\\":\\\"图片地址\\\",\\\"PayeeName\\\":\\\"收款人姓名\\\"}\", \"TTL\": 180, \"ChannelAccountTTL\": 0, \"FloatingAmount\": -9, \"CashPage\": \"alipay_raw_qrcode_and_image.html\", \"PayDirection\": 1, \"EnableOtpCode\": true, \"CreateHintText\": \"收款二维码/或者原图，同时上传优先使用二维码\", \"CashPageHintText\": null, \"EnableEditContent\": false, \"MinProfit\": 0, \"Comment\": \"收款二维码/或者原图，同时上传优先使用二维码\", \"ChannelType\": 0, \"ExtraConfigData\": {\"VerifyQrcodeUrlInWhiteList\": true}}, \"PayDirection\": 1, \"Code\": 4084, \"RateFee\": 34, \"PerTradeFee\": 0, \"AmountData\": null, \"CreatedOn\": 1788430831, \"LatestUpdatedOn\": 1788430835, \"ExtraConfigData\": []}, {\"Id\": 5395, \"Status\": 0, \"Comment\": null, \"Name\": \"特价大额       限额：800-20000\", \"MerchantId\": 1371, \"Merchant\": {\"Id\": 1371, \"Status\": 0, \"LoginName\": \"冠军\", \"MerchantType\": 0}, \"ChannelId\": 4083, \"Channel\": {\"Id\": 4083, \"Code\": \"4083\", \"Name\": \"特价大额       限额：800-20000\", \"DisplayName\": \"[4083]-特价大额       限额：800-20000\", \"Status\": 0, \"Selector\": \"SupplierLruNoAmountCheckSelector\", \"EnableSupplierEditLimit\": true, \"CollectPayerName\": true, \"CollectPayPassc"
+ },
+ {
+  "method": "POST",
+  "path": "/api/MerchantDailyReport/List",
+  "tag": "商户日报",
+  "status": 402,
+  "resp": "{\"Data\": {\"Summary\": {\"TotalFee\": 0, \"TotalAmount\": 0, \"TotalNetAmount\": 0, \"TotalCount\": 0}, \"Items\": [], \"TotalCount\": 0, \"PageIndex\": 1, \"PageSize\": 11, \"PageTotal\": 1}, \"Code\": 0, \"Message\": \"\"}"
+ },
+ {
+  "method": "POST",
+  "path": "/api/WebOrder/ApplyWithdrawalOrders",
+  "tag": "提现订单",
+  "status": 200,
+  "resp": "{\"Data\": {\"Completed\": true, \"Message\": null, \"Results\": null}, \"Code\": 0, \"Message\": \"\"}"
+ },
+ {
+  "method": "GET",
+  "path": "/api/WebOrder/GetWithdrawalExcelTemplate",
+  "tag": "提现模板",
+  "status": 200,
+  "resp": "\"收款人,金额,卡号,银行名称\\n张三,100,9558822202006655555,中国银行(如果是银行卡就填写具体银行名字，如果是支付宝就填写支付宝即可)\\n\""
+ }
+]

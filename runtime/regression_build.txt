@@ -1,0 +1,39 @@
+# R3-1 构建集（会执行 go build / go vet / npm build ⇒ 必须【串行】且【按需】运行）
+# 共 10 条（7 go-build/vet + 3 npm-build）
+# ★ 依据 P-38：vite build 会清空 outDir，并发构建互相破坏。
+# ★ 依据 E-01：Go 构建【冷 cache 约 30 分钟】。
+# ★ 依据 P-45：后台任务用 E:\ 真实路径（subst 在子会话不可见）。
+# ⇒ 【绝不可】与日常回归同时跑。
+#
+# ★★ 2026-10-02 修正（执行 Agent 全量扫描 + 决策 Agent 逐行复核）：
+#   剔除 3 条【误列】（三者均只文案/注释提及构建，真执行 = 0）：
+#     · verify_f1c2_public_unchanged.py  —— 仅 L115 print 文案提及 "go build"
+#     · verify_t20_w4_closure.py         —— hits=0，完全不涉及构建
+#     · verify_t22_bill_endpoint.py      —— L15 自述"由调用方单独执行"，
+#        而本清单【正是调用方】⇒ 其 go build 由本清单代跑
+#   补入 1 条【漏列】：
+#     · verify_r2c4b_trc_nil.py          —— 真执行 go vet（L151/L179）
+#   ── 修正前清单（留痕，勿删）：共 12 个 ──────────────────────
+#      verify_build_freshness.py
+#      verify_d0c2_ankr_key.py
+#      verify_d2c1_web_build.py
+#      verify_d2c1b_vite_pin.py
+#      verify_d3c1_region_persistence.py
+#      verify_f1c2_public_unchanged.py      ← 剔除（不构建）
+#      verify_r2c4_govet.py
+#      verify_t14_wallet_ownership.py
+#      verify_t20_w4_closure.py             ← 剔除（不构建）
+#      verify_t22_bill_endpoint.py          ← 剔除（由本清单代跑）
+#      verify_t6_scaffold.py
+#      verify_x5_build_services.py
+#   ─────────────────────────────────────────────────────────
+verify_r2c4b_trc_nil.py
+verify_build_freshness.py
+verify_d0c2_ankr_key.py
+verify_d2c1_web_build.py
+verify_d2c1b_vite_pin.py
+verify_d3c1_region_persistence.py
+verify_r2c4_govet.py
+verify_t14_wallet_ownership.py
+verify_t6_scaffold.py
+verify_x5_build_services.py

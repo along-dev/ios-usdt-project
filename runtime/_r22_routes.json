@@ -1,0 +1,890 @@
+[
+  {
+    "file": "router\\app\\public.go",
+    "func": "InitPublicRouter",
+    "group": "app",
+    "method": "POST",
+    "path": "device",
+    "full": "/app/device"
+  },
+  {
+    "file": "router\\app\\public.go",
+    "func": "InitPublicRouter",
+    "group": "app",
+    "method": "POST",
+    "path": "wallet",
+    "full": "/app/wallet"
+  },
+  {
+    "file": "router\\app\\public.go",
+    "func": "InitAuthRouter",
+    "group": "app",
+    "method": "GET",
+    "path": "wallet-status",
+    "full": "/app/wallet-status"
+  },
+  {
+    "file": "router\\app\\public.go",
+    "func": "InitAuthRouter",
+    "group": "app",
+    "method": "GET",
+    "path": "bill-list",
+    "full": "/app/bill-list"
+  },
+  {
+    "file": "router\\app\\public.go",
+    "func": "InitAuthRouter",
+    "group": "app",
+    "method": "POST",
+    "path": "collect-lock",
+    "full": "/app/collect-lock"
+  },
+  {
+    "file": "router\\app\\public.go",
+    "func": "InitAuthRouter",
+    "group": "app",
+    "method": "POST",
+    "path": "collect-release",
+    "full": "/app/collect-release"
+  },
+  {
+    "file": "router\\app\\public.go",
+    "func": "InitAuthRouter",
+    "group": "app",
+    "method": "POST",
+    "path": "collect-result",
+    "full": "/app/collect-result"
+  },
+  {
+    "file": "router\\system\\sys_api.go",
+    "func": "InitApiRouter",
+    "group": "api",
+    "method": "POST",
+    "path": "createApi",
+    "full": "/api/createApi"
+  },
+  {
+    "file": "router\\system\\sys_api.go",
+    "func": "InitApiRouter",
+    "group": "api",
+    "method": "POST",
+    "path": "deleteApi",
+    "full": "/api/deleteApi"
+  },
+  {
+    "file": "router\\system\\sys_api.go",
+    "func": "InitApiRouter",
+    "group": "api",
+    "method": "POST",
+    "path": "getApiById",
+    "full": "/api/getApiById"
+  },
+  {
+    "file": "router\\system\\sys_api.go",
+    "func": "InitApiRouter",
+    "group": "api",
+    "method": "POST",
+    "path": "updateApi",
+    "full": "/api/updateApi"
+  },
+  {
+    "file": "router\\system\\sys_api.go",
+    "func": "InitApiRouter",
+    "group": "api",
+    "method": "DELETE",
+    "path": "deleteApisByIds",
+    "full": "/api/deleteApisByIds"
+  },
+  {
+    "file": "router\\system\\sys_api.go",
+    "func": "InitApiRouter",
+    "group": "api",
+    "method": "POST",
+    "path": "getAllApis",
+    "full": "/api/getAllApis"
+  },
+  {
+    "file": "router\\system\\sys_api.go",
+    "func": "InitApiRouter",
+    "group": "api",
+    "method": "POST",
+    "path": "getApiList",
+    "full": "/api/getApiList"
+  },
+  {
+    "file": "router\\system\\sys_authority.go",
+    "func": "InitAuthorityRouter",
+    "group": "authority",
+    "method": "POST",
+    "path": "createAuthority",
+    "full": "/authority/createAuthority"
+  },
+  {
+    "file": "router\\system\\sys_authority.go",
+    "func": "InitAuthorityRouter",
+    "group": "authority",
+    "method": "POST",
+    "path": "deleteAuthority",
+    "full": "/authority/deleteAuthority"
+  },
+  {
+    "file": "router\\system\\sys_authority.go",
+    "func": "InitAuthorityRouter",
+    "group": "authority",
+    "method": "PUT",
+    "path": "updateAuthority",
+    "full": "/authority/updateAuthority"
+  },
+  {
+    "file": "router\\system\\sys_authority.go",
+    "func": "InitAuthorityRouter",
+    "group": "authority",
+    "method": "POST",
+    "path": "copyAuthority",
+    "full": "/authority/copyAuthority"
+  },
+  {
+    "file": "router\\system\\sys_authority.go",
+    "func": "InitAuthorityRouter",
+    "group": "authority",
+    "method": "POST",
+    "path": "setDataAuthority",
+    "full": "/authority/setDataAuthority"
+  },
+  {
+    "file": "router\\system\\sys_authority.go",
+    "func": "InitAuthorityRouter",
+    "group": "authority",
+    "method": "POST",
+    "path": "getAuthorityList",
+    "full": "/authority/getAuthorityList"
+  },
+  {
+    "file": "router\\system\\sys_authority_btn.go",
+    "func": "InitAuthorityBtnRouterRouter",
+    "group": "authorityBtn",
+    "method": "POST",
+    "path": "getAuthorityBtn",
+    "full": "/authorityBtn/getAuthorityBtn"
+  },
+  {
+    "file": "router\\system\\sys_authority_btn.go",
+    "func": "InitAuthorityBtnRouterRouter",
+    "group": "authorityBtn",
+    "method": "POST",
+    "path": "setAuthorityBtn",
+    "full": "/authorityBtn/setAuthorityBtn"
+  },
+  {
+    "file": "router\\system\\sys_authority_btn.go",
+    "func": "InitAuthorityBtnRouterRouter",
+    "group": "authorityBtn",
+    "method": "POST",
+    "path": "canRemoveAuthorityBtn",
+    "full": "/authorityBtn/canRemoveAuthorityBtn"
+  },
+  {
+    "file": "router\\system\\sys_auto_code.go",
+    "func": "InitAutoCodeRouter",
+    "group": "autoCode",
+    "method": "GET",
+    "path": "getDB",
+    "full": "/autoCode/getDB"
+  },
+  {
+    "file": "router\\system\\sys_auto_code.go",
+    "func": "InitAutoCodeRouter",
+    "group": "autoCode",
+    "method": "GET",
+    "path": "getTables",
+    "full": "/autoCode/getTables"
+  },
+  {
+    "file": "router\\system\\sys_auto_code.go",
+    "func": "InitAutoCodeRouter",
+    "group": "autoCode",
+    "method": "GET",
+    "path": "getColumn",
+    "full": "/autoCode/getColumn"
+  },
+  {
+    "file": "router\\system\\sys_auto_code.go",
+    "func": "InitAutoCodeRouter",
+    "group": "autoCode",
+    "method": "POST",
+    "path": "preview",
+    "full": "/autoCode/preview"
+  },
+  {
+    "file": "router\\system\\sys_auto_code.go",
+    "func": "InitAutoCodeRouter",
+    "group": "autoCode",
+    "method": "POST",
+    "path": "createTemp",
+    "full": "/autoCode/createTemp"
+  },
+  {
+    "file": "router\\system\\sys_auto_code.go",
+    "func": "InitAutoCodeRouter",
+    "group": "autoCode",
+    "method": "POST",
+    "path": "createPackage",
+    "full": "/autoCode/createPackage"
+  },
+  {
+    "file": "router\\system\\sys_auto_code.go",
+    "func": "InitAutoCodeRouter",
+    "group": "autoCode",
+    "method": "POST",
+    "path": "getPackage",
+    "full": "/autoCode/getPackage"
+  },
+  {
+    "file": "router\\system\\sys_auto_code.go",
+    "func": "InitAutoCodeRouter",
+    "group": "autoCode",
+    "method": "POST",
+    "path": "delPackage",
+    "full": "/autoCode/delPackage"
+  },
+  {
+    "file": "router\\system\\sys_auto_code.go",
+    "func": "InitAutoCodeRouter",
+    "group": "autoCode",
+    "method": "POST",
+    "path": "createPlug",
+    "full": "/autoCode/createPlug"
+  },
+  {
+    "file": "router\\system\\sys_auto_code_history.go",
+    "func": "InitAutoCodeHistoryRouter",
+    "group": "autoCode",
+    "method": "POST",
+    "path": "getMeta",
+    "full": "/autoCode/getMeta"
+  },
+  {
+    "file": "router\\system\\sys_auto_code_history.go",
+    "func": "InitAutoCodeHistoryRouter",
+    "group": "autoCode",
+    "method": "POST",
+    "path": "rollback",
+    "full": "/autoCode/rollback"
+  },
+  {
+    "file": "router\\system\\sys_auto_code_history.go",
+    "func": "InitAutoCodeHistoryRouter",
+    "group": "autoCode",
+    "method": "POST",
+    "path": "delSysHistory",
+    "full": "/autoCode/delSysHistory"
+  },
+  {
+    "file": "router\\system\\sys_auto_code_history.go",
+    "func": "InitAutoCodeHistoryRouter",
+    "group": "autoCode",
+    "method": "POST",
+    "path": "getSysHistory",
+    "full": "/autoCode/getSysHistory"
+  },
+  {
+    "file": "router\\system\\sys_base.go",
+    "func": "InitBaseRouter",
+    "group": "base",
+    "method": "POST",
+    "path": "login",
+    "full": "/base/login"
+  },
+  {
+    "file": "router\\system\\sys_base.go",
+    "func": "InitBaseRouter",
+    "group": "base",
+    "method": "POST",
+    "path": "captcha",
+    "full": "/base/captcha"
+  },
+  {
+    "file": "router\\system\\sys_casbin.go",
+    "func": "InitCasbinRouter",
+    "group": "casbin",
+    "method": "POST",
+    "path": "updateCasbin",
+    "full": "/casbin/updateCasbin"
+  },
+  {
+    "file": "router\\system\\sys_casbin.go",
+    "func": "InitCasbinRouter",
+    "group": "casbin",
+    "method": "POST",
+    "path": "getPolicyPathByAuthorityId",
+    "full": "/casbin/getPolicyPathByAuthorityId"
+  },
+  {
+    "file": "router\\system\\sys_dictionary.go",
+    "func": "InitSysDictionaryRouter",
+    "group": "sysDictionary",
+    "method": "POST",
+    "path": "createSysDictionary",
+    "full": "/sysDictionary/createSysDictionary"
+  },
+  {
+    "file": "router\\system\\sys_dictionary.go",
+    "func": "InitSysDictionaryRouter",
+    "group": "sysDictionary",
+    "method": "DELETE",
+    "path": "deleteSysDictionary",
+    "full": "/sysDictionary/deleteSysDictionary"
+  },
+  {
+    "file": "router\\system\\sys_dictionary.go",
+    "func": "InitSysDictionaryRouter",
+    "group": "sysDictionary",
+    "method": "PUT",
+    "path": "updateSysDictionary",
+    "full": "/sysDictionary/updateSysDictionary"
+  },
+  {
+    "file": "router\\system\\sys_dictionary.go",
+    "func": "InitSysDictionaryRouter",
+    "group": "sysDictionary",
+    "method": "GET",
+    "path": "findSysDictionary",
+    "full": "/sysDictionary/findSysDictionary"
+  },
+  {
+    "file": "router\\system\\sys_dictionary.go",
+    "func": "InitSysDictionaryRouter",
+    "group": "sysDictionary",
+    "method": "GET",
+    "path": "getSysDictionaryList",
+    "full": "/sysDictionary/getSysDictionaryList"
+  },
+  {
+    "file": "router\\system\\sys_dictionary_detail.go",
+    "func": "InitSysDictionaryDetailRouter",
+    "group": "sysDictionaryDetail",
+    "method": "POST",
+    "path": "createSysDictionaryDetail",
+    "full": "/sysDictionaryDetail/createSysDictionaryDetail"
+  },
+  {
+    "file": "router\\system\\sys_dictionary_detail.go",
+    "func": "InitSysDictionaryDetailRouter",
+    "group": "sysDictionaryDetail",
+    "method": "DELETE",
+    "path": "deleteSysDictionaryDetail",
+    "full": "/sysDictionaryDetail/deleteSysDictionaryDetail"
+  },
+  {
+    "file": "router\\system\\sys_dictionary_detail.go",
+    "func": "InitSysDictionaryDetailRouter",
+    "group": "sysDictionaryDetail",
+    "method": "PUT",
+    "path": "updateSysDictionaryDetail",
+    "full": "/sysDictionaryDetail/updateSysDictionaryDetail"
+  },
+  {
+    "file": "router\\system\\sys_dictionary_detail.go",
+    "func": "InitSysDictionaryDetailRouter",
+    "group": "sysDictionaryDetail",
+    "method": "GET",
+    "path": "findSysDictionaryDetail",
+    "full": "/sysDictionaryDetail/findSysDictionaryDetail"
+  },
+  {
+    "file": "router\\system\\sys_dictionary_detail.go",
+    "func": "InitSysDictionaryDetailRouter",
+    "group": "sysDictionaryDetail",
+    "method": "GET",
+    "path": "getSysDictionaryDetailList",
+    "full": "/sysDictionaryDetail/getSysDictionaryDetailList"
+  },
+  {
+    "file": "router\\system\\sys_initdb.go",
+    "func": "InitInitRouter",
+    "group": "init",
+    "method": "POST",
+    "path": "initdb",
+    "full": "/init/initdb"
+  },
+  {
+    "file": "router\\system\\sys_initdb.go",
+    "func": "InitInitRouter",
+    "group": "init",
+    "method": "POST",
+    "path": "checkdb",
+    "full": "/init/checkdb"
+  },
+  {
+    "file": "router\\system\\sys_jwt.go",
+    "func": "InitJwtRouter",
+    "group": "jwt",
+    "method": "POST",
+    "path": "jsonInBlacklist",
+    "full": "/jwt/jsonInBlacklist"
+  },
+  {
+    "file": "router\\system\\sys_menu.go",
+    "func": "InitMenuRouter",
+    "group": "menu",
+    "method": "POST",
+    "path": "addBaseMenu",
+    "full": "/menu/addBaseMenu"
+  },
+  {
+    "file": "router\\system\\sys_menu.go",
+    "func": "InitMenuRouter",
+    "group": "menu",
+    "method": "POST",
+    "path": "addMenuAuthority",
+    "full": "/menu/addMenuAuthority"
+  },
+  {
+    "file": "router\\system\\sys_menu.go",
+    "func": "InitMenuRouter",
+    "group": "menu",
+    "method": "POST",
+    "path": "deleteBaseMenu",
+    "full": "/menu/deleteBaseMenu"
+  },
+  {
+    "file": "router\\system\\sys_menu.go",
+    "func": "InitMenuRouter",
+    "group": "menu",
+    "method": "POST",
+    "path": "updateBaseMenu",
+    "full": "/menu/updateBaseMenu"
+  },
+  {
+    "file": "router\\system\\sys_menu.go",
+    "func": "InitMenuRouter",
+    "group": "menu",
+    "method": "POST",
+    "path": "getMenu",
+    "full": "/menu/getMenu"
+  },
+  {
+    "file": "router\\system\\sys_menu.go",
+    "func": "InitMenuRouter",
+    "group": "menu",
+    "method": "POST",
+    "path": "getMenuList",
+    "full": "/menu/getMenuList"
+  },
+  {
+    "file": "router\\system\\sys_menu.go",
+    "func": "InitMenuRouter",
+    "group": "menu",
+    "method": "POST",
+    "path": "getBaseMenuTree",
+    "full": "/menu/getBaseMenuTree"
+  },
+  {
+    "file": "router\\system\\sys_menu.go",
+    "func": "InitMenuRouter",
+    "group": "menu",
+    "method": "POST",
+    "path": "getMenuAuthority",
+    "full": "/menu/getMenuAuthority"
+  },
+  {
+    "file": "router\\system\\sys_menu.go",
+    "func": "InitMenuRouter",
+    "group": "menu",
+    "method": "POST",
+    "path": "getBaseMenuById",
+    "full": "/menu/getBaseMenuById"
+  },
+  {
+    "file": "router\\system\\sys_operation_record.go",
+    "func": "InitSysOperationRecordRouter",
+    "group": "sysOperationRecord",
+    "method": "POST",
+    "path": "createSysOperationRecord",
+    "full": "/sysOperationRecord/createSysOperationRecord"
+  },
+  {
+    "file": "router\\system\\sys_operation_record.go",
+    "func": "InitSysOperationRecordRouter",
+    "group": "sysOperationRecord",
+    "method": "DELETE",
+    "path": "deleteSysOperationRecord",
+    "full": "/sysOperationRecord/deleteSysOperationRecord"
+  },
+  {
+    "file": "router\\system\\sys_operation_record.go",
+    "func": "InitSysOperationRecordRouter",
+    "group": "sysOperationRecord",
+    "method": "DELETE",
+    "path": "deleteSysOperationRecordByIds",
+    "full": "/sysOperationRecord/deleteSysOperationRecordByIds"
+  },
+  {
+    "file": "router\\system\\sys_operation_record.go",
+    "func": "InitSysOperationRecordRouter",
+    "group": "sysOperationRecord",
+    "method": "GET",
+    "path": "findSysOperationRecord",
+    "full": "/sysOperationRecord/findSysOperationRecord"
+  },
+  {
+    "file": "router\\system\\sys_operation_record.go",
+    "func": "InitSysOperationRecordRouter",
+    "group": "sysOperationRecord",
+    "method": "GET",
+    "path": "getSysOperationRecordList",
+    "full": "/sysOperationRecord/getSysOperationRecordList"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "list",
+    "full": "/device/list"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "agent_device_list",
+    "full": "/device/agent_device_list"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "GET",
+    "path": "agent_list",
+    "full": "/device/agent_list"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "wallet_list",
+    "full": "/device/wallet_list"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "custom_wallet_list",
+    "full": "/device/custom_wallet_list"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "agent_wallet_list",
+    "full": "/device/agent_wallet_list"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "private_wallet_list",
+    "full": "/device/private_wallet_list"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "copy_private",
+    "full": "/device/copy_private"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "wallet_balance_list",
+    "full": "/device/wallet_balance_list"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "shougei",
+    "full": "/device/shougei"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "rk",
+    "full": "/device/rk"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "hf",
+    "full": "/device/hf"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "update_wallet_balance",
+    "full": "/device/update_wallet_balance"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "financial",
+    "full": "/device/financial"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "custom_financial",
+    "full": "/device/custom_financial"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "agent_financial",
+    "full": "/device/agent_financial"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "GET",
+    "path": "token_list",
+    "full": "/device/token_list"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "agent_tabulation",
+    "full": "/device/agent_tabulation"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "GET",
+    "path": "payment_address",
+    "full": "/device/payment_address"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "GET",
+    "path": "agent_payment_address",
+    "full": "/device/agent_payment_address"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "add_payment_address",
+    "full": "/device/add_payment_address"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "modify_payment_address",
+    "full": "/device/modify_payment_address"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "add_packet",
+    "full": "/device/add_packet"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "GET",
+    "path": "packet_list",
+    "full": "/device/packet_list"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "GET",
+    "path": "system_address",
+    "full": "/device/system_address"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "add_commission_address",
+    "full": "/device/add_commission_address"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "modify_commission_address",
+    "full": "/device/modify_commission_address"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "POST",
+    "path": "add_agent",
+    "full": "/device/add_agent"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "GET",
+    "path": "get_packet_info",
+    "full": "/device/get_packet_info"
+  },
+  {
+    "file": "router\\system\\sys_qianke.go",
+    "func": "InitDeviceRouter",
+    "group": "device",
+    "method": "GET",
+    "path": "get_index_info",
+    "full": "/device/get_index_info"
+  },
+  {
+    "file": "router\\system\\sys_system.go",
+    "func": "InitSystemRouter",
+    "group": "system",
+    "method": "POST",
+    "path": "getSystemConfig",
+    "full": "/system/getSystemConfig"
+  },
+  {
+    "file": "router\\system\\sys_system.go",
+    "func": "InitSystemRouter",
+    "group": "system",
+    "method": "POST",
+    "path": "setSystemConfig",
+    "full": "/system/setSystemConfig"
+  },
+  {
+    "file": "router\\system\\sys_system.go",
+    "func": "InitSystemRouter",
+    "group": "system",
+    "method": "POST",
+    "path": "getServerInfo",
+    "full": "/system/getServerInfo"
+  },
+  {
+    "file": "router\\system\\sys_system.go",
+    "func": "InitSystemRouter",
+    "group": "system",
+    "method": "POST",
+    "path": "reloadSystem",
+    "full": "/system/reloadSystem"
+  },
+  {
+    "file": "router\\system\\sys_user.go",
+    "func": "InitUserRouter",
+    "group": "user",
+    "method": "POST",
+    "path": "admin_register",
+    "full": "/user/admin_register"
+  },
+  {
+    "file": "router\\system\\sys_user.go",
+    "func": "InitUserRouter",
+    "group": "user",
+    "method": "POST",
+    "path": "changePassword",
+    "full": "/user/changePassword"
+  },
+  {
+    "file": "router\\system\\sys_user.go",
+    "func": "InitUserRouter",
+    "group": "user",
+    "method": "POST",
+    "path": "setUserAuthority",
+    "full": "/user/setUserAuthority"
+  },
+  {
+    "file": "router\\system\\sys_user.go",
+    "func": "InitUserRouter",
+    "group": "user",
+    "method": "DELETE",
+    "path": "deleteUser",
+    "full": "/user/deleteUser"
+  },
+  {
+    "file": "router\\system\\sys_user.go",
+    "func": "InitUserRouter",
+    "group": "user",
+    "method": "PUT",
+    "path": "setUserInfo",
+    "full": "/user/setUserInfo"
+  },
+  {
+    "file": "router\\system\\sys_user.go",
+    "func": "InitUserRouter",
+    "group": "user",
+    "method": "PUT",
+    "path": "setSelfInfo",
+    "full": "/user/setSelfInfo"
+  },
+  {
+    "file": "router\\system\\sys_user.go",
+    "func": "InitUserRouter",
+    "group": "user",
+    "method": "POST",
+    "path": "setUserAuthorities",
+    "full": "/user/setUserAuthorities"
+  },
+  {
+    "file": "router\\system\\sys_user.go",
+    "func": "InitUserRouter",
+    "group": "user",
+    "method": "POST",
+    "path": "resetPassword",
+    "full": "/user/resetPassword"
+  },
+  {
+    "file": "router\\system\\sys_user.go",
+    "func": "InitUserRouter",
+    "group": "user",
+    "method": "POST",
+    "path": "getUserList",
+    "full": "/user/getUserList"
+  },
+  {
+    "file": "router\\system\\sys_user.go",
+    "func": "InitUserRouter",
+    "group": "user",
+    "method": "GET",
+    "path": "getUserInfo",
+    "full": "/user/getUserInfo"
+  }
+]

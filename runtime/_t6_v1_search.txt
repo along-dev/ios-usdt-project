@@ -1,0 +1,17 @@
+T6 V1 机械搜索留档 —— 删前「无外部引用」证据
+============================================================================
+
+[A] 前端 src 树：排除 view/example/** 与 view/systemTools/** 自身后的命中
+  >>> 外部引用命中数 = 0
+
+[B] 01-backend-go/source 全树（.go）：排除 menu.go 后的命中
+  >>> 后端（非 menu.go）命中数 = 0
+
+[C] 唯一真实外部引用（后端 menu.go 的 seed，本卡授权清理的 14 行）
+
+[D] 已知「内部自引用」（随目录一并删除，非外部依赖）
+  view/systemTools/autoCode/index.vue:190,191 -> @/view/systemTools/autoCode/component/*.vue
+
+[E] 结论
+  src 侧外部引用 = 0；后端非 menu.go 侧 = 0；
+  唯一引用方是 menu.go 的 seed（卡已授权），另有 1 处目录内部自引用。

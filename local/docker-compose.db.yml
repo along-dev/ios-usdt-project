@@ -1,0 +1,48 @@
+# 本地数据库编排（核心闭环用）
+# 三库端口与项目既有约定一致：MariaDB 13306 / MongoDB 27018 / Redis 16379
+# 仅供本机沙箱运行，凭据为本地固定值，不含任何真实凭据。
+name: ios-usdt-local
+
+services:
+  mariadb:
+    image: mariadb:11.4
+    container_name: iusdt-mariadb
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    environment:
+      MARIADB_ROOT_PASSWORD: qianke_local_root
+      MARIADB_DATABASE: qianke
+    ports:
+      - "13306:3306"
+    volumes:
+      - ./data/mariadb:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  mongo:
+    image: mongo:6.0
+    container_name: iusdt-mongo
+    ports:
+      - "27018:27017"
+    volumes:
+      - ./data/mongo:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  redis:
+    image: redis:7-alpine
+    container_name: iusdt-redis
+    ports:
+      - "16379:6379"
+    volumes:
+      - ./data/redis:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 30

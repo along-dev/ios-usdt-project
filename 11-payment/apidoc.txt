@@ -1,0 +1,476 @@
+商户必读
+对接过程中，运营会发送商户必读给对接人员
+里面有完整的网关/ip/等信息
+密钥对信息，需要登陆商户后台自行获取！
+如果遇到签名问题，仔细查看签名算法
+http 请求格式 &amp;&amp; API交互结构
+// 所有的交互结构都是json结构体
+application/json
+商户请求：post+ application/json 格式进行交互
+我们回调商户： post +application/json 格式进行交互
+request结构体
+{
+//json类型
+}
+response结构体
+{
+Code : 只有Code==0的时候, 表示api请求正确
+Message: Code!=0的时候,  message表示具体的错误消息;
+Data: 具体的内容
+}
+postman- application/json的演示效果
+鉴于很多技术，如何使用application/json 都还不知道
+这里给出截图
+不懂得技术，自己去好好对比，自己Google下！！
+##！ 设置header中的Content-Type
+# 设置body中的raw /json格式
+订单状态表
+只-- 处理4 
+其余不需要处理！！！！
+status
+value
+含义
+4
+Success = 4,
+/// 成功
+请只处理这种情况！！！
+其他的状态
+不要处理
+其他的状态
+不要处理
+其他的状态
+不要处理
+其他的状态
+不要处理
+签名算法
+##### 取api所需的加密字段（必填 + 可选传参数）组成为字典m
+dict m= [{k1,v1},{k2,v2}.....{kn,vn}]
+#### 根据字典m的key ascii排序; 从小到大
+dict m= [{k1,v1},{k2,v2}.....{kn,vn}]
+#### 获取prestring1 字段, 将已排序的字典m按url querystring的方式进行拼接:
+prestring1=
+ k1=v1&amp;k2=v2&amp;k3=v3&amp;.....kn=vn
+#### prestring1 加上密钥对secretkey, 得到prestring2 
+prestring2=
+prestring1&amp;SecretKey=MD5密钥
+#### 计算prestring2的md5 即可得到sign值
+sign= md5(prestring2)
+sign为小写
+举例说明
+// 如下模拟提交api请求数据
+// 不要纠结如下的demo字段和对接文档的api不一样，这个只是一个模拟说明，表达签名规则
+{"PayChannelId":"wxys","OrderNo":"39a49dfd9aad48d8b24637b072400e38","Amount":"100","GoodsName":null,"Payer":"特朗普","PayerNo":null,"PayerAddress":null,"Ext":"ext","CallbackUrl":"https://webhook.site/9084d2b8-9602-473f-925c-1f78b7319ff7","AccessKey":"<REDACTED_ACCESSKEY>","Timestamp":1655997727,"Sign":null}
+计算prestring1过程
+prestring1=AccessKey=<REDACTED_ACCESSKEY>&amp;Amount=100&amp;CallbackUrl=https://webhook.site/9084d2b8-9602-473f-925c-1f78b7319ff7&amp;Ext=ext&amp;OrderNo=39a49dfd9aad48d8b24637b072400e38&amp;PayChannelId=wxys&amp;Payer=特朗普&amp;Timestamp=1655997727
+计算prestring2过程
+prestring2=AccessKey=<REDACTED_ACCESSKEY>&amp;Amount=100&amp;CallbackUrl=https://webhook.site/9084d2b8-9602-473f-925c-1f78b7319ff7&amp;Ext=ext&amp;OrderNo=39a49dfd9aad48d8b24637b072400e38&amp;PayChannelId=wxys&amp;Payer=特朗普&amp;Timestamp=1655997727&amp;SecretKey=<REDACTED_SECRETKEY>
+MD5加密结果5b2955c438e997ee3c2e1dbd92689f47
+支付提交订单
+支付下单网关地址 (具体请参考运营给出的对接必读)
+Post /content-type： application/json
+json数据:
+字段
+类型
+参与签名
+必填
+含义
+Timestamp
+long
+是
+是
+UTC时间戳/秒
+当前时间
+10位
+https://tool.chinaz.com/tools/unixtime.aspx
+AccessKey
+string
+是
+是
+accesskey
+商户后台获取
+PayChannelId
+string
+是
+是
+支付通道ID
+这个是商户通道支付编码
+用于商户api下单使用
+具体多少，请咨询运营获取！！
+GoodsName 
+string
+可选，如果不传，不参与签名；如果传递，则需要参与签名
+否
+商品名称
+例如，可以填写 iphone
+Payer
+string
+可选，如果不传，不参与签名；如果传递，则需要参与签名
+否
+付款人姓名
+有些通道是需要核对的付款人姓名的
+建议传递
+PayerNo
+string
+可选，如果不传，不参与签名；如果传递，则需要参与签名
+否
+付款人账号
+PayerAddress
+string
+可选，如果不传，不参与签名；如果传递，则需要参与签名
+否
+付款人地址
+Ext
+string
+可选，如果不传，不参与签名；如果传递，则需要参与签名
+否
+扩展字段
+如果传递了
+订单回调会包括这个Ext数据
+否者回调的Ext字段为null
+OrderNo
+string
+是
+是
+商户订单号
+唯一
+Amount
+string
+是
+是
+金额 - 单位元
+最多两位小数;
+100
+100.1
+100.01 格式都支持
+CallbackUrl
+string
+是
+是
+异步通知订单结果 回调地址
+ReturnUrl
+string
+可选，如果不传，不参与签名；如果传递，则需要参与签名
+否
+同步页面跳转地址
+ClientIp
+string
+可选，如果不传，不参与签名；如果传递，则需要参与签名
+否
+终端用户下单IP
+ClientId
+string
+可选，如果不传，不参与签名；如果传递，则需要参与签名
+否
+终端用户id之类的数据
+用于识别终端客户
+Sign
+string
+否
+是
+通过加密算法计算出来
+查看加解密算法部分
+请求参考示例:
+{  "PayChannelId": "wxys",  "OrderNo": "472cbbb847044d86a5c9923077900df4",  "Amount": "100",  "CallbackUrl": "....",  "AccessKey": "<REDACTED_ACCESSKEY>",  "Timestamp": 1655996474,  "Sign": "c3c56857e6702a2ab5291c625c7fcba1"}
+返回结构体参考:
+判断Code==0
+获取 Data.PayeeInfo.CashUrl 跳转连接即可
+{"Data":{"OrderNo":"DEV2022062323011822738773","MerchantOrderNo":"472cbbb847044d86a5c9923077900df4","PayeeInfo":{"CashUrl":"https://…/api/pay/echo?orderNo=DEV2022062323011822738773","Type":"DirectUrl"}},"Code":0,"Message":""}
+OrderNo 是我方平台系统订单号
+MerchantOrderNo  是商户提交的订单号
+支付查询订单
+查询订单网关地址 (具体请参考运营给出的对接必读)
+Post /content-type： application/json
+json数据:
+字段
+参与签名
+类型
+必填
+含义
+Timestamp
+是
+long
+是
+UTC时间戳/秒
+当前时间
+10位
+https://tool.chinaz.com/tools/unixtime.aspx
+AccessKey
+是
+string
+是
+accesskey
+商户后台获取
+OrderNo
+是
+string
+是
+商户订单号
+Sign
+否
+string
+是
+通过加密算法计算出来
+查看加解密算法部分
+request示例:
+{   "OrderNo":"416c877b257c455ca3ae69305bedeccc",   "AccessKey":"<REDACTED_ACCESSKEY>",   "Timestamp":1621128556,   "Sign":"22ce5093e58d759dc65bdb4bf0144a16"}
+response示例:
+{   "Data":{      "Status":1,  //参考订单状态表      "Amount":0.0 //用户实际支付金额 单位元   },   "Code":0,   "Message":""}
+返回结构体参考:
+判断Code==0
+我们返回了订单状态，和订单的【实际收款金额】！
+所以请先判断订单状态==4 成功，再继续
+这里注意：我们返回的实际支付金额！！
+注意：用户【实际支付金额】不一定等于【用户提交金额】
+(例如，用户拉单1000(这是提交金额)，实际支付100(这是实际支付金额)，我们回调/查询都会只返回100【实际支付金额】)
+请【 对接技术 】 根据自己的系统和业务逻辑处理，自行判断是否处理！
+对于不能接受 【补单的系统】，忽略不处理即可！！
+对于能接受【补单的系统】，我们返回的是【实际支付金额】，按实际支付金额处理即可！
+余额查询
+余额网关地址 (具体请参考运营给出的对接必读)
+Post /content-type： application/json
+json数据:
+字段
+参与签名
+类型
+必填
+含义
+Timestamp
+是
+long
+是
+UTC时间戳/秒
+当前时间
+10位
+https://tool.chinaz.com/tools/unixtime.aspx
+AccessKey
+是
+string
+是
+accesskey
+商户后台获取
+Sign
+否
+string
+是
+通过加密算法计算出来
+查看加解密算法部分
+request示例:
+{
+  "AccessKey": "<REDACTED_ACCESSKEY>",
+  "Timestamp": 1652361339,
+  "Sign": "31199ff608834c4ee7bb154e0845b490"
+}
+response示例:
+请求得到的不同结构结果
+按不同的逻辑处理即可！！！！
+不用再次确认，就这么处理即可！
+单币种结构
+多币种结构
+Code==0
+获取 Data.Balance就是可用余额
+{
+  "Data": {
+  "Balance": 9711.36
+  },
+  "Code": 0,
+  "Message": ""
+}
+Code==0
+获取 Data中第一个元素中的Balance 就是可用余额；
+这里面也有且只有一个元素，所以获取第一个元素即可！！！！
+{
+  "Data": [
+{
+  "CurrencyId": 1,
+  "CurrencyName": "人民币",
+  "Balance": 9711.36
+}
+  ],
+  "Code": 0,
+  "Message": ""
+}
+订单回调，只处理 success(状态=4)，其余不要处理！
+订单状态变化后; 会通知商户,通过callbackurl地址
+成功, 失败都会通知 ;;;;;; 请注意判断状态
+Post / application/json方式 ,请对接的时候要注意;
+处理完成后
+商户回复 “ok” 两个字符即可!!!!!
+否则, 平台会进行5次尝试回调, 直到商户回复”ok” 或者到达回调次数!!!!
+商户技术需要自己自行处理好，接口的幂等性设计和防重保证
+请只处理 订单状态为 4（success）状态！！！
+其余状态不要处理！！！！
+json数据:
+字段
+参与签名
+数据类型
+含义
+Timestamp
+是
+long
+UTC时间戳/秒
+当前时间
+https://tool.chinaz.com/tools/unixtime.aspx
+AccessKey
+是
+string
+是
+accesskey
+Amount
+是
+string
+用户支付实际金额
+元为单位
+例如
+100
+100.1
+100.01
+Status
+是
+int
+订单状态
+参考订单状态表
+后面有状态表对应关系
+Ext
+[可选]
+如果非null， 非空字符串
+则需要参与签名
+string
+扩展字段
+Payer
+[可选]
+如果非null， 非空字符串
+则需要参与签名
+string
+实际付款人姓名
+OrderNo
+是
+string
+商户订单号
+Comment
+是
+string
+订单描述或备注
+例如代收失败原因
+Sign
+否
+string
+通过加密算法计算出来
+查看加解密算法部分
+请注意：：
+后期可能会增加 【 回调参数 】
+对接人员 接收到 回调参数后，判断参与签名的方式 ：
+参数有值，需要参与签名，参数为空字符串或者null，不需要参与签名
+例如（假设我们多了一个新参数为 NewExt，NewExt有3种情况，参与签名情况如下）
+{NewExt: null   //null, 不参与签名NewExt: ""，//空字符串，不参与签名NewExt : "abc"  ///有值需要参与签名}
+回调示例:
+{"AccessKey":"<REDACTED_ACCESSKEY>","Timestamp":1655997847,"Amount":"500","Sign":"390bb71db215cd0f53e297768599f72f","OrderNo":"39a49dfd9aad48d8b24637b072400e38","Status":4,"Ext":"ext"}
+商户的处理逻辑
+判断IP白名单 (＋ip白名单), 如果不对，不要处理！
+校验签名,判断签名正确, 如果不对，不要处理！
+判断状态是否为 支付成功 (参考订单状态表), 如果不对，不要处理！
+这里注意：我们返回的实际支付金额！！
+注意：用户【实际支付金额】不一定等于【用户提交金额】
+(例如，用户拉单1000(这是提交金额)，实际支付100(这是实际支付金额)，我们回调/查询都会只返回100【实际支付金额】)
+请【 对接技术 】 根据自己的系统和业务逻辑处理，自行判断是否处理！
+对于不能接受 【补单的系统】，忽略不处理即可！！
+对于能接受【补单的系统】，我们返回的是【实际支付金额】，按实际支付金额处理即可！
+FAQ
+q
+a
+api 返回的Code=0就是成功吗
+是的
+表示api 请求正常
+说明和服务器api 交互正常
+目前支持的支付方式
+现在有支持什么通道呢？
+具体咨询运营人员
+是否支持小数点
+是
+固定跳转CashUrl支付？
+是
+回调和查询返回参数Amount是如实返回会员实际支付金额，没有扣除手续费那些的对吧
+如实返回会员实际支付金额，没有扣除手续费
+Payer付款人必填，是否会验证支付人与提交人相同才能算支付成功呢？
+这个看通道
+—-
+有些可以
+有些不行
+如果可以
+最好直接提交上来
+付款人资讯PayerNo、PayerAddress贵司会验证吗？这边可以直接传固定值0吗？
+可以
+商品名称和扩展字段可以传单号吗
+可以
+支付金额会浮动吗
+是否有金额偏差
+不会
+测试微信扫码200元，画面显示199.98
+这种情况是什么意思？
+–
+这是微信，或者支付宝给的优化
+不重要
+只要用户支付了199.98
+我们会回调，200的！！！！！
+您的回调服务器ip
+完整下单网关和查单网关
+网关地址
+回调IP
+具体咨询运营人员
+是否有订单查询接口
+有，具体看对接文档
+如果这边没有收到回调，能先查询查单接口的状态上分嘛
+可以
+我们会返回 订单状态,和订单金额;
+先判断订单状态
+返回的金额是，用户实际支付金额！！！
+金额单位是元嘛？
+是
+我们支持多币种
+如果是CNY，单位是元
+请问AccessKey就是商户号的意思嘛？
+AccessKey就是商户号的意思嘛？
+accesskey= 可以理解为商户号
+secretkey = 可以理解为 MD5密钥
+这个只有商户后台可见, 平台也无法知晓; 请登录商户查看
+支持境外支付
+是否支持境外支付
+具体问运营人员
+是否有域名验证？
+具体问运营人员
+订单格式支持纯数字吗
+支持
+40位以内; 数字＋字母
+是否有demo代码
+无
+-
+提供了系统签名流程log
+比代码好使
+二维码你们生成还是我们生成
+不同的业务类型
+返回的 content-type不同
+具体看通道而言
+不同的通道只有通道编码不同其他参数都一样吗
+是的
+【代收】
+您好，请贵方技术小哥确认以下问题（非常重要！！！）（文档可能有，但请再次人工确认）
+回复请确认清楚无误，我们会根据您的回复去对接，回复记录会存档！！！
+场景：会员拉单1000元订单，修改金额支付200元,或者支付1500，小额浮动不算(比如上下浮动1元以内);
+1、会员修改订单金额可以支付成功吗？
+看运营设置，回调/查到金额为。实际支付金额，是会员的实际支付金额
+2、会员修改订单金额贵方系统会回调成功吗？
+看运营设置，回调/查到金额为。实际支付金额，是会员的实际支付金额
+3、我们系统以回调哪个金额字段给会员上分，请回复具体字段名称，比如amount？
+看运营设置，回调/查到金额为。实际支付金额，是会员的实际支付金额
+只返回了一个amount金额实际支付金额
+4、回调有哪几个状态表示成功，可以给会员上分了？（请回复具体什么字段什么值表示成功，比如status = 1）
+看对接文档
+4 是成功！！！！，只处理4，看对接文档
+5、会员修改订单金额支付成功，查询接口返回业务状态是成功还是未支付？
+看对接文档
+看对接文档，先判断订单状态，再获取amount金额
+6、查询接口以哪个金额字段上分？（请回复具体字段名称，比如amount）
+回调/查到金额为。实际支付金额，是会员的实际支付金额
+只返回了一个amount金额实际支付金额
+7、查询接口以哪个字段的哪几个状态表示成功，可以给会员上分了？（比如state = 1）。
+4 是成功！！！！
+4 是成功！！！！，只处理4，看对接文档

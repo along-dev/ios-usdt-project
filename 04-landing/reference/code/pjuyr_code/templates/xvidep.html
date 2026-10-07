@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <base href="/landing-pages/xvidep/">
+
+<meta name="referrer" content="no-referrer">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+	<meta name="theme-color" content="#090909">
+	<meta name="description" content="Fast, private Android video app. Free APK download.">
+	<title>XVIDEOS App - Free Android APK</title>
+	<style>
+		:root {
+			--bg: #070707;
+			--panel: #151515;
+			--panel-2: #1d1d1d;
+			--text: #ffffff;
+			--muted: #b8b8b8;
+			--soft: #e6e6e6;
+			--red: #ed1010;
+			--red-dark: #8f0505;
+			--amber: #ffc857;
+			--green: #28d17c;
+			--line: rgba(255, 255, 255, .13);
+			--shadow: 0 22px 55px rgba(237, 16, 16, .32);
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		html {
+			scroll-behavior: smooth;
+			-webkit-text-size-adjust: 100%;
+		}
+
+		body {
+			margin: 0;
+			background:
+				radial-gradient(circle at 18% 0%, rgba(237, 16, 16, .24), transparent 30rem),
+				linear-gradient(180deg, #160000 0%, var(--bg) 28rem, #000 100%);
+			color: var(--text);
+			font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+			line-height: 1.45;
+			-webkit-tap-highlight-color: transparent;
+		}
+
+		a,
+		button {
+			color: inherit;
+			font: inherit;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		img {
+			display: block;
+			max-width: 100%;
+		}
+
+		button {
+			border: 0;
+			cursor: pointer;
+		}
+
+		.page {
+			min-height: 100vh;
+			padding-bottom: 6.4rem;
+			overflow: hidden;
+		}
+
+		.wrap {
+			width: min(1120px, calc(100% - 32px));
+			margin: 0 auto;
+		}
+
+		.hero {
+			min-height: 100svh;
+			display: grid;
+			align-items: center;
+			padding: 1rem 0 2.8rem;
+			position: relative;
+		}
+
+		.topbar {
+			position: absolute;
+			inset: 1rem 0 auto;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1rem;
+		}
+
+		.brand {
+			display: inline-flex;
+			align-items: center;
+			gap: .55rem;
+			font-weight: 900;
+			font-size: clamp(1.35rem, 5vw, 2.1rem);
+			line-height: 1;
+		}
+
+		.brand-mark {
+			display: grid;
+			place-items: center;
+			width: 2.35rem;
+			height: 2.35rem;
+			border-radius: .55rem;
+			background: var(--red);
+			box-shadow: 0 0 22px rgba(237, 16, 16, .45);
+			font-size: .85rem;
+			font-weight: 1000;
+		}
+
+		.age-pill {
+			border: 1px solid var(--line);
+			border-radius: 999px;
+			padding: .45rem .75rem;
+			color: var(--soft);
+			background: rgba(0, 0, 0, .38);
+			font-size: .78rem;
+			font-weight: 800;
+			white-space: nowrap;
+		}
+
+		.hero-grid {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) minmax(300px, 440px);
+			align-items: center;
+			gap: clamp(2rem, 6vw, 5rem);
+			padding-top: 4.7rem;
+		}
+
+		.copy {
+			max-width: 640px;
+		}
+
+		.kicker {
+			display: inline-flex;
+			align-items: center;
+			gap: .5rem;
+			margin-bottom: 1rem;
+			padding: .48rem .7rem;
+			border: 1px solid rgba(255, 200, 87, .35);
+			border-radius: 999px;
+			background: rgba(255, 200, 87, .1);
+			color: #ffe2a0;
+			font-weight: 850;
+			font-size: .88rem;
+		}
+
+		.kicker::before {
+			content: "";
+			width: .55rem;
+			height: .55rem;
+			border-radius: 999px;
+			background: var(--green);
+			box-shadow: 0 0 0 .33rem rgba(40, 209, 124, .13);
+		}
+
+		h1 {
+			margin: 0;
+			max-width: 12ch;
+			font-size: clamp(3.2rem, 10vw, 7.4rem);
+			line-height: .86;
+			font-weight: 1000;
+			text-transform: uppercase;
+			letter-spacing: 0;
+		}
+
+		.subhead {
+			margin: 1rem 0 0;
+			max-width: 30rem;
+			color: var(--soft);
+			font-size: clamp(1.15rem, 4vw, 1.65rem);
+			font-weight: 800;
+		}
+
+		.subhead strong {
+			color: #fff;
+		}
+
+		.benefits {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: .65rem;
+			margin: 1.25rem 0 1.45rem;
+			max-width: 34rem;
+		}
+
+		.benefit {
+			min-height: 4.25rem;
+			padding: .72rem .78rem;
+			border: 1px solid var(--line);
+			border-radius: .65rem;
+			background: rgba(255, 255, 255, .055);
+		}
+
+		.benefit b {
+			display: block;
+			font-size: .94rem;
+			line-height: 1.15;
+		}
+
+		.benefit span {
+			display: block;
+			margin-top: .22rem;
+			color: var(--muted);
+			font-size: .78rem;
+		}
+
+		.cta-row {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: .8rem;
+			margin-top: 1rem;
+		}
+
+		.btn-download {
+			position: relative;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: .75rem;
+			min-height: 4.35rem;
+			padding: 1rem 1.55rem;
+			border-radius: .8rem;
+			background: linear-gradient(180deg, #ff3434 0%, var(--red) 58%, #b40000 100%);
+			color: #fff;
+			box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, .32);
+			font-weight: 1000;
+			font-size: clamp(1.18rem, 4.8vw, 1.7rem);
+			text-transform: uppercase;
+			text-decoration: none;
+			transition: transform .18s ease, filter .18s ease;
+			isolation: isolate;
+		}
+
+		.btn-download::before {
+			content: "";
+			width: 1.25rem;
+			height: 1.25rem;
+			border-radius: .28rem;
+			background:
+				linear-gradient(90deg, transparent 39%, #fff 40%, #fff 60%, transparent 61%) top / 100% 62% no-repeat,
+				linear-gradient(135deg, transparent 0 36%, #fff 37% 63%, transparent 64%) bottom left / 50% 50% no-repeat,
+				linear-gradient(225deg, transparent 0 36%, #fff 37% 63%, transparent 64%) bottom right / 50% 50% no-repeat;
+		}
+
+		.btn-download::after {
+			content: "";
+			position: absolute;
+			inset: -.28rem;
+			border-radius: 1rem;
+			border: 1px solid rgba(255, 255, 255, .18);
+			z-index: -1;
+		}
+
+		.btn-download:active {
+			transform: scale(.97);
+		}
+
+		.cta-note {
+			color: var(--muted);
+			font-size: .92rem;
+			font-weight: 700;
+		}
+
+		.install-strip {
+			display: flex;
+			flex-wrap: wrap;
+			gap: .65rem;
+			margin-top: 1.05rem;
+			color: #f1f1f1;
+			font-size: .9rem;
+			font-weight: 750;
+		}
+
+		.install-strip span {
+			display: inline-flex;
+			align-items: center;
+			gap: .38rem;
+		}
+
+		.install-strip span::before {
+			content: "";
+			width: .48rem;
+			height: .48rem;
+			border-radius: 999px;
+			background: var(--green);
+		}
+
+		.phone {
+			position: relative;
+			width: min(100%, 390px);
+			margin: 0 auto;
+			padding: .9rem;
+			border: 1px solid rgba(255, 255, 255, .18);
+			border-radius: 2rem;
+			background: linear-gradient(145deg, #2a2a2a, #080808 38%, #171717);
+			box-shadow: 0 40px 90px rgba(0, 0, 0, .55), 0 0 0 .55rem rgba(255, 255, 255, .035);
+		}
+
+		.screen {
+			min-height: 610px;
+			border-radius: 1.35rem;
+			overflow: hidden;
+			background: #090909;
+			border: 1px solid rgba(255, 255, 255, .08);
+		}
+
+		.app-head {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: .95rem .9rem;
+			background: #111;
+			border-bottom: 1px solid rgba(255, 255, 255, .08);
+			font-weight: 900;
+		}
+
+		.live-chip {
+			padding: .24rem .45rem;
+			border-radius: .35rem;
+			background: rgba(237, 16, 16, .18);
+			color: #ff7979;
+			font-size: .72rem;
+			font-weight: 950;
+		}
+
+		.preview {
+			position: relative;
+			min-height: 270px;
+			display: flex;
+			align-items: end;
+			padding: 1rem;
+			background:
+				linear-gradient(0deg, #090909 4%, rgba(9, 9, 9, .2) 50%, transparent),
+				linear-gradient(135deg, rgba(255, 255, 255, .08), transparent 30%),
+				linear-gradient(145deg, #3a1010 0%, #101010 48%, #511313 100%);
+		}
+
+		.preview::before {
+			content: "";
+			position: absolute;
+			inset: 1rem;
+			border-radius: 1rem;
+			border: 1px solid rgba(255, 255, 255, .12);
+			background:
+				linear-gradient(135deg, rgba(255, 255, 255, .08), transparent 44%),
+				repeating-linear-gradient(90deg, rgba(255, 255, 255, .045) 0 1px, transparent 1px 4.4rem);
+			opacity: .75;
+			z-index: 1;
+		}
+
+		.media-img {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			z-index: 0;
+		}
+
+		.preview .media-img {
+			opacity: .9;
+		}
+
+		.media-img.is-missing {
+			display: none;
+		}
+
+		.play {
+			position: absolute;
+			inset: 50% auto auto 50%;
+			transform: translate(-50%, -50%);
+			width: 4.6rem;
+			height: 4.6rem;
+			border-radius: 999px;
+			background: rgba(237, 16, 16, .94);
+			box-shadow: 0 0 0 .55rem rgba(237, 16, 16, .22);
+			z-index: 3;
+		}
+
+		.play::after {
+			content: "";
+			position: absolute;
+			left: 1.85rem;
+			top: 1.35rem;
+			border-left: 1.35rem solid #fff;
+			border-top: .88rem solid transparent;
+			border-bottom: .88rem solid transparent;
+		}
+
+		.preview-copy {
+			position: relative;
+			z-index: 3;
+		}
+
+		.preview-copy b {
+			display: block;
+			font-size: 1.35rem;
+			line-height: 1.1;
+		}
+
+		.preview-copy span {
+			color: var(--muted);
+			font-size: .9rem;
+			font-weight: 750;
+		}
+
+		.mini-grid {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: .7rem;
+			padding: .8rem;
+		}
+
+		.mini {
+			position: relative;
+			overflow: hidden;
+			min-height: 7.6rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: end;
+			padding: .58rem;
+			border-radius: .8rem;
+			background:
+				linear-gradient(0deg, rgba(0, 0, 0, .88), transparent 60%),
+				linear-gradient(135deg, #343434, #111 45%, #631313);
+			border: 1px solid rgba(255, 255, 255, .08);
+		}
+
+		.mini::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			z-index: 1;
+			background: linear-gradient(0deg, rgba(0, 0, 0, .92), rgba(0, 0, 0, .18) 68%, rgba(0, 0, 0, .08));
+		}
+
+		.mini .media-img {
+			opacity: .88;
+		}
+
+		.mini:nth-child(2) {
+			background:
+				linear-gradient(0deg, rgba(0, 0, 0, .88), transparent 60%),
+				linear-gradient(135deg, #24342c, #121212 48%, #781111);
+		}
+
+		.mini:nth-child(3) {
+			background:
+				linear-gradient(0deg, rgba(0, 0, 0, .88), transparent 60%),
+				linear-gradient(135deg, #352d16, #121212 48%, #661616);
+		}
+
+		.mini:nth-child(4) {
+			background:
+				linear-gradient(0deg, rgba(0, 0, 0, .88), transparent 60%),
+				linear-gradient(135deg, #1e2440, #121212 48%, #7a1212);
+		}
+
+		.mini small {
+			position: relative;
+			z-index: 2;
+			color: var(--amber);
+			font-weight: 900;
+		}
+
+		.mini b {
+			position: relative;
+			z-index: 2;
+			margin-top: .1rem;
+			font-size: .86rem;
+			line-height: 1.15;
+		}
+
+		.download-panel {
+			padding: .8rem;
+			border-top: 1px solid rgba(255, 255, 255, .08);
+			background: #0f0f0f;
+		}
+
+		.panel-row {
+			display: flex;
+			justify-content: space-between;
+			gap: 1rem;
+			margin-bottom: .7rem;
+			color: var(--muted);
+			font-size: .82rem;
+			font-weight: 750;
+		}
+
+		.phone .btn-download {
+			width: 100%;
+			min-height: 3.45rem;
+			font-size: 1.05rem;
+			border-radius: .65rem;
+		}
+
+		.section {
+			padding: clamp(2.6rem, 7vw, 5rem) 0;
+		}
+
+		.section-title {
+			margin: 0 0 1.15rem;
+			font-size: clamp(1.9rem, 7vw, 3.4rem);
+			line-height: .96;
+			font-weight: 1000;
+			text-transform: uppercase;
+			max-width: 14ch;
+		}
+
+		.reason-grid {
+			display: grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			gap: .8rem;
+		}
+
+		.reason {
+			min-height: 10.2rem;
+			padding: 1rem;
+			border-radius: .8rem;
+			background: linear-gradient(180deg, var(--panel), #0d0d0d);
+			border: 1px solid var(--line);
+		}
+
+		.reason .num {
+			color: var(--red);
+			font-size: .78rem;
+			font-weight: 1000;
+		}
+
+		.reason h3 {
+			margin: .55rem 0 .42rem;
+			font-size: 1.1rem;
+			line-height: 1.12;
+		}
+
+		.reason p {
+			margin: 0;
+			color: var(--muted);
+			font-size: .92rem;
+		}
+
+		.visual-section {
+			padding-top: 0;
+		}
+
+		.gallery {
+			display: grid;
+			grid-template-columns: 1.25fr .9fr .9fr;
+			gap: .85rem;
+		}
+
+		.shot {
+			position: relative;
+			overflow: hidden;
+			min-height: 15rem;
+			display: flex;
+			align-items: end;
+			padding: 1rem;
+			border-radius: .9rem;
+			border: 1px solid var(--line);
+			background:
+				linear-gradient(0deg, rgba(0, 0, 0, .9), transparent 68%),
+				linear-gradient(135deg, #3a1010, #111 52%, #3d0e0e);
+		}
+
+		.shot:first-child {
+			grid-row: span 2;
+			min-height: 30.9rem;
+		}
+
+		.shot::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			z-index: 1;
+			background: linear-gradient(0deg, rgba(0, 0, 0, .9), rgba(0, 0, 0, .08) 62%, rgba(0, 0, 0, .22));
+		}
+
+		.shot .media-img {
+			opacity: .9;
+			transition: transform .28s ease, opacity .28s ease;
+		}
+
+		.shot-copy {
+			position: relative;
+			z-index: 2;
+		}
+
+		.shot-copy small {
+			display: inline-block;
+			margin-bottom: .35rem;
+			color: var(--amber);
+			font-weight: 1000;
+			text-transform: uppercase;
+		}
+
+		.shot-copy b {
+			display: block;
+			max-width: 15rem;
+			font-size: clamp(1.05rem, 3vw, 1.45rem);
+			line-height: 1.05;
+		}
+
+		.hot-strip {
+			background: #f5f5f5;
+			color: #080808;
+			padding: 2.25rem 0;
+		}
+
+		.hot-strip .wrap {
+			display: grid;
+			grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+			gap: 1rem;
+			align-items: center;
+		}
+
+		.hot-strip h2 {
+			margin: 0;
+			font-size: clamp(1.8rem, 6vw, 3rem);
+			line-height: 1;
+			font-weight: 1000;
+			text-transform: uppercase;
+		}
+
+		.trends {
+			display: flex;
+			flex-wrap: wrap;
+			gap: .55rem;
+			justify-content: flex-end;
+		}
+
+		.trends span {
+			padding: .58rem .78rem;
+			border-radius: 999px;
+			background: #111;
+			color: #fff;
+			font-size: .9rem;
+			font-weight: 850;
+		}
+
+		.final {
+			text-align: center;
+			padding: clamp(3rem, 8vw, 5.5rem) 0;
+			background:
+				linear-gradient(180deg, #090909, #190303 55%, #000);
+		}
+
+		.final h2 {
+			margin: 0 auto .8rem;
+			max-width: 12ch;
+			font-size: clamp(2.35rem, 9vw, 5.4rem);
+			line-height: .9;
+			font-weight: 1000;
+			text-transform: uppercase;
+		}
+
+		.final p {
+			margin: 0 auto 1.45rem;
+			max-width: 32rem;
+			color: var(--soft);
+			font-size: 1.12rem;
+			font-weight: 750;
+		}
+
+		.sticky-cta {
+			position: fixed;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 50;
+			padding: .75rem .9rem max(.75rem, env(safe-area-inset-bottom));
+			background: rgba(5, 5, 5, .92);
+			border-top: 1px solid rgba(255, 255, 255, .12);
+			backdrop-filter: blur(12px);
+		}
+
+		.sticky-inner {
+			display: grid;
+			grid-template-columns: 1fr auto;
+			align-items: center;
+			gap: .85rem;
+			width: min(1120px, 100%);
+			margin: 0 auto;
+		}
+
+		.sticky-title {
+			font-weight: 950;
+			line-height: 1.1;
+		}
+
+		.sticky-title span {
+			display: block;
+			margin-top: .18rem;
+			color: var(--green);
+			font-size: .82rem;
+			font-weight: 850;
+		}
+
+		.sticky-cta .btn-download {
+			min-height: 3.25rem;
+			padding: .75rem 1rem;
+			border-radius: .65rem;
+			font-size: .95rem;
+			white-space: nowrap;
+		}
+
+		footer {
+			padding: 1.6rem 0 7.5rem;
+			color: #777;
+			border-top: 1px solid rgba(255, 255, 255, .08);
+			background: #000;
+			text-align: center;
+			font-size: .75rem;
+		}
+
+		@media (hover: hover) {
+			.btn-download:hover {
+				transform: translateY(-1px);
+				filter: brightness(1.07);
+			}
+		}
+
+		@media (max-width: 860px) {
+			.hero {
+				align-items: start;
+				padding-top: .9rem;
+			}
+
+			.topbar {
+				position: relative;
+				inset: auto;
+			}
+
+			.hero-grid {
+				grid-template-columns: 1fr;
+				gap: 1.35rem;
+				padding-top: 1.6rem;
+			}
+
+			.copy {
+				text-align: left;
+			}
+
+			h1 {
+				max-width: 10ch;
+			}
+
+			.benefits {
+				grid-template-columns: 1fr;
+				gap: .55rem;
+			}
+
+			.benefit {
+				min-height: auto;
+				display: flex;
+				justify-content: space-between;
+				gap: 1rem;
+			}
+
+			.benefit span {
+				margin-top: 0;
+				text-align: right;
+			}
+
+			.cta-row .btn-download {
+				width: 100%;
+			}
+
+			.cta-note {
+				width: 100%;
+				text-align: center;
+			}
+
+			.phone {
+				width: min(100%, 355px);
+			}
+
+			.screen {
+				min-height: 520px;
+			}
+
+			.preview {
+				min-height: 215px;
+			}
+
+			.reason-grid {
+				grid-template-columns: 1fr 1fr;
+			}
+
+			.gallery {
+				grid-template-columns: 1fr 1fr;
+			}
+
+			.shot:first-child {
+				grid-column: 1 / -1;
+				grid-row: auto;
+				min-height: 17rem;
+			}
+
+			.hot-strip .wrap {
+				grid-template-columns: 1fr;
+			}
+
+			.trends {
+				justify-content: flex-start;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.wrap {
+				width: min(100% - 24px, 1120px);
+			}
+
+			.age-pill {
+				font-size: .7rem;
+				padding-inline: .58rem;
+			}
+
+			.hero {
+				min-height: auto;
+				padding-bottom: 1.8rem;
+			}
+
+			.kicker {
+				font-size: .78rem;
+			}
+
+			.subhead {
+				max-width: 21rem;
+			}
+
+			.install-strip {
+				font-size: .82rem;
+			}
+
+			.screen {
+				min-height: 500px;
+			}
+
+			.reason-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.reason {
+				min-height: auto;
+			}
+
+			.gallery {
+				grid-template-columns: 1fr;
+			}
+
+			.shot,
+			.shot:first-child {
+				min-height: 13.5rem;
+			}
+
+			.sticky-inner {
+				grid-template-columns: 1fr;
+				gap: .55rem;
+			}
+
+			.sticky-title {
+				display: none;
+			}
+
+			.sticky-cta .btn-download {
+				width: 100%;
+			}
+		}
+	</style>
+
+  <script src="/landing-runtime.js" defer></script>
+</head>
+
+<body>
+	<main class="page">
+		<header class="hero">
+<div class="wrap topbar">
+				<div class="brand" aria-label="XVIDEOS">
+					<span class="brand-mark">X</span>
+					<span>XVIDEOS</span>
+				</div>
+				<div class="age-pill">Android APK 18+</div>
+			</div>
+
+			<div class="wrap hero-grid">
+				<section class="copy" aria-labelledby="hero-title">
+					<div class="kicker">Private mobile viewing is ready</div>
+					<h1 id="hero-title">Watch faster in the app</h1>
+					<p class="subhead"><strong>Install the free Android APK</strong> for smoother videos, private mode,
+						and offline saves.</p>
+
+					<div class="benefits" aria-label="App benefits">
+						<div class="benefit">
+							<b>No sign-up</b>
+							<span>open and watch</span>
+						</div>
+						<div class="benefit">
+							<b>Private mode</b>
+							<span>cleaner history</span>
+						</div>
+						<div class="benefit">
+							<b>Fast APK</b>
+							<span>Android 7+</span>
+						</div>
+					</div>
+
+					<div class="cta-row">
+						<a class="btn-download js-download" href="download/" rel="nofollow">Download Free APK</a>
+						<div class="cta-note">Free install. Updated daily. Built for mobile.</div>
+					</div>
+
+					<div class="install-strip" aria-label="Download highlights">
+						<span>One-tap download</span>
+						<span>Works on 4G and 5G</span>
+						<span>Less buffering</span>
+					</div>
+				</section>
+
+				<aside class="phone" aria-label="App preview">
+					<div class="screen">
+						<div class="app-head">
+							<span>Trending now</span>
+							<span class="live-chip">LIVE</span>
+						</div>
+						<a class="preview js-download" href="download/" rel="nofollow"
+							aria-label="Download to keep watching">
+							<img class="media-img js-media-img" src="static/picture/1.jpg" alt="" loading="eager"
+								decoding="async">
+							<span class="play" aria-hidden="true"></span>
+							<span class="preview-copy">
+								<b>Your video is ready</b>
+								<span>Install the app to continue in HD</span>
+							</span>
+						</a>
+						<div class="mini-grid">
+							<div class="mini">
+								<img class="media-img js-media-img" src="static/picture/2.jpg" alt="" loading="lazy"
+									decoding="async">
+								<small>HD</small><b>New clips every day</b>
+							</div>
+							<div class="mini">
+								<img class="media-img js-media-img" src="static/picture/3.jpg" alt="" loading="lazy"
+									decoding="async">
+								<small>FAST</small><b>Optimized mobile player</b>
+							</div>
+							<div class="mini">
+								<img class="media-img js-media-img" src="static/picture/4.jpg" alt="" loading="lazy"
+									decoding="async">
+								<small>SAVE</small><b>Offline playlist</b>
+							</div>
+							<div class="mini">
+								<img class="media-img js-media-img" src="static/picture/5.jpg" alt="" loading="lazy"
+									decoding="async">
+								<small>PRIVATE</small><b>Private app mode</b>
+							</div>
+						</div>
+						<div class="download-panel">
+							<div class="panel-row">
+								<span>APK size: lightweight</span>
+								<span>Free</span>
+							</div>
+							<a class="btn-download js-download" href="download/" rel="nofollow">Unlock the App</a>
+						</div>
+					</div>
+				</aside>
+			</div>
+		</header>
+
+		<section class="section">
+			<div class="wrap">
+				<h2 class="section-title">Why install instead of browsing?</h2>
+				<div class="reason-grid">
+					<article class="reason">
+						<div class="num">01</div>
+						<h3>Less waiting</h3>
+						<p>The app keeps playback simple and fast on mobile networks.</p>
+					</article>
+					<article class="reason">
+						<div class="num">02</div>
+						<h3>More private</h3>
+						<p>Open content in a cleaner private mode with less visible history.</p>
+					</article>
+					<article class="reason">
+						<div class="num">03</div>
+						<h3>Easier to return</h3>
+						<p>Save your favorites and come back without searching again.</p>
+					</article>
+					<article class="reason">
+						<div class="num">04</div>
+						<h3>Built for Android</h3>
+						<p>Direct APK download for phones running Android 7 or newer.</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="section visual-section" aria-label="App preview images">
+			<div class="wrap gallery">
+				<a class="shot js-download" href="download/" rel="nofollow"
+					aria-label="Download APK from featured preview">
+					<img class="media-img js-media-img" src="static/picture/6.jpg" alt="" loading="lazy" decoding="async">
+					<span class="shot-copy"><small>Featured</small><b>Open the app for fresh HD
+							recommendations</b></span>
+				</a>
+				<a class="shot js-download" href="download/" rel="nofollow"
+					aria-label="Download APK from private preview">
+					<img class="media-img js-media-img" src="static/picture/7.jpg" alt="" loading="lazy" decoding="async">
+					<span class="shot-copy"><small>Private</small><b>Cleaner viewing on your phone</b></span>
+				</a>
+				<a class="shot js-download" href="download/" rel="nofollow"
+					aria-label="Download APK from offline preview">
+					<img class="media-img js-media-img" src="static/picture/1.jpg" alt="" loading="lazy" decoding="async">
+					<span class="shot-copy"><small>Offline</small><b>Save videos and come back whenever you
+							want</b></span>
+				</a>
+			</div>
+		</section>
+
+		<section class="hot-strip" aria-label="Popular app categories">
+			<div class="wrap">
+				<h2>Popular on mobile today</h2>
+				<div class="trends">
+					<span>HD videos</span>
+					<span>Trending clips</span>
+					<span>Private mode</span>
+					<span>Offline saves</span>
+					<span>Daily updates</span>
+				</div>
+			</div>
+		</section>
+
+		<section class="final">
+			<div class="wrap">
+				<h2>Ready to open the app?</h2>
+				<p>Download the free APK now and keep watching with a faster mobile experience.</p>
+				<a class="btn-download js-download" href="download/" rel="nofollow">Download Free APK</a>
+			</div>
+		</section>
+	</main>
+
+	<div class="sticky-cta" role="region" aria-label="Download the app">
+		<div class="sticky-inner">
+			<div class="sticky-title">App download ready <span>Free Android APK</span></div>
+			<a class="btn-download js-download" href="download/" rel="nofollow">Download APK</a>
+		</div>
+	</div>
+
+	<footer>
+		<div class="wrap">
+			<p>Copyright 2026 XVIDEOS.COM. For 18+ only.</p>
+			<p>Android APK landing page optimized for mobile users.</p>
+		</div>
+	</footer>
+
+	<script>
+		(function () {
+			let locked = false;
+			const target = 'download/';
+
+			function trackDownload() {
+				if (typeof fbq === 'function') {
+					fbq('track', 'AddToCart');
+				}
+				if (typeof gtag === 'function') {
+					gtag('event', 'download_click', { event_category: 'apk' });
+				}
+			}
+
+			function downloadApp(event) {
+				if (event) {
+					event.preventDefault();
+				}
+				if (locked) {
+					return;
+				}
+				locked = true;
+				trackDownload();
+				window.location.href = target;
+				window.setTimeout(function () {
+					locked = false;
+				}, 4000);
+			}
+
+			document.querySelectorAll('.js-download').forEach(function (node) {
+				node.addEventListener('click', downloadApp);
+			});
+
+			document.querySelectorAll('.js-media-img').forEach(function (img) {
+				img.addEventListener('error', function () {
+					img.classList.add('is-missing');
+					img.removeAttribute('src');
+				}, { once: true });
+			});
+		})();
+	</script>
+	
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+
+</html>

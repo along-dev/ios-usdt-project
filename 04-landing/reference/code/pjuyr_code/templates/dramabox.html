@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>DramaBox - Free Short Dramas</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#fff;color:#1a1a1a;min-height:100vh}
+.promo-bar{background:linear-gradient(90deg,#ff6b6b,#ee5a24);color:#fff;text-align:center;padding:8px;font-size:12px;font-weight:600}
+.header{padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eee}
+.logo{font-size:20px;font-weight:800;display:flex;align-items:center;gap:8px}
+.logo-badge{background:#ff6b6b;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700}
+.dl-sm{background:#ff6b6b;color:#fff;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;text-decoration:none;border:none}
+.promo-card{margin:12px 16px;border-radius:16px;overflow:hidden;position:relative;height:180px}
+.promo-card img{width:100%;height:100%;object-fit:cover}
+.promo-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,107,107,.8),rgba(238,90,36,.6));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px}
+.promo-overlay h2{font-size:22px;color:#fff;margin-bottom:4px}
+.promo-overlay p{font-size:13px;color:rgba(255,255,255,.9);margin-bottom:12px}
+.promo-btn{background:#fff;color:#ff6b6b;padding:10px 24px;border-radius:25px;font-size:14px;font-weight:700;text-decoration:none;display:inline-block}
+.tabs{display:flex;border-bottom:2px solid #eee;padding:0 20px}
+.tab{padding:10px 0;margin-right:20px;font-size:13px;color:#999;font-weight:600;cursor:pointer;position:relative}
+.tab.active{color:#ff6b6b}
+.tab.active::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:#ff6b6b}
+.drama-list{padding:12px 20px}
+.drama-row{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #f5f5f5}
+.drama-thumb{width:80px;height:110px;border-radius:8px;overflow:hidden;flex-shrink:0}
+.drama-thumb img{width:100%;height:100%;object-fit:cover}
+.drama-detail{flex:1;display:flex;flex-direction:column;justify-content:center}
+.drama-title{font-size:15px;font-weight:600;margin-bottom:4px}
+.drama-desc{font-size:12px;color:#888;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.drama-tags{display:flex;gap:6px}
+.drama-tag{background:#f5f5f5;color:#666;padding:2px 8px;border-radius:4px;font-size:10px}
+.drama-tag.hot{background:#fff0f0;color:#ff6b6b}
+.counter{text-align:center;padding:16px;margin:0 16px;background:#fafafa;border-radius:12px;margin-bottom:16px}
+.counter-num{font-size:28px;font-weight:800;color:#ff6b6b}
+.counter-label{font-size:12px;color:#999}
+.dl-btn{display:block;margin:0 20px;background:linear-gradient(135deg,#ff6b6b,#ee5a24);text-align:center;padding:16px;border-radius:30px;font-size:17px;font-weight:700;color:#fff;text-decoration:none;box-shadow:0 4px 15px rgba(255,107,107,.3)}
+.dl-btn:active{transform:scale(.97)}
+.guarantee{text-align:center;padding:10px;font-size:11px;color:#bbb}
+.bottom-pad{height:80px}
+.float-dl{position:fixed;bottom:0;left:0;right:0;padding:12px 20px;background:linear-gradient(transparent,#fff 30%);z-index:99}
+</style>
+</head>
+<body>
+<div class="promo-bar">🎉 Limited Time: Watch ALL dramas FREE - No subscription needed!</div>
+<div class="header">
+  <div class="logo">📺 DramaBox <span class="logo-badge">FREE</span></div>
+  <a href="#" class="dl-sm" onclick="doDownload();return false">Install</a>
+</div>
+<div class="promo-card">
+  <img src="/images/covers/cover_06.webp" alt="">
+  <div class="promo-overlay">
+    <h2>Free Forever</h2>
+    <p>2,000+ dramas • Updated daily</p>
+    <a href="#" class="promo-btn" onclick="doDownload();return false">Watch Now</a>
+  </div>
+</div>
+<div class="tabs">
+  <div class="tab active">Popular</div>
+  <div class="tab">New</div>
+  <div class="tab">Romance</div>
+  <div class="tab">Thriller</div>
+</div>
+<div class="drama-list">
+  <div class="drama-row"><div class="drama-thumb"><img src="/images/covers/cover_03.webp" alt=""></div><div class="drama-detail"><div class="drama-title">My CEO Husband</div><div class="drama-desc">When a contract marriage turns into unexpected love, can she trust the billionaire?</div><div class="drama-tags"><span class="drama-tag hot">🔥 Hot</span><span class="drama-tag">Romance</span><span class="drama-tag">80 EP</span></div></div></div>
+  <div class="drama-row"><div class="drama-thumb"><img src="/images/covers/cover_01.webp" alt=""></div><div class="drama-detail"><div class="drama-title">The Secret Affair</div><div class="drama-desc">A forbidden love story set against the backdrop of New York City's elite society.</div><div class="drama-tags"><span class="drama-tag hot">🔥 Hot</span><span class="drama-tag">Drama</span><span class="drama-tag">60 EP</span></div></div></div>
+  <div class="drama-row"><div class="drama-thumb"><img src="/images/covers/cover_02.webp" alt=""></div><div class="drama-detail"><div class="drama-title">Billionaire's Trap</div><div class="drama-desc">He built an empire. She's the only one who can bring it down.</div><div class="drama-tags"><span class="drama-tag">Thriller</span><span class="drama-tag">45 EP</span></div></div></div>
+  <div class="drama-row"><div class="drama-thumb"><img src="/images/covers/cover_04.webp" alt=""></div><div class="drama-detail"><div class="drama-title">Wolf King's Bride</div><div class="drama-desc">In a world of wolves and kingdoms, one woman must choose between love and duty.</div><div class="drama-tags"><span class="drama-tag">Fantasy</span><span class="drama-tag">70 EP</span></div></div></div>
+  <div class="drama-row"><div class="drama-thumb"><img src="/images/covers/cover_05.webp" alt=""></div><div class="drama-detail"><div class="drama-title">A Silver Fox</div><div class="drama-desc">Revenge has no expiration date. A powerful man returns to settle old scores.</div><div class="drama-tags"><span class="drama-tag">Revenge</span><span class="drama-tag">55 EP</span></div></div></div>
+</div>
+<div class="counter">
+  <div class="counter-num">1,284,726</div>
+  <div class="counter-label">people are watching right now</div>
+</div>
+<a href="#" class="dl-btn" onclick="doDownload();return false">⬇ Download DramaBox - FREE</a>
+<p class="guarantee">✓ No subscription • ✓ No payment • ✓ Free forever</p>
+<div class="bottom-pad"></div>
+<div class="float-dl"><a href="#" class="dl-btn" onclick="doDownload();return false">⬇ Install DramaBox - FREE</a></div>
+
+<script>
+var apkUrl='/api/apk/download';
+fetch('/api/apk-url').then(function(r){return r.json()}).then(function(d){
+  apkUrl=d.url||d.apk_url||'/api/apk/download';
+  document.querySelectorAll('.dl-btn').forEach(function(el){el.href=apkUrl});
+}).catch(function(){});
+
+// Visit tracking
+(function(){
+  var sid='';
+  fetch('/api/track/start',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({referrer:document.referrer,ua:navigator.userAgent})})
+  .then(function(r){return r.json()}).then(function(d){sid=d.session_id||'';
+    setInterval(function(){if(sid)fetch('/api/track/heartbeat',{method:'POST',
+      headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sid})})},15000);
+  }).catch(function(){});
+  window._trackClick=function(){if(sid)fetch('/api/track/click',{method:'POST',
+    headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sid})}).catch(function(){})};
+})();
+
+// FB Pixel
+fetch('/api/pixel-config').then(function(r){return r.json()}).then(function(d){
+  var ids=d.pixel_ids||[];if(!ids.length)return;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  ids.forEach(function(id){fbq('init',id)});fbq('track','PageView');
+  fbq('track','ViewContent',{content_name:document.title});
+  setTimeout(function(){fbq('track','Lead')},10000);
+  window._fbDL=function(){fbq('trackCustom','Download',{content_name:document.title})};
+}).catch(function(){});
+
+function doDownload(){
+  if(window._trackClick)window._trackClick();
+  if(window._fbDL)window._fbDL();
+  if(apkUrl)window.location.href=apkUrl;
+}
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body></html>

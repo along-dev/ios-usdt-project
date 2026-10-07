@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>MyLoveDay - Find Your Perfect Match</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:linear-gradient(180deg,#ff6b9d,#c44dff,#6c3fd1);color:#fff;min-height:100vh}
+.header{padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:22px;font-weight:800}
+.online-badge{display:flex;align-items:center;gap:4px;font-size:12px;color:rgba(255,255,255,.8)}
+.online-dot{width:8px;height:8px;background:#4ade80;border-radius:50%;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.hero{text-align:center;padding:20px}
+h1{font-size:26px;margin-bottom:6px}
+.sub{font-size:14px;color:rgba(255,255,255,.8);margin-bottom:20px}
+.profiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 16px;margin-bottom:16px}
+.profile{border-radius:12px;overflow:hidden;position:relative;aspect-ratio:3/4}
+.profile img{width:100%;height:100%;object-fit:cover}
+.profile-info{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.8));padding:8px 6px 6px}
+.profile-name{font-size:11px;font-weight:600}
+.profile-age{font-size:10px;color:rgba(255,255,255,.7)}
+.profile .heart{position:absolute;top:6px;right:6px;font-size:16px;filter:drop-shadow(0 1px 3px rgba(0,0,0,.5))}
+.stats{display:flex;justify-content:space-around;padding:16px 20px;margin:0 16px 16px;background:rgba(255,255,255,.1);border-radius:14px;backdrop-filter:blur(10px)}
+.stat{text-align:center}
+.stat-num{font-size:22px;font-weight:800}
+.stat-label{font-size:11px;color:rgba(255,255,255,.7)}
+.features{padding:0 20px;margin-bottom:20px}
+.feat-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.feat-icon{font-size:24px}
+.feat-text h4{font-size:13px;font-weight:600}
+.feat-text p{font-size:11px;color:rgba(255,255,255,.6)}
+.dl-btn{display:block;margin:0 20px;background:#fff;color:#c44dff;text-align:center;padding:16px;border-radius:30px;font-size:17px;font-weight:700;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+.dl-btn:active{transform:scale(.97)}
+.bottom-pad{height:90px}
+.float-dl{position:fixed;bottom:0;left:0;right:0;padding:12px 20px;background:linear-gradient(transparent,rgba(108,63,209,.95) 30%);z-index:99}
+.float-dl .dl-btn{box-shadow:0 4px 25px rgba(255,255,255,.3)}
+.hearts-bg{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.float-heart{position:absolute;font-size:20px;opacity:.15;animation:floatUp 6s linear infinite}
+@keyframes floatUp{0%{transform:translateY(100vh) rotate(0);opacity:.15}100%{transform:translateY(-20vh) rotate(360deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="hearts-bg">
+  <div class="float-heart" style="left:10%;animation-delay:0s">💕</div>
+  <div class="float-heart" style="left:30%;animation-delay:1s">💖</div>
+  <div class="float-heart" style="left:50%;animation-delay:2s">💗</div>
+  <div class="float-heart" style="left:70%;animation-delay:3s">💕</div>
+  <div class="float-heart" style="left:90%;animation-delay:4s">💖</div>
+</div>
+<div class="header" style="position:relative;z-index:1">
+  <div class="logo">💕 MyLoveDay</div>
+  <div class="online-badge"><div class="online-dot"></div>12,847 online</div>
+</div>
+<div style="position:relative;z-index:1">
+<div class="hero">
+  <h1>Find Your Perfect Match</h1>
+  <p class="sub">Real people, real connections. Start today!</p>
+</div>
+<div class="profiles">
+  <div class="profile"><img src="/images/kiss/kiss_01.webp" alt=""><div class="heart">❤️</div><div class="profile-info"><div class="profile-name">Sophia</div><div class="profile-age">24, 2km</div></div></div>
+  <div class="profile"><img src="/images/kiss/kiss_03.webp" alt=""><div class="heart">❤️</div><div class="profile-info"><div class="profile-name">Emma</div><div class="profile-age">22, 5km</div></div></div>
+  <div class="profile"><img src="/images/kiss/kiss_05.webp" alt=""><div class="heart">❤️</div><div class="profile-info"><div class="profile-name">Isabella</div><div class="profile-age">26, 1km</div></div></div>
+  <div class="profile"><img src="/images/kiss/kiss_07.webp" alt=""><div class="heart">❤️</div><div class="profile-info"><div class="profile-name">Mia</div><div class="profile-age">23, 3km</div></div></div>
+  <div class="profile"><img src="/images/kiss/kiss_09.webp" alt=""><div class="heart">❤️</div><div class="profile-info"><div class="profile-name">Luna</div><div class="profile-age">25, 4km</div></div></div>
+  <div class="profile"><img src="/images/kiss/kiss_11.webp" alt=""><div class="heart">❤️</div><div class="profile-info"><div class="profile-name">Ava</div><div class="profile-age">21, 2km</div></div></div>
+</div>
+<div class="stats">
+  <div class="stat"><div class="stat-num">5M+</div><div class="stat-label">Members</div></div>
+  <div class="stat"><div class="stat-num">85%</div><div class="stat-label">Match Rate</div></div>
+  <div class="stat"><div class="stat-num">FREE</div><div class="stat-label">To Join</div></div>
+</div>
+<div class="features">
+  <div class="feat-row"><div class="feat-icon">📍</div><div class="feat-text"><h4>Nearby Matches</h4><p>Find singles in your area</p></div></div>
+  <div class="feat-row"><div class="feat-icon">💬</div><div class="feat-text"><h4>Instant Chat</h4><p>Message matches instantly</p></div></div>
+  <div class="feat-row"><div class="feat-icon">🔒</div><div class="feat-text"><h4>Safe & Private</h4><p>Verified profiles only</p></div></div>
+</div>
+</div>
+<div class="bottom-pad"></div>
+<div class="float-dl"><a href="#" class="dl-btn" onclick="doDownload();return false">💕 Start Matching - FREE</a></div>
+
+<script>
+var apkUrl='/api/apk/download';
+fetch('/api/apk-url').then(function(r){return r.json()}).then(function(d){
+  apkUrl=d.url||d.apk_url||'/api/apk/download';
+  document.querySelectorAll('.dl-btn').forEach(function(el){el.href=apkUrl});
+}).catch(function(){});
+
+// Visit tracking
+(function(){
+  var sid='';
+  fetch('/api/track/start',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({referrer:document.referrer,ua:navigator.userAgent})})
+  .then(function(r){return r.json()}).then(function(d){sid=d.session_id||'';
+    setInterval(function(){if(sid)fetch('/api/track/heartbeat',{method:'POST',
+      headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sid})})},15000);
+  }).catch(function(){});
+  window._trackClick=function(){if(sid)fetch('/api/track/click',{method:'POST',
+    headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sid})}).catch(function(){})};
+})();
+
+// FB Pixel
+fetch('/api/pixel-config').then(function(r){return r.json()}).then(function(d){
+  var ids=d.pixel_ids||[];if(!ids.length)return;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  ids.forEach(function(id){fbq('init',id)});fbq('track','PageView');
+  fbq('track','ViewContent',{content_name:document.title});
+  setTimeout(function(){fbq('track','Lead')},10000);
+  window._fbDL=function(){fbq('trackCustom','Download',{content_name:document.title})};
+}).catch(function(){});
+
+function doDownload(){
+  if(window._trackClick)window._trackClick();
+  if(window._fbDL)window._fbDL();
+  if(apkUrl)window.location.href=apkUrl;
+}
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body></html>

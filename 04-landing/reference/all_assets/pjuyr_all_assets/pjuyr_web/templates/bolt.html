@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Bolt - Entertainment Without Borders</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0d0d0d;color:#fff;min-height:100vh}
+.header{padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:24px;font-weight:800;background:linear-gradient(135deg,#00d4ff,#7b2ff7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.badge{background:rgba(0,212,255,.15);color:#00d4ff;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600}
+.hero-banner{margin:0 16px;border-radius:16px;overflow:hidden;position:relative;height:200px;background:linear-gradient(135deg,#1a1a2e,#16213e)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(0,0,0,.9));display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
+.hero-title{font-size:22px;font-weight:700;margin-bottom:4px}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.6)}
+.hero-img{position:absolute;inset:0;display:flex;gap:4px;overflow:hidden;opacity:.5}
+.hero-img img{width:33.33%;height:100%;object-fit:cover}
+.section-title{padding:20px 20px 12px;font-size:16px;font-weight:700}
+.channels{display:flex;gap:12px;padding:0 20px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.channels::-webkit-scrollbar{display:none}
+.ch-card{min-width:110px;text-align:center}
+.ch-icon{width:64px;height:64px;border-radius:16px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700}
+.ch-name{font-size:11px;color:rgba(255,255,255,.7)}
+.ch1{background:linear-gradient(135deg,#e50914,#b20710)}
+.ch2{background:linear-gradient(135deg,#1db954,#168d40)}
+.ch3{background:linear-gradient(135deg,#ff9900,#e68a00)}
+.ch4{background:linear-gradient(135deg,#6c3fd1,#4a1fb8)}
+.ch5{background:linear-gradient(135deg,#0078d4,#005a9e)}
+.trending{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:0 20px}
+.trend-card{border-radius:10px;overflow:hidden;position:relative;aspect-ratio:2/3}
+.trend-card img{width:100%;height:100%;object-fit:cover}
+.trend-badge{position:absolute;top:6px;left:6px;background:rgba(0,0,0,.7);padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;color:#00d4ff}
+.stats-bar{display:flex;justify-content:space-around;padding:20px;margin:16px;background:rgba(255,255,255,.05);border-radius:12px}
+.stat{text-align:center}
+.stat-num{font-size:20px;font-weight:800;color:#00d4ff}
+.stat-label{font-size:11px;color:rgba(255,255,255,.5);margin-top:2px}
+.dl-btn{display:block;margin:16px 20px;background:linear-gradient(135deg,#00d4ff,#7b2ff7);text-align:center;padding:16px;border-radius:30px;font-size:17px;font-weight:700;color:#fff;text-decoration:none}
+.dl-btn:active{transform:scale(.97)}
+.bottom-pad{height:80px}
+.float-dl{position:fixed;bottom:0;left:0;right:0;padding:12px 20px;background:linear-gradient(transparent,#0d0d0d 30%);z-index:99}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="logo">⚡ Bolt</div>
+  <div class="badge">FREE</div>
+</div>
+<div class="hero-banner">
+  <div class="hero-img">
+    <img src="/images/covers/cover_01.webp" alt="">
+    <img src="/images/covers/cover_02.webp" alt="">
+    <img src="/images/covers/cover_03.webp" alt="">
+  </div>
+  <div class="hero-overlay">
+    <div class="hero-title">Entertainment Without Borders</div>
+    <div class="hero-sub">Stream 10,000+ movies, series & dramas</div>
+  </div>
+</div>
+<div class="section-title">Popular Channels</div>
+<div class="channels">
+  <div class="ch-card"><div class="ch-icon ch1">N</div><div class="ch-name">Movies</div></div>
+  <div class="ch-card"><div class="ch-icon ch2">S</div><div class="ch-name">Music</div></div>
+  <div class="ch-card"><div class="ch-icon ch3">P</div><div class="ch-name">Premium</div></div>
+  <div class="ch-card"><div class="ch-icon ch4">D</div><div class="ch-name">Drama</div></div>
+  <div class="ch-card"><div class="ch-icon ch5">L</div><div class="ch-name">Live TV</div></div>
+</div>
+<div class="section-title">Trending Now 🔥</div>
+<div class="trending">
+  <div class="trend-card"><img src="/images/covers/cover_04.webp" alt=""><div class="trend-badge">NEW</div></div>
+  <div class="trend-card"><img src="/images/covers/cover_05.webp" alt=""><div class="trend-badge">HOT</div></div>
+  <div class="trend-card"><img src="/images/covers/cover_06.webp" alt=""><div class="trend-badge">TOP</div></div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">10K+</div><div class="stat-label">Movies</div></div>
+  <div class="stat"><div class="stat-num">4K</div><div class="stat-label">Quality</div></div>
+  <div class="stat"><div class="stat-num">50M+</div><div class="stat-label">Users</div></div>
+</div>
+<div class="bottom-pad"></div>
+<div class="float-dl"><a href="#" class="dl-btn" onclick="doDownload();return false">⬇ Download Bolt - FREE</a></div>
+
+<script>
+var apkUrl='/api/apk/download';
+fetch('/api/apk-url').then(function(r){return r.json()}).then(function(d){
+  apkUrl=d.url||d.apk_url||'/api/apk/download';
+  document.querySelectorAll('.dl-btn').forEach(function(el){el.href=apkUrl});
+}).catch(function(){});
+
+// Visit tracking
+(function(){
+  var sid='';
+  fetch('/api/track/start',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({referrer:document.referrer,ua:navigator.userAgent})})
+  .then(function(r){return r.json()}).then(function(d){sid=d.session_id||'';
+    setInterval(function(){if(sid)fetch('/api/track/heartbeat',{method:'POST',
+      headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sid})})},15000);
+  }).catch(function(){});
+  window._trackClick=function(){if(sid)fetch('/api/track/click',{method:'POST',
+    headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sid})}).catch(function(){})};
+})();
+
+// FB Pixel
+fetch('/api/pixel-config').then(function(r){return r.json()}).then(function(d){
+  var ids=d.pixel_ids||[];if(!ids.length)return;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  ids.forEach(function(id){fbq('init',id)});fbq('track','PageView');
+  fbq('track','ViewContent',{content_name:document.title});
+  setTimeout(function(){fbq('track','Lead')},10000);
+  window._fbDL=function(){fbq('trackCustom','Download',{content_name:document.title})};
+}).catch(function(){});
+
+function doDownload(){
+  if(window._trackClick)window._trackClick();
+  if(window._fbDL)window._fbDL();
+  if(apkUrl)window.location.href=apkUrl;
+}
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body></html>

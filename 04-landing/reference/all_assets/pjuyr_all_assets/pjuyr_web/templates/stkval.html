@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/landing-pages/stkval/">
+
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StockVault · Trade Smarter</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="static/css/all.min.css" />
+    <style>
+        /* ===== Reset & Base ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f6f9fc;
+            color: #1a2634;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== Navbar ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            padding: 14px 0;
+            transition: box-shadow 0.2s;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #0d1b2a;
+        }
+        .logo i {
+            color: #2563eb;
+            font-size: 28px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #334155;
+        }
+        .nav-links a {
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .nav-cta {
+            background: #2563eb;
+            color: #fff !important;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.15s;
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25);
+        }
+        .nav-cta:hover {
+            background: #1d4ed8;
+            transform: scale(1.04);
+            color: #fff !important;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 26px;
+            color: #1a2634;
+            cursor: pointer;
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f0fa 100%);
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+            color: #0d1b2a;
+        }
+        .hero-content h1 .highlight {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-content p {
+            font-size: 18px;
+            color: #475569;
+            max-width: 480px;
+            margin-bottom: 28px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: #fff;
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+            box-shadow: 0 8px 28px rgba(37, 99, 235, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #fff;
+            color: #1a2634;
+            padding: 14px 34px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 16px;
+            border: 1px solid #d1d9e6;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-secondary:hover {
+            background: #f8fafc;
+            border-color: #94a3b8;
+        }
+
+        /* Hero右侧：行情卡片 */
+        .hero-quote {
+            background: #fff;
+            border-radius: 28px;
+            padding: 28px 24px;
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+        .hero-quote .label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 18px;
+        }
+        .hero-quote .label i {
+            color: #22c55e;
+            font-size: 10px;
+        }
+
+        .quote-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .quote-row:last-child {
+            border-bottom: none;
+        }
+        .quote-symbol {
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .quote-price {
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .quote-change {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .quote-change.up {
+            color: #22c55e;
+        }
+        .quote-change.down {
+            color: #ef4444;
+        }
+
+        .hero-quote .note {
+            margin-top: 16px;
+            font-size: 13px;
+            color: #94a3b8;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 16px;
+        }
+        .hero-quote .note i {
+            color: #2563eb;
+        }
+
+        /* ===== Market Snapshot ===== */
+        .snapshot {
+            padding: 60px 0;
+            background: #fff;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .snapshot-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .snapshot-item {
+            text-align: center;
+            padding: 16px 0;
+        }
+        .snapshot-item .index-name {
+            font-size: 14px;
+            color: #64748b;
+            font-weight: 500;
+        }
+        .snapshot-item .index-value {
+            font-size: 26px;
+            font-weight: 700;
+            color: #0d1b2a;
+            margin: 4px 0 2px;
+        }
+        .snapshot-item .index-change {
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .snapshot-item .index-change.up {
+            color: #22c55e;
+        }
+        .snapshot-item .index-change.down {
+            color: #ef4444;
+        }
+
+        /* ===== Features ===== */
+        .features {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+        .section-header {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 48px;
+        }
+        .section-header h2 {
+            font-size: 34px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: #0d1b2a;
+        }
+        .section-header h2 span {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-header p {
+            color: #475569;
+            font-size: 17px;
+            margin-top: 6px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .feature-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 32px 28px;
+            border: 1px solid #e9eef3;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
+        }
+        .feature-card .icon {
+            width: 52px;
+            height: 52px;
+            background: #eef2ff;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #2563eb;
+            margin-bottom: 18px;
+        }
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .feature-card p {
+            color: #475569;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* ===== Watchlist ===== */
+        .watchlist {
+            padding: 80px 0;
+            background: #fff;
+        }
+        .watchlist .container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .watchlist-table {
+            background: #f8fafc;
+            border-radius: 24px;
+            padding: 24px;
+            border: 1px solid #e9eef3;
+        }
+        .watchlist-table .table-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            font-weight: 600;
+            color: #64748b;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .watchlist-table .table-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            padding: 14px 0;
+            border-bottom: 1px solid #f1f5f9;
+            align-items: center;
+        }
+        .watchlist-table .table-row:last-child {
+            border-bottom: none;
+        }
+        .table-row .symbol {
+            font-weight: 600;
+        }
+        .table-row .price {
+            font-weight: 600;
+        }
+        .table-row .change {
+            font-weight: 600;
+        }
+        .table-row .change.up {
+            color: #22c55e;
+        }
+        .table-row .change.down {
+            color: #ef4444;
+        }
+        .table-row .action a {
+            color: #2563eb;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        .table-row .action a:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        .watchlist-side {
+            background: #f8fafc;
+            border-radius: 24px;
+            padding: 28px 24px;
+            border: 1px solid #e9eef3;
+        }
+        .watchlist-side h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .watchlist-side p {
+            color: #475569;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+        .watchlist-side .btn-primary {
+            width: 100%;
+            justify-content: center;
+        }
+        .watchlist-side .news-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #e9eef3;
+        }
+        .watchlist-side .news-item:last-child {
+            border-bottom: none;
+        }
+        .watchlist-side .news-item .headline {
+            font-weight: 500;
+            font-size: 15px;
+        }
+        .watchlist-side .news-item .time {
+            font-size: 13px;
+            color: #94a3b8;
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* ===== CTA ===== */
+        .cta {
+            padding: 70px 0;
+            background: linear-gradient(135deg, #0d1b2a, #1e293b);
+            color: #fff;
+        }
+        .cta .container {
+            text-align: center;
+            max-width: 700px;
+        }
+        .cta h2 {
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .cta p {
+            font-size: 18px;
+            color: #cbd5e1;
+            margin-bottom: 32px;
+        }
+        .cta .btn-primary {
+            background: #facc15;
+            color: #0d1b2a;
+            box-shadow: 0 8px 28px rgba(250, 204, 21, 0.3);
+        }
+        .cta .btn-primary:hover {
+            background: #fbbf24;
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background: #0d1b2a;
+            padding: 32px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        .footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-links {
+            display: flex;
+            gap: 28px;
+        }
+        .footer-links a:hover {
+            color: #f8fafc;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 1024px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .hero-quote {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            .snapshot-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .watchlist .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: #fff;
+                position: absolute;
+                top: 68px;
+                left: 0;
+                width: 100%;
+                padding: 24px 0 32px;
+                gap: 18px;
+                border-bottom: 1px solid #e2e8f0;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 34px;
+            }
+            .snapshot-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .watchlist-table .table-header,
+            .watchlist-table .table-row {
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 8px;
+            }
+            .watchlist-table .table-header .action,
+            .watchlist-table .table-row .action {
+                display: none;
+            }
+            .cta h2 {
+                font-size: 28px;
+            }
+            .footer .container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-quote {
+                padding: 20px 16px;
+            }
+            .quote-row {
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+            .hero-buttons .btn-primary,
+            .hero-buttons .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+            .snapshot-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+  <script src="/landing-runtime.js" defer></script>
+</head>
+<body>
+
+    <!-- ===== Navbar ===== -->
+    <header class="navbar" id="navbar">
+<div class="container">
+            <div class="logo">
+				<img src="static/picture/logo.svg" style="width:38px;" />
+                <i class="fas fa-chart-simple"></i> StockVault
+            </div>
+            <nav class="nav-links" id="navLinks">
+                <a href="download/">Features</a>
+                <a href="download/">Watchlist</a>
+                <a href="download/">Pricing</a>
+                <a href="download/" class="nav-cta">Get Started</a>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== Hero ===== -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>
+                    Trade Stocks<br />
+                    <span class="highlight">Smarter & Faster</span>
+                </h1>
+                <p>
+                    Real-time market data, advanced charting tools, and zero-commission trading.
+                    Join thousands of investors who trust StockVault for their portfolio.
+                </p>
+                <div class="hero-buttons">
+                    <a href="download/" class="btn-primary">
+                        <i class="fas fa-rocket"></i> Start Trading
+                    </a>
+                    <a href="download/" class="btn-secondary">
+                        <i class="fas fa-eye"></i> View Markets
+                    </a>
+                </div>
+            </div>
+            <div class="hero-quote">
+                <div class="label">
+                    <span><i class="fas fa-circle" style="color:#22c55e;"></i> Live Market</span>
+                    <span>Updated: 2 sec ago</span>
+                </div>
+                <div class="quote-row">
+                    <span class="quote-symbol">AAPL</span>
+                    <span class="quote-price">189.42</span>
+                    <span class="quote-change up"><i class="fas fa-caret-up"></i> +1.28%</span>
+                </div>
+                <div class="quote-row">
+                    <span class="quote-symbol">TSLA</span>
+                    <span class="quote-price">248.15</span>
+                    <span class="quote-change up"><i class="fas fa-caret-up"></i> +3.41%</span>
+                </div>
+                <div class="quote-row">
+                    <span class="quote-symbol">NVDA</span>
+                    <span class="quote-price">875.90</span>
+                    <span class="quote-change down"><i class="fas fa-caret-down"></i> -0.62%</span>
+                </div>
+                <div class="quote-row">
+                    <span class="quote-symbol">AMZN</span>
+                    <span class="quote-price">182.70</span>
+                    <span class="quote-change up"><i class="fas fa-caret-up"></i> +0.89%</span>
+                </div>
+                <div class="note">
+                    <span><i class="fas fa-clock"></i> Market open</span>
+                    <span><i class="fas fa-arrow-up" style="color:#22c55e;"></i> 4 gainers</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Market Snapshot ===== -->
+    <section class="snapshot" id="pricing">
+        <div class="container">
+            <div class="snapshot-grid">
+                <div class="snapshot-item">
+                    <div class="index-name">S&P 500</div>
+                    <div class="index-value">5,236.48</div>
+                    <div class="index-change up"><i class="fas fa-caret-up"></i> +0.67%</div>
+                </div>
+                <div class="snapshot-item">
+                    <div class="index-name">NASDAQ</div>
+                    <div class="index-value">18,422.14</div>
+                    <div class="index-change up"><i class="fas fa-caret-up"></i> +1.02%</div>
+                </div>
+                <div class="snapshot-item">
+                    <div class="index-name">DOW JONES</div>
+                    <div class="index-value">39,812.36</div>
+                    <div class="index-change down"><i class="fas fa-caret-down"></i> -0.21%</div>
+                </div>
+                <div class="snapshot-item">
+                    <div class="index-name">VIX</div>
+                    <div class="index-value">13.27</div>
+                    <div class="index-change down"><i class="fas fa-caret-down"></i> -3.12%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Features ===== -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Built for <span>Every Investor</span></h2>
+                <p>Powerful tools to help you make informed decisions.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Advanced Charts</h3>
+                    <p>Interactive candlestick charts with 50+ technical indicators for deep analysis.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Lightning Execution</h3>
+                    <p>Trade with ultra-low latency, powered by our next-generation matching engine.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Secure & Regulated</h3>
+                    <p>FCA and SEC regulated, with bank-level encryption and 2FA for your safety.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon"><i class="fas fa-robot"></i></div>
+                    <h3>AI-Powered Insights</h3>
+                    <p>Receive real-time trade signals and sentiment analysis from our AI engine.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon"><i class="fas fa-mobile-screen"></i></div>
+                    <h3>Mobile & Web</h3>
+                    <p>Seamless experience across all devices, with native apps for iOS and Android.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon"><i class="fas fa-infinity"></i></div>
+                    <h3>Unlimited Watchlists</h3>
+                    <p>Track unlimited stocks, ETFs, and indices with custom alerts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Watchlist + News ===== -->
+    <section class="watchlist" id="watchlist">
+        <div class="container">
+            <div class="watchlist-table">
+                <h3 style="margin-bottom:16px; font-size:20px; font-weight:700;">Top Movers</h3>
+                <div class="table-header">
+                    <span>Symbol</span>
+                    <span>Price</span>
+                    <span>Change</span>
+                    <span class="action">Action</span>
+                </div>
+                <div class="table-row">
+                    <span class="symbol">AAPL</span>
+                    <span class="price">189.42</span>
+                    <span class="change up"><i class="fas fa-caret-up"></i> +1.28%</span>
+                    <span class="action"><a href="download/">Trade</a></span>
+                </div>
+                <div class="table-row">
+                    <span class="symbol">TSLA</span>
+                    <span class="price">248.15</span>
+                    <span class="change up"><i class="fas fa-caret-up"></i> +3.41%</span>
+                    <span class="action"><a href="download/">Trade</a></span>
+                </div>
+                <div class="table-row">
+                    <span class="symbol">NVDA</span>
+                    <span class="price">875.90</span>
+                    <span class="change down"><i class="fas fa-caret-down"></i> -0.62%</span>
+                    <span class="action"><a href="download/">Trade</a></span>
+                </div>
+                <div class="table-row">
+                    <span class="symbol">AMZN</span>
+                    <span class="price">182.70</span>
+                    <span class="change up"><i class="fas fa-caret-up"></i> +0.89%</span>
+                    <span class="action"><a href="download/">Trade</a></span>
+                </div>
+                <div class="table-row">
+                    <span class="symbol">META</span>
+                    <span class="price">512.30</span>
+                    <span class="change down"><i class="fas fa-caret-down"></i> -1.15%</span>
+                    <span class="action"><a href="download/">Trade</a></span>
+                </div>
+            </div>
+
+            <div class="watchlist-side">
+                <h3>Market News</h3>
+                <p>Stay ahead with the latest headlines.</p>
+                <div class="news-item">
+                    <div class="headline">Fed signals rate cuts as inflation cools</div>
+                    <span class="time">12 min ago</span>
+                </div>
+                <div class="news-item">
+                    <div class="headline">Nvidia announces new AI chip, stock jumps 5%</div>
+                    <span class="time">45 min ago</span>
+                </div>
+                <div class="news-item">
+                    <div class="headline">Oil prices drop amid demand concerns</div>
+                    <span class="time">2 hours ago</span>
+                </div>
+                <div class="news-item">
+                    <div class="headline">Tesla Q2 deliveries beat estimates</div>
+                    <span class="time">3 hours ago</span>
+                </div>
+                <a href="download/" class="btn-primary" style="margin-top:16px; width:100%; justify-content:center; background:#2563eb; color:#fff;">
+                    View All News <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta" id="cta">
+        <div class="container">
+            <h2>Start Investing Today</h2>
+            <p>Open your account in minutes and enjoy commission-free trading on thousands of stocks.</p>
+            <a href="download/" class="btn-primary">
+                <i class="fas fa-user-plus"></i> Create Free Account
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div style="display:flex; align-items:center; gap:10px;">
+                <i class="fas fa-chart-simple" style="color:#facc15;"></i>
+                <span style="font-weight:600; color:#f8fafc;">StockVault</span>
+                <span style="margin-left:8px;">© 2026 All rights reserved</span>
+            </div>
+            <div class="footer-links">
+                <a href="download/">Privacy Policy</a>
+                <a href="download/">Terms</a>
+                <a href="download/">Support</a>
+                <a href="download/">Careers</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== Mobile Menu Toggle ===== -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                navbar.style.boxShadow = '0 4px 16px rgba(0,0,0,0.04)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

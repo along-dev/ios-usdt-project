@@ -1,0 +1,18 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'X:\USDT项目\02-backend-node\src_restored\core\logger\index.js' imported from X:\_integration\_fix_work\_probe_logger.mjs
+Did you mean to import "../../../E:/USDT%E9%A1%B9%E7%9B%AE/02-backend-node/src_restored/core/logger/index.js"?
+    at finalizeResolution (node:internal/modules/esm/resolve:274:11)
+    at moduleResolve (node:internal/modules/esm/resolve:859:10)
+    at defaultResolve (node:internal/modules/esm/resolve:983:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:717:20)
+    at ModuleLoader.resolve (node:internal/modules/esm/loader:694:38)
+    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:308:38)
+    at ModuleJob._link (node:internal/modules/esm/module_job:183:49) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///X:/USDT%E9%A1%B9%E7%9B%AE/02-backend-node/src_restored/core/logger/index.js'
+}
+
+Node.js v22.19.0

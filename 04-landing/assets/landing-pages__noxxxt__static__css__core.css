@@ -1,0 +1,145 @@
+:root {
+    
+    --black: #000;
+    --white: #fff;
+    --bg: #1c1917;            
+    --bg-elevated: #211e1c;  
+    --surface: #27272a;      
+    --surface-2: #18181b;    
+    --border: #3f3f46;       
+    --border-soft: #292524;  
+
+    --primary: #3b82f6;      
+    --primary-hover: #60a5fa;
+    --primary-dark: #1e40af; 
+    --primary-rgb: 59, 130, 246;
+
+    --text: #f4f4f5;         
+    --text-muted: #a1a1aa;   
+    --text-dim: #71717a;     
+    --star: #fcd34d;         
+    --danger: #ef4444;
+
+    
+    --radius-sm: .4rem;
+    --radius: .6rem;
+    --radius-lg: 1rem;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, .3);
+    --shadow: 0 4px 12px rgba(0, 0, 0, .35);
+    --shadow-lg: 0 16px 40px rgba(0, 0, 0, .45);
+    --ease: cubic-bezier(.4, 0, .2, 1);
+    --speed: .25s;
+
+    
+    --header-h: 6rem;
+    --container-max: 150rem;
+    --container-pad: 1.6rem;
+
+    
+    --poster-cols: 4;
+}
+
+@media (min-width: 640px)  { :root { --poster-cols: 3; } }
+@media (min-width: 768px)  { :root { --poster-cols: 4; } }
+@media (min-width: 1024px) { :root { --poster-cols: 5; } }
+@media (min-width: 1280px) { :root { --poster-cols: 6; } }
+@media (min-width: 1536px) { :root { --poster-cols: 8; } }
+
+@media (max-width: 639px)  { :root { --poster-cols: 2; } }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+    font-size: 62.5%;                 
+    -webkit-text-size-adjust: 100%;
+    -moz-tab-size: 4;
+    tab-size: 4;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+        "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    background-color: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    min-height: 100vh;
+}
+
+img, picture, video, canvas, svg, iframe { display: block; max-width: 100%; }
+img, video { height: auto; }
+svg { fill: currentColor; }
+
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+input, select, textarea { font: inherit; color: inherit; }
+b, strong { font-weight: 700; }
+
+h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
+h1 { font-size: 2.4rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.7rem; }
+p  { line-height: 1.6; }
+
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+::selection { background: rgba(var(--primary-rgb), .35); color: var(--white); }
+
+* { scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+*::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--container-pad);
+}
+
+.section { margin-top: 3.2rem; }
+.section:first-of-type { margin-top: 2rem; }
+
+.section__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.2rem;
+    margin-bottom: 1.4rem;
+}
+
+.section__title {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -.01em;
+}
+.section__title--lg { font-size: 2.6rem; }
+
+.section__link {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: color var(--speed) var(--ease);
+}
+.section__link:hover { color: var(--primary-hover); }
+
+.muted { color: var(--text-muted); }
+.flow > * + * { margin-top: 1.2rem; }
+.sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+.clamp-2, .clamp-3, .clamp-4 {
+    display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;
+}
+.clamp-2 { -webkit-line-clamp: 2; }
+.clamp-3 { -webkit-line-clamp: 3; }
+.clamp-4 { -webkit-line-clamp: 4; }
+
+@media (max-width: 639px) { .hide-mobile { display: none !important; } }
+@media (min-width: 640px) { .only-mobile { display: none !important; } }

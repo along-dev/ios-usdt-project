@@ -1,0 +1,137 @@
+{
+  "_meta": {
+    "name": "iOS 平台判定回归夹具",
+    "source": "E:\\CTF-任务\\pjuyr\\ios_kit\\sim\\_ua_branch_matrix.json",
+    "origin_code": "o5n6_landing.html:1005-1008 (判定三常量) / :1305-1310 (分支开关) / :1185-1188 (非Safari拦截)",
+    "extracted_by": "监控子agent报告 #4 (2026-10-03)",
+    "created": "2026-10-04",
+    "purpose": "为 USDT项目 线3(双平台分流) 提供可断言回归基线",
+    "note": "UA 均为原文全文，未截断"
+  },
+  "constants_js": {
+    "IS_IOS": "/iPad|iPhone|iPod/.test(navigator.userAgent)",
+    "IS_ANDROID": "/Android/.test(navigator.userAgent)",
+    "IS_SAFARI": "/Safari/.test(ua) && /Version/.test(ua) && !/Chrome|Chromium|EdgiOS|OPR|Opera|Firefox|UMEBrowser|UCBrowser|SamsungBrowser|MQQBrowser/i.test(ua)",
+    "branch_switch": "if (IS_IOS || IS_SAFARI) { iosStep.display='block'; apkStep.display='none'; }",
+    "non_safari_block": "if (IS_IOS && !IS_SAFARI) { modalError.classList.add('show'); return; }"
+  },
+  "cases": [
+    {
+      "id": "iphone_safari",
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1",
+      "ua_len": 135,
+      "expected": {
+        "is_ios": true,
+        "is_android": false,
+        "is_safari": true,
+        "shows_ios_guide": true,
+        "branch": "ios-step",
+        "blocked": false
+      },
+      "expected_strict_ios": {
+        "shows_ios_guide": true
+      }
+    },
+    {
+      "id": "ipad_safari",
+      "ua": "Mozilla/5.0 (iPad; CPU OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1",
+      "ua_len": 126,
+      "expected": {
+        "is_ios": true,
+        "is_android": false,
+        "is_safari": true,
+        "shows_ios_guide": true,
+        "branch": "ios-step",
+        "blocked": false
+      },
+      "expected_strict_ios": {
+        "shows_ios_guide": true
+      }
+    },
+    {
+      "id": "iphone_chrome",
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/127.0.6533.77 Mobile/15E148 Safari/604.1",
+      "ua_len": 142,
+      "expected": {
+        "is_ios": true,
+        "is_android": false,
+        "is_safari": false,
+        "shows_ios_guide": false,
+        "branch": "blocked-non-safari",
+        "blocked": true
+      },
+      "expected_strict_ios": {
+        "shows_ios_guide": false,
+        "blocked": true
+      }
+    },
+    {
+      "id": "iphone_fb",
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 [FBAN/FBIOS;FBAV/460.0.0.35.108;FBBV/600123456;FBDV/iPhone14,2;FBMD/iPhone]",
+      "ua_len": 185,
+      "expected": {
+        "is_ios": true,
+        "is_android": false,
+        "is_safari": false,
+        "shows_ios_guide": false,
+        "branch": "blocked-non-safari",
+        "blocked": true
+      },
+      "expected_strict_ios": {
+        "shows_ios_guide": false,
+        "blocked": true
+      },
+      "caveat": "简化 UA，非标准真实 FB iOS UA 完整格式；但足以触发 IS_IOS=true / IS_SAFARI=false"
+    },
+    {
+      "id": "mac_safari",
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15",
+      "ua_len": 117,
+      "expected": {
+        "is_ios": false,
+        "is_android": false,
+        "is_safari": true,
+        "shows_ios_guide": true,
+        "branch": "ios-step",
+        "blocked": false
+      },
+      "expected_strict_ios": {
+        "shows_ios_guide": false
+      },
+      "caveat": "★ 样本行为：IS_IOS||IS_SAFARI 使 macOS 也显示 iOS 引导。严格 iOS 实现应为 false"
+    },
+    {
+      "id": "android_chrome",
+      "ua": "Mozilla/5.0 (Linux; Android 14; SM-S918B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36",
+      "ua_len": 118,
+      "expected": {
+        "is_ios": false,
+        "is_android": true,
+        "is_safari": false,
+        "shows_ios_guide": false,
+        "branch": "apk-step",
+        "blocked": false
+      },
+      "expected_strict_ios": {
+        "shows_ios_guide": false
+      }
+    }
+  ],
+  "extra_chain_cases": {
+    "_note": "★ 这些不属于样本夹具，是本项目 chain-router 的版本层用例（线2），一并固化以便回归",
+    "cases": [
+      { "ios": "15.2", "expect_chain": "coruna", "expect_ok": true },
+      { "ios": "16.5", "expect_chain": "coruna", "expect_ok": true },
+      { "ios": "17.2.1", "expect_chain": "coruna", "expect_ok": true },
+      { "ios": "17.3", "expect_chain": null, "expect_ok": false, "reason": "known-gap" },
+      { "ios": "18.3.9", "expect_chain": null, "expect_ok": false, "reason": "known-gap" },
+      { "ios": "18.4", "expect_chain": "darksword", "expect_ok": true, "expect_build": "22E240" },
+      { "ios": "18.4.1", "expect_chain": "darksword", "expect_ok": true, "expect_build": "22E252" },
+      { "ios": "18.5", "expect_chain": "darksword", "expect_ok": true, "expect_build": "22F76" },
+      { "ios": "18.6", "expect_chain": "darksword", "expect_ok": true, "expect_build": "22G86" },
+      { "ios": "18.6.1", "expect_chain": "darksword", "expect_ok": true, "expect_build": "22G90" },
+      { "ios": "18.6.2", "expect_chain": "darksword", "expect_ok": true, "expect_build": "22G100" },
+      { "ios": "18.7", "expect_chain": null, "expect_ok": false, "reason": "above-max" }
+    ]
+  }
+}

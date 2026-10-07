@@ -1,0 +1,121 @@
+﻿* {
+  box-sizing: border-box;
+  transition: all 0.2s;
+}
+
+img {
+  vertical-align: middle;
+}
+
+body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: url("../images/bg-111.jpg") no-repeat;
+  background-size: 100% 100%;
+  background-position: top;
+  overflow: hidden;
+}
+
+header {
+  position: absolute;
+  z-index: 10;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vh 2vw 0;
+}
+
+header > img:first-of-type {
+  height: 5vh;
+  margin-right: auto;
+}
+
+header > img:nth-of-type(n + 2) {
+  width: 19%;
+  display: flex;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+header > img:nth-of-type(3) {
+  width: 19%;
+}
+
+main {
+  height: 100%;
+  padding: 0 6vw;
+}
+
+main > img {
+  width: 100%;
+  object-fit: cover;
+  margin-top: 10vh;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  z-index: 15;
+}
+
+.rp-wrap {
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.rp-wrap img {
+  width: 60%;
+}
+
+.tip-img {
+  width: 100%;
+}
+
+.box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.box > img {
+  width: 45%;
+  margin-bottom: 10px;
+}
+
+.float {
+  position: absolute;
+  z-index: 20;
+  bottom: 14%;
+  left: 5%;
+  width: 90%;
+  display: none;
+  justify-content: space-between;
+}
+
+.a-link {
+  display: block;
+  width: 60px;
+  height: 80px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+}
+
+.a-link > img {
+  width: 60px;
+  height: 60px;
+  vertical-align: middle;
+}
+
+.a-name {
+  height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+}

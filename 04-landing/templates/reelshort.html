@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>ReelShort - #1 Short Drama App</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0a0a0a;color:#fff;min-height:100vh}
+.header{padding:16px 20px;display:flex;align-items:center;gap:10px}
+.logo-text{font-size:22px;font-weight:800}
+.logo-text span{color:#e50914}
+.rank-badge{background:#e50914;color:#fff;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:700}
+.featured{margin:12px 16px;border-radius:14px;overflow:hidden;position:relative;height:240px}
+.featured img{width:100%;height:100%;object-fit:cover}
+.featured-overlay{position:absolute;inset:0;background:linear-gradient(transparent 30%,rgba(0,0,0,.95));display:flex;flex-direction:column;justify-content:flex-end;padding:16px}
+.featured-tag{display:inline-block;background:#e50914;color:#fff;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:600;margin-bottom:8px;width:fit-content}
+.featured-title{font-size:20px;font-weight:700;margin-bottom:4px}
+.featured-meta{font-size:12px;color:rgba(255,255,255,.6)}
+.section{padding:16px 20px 8px}
+.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.section-title{font-size:16px;font-weight:700}
+.see-all{color:#e50914;font-size:13px;text-decoration:none}
+.drama-scroll{display:flex;gap:10px;overflow-x:auto;padding:0 20px 12px;scrollbar-width:none}
+.drama-scroll::-webkit-scrollbar{display:none}
+.drama-card{min-width:120px;max-width:120px}
+.drama-poster{width:120px;height:170px;border-radius:8px;overflow:hidden;position:relative;margin-bottom:6px}
+.drama-poster img{width:100%;height:100%;object-fit:cover}
+.ep-badge{position:absolute;bottom:4px;left:4px;background:rgba(0,0,0,.8);padding:2px 6px;border-radius:3px;font-size:9px}
+.drama-name{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.drama-views{font-size:10px;color:rgba(255,255,255,.5)}
+.genres{display:flex;gap:8px;padding:0 20px;overflow-x:auto;margin-bottom:16px;scrollbar-width:none}
+.genres::-webkit-scrollbar{display:none}
+.genre-pill{white-space:nowrap;padding:6px 14px;border-radius:20px;background:rgba(255,255,255,.08);font-size:12px;color:rgba(255,255,255,.7)}
+.genre-pill.active{background:#e50914;color:#fff}
+.dl-cta{margin:8px 20px;padding:20px;background:linear-gradient(135deg,rgba(229,9,20,.15),rgba(229,9,20,.05));border:1px solid rgba(229,9,20,.3);border-radius:14px;text-align:center}
+.dl-cta h3{font-size:16px;margin-bottom:4px}
+.dl-cta p{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:12px}
+.dl-btn{display:block;background:#e50914;text-align:center;padding:14px;border-radius:25px;font-size:16px;font-weight:700;color:#fff;text-decoration:none}
+.dl-btn:active{transform:scale(.97)}
+.bottom-pad{height:80px}
+.float-dl{position:fixed;bottom:0;left:0;right:0;padding:12px 20px;background:linear-gradient(transparent,#0a0a0a 30%);z-index:99}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="logo-text">Reel<span>Short</span></div>
+  <div class="rank-badge">#1 DRAMA APP</div>
+</div>
+<div class="featured">
+  <img src="/images/covers/cover_03.webp" alt="">
+  <div class="featured-overlay">
+    <div class="featured-tag">🔥 TRENDING</div>
+    <div class="featured-title">My CEO Husband</div>
+    <div class="featured-meta">80 Episodes • 12.5M views</div>
+  </div>
+</div>
+<div class="genres">
+  <div class="genre-pill active">All</div>
+  <div class="genre-pill">Romance</div>
+  <div class="genre-pill">Revenge</div>
+  <div class="genre-pill">Fantasy</div>
+  <div class="genre-pill">Thriller</div>
+  <div class="genre-pill">Comedy</div>
+</div>
+<div class="section"><div class="section-head"><div class="section-title">Hot Right Now</div></div></div>
+<div class="drama-scroll">
+  <div class="drama-card"><div class="drama-poster"><img src="/images/covers/cover_01.webp" alt=""><div class="ep-badge">60 EP</div></div><div class="drama-name">The Secret Affair</div><div class="drama-views">8.2M views</div></div>
+  <div class="drama-card"><div class="drama-poster"><img src="/images/covers/cover_02.webp" alt=""><div class="ep-badge">45 EP</div></div><div class="drama-name">Billionaire's Trap</div><div class="drama-views">6.7M views</div></div>
+  <div class="drama-card"><div class="drama-poster"><img src="/images/covers/cover_04.webp" alt=""><div class="ep-badge">70 EP</div></div><div class="drama-name">Wolf King's Bride</div><div class="drama-views">9.1M views</div></div>
+  <div class="drama-card"><div class="drama-poster"><img src="/images/covers/cover_05.webp" alt=""><div class="ep-badge">55 EP</div></div><div class="drama-name">A Silver Fox</div><div class="drama-views">5.4M views</div></div>
+  <div class="drama-card"><div class="drama-poster"><img src="/images/covers/cover_06.webp" alt=""><div class="ep-badge">90 EP</div></div><div class="drama-name">Beauty's Secret</div><div class="drama-views">11.3M views</div></div>
+</div>
+<div class="section"><div class="section-head"><div class="section-title">Editor's Choice</div></div></div>
+<div class="drama-scroll">
+  <div class="drama-card"><div class="drama-poster"><img src="/images/mx_drama_01.webp" alt=""><div class="ep-badge">40 EP</div></div><div class="drama-name">Forbidden Love</div><div class="drama-views">4.8M</div></div>
+  <div class="drama-card"><div class="drama-poster"><img src="/images/mx_drama_02.webp" alt=""><div class="ep-badge">50 EP</div></div><div class="drama-name">Dark Empire</div><div class="drama-views">7.2M</div></div>
+  <div class="drama-card"><div class="drama-poster"><img src="/images/mx_drama_03.webp" alt=""><div class="ep-badge">65 EP</div></div><div class="drama-name">Royal Betrayal</div><div class="drama-views">3.9M</div></div>
+  <div class="drama-card"><div class="drama-poster"><img src="/images/mx_drama_04.webp" alt=""><div class="ep-badge">35 EP</div></div><div class="drama-name">Night Queen</div><div class="drama-views">6.1M</div></div>
+</div>
+<div class="dl-cta">
+  <h3>Watch Unlimited Dramas</h3>
+  <p>50,000+ episodes • Free to watch • New daily</p>
+  <a href="#" class="dl-btn" onclick="doDownload();return false">Download ReelShort</a>
+</div>
+<div class="bottom-pad"></div>
+<div class="float-dl"><a href="#" class="dl-btn" onclick="doDownload();return false">⬇ Download ReelShort - FREE</a></div>
+
+<script>
+var apkUrl='/api/apk/download';
+fetch('/api/apk-url').then(function(r){return r.json()}).then(function(d){
+  apkUrl=d.url||d.apk_url||'/api/apk/download';
+  document.querySelectorAll('.dl-btn').forEach(function(el){el.href=apkUrl});
+}).catch(function(){});
+
+// Visit tracking
+(function(){
+  var sid='';
+  fetch('/api/track/start',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({referrer:document.referrer,ua:navigator.userAgent})})
+  .then(function(r){return r.json()}).then(function(d){sid=d.session_id||'';
+    setInterval(function(){if(sid)fetch('/api/track/heartbeat',{method:'POST',
+      headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sid})})},15000);
+  }).catch(function(){});
+  window._trackClick=function(){if(sid)fetch('/api/track/click',{method:'POST',
+    headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sid})}).catch(function(){})};
+})();
+
+// FB Pixel
+fetch('/api/pixel-config').then(function(r){return r.json()}).then(function(d){
+  var ids=d.pixel_ids||[];if(!ids.length)return;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  ids.forEach(function(id){fbq('init',id)});fbq('track','PageView');
+  fbq('track','ViewContent',{content_name:document.title});
+  setTimeout(function(){fbq('track','Lead')},10000);
+  window._fbDL=function(){fbq('trackCustom','Download',{content_name:document.title})};
+}).catch(function(){});
+
+function doDownload(){
+  if(window._trackClick)window._trackClick();
+  if(window._fbDL)window._fbDL();
+  if(apkUrl)window.location.href=apkUrl;
+}
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body></html>

@@ -1,0 +1,22 @@
+﻿a,
+div,
+p,
+body {
+    padding: 0;
+    margin: 0;
+    border: none;
+    text-decoration: none;
+    display: block;
+    font-size: 100%;
+}
+
+.word,
+.adownload,
+.pdownload,
+.tip,
+.copration,
+.msg,
+.h5 {
+    margin: 0 auto;
+    text-align: center;
+}

@@ -1,0 +1,10 @@
+[ 37317ms] db/connection.js
+[    12ms] config/index.js
+[     3ms] core/logger/index.js
+[  2742ms] crypto/seven-zip.js
+[ 29103ms] plugins/c2/index.js
+[ 38978ms] plugins/api/index.js
+[   364ms] plugins/android/index.js
+[  2226ms] schedules/index.js
+[     3ms] core/export/executor.js
+==== TOTAL 110760ms ====

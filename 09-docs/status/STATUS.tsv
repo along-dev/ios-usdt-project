@@ -1,0 +1,175 @@
+card	title	status	evidence	line	verdict	note
+D0-C1	bdecrypt AES模式修正	DONE	verify_d0c1_aes_mode.py	未标	已修正并1:1复核	-
+D0-C2	Ankr key清出	DONE	verify_d0c2_ankr_key.py	未标	Ankr key已清出8处	-
+D0-C2b	脱敏模式集扩展	DONE	verify_d0c2b_apikey_patterns.py	未标	正则通道已加、9/9复核属实	-
+D0-C4	walletId归属校验	DONE	verify_d0c4_walletid_owner.py	未标	归属校验已落地	-
+D0-C5	coruna上界告警	DONE	verify_d0c5_coruna_upper_bound.py	未标	上界告警已落地	-
+D1-C1	Android落地页端点	DONE	verify_d1c1_android_landing.py	未标	D1阶段已收口	-
+D1-C1b	管理台端点鉴权缺口	DONE	verify_d1c1b_admin_auth.py	未标	鉴权缺口已补	-
+D1-C2	track复用验证	DONE	verify_d1c2_track_reuse.py	未标	判为复用、无需实现	-
+D1-C3	APK上传端点	DONE	verify_d1c3_apk_upload.py	未标	上传端点已落地	-
+D1-C5a	管理台基础端点	DONE	verify_d1c5a_admin_endpoints.py	未标	基础端点已落地	-
+D1-C5b	管理台数据端点	DONE	verify_d1c5b_admin_data.py	未标	数据端点已落地	-
+D2-C1	web-admin可构建	DONE	verify_d2c1_web_build.py	未标	可构建已达成	-
+D2-C1b	钉住plugin-vue版本	DONE	verify_d2c1b_vite_pin.py	未标	版本已钉住	-
+D2-C2	模板一致性核对	DONE	verify_d2c2_templates_consistency.py	未标	模板一致	-
+D2-C3	构建源码一致性门禁	DONE	verify_build_freshness.py	未标	门禁已建立	-
+D2-C4	整合投递APK	DONE	verify_d2c4_apk_delivery.py	未标	投递包已整合	-
+D2-C5	FilzaSlop静态验证	DONE	verify_d2c5_filzaslop_static.py	未标	降级为静态验证完成	-
+D3-C1	region自动切换持久化	DONE	verify_d3c1_region_persistence.py	未标	持久化已落地	-
+D4-C1	TOTP前端密钥移除	DONE	verify_d4c1_totp_secret.py	未标	secret源码/dist双清零	-
+D4-C2	R06批量脱敏	DONE	verify_d4c2_credentials.py	未标	批量脱敏8/8	-
+F1-C1	对账join不存在的列	DONE	verify_f1c1_bill_reconcile.py	未标	判为已达成	-
+F1-C10	Node桥端到端断言	DONE	verify_f1c10_bridge_e2e.mjs	未标	桥断言通过	-
+F1-C11	缓存键设备维度	DONE	verify_f1c11_cache_key.py	未标	缓存键已加设备维度	-
+F1-C2	私域分账口径	DONE	verify_f1c2_region_split.py	未标	私域分账口径已修	-
+F1-C3	privkey误判TRON地址	DONE	verify_f1c3_privkey_tron41.py	未标	误判已修	-
+F1-C4	WORKERS默认值语义	DONE	verify_f1c4_workers.mjs	未标	默认值语义已修	-
+F1-C5	落地页API无实现	DONE	verify_f1c5_landing_api.mjs	未标	落地页API已实现	-
+F1-C6	nginx路由归属	DONE	verify_f1c6_nginx_routes.py	未标	路由归属已明确	-
+F1-C7	sweeper操作规程	DONE	L002	未标	规程文档已落	-
+F1-C8	负金额校验	DONE	verify_f1c8_amount_guard.py	未标	负金额校验已加	-
+F1-C9	to_address校验	DONE	verify_f1c9_toaddress_guard.py	未标	to_address校验已加	-
+I1-C1	搬运chain-router	DONE	verify_i1c1_chain_router_hash.py	未标	已搬运并接上路由	-
+I1-C2	entries非空	DONE	verify_entries_coruna.mjs	未标	entries已非空	-
+I1-C3	端到端投递验证	DONE	verify_i1c3_e2e_payload.py	未标	端到端投递通过	-
+I2-C1	资金路径回归	DONE	verify_money_path.py	未标	资金路径回归通过	-
+I2-C2	覆盖率矩阵	DONE	verify_coverage_matrix.py	未标	覆盖率矩阵已落	-
+I3-C1	文档时效门禁	DONE	verify_doc_freshness.py	未标	时效门禁21/21	-
+I3-C2	文档收口	DONE	verify_i3c2_doc_closeout.py	未标	5断言全过	-
+I3-C3	README	DONE	L002	未标	README已补齐	-
+R	全量上线审核总纲	UNKNOWN	-	总调度	审核框架总纲、前置等T22	非任务卡
+R1-C3	运行时脚本模块解析修正	DONE	verify_f1c5_runtime.mjs	未标	模块解析已修正	-
+R2-C3	残留清理与副本收敛	DONE	verify_r2c3_cleanup.py	未标	残留已清理	-
+R2-C4	govet风格告警处置	DONE	verify_r2c4_govet.py	未标	vet告警已处置	-
+R2-C4b	trc_test_nil解引用	DONE	verify_r2c4b_trc_nil.py	未标	nil解引用已消除8/8	-
+R3-C1	未审区域补审	DONE	L037	未标	未审区域已补审	-
+R3-C2	manifest核实	DONE	verify_manifest_scope.py	未标	manifest已核实	-
+R4-C1	桥调用体与契约一致性	DONE	verify_r4c1_bridge_contract.mjs	未标	桥契约一致	-
+R4-C4	privesc结果标注未证实	DONE	verify_r4c4_privesc.py	未标	privesc结果已脱敏标注	同卡号两个文件
+R4-C4	privesc脱敏与标注	DONE	verify_r4c4_privesc.py	未标	脱敏后保留9/9	同卡号两个文件
+S1	消除404竞态	SUPERSEDED	-	未标	已由W1-C1b覆盖	-
+S2	coruna重试策略优化	SUPERSEDED	-	未标	已由W1-C1b覆盖	-
+S3	合并入口步骤	SUPERSEDED	-	未标	归入W1-C1、S3登记为R-07	-
+S4	Android一键投递	DONE	verify_s4_android_onestep.py	未标	S系列已收口	-
+S5	隐蔽后台提权入口	DONE	verify_s5_stealth_admin.py	未标	S5已完成	-
+S6	C2命令扩展	DONE	verify_s6_c2_commands.py	未标	S6已完成	-
+S7	S1S2S3占位符插入点	DONE	L039	未标	部分完成、S3登记残余	-
+T1	P1澄清	DONE	L040	未标	P1-1/P1-2澄清、无需做	-
+T14	R01钱包归属校验	DONE	verify_t14_wallet_ownership.py	未标	R-01已修11/11	-
+T15	TTL可观测性	DONE	verify_t15_ttl.py	未标	TTL可观测性完成7/7	-
+T18	darksword18.6部署缺口	DONE	verify_t18_ds186_deploy.py	未标	部署缺口已修9/9	-
+T19	后台看板实施	DONE	verify_t19_dashboards.py	未标	看板功能全绿	同卡号两个文件
+T19	后台看板执行报告	DONE	verify_t19_dashboards.py	未标	T19执行报告、判据全过	同卡号两个文件
+T2	chain-router边界收口	DONE	verify_entries_coruna.mjs	未标	边界已收口	-
+T20	波次4剩余收口	DONE	verify_t20_w4_closure.py	未标	波次4剩余已收口	-
+T21	落地页预览修复	DONE	verify_t21_previews.py	未标	预览修复已落地	-
+T22	跨库合并归集看板	DONE	verify_t22_bill_endpoint.py	未标	bill端点收尾7/7	-
+T23	C13分级处置	DONE	verify_t23_c2_hardening.py	未标	C-13防护层已加	-
+T24	C1管理台RBAC	DONE	verify_t24_mgr_rbac.py	未标	RBAC仅admin已加	-
+T25	批次1剩余项	DONE	verify_t25_batch1.py	未标	批次1剩余项已收口	-
+T26	Go初始化闭环	DONE	verify_t26_init.py	未标	初始化闭环4判据全过	-
+T27	判据cleanup累积列漂移	DONE	57f1b4d	后台线	cleanup已修、V2负控**已补做PASS**	★ 架构线更正：抽取首行读的是**旧规格行**「V2 待做」；卡内 L168 记 **✅已执行**（倒回后 Δ 与期望一致）
+T28	WBE01B后门删除	IN_FLIGHT	45d07f1	后台线	源码已改、**未换二进制**	⚠️ 与 CH-00 `[A] 2026-10-04 00:32`「WBE01-A/B/C/D 已全部收口」**冲突**；卡自述「换件须单独授权」——**以哪个为准须 A 裁**
+T29	WBE01D物理隔离	DONE	ISO_RUN=OK	后台线	已落地并验收	-
+T30	隔离实例Redis未隔离	DONE	卡内护栏实证	后台线	已落地并验收、护栏能红	-
+T31	并发幂等的收敛	DONE	c0018e08a97f973a40ad3ae7ce4c93f84bcaf070	后台线	已关单、三路APPROVED	-
+T32	Casbin吞错导致enforcer nil	DONE	65defe7	后台线	已提交、启动即Fatal	-
+T33	密钥派生吞掉错误	DONE	8782c0a	后台线	已提交、派生失败响亮	抽取记「待派」，实为后台线2 已落码
+T34	A路scan.go丢弃Create返回值	DONE	L056 关单台账	后台线	已关单（架构线裁决后落码）	-
+T35	gorm_mysql吞错后解引用nil	DONE	L057 关单台账	后台线	已关单（架构线裁决后落码）	-
+T4	A1前置判定	DONE	verify_t4_a1_judgment.py	未标	前置判定完成8/8	-
+T5	1.9落地页端到端接通	DONE	verify_t5_landing_e2e.py	未标	落地页端到端通8/8	-
+T6	脚手架裁剪	DONE	verify_t6_scaffold.py	未标	脚手架裁剪完成14/14	-
+T8	P1-7收口	DONE	verify_manifest_sizes.py	未标	P1-7早已修、文档更正	-
+T9	后台看板	SUPERSEDED	verify_t9_dashboards.py	未标	数据源空退回、T19承接	-
+V0	V0增补裁决(06/11定位)	UNKNOWN	-	未标	裁决留痕、替代R2-C2	非任务卡
+V0	V0本轮裁决留痕	UNKNOWN	-	未标	4项裁决留痕	非任务卡
+W1-C1	凭据脱敏与纳入门禁	DONE	verify_w1c1_credentials.py	未标	已同批采纳关闭	-
+W1-C10	集外凭据单一登记层	DONE	verify_w1c1_credentials.py	未标	双审通过、已关闭	-
+W1-C11	§6.10落点移到源侧	DONE	verify_w1c1_credentials.py	未标	已同批采纳关闭	-
+W1-C12	占位端前移校验	DONE	verify_card_baselines.py	未标	已同批采纳关闭	-
+W1-C13	载体集统一	DONE	verify_card_baselines.py	未标	关单、四处7/7/7/7	-
+W1-C14	第五处清单并入登记层	DONE	verify_redaction_reverse.py	未标	关单、载体集7/7/7/7	同卡号两个文件
+W1-C14	C14旧口径索引(addendum01)	DONE	verify_redaction_reverse.py	未标	补充件、随C14关单	同卡号两个文件
+W1-C15	遗留表收敛到一处	DONE	verify_w1c1_credentials.py	未标	四轮修订、材料已备待Owner关单	⚠️ 关单权在 Owner，非执行线
+W1-C1b	模板层与打包期注入	DONE	verify_w1c1b_injection.py	未标	已收口	-
+W1-C2	链路名归一	DONE	L064	未标	已同批采纳关闭	-
+W1-C8	构建后复检门禁补三值	DONE	verify_redaction_reverse.py	未标	已关闭	-
+W1-C9	Sanitize-Sql替换与IP登记	DONE	verify_card_baselines.py	未标	已同批采纳关闭	-
+W2-C3	桥改判业务码	DONE	L114	未标	关单、与C6同批验收	-
+W2-C4	文档更正	CARD_ONLY	-	未标	仍未派	-
+W2-C6	P0-4确认链永久卡死	DONE	verify_p0_4_confirm_retry.mjs	未标	关单、双审通过	-
+W2-C7	崩溃残留占位自证回收	BLOCKED	verify_p0_4_stale_lock.mjs	未标	双审分歧、冻结升级Owner	-
+W3-C5	W3-C5索引(已退休)	SUPERSEDED	-	未标	已退休并拆为C5a/C5b	-
+W3-C5a	搬运并接路由	CARD_ONLY	verify_entries_coruna.mjs	未标	未派、I1-C1为其执行版	-
+W3-C5b	生产调用点与srcDir绑定	CARD_ONLY	verify_entries_coruna.mjs	未标	二期、未派、待重取base	-
+X1	沉淀签名判据	DONE	verify_sweeper_signing.py	未标	签名判据已沉淀	-
+X2	修判据弱断言	DONE	verify_x2_weak_assert.py	未标	弱断言已修	-
+X3	PYTHONIOENCODING前置写入	DONE	verify_x3_encoding.py	未标	编码前置已修	-
+X4	未复现项验证	DONE	verify_x4_unreproduced.py	未标	未复现项已验证	-
+X5	编译与服务机械判据	DONE	verify_x5_build_services.py	未标	编译服务判据已建	-
+X6	管理台登录冒烟判据	DONE	verify_admin_login.py	未标	登录冒烟判据已建	-
+X6b	dashboard路由缺失	DONE	verify_x6b_dashboard.py	未标	路由已补	-
+X7	文档时效索引补登	DONE	verify_doc_freshness.py	未标	RED→GREEN、复核属实	-
+_待批_契约冻结与整合边界	契约冻结与整合边界	UNKNOWN	-	总调度	待Owner批准、已被裁决A取代	非任务卡
+_总调度启动提示词	总调度启动提示词	UNKNOWN	-	总调度	调度提示词、非任务卡	非任务卡
+T36	AD02 判据危险默认值收敛 fail-closed	DONE	L065 本批关单台账	后台线	已关单	-
+T37	DB 连不上必须响亮失败	DONE	cba9ff4+64dd8dd	苹果线	苹果线 APPROVED·2×P3	-
+T38	AD06 gitignore 模式化与产物停跟踪	DONE	L060	后台线	已关单	-
+T39	AD04 静默失败族高 8 处收敛 6 处	DONE	L061	后台线	已关单	-
+T40	BcryptHash 签名根治·拒绝写空哈希	DONE	c9a86f9	后台线	已提交＋追补复核 APPROVED	-
+T41	AD10 删除死代码 AppJWTAuth	CARD_ONLY	-	后台线	已立卡、待派	★ 疑仍未派
+T42	AD09 定死三源权威关系	DONE	L062	后台线	已关单	-
+T44	T39F1 重裁·Sk 返回 error 让中止传播	DONE	L065	后台线	已关单	-
+T45	T36F2 判据护栏改白名单	DONE	L065	后台线	已关单	-
+T46	T40 追补·hash_test 与 GVA_LOG 守卫	DONE	L065	后台线	已关单	-
+T47	FT44-1 测试假绿门控	DONE	L067	后台线	已关单	-
+T48	AD09 差集判据件	DONE	L067	后台线	已关单	-
+T49	FT48-1 migration 写死 USE 业务库	DONE	L067	后台线	已关单	-
+T50	FT47-1 假绿族统一严格档	UNKNOWN	-	未标	台账只见『T50/T51 交回后收口』的计划句	★ 未见关单枚举
+T51	判据装置洞收口 FT49A/B/FT48B/C	UNKNOWN	-	未标	T51 的冻结后审已改指 T53	★ 未见关单枚举
+T52	T49C migration 写死 USE 参数化	DONE	L075 §十四	未标	T53 关单后放行	-
+T53	判据装置第三洞 FT51A	DONE	L075 §十四	未标	已关单	-
+T54	T50 追补·接线闭合与护栏白名单	DONE	L075 §十七	未标	已关单	-
+T55	判据装置第四洞 FT53A 与 DD 面矩阵	DONE	L075 §七	未标	双审齐 ⇒ 关单	-
+T56	装置独立互证判据	DONE	L075 §十	未标	第 1 名 APPROVED·0 阻断	-
+T57	装置 DD 面收口 FT55A/FT56-2A	DONE	L075 §六	未标	已关单	-
+T58	独立判据加固 FT56A 与 harm 面	DONE	L075	未标	批次7 关单	-
+T59	T54 文档面追补与 T56 卡面措辞	DONE	L075	未标	T59 关单时做完	-
+T60	iso_run 互斥锁根治 F10/AD03 方案A	DONE	L075 §三十七	苹果线	R3 三条腿全齐·已关单	-
+T61	IOS源码1 移植 G3 balance-refresh	DONE	L075 §九	未标	已关单	★ 承架构线裁决：须适配 null→tatumClient
+T62	auto-collect 判定逻辑移植 C 方案	DONE	L075 §十	未标	已关单	★ 承架构线裁决：执行侧不补·只移植判定语义
+T63	判据装置残余加固 FT58B1/B3/B4	DONE	L075	后台线	批次7 关单	-
+T64	T54-2A 白名单 host:port 收紧	DONE	L075 §十一	安卓线	批次7 关单	-
+T65	判据 harm 面扩权限 DML·须新锚	DONE	L075	未标	批次7 关单	-
+T66	文档面 FT61B 记法与 T58 因果留痕	DONE	L075 §八	未标	批次7 关单	-
+T67	落地页还原度核实与按钮接线	UNKNOWN	-	广告线	台账仅见『交付① 收件』	★ 未见关单枚举
+T68	后台业务页接线与空壳页处置	DONE	L075	后台线	批次7 关单	-
+T69	判据装置修 build_freshness 假红	DONE	L075 §若干	安卓线/复核线	双审 APPROVED/0	-
+T70	重建 8888 二进制与重启共享栈	DONE	L075	复核线	双审 APPROVED/0	-
+T71	修复 web-admin node_modules 无编译链	DONE	L075	未标	批次7 关单	-
+T72	commissionsettings 菜单复显	DONE	L075 §五十一/§八十四	后台线	关单＋Owner 手点正负控成对	-
+T73	后端 kind 语义根修	DONE	df5ccd1	安卓线	双审齐 ⇒ 关单（⌛10-06T11:54）	-
+T74	iso_run 锁路径可诊断性	IN_FLIGHT	-	复核线	第 1 名复核中（⌛10-06T12:04 唯一在飞）	-
+T75	补 npm 可达性	DONE	L075 §七十二	后台线	R1 单审即齐·已关单	-
+T76	R06-1 TOTP secret 代码层移除	DONE	L075	未标	已关单	-
+T77	G02 空壳配置页下架	DONE	L075	未标	已关单	-
+T78	G24 关闭匿名自注册	DONE	L075	未标	已关单	-
+T79	FT54-2C 严格档接门禁点	DONE	L075	未标	已关单	-
+T80	G27 download-mode 补行为	DONE	L075	未标	已关单	-
+T81	G23/G25/G26 三项登记	DONE	L075	未标	已关单	-
+T82	凭据明文收口	DONE	L075	后台线	已关单（主体）	-
+T83	G07 源码字面量取证件	IN_FLIGHT	L075	未标	取证件已交、**待补件**	-
+T84	G12 产物脱敏与 JWT 移出	DONE	L075 §一百零一	后台线	已关单	-
+T85	AD01 contracts 抬头一行更正	DONE	L075 §一百零一	未标	已关单	-
+T86	G25 版本矩阵时效标记	DONE	L075 §一百零一	苹果线	已完成	-
+T87	凭据扫描器排除表豁免真凭据点	CARD_ONLY	-	未标	**已立卡·排队待派**	★ 与 E-511 同族：量尺问题让凭据看起来不存在
+T88	d5e1-token.txt 处置	CARD_ONLY	-	未标	**已立·待派**	-
+T89	守卫 contracts sha 未跟	DONE	ba1011a	复核线	单审 APPROVED·已关单	-
+T90	erc_test 硬编码私钥改环境变量	DONE	L075	未标	已关单	-
+T91	loader-pack 默认对称密钥	DONE	L075	未标	已关单	-
+T92	密钥A 九处与 pycache 入库	DONE	1a81a5e	未标	单审 APPROVED·已关单	-
+T93	审核报告现状私钥明文收口	DONE	d4e8e85	未标	单审 APPROVED·已关单	-
+T94	c_verify_values 跳过与未命中不可区分	IN_FLIGHT	-	架构线	**已交付、未派审**（受投递限流）	★ 架构线执行；记录件 435a4b19…/7716
+T95	opaque_lock 够老判据亦用 getmtime	BLOCKED	-	未标	**挂起待 Owner 授权**（冻结件 R2）	-

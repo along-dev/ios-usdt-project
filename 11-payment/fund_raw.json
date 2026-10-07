@@ -1,0 +1,94 @@
+{
+ "POST /api/Transaction/List": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "POST /api/BalanceRecord/List": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "POST /api/MerchantOrder/List": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "POST /api/CommissionSettlement/List": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "POST /api/Commission/List": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "POST /api/MerchantDailyReport/List": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "POST /api/CommissionSettlement/Balance": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "POST /api/WebOrder/ApplyWithdrawalOrders": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "POST /api/Agent/Subordinates": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "POST /api/AgentDailyReport/List": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "POST /api/AgentReviewMerchantOrderList/List": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "POST /api/RechargeRecord/List": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "POST /api/FundDetails/List": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "POST /api/Withdrawal/List": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "POST /api/PayInOrder/List": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "POST /api/PayOutOrder/List": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "GET /api/Account/Self": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "GET /api/Home/Dashboard": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "GET /api/ApiKey/List": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "GET /api/AuthorizedIp/List": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "GET /api/System/Settings": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "GET /api/MerchantChannel/List": {
+  "s": -2,
+  "t": "no-axios"
+ },
+ "GET /api/Account/GenerateTwoFactorKey": {
+  "s": -2,
+  "t": "no-axios"
+ }
+}

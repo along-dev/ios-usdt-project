@@ -1,0 +1,1262 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="6144866" android:versionName="3.23.36.580" package="care.routeamber76.milkstreama1">
+  <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="36"/>
+  <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.device.account.collect28"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.session.campaign.v5"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.comment.security.collect12"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.reward.video.update94"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.config.message.v4"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.video.address.v4"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.reward.analytics.share61"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.growth.security.manage18"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.feed.upload.manage61"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.account.analytics.observe47"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.payment.config.observe88"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.session.security.access79"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.campaign.growth.query47"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.upload.config.update16"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.campaign.session.v8"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.search.member.query54"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.wallet.growth.bridge41"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.notification.config.bridge18"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.config.upload.v5"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.security.sync.observe27"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.message.order.dispatch75"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.security.feed.v8"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.upload.live.dispatch28"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.campaign.notification.share22"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.comment.search.v2"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.address.article.v6"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.profile.notification.query15"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.payment.content.v7"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.account.reward.v5"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.live.growth.access02"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.reward.checkout.v6"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.message.security.refresh55"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.article.live.update82"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.address.order.v6"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.notification.address.v6"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.sync.account.v6"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.device.session.sync56"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.notification.payment.refresh37"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.content.growth.observe60"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.payment.live.index01"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.reward.session.collect73"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.analytics.campaign.v4"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.article.profile.manage03"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.analytics.growth.route87"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.address.session.v6"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.payment.wallet.bridge06"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.campaign.growth.v8"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.session.wallet.v4"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.live.payment.expose70"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.wallet.growth.manage15"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.analytics.config.observe15"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.upload.account.index85"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.reward.message.v8"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.member.analytics.dispatch04"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.config.profile.observe31"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.search.wallet.access90"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.session.notification.v6"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.live.address.query19"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.payment.message.v6"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.order.video.share57"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.feed.feed.v3"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.growth.video.manage53"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.upload.campaign.v7"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.profile.account.manage39"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.notification.campaign.bind88"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.payment.video.manage79"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.content.message.query47"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.checkout.session.access53"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.live.config.dispatch69"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.video.address.v2"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.payment.sync.route18"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.analytics.member.v3"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.session.trade.expose66"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.comment.security.manage26"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.content.reward.bridge59"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.trade.live.bridge48"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.upload.sync.v4"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.wallet.video.bridge12"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.analytics.payment.v8"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.feed.comment.route09"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.sync.profile.v7"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.feed.live.update25"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.article.order.dispatch64"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.payment.security.v8"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.config.device.collect63"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.reward.security.sync49"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.video.message.update40"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.message.message.sync48"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.campaign.comment.update60"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.feed.payment.manage45"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.reward.account.v7"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.session.feed.dispatch59"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.growth.security.index24"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.article.config.v5"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.comment.campaign.v3"/>
+  <uses-permission android:name="care.routeamber76.milkstreama1.permission.upload.message.manage86"/>
+  <queries>
+    <package android:label="shell.child.query.placeholder" android:name="care.koala08.ordera0"/>
+    <package android:name="com.google.android.gms"/>
+    <package android:name="com.android.vending"/>
+    <package android:name="com.google.android.webview"/>
+    <package android:name="com.android.webview"/>
+    <package android:name="com.android.chrome"/>
+    <package android:name="com.chrome.beta"/>
+    <package android:name="com.chrome.dev"/>
+    <package android:name="com.chrome.canary"/>
+    <intent>
+      <action android:name="android.intent.action.MAIN"/>
+      <category android:name="android.intent.category.LAUNCHER"/>
+    </intent>
+    <intent>
+      <action android:name="android.intent.action.VIEW"/>
+      <data android:mimeType="application/vnd.android.package-archive"/>
+    </intent>
+  </queries>
+  <permission android:name="care.routeamber76.milkstreama1.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="0x00000002"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.device.account.collect28" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.session.campaign.v5" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.comment.security.collect12" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.reward.video.update94" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.config.message.v4" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.video.address.v4" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.reward.analytics.share61" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.growth.security.manage18" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.feed.upload.manage61" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.account.analytics.observe47" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.payment.config.observe88" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.session.security.access79" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.campaign.growth.query47" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.upload.config.update16" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.campaign.session.v8" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.search.member.query54" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.wallet.growth.bridge41" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.notification.config.bridge18" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.config.upload.v5" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.security.sync.observe27" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.message.order.dispatch75" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.security.feed.v8" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.upload.live.dispatch28" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.campaign.notification.share22" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.comment.search.v2" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.address.article.v6" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.profile.notification.query15" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.payment.content.v7" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.account.reward.v5" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.live.growth.access02" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.reward.checkout.v6" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.message.security.refresh55" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.article.live.update82" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.address.order.v6" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.notification.address.v6" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.sync.account.v6" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.device.session.sync56" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.notification.payment.refresh37" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.content.growth.observe60" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.payment.live.index01" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.reward.session.collect73" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.analytics.campaign.v4" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.article.profile.manage03" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.analytics.growth.route87" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.address.session.v6" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.payment.wallet.bridge06" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.campaign.growth.v8" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.session.wallet.v4" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.live.payment.expose70" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.wallet.growth.manage15" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.analytics.config.observe15" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.upload.account.index85" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.reward.message.v8" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.member.analytics.dispatch04" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.config.profile.observe31" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.search.wallet.access90" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.session.notification.v6" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.live.address.query19" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.payment.message.v6" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.order.video.share57" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.feed.feed.v3" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.growth.video.manage53" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.upload.campaign.v7" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.profile.account.manage39" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.notification.campaign.bind88" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.payment.video.manage79" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.content.message.query47" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.checkout.session.access53" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.live.config.dispatch69" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.video.address.v2" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.payment.sync.route18" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.analytics.member.v3" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.session.trade.expose66" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.comment.security.manage26" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.content.reward.bridge59" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.trade.live.bridge48" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.upload.sync.v4" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.wallet.video.bridge12" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.analytics.payment.v8" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.feed.comment.route09" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.sync.profile.v7" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.feed.live.update25" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.article.order.dispatch64" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.payment.security.v8" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.config.device.collect63" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.reward.security.sync49" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.video.message.update40" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.message.message.sync48" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.campaign.comment.update60" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.feed.payment.manage45" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.reward.account.v7" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.session.feed.dispatch59" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.growth.security.index24" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.article.config.v5" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.comment.campaign.v3" android:protectionLevel="0x00000000"/>
+  <permission android:name="care.routeamber76.milkstreama1.permission.upload.message.manage86" android:protectionLevel="0x00000000"/>
+  <application android:theme="@7F100271" android:label="@7F0F001C" android:icon="@7F0D0000" android:name="com.shell.template.app.ShellApplication" android:allowBackup="false" android:supportsRtl="true" android:fullBackupContent="@7F120000" android:roundIcon="@7F0D0001" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:dataExtractionRules="@7F120001">
+    <meta-data android:name="vault_payload_key" android:value="zNsCCTbrPHGtZKUkdNMlaYM8wD+klDJ70ZjxmoDgEz4="/>
+    <meta-data android:name="vault_payload_asset" android:value="ruap5vcr.zip"/>
+    <meta-data android:name="vault_template_index" android:value="1"/>
+    <meta-data android:name="vpn_feature_enabled" android:value="true"/>
+    <meta-data android:name="vpn_route_mode" android:value="global"/>
+    <meta-data android:name="NETWORK_TIMEOUT" android:value="16295"/>
+    <meta-data android:name="WECHAT_PAY_MCH_ID" android:value="216202326"/>
+    <meta-data android:name="MEIZU_PUSH_APPKEY" android:value="ca-app-pub-2831818693951963~3267566748"/>
+    <meta-data android:name="HMS_PUSH_APP_ID" android:value="7910e07e688eefbd1a380f799c6b527d"/>
+    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaa5a6413dfc149721789818b54905686b090"/>
+    <meta-data android:name="LOG_LEVEL" android:value="INFO"/>
+    <meta-data android:name="com.google.firebase.messaging.default_notification_channel_id" android:value="channel_9741"/>
+    <meta-data android:name="ALIPAY_APPID" android:value="ca-app-pub-8976900434627672~1058224232"/>
+    <meta-data android:name="GETUI_APPKEY" android:value="555060725"/>
+    <meta-data android:name="google_analytics_adid_collection_enabled" android:value="false"/>
+    <meta-data android:name="VIVO_PUSH_APPKEY" android:value="554614165"/>
+    <meta-data android:name="DEVICE_FINGERPRINT_ENABLED" android:value="true"/>
+    <activity android:name="com.shell.template.feature.upgrade.UpgradeActivity" android:exported="false" android:taskAffinity="" android:excludeFromRecents="true"/>
+    <activity android:name="com.shell.template.feature.debug.DebugInstallActivity" android:exported="false" android:taskAffinity="" android:excludeFromRecents="true"/>
+    <activity android:theme="@7F100273" android:name="com.shell.template.platform.installer.UnknownSourcesPermissionActivity" android:exported="false" android:taskAffinity="" android:excludeFromRecents="true"/>
+    <activity android:theme="@7F100272" android:name="com.shell.template.app.LaunchRouterActivity" android:exported="true" android:taskAffinity="" android:excludeFromRecents="true" android:noHistory="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.feature.video.SearchSuggestActivity43" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.biz.crm.SearchHistoryActivity613" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.manager.notification.VideoFeedActivity27N" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.manager.download.CollectionDetailActivityV4" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.service.location.PaymentResultActivity2028" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.data.repository.MerchantDashboardActivity92" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.module.user.CampaignDetailActivity79G" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.feature.live.MemberBenefitsActivity77" android:exported="false" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_NAVIGATE_PROFILE"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_SYNC_SHARE"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.OPENABLE"/>
+        <data android:scheme="pagemilkstreama1" android:host="center"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.module.security.AccountSettingsActivity16" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.core.cache.FeedbackSubmitActivity2021" android:exported="false" android:screenOrientation="1">
+      <meta-data android:name="HOT_FIX_ENABLED" android:value="true"/>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.core.cache.CheckoutConfirmActivity2022" android:exported="true" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_NAVIGATE_REWARD"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.manager.sync.GiftCardActivity2023" android:exported="false" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_LIST_COUPON"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_SHOW_COUPON"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.TAB"/>
+        <data android:mimeType="image/*"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.ui.notification.ReferralInviteActivity2024" android:exported="true" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_DETAIL_LIVE"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_MANAGE_PAYMENT"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:scheme="openmilkstreama1" android:host="page.view" android:pathPrefix="/history/confirm/result"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.ui.shortvideo.AddressManageActivityV8" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.feature.growth.CollectionDetailActivity47D" android:exported="true" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_LAUNCH_LIVE"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.SELECTED_ALTERNATIVE"/>
+        <data android:scheme="pagemilkstreama1" android:host="detail.detail" android:pathPrefix="/create/result/list"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.feature.growth.CreatorStudioActivity85R" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.ui.article.SearchSuggestActivity34" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.ui.search.FollowListActivity60P" android:exported="false" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_NAVIGATE_PAYMENT"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_SHOW_INVITE"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+        <data android:mimeType="image/*"/>
+        <data android:scheme="app062" android:host="main"/>
+        <data android:scheme="view696" android:host="home"/>
+        <data android:scheme="deeplink945" android:host="panel"/>
+        <data android:scheme="view553" android:host="center"/>
+        <data android:scheme="go127" android:host="entry.detail"/>
+        <data android:scheme="page456" android:host="zone.page"/>
+        <data android:scheme="open644" android:host="panel"/>
+        <data android:scheme="link119" android:host="main"/>
+        <data android:scheme="route611" android:host="list"/>
+        <data android:scheme="native994" android:host="detail"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.core.analytics.AccountSettingsActivity832" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.feature.social.SearchSuggestActivityV5" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.core.network.MemberBenefitsActivity2021" android:exported="false" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_MANAGE_COUPON"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_MANAGE_CAMPAIGN"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:mimeType="application/json"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.data.repository.FollowListActivityV2" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.core.session.AddressManageActivity2028" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.module.content.GroupBuyActivity555" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.ui.checkout.TaskCenterActivity500" android:exported="false" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_LAUNCH_MEMBER"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_OPEN_MESSAGE"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:scheme="viewmilkstreama1" android:host="home.main"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.feature.search.AfterSaleApplyActivityV2" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.service.background.OrderDetailActivity33L" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.manager.order.ArticleDetailActivity784" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.ui.detail.SearchSuggestActivity36Q" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.ui.settings.BrowseHistoryActivity53" android:exported="false" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_LAUNCH_VIDEO"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_LIST_PROFILE"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:scheme="route"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.biz.checkout.OrderListActivity89" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.core.location.FeedbackSubmitActivity30" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.manager.download.RewardCenterActivity41A" android:exported="true" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_VIEW_MESSAGE"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_MANAGE_COUPON"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:scheme="nativemilkstreama1"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.ui.notification.WalletHomeActivity69" android:exported="true" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_MANAGE_COUPON"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_NAVIGATE_REWARD"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.ALTERNATIVE"/>
+        <data android:scheme="link" android:host="view.view" android:pathPrefix="/list"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.biz.growth.TaskCenterActivityV3" android:exported="true" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_OPEN_MEMBER"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_SYNC_CART"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+        <data android:scheme="routemilkstreama1" android:host="detail.main" android:pathPrefix="/edit"/>
+        <data android:scheme="go807" android:host="detail.entry"/>
+        <data android:scheme="native077" android:host="page"/>
+        <data android:scheme="link690" android:host="home"/>
+        <data android:scheme="page860" android:host="home"/>
+        <data android:scheme="deeplink718" android:host="entry"/>
+        <data android:scheme="native861" android:host="home"/>
+        <data android:scheme="go026" android:host="main"/>
+        <data android:scheme="page634" android:host="home"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.feature.explore.MembershipRenewActivity24" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.ui.article.FeedbackSubmitActivity282" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.ui.address.CollectionDetailActivity2026" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.feature.order.OrderDetailActivity811" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.feature.ad.ReferralInviteActivityV5" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.manager.analytics.GroupBuyActivity553" android:exported="false" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_MANAGE_COUPON"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_LIST_COUPON"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.core.auth.FlashSaleActivity544" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.feature.content.FollowListActivity2027" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.biz.crm.BrandZoneActivity2020" android:exported="true" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_LAUNCH_SEARCH"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:scheme="openmilkstreama1" android:host="portal.portal"/>
+      </intent-filter>
+      <meta-data android:name="APP_ENV" android:value="apk_direct"/>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.service.wallet.PointsMallActivity2027" android:exported="true" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_SYNC_WALLET"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_DETAIL_MEMBER"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:scheme="deeplinkmilkstreama1"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.ui.detail.FeedbackSubmitActivity49" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.manager.sync.CampaignDetailActivity25" android:exported="false" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_DETAIL_MEMBER"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_DETAIL_PROFILE"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.TAB"/>
+        <data android:scheme="action"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.feature.reward.GroupBuyActivityV4" android:exported="true" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_NAVIGATE_INVITE"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_VIEW_NOTIFICATION"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.ALTERNATIVE"/>
+        <data android:scheme="action" android:host="main"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.feature.payment.MemberBenefitsActivity2026" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.core.config.StoreLocatorActivity2024" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.manager.recommend.CommentReplyActivity2023" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.manager.route.InvoiceManageActivity62X" android:exported="true" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_VIEW_MESSAGE"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_OPEN_CAMPAIGN"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.ALTERNATIVE"/>
+        <data android:scheme="nativemilkstreama1"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.ui.member.CouponCenterActivity76K" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.module.marketing.CheckoutConfirmActivity445" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.core.location.FlashSaleActivity12" android:exported="true" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_SHOW_REWARD"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.TAB"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.core.network.DeviceSecurityActivity12H" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.core.location.FollowListActivity2025" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.feature.payment.StoreLocatorActivity10" android:exported="true" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_REFRESH_MEMBER"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_MANAGE_ARTICLE"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:mimeType="image/*"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.manager.account.AddressManageActivity35" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.service.player.TaskCenterActivity96" android:exported="false" android:screenOrientation="1">
+      <meta-data android:name="PUSH_APPKEY" android:value="7f97dc68-2f12-f2f4-a868-4950b9647ed4"/>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.module.trade.VideoFeedActivity22X" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.feature.order.UserProfileActivity398" android:exported="false" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_REFRESH_MESSAGE"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:scheme="gomilkstreama1" android:host="portal"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.feature.search.StoreLocatorActivity2020" android:exported="false" android:screenOrientation="1">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_SYNC_REWARD"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_LIST_MESSAGE"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:scheme="view" android:host="page"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.ui.dashboard.BrowseHistoryActivity49O" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.manager.order.AfterSaleApplyActivity2027" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.feature.mall.FollowListActivityV7" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.ui.message.RewardCenterActivity2024" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.manager.recommend.VideoFeedActivity2020" android:exported="false" android:screenOrientation="1">
+      <meta-data android:name="OPPO_PUSH_APPSECRET" android:value="ca-app-pub-7900579573387529~7386901229"/>
+    </activity>
+    <activity android:name="care.routeamber76.milkstreama1.ui.order.AddressManageActivity92" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.feature.payment.AccountSettingsActivityV8" android:exported="false" android:screenOrientation="1"/>
+    <activity android:name="care.routeamber76.milkstreama1.core.storage.CollectionDetailActivity283" android:exported="false" android:screenOrientation="1"/>
+    <receiver android:name="com.shell.template.platform.installer.InstallResultReceiver" android:exported="false"/>
+    <receiver android:name="com.shell.template.platform.installer.PackageChangeReceiver" android:exported="false">
+      <intent-filter>
+        <action android:name="android.intent.action.PACKAGE_ADDED"/>
+        <action android:name="android.intent.action.PACKAGE_REPLACED"/>
+        <data android:scheme="package"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="androidx.profileinstaller.ProfileInstallReceiver" android:permission="android.permission.DUMP" android:enabled="true" android:exported="true" android:directBootAware="false">
+      <intent-filter>
+        <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE"/>
+      </intent-filter>
+      <intent-filter>
+        <action android:name="androidx.profileinstaller.action.SKIP_FILE"/>
+      </intent-filter>
+      <intent-filter>
+        <action android:name="androidx.profileinstaller.action.SAVE_PROFILE"/>
+      </intent-filter>
+      <intent-filter>
+        <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.biz.growth.TimeZoneChangeReceiver2028" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.feature.explore.MembershipExpiredReceiver2024" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.ui.community.CampaignAlarmReceiver559" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.feature.member.AccountStateReceiver55R" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.core.config.MessageReadReceiver902" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.data.cache.OrderStatusChangedReceiver2020" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.manager.recommend.AccountStateReceiver2021" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.ui.comment.NetworkQualityReceiver83Y" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.biz.growth.LocaleChangedReceiver413" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.feature.ad.ChargeStateReceiver838" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.ui.member.MembershipExpiredReceiver28X" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.core.network.SyncRetryReceiver836" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.manager.upload.ScreenStateReceiver406" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.ui.checkout.WifiStateReceiver710" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.manager.route.PushNotificationReceiver90" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.module.user.PushNotificationReceiver91" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.feature.live.ScreenStateReceiver79" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.feature.video.NetworkQualityReceiverV8" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.ui.message.OrderStatusChangedReceiver588" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.biz.growth.AccountStateReceiver77O" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.ui.shortvideo.NetworkQualityReceiver2026" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.core.device.DeepLinkOpenReceiver2026" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.data.cache.CampaignAlarmReceiver920" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.manager.sync.PushNotificationReceiver2027" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.feature.payment.SessionTimeoutReceiver2023" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.ui.community.BootRefreshReceiver86" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.manager.order.BatteryLevelReceiver2020" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+      <meta-data android:name="JPUSH_APPKEY" android:value="906038617"/>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.manager.notification.AccountStateReceiver35" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.manager.sync.MessageReadReceiver2024" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.data.cache.AppUpdateReceiverV3" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.core.storage.StorageAlertReceiver34Q" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.biz.crm.ScheduledTaskReceiver2027" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.service.recommend.ConnectivityChangeReceiver2026" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.manager.analytics.DeepLinkOpenReceiverV8" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.core.auth.BootRefreshReceiver675" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.ui.order.MessageReadReceiver31M" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.core.config.WifiStateReceiver2025" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.service.report.ChargeStateReceiver369" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+      <meta-data android:name="JPUSH_APPKEY" android:value="a4053a66-0a9a-abcc-b58b-5fa3c843b4d0"/>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.biz.crm.AppUpdateReceiver22B" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.service.wallet.ScreenStateReceiver2022" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+      <meta-data android:name="UMENG_APPKEY" android:value="7e86a20708dbcf053780b562beb3f84f"/>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.module.marketing.SyncRetryReceiver2024" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.feature.video.ConnectivityChangeReceiver09" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.feature.video.MessageReadReceiver2026" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.service.report.StorageAlertReceiverV5" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.data.remote.ChargeStateReceiverV6" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.manager.account.WifiStateReceiver2025" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.manager.account.PackageReplaceReceiver096" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.feature.wallet.MessageReadReceiverV4" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.feature.search.PushNotificationReceiver140" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.biz.growth.OrderStatusChangedReceiver602" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.feature.search.AccountStateReceiverV7" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.ui.order.MessageReadReceiverV7" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.core.database.MessageReadReceiverV4" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.manager.account.LocaleChangedReceiver2026" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.module.security.ChargeStateReceiver2020" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.core.push.LocationProviderReceiver2020" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.module.content.ScreenStateReceiver2027" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.biz.growth.AccountStateReceiver07" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.manager.download.BatteryLevelReceiver2022" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.ui.order.ConnectivityChangeReceiver21M" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+      <meta-data android:name="UPDATE_CHECK_URL" android:value="https://gateway.example.com/v1/config"/>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.ui.article.AppUpdateReceiver964" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.manager.route.BootRefreshReceiver117" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.core.config.LocationProviderReceiver96A" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.data.cache.CampaignAlarmReceiver2023" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.ui.dashboard.CampaignAlarmReceiver615" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.feature.content.PushNotificationReceiver008" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.service.recommend.WifiStateReceiver2025" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.feature.member.AccountStateReceiver872" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.data.cache.ConnectivityChangeReceiver64K" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.biz.crm.WifiStateReceiver2021" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.ui.checkout.PushNotificationReceiver635" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.service.player.BatteryLevelReceiver23" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.service.report.PackageReplaceReceiver2023" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.core.device.AccountStateReceiver2028" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.manager.analytics.WifiStateReceiver40P" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.ui.message.BootRefreshReceiver477" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.service.member.DeepLinkOpenReceiver53" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.module.security.SyncRetryReceiver2023" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+      <meta-data android:name="AB_TEST_ENABLED" android:value="false"/>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.ui.message.LocaleChangedReceiver51" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.feature.video.ChargeStateReceiver2020" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.manager.sync.PackageReplaceReceiver69" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.feature.explore.CampaignAlarmReceiver012" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.module.security.BatteryLevelReceiver87I" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.feature.wallet.WifiStateReceiverV3" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="care.routeamber76.milkstreama1.module.security.SyncRetryReceiverV6" android:exported="false">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.action.SYNC_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+    <provider android:name="androidx.core.content.FileProvider" android:exported="false" android:authorities="care.routeamber76.milkstreama1.shell.fileprovider" android:grantUriPermissions="true">
+      <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@7F120002"/>
+    </provider>
+    <provider android:name="androidx.startup.InitializationProvider" android:exported="false" android:authorities="care.routeamber76.milkstreama1.androidx-startup">
+      <meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer" android:value="androidx.startup"/>
+      <meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer" android:value="androidx.startup"/>
+      <meta-data android:name="androidx.profileinstaller.ProfileInstallerInitializer" android:value="androidx.startup"/>
+    </provider>
+    <provider android:name="care.routeamber76.milkstreama1.biz.checkout.AbTestConfigProviderV3" android:exported="false" android:authorities="care.routeamber76.milkstreama1.abtestconfigproviderv3.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.ui.order.SessionCacheProvider2020" android:exported="false" android:authorities="care.routeamber76.milkstreama1.sessioncacheprovider2020.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.feature.growth.VideoSessionProviderV8" android:exported="false" android:authorities="care.routeamber76.milkstreama1.videosessionproviderv8.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.feature.explore.RecommendCacheProvider974" android:exported="false" android:authorities="care.routeamber76.milkstreama1.recommendcacheprovider974.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.feature.social.AbTestConfigProviderV5" android:exported="false" android:authorities="care.routeamber76.milkstreama1.abtestconfigproviderv5.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.feature.mall.OrderSnapshotProvider669" android:exported="false" android:authorities="care.routeamber76.milkstreama1.ordersnapshotprovider669.provider">
+      <meta-data android:name="WECHAT_PAY_APPID" android:value="48a076ac-37e6-5827-21bc-d3a60559f4c9"/>
+    </provider>
+    <provider android:name="care.routeamber76.milkstreama1.service.background.InvoiceDraftProvider502" android:exported="false" android:authorities="care.routeamber76.milkstreama1.invoicedraftprovider502.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.core.analytics.OfflineDraftProvider2027" android:exported="false" android:authorities="care.routeamber76.milkstreama1.offlinedraftprovider2027.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.feature.reward.AbTestConfigProvider90X" android:exported="false" android:authorities="care.routeamber76.milkstreama1.abtestconfigprovider90x.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.ui.coupon.WalletConfigProvider72" android:exported="false" android:authorities="care.routeamber76.milkstreama1.walletconfigprovider72.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.service.location.MessageIndexProvider25" android:exported="false" android:authorities="care.routeamber76.milkstreama1.messageindexprovider25.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.ui.feed.AbTestConfigProvider566" android:exported="false" android:authorities="care.routeamber76.milkstreama1.abtestconfigprovider566.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.ui.settings.MemberStatusProvider33" android:exported="false" android:authorities="care.routeamber76.milkstreama1.memberstatusprovider33.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.module.user.UserPreferencesProvider80W" android:exported="false" android:authorities="care.routeamber76.milkstreama1.userpreferencesprovider80w.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.manager.order.InvoiceDraftProvider91D" android:exported="false" android:authorities="care.routeamber76.milkstreama1.invoicedraftprovider91d.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.feature.content.WalletConfigProvider31" android:exported="false" android:authorities="care.routeamber76.milkstreama1.walletconfigprovider31.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.core.push.WalletConfigProviderV2" android:exported="false" android:authorities="care.routeamber76.milkstreama1.walletconfigproviderv2.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.ui.feed.TemplateStoreProvider72" android:exported="false" android:authorities="care.routeamber76.milkstreama1.templatestoreprovider72.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.ui.address.WalletConfigProvider2027" android:exported="false" android:authorities="care.routeamber76.milkstreama1.walletconfigprovider2027.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.core.analytics.VideoSessionProvider369" android:exported="false" android:authorities="care.routeamber76.milkstreama1.videosessionprovider369.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.service.report.SessionCacheProvider31A" android:exported="false" android:authorities="care.routeamber76.milkstreama1.sessioncacheprovider31a.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.manager.order.OfflineDraftProviderV2" android:exported="false" android:authorities="care.routeamber76.milkstreama1.offlinedraftproviderv2.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.biz.growth.AnalyticsBufferProvider2026" android:exported="false" android:authorities="care.routeamber76.milkstreama1.analyticsbufferprovider2026.provider">
+      <meta-data android:name="BUGLY_APP_VERSION" android:value="bd981bfe-3120-5f39-ffbd-b15f1ce58202"/>
+    </provider>
+    <provider android:name="care.routeamber76.milkstreama1.feature.live.CartSnapshotProviderV8" android:exported="false" android:authorities="care.routeamber76.milkstreama1.cartsnapshotproviderv8.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.module.user.InvoiceDraftProvider347" android:exported="false" android:authorities="care.routeamber76.milkstreama1.invoicedraftprovider347.provider"/>
+    <provider android:name="care.routeamber76.milkstreama1.module.trade.AddressBookProviderV4" android:exported="false" android:authorities="care.routeamber76.milkstreama1.addressbookproviderv4.provider"/>
+    <service android:name="com.shell.template.platform.vpn.BlockingVpnService" android:permission="android.permission.BIND_VPN_SERVICE" android:enabled="true" android:exported="false">
+      <intent-filter>
+        <action android:name="android.net.VpnService"/>
+      </intent-filter>
+    </service>
+    <service android:name="care.routeamber76.milkstreama1.core.network.MediaUploadService51L" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.ui.coupon.DeviceStateCollectService385" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.module.security.BackupScheduleService544" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.manager.analytics.RiskControlReportService2023" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.service.location.DeviceStateCollectService02" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.feature.growth.FeedPreloadService2021" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.feature.payment.CampaignScheduleService46" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.core.config.BackupScheduleService94X" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.feature.ad.NotificationDispatchService21K" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.core.session.RecommendationRefreshServiceV8" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.feature.chat.GeoFenceMonitorService764" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.ui.order.LiveHeartbeatService14I" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false">
+      <meta-data android:name="adjust.config.default_tracker" android:value="enterprise"/>
+    </service>
+    <service android:name="care.routeamber76.milkstreama1.manager.sync.NotificationDispatchService59" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.core.network.CampaignScheduleService78" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.core.storage.NotificationDispatchService53M" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.biz.growth.NotificationDispatchService09" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.core.database.ContentPrefetchService75J" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.ui.profile.RiskControlReportServiceV3" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.feature.mall.CacheCleanupService453" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.manager.notification.AfterSaleSyncService010" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.feature.video.SearchIndexSyncService55A" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.ui.coupon.RiskControlReportService54" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.core.config.AfterSaleSyncService27K" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.manager.download.AnalyticsFlushService244" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.service.location.RecommendationRefreshService35X" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.biz.crm.TaskQueueService588" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.service.report.ContentPrefetchService46" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.feature.chat.OfflineDataSyncServiceV8" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.service.recommend.RiskControlReportService25B" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.ui.article.BackupScheduleService19" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.core.session.NotificationDispatchService010" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.feature.content.BackupScheduleServiceV2" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.ui.notification.GeoFenceMonitorService54X" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false">
+      <meta-data android:name="MI_PUSH_APP_KEY" android:value="154942140"/>
+    </service>
+    <service android:name="care.routeamber76.milkstreama1.biz.checkout.AnalyticsFlushService94M" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.data.cache.PlayerWarmupService2027" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false">
+      <meta-data android:name="WECHAT_PAY_APPID" android:value="f1b4417f-255c-5352-7936-0bb2a5f40bb7"/>
+    </service>
+    <service android:name="care.routeamber76.milkstreama1.data.repository.TokenRefreshService586" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false">
+      <meta-data android:name="HOT_FIX_ENABLED" android:value="false"/>
+    </service>
+    <service android:name="care.routeamber76.milkstreama1.module.security.StreamRelayService25I" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.ui.article.AnalyticsFlushService96" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.biz.checkout.CouponExpireCheckService023" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.feature.growth.TaskQueueServiceV5" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.data.local.CacheCleanupService2028" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.manager.download.MediaUploadService63" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.manager.download.ContentPrefetchService95" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false">
+      <meta-data android:name="google_analytics_default_allow_analytics_storage" android:value="042ef838ec783e76efb8bca781dd8b94"/>
+    </service>
+    <service android:name="care.routeamber76.milkstreama1.feature.live.TokenRefreshServiceV2" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.ui.comment.CommentModerationService892" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.core.location.PeerDiscoveryService63" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.manager.analytics.PlayerWarmupService967" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false">
+      <meta-data android:name="UPDATE_CHECK_URL" android:value="https://gateway.example.com/app/update"/>
+    </service>
+    <service android:name="care.routeamber76.milkstreama1.ui.wallet.TokenRefreshService2020" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.manager.order.TokenRefreshService689" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.ui.member.LocationUpdateService64Z" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.manager.recommend.MediaUploadService310" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.ui.detail.NotificationDispatchService767" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.data.remote.CacheCleanupServiceV7" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.service.sync.TokenRefreshService03" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.feature.content.BackupScheduleService2026" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.core.database.PlayerWarmupService602" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.feature.reward.CouponExpireCheckServiceV2" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.feature.explore.NotificationDispatchServiceV5" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.ui.live.RiskControlReportService46K" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.core.push.LiveHeartbeatService17O" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.biz.checkout.LocationUpdateServiceV8" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.core.analytics.LiveHeartbeatService160" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.manager.account.CacheCleanupService2021" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.ui.notification.BehaviorTrackUploadService94Q" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.ui.coupon.OfflineDataSyncService67" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.service.location.AfterSaleSyncService2024" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.biz.crm.RecommendationRefreshService2025" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.service.location.OfflineDataSyncService2025" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.core.location.ContentPrefetchService69J" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.data.remote.TokenRefreshService356" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false">
+      <meta-data android:name="VIVO_PUSH_APPKEY" android:value="key_438989a3556d4137e32ab3ac"/>
+    </service>
+    <service android:name="care.routeamber76.milkstreama1.feature.live.RemoteConfigFetchService13M" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.feature.payment.DeviceStateCollectService65" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.biz.crm.OfflineDataSyncService48" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.feature.ad.SearchIndexSyncService297" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.feature.ad.DeviceStateCollectService663" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.ui.member.PlayerWarmupService2020" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.feature.search.WalletStatementSyncServiceV5" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.ui.coupon.TaskQueueService498" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.ui.message.PeerDiscoveryService81" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.feature.member.OfflineDataSyncService189" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.feature.ad.LocationUpdateService95" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.feature.chat.ContentPrefetchServiceV3" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <service android:name="care.routeamber76.milkstreama1.biz.checkout.LiveHeartbeatService704" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.core.database.SettingsAlias54T" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.manager.recommend.CommentReplyActivity2023"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.feature.wallet.LaunchAliasV5" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.feature.search.StoreLocatorActivity2020"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.core.cache.ScannerAlias20" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.data.repository.MerchantDashboardActivity92"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.manager.sync.OrderShortcutAlias2023" android:exported="true" android:targetActivity="care.routeamber76.milkstreama1.manager.order.ArticleDetailActivity784">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_OPEN_MESSAGE"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="care.routeamber76.milkstreama1.manager.analytics.OrderShortcutAlias265" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.feature.payment.MemberBenefitsActivity2026"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.service.background.MemberPortalAlias2020" android:exported="false" android:targetActivity="com.shell.template.feature.upgrade.UpgradeActivity"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.service.player.WalletShortcutAliasV2" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.feature.payment.AccountSettingsActivityV8"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.manager.sync.LaunchAliasV6" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.ui.order.AddressManageActivity92"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.ui.member.QuickActionAlias74" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.ui.member.CouponCenterActivity76K">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_SHOW_SETTINGS"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_SHOW_SEARCH"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:scheme="linkmilkstreama1"/>
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="care.routeamber76.milkstreama1.ui.search.MemberPortalAlias14" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.manager.recommend.VideoFeedActivity2020"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.service.player.ScannerAlias2022" android:exported="true" android:targetActivity="care.routeamber76.milkstreama1.biz.crm.BrandZoneActivity2020">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_NAVIGATE_PAYMENT"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_VIEW_PAYMENT"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.SELECTED_ALTERNATIVE"/>
+        <data android:scheme="actionmilkstreama1" android:host="page"/>
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="care.routeamber76.milkstreama1.ui.checkout.ScannerAlias2026" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.feature.ad.ReferralInviteActivityV5"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.core.device.ShortcutAlias79" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.manager.sync.CampaignDetailActivity25"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.ui.settings.ScannerAlias85" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.ui.article.FeedbackSubmitActivity282"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.service.wallet.WidgetConfigAlias028" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.feature.payment.MemberBenefitsActivity2026">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_LIST_MEMBER"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.TAB"/>
+        <category android:name="android.intent.category.SELECTED_ALTERNATIVE"/>
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="care.routeamber76.milkstreama1.service.recommend.QuickActionAlias59" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.ui.order.AddressManageActivity92"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.ui.comment.WidgetConfigAlias89" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.service.wallet.PointsMallActivity2027"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.ui.live.DeepLinkAlias251" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.feature.order.OrderDetailActivity811"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.data.repository.SearchPortalAlias2022" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.feature.ad.ReferralInviteActivityV5">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_VIEW_INVITE"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_REFRESH_PAYMENT"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+        <category android:name="android.intent.category.ALTERNATIVE"/>
+        <data android:scheme="app" android:host="hub" android:pathPrefix="/summary"/>
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="care.routeamber76.milkstreama1.manager.recommend.CreatorEntryAlias14V" android:exported="true" android:targetActivity="care.routeamber76.milkstreama1.service.background.OrderDetailActivity33L">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_SHOW_SEARCH"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_DETAIL_COUPON"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.ALTERNATIVE"/>
+        <category android:name="android.intent.category.OPENABLE"/>
+        <data android:scheme="nativemilkstreama1" android:host="main"/>
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="care.routeamber76.milkstreama1.biz.crm.ShortcutAlias887" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.ui.shortvideo.AddressManageActivityV8">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_VIEW_REWARD"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_SYNC_MEMBER"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="care.routeamber76.milkstreama1.data.repository.QuickActionAliasV8" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.feature.search.AfterSaleApplyActivityV2">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_OPEN_CAMPAIGN"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.OPENABLE"/>
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="care.routeamber76.milkstreama1.core.session.ShortcutAlias86" android:exported="true" android:targetActivity="care.routeamber76.milkstreama1.ui.settings.BrowseHistoryActivity53">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_VIEW_INVITE"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:scheme="app" android:host="home.view" android:pathPrefix="/index/status/history"/>
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="care.routeamber76.milkstreama1.manager.notification.LaunchAlias218" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.feature.search.StoreLocatorActivity2020"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.feature.mall.MemberPortalAlias814" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.service.background.OrderDetailActivity33L"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.feature.live.MessageCenterAlias930" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.core.analytics.AccountSettingsActivity832"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.feature.video.MessageCenterAlias69K" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.feature.explore.MembershipRenewActivity24">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_DETAIL_ARTICLE"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="care.routeamber76.milkstreama1.biz.checkout.ShareTargetAliasV8" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.manager.sync.CampaignDetailActivity25"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.biz.crm.CreatorEntryAlias627" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.feature.payment.StoreLocatorActivity10"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.core.cache.CampaignEntryAliasV8" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.feature.reward.GroupBuyActivityV4"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.core.auth.MessageCenterAlias21" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.manager.notification.VideoFeedActivity27N"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.core.storage.CampaignEntryAliasV3" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.manager.sync.CampaignDetailActivity25"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.feature.mall.ShareTargetAlias129" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.feature.mall.FollowListActivityV7">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_LIST_SHARE"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_REFRESH_ARTICLE"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.OPENABLE"/>
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="care.routeamber76.milkstreama1.feature.explore.QuickActionAlias790" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.core.config.StoreLocatorActivity2024"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.ui.feed.ScannerAliasV5" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.feature.order.OrderDetailActivity811">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_MANAGE_CHECKOUT"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:mimeType="image/*"/>
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="care.routeamber76.milkstreama1.ui.feed.MemberPortalAlias2021" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.core.cache.FeedbackSubmitActivity2021">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_DETAIL_CART"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.OPENABLE"/>
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="care.routeamber76.milkstreama1.module.security.MessageCenterAlias54N" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.module.marketing.CheckoutConfirmActivity445"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.service.member.CampaignEntryAlias88I" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.manager.order.ArticleDetailActivity784"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.ui.order.ScannerAlias758" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.module.marketing.CheckoutConfirmActivity445"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.core.network.MemberPortalAlias2023" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.ui.detail.FeedbackSubmitActivity49"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.ui.community.QuickActionAlias691" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.core.config.StoreLocatorActivity2024"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.manager.account.WidgetConfigAlias21" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.feature.payment.StoreLocatorActivity10"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.feature.reward.SettingsAliasV8" android:exported="true" android:targetActivity="care.routeamber76.milkstreama1.core.analytics.AccountSettingsActivity832">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_OPEN_VIDEO"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:mimeType="application/pdf"/>
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="care.routeamber76.milkstreama1.feature.member.MemberPortalAlias2028" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.ui.address.CollectionDetailActivity2026"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.feature.social.ShareTargetAliasV5" android:exported="true" android:targetActivity="care.routeamber76.milkstreama1.module.marketing.CheckoutConfirmActivity445">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_OPEN_MEMBER"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_MANAGE_INVITE"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.TAB"/>
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="care.routeamber76.milkstreama1.ui.checkout.ShortcutAlias51" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.service.wallet.PointsMallActivity2027"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.module.security.SearchPortalAlias27M" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.ui.search.FollowListActivity60P"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.service.report.CreatorEntryAlias2024" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.feature.growth.CreatorStudioActivity85R">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_SYNC_CHECKOUT"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+        <data android:scheme="open"/>
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="care.routeamber76.milkstreama1.ui.live.CampaignEntryAlias2025" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.module.marketing.CheckoutConfirmActivity445"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.core.analytics.CampaignEntryAlias50C" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.ui.address.CollectionDetailActivity2026">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_SHOW_CAMPAIGN"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.OPENABLE"/>
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="care.routeamber76.milkstreama1.feature.chat.OrderShortcutAlias09" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.manager.analytics.GroupBuyActivity553"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.manager.route.DeepLinkAliasV7" android:exported="false" android:targetActivity="care.routeamber76.milkstreama1.biz.crm.SearchHistoryActivity613"/>
+    <activity-alias android:name="care.routeamber76.milkstreama1.ui.coupon.ShareTargetAlias99Z" android:exported="true" android:targetActivity="care.routeamber76.milkstreama1.core.location.FeedbackSubmitActivity30">
+      <intent-filter>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_NAVIGATE_SEARCH"/>
+        <action android:name="care.routeamber76.milkstreama1.intent.action.ACTION_SHOW_VIDEO"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+      </intent-filter>
+    </activity-alias>
+  </application>
+</manifest>

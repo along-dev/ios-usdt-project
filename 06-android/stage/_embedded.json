@@ -1,0 +1,69 @@
+{
+ "ads.txt": {
+  "json": [],
+  "urls": [
+   "http://$image,script,stylesheet,subdocument,third-party,xmlhttprequest,domain=canyoublockit.com",
+   "http://$script,third-party,xmlhttprequest,domain=bc.vc",
+   "http://$script,xmlhttprequest,domain=urlcash.net",
+   "http://146.59.211.227/tsc/Zx0bagrCjuxP",
+   "http://ads.trafficjunky.net/",
+   "http://adultfriendfinder.com/go/",
+   "http://annulmentequitycereals.com/",
+   "http://avthelkp.net/",
+   "http://bloom.amymialee.xyz",
+   "http://bongacams.com/track?",
+   "http://cam4com.go2cloud.org/aff_c?",
+   "http://clicks.totemcash.com/",
+   "http://coefficienttolerategravel.com/",
+   "http://com-1.pro/",
+   "http://creativecommons.org/licenses/by/3.0/)",
+   "http://eslp34af.click/",
+   "http://fakereferer.com",
+   "http://fakethereferer.com",
+   "http://globsads.com/",
+   "http://goo.gl/"
+  ],
+  "tokens": []
+ },
+ "cht.html": {
+  "json": [
+   "{\r\n  \"id\": \"891b90ae-f2cc-45ad-afa7-3043f64c1370\",\r\n  \"token\": \"c4nYxA6L3G8P50UXlwVYxQvWBmN74uJr\",\r\n  \"active\": 1,\r\n  \"version\": \"1.0\"\r\n}"
+  ],
+  "urls": [],
+  "tokens": [
+   "891b90ae-f2cc-45ad-afa7-3043f64c1370",
+   "c4nYxA6L3G8P50UXlwVYxQvWBmN74uJr"
+  ]
+ },
+ "s1s2s3s4.html": {
+  "json": [
+   "{\r\n  \"id\": \"be0868cf-494f-4e34-9f7a-6be964cde04d\",\r\n  \"token\": \"2I1v8Fwq1LseSd0e06P8hYQzoDmhvVl1\",\r\n  \"active\": 0,\r\n  \"version\": \"8.8\"\r\n}"
+  ],
+  "urls": [],
+  "tokens": [
+   "2I1v8Fwq1LseSd0e06P8hYQzoDmhvVl1",
+   "be0868cf-494f-4e34-9f7a-6be964cde04d"
+  ]
+ },
+ "uns.html": {
+  "json": [],
+  "urls": [
+   "http://www.w3.org/2000/svg"
+  ],
+  "tokens": []
+ },
+ "uns.html.txt": {
+  "json": [],
+  "urls": [
+   "http://www.w3.org/2000/svg"
+  ],
+  "tokens": []
+ },
+ "acs_els.html.dec": {
+  "json": [],
+  "urls": [
+   "http://www.w3.org/2000/svg"
+  ],
+  "tokens": []
+ }
+}

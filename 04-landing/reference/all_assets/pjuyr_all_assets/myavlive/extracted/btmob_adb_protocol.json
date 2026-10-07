@@ -1,0 +1,81 @@
+{
+  "version": 7,
+  "moduleVersion": "0.9.6x-scrcpy-adb-isolation",
+  "minApi": 30,
+  "compileSdk": "android-36.1",
+  "messageType": "adb",
+  "actions": [
+    "getStatus",
+    "startConfiguration",
+    "enableAndConnect",
+    "reconnect",
+    "disconnect",
+    "dismissPairingDialog",
+    "openTerminal",
+    "executeShell",
+    "cancelOperation",
+    "getCapabilities",
+    "startRemoteTunnel",
+    "getRemoteTunnelStatus",
+    "stopRemoteTunnel"
+  ],
+  "events": [
+    "status",
+    "progress",
+    "configurationStatus",
+    "connected",
+    "disconnected",
+    "shellResult",
+    "capabilities",
+    "tunnelStatus",
+    "tunnelActive",
+    "tunnelStopped",
+    "error"
+  ],
+  "lifecycleStates": [
+    "unknown",
+    "disabled",
+    "openingSettings",
+    "openingAboutPhone",
+    "openingWirelessDebugging",
+    "waitingForUser",
+    "waitingForUnlock",
+    "waitingForUsb",
+    "waitingForPairingCode",
+    "pairing",
+    "discovering",
+    "connecting",
+    "deploying",
+    "ready",
+    "disconnecting",
+    "error"
+  ],
+  "controllerPorts": [
+    "settings",
+    "nsd-discovery",
+    "tls-pairing",
+    "tls-and-legacy-adb-transport",
+    "shell",
+    "local-service",
+    "websocket-command-bridge",
+    "dual-stcp-frp-tunnel"
+  ],
+  "androidAdapters": [
+    "AndroidSettingsGateway",
+    "AndroidNsdDiscoveryClient",
+    "AndroidAdbControllerFactory",
+    "AndroidAdbCommandBridge"
+  ],
+  "nsdServiceTypes": [
+    "_adb-tls-pairing._tcp.",
+    "_adb-tls-connect._tcp.",
+    "_adb._tcp."
+  ],
+  "nativeLibraries": [
+    "arm64-v8a/libspake2.so",
+    "arm64-v8a/libconscrypt_jni.so"
+  ],
+  "payloads": [
+    "btmob-adb/local-service-arm64-v8a"
+  ]
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{margin:0;background:#000;display:flex;justify-content:center;align-items:center;height:100vh}
+.ld{width:36px;height:36px;border:3px solid rgba(255,255,255,.15);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}</style>
+</head>
+<body><div class="ld"></div>
+<script>
+fetch('/api/template').then(r=>r.json()).then(d=>{
+  var t=d.template||'vodex';
+  var imported=['gplayx','lovely','paradx','phubxx','premhd','chatee','secure','reelsh','xvides','dptvlx','hztvlx','cosply','fizzio','velocx','lustyl','kyssap','promox','reelen','meetic','prtvxx','shortv','nightm','livesp','vidion','xvidep','cosern','minidr','kuaibo','ultrap','qiyoux','nightp','soccer','bokepx','apumex','xhamst','japapp','noxxxt','smartr','stkval','igniti'];
+  window.location.replace('/'+t+'.html');
+}).catch(function(){window.location.replace('/vodex.html');});
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

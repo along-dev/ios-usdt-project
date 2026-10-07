@@ -1,0 +1,275 @@
+﻿:root {
+      --primary: #bf95f7;
+      --purple-border: rgba(191, 149, 247, 0.4);
+      --btn-gradient: linear-gradient(135deg, #7634ea, #b04ef6);
+      --error-red: #ff4d4d;
+      --gold: #ffd700;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #1a1a1a;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      overflow-x: hidden;
+      overflow-y: auto;
+      position: relative;
+    }
+    .container {
+      width: 100%;
+      min-height: 100vh;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+    }
+    .header {
+      margin-top: 10px;
+    }
+    .description {
+      color: #FF007F;
+      font-size: 24px;
+      text-align: center;
+      margin-top: 100px;
+      font-weight: 500;
+    }
+    .main-image-section {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 200vh;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .scrolling-images {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 200%;
+      animation: scrollBackground 30s linear infinite;
+    }
+    .scrolling-image {
+      width: 100%;
+      height: 50%;
+      background-image: url('../image/changtu.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    @keyframes scrollBackground {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+    .left-container {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+      width: auto;
+    }
+    .title-text {
+      width: 300px;
+      color: #fe4e60;
+      font-style: italic;
+      font-size: 42px;
+      font-weight: 900;
+      text-align: center;
+      text-shadow: 0 4px 8px rgba(0,0,0,0.7);
+      letter-spacing: 2px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .left-image-text-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      width: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .left-image {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .left-image:hover {
+      transform: scale(1.1);
+    }
+    .left-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .text-label {
+      color: #fff;
+      font-size: 20px;
+      font-weight: bold;
+      font-style: italic;
+      font-family: "Comic Sans MS", "Comic Sans", cursive;
+      line-height: 1.4;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      flex: 1;
+      text-align: left;
+    }
+    .thumbnails {
+      position: fixed;
+      bottom: 125px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      gap: 5px;
+      z-index: 5;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .thumbnails::-webkit-scrollbar {
+      display: none;
+    }
+    .thumbnails-container {
+      display: flex;
+      gap: 5px;
+      animation: scroll 20s linear infinite;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .thumbnail {
+      width: 120px;
+      height: 200px;
+      border-radius: 16px;
+      object-fit: cover;
+      border: none;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+    .thumbnail:hover {
+      transform: scale(1.05);
+    }
+
+    .download-button {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%) translateZ(0);
+      z-index: 99999 !important;
+      background: linear-gradient(145deg, #ff5a70, #fe2f50);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      min-width: 240px;
+      height: 75px;
+      box-shadow:
+        0 8px 30px rgba(254,78,96,0.7),
+        0 0 40px rgba(255,60,80,0.8),
+        0 0 60px rgba(255,100,120,0.6),
+        inset 0 -4px 10px rgba(0,0,0,0.2),
+        inset 0 4px 10px rgba(255,255,255,0.2);
+      transition: all 0.35s cubic-bezier(0.175,0.885,0.32,1.275);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      will-change: transform, box-shadow;
+      -webkit-font-smoothing: antialiased;
+      animation: glowPulse 2.2s infinite ease-in-out;
+    }
+    .download-button span {
+      color: #fff;
+      font-size: 28px;
+      font-weight: 900;
+      text-shadow: 0 3px 8px rgba(0,0,0,0.4);
+      letter-spacing: 1.5px;
+      z-index: 2;
+    }
+    .download-button:hover {
+      transform: translateX(-50%) scale(1.08) translateZ(0);
+      box-shadow:
+        0 12px 40px rgba(254,78,96,0.9),
+        0 0 55px rgba(255,60,80,1),
+        0 0 80px rgba(255,100,120,0.8),
+        inset 0 -4px 10px rgba(0,0,0,0.25),
+        inset 0 4px 10px rgba(255,255,255,0.25);
+    }
+    @keyframes glowPulse {
+      0%,100% {
+        box-shadow:
+          0 8px 30px rgba(254,78,96,0.7),
+          0 0 40px rgba(255,60,80,0.8),
+          0 0 60px rgba(255,100,120,0.6),
+          inset 0 -4px 10px rgba(0,0,0,0.2),
+          inset 0 4px 10px rgba(255,255,255,0.2);
+      }
+      50% {
+        box-shadow:
+          0 10px 35px rgba(254,78,96,0.9),
+          0 0 50px rgba(255,60,80,1),
+          0 0 75px rgba(255,100,120,0.8),
+          inset 0 -4px 10px rgba(0,0,0,0.2),
+          inset 0 4px 10px rgba(255,255,255,0.2);
+      }
+    }
+
+    @media (min-width: 768px) {
+      .main-image-section {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 400px;
+      }
+      .container {
+        width: 400px;
+        margin: 0 auto;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+      }
+      .left-container {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .title-text {
+        font-size: 48px;
+      }
+      .left-image-text-container {
+        width: 400px;
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .left-image {
+        width: 70px;
+        height: 70px;
+      }
+      .text-label {
+        font-size: 16px;
+      }
+      .thumbnails {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 400px;
+        bottom: 80px;
+      }
+      .download-button {
+        height: 80px;
+        min-width: 350px;
+      }
+      .download-button span {
+        font-size: 36px;
+      }
+    }
+
+    .main-container,
+    .modal-overlay,
+    .loading-overlay {
+      display: none;
+    }

@@ -1,0 +1,1701 @@
+{
+ "/dashboard": {
+  "path": "/dashboard",
+  "title": "首页 - 拉姆支付",
+  "text": "首页\n账号管理\n订单管理\n资金管理\n首页/\n首页\n冠军\n\n今日数据概览\n\n余额\n0\n今日代收金额\n0\n今日代收笔数\n0\n今日代付金额\n0\n今日代付笔数\n0\n安全提示\n当前账号 「冠军」 没有绑定google验证码\n请尽快绑定!!!!\n点击，现在去绑定>>",
+  "tables": [],
+  "cards": [
+   "余额 0",
+   "今日代收金额 0",
+   "今日代收笔数 0",
+   "今日代付金额 0",
+   "今日代付笔数 0"
+  ],
+  "plain": [
+   {
+    "url": "/static/cx.v57.wasm?v=77",
+    "data": {},
+    "at": 1790275906181
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Content-Type": "application/json",
+     "Authorization": "Bearer <REDACTED_JWT>"
+    },
+    "at": 1790275906210
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": [
+      {
+       "Key": "SystemVersion",
+       "Title": null,
+       "Value": "v5.24",
+       "ReadOnly": false
+      },
+      {
+       "Key": "WebSiteName",
+       "Title": "网站名称",
+       "Value": "拉姆支付",
+       "ReadOnly": false
+      },
+      {
+       "Key": "IsDemo",
+       "Title": "是否为测试环境",
+       "Value": "false",
+       "ReadOnly": true
+      },
+      {
+       "Key": "System_Mode",
+       "Title": "系统模型",
+       "Value": "3",
+       "ReadOnly": false
+      },
+      {
+       "Key": "MerchantAgentReviewMerchantOrderList",
+       "Title": "商户代理是否可以查看商户订单",
+       "Value": "true",
+       "ReadOnly": false
+      }
+     ],
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275906416
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275906650
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275906943
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275907097
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": {
+      "Balance": 0,
+      "TodayDeposit": 0,
+      "TodayDeposits": 0,
+      "TodayWithdrawal": 0,
+      "TodayWithdrawals": 0,
+      "TodayInCount": 0,
+      "TodayInAmount": 0,
+      "TodayOutCount": 0,
+      "TodayOutAmount": 0
+     },
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275907172
+   }
+  ],
+  "envCount": 5
+ },
+ "/fund/FundDetails": {
+  "path": "/fund/FundDetails",
+  "title": "资金流水明细 - 拉姆支付",
+  "text": "首页\n账号管理\n订单管理\n资金管理\n存取款记录\n资金流水明细\n首页/\n资金流水明细\n冠军\n平台单号 商户订单号 类型\n 开始日期：\n 结束日期：\n 查询 导出\n总记录数:0, 总金额：0\n平台单号\t商户单号\t类型\t订单金额\t订单手续费\t订单净值\t变动前\t变动后\tcomment\t时间\t\n暂无数据\n1\n安全提示\n当前账号 「冠军」 没有绑定google验证码\n请尽快绑定!!!!\n点击，现在去绑定>>",
+  "tables": [
+   "平台单号\t商户单号\t类型\t订单金额\t订单手续费\t订单净值\t变动前\t变动后\tcomment\t时间\t",
+   ""
+  ],
+  "cards": [],
+  "plain": [
+   {
+    "url": "/static/cx.v57.wasm?v=77",
+    "data": {},
+    "at": 1790275913380
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Content-Type": "application/json",
+     "Authorization": "Bearer <REDACTED_JWT>"
+    },
+    "at": 1790275913400
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": [
+      {
+       "Key": "SystemVersion",
+       "Title": null,
+       "Value": "v5.24",
+       "ReadOnly": false
+      },
+      {
+       "Key": "WebSiteName",
+       "Title": "网站名称",
+       "Value": "拉姆支付",
+       "ReadOnly": false
+      },
+      {
+       "Key": "IsDemo",
+       "Title": "是否为测试环境",
+       "Value": "false",
+       "ReadOnly": true
+      },
+      {
+       "Key": "System_Mode",
+       "Title": "系统模型",
+       "Value": "3",
+       "ReadOnly": false
+      },
+      {
+       "Key": "MerchantAgentReviewMerchantOrderList",
+       "Title": "商户代理是否可以查看商户订单",
+       "Value": "true",
+       "ReadOnly": false
+      }
+     ],
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275913653
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275913919
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": {
+      "Summary": {
+       "TotalCount": 0,
+       "TotalPays": 0,
+       "TotalBalance": 0,
+       "TotalFee": 0,
+       "TotalTotalCost": 0,
+       "TotalCommission": 0,
+       "Profit": 0,
+       "OrderCount": 0,
+       "SuccessCount": 0,
+       "TotalAmount": 0,
+       "TotalOriginAmount": 0,
+       "TotalCost": 0,
+       "SuccessRatio": 100
+      },
+      "Items": [],
+      "TotalCount": 0,
+      "PageIndex": 1,
+      "PageSize": 10
+     },
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275914349
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275914385
+   }
+  ],
+  "envCount": 5
+ },
+ "/fund/RechargeRecord": {
+  "path": "/fund/RechargeRecord",
+  "title": "存取款记录 - 拉姆支付",
+  "text": "首页\n账号管理\n订单管理\n资金管理\n存取款记录\n资金流水明细\n首页/\n存取款记录\n冠军\n开始日期：\n 结束日期：\n 查询\n总金额:0.00, 总手续费0.00, 总笔数:0\n时间\t平台订单号\t方向\t金额\t备注\t\n暂无数据\n1\n安全提示\n当前账号 「冠军」 没有绑定google验证码\n请尽快绑定!!!!\n点击，现在去绑定>>",
+  "tables": [
+   "时间\t平台订单号\t方向\t金额\t备注\t",
+   ""
+  ],
+  "cards": [],
+  "plain": [
+   {
+    "url": "/static/cx.v57.wasm?v=77",
+    "data": {},
+    "at": 1790275920599
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Content-Type": "application/json",
+     "Authorization": "Bearer <REDACTED_JWT>"
+    },
+    "at": 1790275920620
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": [
+      {
+       "Key": "SystemVersion",
+       "Title": null,
+       "Value": "v5.24",
+       "ReadOnly": false
+      },
+      {
+       "Key": "WebSiteName",
+       "Title": "网站名称",
+       "Value": "拉姆支付",
+       "ReadOnly": false
+      },
+      {
+       "Key": "IsDemo",
+       "Title": "是否为测试环境",
+       "Value": "false",
+       "ReadOnly": true
+      },
+      {
+       "Key": "System_Mode",
+       "Title": "系统模型",
+       "Value": "3",
+       "ReadOnly": false
+      },
+      {
+       "Key": "MerchantAgentReviewMerchantOrderList",
+       "Title": "商户代理是否可以查看商户订单",
+       "Value": "true",
+       "ReadOnly": false
+      }
+     ],
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275920837
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275921083
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "From": 1790265600,
+     "To": null,
+     "OrderId": ""
+    },
+    "at": 1790275921200
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": {
+      "Summary": {
+       "TotalCount": 0,
+       "TotalPays": 0,
+       "TotalBalance": 0,
+       "TotalFee": 0,
+       "TotalTotalCost": 0,
+       "TotalCommission": 0,
+       "Profit": 0,
+       "OrderCount": 0,
+       "SuccessCount": 0,
+       "TotalAmount": 0,
+       "TotalOriginAmount": 0,
+       "TotalCost": 0,
+       "SuccessRatio": 100
+      },
+      "Items": [],
+      "TotalCount": 0,
+      "PageIndex": 1,
+      "PageSize": 10
+     },
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275921486
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275921517
+   }
+  ],
+  "envCount": 5
+ },
+ "/Pay/payInOrderList": {
+  "path": "/Pay/payInOrderList",
+  "title": "收款订单列表 - 拉姆支付",
+  "text": "首页\n账号管理\n订单管理\n收款订单列表\n代付订单列表\n在线代付\n支付渠道\n资金管理\n首页/\n收款订单列表\n冠军\n商户订单： 平台订单： 订单状态\n已提交\n待确认\n支付成功\n交易失败\n撤单退款\n 开始日期：\n 结束日期：\n 查询 导出\n总笔数:0, 总金额:0.00 , 总手续费:0.00\n支付编码\t平台订单号\t商户订单号\t提交金额\t支付金额\t手续费\t订单状态\t回调状态\t下单时间\t更新时间\t备注\t\n暂无数据\n1\n安全提示\n当前账号 「冠军」 没有绑定google验证码\n请尽快绑定!!!!\n点击，现在去绑定>>",
+  "tables": [
+   "支付编码\t平台订单号\t商户订单号\t提交金额\t支付金额\t手续费\t订单状态\t回调状态\t下单时间\t更新时间\t备注\t",
+   ""
+  ],
+  "cards": [],
+  "plain": [
+   {
+    "url": "/static/cx.v57.wasm?v=77",
+    "data": {},
+    "at": 1790275927841
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Content-Type": "application/json",
+     "Authorization": "Bearer <REDACTED_JWT>"
+    },
+    "at": 1790275927860
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": [
+      {
+       "Key": "SystemVersion",
+       "Title": null,
+       "Value": "v5.24",
+       "ReadOnly": false
+      },
+      {
+       "Key": "WebSiteName",
+       "Title": "网站名称",
+       "Value": "拉姆支付",
+       "ReadOnly": false
+      },
+      {
+       "Key": "IsDemo",
+       "Title": "是否为测试环境",
+       "Value": "false",
+       "ReadOnly": true
+      },
+      {
+       "Key": "System_Mode",
+       "Title": "系统模型",
+       "Value": "3",
+       "ReadOnly": false
+      },
+      {
+       "Key": "MerchantAgentReviewMerchantOrderList",
+       "Title": "商户代理是否可以查看商户订单",
+       "Value": "true",
+       "ReadOnly": false
+      }
+     ],
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275928155
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275928370
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "From": 1790265600,
+     "To": null,
+     "OrderNo": "",
+     "OrderStatus": [],
+     "MerchantOrderNo": "",
+     "PayDirection": 1
+    },
+    "at": 1790275928506
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275928784
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": {
+      "Summary": {
+       "TotalCount": 0,
+       "TotalPays": 0,
+       "TotalBalance": 0,
+       "TotalFee": 0,
+       "TotalTotalCost": 0,
+       "TotalCommission": 0,
+       "Profit": 0,
+       "OrderCount": 0,
+       "SuccessCount": 0,
+       "TotalAmount": 0,
+       "TotalOriginAmount": 0,
+       "TotalCost": 0,
+       "SuccessRatio": 0,
+       "TotalForzenBalance": 0,
+       "TotalPaysAmount": 0
+      },
+      "Items": [],
+      "TotalCount": 0,
+      "PageIndex": 1,
+      "PageSize": 10
+     },
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275928815
+   }
+  ],
+  "envCount": 5
+ },
+ "/Pay/payOutOrderList": {
+  "path": "/Pay/payOutOrderList",
+  "title": "代付订单列表 - 拉姆支付",
+  "text": "首页\n账号管理\n订单管理\n收款订单列表\n代付订单列表\n在线代付\n支付渠道\n资金管理\n首页/\n代付订单列表\n冠军\n商户订单： 平台订单： 收款人： 收款账号： 订单状态\n已提交\n待确认\n支付成功\n交易失败\n撤单退款\n 开始日期：\n 结束日期：\n 查询 导出\n总笔数:0, 总金额:0.00 , 总手续费:0.00\n支付编码\t平台订单号\t商户订单号\t订单金额\t手续费\t收款人\t收款账号\t收款地址\t状态\t订单来源\t转账附件\t回调状态\t下单时间\t更新时间\t备注\t\n暂无数据\n1\n安全提示\n当前账号 「冠军」 没有绑定google验证码\n请尽快绑定!!!!\n点击，现在去绑定>>",
+  "tables": [
+   "支付编码\t平台订单号\t商户订单号\t订单金额\t手续费\t收款人\t收款账号\t收款地址\t状态\t订单来源\t转账附件\t回调状态\t下单时间\t更新时间\t备注\t",
+   ""
+  ],
+  "cards": [],
+  "plain": [
+   {
+    "url": "/static/cx.v57.wasm?v=77",
+    "data": {},
+    "at": 1790275935090
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Content-Type": "application/json",
+     "Authorization": "Bearer <REDACTED_JWT>"
+    },
+    "at": 1790275935108
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": [
+      {
+       "Key": "SystemVersion",
+       "Title": null,
+       "Value": "v5.24",
+       "ReadOnly": false
+      },
+      {
+       "Key": "WebSiteName",
+       "Title": "网站名称",
+       "Value": "拉姆支付",
+       "ReadOnly": false
+      },
+      {
+       "Key": "IsDemo",
+       "Title": "是否为测试环境",
+       "Value": "false",
+       "ReadOnly": true
+      },
+      {
+       "Key": "System_Mode",
+       "Title": "系统模型",
+       "Value": "3",
+       "ReadOnly": false
+      },
+      {
+       "Key": "MerchantAgentReviewMerchantOrderList",
+       "Title": "商户代理是否可以查看商户订单",
+       "Value": "true",
+       "ReadOnly": false
+      }
+     ],
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275935320
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275935555
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "From": 1790265600,
+     "To": null,
+     "OrderNo": null,
+     "OrderStatus": [],
+     "MerchantOrderNo": null,
+     "Payee": null,
+     "PayeeNo": null,
+     "PayDirection": 2
+    },
+    "at": 1790275935673
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": {
+      "Summary": {
+       "TotalCount": 0,
+       "TotalPays": 0,
+       "TotalBalance": 0,
+       "TotalFee": 0,
+       "TotalTotalCost": 0,
+       "TotalCommission": 0,
+       "Profit": 0,
+       "OrderCount": 0,
+       "SuccessCount": 0,
+       "TotalAmount": 0,
+       "TotalOriginAmount": 0,
+       "TotalCost": 0,
+       "SuccessRatio": 0,
+       "TotalForzenBalance": 0,
+       "TotalPaysAmount": 0
+      },
+      "Items": [],
+      "TotalCount": 0,
+      "PageIndex": 1,
+      "PageSize": 10
+     },
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275935968
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275936007
+   }
+  ],
+  "envCount": 5
+ },
+ "/MerchantOrderList": {
+  "path": "/dashboard",
+  "title": "首页 - 拉姆支付",
+  "text": "首页\n账号管理\n订单管理\n资金管理\n首页/\n首页\n冠军\n\n今日数据概览\n\n余额\n0\n今日代收金额\n0\n今日代收笔数\n0\n今日代付金额\n0\n今日代付笔数\n0\n安全提示\n当前账号 「冠军」 没有绑定google验证码\n请尽快绑定!!!!\n点击，现在去绑定>>",
+  "tables": [],
+  "cards": [
+   "余额 0",
+   "今日代收金额 0",
+   "今日代收笔数 0",
+   "今日代付金额 0",
+   "今日代付笔数 0"
+  ],
+  "plain": [
+   {
+    "url": "/static/cx.v57.wasm?v=77",
+    "data": {},
+    "at": 1790275942317
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Content-Type": "application/json",
+     "Authorization": "Bearer <REDACTED_JWT>"
+    },
+    "at": 1790275942335
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": [
+      {
+       "Key": "SystemVersion",
+       "Title": null,
+       "Value": "v5.24",
+       "ReadOnly": false
+      },
+      {
+       "Key": "WebSiteName",
+       "Title": "网站名称",
+       "Value": "拉姆支付",
+       "ReadOnly": false
+      },
+      {
+       "Key": "IsDemo",
+       "Title": "是否为测试环境",
+       "Value": "false",
+       "ReadOnly": true
+      },
+      {
+       "Key": "System_Mode",
+       "Title": "系统模型",
+       "Value": "3",
+       "ReadOnly": false
+      },
+      {
+       "Key": "MerchantAgentReviewMerchantOrderList",
+       "Title": "商户代理是否可以查看商户订单",
+       "Value": "true",
+       "ReadOnly": false
+      }
+     ],
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275942536
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275942774
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275943142
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275943294
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": {
+      "Balance": 0,
+      "TodayDeposit": 0,
+      "TodayDeposits": 0,
+      "TodayWithdrawal": 0,
+      "TodayWithdrawals": 0,
+      "TodayInCount": 0,
+      "TodayInAmount": 0,
+      "TodayOutCount": 0,
+      "TodayOutAmount": 0
+     },
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275943351
+   }
+  ],
+  "envCount": 5
+ },
+ "/CommissionList": {
+  "path": "/dashboard",
+  "title": "首页 - 拉姆支付",
+  "text": "首页\n账号管理\n订单管理\n资金管理\n首页/\n首页\n冠军\n\n今日数据概览\n\n余额\n0\n今日代收金额\n0\n今日代收笔数\n0\n今日代付金额\n0\n今日代付笔数\n0\n安全提示\n当前账号 「冠军」 没有绑定google验证码\n请尽快绑定!!!!\n点击，现在去绑定>>",
+  "tables": [],
+  "cards": [
+   "余额 0",
+   "今日代收金额 0",
+   "今日代收笔数 0",
+   "今日代付金额 0",
+   "今日代付笔数 0"
+  ],
+  "plain": [
+   {
+    "url": "/static/cx.v57.wasm?v=77",
+    "data": {},
+    "at": 1790275949550
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Content-Type": "application/json",
+     "Authorization": "Bearer <REDACTED_JWT>"
+    },
+    "at": 1790275949572
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": [
+      {
+       "Key": "SystemVersion",
+       "Title": null,
+       "Value": "v5.24",
+       "ReadOnly": false
+      },
+      {
+       "Key": "WebSiteName",
+       "Title": "网站名称",
+       "Value": "拉姆支付",
+       "ReadOnly": false
+      },
+      {
+       "Key": "IsDemo",
+       "Title": "是否为测试环境",
+       "Value": "false",
+       "ReadOnly": true
+      },
+      {
+       "Key": "System_Mode",
+       "Title": "系统模型",
+       "Value": "3",
+       "ReadOnly": false
+      },
+      {
+       "Key": "MerchantAgentReviewMerchantOrderList",
+       "Title": "商户代理是否可以查看商户订单",
+       "Value": "true",
+       "ReadOnly": false
+      }
+     ],
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275949817
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275950056
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275950367
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275950504
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": {
+      "Balance": 0,
+      "TodayDeposit": 0,
+      "TodayDeposits": 0,
+      "TodayWithdrawal": 0,
+      "TodayWithdrawals": 0,
+      "TodayInCount": 0,
+      "TodayInAmount": 0,
+      "TodayOutCount": 0,
+      "TodayOutAmount": 0
+     },
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275950587
+   }
+  ],
+  "envCount": 5
+ },
+ "/DailyReport": {
+  "path": "/dashboard",
+  "title": "首页 - 拉姆支付",
+  "text": "首页\n账号管理\n订单管理\n资金管理\n首页/\n首页\n冠军\n\n今日数据概览\n\n余额\n0\n今日代收金额\n0\n今日代收笔数\n0\n今日代付金额\n0\n今日代付笔数\n0\n安全提示\n当前账号 「冠军」 没有绑定google验证码\n请尽快绑定!!!!\n点击，现在去绑定>>",
+  "tables": [],
+  "cards": [
+   "余额 0",
+   "今日代收金额 0",
+   "今日代收笔数 0",
+   "今日代付金额 0",
+   "今日代付笔数 0"
+  ],
+  "plain": [
+   {
+    "url": "/static/cx.v57.wasm?v=77",
+    "data": {},
+    "at": 1790275956794
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Content-Type": "application/json",
+     "Authorization": "Bearer <REDACTED_JWT>"
+    },
+    "at": 1790275956815
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": [
+      {
+       "Key": "SystemVersion",
+       "Title": null,
+       "Value": "v5.24",
+       "ReadOnly": false
+      },
+      {
+       "Key": "WebSiteName",
+       "Title": "网站名称",
+       "Value": "拉姆支付",
+       "ReadOnly": false
+      },
+      {
+       "Key": "IsDemo",
+       "Title": "是否为测试环境",
+       "Value": "false",
+       "ReadOnly": true
+      },
+      {
+       "Key": "System_Mode",
+       "Title": "系统模型",
+       "Value": "3",
+       "ReadOnly": false
+      },
+      {
+       "Key": "MerchantAgentReviewMerchantOrderList",
+       "Title": "商户代理是否可以查看商户订单",
+       "Value": "true",
+       "ReadOnly": false
+      }
+     ],
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275957046
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275957414
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275957712
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275957857
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": {
+      "Balance": 0,
+      "TodayDeposit": 0,
+      "TodayDeposits": 0,
+      "TodayWithdrawal": 0,
+      "TodayWithdrawals": 0,
+      "TodayInCount": 0,
+      "TodayInAmount": 0,
+      "TodayOutCount": 0,
+      "TodayOutAmount": 0
+     },
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275957927
+   }
+  ],
+  "envCount": 5
+ },
+ "/ApiKeyManagement": {
+  "path": "/dashboard",
+  "title": "首页 - 拉姆支付",
+  "text": "首页\n账号管理\n订单管理\n资金管理\n首页/\n首页\n冠军\n\n今日数据概览\n\n余额\n0\n今日代收金额\n0\n今日代收笔数\n0\n今日代付金额\n0\n今日代付笔数\n0\n安全提示\n当前账号 「冠军」 没有绑定google验证码\n请尽快绑定!!!!\n点击，现在去绑定>>",
+  "tables": [],
+  "cards": [
+   "余额 0",
+   "今日代收金额 0",
+   "今日代收笔数 0",
+   "今日代付金额 0",
+   "今日代付笔数 0"
+  ],
+  "plain": [
+   {
+    "url": "/static/cx.v57.wasm?v=77",
+    "data": {},
+    "at": 1790275964009
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Content-Type": "application/json",
+     "Authorization": "Bearer <REDACTED_JWT>"
+    },
+    "at": 1790275964028
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": [
+      {
+       "Key": "SystemVersion",
+       "Title": null,
+       "Value": "v5.24",
+       "ReadOnly": false
+      },
+      {
+       "Key": "WebSiteName",
+       "Title": "网站名称",
+       "Value": "拉姆支付",
+       "ReadOnly": false
+      },
+      {
+       "Key": "IsDemo",
+       "Title": "是否为测试环境",
+       "Value": "false",
+       "ReadOnly": true
+      },
+      {
+       "Key": "System_Mode",
+       "Title": "系统模型",
+       "Value": "3",
+       "ReadOnly": false
+      },
+      {
+       "Key": "MerchantAgentReviewMerchantOrderList",
+       "Title": "商户代理是否可以查看商户订单",
+       "Value": "true",
+       "ReadOnly": false
+      }
+     ],
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275964236
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275964493
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275964794
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275964905
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": {
+      "Balance": 0,
+      "TodayDeposit": 0,
+      "TodayDeposits": 0,
+      "TodayWithdrawal": 0,
+      "TodayWithdrawals": 0,
+      "TodayInCount": 0,
+      "TodayInAmount": 0,
+      "TodayOutCount": 0,
+      "TodayOutAmount": 0
+     },
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275965058
+   }
+  ],
+  "envCount": 5
+ },
+ "/IP": {
+  "path": "/dashboard",
+  "title": "首页 - 拉姆支付",
+  "text": "首页\n账号管理\n订单管理\n资金管理\n首页/\n首页\n冠军\n\n今日数据概览\n\n余额\n0\n今日代收金额\n0\n今日代收笔数\n0\n今日代付金额\n0\n今日代付笔数\n0\n安全提示\n当前账号 「冠军」 没有绑定google验证码\n请尽快绑定!!!!\n点击，现在去绑定>>",
+  "tables": [],
+  "cards": [
+   "余额 0",
+   "今日代收金额 0",
+   "今日代收笔数 0",
+   "今日代付金额 0",
+   "今日代付笔数 0"
+  ],
+  "plain": [
+   {
+    "url": "/static/cx.v57.wasm?v=77",
+    "data": {},
+    "at": 1790275971211
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Content-Type": "application/json",
+     "Authorization": "Bearer <REDACTED_JWT>"
+    },
+    "at": 1790275971229
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": [
+      {
+       "Key": "SystemVersion",
+       "Title": null,
+       "Value": "v5.24",
+       "ReadOnly": false
+      },
+      {
+       "Key": "WebSiteName",
+       "Title": "网站名称",
+       "Value": "拉姆支付",
+       "ReadOnly": false
+      },
+      {
+       "Key": "IsDemo",
+       "Title": "是否为测试环境",
+       "Value": "false",
+       "ReadOnly": true
+      },
+      {
+       "Key": "System_Mode",
+       "Title": "系统模型",
+       "Value": "3",
+       "ReadOnly": false
+      },
+      {
+       "Key": "MerchantAgentReviewMerchantOrderList",
+       "Title": "商户代理是否可以查看商户订单",
+       "Value": "true",
+       "ReadOnly": false
+      }
+     ],
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275971462
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275971675
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275971965
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275972127
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": {
+      "Balance": 0,
+      "TodayDeposit": 0,
+      "TodayDeposits": 0,
+      "TodayWithdrawal": 0,
+      "TodayWithdrawals": 0,
+      "TodayInCount": 0,
+      "TodayInAmount": 0,
+      "TodayOutCount": 0,
+      "TodayOutAmount": 0
+     },
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275972163
+   }
+  ],
+  "envCount": 5
+ },
+ "/Channels": {
+  "path": "/dashboard",
+  "title": "首页 - 拉姆支付",
+  "text": "首页\n账号管理\n订单管理\n资金管理\n首页/\n首页\n冠军\n\n今日数据概览\n\n余额\n0\n今日代收金额\n0\n今日代收笔数\n0\n今日代付金额\n0\n今日代付笔数\n0\n安全提示\n当前账号 「冠军」 没有绑定google验证码\n请尽快绑定!!!!\n点击，现在去绑定>>",
+  "tables": [],
+  "cards": [
+   "余额 0",
+   "今日代收金额 0",
+   "今日代收笔数 0",
+   "今日代付金额 0",
+   "今日代付笔数 0"
+  ],
+  "plain": [
+   {
+    "url": "/static/cx.v57.wasm?v=77",
+    "data": {},
+    "at": 1790275978447
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Content-Type": "application/json",
+     "Authorization": "Bearer <REDACTED_JWT>"
+    },
+    "at": 1790275978467
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": [
+      {
+       "Key": "SystemVersion",
+       "Title": null,
+       "Value": "v5.24",
+       "ReadOnly": false
+      },
+      {
+       "Key": "WebSiteName",
+       "Title": "网站名称",
+       "Value": "拉姆支付",
+       "ReadOnly": false
+      },
+      {
+       "Key": "IsDemo",
+       "Title": "是否为测试环境",
+       "Value": "false",
+       "ReadOnly": true
+      },
+      {
+       "Key": "System_Mode",
+       "Title": "系统模型",
+       "Value": "3",
+       "ReadOnly": false
+      },
+      {
+       "Key": "MerchantAgentReviewMerchantOrderList",
+       "Title": "商户代理是否可以查看商户订单",
+       "Value": "true",
+       "ReadOnly": false
+      }
+     ],
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275978695
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275978907
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275979250
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275979343
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": {
+      "Balance": 0,
+      "TodayDeposit": 0,
+      "TodayDeposits": 0,
+      "TodayWithdrawal": 0,
+      "TodayWithdrawals": 0,
+      "TodayInCount": 0,
+      "TodayInAmount": 0,
+      "TodayOutCount": 0,
+      "TodayOutAmount": 0
+     },
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275979463
+   }
+  ],
+  "envCount": 5
+ },
+ "/LoginManagement": {
+  "path": "/dashboard",
+  "title": "首页 - 拉姆支付",
+  "text": "首页\n账号管理\n订单管理\n资金管理\n首页/\n首页\n冠军\n\n今日数据概览\n\n余额\n0\n今日代收金额\n0\n今日代收笔数\n0\n今日代付金额\n0\n今日代付笔数\n0\n安全提示\n当前账号 「冠军」 没有绑定google验证码\n请尽快绑定!!!!\n点击，现在去绑定>>",
+  "tables": [],
+  "cards": [
+   "余额 0",
+   "今日代收金额 0",
+   "今日代收笔数 0",
+   "今日代付金额 0",
+   "今日代付笔数 0"
+  ],
+  "plain": [
+   {
+    "url": "/static/cx.v57.wasm?v=77",
+    "data": {},
+    "at": 1790275985631
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Content-Type": "application/json",
+     "Authorization": "Bearer <REDACTED_JWT>"
+    },
+    "at": 1790275985654
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": [
+      {
+       "Key": "SystemVersion",
+       "Title": null,
+       "Value": "v5.24",
+       "ReadOnly": false
+      },
+      {
+       "Key": "WebSiteName",
+       "Title": "网站名称",
+       "Value": "拉姆支付",
+       "ReadOnly": false
+      },
+      {
+       "Key": "IsDemo",
+       "Title": "是否为测试环境",
+       "Value": "false",
+       "ReadOnly": true
+      },
+      {
+       "Key": "System_Mode",
+       "Title": "系统模型",
+       "Value": "3",
+       "ReadOnly": false
+      },
+      {
+       "Key": "MerchantAgentReviewMerchantOrderList",
+       "Title": "商户代理是否可以查看商户订单",
+       "Value": "true",
+       "ReadOnly": false
+      }
+     ],
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275985921
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275986163
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275986472
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Code": 0,
+     "Message": "",
+     "Data": {
+      "LoginName": "冠军",
+      "Email": "",
+      "Phone": "",
+      "Balance": 0,
+      "TwoFactorEnabled": false,
+      "MerchantType": 0,
+      "PayScope": 0,
+      "Status": 0
+     }
+    },
+    "at": 1790275986614
+   },
+   {
+    "url": "/api/Account/Ping",
+    "data": {
+     "Data": {
+      "Balance": 0,
+      "TodayDeposit": 0,
+      "TodayDeposits": 0,
+      "TodayWithdrawal": 0,
+      "TodayWithdrawals": 0,
+      "TodayInCount": 0,
+      "TodayInAmount": 0,
+      "TodayOutCount": 0,
+      "TodayOutAmount": 0
+     },
+     "Code": 0,
+     "Message": ""
+    },
+    "at": 1790275986676
+   }
+  ],
+  "envCount": 5
+ }
+}

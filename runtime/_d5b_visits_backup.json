@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "6abc001439e8a1d1cf42f5f2",
+    "sid": "d1c1-probe",
+    "__v": 0,
+    "channelCode": "",
+    "clicked": false,
+    "createdAt": "2026-09-29T18:14:44.096Z",
+    "domain": "127.0.0.1",
+    "dwell": 0,
+    "heartbeatAt": null,
+    "lang": "zh",
+    "started": true,
+    "updatedAt": "2026-09-29T18:17:55.021Z",
+    "url": "/"
+  },
+  {
+    "_id": "6abc00ad39e8a1d1cf42f915",
+    "sid": "d1c1-probe2",
+    "__v": 0,
+    "channelCode": "",
+    "clicked": false,
+    "createdAt": "2026-09-29T18:17:17.822Z",
+    "domain": "127.0.0.1",
+    "dwell": 0,
+    "heartbeatAt": null,
+    "lang": "zh",
+    "started": true,
+    "updatedAt": "2026-09-29T18:17:17.822Z",
+    "url": "/"
+  }
+]

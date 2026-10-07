@@ -1,0 +1,44 @@
+{
+ "status": 200,
+ "data": {
+  "Code": 0,
+  "Data": [
+   {
+    "Id": 646,
+    "OwnerId": 1371,
+    "Ip": "172.83.158.190",
+    "Comment": "Telegram拉单IP加白",
+    "OwnerName": "冠军",
+    "Status": 0,
+    "IpType": 0,
+    "CreatedOn": 1788430874,
+    "LatestUpdatedOn": 0,
+    "OperatorName": "telegram:-5144209300"
+   },
+   {
+    "Id": 645,
+    "OwnerId": 1371,
+    "Ip": "217.114.47.60",
+    "Comment": "Telegram拉单IP加白",
+    "OwnerName": "冠军",
+    "Status": 0,
+    "IpType": 0,
+    "CreatedOn": 1788430874,
+    "LatestUpdatedOn": 0,
+    "OperatorName": "telegram:-5144209300"
+   },
+   {
+    "Id": 644,
+    "OwnerId": 1371,
+    "Ip": "45.154.213.40",
+    "Comment": "Telegram拉单IP加白",
+    "OwnerName": "冠军",
+    "Status": 0,
+    "IpType": 0,
+    "CreatedOn": 1788430874,
+    "LatestUpdatedOn": 0,
+    "OperatorName": "telegram:-5144209300"
+   }
+  ]
+ }
+}

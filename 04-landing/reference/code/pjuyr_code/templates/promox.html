@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <base href="/landing-pages/promox/">
+
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a1628">
+  <title></title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      min-height: 100%;
+      background: #0a1628;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "PingFang SC", "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .page {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      min-height: 100dvh;
+      margin: 0 auto;
+      background: #0a1628;
+      overflow: hidden;
+    }
+
+    /* 背景图：铺满整个视口 */
+    .bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .bg img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    /* 下载按钮：固定在视口底部，始终可见 */
+    .cta-wrap {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      max-width: 480px;
+      padding: 0 1.5rem;
+      z-index: 10;
+      opacity: 0;
+      animation: fadeIn 0.9s 0.3s ease forwards;
+    }
+
+    .cta-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      padding: 1.05rem 1.25rem;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      overflow: hidden;
+      font-family: inherit;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(135deg, #1677ff 0%, #4096ff 45%, #69b1ff 100%);
+      box-shadow:
+        0 6px 22px rgba(22, 119, 255, 0.5),
+        0 0 0 0 rgba(22, 119, 255, 0.4);
+      animation: pulseGlow 2.2s ease-in-out infinite;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .cta-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+      );
+      animation: shine 2.8s ease-in-out infinite;
+    }
+    .cta-btn:active {
+      transform: scale(0.97);
+      box-shadow: 0 3px 14px rgba(22, 119, 255, 0.55);
+    }
+
+    .cta-btn .icon {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      animation: iconBounce 1.6s ease-in-out infinite;
+    }
+    .cta-btn .text { text-align: left; line-height: 1.2; }
+    .cta-btn .zh {
+      display: block;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+    .cta-btn .sub {
+      display: block;
+      margin-top: 3px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      opacity: 0.92;
+    }
+
+    .cta-hint {
+      margin-top: 0.9rem;
+      text-align: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.55);
+    }
+    .cta-hint .dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      margin-right: 6px;
+      border-radius: 50%;
+      background: #34d399;
+      box-shadow: 0 0 10px #34d399;
+      vertical-align: middle;
+      animation: blink 1.6s ease-in-out infinite;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, calc(-50% + 20px)); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow:
+          0 6px 22px rgba(22, 119, 255, 0.5),
+          0 0 0 0 rgba(22, 119, 255, 0.45);
+      }
+      50% {
+        box-shadow:
+          0 8px 32px rgba(22, 119, 255, 0.65),
+          0 0 0 10px rgba(22, 119, 255, 0);
+      }
+    }
+    @keyframes shine {
+      0% { left: -100%; }
+      45%, 100% { left: 150%; }
+    }
+    @keyframes iconBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cta-btn, .cta-btn::before, .cta-btn .icon, .cta-hint .dot { animation: none; }
+      .cta-wrap { opacity: 1; animation: none; transform: translate(-50%, -50%); }
+    }
+  </style>
+  <script src="/landing-runtime.js" defer></script>
+</head>
+<body>
+  <div class="page">
+    <div class="bg">
+      <img src="static/picture/50a922b940088729f166a41c0e0a71a6.jpg" alt="">
+    </div>
+  </div>
+
+  <div class="cta-wrap">
+    <!-- 修改了 href 基礎地址 -->
+    <a class="cta-btn" id="downloadBtn" href="download.php" download>
+      <svg class="icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 3v12M8 11l4 4 4-4M5 19h14"></path>
+      </svg>
+     <span class="text">
+        <span class="zh">Download Now</span>
+        <span class="sub">Fortune Awaits</span>
+      </span>
+    </a>
+    <div class="cta-hint">
+      <span class="dot"></span>Verified · One-tap install
+    </div>
+  </div>
+
+  <script>
+    var timestamp = new Date().getTime();
+    var downloadLink = "download/?v=" + timestamp;
+    var btn = document.getElementById("downloadBtn");
+    
+    btn.href = downloadLink;
+
+    btn.addEventListener("click", function (e) {
+      if (!downloadLink || downloadLink === "download/") {
+        e.preventDefault();
+        alert("");
+      }
+    });
+  </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

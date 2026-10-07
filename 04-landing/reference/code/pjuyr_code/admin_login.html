@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>v21998 后台登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            background: #0f0f12;
+            color: #eee;
+            font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            background: #1a1a1f;
+            padding: 32px;
+            border-radius: 14px;
+            width: 100%;
+            max-width: 360px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, .6);
+            border: 1px solid #2a2a30;
+        }
+        h1 {
+            font-size: 22px;
+            margin: 0 0 6px;
+            color: #fff;
+        }
+        .sub {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 22px;
+        }
+        label {
+            display: block;
+            font-size: 12px;
+            color: #aaa;
+            margin: 12px 0 6px;
+            letter-spacing: .5px;
+        }
+        input {
+            width: 100%;
+            padding: 11px 14px;
+            background: #0f0f12;
+            border: 1px solid #2a2a30;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+        }
+        input:focus { outline: none; border-color: #bf95f7; }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #7634ea, #b04ef6);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover { opacity: .92; }
+        .error {
+            color: #ff6464;
+            font-size: 13px;
+            background: rgba(255, 100, 100, .08);
+            border: 1px solid rgba(255, 100, 100, .25);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+    <form class="card" method="post" action="/mgr-admin-8bcde2021d98/login">
+        <h1>v21998 管理后台</h1>
+        <div class="sub">登录以管理落地页与下载链接</div>
+        
+        <label>用户名</label>
+        <input name="username" autocomplete="username" autofocus required>
+        <label>密码</label>
+        <input name="password" type="password" autocomplete="current-password" required>
+        <button type="submit">登 录</button>
+    </form>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

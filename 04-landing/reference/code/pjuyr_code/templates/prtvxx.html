@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <base href="/landing-pages/prtvxx/">
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>WatchPRTV - TV, películas y deportes gratis</title>
+  <meta name="description" content="WatchPRTV ofrece televisión en directo, películas, deportes y noticias. Descarga gratis la aplicación para Android.">
+  <link rel="icon" href="static/picture/watchprtv-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="static/css/style.css">
+
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:title" content="WatchPRTV - TV, películas y deportes gratis">
+<meta name="twitter:title" content="WatchPRTV - TV, películas y deportes gratis">
+<meta property="og:description" content="WatchPRTV ofrece televisión en directo, películas, deportes y noticias. Descarga gratis la aplicación para Android.">
+<meta name="twitter:description" content="WatchPRTV ofrece televisión en directo, películas, deportes y noticias. Descarga gratis la aplicación para Android.">
+<meta property="og:image" content="https://wp.hyty.top/img/watchprtv-logo.svg">
+<meta name="twitter:image" content="https://wp.hyty.top/img/watchprtv-logo.svg">
+  <script src="/landing-runtime.js" defer></script>
+</head>
+<body>
+  <div id="announceBar" class="announce" hidden></div>
+
+  <nav class="nav">
+    <a class="nav-logo" href="">
+      <img id="brandLogo" src="static/picture/watchprtv-logo.svg" alt="WatchPRTV" width="32" height="32">
+      <span id="brandNav">WatchPRTV</span>
+    </a>
+    <div class="nav-right">
+      <div class="lang-sw" aria-label="Idioma"><button type="button" data-lang="es" class="on">ES</button></div>
+      <a href="install.html" class="nav-dl" data-i18n="nav_inst">Guía de instalación</a>
+    </div>
+  </nav>
+
+  <main id="pageRoot">
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-inner container">
+        <div class="hero-chip"><span class="dot"></span><span data-i18n="chip">EN DIRECTO · Streaming gratis</span></div>
+        <h1><span data-i18n="h1a">Tus</span> <span class="gold" data-i18n="h1b">películas, deportes y TV favoritos</span><br><span data-i18n="h1c">Gratis y sin cuotas.</span></h1>
+        <p class="hero-sub" data-i18n="hero_sub">Disfruta de más de 1.000 canales en directo de 130 países, sin anuncios ni suscripción.</p>
+        <div class="hero-cta">
+          <a id="dlBtn" class="btn-dl download-action" role="button" href="#" data-platform="android">
+            <svg viewbox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2ZM19 9h-4V3H9v6H5l7 7 7-7Z"></path></svg>
+            <span data-i18n="cta_dl">Descargar APK gratis</span>
+          </a>
+        </div>
+        <div id="backupRow" class="backup-row" hidden>
+          <a id="android2Btn" class="mini-btn download-action" role="button" href="#" data-platform="android2"></a>
+          <a id="android3Btn" class="mini-btn download-action" role="button" href="#" data-platform="android3"></a>
+          <a id="iosBtn" class="mini-btn download-action" role="button" href="#" data-platform="ios"></a>
+          <button id="copyDownloadBtn" class="mini-btn" type="button"></button>
+        </div>
+        <div class="hero-info">
+          <div class="hero-info-item"><div class="val" data-i18n="hero_v1">1000+</div><div class="lbl" data-i18n="hi1">Canales</div></div>
+          <div class="hero-info-item"><div class="val" data-i18n="hero_v2">4K</div><div class="lbl" data-i18n="hi2">Calidad</div></div>
+          <div class="hero-info-item"><div id="heroUsers" class="val">500K+</div><div class="lbl" data-i18n="hi3">Usuarios</div></div>
+          <div class="hero-info-item"><div class="val" data-i18n="hero_v4">0 €</div><div class="lbl" data-i18n="hi4">Para siempre</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cat-section">
+      <div class="cat-header"><h2><span class="head-icon">🎬</span><span data-i18n="cat1_h">Películas populares</span></h2><span class="see-all" data-i18n="see_all">Ver en la app →</span></div>
+      <p class="section-desc" data-i18n="cat1_desc">Más de 500 películas actualizadas a diario · Todo gratis</p>
+      <div class="cat-scroll">
+        <article class="content-card download-card"><div class="thumb"><img data-image="images.movie1" src="static/picture/movie1.jpg" alt="" loading="lazy"><span class="badge hd" data-i18n="badge_4k">4K</span><span class="badge2" data-i18n="badge_free">GRATIS</span></div><div class="title" data-i18n="m1">Scream 7</div><div class="meta" data-i18n="m1m">2026 · Terror</div></article>
+        <article class="content-card download-card"><div class="thumb"><img data-image="images.movie2" src="static/picture/movie2.jpg" alt="" loading="lazy"><span class="badge hd" data-i18n="badge_hd">HD</span><span class="badge2" data-i18n="badge_free">GRATIS</span></div><div class="title" data-i18n="m2">Greenland 2</div><div class="meta" data-i18n="m2m">2026 · Acción</div></article>
+        <article class="content-card download-card"><div class="thumb"><img data-image="images.movie3" src="static/picture/movie3.jpg" alt="" loading="lazy"><span class="badge hd" data-i18n="badge_4k">4K</span><span class="badge2" data-i18n="badge_free">GRATIS</span></div><div class="title" data-i18n="m3">Avatar: Fuego y ceniza</div><div class="meta" data-i18n="m3m">2026 · Ciencia ficción</div></article>
+        <article class="content-card download-card"><div class="thumb"><img data-image="images.movie4" src="static/picture/movie4.jpg" alt="" loading="lazy"><span class="badge hd" data-i18n="badge_4k">4K</span><span class="badge2" data-i18n="badge_free">GRATIS</span></div><div class="title" data-i18n="m4">Zootrópolis 2</div><div class="meta" data-i18n="m4m">2026 · Animación</div></article>
+        <article class="content-card download-card"><div class="thumb"><img data-image="images.movie5" src="static/picture/movie5.jpg" alt="" loading="lazy"><span class="badge hd" data-i18n="badge_hd">HD</span><span class="badge2" data-i18n="badge_free">GRATIS</span></div><div class="title" data-i18n="m5">Shelter</div><div class="meta" data-i18n="m5m">2026 · Suspense</div></article>
+      </div>
+    </section>
+
+    <section class="cat-section">
+      <div class="cat-header"><h2><span class="head-icon">⚽</span><span data-i18n="cat2_h">Deportes en directo</span></h2><span class="see-all" data-i18n="see_all">Ver en la app →</span></div>
+      <p class="section-desc" data-i18n="cat2_desc">Los grandes torneos en directo, gratis y en HD</p>
+      <div class="cat-scroll">
+        <article class="wide-card download-card"><div class="thumb"><img data-image="images.cricket" src="static/picture/cricket.jpg" alt="" loading="lazy"><div class="overlay"><div class="tag"><span class="livedot"></span> <span data-i18n="badge_live">EN DIRECTO</span></div><h3 data-i18n="sp1">Críquet IPL · Partido en directo</h3><p data-i18n="sp1d">En directo y gratis en HD</p></div></div></article>
+        <article class="wide-card download-card"><div class="thumb"><img data-image="images.football" src="static/picture/football.jpg" alt="" loading="lazy"><div class="overlay"><div class="tag"><span class="livedot"></span> <span data-i18n="badge_live">EN DIRECTO</span></div><h3 data-i18n="sp2">Fútbol de la Premier League</h3><p data-i18n="sp2d">Todos los partidos en HD</p></div></div></article>
+        <article class="wide-card download-card"><div class="thumb"><img data-image="images.basketball" src="static/picture/basketball.jpg" alt="" loading="lazy"><div class="overlay"><div class="tag"><span class="livedot"></span> <span data-i18n="badge_live">EN DIRECTO</span></div><h3 data-i18n="sp3">Baloncesto NBA</h3><p data-i18n="sp3d">Todos los partidos gratis</p></div></div></article>
+      </div>
+    </section>
+
+    <section class="cat-section">
+      <div class="cat-header"><h2><span class="head-icon">📺</span><span data-i18n="cat3_h">Noticias y entretenimiento</span></h2><span class="see-all" data-i18n="see_all">Ver en la app →</span></div>
+      <p class="section-desc" data-i18n="cat3_desc">Más de 1.000 canales las 24 horas</p>
+      <div class="cat-scroll">
+        <article class="content-card download-card"><div class="thumb"><img data-image="images.news" src="static/picture/news.jpg" alt="" loading="lazy"><span class="badge" data-i18n="badge_live">EN DIRECTO</span><span class="badge2" data-i18n="badge_free">GRATIS</span></div><div class="title" data-i18n="n1">Noticias mundiales 24/7</div><div class="meta" data-i18n="n1d">Última hora</div></article>
+        <article class="content-card download-card"><div class="thumb"><img data-image="images.music" src="static/picture/music.jpg" alt="" loading="lazy"><span class="badge hd" data-i18n="badge_hd">HD</span><span class="badge2" data-i18n="badge_free">GRATIS</span></div><div class="title" data-i18n="n2">Canales de música</div><div class="meta" data-i18n="n2d">Más de 100 canales</div></article>
+        <article class="content-card download-card"><div class="thumb"><img data-image="images.comedy" src="static/picture/comedy.jpg" alt="" loading="lazy"><span class="badge hd" data-i18n="badge_hd">HD</span><span class="badge2" data-i18n="badge_free">GRATIS</span></div><div class="title" data-i18n="n3">Programas de comedia</div><div class="meta" data-i18n="n3d">Diversión sin pausa</div></article>
+        <article class="content-card download-card"><div class="thumb"><img data-image="images.drama" src="static/picture/drama.jpg" alt="" loading="lazy"><span class="badge hd" data-i18n="badge_4k">4K</span><span class="badge2" data-i18n="badge_free">GRATIS</span></div><div class="title" data-i18n="n4">Series y drama</div><div class="meta" data-i18n="n4d">Todos tus episodios</div></article>
+        <article class="content-card download-card"><div class="thumb"><img data-image="images.kids" src="static/picture/kids.jpg" alt="" loading="lazy"><span class="badge hd" data-i18n="badge_hd">HD</span><span class="badge2" data-i18n="badge_free">GRATIS</span></div><div class="title" data-i18n="n5">Infantil y dibujos</div><div class="meta" data-i18n="n5d">Para toda la familia</div></article>
+      </div>
+    </section>
+
+    <section class="highlights">
+      <div class="cat-header" style="padding:0;margin-bottom:14px"><h2><span class="head-icon">✨</span><span data-i18n="why_h">¿Por qué WatchPRTV?</span></h2></div>
+      <div class="hl-grid">
+        <article class="hl-card"><div class="icon">📡</div><h3 data-i18n="w1">Más de 1.000 canales</h3><p data-i18n="w1d">Televisión en directo de más de 130 países</p></article>
+        <article class="hl-card"><div class="icon">🎬</div><h3 data-i18n="w2">Películas gratis</h3><p data-i18n="w2d">Grandes éxitos y estrenos</p></article>
+        <article class="hl-card"><div class="icon">⚽</div><h3 data-i18n="w3">Deportes en directo</h3><p data-i18n="w3d">Fútbol, baloncesto y mucho más</p></article>
+        <article class="hl-card"><div class="icon">🚫</div><h3 data-i18n="w4">Sin anuncios</h3><p data-i18n="w4d">Sin ventanas emergentes ni interrupciones</p></article>
+        <article class="hl-card"><div class="icon">📱</div><h3 data-i18n="w5">Calidad 4K</h3><p data-i18n="w5d">Imagen nítida y fluida</p></article>
+        <article class="hl-card"><div class="icon">🌍</div><h3 data-i18n="w6">Contenido internacional</h3><p data-i18n="w6d">Entretenimiento para todos</p></article>
+      </div>
+    </section>
+
+    <section class="compare">
+      <h2 data-i18n="vs_h">WatchPRTV frente a plataformas de pago</h2>
+      <table class="compare-table">
+        <thead><tr><th data-i18n="vs_feat">Característica</th><th class="brand-col" data-i18n="vs_brand">WatchPRTV</th><th data-i18n="vs_others">Otras</th></tr></thead>
+        <tbody>
+          <tr><td data-i18n="vs1">Cuota mensual</td><td class="check" data-i18n="free0">0 € · Gratis</td><td class="other-bad" data-i18n="other_price">8 €–20 €</td></tr>
+          <tr><td data-i18n="vs2">Deportes en directo</td><td class="check" data-i18n="all">✓ Todos</td><td class="other-bad" data-i18n="limited">Limitado</td></tr>
+          <tr><td data-i18n="vs3">Canales de TV</td><td class="check" data-i18n="brand_channels">1000+</td><td class="other-bad" data-i18n="other_channels">50–200</td></tr>
+          <tr><td data-i18n="vs4">Anuncios</td><td class="check" data-i18n="none">Ninguno</td><td class="other-bad" data-i18n="yes">Sí</td></tr>
+          <tr><td data-i18n="vs5">Registro obligatorio</td><td class="check" data-i18n="no">No</td><td class="other-bad" data-i18n="yes">Sí</td></tr>
+          <tr><td data-i18n="vs6">Calidad 4K</td><td class="check">✓</td><td class="other-neutral" data-i18n="varies">Variable</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="cta-banner">
+      <h2 data-i18n="cta_h">Empieza a verlo ahora</h2><p data-i18n="cta_p">Únete a más de 500.000 usuarios</p>
+      <div class="stats">
+        <div class="stat"><div class="v" data-i18n="cta_v1">1000+</div><div class="l" data-i18n="cta_s1">Canales</div></div>
+        <div class="stat"><div class="v" data-i18n="cta_v2">130+</div><div class="l" data-i18n="cta_s2">Países</div></div>
+        <div class="stat"><div class="v" data-i18n="cta_v3">4K</div><div class="l" data-i18n="cta_s3">Calidad</div></div>
+      </div>
+      <a class="btn-dl download-action" role="button" href="#" data-platform="android"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2ZM19 9h-4V3H9v6H5l7 7 7-7Z"></path></svg><span data-i18n="cta_dl">Descargar APK gratis</span></a>
+    </section>
+
+    <section class="install-section">
+      <h2><span class="head-icon">📲</span><span data-i18n="inst_h">Guía rápida de instalación</span></h2>
+      <div class="step-cards">
+        <a href="install.html" class="step-card"><div class="snum">1</div><div class="stxt"><h3 data-i18n="s1t">Descarga el APK</h3><p data-i18n="s1d">Pulsa el botón de descarga.</p></div></a>
+        <a href="install.html" class="step-card"><div class="snum">2</div><div class="stxt"><h3 data-i18n="s2t">Permite la instalación</h3><p data-i18n="s2d">Permite aplicaciones desconocidas.</p></div></a>
+        <a href="install.html" class="step-card"><div class="snum">3</div><div class="stxt"><h3 data-i18n="s3t">Instala y abre</h3><p data-i18n="s3d">Instala el APK y abre WatchPRTV.</p></div></a>
+      </div>
+    </section>
+
+    <section class="app-info"><table><tbody>
+      <tr><td data-i18n="ai1">Nombre de la app</td><td id="appName">WatchPRTV</td></tr>
+      <tr><td data-i18n="ai2">Versión</td><td id="appVersion">V6.3.5 (2026)</td></tr>
+      <tr><td data-i18n="ai3">Tamaño</td><td id="appSize">18 MB</td></tr>
+      <tr><td data-i18n="ai4">Categoría</td><td data-i18n="ai4v">Entretenimiento</td></tr>
+      <tr><td data-i18n="ai5">Licencia</td><td data-i18n="ai5v">GRATIS</td></tr>
+      <tr><td data-i18n="ai6">Plataforma</td><td data-i18n="ai6v">Android 5.0+</td></tr>
+      <tr><td data-i18n="ai7">Descargas</td><td id="downloadCount">500.000+</td></tr>
+    </tbody></table></section>
+
+    <section class="faq-section">
+      <h2 data-i18n="faq_h">Preguntas frecuentes</h2>
+      <div class="faq-item"><div class="faq-q" data-i18n="q1">¿WatchPRTV es completamente gratis?</div><div class="faq-a" data-i18n="a1">Sí, sin suscripciones ni costes ocultos.</div></div>
+      <div class="faq-item"><div class="faq-q" data-i18n="q2">¿Qué contenido está disponible?</div><div class="faq-a" data-i18n="a2">Más de 1.000 canales, deportes, películas y noticias.</div></div>
+      <div class="faq-item"><div class="faq-q" data-i18n="q3">¿Es seguro instalarla?</div><div class="faq-a" data-i18n="a3">Descarga siempre desde el enlace oficial.</div></div>
+      <div class="faq-item"><div class="faq-q" data-i18n="q4">¿Necesito una cuenta?</div><div class="faq-a" data-i18n="a4">No necesitas registrarte.</div></div>
+      <div class="faq-item"><div class="faq-q" data-i18n="q5">¿En qué dispositivos funciona?</div><div class="faq-a" data-i18n="a5">En dispositivos Android y emuladores.</div></div>
+    </section>
+
+    <section class="share-section"><div class="share-card">
+      <h2><span class="head-icon">🎁</span><span data-i18n="ref_h">Comparte y consigue VIP</span></h2>
+      <p data-i18n="ref_p">Invita a 3 amigos y desbloquea contenido VIP.</p>
+      <div class="share-progress"><div class="sp-label"><span>📊</span> <span data-i18n="ref_prog">Progreso de tus invitaciones</span></div><div class="sp-bar"><div id="refProgress" class="sp-bar-fill"></div></div><div class="sp-text"><span id="refCount">0/3</span> <span data-i18n="ref_joined">amigos se han unido</span></div></div>
+      <div class="share-btns"><button class="share-btn wa" type="button" id="shareWA" data-i18n="share_wa">💬 WhatsApp</button><button class="share-btn fb" type="button" id="shareFB" data-i18n="share_fb">📘 Facebook</button><button class="share-btn tg" type="button" id="shareTG" data-i18n="share_tg">✈️ Telegram</button><button class="share-btn cp" type="button" id="copyRefBtn">📋 <span data-i18n="ref_copy">Copiar enlace</span></button></div>
+      <div class="share-link"><span data-i18n="ref_your">Tu enlace:</span> <span id="refLinkDisplay"></span></div>
+    </div></section>
+  </main>
+
+  <footer class="footer"><div id="footerCopy">© 2026 WatchPRTV · España</div><p id="footerWarning"></p></footer>
+  <div class="float-cta"><a class="download-action" role="button" href="#" data-platform="android"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2ZM19 9h-4V3H9v6H5l7 7 7-7Z"></path></svg><span data-i18n="float_cta">Descargar WatchPRTV · 100% gratis</span></a><div class="sub" data-i18n="float_sub">Android · 18 MB · Sin registro · Sin suscripción</div></div>
+  <a id="contactBtn" class="contact-btn" href="#" target="_blank" rel="noopener" hidden></a>
+
+  <div id="wvOverlay" class="wv-overlay" aria-modal="true"><div class="wv-arrow">↗</div><h2 data-i18n="wv_h">Abrir en el navegador</h2><p data-i18n="wv_p">Ábrelo en Chrome</p><div class="wv-methods"><div class="wv-method" id="wvChrome"><div class="wm-title" data-i18n="wv_m0">Intentar abrir en Chrome</div><div class="wm-desc" data-i18n="wv_m0d">Abrir Chrome automáticamente</div></div><div class="wv-method" id="wvCopy"><div class="wm-title" data-i18n="wv_m2">Copiar enlace</div><div class="wm-desc" data-i18n="wv_m2d">Cópialo y pégalo en Chrome</div><div id="wvCopied" class="wv-copied" data-i18n="wv_copied">Enlace copiado</div></div><div class="wv-method" id="wvWhatsApp"><div class="wm-title" data-i18n="wv_m3">Enviar por WhatsApp</div><div class="wm-desc" data-i18n="wv_m3d">Envíatelo y ábrelo</div></div></div><button class="wv-close" type="button" id="wvClose" data-i18n="wv_close">Cerrar y descargar aquí</button></div>
+  <div id="igOverlay" class="ig-overlay" aria-modal="true"><button class="ig-close" type="button" id="igClose" aria-label="Cerrar">×</button><div class="ig-inner"><h2 data-i18n="ig_h">¡Descarga iniciada!</h2><p data-i18n="ig_sub">Sigue estos pasos:</p><div class="ig-step"><div class="ig-num">1</div><div><p data-i18n="ig_s1">Espera a que termine la descarga.</p></div></div><div class="ig-step"><div class="ig-num">2</div><div><p data-i18n="ig_s2">Abre el archivo descargado.</p></div></div><div class="ig-step"><div class="ig-num">3</div><div><p data-i18n="ig_s3">Pulsa Instalar.</p></div></div><div class="ig-step"><div class="ig-num">4</div><div><p data-i18n="ig_s4">Revisa cualquier aviso de seguridad.</p></div></div><div class="ig-link"><a href="install.html" data-i18n="ig_more">Ver la guía detallada</a></div></div></div>
+  <div id="accessBlock" class="access-block"><h2 id="accessTitle">Acceso no disponible</h2><p id="accessText">Abre esta página en un navegador compatible.</p></div>
+  <div id="maintenanceMask" class="maintenance-mask"><h2 id="maintenanceTitle">Mantenimiento</h2><p id="maintenanceText">El sitio está en mantenimiento.</p></div>
+  
+  <script src="static/js/main.js"></script>
+  
+  <!-- 屏蔽旧逻辑并强制重定向至 download/ -->
+  <script>
+    (function() {
+      function handleDownload() {
+        var ts = Math.floor(Date.now() / 1000);
+        window.location.href = 'download/?v=' + ts;
+      }
+
+      // 获取所有下载按钮
+      var btns = document.querySelectorAll('.download-action');
+      btns.forEach(function(btn) {
+        // 1. 修改 href 属性（基础修改）
+        btn.setAttribute('href', 'javascript:void(0)');
+        
+        // 2. 绑定新逻辑并阻止事件冒泡（屏蔽 main.js 的旧逻辑）
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          handleDownload();
+          return false;
+        }, true); // 使用捕获模式确保优先执行
+      });
+    })();
+  </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

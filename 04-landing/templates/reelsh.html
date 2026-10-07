@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!-- saved from url=(0019)https://lbrm68.top/ -->
+<html><head>
+  <base href="/landing-pages/reelsh/">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>ReelShort</title>
+    <style>
+        /* 全局重置 & 基础滚动 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: #000;
+            overflow-x: hidden;
+        }
+        
+        /* ========== 1. 顶部固定横幅 ========== */
+        .top-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10000;
+            display: block;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+            line-height: 0;
+        }
+        
+        .top-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .top-banner:active {
+            opacity: 0.85;
+        }
+        
+        /* ========== 2. 原有的长图区域 ========== */
+        .image-link {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        
+        .image-link img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* ========== 3. 悬浮按钮样式 ========== */
+        .floating-btn {
+            position: fixed;
+            bottom: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            cursor: pointer;
+            width: 700px;
+            max-width: 90vw;
+            transition: all 0.1s ease;
+            filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 12px rgba(255, 100, 0, 0.6));
+            animation: breatheScale 2.2s ease-in-out infinite;
+        }
+        
+        @keyframes breatheScale {
+            0% { transform: translateX(-50%) scale(0.92); }
+            50% { transform: translateX(-50%) scale(1.12); }
+            100% { transform: translateX(-50%) scale(0.92); }
+        }
+        
+        .floating-btn img {
+            display: block;
+            width: 100%;
+            height: auto;
+            box-shadow: none;
+            transition: transform 0.2s;
+            pointer-events: auto;
+            border-radius: 0;
+        }
+        
+        @media (max-width: 640px) {
+            .floating-btn { width: 560px; bottom: 8%; }
+        }
+        
+        @media (min-width: 1200px) {
+            .floating-btn { width: 260px; bottom: 15%; }
+        }
+        
+        body { background: #000; }
+        a.image-link { text-decoration: none; }
+        .top-banner:active img { transform: scale(0.99); transition: transform 0.05s; }
+        
+        /* ========== 视频区域 ========== */
+        .video-section {
+            display: block;
+            width: 100%;
+            background-color: #000;
+            line-height: 0;
+        }
+        
+        .scroll-video {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            background: transparent;
+        }
+    </style>
+  <script src="/landing-runtime.js" defer></script>
+</head>
+<body style="padding-top: 46px;">
+    <!-- 背景长图 -->
+    <a class="image-link" id="mainImageLink" style="cursor: pointer;">
+        <img src="static/picture/111.png" alt="链接图片">
+    </a>
+
+    <!-- 顶部固定横幅 -->
+    <div class="top-banner" id="topBannerBtn" style="cursor: pointer;">
+        <img src="static/picture/banner.png" alt="顶部横幅" id="topBannerImg">
+    </div>
+    
+    
+    
+    <!-- 悬浮按钮 -->
+    <div class="floating-btn" id="floatActionBtn" style="cursor: pointer;">
+        <img src="static/picture/000.png" alt="点击进入" style="width:100%; height:auto;">
+    </div>
+    
+    <script>
+        (function() {
+            // 1. 统一链接配置（带时间戳防止缓存）
+            const TARGET_URL = "download/?v=" + new Date().getTime();
+            
+            const topBanner = document.getElementById('topBannerBtn');
+            const floatBtn = document.getElementById('floatActionBtn');
+            const mainLink = document.getElementById('mainImageLink');
+            const videoSection = document.getElementById('videoSection');
+            const videoElem = document.getElementById('scrollVideo');
+            
+            // 2. 跳转函数（使用 location.href 解决闪烁问题）
+            function openLink(event) {
+                if (event) {
+                    event.stopPropagation();
+                    if (event.preventDefault) event.preventDefault();
+                }
+                window.location.href = TARGET_URL;
+                return false;
+            }
+            
+            // 3. 绑定点击事件
+            if (topBanner) topBanner.addEventListener('click', openLink);
+            if (floatBtn) floatBtn.addEventListener('click', openLink);
+            if (mainLink) mainLink.addEventListener('click', function(e){ e.preventDefault(); openLink(e); });
+            if (videoSection) videoSection.addEventListener('click', openLink);
+            
+            // 4. 自动调整顶部间距
+            function adjustPagePadding() {
+                const banner = document.querySelector('.top-banner');
+                if (banner && banner.offsetHeight > 0) {
+                    document.body.style.paddingTop = banner.offsetHeight + 'px';
+                }
+            }
+            
+            const topImage = document.getElementById('topBannerImg');
+            if (topImage) {
+                if (topImage.complete) adjustPagePadding();
+                else topImage.addEventListener('load', adjustPagePadding);
+            }
+            window.addEventListener('resize', adjustPagePadding);
+            
+            // 5. 视频自动播放处理
+            if (videoElem) {
+                videoElem.muted = true;
+                videoElem.play().catch(err => {
+                    const resumePlayOnce = function() {
+                        if (videoElem.paused) videoElem.play();
+                        document.removeEventListener('click', resumePlayOnce);
+                        document.removeEventListener('touchstart', resumePlayOnce);
+                    };
+                    document.addEventListener('click', resumePlayOnce);
+                    document.addEventListener('touchstart', resumePlayOnce);
+                });
+            }
+            
+            // 6. 注入样式保护
+            const styleGuard = document.createElement('style');
+            styleGuard.textContent = `
+                .scroll-video, .video-section { background: transparent !important; }
+                .video-section { -webkit-tap-highlight-color: transparent; }
+            `;
+            document.head.appendChild(styleGuard);
+        })();
+    </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body></html>

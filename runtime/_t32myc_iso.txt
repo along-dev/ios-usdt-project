@@ -1,0 +1,50 @@
+=== T29 隔离运行（(乙-1)：第二实例 + 第二库）===
+  ★ 连接目标：判据 DB=qk_e2e_test  API=http://127.0.0.1:8900   ｜ 护栏 DB=qk_e2e
+  ★ 共享 8888 **未触碰**（只起停 8900）
+  [start] E:\ios漏洞\_integration\_fix_work\_wbe01d_bak\_i2c1_server_iso.exe
+          cwd=E:\ios漏洞\_integration\_fix_work\_wbe01d_ws
+  [health] http://127.0.0.1:8900/health ⇒ {"checks":{"mariadb":{"ok":true},"redis":{"ok":true}},"status":"ok"}
+  [seed/schema] 克隆业务库结构
+    === T29 播种器 ===
+    源库(只读)=qk_e2e  目标库=qk_e2e_test  端口=13306
+      [schema] 克隆 28 张表结构（跳过备份表 ['_bak_sys_base_menus_hidden_t26']）
+      [保真] ✓ 两库列类型逐列一致
+    SCHEMA=OK
+  [seed/rows] 播种判据夹具（⛔ 不种 bill）
+    === T29 播种器 ===
+    源库(只读)=qk_e2e  目标库=qk_e2e_test  端口=13306
+      [schema] 克隆 28 张表结构（跳过备份表 ['_bak_sys_base_menus_hidden_t26']）
+      [保真] ✓ 两库列类型逐列一致
+      [OK] machine: 种 9 行（列 13/13）
+      [OK] agent: 种 2 行（列 7/7）
+      [OK] packet: 种 1 行（列 10/10）
+      [OK] wallet: 种 2 行（列 18/18）
+      [OK] custom: 种 1 行（列 3/3）
+      [OK] settlement: 种 8 行（列 5/5）
+      [OK] token: 种 2 行（列 6/6）
+      [检查] 目标库 bill 行数 = 0（应为 0 —— 播种器不种 bill）
+    SEED=OK
+  [业务库/before] bill=18/95b6eea9 settlement=8/57e79218 token=2/f6322cd3 wallet=2/3b1e3a4e custom=1/50493461 agent=2/2b27ab77 packet=1/f4421208 machine=9/9a788926
+  [Redis/before] 主栈 db0: keys=0 hash=-   ｜ 隔离 db1: keys=0 hash=-
+  [state] ==== state1_cuid201（qk_e2e_test.packet.custom_user_id=201）====
+  [suite] state1_cuid201/verify_f1c9_toaddress_guard.py: EXIT=0  RESULT=GREEN  to_address 一致性校验生效，兼容与正例不受影响
+  [suite] state1_cuid201/verify_f1c8_amount_guard.py: EXIT=0  RESULT=GREEN  负/零金额全部被拒、正例不受影响
+  [suite] state1_cuid201/verify_money_path.py: EXIT=0  RESULT=GREEN  三链 + 私域 + 桥 + 负例矩阵 全部通过
+  [state] ==== state2_cuid0（qk_e2e_test.packet.custom_user_id=0）====
+  [suite] state2_cuid0/verify_f1c9_toaddress_guard.py: EXIT=0  RESULT=GREEN  to_address 一致性校验生效，兼容与正例不受影响
+  [suite] state2_cuid0/verify_f1c8_amount_guard.py: EXIT=0  RESULT=GREEN  负/零金额全部被拒、正例不受影响
+  [suite] state2_cuid0/verify_money_path.py: EXIT=0  RESULT=GREEN  三链 + 私域 + 桥 + 负例矩阵 全部通过
+  [state] 已复位 qk_e2e_test.packet.custom_user_id=201
+  [业务库/after] bill=18/95b6eea9 settlement=8/57e79218 token=2/f6322cd3 wallet=2/3b1e3a4e custom=1/50493461 agent=2/2b27ab77 packet=1/f4421208 machine=9/9a788926
+  [Redis/after] 主栈 db0: keys=0 hash=-   ｜ 隔离 db1: keys=0 hash=-
+  ✓ 护栏：业务库 8 张表**行数与内容哈希全未变**（MySQL 隔离有效） ＋ 主栈 Redis db0 **键数与键名哈希全未变**（Redis 已隔离到 db1）
+
+=== 结论 ===
+  实例 B 起：OK · 播种：OK · 护栏(业务库未动)：OK
+  state1_cuid201/verify_f1c9_toaddress_guard.py: EXIT=0 RESULT=GREEN  to_address 一致性校验生效，兼容与正例不受影响
+  state1_cuid201/verify_f1c8_amount_guard.py: EXIT=0 RESULT=GREEN  负/零金额全部被拒、正例不受影响
+  state1_cuid201/verify_money_path.py: EXIT=0 RESULT=GREEN  三链 + 私域 + 桥 + 负例矩阵 全部通过
+  state2_cuid0/verify_f1c9_toaddress_guard.py: EXIT=0 RESULT=GREEN  to_address 一致性校验生效，兼容与正例不受影响
+  state2_cuid0/verify_f1c8_amount_guard.py: EXIT=0 RESULT=GREEN  负/零金额全部被拒、正例不受影响
+  state2_cuid0/verify_money_path.py: EXIT=0 RESULT=GREEN  三链 + 私域 + 桥 + 负例矩阵 全部通过
+ISO_RUN=OK

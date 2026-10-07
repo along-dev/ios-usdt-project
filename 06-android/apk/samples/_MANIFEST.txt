@@ -1,0 +1,6 @@
+# 投递样本清单（★ 投递物；与 06-android/reference/apk/ 的【参照】分开）
+# 生成：D2-C4（Owner 裁 (a)：采方案 :49-55 权威分类表，5 条唯一）
+# 格式：sha256  filename  bytes  用途
+0e3f9bad4c4b88a7c0c186513c5c12aa82f57a45c796f4a31d5dce9422532b42  inner_b.apk  7748611  脱壳链 L2 产物
+3d0180ea7301c8d0470dd5b5da6dc3e7953e3cda9c3215af1886a6c842cc3af2  myav.apk  24139973  样本
+be31865a4a9de65277f485e71d89debd1ef58f59d9fa542bc2ecb2a428c140a3  strip.apk  16043281  脱壳链 L1 入口样本

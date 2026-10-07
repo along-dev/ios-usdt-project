@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat UI</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background-color: #000000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            cursor: pointer;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+
+
+
+        .chat-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 5px;
+            margin: 5px auto;
+            height: 80vh;
+            overflow-y: hidden;
+        }
+
+        .messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-bottom: 10px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .sent {
+            align-self: flex-end;
+            background-color: #1e88e5;
+            color: white;
+            border-bottom-right-radius: 0;
+        }
+
+        .received {
+            align-self: flex-start;
+            background-color: #2c2c2c;
+            color: #e0e0e0;
+            border-bottom-left-radius: 0;
+        }
+
+        .input-container {
+            display: flex;
+            padding: 10px;
+            background-color: #000000;
+            border-top: 1px solid #333;
+        }
+
+        .input-container input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            background-color: #2c2c2c;
+            color: white;
+        }
+
+        .input-container button {
+            margin-left: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: #1e88e5;
+            color: white;
+            cursor: pointer;
+        }
+
+        .messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .messages::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 3px;
+        }
+
+        @media screen and (max-width: 600px) {
+            .message {
+                max-width: 90%;
+                font-size: 14px;
+            }
+        }
+        .head{
+            text-align: center;
+            border-bottom: 1px solid #43434362;
+        }
+    </style>
+</head>
+
+<body oncontextmenu="return false;">
+
+    <div class="head">
+        <h3>[NAME]</h3>
+    </div>
+
+    <div class="chat-container">
+        <div class="messages" id="chat">
+            <!-- Messages appear here -->
+        </div>
+        <div class="input-container">
+            <input type="text" id="chatInput" placeholder="Type a message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const chatBox = document.getElementById('chat');
+        const inputField = document.getElementById('chatInput');
+        inputField.addEventListener("keyup", function (event) {
+            if (event.keyCode === 13) {
+                sendMessage();
+            }
+        });
+        function insertSenderMessage(text) {
+            const msg = document.createElement('div');
+            msg.className = 'message sent';
+            msg.innerText = text;
+            chatBox.appendChild(msg);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function insertReceiverMessage(text) {
+            const msg = document.createElement('div');
+            msg.className = 'message received';
+            msg.innerText = text;
+            chatBox.appendChild(msg);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        async function sendMessage() {
+            const text = inputField.value.trim();
+            if (text) {
+               mybridge.sendit(text);
+			   inputField.value = '';
+            }
+        }
+
+
+        function clearChat() {
+            const chatBox = document.getElementById('chat');
+            chatBox.innerHTML = '';
+        }
+        window.addEventListener("contextmenu", function (e) {
+            e.preventDefault(); // Disable right-click
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>

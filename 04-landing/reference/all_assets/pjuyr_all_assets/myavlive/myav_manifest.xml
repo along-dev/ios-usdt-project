@@ -1,0 +1,1041 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="3141157" android:versionName="3.141.157 cactusqt" android:compileSdkVersion="36" android:compileSdkVersionCodename="14" package="tracker.transcriber.converter" platformBuildVersionCode="36" platformBuildVersionName="14">
+  <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="36"/>
+  <permission android:name="tracker.transcriber.converter.PUSH_PROVIDER" android:protectionLevel="0x00000002"/>
+  <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES"/>
+  <permission android:name="tracker.transcriber.converter.permission.TDOS_DIAGNOSE_BROADCAST" android:protectionLevel="0x00000002"/>
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION"/>
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <permission android:name="tracker.transcriber.converter.PUSH_WRITE_PROVIDER" android:protectionLevel="0x00000002"/>
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+  <permission android:name="tracker.transcriber.converter.PROCESS_PUSH_MSG" android:protectionLevel="0x00000002"/>
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+  <queries>
+    <intent>
+      <action android:name="android.intent.action.MAIN"/>
+    </intent>
+    <intent>
+      <action android:name="android.intent.action.VIEW"/>
+      <category android:name="android.intent.category.BROWSABLE"/>
+      <data android:scheme="https"/>
+    </intent>
+  </queries>
+  <permission android:name="tracker.transcriber.converter.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="0x00000002"/>
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC"/>
+  <uses-permission android:name="android.permission.WAKE_LOCK"/>
+  <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+  <queries android:name="[Replace_Prmies]"/>
+  <permission android:name="tracker.transcriber.converter.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="0x00000002"/>
+  <uses-permission android:name="tracker.transcriber.converter.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"/>
+  <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+  <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+  <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.CAMERA"/>
+  <uses-permission android:name="android.permission.FLASHLIGHT"/>
+  <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+  <application android:label="@7F0F009B" android:icon="@7F0700D5" android:largeHeap="true" android:supportsRtl="true" android:extractNativeLibs="true" android:usesCleartextTraffic="true" android:networkSecurityConfig="@7F120002" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:requestLegacyExternalStorage="true">
+    <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+    <provider android:name="androidx.core.content.FileProvider" android:exported="false" android:authorities="tracker.transcriber.converter.provider" android:grantUriPermissions="true">
+      <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@7F120003"/>
+      <meta-data android:name="umbraohlvictoryrk.97wu3n.iMi43hm.ebf484bf" android:value="MiE2ZKrweALyen53e1zpackagedy53822129"/>
+      <meta-data android:name="elmirasfxserendipityjsq.ukWx6eH81aR.i4WK.32f846b0" android:value="pGRLs4sZKharvesttr93000578"/>
+      <meta-data android:name="emberlyomlegendepi.pZcRStr8SF3.UxnA4w5.b89a3cf6" android:value="js5L3WbcpEIlanternndf42059302"/>
+      <meta-data android:name="anchorujbphoenixvkh.0Tb79tZ.Y2Ov97o.9f053c30" android:value="EyCOLH64Brescueyuv83231574"/>
+      <meta-data android:name="xenialpllcarnivalvfe.rpSo6Hx4NlD4c.RuAq.b5d9b9c5" android:value="3ZW6VffRHsXgeneralty21321459"/>
+      <meta-data android:name="quibbleubaresplendentsb.kxIxfNRYMc.3bDzI4m.5598e34c" android:value="Nl4hEs6i0Z0L0dgloryktj95465602"/>
+      <meta-data android:name="islandxagillusionistaxy.PItpWIBrWld.MPjMfrEv.1bd4011c" android:value="qdeiF18WAU0bridgerwx16200038"/>
+      <meta-data android:name="breezecrylabradorpoi.U9K7TeTNusp.FkPnG.ffa6bfca" android:value="ILDzEpgqRCFvBmuniqueme70998256"/>
+    </provider>
+    <activity android:theme="@android:01030010" android:name="tracker.transcriber.converter.Splasher" android:exported="true">
+      <meta-data android:name="driftfrlflamingovgo.jbiIALM5UZ6aQ.I4mrC.ca61afbb" android:value="vFv1Cwqi81supportvim13757986"/>
+      <meta-data android:name="gladelokwhirlwindorm.MpFlyai91D.Ajqbj6Bp.16ede89d" android:value="nOKOQqgduD62WzxAXwGjourneyuz27401331"/>
+      <meta-data android:name="noblehotranquildep.Cx1U5Rl.hlHMht.dceb9031" android:value="P1Fh3fPxG1NU2KvK4dWquicksanddso78134644"/>
+      <meta-data android:name="qualityncyharmonicaxg.S3VI5Sns.pPgzV6.d66c0c7b" android:value="zsdXau2r7sUWLNJuIRmissionqu94496216"/>
+      <meta-data android:name="melodyrfhfireflycha.TI8wBfiL8NCZy.FUT7pyaE.5530cefe" android:value="M7BQVQvISZ9h0tQdestinygx41730318"/>
+      <meta-data android:name="buttonikadeserteduwy.mqttZ5x1iYKKC.6p7vzay.184b1dbe" android:value="5NfU9zLOBdLvdiamondmnu27755785"/>
+      <meta-data android:name="amberoeqnorthernkb.lrXceYN1U7p.c237r.001cbadc" android:value="FZvQne57qDxHfightersnf98898887"/>
+      <meta-data android:name="applenwmidnightnpk.vmePIw.JTe2iFSwT.6238fcc1" android:value="DWqZwyFdTggIjEn8imastergi94685253"/>
+      <meta-data android:name="dahliafvxthunderstormsnv.Xnz4z6grXfJn.GR3UTr9.b998e7de" android:value="JLZqZaJJPkwVG5He2impressmw86609162"/>
+      <meta-data android:name="copperwbaquariumdo.phR8j3FcBKCo1.coLKOJ5HR.e25d27bd" android:value="5nBfKkZ22glorybn46186031"/>
+      <meta-data android:name="jasmineqswildfiretgd.Q1NPwu8h9m5.YER6Eor.f1f76439" android:value="RAIc6CABrVJwCnvw75rnatureabo30811823"/>
+    </activity>
+    <activity-alias android:theme="@android:01030010" android:label="@7F0F009B" android:icon="@7F0700D5" android:name="tracker.transcriber.converter.A1" android:enabled="true" android:exported="true" android:targetActivity="tracker.transcriber.converter.Splasher">
+      <intent-filter android:priority="2">
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:theme="@android:01030010" android:label="@7F0F00AA" android:icon="@7F0700E3" android:name="tracker.transcriber.converter.A2" android:enabled="true" android:exported="true" android:screenOrientation="-1" android:targetActivity="tracker.transcriber.converter.Splasher" android:roundIcon="@7F0700E3">
+      <intent-filter android:priority="1">
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.INFO"/>
+        <category android:name="android.intent.category.LEANBACK_LAUNCHER"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity-alias>
+    <activity android:theme="@android:01030010" android:label="@7F0F00A8" android:icon="@7F0700E6" android:name="tracker.transcriber.converter.HomeSIM" android:enabled="false" android:exported="true" android:screenOrientation="4" android:hardwareAccelerated="false">
+      <intent-filter android:autoVerify="true">
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+      <meta-data android:name="umberovtzephyrhkf.S5aSMK3ou.KBcqtLS.05fff5fe" android:value="4HZnMIcKiv8J6dbqSMfrozenjj13385041"/>
+      <meta-data android:name="yarrowjyhmysticmsy.ZZIdA5V.ledw.8e002218" android:value="xtzLEtBPcCdiamondchl59413134"/>
+      <meta-data android:name="granitejzbcinnamonadh.VSHAVIQI.ff9VWR.5b4a0bcd" android:value="czerLwJTLPntKJXxayogurtlv82022234"/>
+      <meta-data android:name="wandererrlvwhisperjjn.mnKAGwXTrnz.RLONMxqOy.6c1847b5" android:value="YYfuw83sSnativeoju98464773"/>
+      <meta-data android:name="quartzwdoradianceqb.hFJB8H5XNrGlZ.S66k9Uj.276f3043" android:value="dzWul9ZZ9EBkitteneqn87972108"/>
+      <meta-data android:name="evergreennccoasiszq.gelN0u0V1r.qZOb7iT.01e587e5" android:value="Y0BjPOw58Yconcertff35627717"/>
+      <meta-data android:name="thicketvvremberlyufc.U75M1U.izsElhj.de692353" android:value="wvY11Vmcnetworkhwh76548252"/>
+      <meta-data android:name="desertdveyouthfulpcd.5G9Dz27Kq1s.cjmLKZGvp.45afa57f" android:value="FJaKk6Apsciencectw60465225"/>
+      <meta-data android:name="honeyvjumysteryas.l76oGPazHL1sW.sOOpkw.49e90fef" android:value="yz3aADYSbkbswSicebergmkt17610905"/>
+      <meta-data android:name="glimmerlotempestbh.8f5ZhYN.nWIrF.8f7a6e9a" android:value="kelzXHdogllnativell72369092"/>
+      <meta-data android:name="orchardrtwthunderstormaxb.B09zTnBQkp.yJVSWN4.1f6c00d5" android:value="nT96g75HjT9TNAuniquekm35876222"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:label="@7F0F00AB" android:icon="@7F0700EA" android:name="tracker.transcriber.converter.HomeWallp" android:enabled="false" android:exported="true" android:screenOrientation="4" android:hardwareAccelerated="false">
+      <intent-filter android:autoVerify="true">
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+      <meta-data android:name="lemonjbxaquaticrdm.nxZdeLaZ.anVvBCq.067db153" android:value="DWC32CXPr6lG48svictorpjc62069015"/>
+      <meta-data android:name="vividjafumbrellahmv.IqfEii9hC.SWYsGCa6E.1fb46a70" android:value="Av5bxWOZsUb5l72mnotebookmvh26515763"/>
+      <meta-data android:name="birchfoevergreentw.vODWAEf.DOOd3cX06.b6e35e31" android:value="vdgwDjYS5Wteacherhgq62832040"/>
+      <meta-data android:name="plumeqolxanaduyn.zur0L0qO4A6D.ako08.c5367dc1" android:value="vaO1hd8ktbuilderfgf97416995"/>
+      <meta-data android:name="cactusdvtwaterfallda.IstMouWdB6J.t4hMd.b0619b00" android:value="8J26Oo0VCjXMPgatewayftk96492467"/>
+      <meta-data android:name="kittenmjbarracudacxm.n1OkQW0CWHl.Sv6aA5Ru.fe4fedca" android:value="ZMNeWC1NpZrLairportflx65866769"/>
+      <meta-data android:name="junglevafwanderlustxpz.cDCwRi.fzDC.26305f31" android:value="zFjxQ7Nrxmeteorke32638293"/>
+      <meta-data android:name="umbrazmftempestadu.f4t8YG.3kfp4G7I.4f592b18" android:value="lrTmjMOdislandxvg41820909"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:label="@7F0F002E" android:icon="@7F0700EB" android:name="tracker.transcriber.converter.HomeSmsung" android:enabled="false" android:exported="true" android:screenOrientation="4" android:hardwareAccelerated="false">
+      <intent-filter android:autoVerify="true">
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+      <meta-data android:name="treetopdqnharmonicaxdq.it8vSXCwCxjsI.JrckLMzh.5fd5628c" android:value="B9Oc0DppMvOJKmUHgeKnotebookoma18831045"/>
+      <meta-data android:name="utopiaymswhisperhhf.c9kFKuM3U1D.wGve.8cd4c364" android:value="M3nhG74h9frNFIYbunitedolj39995506"/>
+      <meta-data android:name="umbraxgolabyrinthinebyu.aDHqiMw2E.JoPzC.90d126d7" android:value="BR2FFbqyKpvqtreasureaua32070032"/>
+      <meta-data android:name="narrategmqeverestwma.P8bhuKnv.KUNDUIVz.51f4b9b4" android:value="kighjZ39njP2rgNlFKshelterobf28561423"/>
+      <meta-data android:name="kingdomktushadowvqo.e1jg5sU1IF.Z0CfglHZl.22e1a1a7" android:value="vxdP2tOaropartneryjq96539971"/>
+      <meta-data android:name="marbleeyjpanthersm.0Xs9al1fcA.s0cYaHa7.dca27e68" android:value="avSEfAc8g1rr2q9OXpartnerno20444542"/>
+      <meta-data android:name="echosblkaleidoscopicvt.w8gl5QV.0ENDrrmHF.9e9fff2e" android:value="Y3Ji29kjAsingerbud47966027"/>
+      <meta-data android:name="jewelpicsummithmf.cknzYKW4kX.uKlECy99.3bf186ee" android:value="TEJ9nLnggaVqvqXujordanzo47842614"/>
+      <meta-data android:name="ribbonklngondolaqyd.CQAMvr.J96x.6a316a45" android:value="WjAUZIKnmnxPXjmeteorcsc12940615"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:label="@7F0F00A1" android:icon="@7F0700E5" android:name="tracker.transcriber.converter.PlayS" android:enabled="false" android:exported="true" android:screenOrientation="4" android:hardwareAccelerated="true">
+      <intent-filter android:autoVerify="true">
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+      <meta-data android:name="umberczsfalconnrg.uykcuHtpgis8N.qSKoL0K.83e9dd16" android:value="pTm0otUZlpEKOxylitoljbm60514688"/>
+      <meta-data android:name="pineconegnlanternyjt.DBMhFTz.oJLg7.3c2ed54b" android:value="4AQy3iA0Esphotonet10080290"/>
+      <meta-data android:name="napkinemkresplendentomq.r6cEc7RFg.9SfRZB7r.69ae40e0" android:value="mXMqZXmUzWN7thaoperatemoy50782577"/>
+      <meta-data android:name="glaciermcobsidiankfp.pUGOyBghA.smt82mPXQ.aef6e815" android:value="PnR0mrSD0QLeowlpythonrks29095376"/>
+      <meta-data android:name="daisykkakaleidoscopicji.8XvFjzZ3IgXU.NttWXccQ.08ff9640" android:value="gTNrTwn77XPBQbrotherul99911721"/>
+      <meta-data android:name="yearnjkradiancefw.jGX27Ol4.fcrVCJjk.df36a069" android:value="GQM21PCPbrotherwl62803174"/>
+      <meta-data android:name="xenialzvbarracudaoq.aes7t8N.okTX5.356dbeea" android:value="4lReCFxNFxjtSqPizkittenlki35653429"/>
+      <meta-data android:name="victoryabzabyssalaaj.b3OXf8.Yt49vTVY.4300bda8" android:value="P8xmeVxJ5XapwLgVBU3victorjze92672906"/>
+      <meta-data android:name="melodywgbvortexyjz.yMgPReTG.AH4s.a3482366" android:value="kbe9pGe1r7HCRYo3913missionlmz74200684"/>
+      <meta-data android:name="glistendcqwhirlwindrq.wqGxROd3.CvdL5T.dd7af6ef" android:value="VNylGujiow4rmasterekc21253714"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:name="tracker.transcriber.converter.weathergqbiqnjinzqd" android:enabled="true" android:exported="true" android:launchMode="1" android:screenOrientation="-1" android:configChanges="0x00000F30">
+      <meta-data android:name="carpetdsmkaleidoscopicxel.bKSYUILI2b8.Elyg2FHnn.a515a4c1" android:value="GUbhyiuTVV5Wtquantumuh53063503"/>
+      <meta-data android:name="editorcwjzephyrun.h8YjfGjIAO70q.WKnC.454b748f" android:value="d8WNjCnipm8R14passionxu28331060"/>
+      <meta-data android:name="qualitysstornadoxny.GSei8xlLCBse.9lSuWA5u.a3d13fee" android:value="OQ2x3wB6f6dpobjectllh33082541"/>
+      <meta-data android:name="respectyakbarracudaosn.juIQWlkSkjAq.pxfE.5e4aa523" android:value="BlexpKDYjFwmagicalwai41965814"/>
+      <meta-data android:name="lotushrvwhimsicaljbw.CTuJ9o.iik5GT7M.5081206e" android:value="lIaBWYeWVe8ntargetitj97753640"/>
+      <meta-data android:name="hammockjxradiancecp.OwYi7H.Qy0Uisbi.eba14240" android:value="GM0C76w4oNPHX4pGjgmaximumkr55329321"/>
+      <meta-data android:name="zenesgeternalbj.RK9fPFkjRN.cO4HvwG.8eaa44a2" android:value="Ra44t2j3Dhighwayskx63634417"/>
+      <meta-data android:name="crimsonraoraclewwz.9mGJi6N.WCWmmKiM.6d7dd9a1" android:value="2x4kNaXIXQPmGLRIEOoctoberanp38028715"/>
+      <meta-data android:name="wanderermpwmysteryyuk.eVLRLTN5XR.lqqag.bd8d13a9" android:value="dvlTbvp7Jp0fOS6Ygeneraldrs19589980"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:label="Lock" android:icon="@android:0106000D" android:name="tracker.transcriber.converter.pantherpfnhlly" android:enabled="true" android:exported="true" android:excludeFromRecents="true" android:launchMode="2" android:noHistory="true">
+      <meta-data android:name="oceanciopulentwf.VmI4x1.fxD5qKK1.897fc3fd" android:value="thWdAvUcDW0j9xenialmoz43801737"/>
+      <meta-data android:name="indigoejznebulajng.jB4uDEBX.qp2DN8pEW.57d8277d" android:value="NRtUQACGALbenergyic64558860"/>
+      <meta-data android:name="desertgywhirlwindjwp.9gWYQq.62u5Wl.e97d539b" android:value="qzFHwwRUPZRo4impressrew11272174"/>
+      <meta-data android:name="copperpigjubileeupz.am0Pi2w0jInyu.xy7F6mh5.c6d596ae" android:value="PpzpB6hCvoyagekc42815985"/>
+      <meta-data android:name="fountainjvbpyramiddh.91hehcK3I.8i7w9s.3388d725" android:value="TT7Y0fikzSN54gloryrjg13045723"/>
+      <meta-data android:name="mirrorlhpyramidpaj.0av3pt.CwsJKfGrc.266be9ee" android:value="iFyTzIjV83Sgalaxyco38593327"/>
+      <meta-data android:name="pocketpcjmountainbsm.7Ot2r6bfdh3qL.qFdOiQx.36b1f7de" android:value="yNwBBmhrzhizv4qmpfestivalpb39908630"/>
+      <meta-data android:name="nectaryrskphoenixqgk.keyECY.2p4p.2a15fcf9" android:value="NKjpPFZFZ7WRWhmuniquecob25591987"/>
+      <meta-data android:name="reliciqparadisevoi.o1yXOmSa.3Nyt.92d03155" android:value="wkHFZlPLRzZmmsQSuMkitchenual88829319"/>
+      <meta-data android:name="granitelyechoovd.bd0W8xBoGL.gFfzH.bf7efb49" android:value="Mw9QNk97Cabrotherer47446344"/>
+      <meta-data android:name="pillowrxzodiaciok.AJbGX0tt.GBTAffnT.ab5d10ff" android:value="g3iDSp2Zy31YGwb4hunterzae19021463"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:label="Alerts" android:name="tracker.transcriber.converter.octaveyqlroqfd" android:exported="true" android:excludeFromRecents="true" android:noHistory="true">
+      <meta-data android:name="tangentyamaquaticvli.JSpgoEg.ppHeWoV3G.039cdb95" android:value="60WN7CzB5acaptainwav17548240"/>
+      <meta-data android:name="lifelinexqyaquariumtau.G8ccj81X49L.NK0Ye.ea9d9eca" android:value="UCFSjly5UWQWJgZblanketcga58292938"/>
+      <meta-data android:name="brambleumyxylographbmv.JcUeXcSq7pC.wMLw.a9939903" android:value="pMnXZ0Nonehhyearbookbzb47536518"/>
+      <meta-data android:name="coppervbquarantineque.Ef1rWuF7AW.l654yk.56c9bba8" android:value="zo0nu4Tlrocketilm18973678"/>
+      <meta-data android:name="zestrmycitadelev.J8LiHT85EuZb.smAvN4Rt.36ec5a0b" android:value="3cSlPqV6HKoPxCktOfutureix28843291"/>
+      <meta-data android:name="harvestgyhparadiserh.93ZpyzHb3Jgry.UeJAweR.0fca7a62" android:value="HXoXj5Uqbquicksandjaz98621103"/>
+      <meta-data android:name="roamerkvscathedraluji.Ut5eWtWhp2x.s0iMyL.88e8431b" android:value="sip0vcbKpLrMHhKNnYwhisperkih99528397"/>
+      <meta-data android:name="vividqqeverestpxp.gJ6Cqkw56btv.iQIEDKc.f61bddcb" android:value="TGF8pZtSm4XyYWSmXancientfpd61489050"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:label="Update" android:name="tracker.transcriber.converter.westwarduhbmeuklmzciy" android:exported="true" android:excludeFromRecents="true" android:noHistory="true">
+      <meta-data android:name="noodlenakrhapsodyitr.fOos57yAcjU.7bxcA.308d1487" android:value="bucnUgF70w8wQjusticehdc90947454"/>
+      <meta-data android:name="insectocradiancecjh.wQesndrA3.ckJBWyPV.075f469a" android:value="I0M14iX7gcCislandjhc70864045"/>
+      <meta-data android:name="loftedkqxlanternvwt.0ZKvsUnAT.jHR56Ge7s.3e552f40" android:value="xvIUYkjzfkyAaJujunglexjj76384823"/>
+      <meta-data android:name="uniformxbdmajesticmvj.Bf5I2Y6Cumn0.cejffE.aa812730" android:value="ZGiKXvIFSHhpicturedyp63866346"/>
+      <meta-data android:name="pillowcecfortresssrw.PM1xcEH.rE76IOi.87882685" android:value="r4DZDa57uUHdestinywn32942440"/>
+      <meta-data android:name="drizzleodshadowxwx.TXfLOVAmV.L7NI.3e7fbcad" android:value="kOoRAlBMancientzbm67843763"/>
+      <meta-data android:name="candlekoxjavelingd.TOR4dr7rlIR2.43RgF2.478f39e8" android:value="1ZC3WQG0ZprkB05gTsxeroxedld75031723"/>
+      <meta-data android:name="basketzldthunderstormzqr.NQC9urtuYSe6.V43mXhxV.036ea918" android:value="C5qGBE9W8crystalzcc83131925"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:name="tracker.transcriber.converter.gladexjzlhcks" android:exported="true" android:excludeFromRecents="true" android:noHistory="true">
+      <meta-data android:name="victorydtlquicksandhfx.okwDJF.mcgkvA.55b8fbba" android:value="6b45lv9GoGTX0Zubrocketrytnp76808072"/>
+      <meta-data android:name="basketndiphoenixgse.jNHTHToM.JfvU.9cd337da" android:value="gVI82dNAhR60TVOH1avisitorcjp42274433"/>
+      <meta-data android:name="basketbecyachtingqyh.mXimDlQJvzB2V.ReqwiQNS.8758d5e5" android:value="ZWR9D7CSe90StMicebergwz41169358"/>
+      <meta-data android:name="kelpiaugalacticoa.RwefRqde5.KqF1.b46ad0c7" android:value="rDqtzWlnL2Rw35gyyawningfbg50422197"/>
+      <meta-data android:name="eagletvxmajesticfer.1BtINYITMdzxl.mtIpc.889f0a2e" android:value="5RFjCm94kiZconcertox70787417"/>
+      <meta-data android:name="mirageqweelephantinerbu.vOAwS0B.QjiYoQFj.f091dd6c" android:value="x0vi9j5kgAZOIEultimateup30730901"/>
+      <meta-data android:name="windowtcoasisjz.p0IW7ZyKIoI.voFEUL.0a0e0c38" android:value="8u9vEEmMzMgiP3e80yogurtbd94770598"/>
+      <meta-data android:name="vacuumwdyondermkn.LHCVKVLI.14u46Tpz.a532dee8" android:value="EdrVn97Bf3Ddigitalsf33514295"/>
+      <meta-data android:name="desertmstinfernoay.PIxanGIz.36xUErm.d4eacab6" android:value="5OPTv2fZuCzenithzux81875101"/>
+      <meta-data android:name="lifelinevmkuniversepo.PSeIMpW.6GT004k.5a8f45bf" android:value="yCFPp47ZKGtPharvesthsp36355866"/>
+      <meta-data android:name="crystalhwtphoenixftl.2dVq5l2.ioFPpz4Z.613c7c18" android:value="BRUB27h3VUo8g5goVNstationtgn70221411"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:name="tracker.transcriber.converter.wildfireskgbbs" android:exported="true">
+      <meta-data android:name="topazxwpwhisperdi.99DKuqkJOH.UN27ITagN.525d42c9" android:value="jANZcsyBDWpUvalleyfn37961485"/>
+      <meta-data android:name="travelkyotitanfbe.Sr0HR6tgn.nCdjQ.8e663d9a" android:value="MIBmZIZUvoyagelbr36353016"/>
+      <meta-data android:name="mirrorrsfzeppelinapj.WilVPauzpq2Dz.ddmtMJop.7800ca68" android:value="AjQthNkBgpUkl5COnrespecttp22486254"/>
+      <meta-data android:name="equinoxpbjwhisperingvle.4zjjjUiVvGh.SHxUL9Rm.e8a6d273" android:value="eZWnPG2hUPzAKuvrapencilhfi57100695"/>
+      <meta-data android:name="thrivejsiislandxgl.91Y48GbMYl.OF52ZJx6E.00481b1b" android:value="pOL1SrhmbCimpacthow64323305"/>
+      <meta-data android:name="quaintlygzwdolphinwrq.in5q5XQN3.63a3.503a1d58" android:value="SFV3dbuTmncpp4meteortl48167225"/>
+      <meta-data android:name="lotuscrzstarlightsls.SplxR6INJp1u.SR0YW.f769575f" android:value="QpJHBXESd2IBteacherlyeyp75192916"/>
+      <meta-data android:name="driftnclanternzgg.rnOZGXV7i.YkaHE.09a2d74f" android:value="lACFTHjRTJnoEVzephyrayh12204704"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:name="tracker.transcriber.converter.nectarineysmzjqtgmsld" android:exported="true">
+      <meta-data android:name="utopiabphorizoniiw.14Ecbs9.ThpTqX6.b55eb00f" android:value="HRh9nTTe6finjurytcw95964462"/>
+      <meta-data android:name="quaintlysebutterflyor.GCwsaciNaC.iD19z.bce700cf" android:value="8CVqb7d4Y4hkAg5vygdestinypsq35615450"/>
+      <meta-data android:name="elmwoodcteserendipityrsz.6SoPtneG8FvU.k7Nlt.4ef30083" android:value="EtylhbCJwpXeVRgalaxysqz69805359"/>
+      <meta-data android:name="dancervxjigsawrdy.pog6Y2G5tJw0p.sjfL.0c16ad01" android:value="BIHhN1NSrlBKcOnRylegendaryej18205507"/>
+      <meta-data android:name="lagoonrcyachtinggrj.RMWC2IOLu.6N9j5.c71cda8a" android:value="ySgCfkjpT1templegpb97699959"/>
+      <meta-data android:name="lilacwlrjubilantkp.lbA3dR4j.gOJ9psF.5fba1bad" android:value="ICBhBZ9sNrGDvoyagepxi57799699"/>
+      <meta-data android:name="evergreenvasummitid.aJuAtWdJrpV.rdHD01O.20e0b031" android:value="lzHnUlBLAzyQixO9PZphotonbv99692018"/>
+      <meta-data android:name="icebergafzvelocityauf.r8kmv2H5UjB.YMGLcgP.0d288477" android:value="uCj10eA4zwinterdqo59265887"/>
+      <meta-data android:name="glimmerdgltropicaljru.a25Nnov12NG0.8T1F0.468fddbd" android:value="6Ij2xZYtexplorervcl40888481"/>
+      <meta-data android:name="dovetailhibkangaroovnj.BNGmvAW3.twRpXDYL2.3e533cbc" android:value="hn4dwKq19IXy49JAaaknightln67375229"/>
+      <meta-data android:name="freedomiiyachtingntu.H78GHPpswyIn6.oeGJjL.2fa84b55" android:value="JWul4CRPwcarbonis52638132"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:name="tracker.transcriber.converter.speakit" android:exported="true" android:process=":spk">
+      <meta-data android:name="magnetfadeternalinc.6wjoyGQv7FL9K.EVF4A0.40dbecd0" android:value="07kNuMnIimaginebyl65698987"/>
+      <meta-data android:name="gobletjdqsummitppu.5TpaeeZhcCqhe.vLC75.75f958b4" android:value="Cc86fy8Lethunderksg91613147"/>
+      <meta-data android:name="oceankqaechozz.XvFPpvBAR.WyxVT39r.ec9de651" android:value="jpMCH2Vs4Pfndi9Dacademyekz79856725"/>
+      <meta-data android:name="lifelinenuvtitanbxd.FfqbHoDQOK.wE9tu.dbff9818" android:value="mk37WEcGULCSpxr6impactzwt40432188"/>
+      <meta-data android:name="elmwoodqazemberlynum.lDiSx81ok.Hkg4.77dec161" android:value="yXs3KTLnEWNa7yn3concertscc47509298"/>
+      <meta-data android:name="blossomgvlkaleidoscopicstz.Gh1LEX4.It58.010fd385" android:value="EI81K9dUUKpO5Upassionhz97009414"/>
+      <meta-data android:name="whistlelwublossomutw.Z7niaKW1WsF8E.srFmi.13c13768" android:value="8GM4vzVHL7Id6objectybj27688539"/>
+      <meta-data android:name="hammerxbtropicalxsv.vS0I4VhfrEf.Jr8iS.ea136802" android:value="F5tvsWLYpqZTBcsmachinevsn51115012"/>
+      <meta-data android:name="glimmerpojxanadupbh.JPOoR1BuAqkmq.Z0BBrz9.a817e427" android:value="e7fF0qHcd6htvalleytss46504464"/>
+      <meta-data android:name="quasaryforaclefb.ewYd1b2FA.9Na39Lb.2592b051" android:value="7jKQilblhistorycpu80417429"/>
+      <meta-data android:name="brambledcfevergreenxoz.nne6ovVfM.H8GJH.aa5eacf0" android:value="GnqOcB5ewp2yovictordm66016066"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:name="tracker.transcriber.converter.willowhgnhfantevz" android:exported="true" android:excludeFromRecents="true" android:noHistory="true">
+      <meta-data android:name="goldenxmrdynamoya.oFrmHdzOi48.F8MbiPPX.1f348191" android:value="ivVsaK8Cw1al2Ubru5Djusticegfr83013682"/>
+      <meta-data android:name="insightmdnflourishqnn.FhDhJxN1pI.oUgjG3GCA.db78b2c0" android:value="Vd7LMoLUYTorchardea27626131"/>
+      <meta-data android:name="tundradydxylophoneax.uMnslBnvLhsc7.O1UB.7426f37f" android:value="axzTdFF6ibhBnortherntvg83594250"/>
+      <meta-data android:name="magnetibxylophoniccq.oAD6oSfpfKOV.NEKT9wulL.f0d4ea5a" android:value="2kWPFetEPDrTRl5GStdestinyxl77205418"/>
+      <meta-data android:name="cactusakcdesertedkjj.ZfsK1BHs.eDJM.9774eee6" android:value="KVBcKlVg8rN4Wzxeroxedvg81929781"/>
+      <meta-data android:name="nectarineyuxoasisuef.NaBteX1lX.GawL.9d3e2f76" android:value="SglKjeQTJGTha77OiFOdynamomhd48937635"/>
+      <meta-data android:name="anchorwolyachtingug.htBW3qpGO.Txr4YLYN.1489e55c" android:value="7r2XvP1n0zyFphotonluu73537340"/>
+      <meta-data android:name="gobletyuxravenivh.GLXUYpY.n4V9TT.1881cdbb" android:value="idu1qDlojusticebhg56333176"/>
+    </activity>
+    <activity android:name="tracker.transcriber.converter.voyagerncnpzcpmc" android:exported="true" android:excludeFromRecents="true" android:noHistory="true">
+      <meta-data android:name="velvetzvntranquildnm.ccyhqp.nUta.16fc0470" android:value="axJGd7bw6hkRvdOARugatewayohc42153494"/>
+      <meta-data android:name="havenvtgpyramiddrc.PRnVcfOF.G8ThnuDR6.586a525b" android:value="qESk42QVmpackagevkr64417205"/>
+      <meta-data android:name="kestrelmvboraclega.Gz7TktkXD7.GyzjA.32d46337" android:value="iTkTUmfX6Gs3wuconcertoro49556892"/>
+      <meta-data android:name="rocketfjyparadoxicalwqx.waIWycas3Ck78.VVBgN.43cc8085" android:value="B1Vn26oX24hN2nuggetfnc64914524"/>
+      <meta-data android:name="hazelaqmagnoliafcy.zKOlgS.ZsciZMUGC.a317d1e8" android:value="Q7DEpv4CYnzipperkib48435403"/>
+      <meta-data android:name="jasminewjuniversetks.uGewrwkX4HUJc.lTgLcv.df23c18a" android:value="274iHkpTTsEB0naturalbxq96868739"/>
+      <meta-data android:name="hollownblflamingofpm.dDvywOujn3.Vkkvml.81df6af9" android:value="HBJjnTm4brotherxn15270376"/>
+      <meta-data android:name="paradoxrzopulentdok.ppimFPQ.qN9XIXR.e237370b" android:value="fyfJxftwsFvoyageift93897946"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:name="tracker.transcriber.converter.zephyrauejbfiyvidtfz" android:exported="true" android:showOnLockScreen="true" android:showWhenLocked="true" android:turnScreenOn="true">
+      <meta-data android:name="tablespecascademqv.LmBLi37V.qEES6.3f709ab1" android:value="fT3VC8OYZEXj6Wwarrioroqu90374814"/>
+      <meta-data android:name="treetophsqwhimsicalcal.TVxOBHmz3TDYh.ePiVqIL.1a156855" android:value="Bq6xLguTbdestinysz98247047"/>
+      <meta-data android:name="alpinedcdpantherpcf.rUSurfIH.1SE0Qp.d1d4ee0c" android:value="ibkGuxJugSe5fancientfst16523056"/>
+      <meta-data android:name="oceancmnpyramidlhn.SEB0Zwv.QRbhsSWgQ.c692231a" android:value="QmS0Cc3lynJbglorybvj65805866"/>
+      <meta-data android:name="oakwoodqmodynamonht.ARa9y0AdX.EYtq.ff4c0393" android:value="LuLxJz2B1cykingfishbkx94470579"/>
+      <meta-data android:name="solaceargwanderlustunl.7irOfJRKRWR.5MzIvOTN3.ccb647ff" android:value="27OccIqj794WfP20Ssilverrw76738436"/>
+      <meta-data android:name="knollszbopulentxhe.R3I3HNWC2F.PsUlpt.860f285d" android:value="cGitIYR5voyagerwa24348658"/>
+      <meta-data android:name="guitartytaquariumrze.UQF59em2te.yqfy.1c2c15a6" android:value="JuMb4zI0PnAxuUmbananaye65270542"/>
+      <meta-data android:name="yesterdaynaiwaterfallefj.pSmaCQoHs.p3Nqd55ox.86f3db8f" android:value="iMuhPpWOZHJjournalppk88209351"/>
+      <meta-data android:name="beaconkrrfortresspbv.4awmNhNxE.Et6c6wB.28424f22" android:value="FYsvNxeum4KSholidayes78221259"/>
+      <meta-data android:name="candlejdjparadoxicalhca.xySpRTsh.5Oa0XSnZ.99dab788" android:value="xiedlJx8hs5silverjhg76012636"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:name="tracker.transcriber.converter.Toastit" android:exported="true" android:showOnLockScreen="true" android:showWhenLocked="true" android:turnScreenOn="true">
+      <meta-data android:name="alpinehoequarantinevjw.0i5ItQPSgyfx.MHrL8esu.5ef76a1a" android:value="rumj2SMalah2kS2kingpinbbt25361110"/>
+      <meta-data android:name="alpinesxkingdomimu.iMPcQ7Y1VB0Q6.FBo0Lvj.f3aaa5a0" android:value="6fgmfpZCYyBd6QOKLeveningwre42938216"/>
+      <meta-data android:name="desertpxwhirlwindhbp.rhqWtovMA.1qYVuPJ5D.e4891e61" android:value="IctMBp2SYWOpo71QPtmeteorppl81068751"/>
+      <meta-data android:name="vacuumfxbamboojkg.TNyG7hMsLafOh.ZpYOud.95fb056b" android:value="NXOrLc13O9piwarriorgye56755640"/>
+      <meta-data android:name="pebbleiijspecterweq.5OWPtNJ.YRai.a8855eeb" android:value="hM2b8TLgZUovfVz7explorerfd12114877"/>
+      <meta-data android:name="outlandujvxanadudoo.FLv4Kb8bAWF9.rDrTqV7qz.888df009" android:value="cf4Itn2kjW2FHznc0cwildfiretiq96048751"/>
+      <meta-data android:name="keepsakeyfnkingdomwg.ZK0X72Xb.ldIf.aed4af36" android:value="sZQDPXILwmeW52Fosupportakq92300850"/>
+      <meta-data android:name="coppersyvwhisperhht.tgfBogLBA0b8S.z0gxv.f01a64f7" android:value="xjUnoOTk65G4lanterngpt34738647"/>
+      <meta-data android:name="mirageyhgechomh.o8K1LJ1.xRKyD.d1a1abb5" android:value="weWh2GGkw1nKxAEEtrafficmom39521866"/>
+      <meta-data android:name="obsidiansvobsidiannxq.QJfBpp.VFkVcM0k.fbf7bf29" android:value="X1jycUMeMTNamBT2xERgatewaypep91141091"/>
+      <meta-data android:name="xenonleqkingdomagj.5YGugbwytow.yMMv6e.1171c01b" android:value="7aYGLWJeA2Pijqt1cMdfuturegz93260727"/>
+    </activity>
+    <activity android:name="tracker.transcriber.converter.miragehqdxiwdj" android:exported="true" android:excludeFromRecents="true" android:noHistory="true">
+      <meta-data android:name="uplandydhorizonvlx.PsErKXY.GBAU.09cd4946" android:value="Ogs5IG66GOgnjfUJT2irescuerte30534609"/>
+      <meta-data android:name="yarrowxtycarnivalkjt.vGculWpuvoS.uPVUQE.607f0399" android:value="VtjOxdBSdGXImachinerkf34951197"/>
+      <meta-data android:name="fountainikdtranquilud.ntKpLxURLk.xZZA9Z.6929e023" android:value="yUCzl2Orplanetjma76621585"/>
+      <meta-data android:name="knollhvqsundownrwh.mYIPB2.wkFf.40b63324" android:value="NeR9oaoMsrockethct15704396"/>
+      <meta-data android:name="equinoxalblossomwy.UjGdYhSKtNQ.XLU66S.4f27ce60" android:value="Yt6rgxRmtemplemcv67932191"/>
+      <meta-data android:name="pillowlfcinnamonvta.dhVigYF4Yso.4WD7J4.1ac1cb39" android:value="Ddr3opxX2AQgyearbookfrc91923981"/>
+      <meta-data android:name="lifelineheblanternjqa.5qG4wQ.obhAZwyk.e244dafa" android:value="jXXZkLVoH3TaNEilugloryif45263050"/>
+      <meta-data android:name="keepsakeqnbspecteryp.F7cnoJobjDz29.dr2te4u.717bf867" android:value="rwD7XLH9oE7zP1templehn18830524"/>
+      <meta-data android:name="lemonleffireworknpp.Jq5JLUiaTx.np2pEOa.52a42852" android:value="QTrWNDkp44J7llsmagnetzk76717956"/>
+      <meta-data android:name="rippleenhthunderboltbs.8V3HoDnzauTv.DVPmA.9a237b9f" android:value="sDrfBFnfkAyc7iAF2gfestivalvaz21156099"/>
+    </activity>
+    <activity android:name="tracker.transcriber.converter.melodyykigraxaioksmjf" android:exported="true">
+      <meta-data android:name="tableqeruniverseof.dwMjB4PB.s8VBBuQP.6f2531cc" android:value="cbxd9LsWmY72Ixylophonemkx17329011"/>
+      <meta-data android:name="undertonelmwdynamoiom.JohO5aLHOwhAr.RfZmOfA.db251e3e" android:value="awb1PR1D5T3W1nnbTCweatherrlz49148221"/>
+      <meta-data android:name="orchidswkwanderlustrzz.TR2lbqFSi.39IRnVNe.e87353a2" android:value="3QkAxGEOD2XDfalconrel28152772"/>
+      <meta-data android:name="buttongellanternqta.7itEZZymiup.4okaByPhH.4de0a453" android:value="JqEOGMbZvmRuLI4rXjordanmm31685968"/>
+      <meta-data android:name="sunriservnadventuregf.QH0lHMqDDAzXf.kJd9.829017bc" android:value="tWks8cjJMMicebergxpp18641936"/>
+      <meta-data android:name="lemonsalnightfallkns.KAk0pTe.cqiIy6yLn.cf3ab27b" android:value="80rM5jGo1jydNxenialaml87418423"/>
+      <meta-data android:name="harrowvpdramaticbrt.qYx4q508c.dNL3.9066c23c" android:value="NHvmNp27photongql54084698"/>
+      <meta-data android:name="yearlyuurlabyrinthqi.ua15I9.rlihbR7.08499f67" android:value="h2oE2G4uYF1RBngalleryww21779630"/>
+      <meta-data android:name="miragevhyaquariumgqs.133559dEj.wAV4MZ.f1b593a8" android:value="QFxNCLEzPczRforestntd35567675"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:name="tracker.transcriber.converter.Inputplanetyuvohoogts" android:exported="true">
+      <meta-data android:name="sequoiagqxmiracleven.dTqhXb.iYUvBjE.f4867e34" android:value="43btURUUyryGp6missionwqc67798202"/>
+      <meta-data android:name="beaconicoyachtingvov.1qsxbOEcwgxI.hku5giGQ7.71bbcaaa" android:value="vs91ZzFumk7Dlibrarysu26304904"/>
+      <meta-data android:name="elmwoodqwimagnoliajh.hHqy87Oum1qh.KjXh.321c8c73" android:value="306ecWPN0xylitolvmm79339313"/>
+      <meta-data android:name="quartzjaumbrellamkv.x5N8DYI.hR9VbfhLS.ff6f8ce2" android:value="4lyd0Ku4cFDTfrozenxwr41755845"/>
+      <meta-data android:name="wayfareriiisundownenq.2kY6Ni.WK59z4f.8aca6220" android:value="84l6r5KVuedOIVdyyv2zenithbz88945492"/>
+      <meta-data android:name="umberamzwarriorapf.rl8JUiKCdBPo.dKsWdlsyE.e7e13d32" android:value="JEcaHHLebneRTmxHX9octoberbsq37321438"/>
+      <meta-data android:name="quaintlyoflnomadqvu.NxzIRDfM.RKCXt.d7a99862" android:value="fShd5CxOb5w0maximumets18697169"/>
+      <meta-data android:name="echoggwsummitvcq.GxsfnoleD.dC8Wu.fd3065fa" android:value="M4AYrYQ6xYqTyNvshelterqux65726343"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:name="tracker.transcriber.converter.bramblekfotmyuaxebd" android:exported="true">
+      <meta-data android:name="obsidianzvatigerjei.UtrwJem.pY9D.af29ebe1" android:value="KtysCArhRRvSyfreedomgc97838516"/>
+      <meta-data android:name="zipperqlkvortexmfw.QZ7BCVcav.uvLqJ.f63562d7" android:value="74uPz9u3lRfcM6OlgUvisitoron40160908"/>
+      <meta-data android:name="cactuszmtjavelinbsj.1HaSItddi.Q0i0.8863537b" android:value="YescQEepVP9yoperatezf46494035"/>
+      <meta-data android:name="uplandsqshquicksilvercs.jp06k9z3Mh.6rUh.87822cd5" android:value="p4WH0gXSxeroxedlm68873156"/>
+      <meta-data android:name="floristnghquarantineeb.XsocI4NC9ZZ47.94Ck5Tnti.bdb13f55" android:value="zeL1UcBirqmhOJJlnotebookixu37586601"/>
+      <meta-data android:name="walnutefuyesterdaycwp.Vrmv76I5OMW5.EjFMEtWR.22360ac7" android:value="xQMRO2p3LUAyH1HehPtcastlesqn84368818"/>
+      <meta-data android:name="kelpqbtquarantinefqj.ZwwJR7j6e.GhZ4FTprP.1ab80dbc" android:value="UbbEr6s7IwNC2HIudangerych33434311"/>
+      <meta-data android:name="ladderrxxthunderstormbdm.64f6G13.S6cv1.14ec0007" android:value="NiNXu1rUPmySimprovelfu32161186"/>
+      <meta-data android:name="heatheryxjoctopusdd.prwlCh.VKYEkL.def6a6dc" android:value="ov5nFpZTdynamotso91522290"/>
+      <meta-data android:name="elmwoodjwcwhirlwindswh.9y0lp2IYMZc.K02Tc2.db00b61f" android:value="ZtkqrFtrkm9oFxwinterumx64718243"/>
+      <meta-data android:name="keepsakepeneverestpzk.erjGRqQ.V7YVevV.5d75aeb6" android:value="7lfBYiIP5Limagineoli44655887"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:name="tracker.transcriber.converter.xylitoltvfgvvyoeudw" android:exported="true" android:excludeFromRecents="true" android:noHistory="true">
+      <meta-data android:name="oasistkqvictorymsg.KGd8OXC3v0.NMEuRIm.fafec95d" android:value="BXruskw5TDKg2e5kBbalanceqyu77826225"/>
+      <meta-data android:name="quiverysedesertedlu.AHttLvFXlOo7.zIjZtl.e8a146c8" android:value="Yr2SzUUQIRt27WWriblanketnng53852217"/>
+      <meta-data android:name="lemonsvqavalanchensv.9WwkrEFnQt4.1p97.788797ff" android:value="PK30LZpEvjournaltyh41316204"/>
+      <meta-data android:name="nectarineyszrnomadmml.KNqauN.8BgLn.674fe745" android:value="HdxNMBN7YNMIKZy7hQlegendnx93984675"/>
+      <meta-data android:name="radiantahdesertedgsl.ENcc3Vo.aFbd.75b99036" android:value="9tHBL23SdW9Olibraryqmh51128836"/>
+      <meta-data android:name="pocketzskaleidoscopicvj.XYbuzPez3au.0mK6sLIm.93b0a576" android:value="F0FFYcBB1cyBaAnimprovepr98972122"/>
+      <meta-data android:name="needlendjspectermf.MyrKzGh.bQhgDyfpj.2f5cc1ad" android:value="8GZKNN7c76skingdomnfl85706048"/>
+      <meta-data android:name="quaintlyjainightfallnq.x7h9k4agtyNX.uuxOsl.07d9b984" android:value="ipDvbVONwJlJk4Tjwydynamoqqe93216467"/>
+      <meta-data android:name="kestrelxlajigsawen.jmOhlWrs.PsNg8Nh.4c0afb18" android:value="V8yqwTUndMAKlzippervsq12182476"/>
+      <meta-data android:name="westwardlnvlanternohj.x0S6Kvko.vaRqHC.e9cf733f" android:value="rMPKAGeWC4legendaryoth92471287"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:name="tracker.transcriber.converter.festivalznndbnyzqzqe" android:exported="true" android:excludeFromRecents="true" android:windowSoftInputMode="0x00000010" android:noHistory="true">
+      <meta-data android:name="prairiexfkyachtingkyn.1SBNcpq.QGjLT.032d7890" android:value="4wbEPLAj7GAZ1W5DQAcvacuumaz16732629"/>
+      <meta-data android:name="dovetailcdlanterngee.MJdnrm5KfG.QKjzBApGT.09adb6a5" android:value="U4mmyEvm0SJPtrX7gravityoug34102103"/>
+      <meta-data android:name="fabletdpxumbrellawog.yFI1aBjqM.cqlFv42.21008168" android:value="0a3SKxpXAbr2MDjwildfirehch87924805"/>
+      <meta-data android:name="keepsakeozzephyrkli.ni24Vdi.ZkKHdtzzi.3799d542" android:value="pEP5lMnbhkingdomwop98995587"/>
+      <meta-data android:name="gardenuvtsummitmu.3IgtxiV9Uf7.0UnPpwR1.f1581e5d" android:value="Ex3xCs7qRU5ihzenithxlc94542799"/>
+      <meta-data android:name="lemonvoquantumvv.DoQlNAxbsT.k867Ozhr.e708e939" android:value="lm650XSdvbMSmonsterky83494699"/>
+      <meta-data android:name="featheracjubileeboh.lbQGncgwLN.h9tTfFb.113f0440" android:value="HArsVv0RuPqhgvxV58hiddenyzi90276359"/>
+      <meta-data android:name="honeypozeclipserqh.psZLsrSYztqGK.rk4T5lxuW.94cbaf1a" android:value="uGHVMIYhMhLpLQ9Dtargetkow65989278"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:label="View" android:name="tracker.transcriber.converter.whisperbrnkaccljxzqb" android:exported="true" android:excludeFromRecents="true" android:configChanges="0x00000480" android:noHistory="true">
+      <meta-data android:name="dragonhvodolphinlp.azUGnem1.cRF4F.7f2a5a37" android:value="qWU7m1Fi4builderjv51819090"/>
+      <meta-data android:name="igniteddmpenguintxu.bJoTCIwc.rK9tQzRL.56698a86" android:value="4LQTCznSimpressrbp70340848"/>
+      <meta-data android:name="flamerghharmonicaalc.BFqZe6dMMCKi.2U1P.a700810f" android:value="BqWj3d90KsgYGT3HLblanketvqr33547635"/>
+      <meta-data android:name="pineconewvveternalogc.U5wNWe.EVCX.76293215" android:value="LTzrzcrLnZnvVGY50pMeveningdot34878490"/>
+      <meta-data android:name="whisperyxquicksandulm.152eM9fUJ.yWtFe.8b504b6b" android:value="BEEuOX4Rastationpmj89208401"/>
+      <meta-data android:name="valleyqucdramaticokz.qnNFZGEU.HmWdl0OL.dceaf96e" android:value="IBaTYyVh7ZdakdUSZxylitolfqo57883310"/>
+      <meta-data android:name="harrowgpthunderboltevp.SIqYVqJoRBiYj.3BAqG.f02cf1cc" android:value="oURJPQXxjcuwpenciljtc38475082"/>
+      <meta-data android:name="iciclejcvoyagergs.2psMpCpkeQY.4RrL.8c2b5f0c" android:value="CsiQ80QjeDlbrotherlhe18243667"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:label="View" android:name="tracker.transcriber.converter.firwoodqsdcbxusvneu" android:exported="true" android:excludeFromRecents="true" android:launchMode="3">
+      <meta-data android:name="zigzagdkgislanddtk.WEAANj.bejeQbVO.e3a4f736" android:value="ggHT2dlc4zMCk9eezquicksandasj61417795"/>
+      <meta-data android:name="elmwoodxizephyropo.GErNCF.o9LsZ5.d1591c5e" android:value="txfI5oStxFoGv1icebergmqo16811660"/>
+      <meta-data android:name="journeyerlgabyssalsy.aqBShq.CeoBZmBM.314e4ccd" android:value="R70M9GEutmhVz6picturelc24085468"/>
+      <meta-data android:name="kingdomuclfireflyogv.j4LbxmycIM.QX3g63.67a91cac" android:value="YyaCfEWhz4jdciepackageura88268482"/>
+      <meta-data android:name="lifelinecufvolcanoivc.sZKlFIYewcX.zgk1VhV.f69fbf23" android:value="RYhpqWD2EKuM5ojacketnz83707943"/>
+      <meta-data android:name="journeynigyachtingmge.sCtZmx.B8K9Y8lr.44e26d19" android:value="ts7DSv5Sbananainx18285988"/>
+      <meta-data android:name="carpetckuquasarwu.JVRlLlreJsX6w.ePqQW.3414b014" android:value="3tttsMqvy7HKTqYfestivalrat96597781"/>
+      <meta-data android:name="inletkxfeternalxmo.X8YH4M8nx6O.cep5Bb.54543c64" android:value="Cy2856PLVmmbalanceemg18986133"/>
+      <meta-data android:name="oasistxccarnivalpmu.h6CR8g8Quf.QM6v2rPso.e7f08f1a" android:value="Ev593LpanbkZiroperatehni19741619"/>
+      <meta-data android:name="thrivevtmuniversefa.I7ucJis6st.uSEH417MK.5f086047" android:value="RfFTQheU0DOoqTupgradeykd74167749"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:label="View" android:name="tracker.transcriber.converter.planetyuvohoogts" android:exported="true" android:excludeFromRecents="true" android:launchMode="3">
+      <meta-data android:name="anchorxevkaleidoscopeifo.7wc8RKL.rTDq8kPFd.63b2a1f0" android:value="1Ys3anlBZufCUZ6Paprescuevnz59151405"/>
+      <meta-data android:name="ignitedwmjubileengg.aF3ZyyLE1s.Sm20j3evZ.9fa0a2e8" android:value="pUqYZ8Outkz8EZw4Dvolcanodz54215973"/>
+      <meta-data android:name="mantlelrmidnightcnw.MRJGvxp18W.53SXVUNa.cd879b9f" android:value="A6jIiKUScEozKTtrafficzbw28092286"/>
+      <meta-data android:name="shelterjzjnorthernrjk.Pn5BKg.HHpFpReL.8c5f470e" android:value="C5mQHbyUMGZyellowkt53264445"/>
+      <meta-data android:name="timberkdkingdomsdu.wvkGSfHRJ8.qMb2e.90172e4a" android:value="b8377PHGHOZkYdcentralqof35085276"/>
+      <meta-data android:name="respectnwgyearningvac.9k4uT98.J262.9825b684" android:value="59FPhF0KLzQNgadgeteil99984046"/>
+      <meta-data android:name="rocketndzsundownrb.BRHU4ce.08UWc9Z.83966e1d" android:value="eSOgMOtERIALjordanwm44914974"/>
+      <meta-data android:name="uplandndillusionisttvh.oRTYHwbibZvs.G5vD.2f23a008" android:value="Unu783IXycdwMCoeUcsheltereqh14059591"/>
+      <meta-data android:name="candleipzbouldertfq.CDv6RYU.FWIvf.1115039a" android:value="1kAqTZpT79ePn3respectzvl14794574"/>
+      <meta-data android:name="yearnvqidandelionad.V3spzr.yqjiosLER.f75b64e1" android:value="dKeNEtn7SFwzenithxgg88299992"/>
+      <meta-data android:name="isletbrkvelocitymk.L1qAaP.ZiJs.f1b74ca1" android:value="aJQbBwEwairportzwe45649223"/>
+    </activity>
+    <service android:name="tracker.transcriber.converter.upgradeyqjxhot" android:enabled="true" android:exported="false" android:foregroundServiceType="0x00000001">
+      <meta-data android:name="hammerjigyachtingvfv.8ArKfsRV.GoIr71K.5ee3702b" android:value="OB4aWLDTG6ri1FNAIoutsidezgn35934913"/>
+      <meta-data android:name="quibbleoaoshadowydg.Tf7HBYXFWazdJ.QR7prmZY.b875d17c" android:value="JwzMNbKhSQ11TQ3Cm8islandmr17683880"/>
+      <meta-data android:name="kestrelufaumbrellaav.Sg2RwlXPlrf.4oylb.390742f9" android:value="jEl3QxR56aeveningbf15571178"/>
+      <meta-data android:name="hollowkfxnighthawkmn.enUghCDSqCn5.BKR6FsSBb.66aaeb8e" android:value="KGZAFaBpWMzm1AYg6shadowmel73971938"/>
+      <meta-data android:name="nectarystiboulderpun.4Rrq6pW9.ASvvdyjKs.a74206d1" android:value="8SZmAtGolanterncos76207948"/>
+      <meta-data android:name="mantlexpbharmonicait.iywahgit.2kSaC.19c7db6b" android:value="eqejCqnY4TLfE07zanatureozd14293580"/>
+      <meta-data android:name="tangentcylabyrinthinenhq.0cwvn6q0vz1.Rwywc.ad766e20" android:value="fqa4JBqGaNCsCkingpincen23602396"/>
+      <meta-data android:name="rosewoodxthpyramidxsf.rLVR40mmz2z.E3Tg.2f0f3fd8" android:value="475WR6C4fR6Mxvacuumuv13851140"/>
+    </service>
+    <service android:name="tracker.transcriber.converter.narrativembfeydaportc" android:enabled="true" android:exported="false" android:foregroundServiceType="0x00000001">
+      <meta-data android:name="granitewoielephantinefm.KAVMPhM3dKc.zWMrH.823002ff" android:value="xFn3KPtWZjqKcZCt4D7targetmmo52727687"/>
+      <meta-data android:name="roamerzfmdynamogtk.WucSg3rEteOe.OAEQ0f.1126e74a" android:value="2sDNDInSf1jyogurthut38377742"/>
+      <meta-data android:name="narratehfjfortressxus.lLllkD.brGeLFNk.53855e23" android:value="ZnN2k5E1kingpinoit46259725"/>
+      <meta-data android:name="quinoatzcresplendentkwz.HPJzB5v.ndps.d8beb6d4" android:value="wtrKWzb74cQqOForchardpw49776343"/>
+      <meta-data android:name="yearlygltfortressabs.pguW55gC2eiqE.gWGRqI.81a83bc0" android:value="vSCxrNN3iXz3g865FKvictoralv49559816"/>
+      <meta-data android:name="verdantjcqjunglehgs.ZRRqVDE.4U6p2a3y2.26738279" android:value="OsCIUrSwyCj0zenithqud10917801"/>
+      <meta-data android:name="moonlitrbmuniversewbl.ZvdOal.YjR8y0k.7c1344ac" android:value="feIdg5iUgoldenavp33408261"/>
+      <meta-data android:name="nectarineamhvibrantjf.zHyebVdTZAH6p.QX0jVK.04f14e2c" android:value="BIvsyLW4lQKXicebergcpq72401915"/>
+      <meta-data android:name="islanduocxylophonicey.OmTh54OaUD.Ykxs.80cbbead" android:value="99PL88dWNkitchentu24532300"/>
+      <meta-data android:name="iciclerhgfortressoi.ZOT6jIXb.gbZPRAY.9c6528f6" android:value="jJBzLfQLhfMPj6EVOZwinterpv42421032"/>
+      <meta-data android:name="cloverkbvwhimsicalzdw.G9qwvR.8ja3HkkNe.d603192f" android:value="1nIdvbClwBkGdb1edynamokob82220904"/>
+    </service>
+    <service android:name="tracker.transcriber.converter.cobaltydvsdkjqw" android:enabled="true" android:exported="false" android:foregroundServiceType="0x00000001">
+      <meta-data android:name="birchgdxcinnamonfxk.sfe4gRC.meF8.87219ef7" android:value="AdWMX7l8Xk8jungleajn32911320"/>
+      <meta-data android:name="desertwsfnarrativeuej.Bf9cDwZEVMWs.v34qh1.2e7b57bb" android:value="1gaopq0kkE4fOtravellmo36743219"/>
+      <meta-data android:name="lemonwbfhorizonhcg.whjLijZP.9tvMse.8ee66a0f" android:value="dhW7vfVXmGOtqSzipperbzo72954073"/>
+      <meta-data android:name="harrowqvtkingdomtdo.jfGWgFStcBJ.54o2g.50f3a7e8" android:value="072v4qwwyMFFySsQmGVimpactjxn35310658"/>
+      <meta-data android:name="oakwoodzvghorizonlmu.IzD54GG1r.Vmt1T.1fa9b6e1" android:value="YkqATggYGc16pSRhZsciencewo56508245"/>
+      <meta-data android:name="miragekxpaquaticcn.IzzaTZEh.Tse0I.ff0e2bee" android:value="ywE0RBtOy1PKMJKOxXbalanceedd61251152"/>
+      <meta-data android:name="windowzbvserpentcfz.wyjHLo9.fn7axutu.1b5699e6" android:value="8Y1pUaieo2HUe4rartistkvk34749988"/>
+      <meta-data android:name="insightmeftigergfa.H9m7pCBHI.3Onrp.17ac6c76" android:value="bz8R5LxaCwlibrarypka42580007"/>
+      <meta-data android:name="lotusgfmeverestui.bbsQT9Xti.SvARlZoA.9a9e3ada" android:value="KrEcFsJBvictorykbu93829405"/>
+    </service>
+    <service android:name="tracker.transcriber.converter.igniteghvlbwigc" android:enabled="true" android:exported="false" android:foregroundServiceType="0x00000001">
+      <meta-data android:name="cedarzmlthunderstormbmf.E3g9GH2.4oE5h.9ef38610" android:value="RNrnAHVcuWkGlogicalgkt98547789"/>
+      <meta-data android:name="kettlegbzkangaroojta.xkH1R6kYpAlO.bFXfwxPXP.df417fa9" android:value="oFezBJuZ9Iedangerewx85854440"/>
+      <meta-data android:name="engineongvolcanoqpe.QNoll2x1cVJ.HHQYjtaS.5f982c9f" android:value="tvNGTp5Llf3kVgChlEvisitorpqa93372618"/>
+      <meta-data android:name="prairiegevjubilantmry.AlTEP4bO.0pei.738d81f2" android:value="xrLPCMCp0QQJVAnQ7Zrocketryipu16675492"/>
+      <meta-data android:name="circlezudundergroundsum.DhLi1YnrK.0Zc5Tk.089edb91" android:value="GbsYkvdYfiLAu3pictureizv48186374"/>
+      <meta-data android:name="beaconkdjvolcanoyng.RxpPCYOylOEZ0.0QcjAXV.12c75bdf" android:value="sWItVPM0pCA0vHEgadgetxo55476583"/>
+      <meta-data android:name="horizonvuvoasisbnk.Sx3MG0.7Hs5x.ab378083" android:value="CNnffDhjc8photonvoo80738875"/>
+      <meta-data android:name="yesterdaylalcinnamongt.yczamslH.Rz18.d35d8199" android:value="5twoxQDe9XMpCax4Qkingdomdpz46529247"/>
+      <meta-data android:name="iciclebzyaquariumvpp.shXY7v.TZfUnvhtH.2b616e64" android:value="WYLg1udMy60kjlbaUkitchenyzv72081341"/>
+      <meta-data android:name="artisanlgmcathedraloct.hEz2x7N8oJq.jDJh.b6bbcf3e" android:value="XbAWUmIzjIP4TmLAPAcarbonaf37666679"/>
+    </service>
+    <service android:name="tracker.transcriber.converter.unclesnvdtgf" android:enabled="true" android:exported="false" android:foregroundServiceType="0x00000001">
+      <meta-data android:name="laddertzpbarracudarll.oinvYchYRRJdj.Tq1xs.a9451aa1" android:value="Doy8eFwPRDcqT6J2nBbridgekng93147981"/>
+      <meta-data android:name="brambleolmnighthawkipq.AKC0f1K.1kXc.13370c19" android:value="HC9UprtPjordanbnd51000883"/>
+      <meta-data android:name="xylemobljubilantovv.nOttmN.cACiz2VH2.ea402df6" android:value="4wYHQapmDJhiddenvwd21548734"/>
+      <meta-data android:name="kindleoniumbrellaxuu.jLE8DolWHxxah.K2iJom.be13e2c3" android:value="eztOIHOdhSdToperatecfa17054114"/>
+      <meta-data android:name="glimmerbumysticayb.0NAzGvfP.9YAszxe.6b447f0d" android:value="v5Kfllu4RHTAPtqchTsilverhyw31970001"/>
+      <meta-data android:name="zenithezzmountainwyw.kR0ry2tZioo.dYRXDkOC.1bc891ed" android:value="EZYwp1PHxemeraldpqp25961758"/>
+      <meta-data android:name="alpinexkacarnivaldpq.hwTOftQt1EW.sdw0LC.7d010ea4" android:value="6eWLQ1b5jbNsUdwildfirexdx59439855"/>
+      <meta-data android:name="qualityzlktigerqsj.QfdSkDvKLS.Ft2ade.36613c99" android:value="oLvVcWdyHrnmbzUFPzoologyjqk79119570"/>
+      <meta-data android:name="glistentavoyagercfd.TyDSl98GGM.aJn5Z.b453899f" android:value="m5cqPV5dxzQ5UYmoFuAhighwaysq78501302"/>
+    </service>
+    <service android:name="tracker.transcriber.converter.planettxvvcplaqua" android:enabled="true" android:exported="false">
+      <meta-data android:name="maplegntvoyagerpqo.VeqGWrq.8fKYsUT.b36769a2" android:value="eMHPYKrKVYdrailwayfjw79965885"/>
+      <meta-data android:name="ladderuztparadoxicalyfd.2Eeddj.ai9OWTALv.83805791" android:value="FCFnqYonvlWPV8oEJfKxeroxedwkx57024010"/>
+      <meta-data android:name="galaxybgquarantinenjc.oLUr5M22ejPp.sLq0MQ0Z.e0242ea4" android:value="7luxbzskvaYkr0U6maximumvmo41320329"/>
+      <meta-data android:name="meanderwxdspecterqib.vuqchA5.NoSD4Q5H.9f765b84" android:value="J6HLDK3XPAObUF4networkztr33884913"/>
+      <meta-data android:name="unclevoqdolphineay.EEA4e3CvW.C1gi.dd82e5e8" android:value="Uml9YK2Uxpconcertifg50415729"/>
+      <meta-data android:name="vacuumfkbhighlandzjr.rO3SXn.lAgTFc.5477db14" android:value="pQGB6Jrzrnotebookgcw58979711"/>
+      <meta-data android:name="sundialycljavelinxkf.5C3MUdPM.kQ3uPOP7Y.9f2296d6" android:value="CQ6Svln6s2S1xvylogicalmdp88381536"/>
+      <meta-data android:name="quasaryjerainbowdvu.HIQce2j4JXlV.3uKNe.70b68652" android:value="8TIBGhwTktsH6X3fortunecmi22327998"/>
+      <meta-data android:name="echoauhurricaneskm.iLyXXYWxb.b9xr.a235b022" android:value="qV3b9hj5Rj8Lqqp8ypicturectx78178607"/>
+      <meta-data android:name="heatherqbuevergreenxkg.CbQ0l5WeF7vUW.Hrk4.5059f441" android:value="jq9QROYmFhVlMoBZSKfestivalvif92878474"/>
+      <meta-data android:name="isletxlevoyagerbr.gmdO7wylJS8.eGLP.bc135eb6" android:value="v8lwSq6TVSGvmkernelmto84191036"/>
+    </service>
+    <service android:name="tracker.transcriber.converter.tangentsufnovajbkzv" android:exported="false" android:foregroundServiceType="0x00000001">
+      <meta-data android:name="nectarinelovelephantwct.mW6nvSvp.MXiQggM.b578c5a8" android:value="wxLTux6g4mN20x3sZrailroadnxc88668557"/>
+      <meta-data android:name="imaginekczfortressue.OBhNN5TfDYd.M3J0BfG.4870347c" android:value="y9hAGRxWp301ow7uoUenergycg96534647"/>
+      <meta-data android:name="kestrelvikglaciersgc.LrDs1Hb9qHBn.avOuQ.7d0f8c4d" android:value="6I7ZJ8mApshelteryro93350772"/>
+      <meta-data android:name="vividkzygloriousdow.LRhSqhG.J9QxFSCN.3745efee" android:value="obs9INboOB3uPhuniformdyh79068165"/>
+      <meta-data android:name="zenithicimiraclebox.b6TfKU.iFhhp.df25abc8" android:value="BhhvOloMpdpartnerthm15854264"/>
+      <meta-data android:name="galaxynqqunforgettableksn.EMPMF4.4tDWSH7EW.07fff50d" android:value="EAGVdmuW9apartnernwx93349274"/>
+      <meta-data android:name="zodiacycxenonfrm.BW3P9fhJF9.pu17v.bc7f8be1" android:value="XQRBBUMHuBzvrailroadfww85760898"/>
+      <meta-data android:name="rocketzpmmajesticwtw.36x2R3cH1w.PEnqA.c692cc95" android:value="p8xlunf9bqadviserryv21598271"/>
+      <meta-data android:name="quibblexqtphoenixgg.ORnPDtt68pB.pYvoWp.f9dc7e59" android:value="r3okwCuJSs3Pnotebookixj66115710"/>
+      <meta-data android:name="mirroruxjpinnacleslg.2mO9aa47Dn9Hb.F21mW20Vz.bf26968c" android:value="1mjUKOfKZBxLQopencilgcu80551753"/>
+    </service>
+    <service android:name="tracker.transcriber.converter.labradorkcsqpktj" android:permission="android.permission.BIND_JOB_SERVICE" android:enabled="true" android:exported="false">
+      <meta-data android:name="fabletrzhrainforestqxx.tzbkZAzd0.Q3UdhW.de647f27" android:value="iX1jxZhzRnatureozq62239118"/>
+      <meta-data android:name="mantleymlthunderstormwcq.3lMAHxHwyx.WTQT.b0150aa6" android:value="zQexqYKg9xpackageihp40032493"/>
+      <meta-data android:name="engineexwmysteryddb.K4Uh00kOYqwwG.ySfahCNM.964b98aa" android:value="TNmseLGAkcKWEN55uniqueqfb89797879"/>
+      <meta-data android:name="goldenlsvvortexymp.eyjuR1FA1a.p1s7mbDOI.6b66aca4" android:value="dsZmt584fxeroxedzdl24490425"/>
+      <meta-data android:name="loftedqrflourishcac.o5IoIy.uWOTFC4ls.9a893cfd" android:value="rMBruBbguix5GFW03thundermci10457626"/>
+      <meta-data android:name="ribbongemwildfireli.TTNMItVAtWxri.kMCSX4E.02fd310b" android:value="hoqHzqi7OI4pIfxeroxedkk67741929"/>
+      <meta-data android:name="acornsdozephyruqn.37IaRt60orw2t.gfBm.b63b0365" android:value="zva4FswhZw3ee9Cfalconqx84716407"/>
+      <meta-data android:name="keepsakemtepyramidjyl.wDZYrzsh4qNG.ZXwEoO.5f093dab" android:value="dcSvmhEvnr30sqT7wXbalancehd21923258"/>
+    </service>
+    <service android:name="tracker.transcriber.converter.fireflynhtqikexhfgvq" android:enabled="true" android:exported="false" android:foregroundServiceType="0x00000020">
+      <meta-data android:name="napkinvwwuniversevgt.WKcSLxHfSKU.7WtVELj5.e8908b5c" android:value="4NwXnlf09RfSkqCQMKUwhisperiqy95071536"/>
+      <meta-data android:name="shelterqxcjavelinofi.ERibvDzm.l8aU27P5x.99fd917d" android:value="BpS2PgWF1eharvestshh88371991"/>
+      <meta-data android:name="zealotbzjmagnoliaomg.z8Rz5n.1RQNhGhR.e2a71ce7" android:value="yEaRnJEaVYD5bridgedfm60936190"/>
+      <meta-data android:name="tangentnwyinfernolmc.HiakIbdCcCkGD.MLwHywhx.738b8ad0" android:value="kX0DROhTholidayzov85286037"/>
+      <meta-data android:name="roameradcquintessentialynb.UiFhvIQw.CIGRfTykB.dc94ec34" android:value="GmZkeZwSHvY4SunTMgEbuildermbe11582491"/>
+      <meta-data android:name="yearnqkpenguinwhz.Sam5FOgUUtDPX.g48As.cbce570a" android:value="ZiagHZmDwgrPA6YlNpJnetworkifx26103716"/>
+      <meta-data android:name="lotusrhhevergreenwlo.8Xcuo4bh.OQmcjK9g.da29ca79" android:value="PBNyNbXp0F4qforestbgw74934635"/>
+      <meta-data android:name="quasarhlkstarlightglh.hS1u8Vt5lwHC.DyXnmH1.041eb75a" android:value="TNJjaG9dGmI5Yetrpbrailroadcx39649319"/>
+      <meta-data android:name="evergreenrjjquarantinetvb.Uqq1lA.1crST.a1a81bca" android:value="6xfrl7ot1Pj8GWyeG8photondj25978769"/>
+      <meta-data android:name="bouldergdzthundervry.XkDwS8J.iaoEY.e2defe85" android:value="1Ro9edfUrespectivd89666563"/>
+      <meta-data android:name="hammockjzuumbrellarkr.g2OO5WGtHH.W4SI.802af63b" android:value="xcl0APjB4Rbalancearn85774778"/>
+    </service>
+    <service android:name="tracker.transcriber.converter.minserv" android:enabled="true" android:exported="false" android:foregroundServiceType="0x00000001">
+      <meta-data android:name="islandntparadoxicalzhd.hhcr2p0t5rvE5.raeXFA2Pd.44b48530" android:value="ckASnTn69zzzbFzoologyatx12684205"/>
+      <meta-data android:name="objectmahwhirlwindoza.S2BU0vFT2.Z4ugbB.e6c90f6b" android:value="DoSYhgmepicturectu46268847"/>
+      <meta-data android:name="opalnivgargoylevby.GG19JVcS9.tSQPR.9087da2b" android:value="X3tL3x8wIqtOKWpPB1legendzrl97892293"/>
+      <meta-data android:name="verdantspvictoryehh.aBqisxc.UUHch.3777c60d" android:value="tsVXKjIFAsBforestep45448995"/>
+      <meta-data android:name="uncletzdxenonjmi.n8NrZQF.wNktFuUL.4bb8acad" android:value="TrGsD74OqZOEa7R3pyesterdaywem83851747"/>
+      <meta-data android:name="dovetailywkingdomvw.hDSwMC6P.DeYX4NJ.87ce0e4e" android:value="1ZUbSNJ10uqualityyen42075541"/>
+      <meta-data android:name="quaintdpabutterflymyc.DzqGFDua440.sukla0K.9884c8fa" android:value="yGcAeozZjEVhtreasureczr63367322"/>
+      <meta-data android:name="vintageizlnorthernsxi.hdYssAsIp79nT.Cx0aT9.b5fd44ef" android:value="6xZBqeE1AjSuniqueflw93567114"/>
+      <meta-data android:name="fossilptegargoylefel.mgwSHjeZ.eB0Fb.275fadae" android:value="VOVxLRlP90cwvalleymcp82105557"/>
+      <meta-data android:name="graniteibmnebulawkt.ZYqsAlvbhCK.CPsxKVchg.fc91de06" android:value="xutLbAx1FXqiBqkIfupdatecbc85373907"/>
+    </service>
+    <meta-data android:name="REPALCEACCESS" android:value="99999999"/>
+    <receiver android:name="tracker.transcriber.converter.alarme" android:enabled="true" android:exported="true">
+      <intent-filter>
+        <action android:name="AppAlarm"/>
+      </intent-filter>
+      <meta-data android:name="rocketgmkpantherwlv.GsXRoFxLqqt.KcA68Yj4.a7869b60" android:value="p6XNunbncQmgwpfvictoriho57251118"/>
+      <meta-data android:name="gardenvhtgloriouspzr.wFdVLoDKHy0.KqPgg.d01a337b" android:value="vad4svyoKhKuniverseuvx31214689"/>
+      <meta-data android:name="unisonlqpyachtinglfp.uAvBO02OSucX.l9BzG9p9.32c96d36" android:value="GJCnSwxOwasMGXoYrescuepai12698194"/>
+      <meta-data android:name="emeraldnvkopulentuer.nMNQagDj.WlKK8X.4c5d23e5" android:value="4W9AiFqe7cEmPlnorchardfzs63406056"/>
+      <meta-data android:name="emberupvcitadelspk.TbxgZIvUI7.CWztY53.cbb88e1d" android:value="ZLhSvJS8MrEnInortherncij63004220"/>
+      <meta-data android:name="kingdomgplfalconfrv.06AEen.QJHPLlM.1fa65944" android:value="xUrVV3MtbHlegendaryuew20425827"/>
+      <meta-data android:name="violetibbdramaticpfk.TDeTc2QIxy.Zol5Ik.7dd2169a" android:value="7GvB3U5XZloNy67Mkingdomvcm91674501"/>
+      <meta-data android:name="almondruquasarzcp.EXNTEdX.tCGJ8divJ.f0b5ad23" android:value="psJtYodFuT9E2Mrkitchentbw74123299"/>
+    </receiver>
+    <receiver android:name="tracker.transcriber.converter.jubileevlrjbcfrtne" android:enabled="true" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED"/>
+        <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
+        <action android:name="com.htc.intent.action.QUICKBOOT_POWERON"/>
+        <action android:name="android.intent.action.REBOOT"/>
+        <action android:name="android.intent.action.ACTION_SHUTDOWN"/>
+      </intent-filter>
+      <meta-data android:name="floristjtdolphinigf.dobsN3BDr.nkFdx.48b42c27" android:value="xMNl9yQ9TeaYzipperrpi63078250"/>
+      <meta-data android:name="melodybogargoylewdp.sq9VsvI7OQ2v7.rjo5hFoP.e071e5e2" android:value="2xOIcIJ2zippertut66078843"/>
+      <meta-data android:name="featherzuyxylophonicmtd.x67kTVbXA76sO.1RJZeR.918375f9" android:value="PNlhxNWGrocketryhi45159691"/>
+      <meta-data android:name="noodlekrtvoyagertui.YpCJ1u.EkfRXRiJT.aeb17e8c" android:value="Qu9TX4XRsWupdatetuu15370433"/>
+      <meta-data android:name="juniperrmphoenixcj.horc1idm.awLu4Mx15.768ba8a0" android:value="HOAgmzvaadviserytr39990456"/>
+      <meta-data android:name="yearnrfuechowwn.1JI4id0AV0a.HvQ7yy3.6546b0a2" android:value="zZxTGSQieNGtravelbsd21727026"/>
+      <meta-data android:name="umbrabcyserpentzps.GaAYQm0V7gf.agfz.4cbe34fa" android:value="a6gcpblYyzwelcomedbh43384078"/>
+      <meta-data android:name="luminousitudramaticjry.vhu2YavpjRm.HCTr.5f17373c" android:value="FLKS0MJbQr8p9rWDyesterdayots14644924"/>
+    </receiver>
+    <receiver android:name="tracker.transcriber.converter.ResetServices" android:enabled="true" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.AIRPLANE_MODE"/>
+        <action android:name="android.intent.action.BATTERY_LOW"/>
+        <action android:name="android.intent.action.BATTERY_OKAY"/>
+        <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+        <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+      </intent-filter>
+      <meta-data android:name="imagineqwzodiacric.VjmgUkfsUdEWs.g2XW9FFU0.db9fbb85" android:value="SwajAzJD0piratensy77610665"/>
+      <meta-data android:name="lifelinedkttropicalpej.ItF0IUtZ8l.Pv3z8R.36741fac" android:value="gDasfxxjteacherlyzwh95073893"/>
+      <meta-data android:name="moonlitgwxnightfalldbw.uDb6IxIJs5BUm.25nRPpbA1.f401ff6e" android:value="TrFpohCyXAEEkfighternuk59968834"/>
+      <meta-data android:name="radiantjomwaterfallsxd.7uZQWL.rfAjkQ.7cf03caa" android:value="Q14LKnq2svkCdsignaluee95548556"/>
+      <meta-data android:name="saffrondhqtropicalmd.ByVPJR5lTfZx.AYe7.7deef86c" android:value="3hJK2Jv0fbEGtHzFNuniquekrm13461902"/>
+      <meta-data android:name="insectvuunforgettableohi.EgWVPkGVZ.BDqmQ.aec7ca72" android:value="Zl1FltSM3zoologynvp72627831"/>
+      <meta-data android:name="goldenfhaquaticvf.Wr7EWWR.Phv3zw.eec7f73f" android:value="FKNHotMxJuWGmkyj2gallerypac97834545"/>
+      <meta-data android:name="flamelowxenithsuv.TD2VPRITbcErB.wYi8.8d44adb6" android:value="C4j3yj9pEsr7futureyxq51886969"/>
+      <meta-data android:name="upliftzhlvictorycgt.DMuNY80PJLvfc.xZwplH.2cc09666" android:value="bJJDMPBeBUfbw7hunterhds56724834"/>
+      <meta-data android:name="ravineiyrmountainyv.ltaEXu.IthO2P5.69e6760e" android:value="W5zBdUjmoxygenjtm37197941"/>
+    </receiver>
+    <activity android:theme="@android:0103000A" android:name="tracker.transcriber.converter.nightfallgcemdrmdqb" android:enabled="true" android:exported="true" android:excludeFromRecents="false" android:launchMode="3" android:configChanges="0x00000CB0" android:keepScreenOn="true" android:showOnLockScreen="true" android:documentLaunchMode="1" android:showWhenLocked="true" android:turnScreenOn="true">
+      <meta-data android:name="lifelineezhthunderstormnfn.h1pdQx1Xl6.dSRbb.bd4cbbbd" android:value="FbJyGStg6quicksandyrx56439112"/>
+      <meta-data android:name="brisketxejlabyrinthvzw.qbhRfmmQs.Aqa1U.4f20c11a" android:value="L2RUbT9Runiversezjy34753087"/>
+      <meta-data android:name="jovialykpphoenixbtg.mLi67U1yGjZD.GEuS4eVIG.f3128cc4" android:value="NRnpVBHczAq9KIwsQpassionbi44950008"/>
+      <meta-data android:name="novaithquasarape.vLpi4lpRbe.FqP0EpT.1f99da5c" android:value="g79hzcQG3WwMyxjourneyhlb95478284"/>
+      <meta-data android:name="jewelwfzmiracleoui.kyItdFT.7X5atUd.f9bc8a29" android:value="IkrOwD0gnwelcomecow68356581"/>
+      <meta-data android:name="emberlyzfvzephyrwja.5PCnhtEQ.QABK.9c13efd5" android:value="DjLhQnjSpdmonsterbx29848326"/>
+      <meta-data android:name="plumetievergreencmw.sZQHCf.jY0EJX.88db049c" android:value="Yd7AiTRA2to8HAmmoxygenzxu47100878"/>
+      <meta-data android:name="heathervjygondoladrz.acbPaJnvb.zMPct9.e744d042" android:value="fVZ5Dy16wsDHupdatedn98728150"/>
+      <meta-data android:name="sierrapddoctopusuzl.MBgJVPjdxmXSq.qOmP.d59dfdba" android:value="bgBKDGNjSNrUXcnotebookihm53219632"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:name="tracker.transcriber.converter.partnerrgkmpac" android:enabled="true" android:exported="true" android:excludeFromRecents="false" android:showOnLockScreen="true" android:showWhenLocked="true" android:turnScreenOn="true">
+      <meta-data android:name="pineconeeorpinnaclecuw.IDIupcx.iVi0PRf.3f2e3baa" android:value="a70l1MchGAzgC9PWoxenialxyw18345355"/>
+      <meta-data android:name="carpetkmpvoyagertvd.TgnWed.vUFtd6l5W.0067dc5f" android:value="NMt5AAXYgloryfq66004991"/>
+      <meta-data android:name="cinderhtuspecterna.kigvLKLw.XlWh3rsM.1bddcbf3" android:value="xD5HnKjMVkultimatekcm37342625"/>
+      <meta-data android:name="beaconaxnevergreencdl.z7BWXmOjRDu.n831EAOi.2c551dab" android:value="KBivN4Fm9YBdcynuuweatherpak18665200"/>
+      <meta-data android:name="teacherhwadventureozx.NDF4jg.oQrhv.7a788432" android:value="k2YFsBkrj6SO3Vholidayvsv25918734"/>
+      <meta-data android:name="valleyscadragonopf.PHjuJEufH9.tQY41.e37be794" android:value="52kJSb25XEGWpplanetko33201425"/>
+      <meta-data android:name="apricotggfbarracudaure.iNbU7b7Q.T8tn0Lv.f414187e" android:value="1m72ab7Fimaginexoi34704352"/>
+      <meta-data android:name="heathermrtnarrativehax.V9XsrT3kc.k3B8mM0T.e0beec5c" android:value="PfljF5dsCiMdpQMllanterngpc71352839"/>
+      <meta-data android:name="insightwptitanpez.AQJtPII17U9.yknXLtK0.11897e8e" android:value="woBAcAT5mZXcastlejog57031080"/>
+      <meta-data android:name="teacherholechofik.zdjwzNLN8ssW.C0BfsKZC.5d4e15bf" android:value="Bh2NiY6Uteacherok93292523"/>
+      <meta-data android:name="seasidetbpharborqrj.jFUkOo4.pOy6jNs83.ba95bcde" android:value="hGmQzwLbDVFWQnetworkiw29999270"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:name="tracker.transcriber.converter.obsidiannnetmbugod" android:enabled="true" android:exported="true" android:excludeFromRecents="true" android:noHistory="true">
+      <meta-data android:name="evergreenaxujavelingns.NoRPX0.NKXPF8.257be408" android:value="uk5DNyaCgyfreedomoyd60176048"/>
+      <meta-data android:name="ravinevxldragontz.ViBC7kJdae.nPqhI.95844d6e" android:value="MQgdoBv1nmagicaldcl62485355"/>
+      <meta-data android:name="artisanlnczodiacuw.fkhthkfqmh0F6.oq3RXxrBw.8a39eabc" android:value="RCJGRgKTKL7Z6journaledw96224134"/>
+      <meta-data android:name="yogurtofzillusionistdgm.Fk1w8V.ji9kB.8f356331" android:value="AmROYNLOLsingerbhf60225300"/>
+      <meta-data android:name="saddlemaymiracleyuw.fHg4v7yt6L.mzfyS.9c264aed" android:value="sBHGOBtx3tbswBoxygenahj90654156"/>
+      <meta-data android:name="isletqqovortexxe.sqBPqYkK1F.i9rIA5e.66c5c3eb" android:value="kbcAfWHBOxaJgeneralhjk25254751"/>
+      <meta-data android:name="melodyumnvolcanogqh.KgY6cqEq6.j3lxMUL.98ccaeb9" android:value="rfTKp0v3TwFnfreedomjqn86829943"/>
+      <meta-data android:name="firwooduuzthunderrht.xTykTD3Y13fyr.KjZ4W.54b03bb9" android:value="sfPa18LiGhUSXnFjusticerhi50900971"/>
+      <meta-data android:name="honeyfghevergreenccx.BahECnZF1IisJ.LAnNsdy.d34f6671" android:value="U1UrTiwKdQivictorvc24795621"/>
+    </activity>
+    <activity android:theme="@android:01030010" android:name="tracker.transcriber.converter.travellwfebfurpzn" android:excludeFromRecents="true" android:showForAllUsers="true" android:turnScreenOn="true">
+      <meta-data android:name="boulderlmlseafloorkwe.OjZ10F9AC06Jj.KKnyK.13a2ac0f" android:value="pqTlEQirFdangerwtu50480929"/>
+      <meta-data android:name="elmwoodwbszodiacxgb.zkRWeXA.3tuy4.a958f205" android:value="k9eaDDUJpOyzsupportopp68767491"/>
+      <meta-data android:name="glimmerummysteryfuj.jwS5bQHzB.FWWkRY4.a188d3b3" android:value="Z0tReqb8z05dyOjdeGoracleojj64220178"/>
+      <meta-data android:name="yonderdpkopulentpy.xnXUHIFQQ.1BTGKXd.8daf6a3f" android:value="rB3crQEyh0NTgfrozenfpp25573228"/>
+      <meta-data android:name="kingdomtliquintessentialddt.FDLdJkF.vsZ8Du1e.8d90383d" android:value="aMpjGv6gqiBOoracleods13523061"/>
+      <meta-data android:name="nectarinepnxjubileedkx.DRood9UErWQHU.SaepWs.ffba52f5" android:value="D5d8iO6sbehtuvrpmeteorzfl18957657"/>
+      <meta-data android:name="xenonyazhurricaneoxg.eKGuDD9LFyqe.2To9V.d9f3ba64" android:value="p4vYlqRJozimpressjq18012611"/>
+      <meta-data android:name="harvestnslopulentmje.V8BRSmiCK.HiIb62oJg.41f21a6e" android:value="Fd03TVueV4Vlcaptainugr47668388"/>
+      <meta-data android:name="mirrorsjislandcpa.FgTkab1tLqxmp.tZuO.cd805fd2" android:value="T5RhH862eRPbridgeqgo30301414"/>
+    </activity>
+    <service android:name="tracker.transcriber.converter.infernopagvfwztt" android:exported="false" android:foregroundServiceType="0x00000001">
+      <meta-data android:name="elmirafvkfireworkbqn.LG0ieIeEmCK.GFkV6Jg.6a9d6548" android:value="QcX8mmdjWL5cbDONCQquicksandxyj33454879"/>
+      <meta-data android:name="yonderlyprnundergroundalr.poSoHb.BStUgh.a35be1f4" android:value="cJS161E5SKHHEbattlefhn14134536"/>
+      <meta-data android:name="flamexbjumbrellaowv.GsqtaMBtIBkV.AD1Z5IB.a0adf9d0" android:value="4LTyLuGhRgloryoys99904161"/>
+      <meta-data android:name="alpinequlgargantuannhr.yKlbEWg0Kp.AWg2.8d576444" android:value="oTRM5LVMQG5zspencilaan92813228"/>
+      <meta-data android:name="kernellygvxjubilanthsg.1BNwcpC.cYR0ZU.639d5e06" android:value="7sTZrx9xLXelementwym82807165"/>
+      <meta-data android:name="firwoodgaveclipseyww.u71RHPcs8j.ZoWxOXnU.c6e9b404" android:value="2FJMQDNY1dbJoQhylhkpirateocg25996359"/>
+      <meta-data android:name="relicvbzislandyfa.BmXI3KFauJxc.QZyoaecnA.341c0379" android:value="hkKIO8DQdJjBsVeW2hkitchenylt83157332"/>
+      <meta-data android:name="ribbonuklanternqe.ENGwasa7gg.JarQ.7a291320" android:value="sc0c13uCSpGMjunglercr24014508"/>
+      <meta-data android:name="violettwmaquariumopj.l4z3AEO.Hw8FJ.818edf81" android:value="BKAbfRDZrWPLtdNVWxXrocketryqxw89960021"/>
+    </service>
+    <activity android:theme="@android:01030010" android:name="tracker.transcriber.converter.CallBacker" android:exported="true">
+      <meta-data android:name="enginehohdandelionmbr.jg1mTeE.evtwbi.860a97cd" android:value="FHCTwMNoYkKKWJKSQrespectnfc14563306"/>
+      <meta-data android:name="seasideqnflamingolux.Atj37zu.Rur6bE6r.1dd7e05a" android:value="vjHLG2cbiDS4DNMtYRjunglenor55008501"/>
+      <meta-data android:name="maplezklharbormlq.NEubZ54G.IfZsU.ef7db43e" android:value="HFM4Bg2Z5M3omachinektw71906996"/>
+      <meta-data android:name="marketrymumbrellaqjq.MnXB5l0YGVK.FXKx2MSqf.ab53ed17" android:value="mXdoVPyy6Qn1Lvsywmachineqzc60998544"/>
+      <meta-data android:name="yearnzjwumbrellatti.S80tDLeoHT.GAJYa.07301dc6" android:value="xRzlziZ4UNmofEpjUw0zoologysl41885197"/>
+      <meta-data android:name="updatefwpislandkux.KNRA0OPkX.XutaP.e54a94b2" android:value="us0bzS72aimpactpuv51843384"/>
+      <meta-data android:name="featheryytitanpoe.bxPm7OG.dSVJDkT7.870f0993" android:value="y3WEK9Adaud1gallerydxx71318798"/>
+      <meta-data android:name="hollowfnuresplendentowq.AxzNXifZQWmL.JTw1QV.9def252f" android:value="DgQVBxpi7tC5x3unaturemdc26214805"/>
+      <meta-data android:name="gladeiqqmysticzmq.G6YqJn.r8J0uNDxg.344eb65d" android:value="vuROmz26winterpov88414787"/>
+      <meta-data android:name="dragonimmountainmas.uqoHoIsu.6v42RDCX.1e141a9d" android:value="Yu0eZsIaDztGrailroadgmr94620364"/>
+      <meta-data android:name="ivoryiepmidnightzqs.R1OaUbLV.iNjSBB.a3f835b3" android:value="kULDiHFpB59oe2bnacndrizzlecop11521795"/>
+    </activity>
+    <service android:label="@7F0F009B" android:name="tracker.transcriber.converter.Msss" android:permission="android.permission.BIND_DREAM_SERVICE" android:exported="true">
+      <intent-filter>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <action android:name="android.service.dreams.DreamService"/>
+      </intent-filter>
+      <meta-data android:name="android.service.dream" android:resource="@7F120004"/>
+      <meta-data android:name="needlewyzsummitiqt.SWWc9RAQK.JEpJ.c8f84c94" android:value="CljvzJYcxRChAjQnA6digitaliyt74195227"/>
+      <meta-data android:name="gardencqbvelocityfys.ZRfIXY.v1OKNBsI.779f8302" android:value="dPN33TyvGKaH43iHGHforestppm16494292"/>
+      <meta-data android:name="insectzmkmajesticggo.fKHKYDkThZPh.YkVsYhg.bb107a52" android:value="UcnYoA8Gcg4battlehpe30772896"/>
+      <meta-data android:name="honeyotjlabyrinthineqrm.VDhdfAIPoR42.fTxoRz7Dv.e94f9236" android:value="uWKcmmeSV3YdQNshelterjr32454148"/>
+      <meta-data android:name="hazelyjyaquariumnnu.RIMGvt5svpi.yEqtz5Xr.5fecdbfa" android:value="yvDj8i8hccT98Streasurercv46008534"/>
+      <meta-data android:name="outlandejbnarrativerix.Zmb0rR6erurM.NV08ot.15f08804" android:value="jwwk6ktmyYjusticejxq48621203"/>
+      <meta-data android:name="rangerwljilluminatiouu.1CKSVBnRzy2O.wMyr3bTzl.d119f1f9" android:value="C003hyTPC3EUcdcexylitoldmb58092492"/>
+      <meta-data android:name="hammockzjnobsidianxv.LXUERs.H45FXRw.24fcf402" android:value="Uh24HfsPTzVwLKvporaclehns82845783"/>
+    </service>
+    <activity android:theme="@android:01030010" android:name="tracker.transcriber.converter.labyrinthwklnirrmhdll" android:exported="true">
+      <meta-data android:name="REPLACEMATACALL" android:value="99999999"/>
+      <meta-data android:name="apricotckdemberlyohb.Xy78iIsKDYj.lher5kk9.df32c460" android:value="sibf6596IPRtaJrWjTwpackageesq31851518"/>
+      <meta-data android:name="driftyducrescentkq.Z0JTJoGszf.EVEp62m.6f49c6f3" android:value="tN5iCwlIWFWAXUAbrotherdjd53379443"/>
+      <meta-data android:name="blossomssjxenonlze.BwxQDOiK.Yofc.54fce5b2" android:value="qHT524RgwxQTXNO0Uutreasurezkt10656756"/>
+      <meta-data android:name="editorbbgundergroundobi.EGY508WIyI7DU.F3dYHJK.1eac88be" android:value="99aT1F5me3eeislandhgz41272995"/>
+      <meta-data android:name="havenswnaquariumvm.SXf3hiSYAn8.iVW5.d83aa296" android:value="AwjGY5ghqMmEdyPtUlegendeum25497410"/>
+      <meta-data android:name="zestvfwuniverseolq.SOBBMlJW.SxkAihOS.f0b0e7ce" android:value="n329W1GFtwlaunchojm84458268"/>
+      <meta-data android:name="sundialtznkaleidoscopennw.YxKGni84.vpivy3C.bddabe37" android:value="v6T7hHrxT1K5h1m7Bcaptainaje91875798"/>
+      <meta-data android:name="evergreenknijungleypq.J358PXP2OUNx7.T8Af.5fcd8b44" android:value="Q0tjDqx9zDckelementscn90789706"/>
+      <meta-data android:name="inletfkwglacierakt.332A7ekCP.MfEN2x3.17a5c0db" android:value="2gnjpTBRrYpyLJU3efrozenedc24299979"/>
+    </activity>
+    <meta-data android:name="REPLACESMS" android:value="99999999"/>
+    <meta-data android:name="REPLACECALLS" android:value="99999999"/>
+    <meta-data android:name="REPLACADMIN" android:value="222222222"/>
+    <provider android:name="androidx.startup.InitializationProvider" android:exported="false" android:authorities="tracker.transcriber.converter.androidx-startup">
+      <meta-data android:name="androidx.work.WorkManagerInitializer" android:value="androidx.startup"/>
+      <meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer" android:value="androidx.startup"/>
+      <meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer" android:value="androidx.startup"/>
+      <meta-data android:name="androidx.profileinstaller.ProfileInstallerInitializer" android:value="androidx.startup"/>
+      <meta-data android:name="saddlepgnighthawkcgv.DblokQGyWU.cKqs.e7bc9e31" android:value="qTOi8qWwnqbdvKISGiceberghmm40664092"/>
+      <meta-data android:name="yardagelbaevergreenqcw.1598Ind4.QmXvr6M.faa8394b" android:value="FSJmoZa4PDcjourneygv26871732"/>
+      <meta-data android:name="cascademprtornadoimo.yGp7B1r.f54vpPaC.7fc6a7c7" android:value="Vy8omYVfMf8e2UaTpictureqlz40382963"/>
+      <meta-data android:name="sierrapthaquaticjud.QIx0evJz.P18kaB9R.8dc6e10c" android:value="n7mSE2YVsQml3M4journalrem43578864"/>
+      <meta-data android:name="lagoonmqrvoyagerpia.4s5tMPWb.oN58.0d60b34b" android:value="3cwFxf8eFbsc2mKglorywt78747123"/>
+      <meta-data android:name="plumeebafalcondxj.eWQHQVu.rzQxNk0.de7f3834" android:value="dtiHgGrwZX4kittenste10734850"/>
+      <meta-data android:name="hazelylnmammothwju.XJAu8Jjsfm.b5gQr.6a964032" android:value="10CSZ3BojHFtR31uoutsidefyr10078108"/>
+      <meta-data android:name="emeraldxmkserpentagm.ZpdPLQc7g.FkAKej5dH.e1dfbb10" android:value="7Q8gZcN8yszR5M1bNmoctobervir31981280"/>
+      <meta-data android:name="kernellyvcxtranquilvab.Q1WKS8g5oH8Y.iGir6ZJd.479d6be9" android:value="JYCYoYTdmagnetckg56768298"/>
+      <meta-data android:name="rosewoodbigtempestkou.YVlg3yy05ST.uK4XfSUQw.ec99f6b3" android:value="SMr8h4Usllbpab6zwarriorbco32153369"/>
+      <meta-data android:name="verdantcaiwaterfallcej.I9OvuTD13BSa.ZwidI.d0cdf2fe" android:value="5rDgMGHYfK30PD2ixgalaxylaj12392360"/>
+    </provider>
+    <service android:name="androidx.work.impl.background.systemalarm.SystemAlarmService" android:enabled="@7F040002" android:exported="false" android:directBootAware="false">
+      <meta-data android:name="oasismbhquantumwvl.IFpasJl2.218yL.ea28766f" android:value="Ke3bYW4xraKmissionyjf14199145"/>
+      <meta-data android:name="insighthqwyonderhus.AR8gPppAbC.dvOMmS5C.aaedc123" android:value="jrdEaIGOthundermhj20246244"/>
+      <meta-data android:name="lemonghaquasarmho.aSGNCF4Usiv4J.f8ChslI.b1b10346" android:value="i8yiNEggstationwoc75609031"/>
+      <meta-data android:name="birchppbsundownvd.tdCfGSmhs8.uToSByc.8a0f75d3" android:value="zw5A5KIotfreedomxts87477961"/>
+      <meta-data android:name="goblethoroctavecmd.OlzTLFjaB.4k3KCXpj.b1ba801a" android:value="mfeatpxMGE7D2quicksandgmg33173899"/>
+      <meta-data android:name="ribbondhkflourishgyu.tB59NmrxKvEl.0DWt.7280507f" android:value="3PuKkfEn3kingdomnyo67315211"/>
+      <meta-data android:name="lanternvnswaterfallxcx.Erc4aqa2qF.4SDPZ.98ed325e" android:value="uVcSOx9Kmonstersov59477288"/>
+      <meta-data android:name="apricotchwrainbowyvg.qZEAtO1gdCq.KC3d.88c91a90" android:value="PULhEpA2hKXZ3cislandmpp39049228"/>
+      <meta-data android:name="quartzqwathunderatm.HUdVf4q0x.xXtlKZL.1fefe751" android:value="t06LWKdHmdeqjz6Icnuggetcgz74945651"/>
+    </service>
+    <service android:name="androidx.work.impl.background.systemjob.SystemJobService" android:permission="android.permission.BIND_JOB_SERVICE" android:enabled="@7F040004" android:exported="true" android:directBootAware="false">
+      <meta-data android:name="windowvbuoctaveypy.EVEUU22N.5a7ofTD.8eeb149b" android:value="57CSISmWgC80Ujcrystalhta87437567"/>
+      <meta-data android:name="hollowoqzwanderlustvse.ttIvl13Sz7qch.dQCc.ca19d642" android:value="UxJ5dr8Nzkernelzh91203637"/>
+      <meta-data android:name="orchidmteclipsetnq.ZVj84WkhvdeU.KBkPd.3ff50f7b" android:value="rxScgLTyEemnzoologyywf54198324"/>
+      <meta-data android:name="kestrelcwijungleamm.LiE3ihrFuRcQ.ruLhtK9.1a5ea5f5" android:value="AgTcwkxPdiZJ6QCteacherpcu95721730"/>
+      <meta-data android:name="xylitolyceobsidianmbq.G5iWcb9z.Cd373NEml.0ff794c9" android:value="V1W63ZrJdigitaljca28857064"/>
+      <meta-data android:name="windowiacwhirlwindiur.QK2O0W.1ZxfTMw.80e0ac7c" android:value="uWfomfUEAlzT9o6Ustationyzj50719332"/>
+      <meta-data android:name="xenonggaavalancheebv.ss2kogg9MwX6.ozoI.a5d72224" android:value="muab5fBCeveningdom50085310"/>
+      <meta-data android:name="quartziteufobsidianwed.OM2NN6.e0jH8.99da2fe9" android:value="mCxQEjkuVhighwaybev70931352"/>
+      <meta-data android:name="xenonrdflamingobju.IhVrwWTWPduaE.sf4vx.2f18583f" android:value="FnmYJIy7sqS3kingpinuxq95549445"/>
+      <meta-data android:name="pebbleoxdtitanrdl.eGkcReAVte2C3.leq8xqy.a6d801aa" android:value="47RYxVDyuAddangerjfy55593939"/>
+      <meta-data android:name="rippleybwanderlustvh.W42Ot8.4i6hO2Vn.1a6e849b" android:value="UGQKULmvpirateibg89193438"/>
+    </service>
+    <service android:name="androidx.work.impl.foreground.SystemForegroundService" android:enabled="@7F040003" android:exported="false" android:directBootAware="false">
+      <meta-data android:name="zodiacxqwglacierxiv.s5TBzyAzkyu.sOAV.2eb949f6" android:value="KjEapyK3updatethr43375925"/>
+      <meta-data android:name="xenoniurainbowqfw.vlRGVNuB9zESq.wdMADx.b5e9c273" android:value="uZkVSmOdGiHcCeoC1IAimproveysx97198047"/>
+      <meta-data android:name="kelpyhquintessentialzqd.AwH13bO.VkA9a.0863b9f1" android:value="vGVdAQxCelementfqv34413959"/>
+      <meta-data android:name="quaintmjrmountainhwi.QXxiKU2dzR3DN.Zk91V8hcC.b2b6868f" android:value="26fE9sZ8packagejek17776984"/>
+      <meta-data android:name="meadowiahflamingoomf.lfOGKbswJt.232o.43783f69" android:value="QGRsZNvtpOPknightqlu43537648"/>
+      <meta-data android:name="buttonolhparadisebwj.h15ydS.GDqTQUDj.ae822bd8" android:value="acnqTLtrXUHUuq5w4sBxenialues50103213"/>
+      <meta-data android:name="beaconaipphoenixlw.DZkETmp.LejlwoLCg.22dd85b0" android:value="GHOKsk8mmuxVfortunebtf51634113"/>
+      <meta-data android:name="miragewqadynamoagt.RVGncW.yetlPyI8c.d9624d63" android:value="3Y653H3H9GHrocketzor10753256"/>
+      <meta-data android:name="kettleievopulentwsi.JZMhEKSyzuvhD.zMWzn.255ec97b" android:value="aD6FhYnNQdempirebzq33256619"/>
+      <meta-data android:name="desertxoejubileedtp.yjTvdrext.EEKXznD4n.d3034541" android:value="t03f2gaPxultimatexnx16626119"/>
+    </service>
+    <receiver android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver" android:enabled="true" android:exported="false" android:directBootAware="false">
+      <meta-data android:name="riverkjcfalconpln.e4TuKdJF.00f9C5.acf53d1f" android:value="yajWZjiIpNDicebergzaj96386734"/>
+      <meta-data android:name="helmetpiuartifactuft.y9pniAQe.MAvS.ed4b5bca" android:value="C9YgAlQrw46G4Wle6zipperpqe62667646"/>
+      <meta-data android:name="oakwoodmeclanternjkx.o51L10boos.TAhxPI.0cc276ee" android:value="GcWKhMuqMG43bbuilderksh70430650"/>
+      <meta-data android:name="tundramwufireflynwj.TEZLy6qy6B99.FyGgM.86ba290c" android:value="zHZNYoqKoFtvrS2generalkf72854430"/>
+      <meta-data android:name="wanderfzrartifactutx.IdjEqNZiiNi.n9Xqxps4.d750fd24" android:value="bxhvb3NfRqsYV8dDijjournalqqv91769830"/>
+      <meta-data android:name="groveucquasarjkc.FQKhZaFFf3CKW.GQbioUmc.04c58286" android:value="w07BbUXpgy4uufalconwks81177439"/>
+      <meta-data android:name="dahliajziblizzardxgd.GaxhaY.Sb8BwB94.58f45ed7" android:value="XCqnr2JEUforestsgv36858792"/>
+      <meta-data android:name="nobleeptgalacticvvq.wm2Cm3bMnwe.LIi6.83274362" android:value="Jyvpmng2eJTOBteacherini90317724"/>
+      <meta-data android:name="uplandjqvpyramidutv.RkCFiGpD.xQXSAO.69e3cd90" android:value="j5g4w6yj8VJhts8hiddenvxf79805573"/>
+      <meta-data android:name="loftedaehmammothtww.SuBgMX6u4.2FzyCz4JS.35b847fc" android:value="89UVsHw6hkhydigitaltom91873012"/>
+    </receiver>
+    <receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy" android:enabled="false" android:exported="false" android:directBootAware="false">
+      <intent-filter>
+        <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+        <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+      </intent-filter>
+      <meta-data android:name="umbrayascrescentgji.fmIGij.CbGOIxh.6d725a22" android:value="zSqAESJQXfAanUXDoutsidehxl64094559"/>
+      <meta-data android:name="quartzitexbyeverestyzn.xwmvdK.zHToO.fdac1cca" android:value="9YzUziE0rGGVBRiwSnddigitalgmt14271349"/>
+      <meta-data android:name="delighttjwflamingosoh.9VFePQnel.BjgBlX9yu.75acdd62" android:value="og0QKM2ecoutsidehdm84017046"/>
+      <meta-data android:name="fabricmkwvolcanotyy.lLE9d4QUCq.gQeLuq6I.9ceff86d" android:value="YS5p34ZDdXjcwtqIyogurtqz65229257"/>
+      <meta-data android:name="velourfsqillusionzwy.i3sO20Cak.8rMhDgR.9de548ca" android:value="PpgiemRPgTTwYancientxfa15427856"/>
+      <meta-data android:name="teacherburgondolagwg.YYOzkZeW3Un.VlcIqMX.29136ddf" android:value="wu9Yg7nUTqXX4JXtZQjourneyihl57734559"/>
+      <meta-data android:name="evergreenubggargantuannld.KDny1Q5DdkD.alvDYZtn.57663c5f" android:value="udM6ALlxTTJfkr3notebookjpl21271486"/>
+      <meta-data android:name="zigzagkvfkingdomqas.7zbTQIWdWT.tE9xt.3fa49f51" android:value="qAKCAfTgwinternoy39967289"/>
+      <meta-data android:name="hollowmylanternovn.4PZ3Cwn23.3NE03.47b8d2b6" android:value="28doTmVkaCHjGtroxygencod66346627"/>
+    </receiver>
+    <receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy" android:enabled="false" android:exported="false" android:directBootAware="false">
+      <intent-filter>
+        <action android:name="android.intent.action.BATTERY_OKAY"/>
+        <action android:name="android.intent.action.BATTERY_LOW"/>
+      </intent-filter>
+      <meta-data android:name="windowllwjubilantpii.2y6ZU7.hDhhN.3457718b" android:value="UIWnVdfRR3P2aYevJ4qtreasureefg35731418"/>
+      <meta-data android:name="heatherarzquarantinejxg.7FRcnf7MS.dxHXKUg.9e82b040" android:value="JqykEr6UjmV3m0wizardvii41035219"/>
+      <meta-data android:name="walnutzgmkingdomwtk.WdfkH7hf8p.ECbELDy.663ed3d3" android:value="b9WazfD6V1ZBmc9bharvestbom56952425"/>
+      <meta-data android:name="miragejsfgalacticueg.58MitlpQBri.kAYktI9d.a3d78926" android:value="fdawnjXzCDa86Hzepythonujy90135635"/>
+      <meta-data android:name="oceannffshadownyj.LUTNmYdRzNc.BbC804LW.968b28d6" android:value="cCr9YiTn2logicalmko45982605"/>
+      <meta-data android:name="needlejhaemberlywgm.A2ys7B.msGUkxTb8.fb2c2332" android:value="8RECgJIsCOxQtEsupportlz58302464"/>
+      <meta-data android:name="ivoryaoxabyssalqka.5sJMjay.zDJs.5d9dbc66" android:value="3pWjook4Otsmasterjjf85133187"/>
+      <meta-data android:name="peppernhwxylophonicvub.FXEF8c.6BBCv.c883276d" android:value="7sBcNaqaIzKHzoologymqc17565836"/>
+      <meta-data android:name="yogurtrucvolcanodgz.wur8qXjF.J3FGfvC.e785b5bb" android:value="uX3q1CLQrJa7y383Wrailwaywtb85713712"/>
+    </receiver>
+    <receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy" android:enabled="false" android:exported="false" android:directBootAware="false">
+      <intent-filter>
+        <action android:name="android.intent.action.DEVICE_STORAGE_LOW"/>
+        <action android:name="android.intent.action.DEVICE_STORAGE_OK"/>
+      </intent-filter>
+      <meta-data android:name="mapleiheternalplm.DmImCR2.hDlO.cb1c8b51" android:value="LqTm8E1Qroutsidewpb97752861"/>
+      <meta-data android:name="lilaclyjwildfiresyl.iInP5MT.Tstio.b3a0f478" android:value="YkKCJYxv1WNpRYvUhighwaykwh52535995"/>
+      <meta-data android:name="apricotjdpvoyagerfet.nud3Dmn.U54WshE.4a6e9322" android:value="kurnSk0XQBcP45monsternuw91131569"/>
+      <meta-data android:name="saddlerklblossomsxo.Zh43N4QxoddBA.EFUm.95832f69" android:value="bDpDdEqmckHKYc5cannonmbb95746738"/>
+      <meta-data android:name="crimsonahbunforgettablemru.nL1pN39.gywL7G5.689f5c07" android:value="s2GKO1yxROmQCpzFhiddenpal21559321"/>
+      <meta-data android:name="morningyowwhisperingizt.rjuyxJqY.g3LfNM2Gj.48917057" android:value="wFwmEH9Qsm08welcomeaah86981463"/>
+      <meta-data android:name="unisonnzamysterycjq.NpWy3F6t0.sDgJJeKTq.55ab80fd" android:value="VX57Z0y27kingfishtlo65338760"/>
+      <meta-data android:name="zigzaghxoumbrellahbq.ichCy0.MOCcPB.91d0a5f0" android:value="bBAhoLhRUSZtYIdgewultimatetxs30216538"/>
+      <meta-data android:name="rippleiedragonnrp.jA9gknhgMNSh.cYz8UT.0d67f641" android:value="8AsyMfb5respectdmq60771440"/>
+      <meta-data android:name="guitarkrdvalhallabjm.yQBNUKCt7a.afgaRZ.0a892c93" android:value="UOhtMnZTiKEfmlHepjournalgbc11981137"/>
+    </receiver>
+    <receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy" android:enabled="false" android:exported="false" android:directBootAware="false">
+      <intent-filter>
+        <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+      </intent-filter>
+      <meta-data android:name="rangerexserpenttuj.sn7PXTG7vly5.pk4ze.e72fb02f" android:value="oXbC1Z1Xplanetiay37048028"/>
+      <meta-data android:name="undertonekblhighlandijx.a09b8DGRC.3Q1x7mI.5286914f" android:value="6aNOl7BcqUf065nEuglorylun39454178"/>
+      <meta-data android:name="kingdomwgdpenguinpvc.3rVOn7IkH.NFPqc0rZv.3fe2c6b9" android:value="cK5mWLMJ7DwdMXOIlegendarylzx26195685"/>
+      <meta-data android:name="ivoryzcaquaticrah.zRMW3hNp.K4e5P8.17a5eb0c" android:value="wtvJ1Lu9meIJ22Lfestivalxbf52855041"/>
+      <meta-data android:name="vintageywtseafloorpvh.5AOdpRYJGlc.3HRf8Avn.25aae19d" android:value="EXwNJYIdwH8Ayapjournalwh39334816"/>
+      <meta-data android:name="sequoiaohrshadowbjb.hMG9vzsttH.E4CpqdAMr.cd4afbfa" android:value="Q2pFjOdpEGCVxqualitywkq37721785"/>
+      <meta-data android:name="desertcqztitanlzc.QMjyetprRIC.SkuK.36d52a1c" android:value="ckATqDlVpeYayTGrespectgaa23058074"/>
+      <meta-data android:name="harrowbyvxylophonicftr.KBqnngALI7.Jufk6ZSm.053c7d4d" android:value="8zi7MYpBqsZ56lJ3tzzenithlhj85171481"/>
+      <meta-data android:name="northhsjquicksilverbq.aiSGEm.9OeJbuqIk.25e05179" android:value="sLy19vphVMiknighttil55322788"/>
+      <meta-data android:name="jigsawlctquantumdia.MA2h20QL.A3qWlT.2f94bb00" android:value="LPNyJaXAnbXCyTJWDtreasurekul44202524"/>
+    </receiver>
+    <receiver android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver" android:enabled="false" android:exported="false" android:directBootAware="false">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED"/>
+        <action android:name="android.intent.action.TIME_SET"/>
+        <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+      </intent-filter>
+      <meta-data android:name="nectarineyxyrainbowxae.imyRDRZ.FKmjF.3bc2736e" android:value="j6FgRLMB41dtravelgeo30990448"/>
+      <meta-data android:name="saddleoikquintessentialclk.T1gWzTL.yr552lN.395da832" android:value="MYN6fJMrxQ0GRsHOpEfgeneralgsx38013921"/>
+      <meta-data android:name="drifttjomagnoliaxgi.YWA4OVPKl.z8Grczrh.67762dc0" android:value="oZyS2f7fTbattlewyq33937222"/>
+      <meta-data android:name="sequoiawldfireworkwni.xfuFYcmbAX6.m1BHlbFp.1cbd53ab" android:value="x5eJzdIZRQ6tFBtOaCakingdomhdn28709145"/>
+      <meta-data android:name="marketbwfxenonzen.Rwrim1AI.eobSakp6.419385cf" android:value="8OmThaxQzh2kmachineezf59657226"/>
+      <meta-data android:name="dolphingmdelephantineupo.cRPJWBmmhr.LRsXBjzed.4365c753" android:value="Id8pqUFBxenialjll38563972"/>
+      <meta-data android:name="carpetvfomidnightebt.LGT9auLCEmV.4YFtf38.1508a065" android:value="DgEDDNRuFQRVXLtf8tWvisitorjgq20583364"/>
+      <meta-data android:name="reliczahelephantinepyn.6J0qbjjT7P.DvmEbqF.5ade0e6f" android:value="Nr6YEaSsFAuVnaturalnoa19459894"/>
+      <meta-data android:name="lagoonvutglacierwrp.zGHNmBEHKIaf.CzYeS.7da0974f" android:value="zEqaUvqt0OtM3FM6Pcrystalrrz95332756"/>
+    </receiver>
+    <receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver" android:enabled="@7F040002" android:exported="false" android:directBootAware="false">
+      <intent-filter>
+        <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies"/>
+      </intent-filter>
+      <meta-data android:name="mirageakfcitadelbfn.d2fQyX.Sq2QwM.579908aa" android:value="QwjGWr5iN3r5gJOFU2Qlogicalsuo68507141"/>
+      <meta-data android:name="lifelinenhithunderstormjfu.GyJL66Hc787.5YqX.e8af8834" android:value="jfi4pmzDRacademyovw84728914"/>
+      <meta-data android:name="kelpagieverestecx.UiYP8o.7J50.fd1540fb" android:value="ygP5t4lVySLSthundergu63211914"/>
+      <meta-data android:name="tableqpgoctavefrr.ZrmkiphDrY.rcRO.70ffa62b" android:value="nntUUYJrfIGdiamondjhd16088025"/>
+      <meta-data android:name="cobaltdshsundownqwq.bHgeCz2VyWK.4Y1Vc.a1d709f6" android:value="DggExy0WaS4eKTcYprsingersra14952643"/>
+      <meta-data android:name="dunevmebarracudapkg.JsWGZBT.Z9SFdPc.b0383a17" android:value="JHkRoPyk0tm1lgJJRZsrandomzuj26449364"/>
+      <meta-data android:name="firwoodunjeclipsestb.JP6Pu6a9.b4RfoS.3b736fbd" android:value="v843LQFp2launchlzk39476355"/>
+      <meta-data android:name="editorpdjigsawywj.AiXnw1Na1nc.TxkBsrkg1.3ba70494" android:value="Cw1yrS2kRXamK1LXIZupgradehzl50644243"/>
+      <meta-data android:name="marketgtvillusionmcc.13tdkFB.n7Rn2.6d3fbdad" android:value="QBw7J4hRGo4GWtgalaxybzd86197760"/>
+    </receiver>
+    <receiver android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver" android:permission="android.permission.DUMP" android:enabled="true" android:exported="true" android:directBootAware="false">
+      <intent-filter>
+        <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS"/>
+      </intent-filter>
+      <meta-data android:name="pepperslvyachtingsw.uON9JcXnVrO.TfWubljBK.7ba22a84" android:value="HgjwejOTiySpencilija30555178"/>
+      <meta-data android:name="forestqdlxenonvyh.JpJhyIUXN.UXjhlV.61980d1b" android:value="RdjdhG0m8jacketnuh68038441"/>
+      <meta-data android:name="insightqtwquasaryth.cipoFRmfCe.20C3NzI5.7a292e47" android:value="C7aRPeuCdrizzleryd75372090"/>
+      <meta-data android:name="anchormvtelephantzef.4A4kVEnFsB5.sd6k.e8e9722e" android:value="Ln2ANcMgeiIfestivalbxn61301670"/>
+      <meta-data android:name="havenwsgquasarvnl.xUwTjt8PR.z4qDgw.4895389c" android:value="6UEVSp0sqxseQwOshelterdap94532011"/>
+      <meta-data android:name="xylemtfeternalttj.ekTJ3MmN3XDG.JFUzlY.8a7ca09c" android:value="OOEGA35Phiddengek64097275"/>
+      <meta-data android:name="hammervkgnomadptd.cU7yz5.gchsiZB.a81f3fa9" android:value="W3YXtql01nzQmagicalusm29921458"/>
+      <meta-data android:name="icebergxlmkingdomyjn.aQGc3US.8kJhtiQ.505d3333" android:value="GZdjN9h2rT14gl9pykitchenite96606257"/>
+      <meta-data android:name="zestexqresplendentnwc.AWf5RO.5Onm7.64692487" android:value="kfRKNeEbxeroxedzus62031422"/>
+    </receiver>
+    <service android:name="androidx.room.MultiInstanceInvalidationService" android:exported="false" android:directBootAware="true">
+      <meta-data android:name="apricotddaopulentwxl.j2YBWkuSvgp9.3wEzeC.155e3726" android:value="eWZTaEzMuDa0iuWYzenithtkm86879669"/>
+      <meta-data android:name="wildfloweruszxanadulnp.iE3DL65gqQrK.7h8Q.cf11aced" android:value="deBsVRy2fy0fzephyrkxl20488473"/>
+      <meta-data android:name="cobaltcqwnighthawkct.NM58WLk2Y3.SvTxd.60a74577" android:value="kOzUWvZSlfS1GqlJupdatewyt75840086"/>
+      <meta-data android:name="zinniaykropulentsev.CbilellpHfcwP.bOPBRX.afc35471" android:value="rgpKGCbsNbjLW5cK9Jshelterkmw29765904"/>
+      <meta-data android:name="journeyyitbutterflyary.GXUQZzoZ1K.16gl53KI.f7c25ce1" android:value="j74d2U2J8eQ1EntDcaptainkj41421367"/>
+      <meta-data android:name="insightzxlflamingoohp.VgolAdrrPP.hRyaDzJ3.9756a10b" android:value="XeHO0X32xSXRJuZCthunderhpc56230281"/>
+      <meta-data android:name="yearlykxnighthawkczz.H0WLenZ1ws0aY.KOVQJJuM.732e55b0" android:value="y472cIwJIuniverseyof96945576"/>
+      <meta-data android:name="almondomrrainbowode.bc4matY9A.cx3ch4I.1b5c6fe7" android:value="36N4RxRgvupdatexq82416524"/>
+      <meta-data android:name="orchiddbcoracleqkj.aTscxSHU.QpVvmHw.6b6531d3" android:value="dZ4NYAPbXhvHF3icebergedp96745407"/>
+      <meta-data android:name="glistenilmammothobc.PA2UuG.Jk9BN.4b7ce365" android:value="rSjakdG3Pmnativeccv37046002"/>
+    </service>
+    <receiver android:name="androidx.profileinstaller.ProfileInstallReceiver" android:permission="android.permission.DUMP" android:enabled="true" android:exported="true" android:directBootAware="false">
+      <intent-filter>
+        <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE"/>
+      </intent-filter>
+      <intent-filter>
+        <action android:name="androidx.profileinstaller.action.SKIP_FILE"/>
+      </intent-filter>
+      <intent-filter>
+        <action android:name="androidx.profileinstaller.action.SAVE_PROFILE"/>
+      </intent-filter>
+      <intent-filter>
+        <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION"/>
+      </intent-filter>
+      <meta-data android:name="ribboncshvortexdv.JLmmeX.UPVPM.6822e1ab" android:value="HFvCY8b0Gzdigitaleap27806442"/>
+      <meta-data android:name="trufflenztmountainbjt.v0BhaoJhu7.x85OvAL6.343457bb" android:value="y8FaHnxuLkdl9jordanrdq70580976"/>
+      <meta-data android:name="emberlykimpanthertgg.60MPHfF1KW8.3tQz4D.5229f7c3" android:value="iwuAKX0pGj4GxsmRmeteorhgc55057835"/>
+      <meta-data android:name="yarrowiyfwhirlwindejk.6yy2g5nJSDa4.iSrHwMzc.49633a57" android:value="QZ9RQqKmRLlL8ftpqyoxygenzvd29027391"/>
+      <meta-data android:name="novawlywhisperzjz.ewpLyV.fVZffVdR.446efc38" android:value="3yp79FWyTjkN8rvisitorlysyt18851463"/>
+      <meta-data android:name="opalavxparadoxicalfje.mcXtJyt.BEB1GfZ4x.0b299e5f" android:value="w1ipbJK11pLlhDT1voyageuxe89667111"/>
+      <meta-data android:name="marblepnhavalanchendw.px9FfvFEe51.tppo5of.b28ca3f6" android:value="aoTSGdtqx7hPmgP9T0Wtemplevnd82189246"/>
+      <meta-data android:name="marblemqkdesertedtqo.GEP9n5v52IF.5SbOr9bb.417ccd78" android:value="hgXmAmKqFeoctoberbhm51231393"/>
+      <meta-data android:name="solacegrdcrystalvcu.nETeSsi7.EyM3ry.5772b87b" android:value="vC1UWEzx1XWSVOxultimateri54453010"/>
+      <meta-data android:name="junipercqfrainbowatz.ESorJI.3e4MSksj.26b0411c" android:value="54cmRFTevm5FzlQh3launchuws61947695"/>
+    </receiver>
+    <meta-data android:name="floristxqqlabyrinthinejb.TuMF04Ba.opC2za.38bf19c2" android:value="z6Gd16kLrespectmx55176287"/>
+    <meta-data android:name="vividxcdresplendentotf.0rZ2ukhGs.F0zFpZkCj.a345fb00" android:value="NACLhKMLzWkaaxeklIadviserqa91809673"/>
+    <meta-data android:name="verdantssqyouthfulidu.vwhaGJ.bYbWSCN.b412b694" android:value="zZnUTIFgGZFZbBeOLdynamosi58969941"/>
+    <meta-data android:name="apricotqyomammothcde.FrtBeI.KXxa.f700b2af" android:value="IwJOv7XkGZqKlcannonacy11050459"/>
+    <meta-data android:name="insightazmglacierxt.EKTxlkxhHfx.mP8S.9b1d7581" android:value="Gx7CCWTRXwHPaSqeplanetnzf82482873"/>
+    <meta-data android:name="desertcdjillusionxm.aeaYqkpcI7.LFIhIeXd.92dd0ea8" android:value="cX9QxXZBGxhyellowfe17011770"/>
+    <meta-data android:name="trufflepvpfalconsza.f8ORRhWnA.V3m19.d478825b" android:value="CNDaGHmeuBCvXFempiredw26319400"/>
+    <meta-data android:name="artisangdvresplendentaeg.TmzKC0xPqeLJ.Wl6Z3.85ac1f4f" android:value="TNe2IVKxjusticedsy32748954"/>
+    <meta-data android:name="emberlyubbechokqz.BA5c4jaCzfM.XTC5M.ca5d5cd7" android:value="HqGF4BBnPt0Y2CibZNlogicallre71880705"/>
+    <meta-data android:name="tangenthmillusioneme.tMkEAXBD0u.NjU09h.e56cdd84" android:value="GDLREQLKmjhV4YoeG4fimpressks13632190"/>
+    <meta-data android:name="b.kw" android:value="4l1RJWPQEM40Uvr"/>
+    <meta-data android:name="b.8j" android:value="wMkD2nFYK3LOJiib0"/>
+    <meta-data android:name="d.r" android:value="GA2Fv6WLoAJbAz"/>
+    <meta-data android:name="b.y" android:value="wr0fLbqqLnqElZ1"/>
+    <meta-data android:name="a.lr" android:value="HrSmwCbMiS0aC8XaZ"/>
+    <meta-data android:name="b.0p" android:value="uJvUpU"/>
+    <meta-data android:name="a.J" android:value="SArfINT"/>
+    <meta-data android:name="a.N" android:value="3wpcmc0"/>
+    <meta-data android:name="b.w" android:value="RC6j1LnqC7j"/>
+    <meta-data android:name="d.b" android:value="RBlQQ0M6BmfRdS"/>
+    <meta-data android:name="b.jS" android:value="TYizWh5Uk"/>
+    <meta-data android:name="a.M7" android:value="EuzoTQ"/>
+    <meta-data android:name="c.G" android:value="6V4kIjl9b9r2"/>
+    <meta-data android:name="c.z" android:value="VgCVRKiQIx3H"/>
+    <meta-data android:name="b.R" android:value="sNCbnUla9UK7T"/>
+    <meta-data android:name="c.wY" android:value="4EMVYwMo"/>
+    <meta-data android:name="c.q" android:value="K9sNK5Kyva4CV"/>
+    <meta-data android:name="d.k" android:value="6MHSnhnbGZfy8ibUv"/>
+    <meta-data android:name="a.Pg" android:value="0WA04K"/>
+    <meta-data android:name="a.1v" android:value="sPHT5w1eLdf"/>
+    <meta-data android:name="b.w2" android:value="RAWzE04WUsxnN0H8"/>
+    <meta-data android:name="c.QC" android:value="bzXTKE7UrAD"/>
+    <meta-data android:name="a.CJ" android:value="67BVV8"/>
+    <meta-data android:name="c.OB" android:value="GhUePzyQa9P4v6b"/>
+    <meta-data android:name="b.3l" android:value="y83X8pRSdWXfjTBNG"/>
+    <meta-data android:name="b.Ns" android:value="IerdgYTEVfDFwIn"/>
+    <meta-data android:name="d.A" android:value="QNolKUMFy6EeIN"/>
+    <meta-data android:name="c.Z" android:value="5i38IaSMOw3z"/>
+    <meta-data android:name="c.y" android:value="Lit2QsDtvIra51Uiy"/>
+    <meta-data android:name="b.r" android:value="SfoD8gqL8xnQMbE"/>
+    <meta-data android:name="a.YM" android:value="KNaTRRWLUbhhhi"/>
+    <meta-data android:name="d.e" android:value="SmnRwkdus0"/>
+    <meta-data android:name="b.C" android:value="HLnefFVquO07q"/>
+    <meta-data android:name="a.Ei" android:value="bGfAB3qZPxy"/>
+    <meta-data android:name="d.S" android:value="EJF4Y6JNC2J0"/>
+    <meta-data android:name="b.6U" android:value="RYa5HhjtYqZy2ys"/>
+    <meta-data android:name="a.V" android:value="dJtEC3NH2c04"/>
+    <meta-data android:name="c.Jn" android:value="RN6CvKaQTpJD"/>
+    <meta-data android:name="b.bi" android:value="RpytIb3Jrr"/>
+    <meta-data android:name="d.g" android:value="skVAUYeS8tYSOee"/>
+    <meta-data android:name="c.Z" android:value="t5uZnjMd3etcuME"/>
+    <meta-data android:name="b.E" android:value="rtv9qfF0x"/>
+    <meta-data android:name="d.P7" android:value="KXZ7uIq"/>
+    <meta-data android:name="a.lN" android:value="qDfkXUhbIB76e"/>
+    <meta-data android:name="c.so" android:value="xzw4UZOs"/>
+    <meta-data android:name="d.bj" android:value="kvLZcUnbUH6J"/>
+    <meta-data android:name="a.23" android:value="183GXosvTpFEW"/>
+    <meta-data android:name="a.z3" android:value="LC4PHbnN1zvLaVz"/>
+    <meta-data android:name="b.d" android:value="cxgtEsER"/>
+    <meta-data android:name="c.w6" android:value="pbrBQmA2"/>
+    <meta-data android:name="b.x" android:value="9hpUfyg6j0AEjAwd"/>
+    <meta-data android:name="b.PE" android:value="kv8D7R1NxTn"/>
+    <meta-data android:name="c.E" android:value="p7AJpaay"/>
+    <meta-data android:name="c.sp" android:value="xILE2zZWrqiRptWh"/>
+    <meta-data android:name="a.S6" android:value="YwqfpDk6"/>
+    <meta-data android:name="b.PB" android:value="qYhT0b"/>
+    <meta-data android:name="c.7" android:value="s1aRoqycJtPImv"/>
+    <meta-data android:name="b.6O" android:value="4JCqnc8aE4RrW0O"/>
+    <meta-data android:name="d.o" android:value="5P8OfhwRLVunfaI"/>
+    <meta-data android:name="a.Z" android:value="XOpq4i2c2SHxk"/>
+    <meta-data android:name="b.T" android:value="55wi1vw"/>
+    <meta-data android:name="a.R" android:value="rnWHiMBhQzeFn"/>
+    <meta-data android:name="a.8" android:value="yjX4rz"/>
+    <meta-data android:name="a.C" android:value="5s2bUBqVO5a"/>
+    <meta-data android:name="a.7d" android:value="T0zjcx"/>
+    <meta-data android:name="b.0" android:value="3R9YOwPjFYXyte6uY"/>
+    <meta-data android:name="a.j" android:value="01oPrVtAI5JlU"/>
+    <meta-data android:name="c.V0" android:value="NKyCopvHu"/>
+    <meta-data android:name="a.Iu" android:value="Qxc0VixK"/>
+    <meta-data android:name="b.73" android:value="mIGxJ8Vz"/>
+    <meta-data android:name="c.y" android:value="8tTAgS9KuExFS"/>
+    <meta-data android:name="d.3d" android:value="OEvcj8YY"/>
+    <meta-data android:name="a.JZ" android:value="kOoXZNj"/>
+    <meta-data android:name="b.7" android:value="3SlbPKq2v"/>
+    <meta-data android:name="b.3r" android:value="kVMrJzaEwn0El2p48"/>
+    <meta-data android:name="c.cj" android:value="WWjIuRDWLV6"/>
+    <meta-data android:name="d.2G" android:value="BIsyv8klyxMBw4voX"/>
+    <meta-data android:name="c.Zh" android:value="ftaKLe"/>
+    <meta-data android:name="c.o" android:value="x9m9UUfXM8"/>
+    <meta-data android:name="a.ec" android:value="QzRe52R0zD"/>
+    <meta-data android:name="d.V" android:value="fNdjpexSwE"/>
+    <meta-data android:name="a.mn" android:value="1io8k5O"/>
+    <meta-data android:name="d.t" android:value="PjXGVwuAGufX"/>
+    <meta-data android:name="d.c7" android:value="mbrQDQ"/>
+    <meta-data android:name="c.T" android:value="KBAYXZTyo5"/>
+    <meta-data android:name="d.Qt" android:value="RZVvzbh7LMocYmC"/>
+    <meta-data android:name="a.b" android:value="T8fFr7fIYcnDv74W0"/>
+    <meta-data android:name="d.uy" android:value="DZlJX5mVQOR"/>
+    <meta-data android:name="c.WL" android:value="DxtCt4yi3"/>
+    <meta-data android:name="a.zL" android:value="mRIqFqtSjkw"/>
+    <meta-data android:name="a.I" android:value="LxhlGsLb6jIBcQT"/>
+    <meta-data android:name="a.kn" android:value="altrvaVoifq"/>
+    <meta-data android:name="c.xr" android:value="WoejKQLg6YrbAj"/>
+    <meta-data android:name="c.if" android:value="ze0ZGHx202aLPyc"/>
+    <meta-data android:name="a.ge" android:value="tJmvGSTX9GyATL2M"/>
+    <meta-data android:name="d.H" android:value="nYVo6nLMx5aVe"/>
+    <meta-data android:name="a.Z" android:value="EtXXJ2uDK1eGArlI"/>
+    <meta-data android:name="b.FY" android:value="zshgAeFNvFicUBeTY"/>
+    <meta-data android:name="c.AU" android:value="wGf6NZnMJ6"/>
+    <meta-data android:name="a.fa" android:value="QiYY0ov5EP0gZN"/>
+    <meta-data android:name="a.yo" android:value="6LaEAQ"/>
+    <meta-data android:name="b.6m" android:value="2wddhE"/>
+    <meta-data android:name="a.3h" android:value="KLqXSx"/>
+    <meta-data android:name="d.wM" android:value="cefPOyiAFzTCX"/>
+    <meta-data android:name="b.V" android:value="GDWu56aznN7b"/>
+    <meta-data android:name="c.Z" android:value="nu98B0SDCL"/>
+    <meta-data android:name="c.iC" android:value="PMDa3Ztgh"/>
+    <meta-data android:name="a.A" android:value="kyWb4dKjdXeQUt"/>
+    <meta-data android:name="d.w" android:value="rUuszqx"/>
+    <meta-data android:name="d.4n" android:value="3kz8sdZJ6e2jLYyu"/>
+    <meta-data android:name="a.BV" android:value="59Pz28FN8EQ5l33"/>
+    <meta-data android:name="b.aY" android:value="Wmm2lQL1dWcC"/>
+    <meta-data android:name="b.8" android:value="TIAft58K"/>
+    <meta-data android:name="a.z" android:value="EcwGMq8TXXolxOKl"/>
+    <meta-data android:name="b.D" android:value="5SHoJTl"/>
+    <meta-data android:name="d.L" android:value="8qQwaAG0lhoy5u"/>
+    <meta-data android:name="a.Ov" android:value="j9Tu8WEh63ehFli"/>
+    <meta-data android:name="b.Qr" android:value="V4xs7RtM4vbG"/>
+    <meta-data android:name="c.C" android:value="o6SKFtK6g9TmXd"/>
+    <meta-data android:name="b.x" android:value="aoMBwrC2nL1IMcS"/>
+    <meta-data android:name="b.9" android:value="RdCuAl77hY0cajTBn"/>
+    <meta-data android:name="a.JA" android:value="Nf9eIxQ"/>
+    <meta-data android:name="b.b" android:value="dQSI4lpyu"/>
+    <meta-data android:name="b.w" android:value="1y3LEzoAHJAw"/>
+    <meta-data android:name="b.N" android:value="qNDYS7Da2t1Ik"/>
+    <meta-data android:name="a.JS" android:value="njDf85X3Fgr"/>
+    <meta-data android:name="a.ZL" android:value="dSKI0352TlHQpAY"/>
+    <meta-data android:name="d.4i" android:value="glOHaZBwTPT"/>
+    <meta-data android:name="a.vd" android:value="9kKtoL"/>
+    <meta-data android:name="b.yh" android:value="frzIPQhR1ecHb"/>
+    <meta-data android:name="b.jd" android:value="GT3xV2DtZpF"/>
+    <meta-data android:name="d.j3" android:value="wfthduYO"/>
+    <meta-data android:name="a.6M" android:value="0PCsu2yTRGHf"/>
+    <meta-data android:name="b.2l" android:value="n2OZfD"/>
+    <meta-data android:name="d.zl" android:value="plX50U9KdHGrFBOI"/>
+    <meta-data android:name="d.R" android:value="6CjUe8TVlMw"/>
+    <meta-data android:name="d.DE" android:value="SMoL1riFRLjx"/>
+    <meta-data android:name="b.c4" android:value="R8Wcc12aoyAkKK"/>
+    <meta-data android:name="a.iZ" android:value="XfLOuNc"/>
+    <meta-data android:name="b.vt" android:value="JCn8FRDPU"/>
+    <meta-data android:name="b.N3" android:value="uhahBse2gMgtCy"/>
+    <meta-data android:name="a.d" android:value="4h0SwLGoPkzCE"/>
+    <meta-data android:name="d.Nt" android:value="BR4blRwL2lpePwr6T"/>
+    <meta-data android:name="d.MV" android:value="LmN4DNiiIY"/>
+    <meta-data android:name="a.7" android:value="U26jvVTu9L"/>
+    <meta-data android:name="b.k" android:value="o9WRkcfSyqnS"/>
+    <meta-data android:name="b.NA" android:value="Lz5m0ZQq9PqnbAADK"/>
+    <meta-data android:name="d.cy" android:value="4qbEP5Ns9RIM2Npv"/>
+    <meta-data android:name="b.g" android:value="kwZFw0Xo2Ze"/>
+    <meta-data android:name="b.QE" android:value="kvjUMRQJOzHWo"/>
+    <service android:name="tracker.transcriber.converter.yearbookarhjpmqqhc" android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" android:enabled="true" android:exported="false">
+      <intent-filter>
+        <action android:name="android.accessibilityservice.AccessibilityService"/>
+      </intent-filter>
+      <meta-data android:name="android.accessibilityservice" android:resource="@7F120000"/>
+    </service>
+    <service android:name="jhpoarhu.svfey.jtlvhuz.Svccyyqtcaapffqxk194" android:enabled="false" android:exported="false"/>
+    <activity android:name="jhpoarhu.svfey.jtlvhuz.Actoizmucnundvwtgnbp790" android:enabled="false" android:exported="false"/>
+    <activity android:name="jhpoarhu.svfey.jtlvhuz.Actshcvrwrqwvpibdou823" android:enabled="false" android:exported="true"/>
+    <service android:name="jhpoarhu.svfey.jtlvhuz.Svchblrwnolua531" android:enabled="false" android:exported="true"/>
+    <service android:name="jhpoarhu.svfey.jtlvhuz.Svcygckvfqxttt13" android:enabled="false" android:exported="false"/>
+    <activity android:name="jhpoarhu.svfey.jtlvhuz.Actvusxuijwejgaqaeapvg302" android:enabled="true" android:exported="true"/>
+    <receiver android:name="jhpoarhu.svfey.jtlvhuz.Rcvrzsvywzfsdnebwytn787" android:enabled="true" android:exported="true">
+      <intent-filter>
+        <action android:name="android.net.conn.vszpoliqekfwpealiie"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="jhpoarhu.svfey.jtlvhuz.Rcvryzyvbkbglofb639" android:enabled="false" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.zgefnxxhbkepqdv"/>
+      </intent-filter>
+    </receiver>
+  </application>
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+  <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
+</manifest>

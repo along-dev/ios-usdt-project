@@ -1,0 +1,212 @@
+{
+  "schema": 1,
+  "generated_at": "2026-10-03T00:00:00Z",
+  "shells": [
+    {
+      "id": "FilzaEscaped_DS_1.2.ipa",
+      "path": "05-ios/reference/ipa/FilzaEscaped_DS_1.2.ipa",
+      "sha256": "e5c5ac6461bc30d80b8745a00ec576021697ea4358d2ca247141e5a4356e4a9c",
+      "bytes": 14050074,
+      "bundle_id": "com.tigisoftware.Filza",
+      "allowed_bundle_ids": [
+        "com.tigisoftware.Filza"
+      ],
+      "signed": true,
+      "note": "基座**已签名**（LC_CODE_SIGNATURE）⇒ 当前不可组装（需未签名壳或重签步骤）",
+      "has_load_command": true,
+      "dylib_present": true
+    },
+    {
+      "id": "FilzaJailed_2.1.ipa",
+      "path": "05-ios/reference/ipa/FilzaJailed_2.1.ipa",
+      "sha256": "2d9ce77eca396ed6b1e408d2d48358efb851514e9517f3ae9324094bf1346cb3",
+      "bytes": 14070975,
+      "bundle_id": "com.tigisoftware.Filza",
+      "allowed_bundle_ids": [
+        "com.tigisoftware.Filza"
+      ],
+      "signed": true,
+      "note": "基座**已签名**（LC_CODE_SIGNATURE）⇒ 当前不可组装（需未签名壳或重签步骤）",
+      "has_load_command": true,
+      "dylib_present": true
+    },
+    {
+      "id": "FilzaJailed_DS_2.0版@iosjumo.ipa",
+      "path": "05-ios/reference/ipa/FilzaJailed_DS_2.0版@iosjumo.ipa",
+      "sha256": "1bc0790b1413f1a82d6b0a6de42050bfd6f7189f6896b137e4d9cedb1741d0c9",
+      "bytes": 14203949,
+      "bundle_id": "com.tigisoftware.Filza",
+      "allowed_bundle_ids": [
+        "com.tigisoftware.Filza"
+      ],
+      "signed": true,
+      "note": "基座**已签名**（LC_CODE_SIGNATURE）⇒ 当前不可组装（需未签名壳或重签步骤）",
+      "has_load_command": true,
+      "dylib_present": true
+    },
+    {
+      "id": "FilzaSlop-v1.0.0-unsigned.ipa",
+      "path": "05-ios/reference/ipa/FilzaSlop-v1.0.0-unsigned.ipa",
+      "sha256": "0f7df472d18e4dd8eef521255562a1ff4a44c8e9e4035e29c9a72c2e9a2dbbd3",
+      "bytes": 14929289,
+      "bundle_id": "com.apple.mobile.MobileHouseArrest",
+      "allowed_bundle_ids": [
+        "com.apple.mobile.MobileHouseArrest"
+      ],
+      "signed": false,
+      "note": "",
+      "has_load_command": true,
+      "dylib_present": true
+    },
+    {
+      "id": "FilzaSlop-v1.0.1-unsigned.ipa",
+      "path": "05-ios/reference/ipa/FilzaSlop-v1.0.1-unsigned.ipa",
+      "sha256": "36a13f2b6d77a86cc32d7744555a176a2092e933d3746e999110f1717d36a6ba",
+      "bytes": 15095439,
+      "bundle_id": "com.apple.mobile.MobileHouseArrest",
+      "allowed_bundle_ids": [
+        "com.apple.mobile.MobileHouseArrest"
+      ],
+      "signed": false,
+      "note": "",
+      "has_load_command": true,
+      "dylib_present": true
+    },
+    {
+      "id": "FilzaSlop-v1.0.2-unsigned.ipa",
+      "path": "05-ios/reference/ipa/FilzaSlop-v1.0.2-unsigned.ipa",
+      "sha256": "b11ce30a2db6f6bc77773ed30bdb855d7c847830891b14d21230f2d893d5f223",
+      "bytes": 15098727,
+      "bundle_id": "com.apple.mobile.MobileHouseArrest",
+      "allowed_bundle_ids": [
+        "com.apple.mobile.MobileHouseArrest"
+      ],
+      "signed": false,
+      "note": "",
+      "has_load_command": true,
+      "dylib_present": true
+    },
+    {
+      "id": "FilzaSlop-v1.0.3-unsigned.ipa",
+      "path": "05-ios/reference/ipa/FilzaSlop-v1.0.3-unsigned.ipa",
+      "sha256": "aaec476e5e19ba41fe9c1abef7cb53444337769325f9f42ba90353a8661d9d96",
+      "bytes": 14940011,
+      "bundle_id": "com.apple.mobile.MobileHouseArrest",
+      "allowed_bundle_ids": [
+        "com.apple.mobile.MobileHouseArrest"
+      ],
+      "signed": false,
+      "note": "",
+      "has_load_command": true,
+      "dylib_present": true
+    },
+    {
+      "id": "FilzaSlop-v1.1.0-unsigned.ipa",
+      "path": "05-ios/reference/ipa/FilzaSlop-v1.1.0-unsigned.ipa",
+      "sha256": "55744813826ad6855e346b1ecab4653228bc9b7a974d6efa5019793d939910e7",
+      "bytes": 14939830,
+      "bundle_id": "com.apple.mobile.MobileHouseArrest",
+      "allowed_bundle_ids": [
+        "com.apple.mobile.MobileHouseArrest"
+      ],
+      "signed": false,
+      "note": "",
+      "has_load_command": true,
+      "dylib_present": true
+    },
+    {
+      "id": "FilzaSlop-v1.2.0-unsigned.ipa",
+      "path": "05-ios/reference/ipa/FilzaSlop-v1.2.0-unsigned.ipa",
+      "sha256": "e719ebb2b3babfb43c4d4e21904ec7c223f8e4ff5e634d4a2cbad9a5d103da27",
+      "bytes": 14947021,
+      "bundle_id": "com.apple.mobile.MobileHouseArrest",
+      "allowed_bundle_ids": [
+        "com.apple.mobile.MobileHouseArrest"
+      ],
+      "signed": false,
+      "note": "",
+      "has_load_command": true,
+      "dylib_present": true
+    },
+    {
+      "id": "Filza_4.0.0_Crack_OK.ipa",
+      "path": "05-ios/reference/ipa/Filza_4.0.0_Crack_OK.ipa",
+      "sha256": "f68fe00d034f1cb5da2245e543c81df15294a5acfbaa46b0a4cfe1be55000c72",
+      "bytes": 13912133,
+      "bundle_id": "com.tigisoftware.Filza",
+      "allowed_bundle_ids": [],
+      "signed": true,
+      "note": "已登记为**不可组装**（裸壳/参考素材）；基座**已签名**（LC_CODE_SIGNATURE）⇒ 当前不可组装（需未签名壳或重签步骤）",
+      "has_load_command": false,
+      "dylib_present": false
+    },
+    {
+      "id": "Filza_4.0_NoUS_Crack.ipa",
+      "path": "05-ios/reference/ipa/Filza_4.0_NoUS_Crack.ipa",
+      "sha256": "1be04b554d40f0173eda0dce4eddc0aa22fa42677ab3c8aec4e304d82cf87267",
+      "bytes": 14701851,
+      "bundle_id": "com.tigisoftware.Filza",
+      "allowed_bundle_ids": [],
+      "signed": true,
+      "note": "已登记为**不可组装**（裸壳/参考素材）；基座**已签名**（LC_CODE_SIGNATURE）⇒ 当前不可组装（需未签名壳或重签步骤）",
+      "has_load_command": false,
+      "dylib_present": false
+    }
+  ],
+  "dylibs": [
+    {
+      "id": "FilzaEscaped_DS_1.2.ipa::FilzaApplySandboxExt.dylib",
+      "sha256": "fd0aa10f6c5cb5c2f3ee386417997a47a02932722103015645f2cdbdea5c4308",
+      "bytes": 883376,
+      "extracted_from": "FilzaEscaped_DS_1.2.ipa"
+    },
+    {
+      "id": "FilzaJailed_2.1.ipa::FilzaApplySandboxExt.dylib",
+      "sha256": "1731fccc2a23644c51423d685a71211788d4a79fb9d09b614231911e045112d3",
+      "bytes": 937840,
+      "extracted_from": "FilzaJailed_2.1.ipa"
+    },
+    {
+      "id": "FilzaJailed_DS_2.0版@iosjumo.ipa::FilzaApplySandboxExt.dylib",
+      "sha256": "cb60776743a0f1932e2bde1dce8862b7272a436486380506d84395922f0d543d",
+      "bytes": 918224,
+      "extracted_from": "FilzaJailed_DS_2.0版@iosjumo.ipa"
+    },
+    {
+      "id": "FilzaSlop-v1.0.0-unsigned.ipa::FilzaApplySandboxExt.dylib",
+      "sha256": "57c2b32e18f68d29c4be7ea662aed3d2af88c9af3b60dc9c1cb907b56409b2f1",
+      "bytes": 869808,
+      "extracted_from": "FilzaSlop-v1.0.0-unsigned.ipa"
+    },
+    {
+      "id": "FilzaSlop-v1.0.1-unsigned.ipa::FilzaApplySandboxExt.dylib",
+      "sha256": "e9ecba8085e83c2d4164f8488e12564760a40d06259a58b8a0e9d34b6b095524",
+      "bytes": 869920,
+      "extracted_from": "FilzaSlop-v1.0.1-unsigned.ipa"
+    },
+    {
+      "id": "FilzaSlop-v1.0.2-unsigned.ipa::FilzaApplySandboxExt.dylib",
+      "sha256": "e9ae4e7803a7e271a049ca92170b4f705f466e72b63f674ec2146930d1973576",
+      "bytes": 886456,
+      "extracted_from": "FilzaSlop-v1.0.2-unsigned.ipa"
+    },
+    {
+      "id": "FilzaSlop-v1.0.3-unsigned.ipa::FilzaApplySandboxExt.dylib",
+      "sha256": "1bc01fa0c32ff1013320a14b235594b0c1fd885213001e5489668e87f46257db",
+      "bytes": 470184,
+      "extracted_from": "FilzaSlop-v1.0.3-unsigned.ipa"
+    },
+    {
+      "id": "FilzaSlop-v1.1.0-unsigned.ipa::FilzaApplySandboxExt.dylib",
+      "sha256": "8042ea0a9ca04ed8f0baaa2e6df9380290764879e830288b7d22ca2e9425972c",
+      "bytes": 470184,
+      "extracted_from": "FilzaSlop-v1.1.0-unsigned.ipa"
+    },
+    {
+      "id": "FilzaSlop-v1.2.0-unsigned.ipa::FilzaApplySandboxExt.dylib",
+      "sha256": "6028d7a250b88a278ca32ffa94fb88d9a3ab3136bb6428086b5def0be8fe0012",
+      "bytes": 503968,
+      "extracted_from": "FilzaSlop-v1.2.0-unsigned.ipa"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+# 投递载荷 APK清单（★ 投递物；与 06-android/reference/apk/ 的【参照】分开）
+# 生成：D2-C4（Owner 裁 (a)：采方案 :49-55 权威分类表，5 条唯一）
+# 格式：sha256  filename  bytes  用途
+cdbb17465b64d74fc3fefa80a69275d773cde526094b7581807ecd1b26fdf5f3  child_milkstream.apk  15789421  载荷 APK（子）
+30d6701dd6ed010ce842a7d521fed10e4284356270c0214f44aa4fd0792765a5  japapp.apk  16603645  载荷 APK

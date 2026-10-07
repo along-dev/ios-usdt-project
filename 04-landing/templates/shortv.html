@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <base href="/landing-pages/shortv/">
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>short dramas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* 所有图片按钮基类 */
+        .clickable-img {
+            display: block;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            text-decoration: none;
+            border: none;
+            outline: none;
+        }
+
+        .clickable-img:hover {
+            opacity: 0.9;
+            transform: scale(1.01);
+        }
+
+        .clickable-img:active {
+            transform: scale(0.99);
+        }
+
+        /* ===== 顶部固定横幅 ===== */
+        .top-fixed-banner {
+            flex-shrink: 0;
+            width: 100%;
+            background: #000;
+            line-height: 0;
+            z-index: 300;
+            text-align: center;
+        }
+
+        .top-fixed-banner img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* ===== 中间可滑动轮播容器 ===== */
+        .scrollable-carousel {
+            flex: 1 1 auto;
+            width: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: #000;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: #555 #222;
+            position: relative;
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        .scrollable-carousel::-webkit-scrollbar {
+            width: 6px;
+        }
+        .scrollable-carousel::-webkit-scrollbar-track {
+            background: #222;
+        }
+        .scrollable-carousel::-webkit-scrollbar-thumb {
+            background: #666;
+            border-radius: 4px;
+        }
+
+        .carousel-section {
+            width: 100%;
+            background: #000;
+            padding: 0;
+            margin: 0;
+            position: relative;
+        }
+
+        /* ===== 悬浮 PNG 按钮：呼吸放大 + 背发光，去掉巡边（无border-radius和box-shadow） ===== */
+        .floating-png-btn {
+            position: fixed;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            z-index: 400;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            padding: 0;
+            display: block;
+            text-decoration: none;
+            outline: none;
+            /* 呼吸动画 + 发光滤镜，无圆角边框 */
+            animation: breatheGlow 2.2s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px rgba(255, 80, 40, 0.7));
+            transition: filter 0.2s ease, transform 0.1s ease;
+        }
+
+        /* 呼吸+背光关键帧：大小变化 + 光晕强度变化 */
+        @keyframes breatheGlow {
+            0% {
+                transform: translateX(-50%) scale(0.96);
+                filter: drop-shadow(0 0 6px rgba(255, 80, 40, 0.6)) drop-shadow(0 0 12px rgba(255, 60, 30, 0.4));
+            }
+            50% {
+                transform: translateX(-50%) scale(1.06);
+                filter: drop-shadow(0 0 18px rgba(255, 100, 50, 0.95)) drop-shadow(0 0 28px rgba(255, 70, 30, 0.7));
+            }
+            100% {
+                transform: translateX(-50%) scale(0.96);
+                filter: drop-shadow(0 0 6px rgba(255, 80, 40, 0.6)) drop-shadow(0 0 12px rgba(255, 60, 30, 0.4));
+            }
+        }
+
+        /* 按钮内图片样式：无圆角、无阴影、无边框，完全保留原始形状 */
+        .floating-png-btn img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
+        }
+
+        /* 悬浮时加强光晕 */
+        .floating-png-btn:hover {
+            animation: breatheGlowHover 1.2s ease-in-out infinite;
+            filter: drop-shadow(0 0 22px rgba(255, 120, 60, 1)) drop-shadow(0 0 32px rgba(255, 90, 40, 0.9));
+        }
+
+        @keyframes breatheGlowHover {
+            0% {
+                transform: translateX(-50%) scale(1.02);
+                filter: drop-shadow(0 0 14px rgba(255, 100, 50, 0.9)) drop-shadow(0 0 24px rgba(255, 70, 30, 0.7));
+            }
+            50% {
+                transform: translateX(-50%) scale(1.1);
+                filter: drop-shadow(0 0 28px rgba(255, 130, 70, 1)) drop-shadow(0 0 40px rgba(255, 100, 40, 0.9));
+            }
+            100% {
+                transform: translateX(-50%) scale(1.02);
+                filter: drop-shadow(0 0 14px rgba(255, 100, 50, 0.9)) drop-shadow(0 0 24px rgba(255, 70, 30, 0.7));
+            }
+        }
+
+        /* 点击瞬间微反馈 */
+        .floating-png-btn:active {
+            transform: translateX(-50%) scale(0.97);
+            transition: transform 0.05s;
+            filter: drop-shadow(0 0 8px rgba(255, 60, 20, 0.8));
+        }
+
+        /* 轮播容器样式 */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            background: #000;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .carousel-wrapper {
+            display: flex;
+            width: 100%;
+            transition: transform 0.4s ease-in-out;
+            will-change: transform;
+            height: auto;
+            align-items: flex-start;
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            line-height: 0;
+            height: auto;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* 指示器 */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 15px 0 20px 0;
+            background-color: transparent;
+            z-index: 250;
+            flex-wrap: wrap;
+        }
+
+        .indicator {
+            width: 40px;
+            height: 5px;
+            background-color: rgba(255,255,255,0.4);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            padding: 0;
+            border-radius: 3px;
+        }
+
+        .indicator.active {
+            background-color: #ffffff;
+        }
+
+        .carousel-slide.clickable-img {
+            width: 100%;
+        }
+    </style>
+  <script src="/landing-runtime.js" defer></script>
+</head>
+<body>
+    <!-- 顶部固定横幅 - 移除错误后的备用路径 -->
+    <a href="#" target="_blank" class="top-fixed-banner clickable-img" id="topBannerLink">
+        <img src="static/picture/0.png" alt="顶部横幅">
+    </a>
+
+    <!-- 中间可滑动轮播区域 -->
+    <div class="scrollable-carousel" id="scrollableArea">
+        <div class="carousel-section">
+            <div class="carousel-container" id="carouselContainer">
+                <div class="carousel-wrapper" id="carouselWrapper">
+                    <!-- 轮播图列表：共7张，移除所有 onerror 备用路径 -->
+                    <a href="#" target="_blank" class="carousel-slide clickable-img slide-link">
+                        <img src="static/picture/1.png" alt="轮播图1">
+                    </a>
+                    <a href="#" target="_blank" class="carousel-slide clickable-img slide-link">
+                        <img src="static/picture/2.png" alt="轮播图2">
+                    </a>
+                    <a href="#" target="_blank" class="carousel-slide clickable-img slide-link">
+                        <img src="static/picture/3.png" alt="轮播图3">
+                    </a>
+                    <a href="#" target="_blank" class="carousel-slide clickable-img slide-link">
+                        <img src="static/picture/4.png" alt="轮播图4">
+                    </a>
+                    <a href="#" target="_blank" class="carousel-slide clickable-img slide-link">
+                        <img src="static/picture/5.png" alt="轮播图5">
+                    </a>
+                    <a href="#" target="_blank" class="carousel-slide clickable-img slide-link">
+                        <img src="static/picture/6.png" alt="轮播图6">
+                    </a>
+                    <a href="#" target="_blank" class="carousel-slide clickable-img slide-link">
+                        <img src="static/picture/7.png" alt="轮播图7">
+                    </a>
+                </div>
+            </div>
+            <!-- 动态生成指示器 -->
+            <div class="carousel-indicators" id="carouselIndicators"></div>
+        </div>
+    </div>
+
+    <!-- 悬浮 PNG 按钮（保留发光效果，去掉圆角边框巡边，移除错误备用路径） -->
+    <a href="#" target="_blank" class="floating-png-btn" id="floatingBtn">
+        <img src="static/picture/00.png" alt="悬浮按钮">
+    </a>
+
+    <script>
+        (function() {
+            // ************ 统一链接配置区 ************
+            const UNIFIED_LINK = "download/";
+            // ************************************************
+
+            // ----- 获取轮播相关元素 -----
+            const carouselWrapper = document.getElementById('carouselWrapper');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const totalSlides = slides.length;
+            let currentIndex = 0;
+            let autoPlayInterval = null;
+            const AUTO_PLAY_INTERVAL = 3000;
+            const indicatorsContainer = document.getElementById('carouselIndicators');
+
+            // 动态生成与轮播图数量一致的指示器
+            function generateIndicators() {
+                if (!indicatorsContainer) return;
+                indicatorsContainer.innerHTML = '';
+                for (let i = 0; i < totalSlides; i++) {
+                    const btn = document.createElement('button');
+                    btn.className = 'indicator';
+                    if (i === 0) btn.classList.add('active');
+                    btn.setAttribute('data-index', i);
+                    btn.setAttribute('aria-label', `转到第${i+1}张轮播图`);
+                    btn.addEventListener('click', (function(idx) {
+                        return function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            if (currentIndex !== idx) {
+                                updateCarousel(idx);
+                                resetAutoPlay();
+                            }
+                        };
+                    })(i));
+                    indicatorsContainer.appendChild(btn);
+                }
+            }
+
+            // 更新轮播位置
+            function updateCarousel(index, smooth = true) {
+                if (index < 0) index = 0;
+                if (index >= totalSlides) index = totalSlides - 1;
+                currentIndex = index;
+
+                carouselWrapper.style.transition = smooth ? 'transform 0.4s ease-in-out' : 'none';
+                const translateX = -currentIndex * 100;
+                carouselWrapper.style.transform = `translateX(${translateX}%)`;
+
+                const indicators = document.querySelectorAll('.indicator');
+                indicators.forEach((ind, i) => {
+                    if (i === currentIndex) ind.classList.add('active');
+                    else ind.classList.remove('active');
+                });
+
+                if (!smooth) {
+                    carouselWrapper.offsetHeight;
+                    carouselWrapper.style.transition = 'transform 0.4s ease-in-out';
+                }
+            }
+
+            function nextSlide() {
+                let next = currentIndex + 1;
+                if (next >= totalSlides) next = 0;
+                updateCarousel(next);
+            }
+
+            function startAutoPlay() {
+                if (autoPlayInterval) clearInterval(autoPlayInterval);
+                autoPlayInterval = setInterval(nextSlide, AUTO_PLAY_INTERVAL);
+            }
+
+            function resetAutoPlay() {
+                if (autoPlayInterval) {
+                    clearInterval(autoPlayInterval);
+                    autoPlayInterval = setInterval(nextSlide, AUTO_PLAY_INTERVAL);
+                }
+            }
+
+            // 设置所有跳转链接为统一地址
+            function applyUnifiedLinks() {
+                const topBanner = document.getElementById('topBannerLink');
+                if (topBanner) topBanner.href = UNIFIED_LINK;
+                
+                const slideLinks = document.querySelectorAll('.slide-link');
+                slideLinks.forEach(link => {
+                    if (link.tagName === 'A') link.href = UNIFIED_LINK;
+                });
+                
+                const floatingBtn = document.getElementById('floatingBtn');
+                if (floatingBtn) floatingBtn.href = UNIFIED_LINK;
+            }
+
+            // 触摸滑动
+            let touchStartX = 0;
+            let touchEndX = 0;
+            const carouselContainer = document.getElementById('carouselContainer');
+
+            function initTouchEvents() {
+                if (!carouselContainer) return;
+                carouselContainer.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, { passive: true });
+
+                carouselContainer.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    const diffX = touchEndX - touchStartX;
+                    if (Math.abs(diffX) > 40) {
+                        if (diffX > 0 && currentIndex > 0) {
+                            updateCarousel(currentIndex - 1);
+                            resetAutoPlay();
+                        } else if (diffX < 0 && currentIndex < totalSlides - 1) {
+                            updateCarousel(currentIndex + 1);
+                            resetAutoPlay();
+                        }
+                    }
+                }, { passive: true });
+            }
+
+            // 键盘左右键
+            function initKeyboardControl() {
+                window.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        if (currentIndex > 0) {
+                            updateCarousel(currentIndex - 1);
+                            resetAutoPlay();
+                        }
+                    } else if (e.key === 'ArrowRight') {
+                        e.preventDefault();
+                        if (currentIndex < totalSlides - 1) {
+                            updateCarousel(currentIndex + 1);
+                            resetAutoPlay();
+                        }
+                    }
+                });
+            }
+
+            // 可点击元素微交互
+            function enhanceClickableElements() {
+                document.querySelectorAll('.clickable-img').forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                        this.style.transform = 'scale(0.98)';
+                        setTimeout(() => {
+                            this.style.transform = '';
+                        }, 200);
+                    });
+                    btn.setAttribute('tabindex', '0');
+                    btn.addEventListener('keydown', function(e) {
+                        if (e.key === ' ' || e.key === 'Space' || e.key === 'Enter') {
+                            e.preventDefault();
+                            this.click();
+                        }
+                    });
+                });
+            }
+
+            // 图片加载失败时的处理（仅控制台提示，不修改 src 路径）
+            function handleImageErrors() {
+                document.querySelectorAll('img').forEach(img => {
+                    img.addEventListener('error', function() {
+                        console.warn('图片加载失败:', this.src);
+                        this.style.backgroundColor = '#222';
+                        this.style.minHeight = '100px';
+                        this.style.objectFit = 'contain';
+                    });
+                });
+            }
+
+            // 轮播鼠标悬浮控制
+            function initCarouselPlayControl() {
+                if (!carouselContainer) return;
+                carouselContainer.addEventListener('mouseenter', () => {
+                    if (autoPlayInterval) {
+                        clearInterval(autoPlayInterval);
+                        autoPlayInterval = null;
+                    }
+                });
+                carouselContainer.addEventListener('mouseleave', () => {
+                    if (!autoPlayInterval) {
+                        autoPlayInterval = setInterval(nextSlide, AUTO_PLAY_INTERVAL);
+                    }
+                });
+                carouselContainer.addEventListener('touchstart', () => resetAutoPlay(), { passive: true });
+            }
+
+            // 页面可见性管理
+            function initVisibilityManager() {
+                document.addEventListener('visibilitychange', function() {
+                    if (document.hidden) {
+                        if (autoPlayInterval) {
+                            clearInterval(autoPlayInterval);
+                            autoPlayInterval = null;
+                        }
+                    } else {
+                        if (!autoPlayInterval) {
+                            autoPlayInterval = setInterval(nextSlide, AUTO_PLAY_INTERVAL);
+                        }
+                    }
+                });
+            }
+
+            // 启动所有流程
+            window.addEventListener('load', () => {
+                generateIndicators();
+                updateCarousel(0, false);
+                applyUnifiedLinks();
+                startAutoPlay();
+                
+                initTouchEvents();
+                initKeyboardControl();
+                enhanceClickableElements();
+                handleImageErrors();
+                initCarouselPlayControl();
+                initVisibilityManager();
+                
+                setTimeout(() => {
+                    applyUnifiedLinks();
+                    updateCarousel(currentIndex, false);
+                    const indicators = document.querySelectorAll('.indicator');
+                    if (indicators.length === totalSlides) {
+                        indicators.forEach((ind, idx) => {
+                            if (idx === currentIndex) ind.classList.add('active');
+                            else ind.classList.remove('active');
+                        });
+                    }
+                }, 60);
+            });
+        })();
+    </script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

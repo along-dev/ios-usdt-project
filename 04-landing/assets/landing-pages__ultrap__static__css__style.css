@@ -1,0 +1,250 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+    padding-bottom: 60px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 8px 15px;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.download-btn {
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.download-btn:hover {
+    background-color: #f40612;
+}
+
+.carousel {
+    margin-top: 64px;
+    width: 100vw;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.indicator-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.indicator-dot.active {
+    background-color: #e50914;
+    width: 20px;
+    border-radius: 4px;
+}
+
+.content-row {
+    margin: 20px 15px;
+}
+
+.row-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.row-title {
+    font-size: 18px;
+    color: #fff;
+}
+
+.more-btn {
+    color: #fff;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.more-btn:hover {
+    color: #e50914;
+}
+
+.scroll-container {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 8px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.content-card {
+    flex: 0 0 auto;
+    width: calc(33.33vw - 20px);
+    max-width: 280px;
+    min-width: 140px;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.content-card:hover {
+    transform: scale(1.03);
+}
+
+.card-img {
+    width: 100%;
+    height: calc(33.33vw * 1.5);
+    max-height: 420px;
+    min-height: 210px;
+    object-fit: cover;
+}
+
+.bottom-ad {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    border-top: 1px solid #333;
+}
+
+.ad-content {
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.4;
+    padding-right: 10px;
+}
+
+.close-ad-btn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-ad-btn:hover {
+    color: #e50914;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
+@media (min-width: 768px) {
+    .logo {
+        width: 60px;
+        height: 60px;
+    }
+    .download-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+    .carousel {
+        height: 300px;
+    }
+    .indicator-dot {
+        width: 10px;
+        height: 10px;
+    }
+    .indicator-dot.active {
+        width: 25px;
+    }
+    .row-title {
+        font-size: 22px;
+    }
+    .more-btn {
+        font-size: 18px;
+    }
+    .content-row {
+        margin: 25px 20px;
+    }
+    .scroll-container {
+        gap: 15px;
+    }
+    .ad-content {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .carousel {
+        height: 400px;
+    }
+}

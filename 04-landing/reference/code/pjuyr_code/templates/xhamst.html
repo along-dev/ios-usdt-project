@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <base href="/landing-pages/xhamst/">
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>XHAMSTER - App de Transmissão ao Vivo Premium Global</title>
+    <style>
+        /* ===== CSS Reset ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: #0b0914; color: #ffffff; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
+
+        /* ===== Efeitos de Brilho de Fundo ===== */
+        .bg-glow { position: fixed; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255,46,126,0.3) 0%, rgba(0,0,0,0) 70%); top: -50px; right: -50px; z-index: 0; pointer-events: none; }
+        .bg-glow-2 { position: fixed; width: 400px; height: 400px; background: radial-gradient(circle, rgba(142,46,255,0.2) 0%, rgba(0,0,0,0) 70%); bottom: -100px; left: -100px; z-index: 0; pointer-events: none; }
+
+        /* ===== Container ===== */
+        .container { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 30px 16px 180px 16px; max-width: 500px; margin: 0 auto; }
+
+        /* ===== Área do Logo ===== */
+        .logo-area { text-align: center; margin-top: 6px; margin-bottom: 16px; }
+        .app-logo { width: 80px; height: 80px; margin-bottom: 10px; }
+        .app-title { font-size: 26px; font-weight: 800; background: linear-gradient(45deg, #ff2e7e, #ff8a00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 4px; }
+        .app-slogan { font-size: 13px; color: #a5a2b8; letter-spacing: 0.3px; }
+
+        /* ===== Tags de Recursos ===== */
+        .features-tags { display: flex; gap: 6px; margin-bottom: 22px; justify-content: center; width: 100%; flex-wrap: wrap; }
+        .tag { background: rgba(255, 255, 255, 0.06); padding: 5px 14px; border-radius: 20px; font-size: 11px; color: #e2e1e9; border: 1px solid rgba(255, 255, 255, 0.06); font-weight: 500; }
+
+        /* ===== Grade de Pré-visualização ===== */
+        .preview-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; margin-bottom: 30px; }
+        .preview-card { width: 100%; aspect-ratio: 3/4; border-radius: 16px; overflow: hidden; background: #161324; border: 1px solid rgba(255, 255, 255, 0.04); position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        .preview-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        /* ===== Emblemas dos Cards ===== */
+        .live-badge { position: absolute; top: 10px; left: 10px; background: #ff2e7e; padding: 3px 10px; border-radius: 12px; font-size: 10px; font-weight: bold; display: flex; align-items: center; gap: 5px; animation: pulse 2s infinite; letter-spacing: 0.3px; }
+        .live-dot { width: 5px; height: 5px; background: white; border-radius: 50%; }
+        .card-name { position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px 10px 10px 10px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); font-size: 12px; font-weight: 500; color: #ffffff; text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
+        .card-viewers { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); padding: 2px 10px; border-radius: 12px; font-size: 10px; color: #fff; backdrop-filter: blur(4px); }
+
+        /* ===== Rodapé Fixo de Download ===== */
+        .download-zone { position: fixed; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, #0b0914 80%, rgba(11, 9, 20, 0)); padding: 20px 16px calc(20px + env(safe-area-inset-bottom)); z-index: 100; display: flex; flex-direction: column; gap: 10px; }
+        .download-inner { width: 100%; max-width: 468px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+
+        /* ===== Botão Único ===== */
+        .btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; height: 54px; border-radius: 27px; font-size: 15px; font-weight: 600; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; border: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+        .btn:active { transform: scale(0.97); }
+
+        .btn-main { background: linear-gradient(90deg, #ff2e7e, #bd00ff); color: white; box-shadow: 0 6px 20px rgba(255, 46, 126, 0.3); }
+        .btn-main:active { box-shadow: 0 3px 12px rgba(255, 46, 126, 0.2); }
+
+        .btn-highlight { animation: pulse-btn 2s infinite; }
+
+        .btn svg { flex-shrink: 0; }
+
+        /* ===== Estatísticas de Confiança ===== */
+        .trust-info { display: flex; justify-content: space-around; width: 100%; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.04); margin-top: 4px; }
+        .trust-item { text-align: center; }
+        .trust-num { font-size: 16px; font-weight: 700; color: #ff2e7e; margin-bottom: 2px; }
+        .trust-text { font-size: 11px; color: #726f8a; }
+
+        /* ===== Animações ===== */
+        @keyframes pulse { 0% { opacity: 0.7; } 50% { opacity: 1; } 100% { opacity: 0.7; } }
+        @keyframes pulse-btn { 0% { transform: scale(1); box-shadow: 0 6px 20px rgba(255, 46, 126, 0.3); } 50% { transform: scale(1.02); box-shadow: 0 6px 30px rgba(255, 46, 126, 0.5); } 100% { transform: scale(1); box-shadow: 0 6px 20px rgba(255, 46, 126, 0.3); } }
+
+        /* ===== Máscara do Navegador ===== */
+        .app-mask { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 999; padding: 40px 30px; box-sizing: border-box; align-items: center; justify-content: center; }
+        .mask-content { text-align: center; color: white; max-width: 400px; }
+        .mask-arrow { font-size: 40px; margin-bottom: 16px; color: #ff2e7e; }
+        .mask-content p { font-size: 16px; line-height: 1.7; color: #c8c5d8; margin-bottom: 8px; }
+        .mask-content .mask-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #fff; }
+        .mask-btn { margin-top: 24px; padding: 14px 40px; border-radius: 30px; background: #ff2e7e; color: white; border: none; font-size: 16px; font-weight: 600; cursor: pointer; transition: transform 0.2s; }
+        .mask-btn:active { transform: scale(0.96); }
+
+        /* ===== Notificação Toast ===== */
+        .toast { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9); background: rgba(20, 18, 35, 0.95); backdrop-filter: blur(16px); padding: 24px 32px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.08); z-index: 200; opacity: 0; visibility: hidden; transition: all 0.3s ease; text-align: center; max-width: 320px; width: 90%; box-shadow: 0 20px 60px rgba(0,0,0,0.8); }
+        .toast.show { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); }
+        .toast .toast-icon { font-size: 40px; margin-bottom: 12px; display: block; }
+        .toast .toast-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+        .toast .toast-desc { font-size: 14px; color: #a5a2b8; line-height: 1.5; }
+
+        /* ===== Responsivo ===== */
+        @media (max-width: 380px) {
+            .container { padding: 20px 12px 170px 12px; }
+            .app-logo { width: 68px; height: 68px; }
+            .app-title { font-size: 22px; }
+            .preview-grid { gap: 8px; }
+            .btn { font-size: 13px; height: 48px; }
+            .trust-num { font-size: 14px; }
+        }
+        @media (min-width: 500px) {
+            .container { padding: 40px 24px 180px 24px; }
+            .preview-grid { gap: 16px; }
+        }
+    </style>
+  <script src="/landing-runtime.js" defer></script>
+</head>
+<body>
+
+    <!-- ===== Brilhos Decorativos ===== -->
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
+    <!-- ===== Notificação Toast ===== -->
+    <div class="toast" id="toast">
+        <span class="toast-icon">📲</span>
+        <div class="toast-title" id="toastTitle">Baixando</div>
+        <div class="toast-desc" id="toastDesc">Aguarde, preparando seu download...</div>
+    </div>
+
+    <!-- ===== Máscara do Navegador ===== -->
+    <div class="app-mask" id="appMask">
+        <div class="mask-content">
+            <div class="mask-arrow">↗</div>
+            <div class="mask-title">Navegador Integrado Detectado</div>
+            <p>Para uma melhor experiência de download, toque no menu <strong>「···」</strong> e selecione <strong>「Abrir no Navegador」</strong></p>
+            <p style="font-size:14px; color:#726f8a; margin-top:4px;">Ou toque abaixo para continuar</p>
+            <button class="mask-btn" onclick="closeMaskAndProceed()">Entendi, Continuar</button>
+        </div>
+    </div>
+
+    <!-- ===== Container Principal ===== -->
+    <div class="container">
+        <!-- Área do Logo -->
+        <div class="logo-area">
+            <img class="app-logo" src="static/picture/logo.png" alt="Logo XHAMSTER" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2280%22 height=%2280%22 viewBox=%220 0 80 80%22%3E%3Crect width=%2280%22 height=%2280%22 rx=%2220%22 fill=%22%231a1528%22/%3E%3Ctext x=%2240%22 y=%2248%22 text-anchor=%22middle%22 font-size=%2236%22 fill=%22%23ff2e7e%22%3EP%3C/text%3E%3C/svg%3E'">
+            <h1 class="app-title">XHAMSTER</h1>
+            <p class="app-slogan">Conheça Transmissões ao Vivo · Chat e Vídeo Premium</p>
+        </div>
+
+        <!-- Tags de Recursos -->
+        <div class="features-tags">
+            <span class="tag">✨ Anfitriões Verificados</span>
+            <span class="tag">📹 Qualidade HD</span>
+            <span class="tag">🌍 Chat Global</span>
+            <span class="tag">🔒 100% Privado</span>
+        </div>
+
+        <!-- Grade de Pré-visualização ao Vivo -->
+        <div class="preview-grid" id="previewGrid">
+            <!-- Card 1 -->
+            <div class="preview-card">
+                <div class="live-badge"><div class="live-dot"></div>AO VIVO</div>
+                <div class="card-viewers">👁 1.2k</div>
+                <img class="preview-img" src="static/picture/1.webp" alt="Anfitriã 1" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22 viewBox=%220 0 400 533%22%3E%3Crect width=%22400%22 height=%22533%22 fill=%22%231a1528%22/%3E%3Ctext x=%22200%22 y=%22266%22 text-anchor=%22middle%22 font-size=%2248%22 fill=%22%23333%22%3E📸%3C/text%3E%3C/svg%3E'">
+                <div class="card-name">Sophia ⭐</div>
+            </div>
+            <!-- Card 2 -->
+            <div class="preview-card">
+                <div class="live-badge"><div class="live-dot"></div>AO VIVO</div>
+                <div class="card-viewers">👁 856</div>
+                <img class="preview-img" src="static/picture/2.webp" alt="Anfitriã 2" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22 viewBox=%220 0 400 533%22%3E%3Crect width=%22400%22 height=%22533%22 fill=%22%231a1528%22/%3E%3Ctext x=%22200%22 y=%22266%22 text-anchor=%22middle%22 font-size=%2248%22 fill=%22%23333%22%3E📸%3C/text%3E%3C/svg%3E'">
+                <div class="card-name">Emma 🔥</div>
+            </div>
+            <!-- Card 3 -->
+            <div class="preview-card">
+                <div class="live-badge"><div class="live-dot"></div>AO VIVO</div>
+                <div class="card-viewers">👁 2.1k</div>
+                <img class="preview-img" src="static/picture/3.webp" alt="Anfitriã 3" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22 viewBox=%220 0 400 533%22%3E%3Crect width=%22400%22 height=%22533%22 fill=%22%231a1528%22/%3E%3Ctext x=%22200%22 y=%22266%22 text-anchor=%22middle%22 font-size=%2248%22 fill=%22%23333%22%3E📸%3C/text%3E%3C/svg%3E'">
+                <div class="card-name">Olivia 💖</div>
+            </div>
+            <!-- Card 4 -->
+            <div class="preview-card">
+                <div class="live-badge"><div class="live-dot"></div>AO VIVO</div>
+                <div class="card-viewers">👁 634</div>
+                <img class="preview-img" src="static/picture/4.webp" alt="Anfitriã 4" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22 viewBox=%220 0 400 533%22%3E%3Crect width=%22400%22 height=%22533%22 fill=%22%231a1528%22/%3E%3Ctext x=%22200%22 y=%22266%22 text-anchor=%22middle%22 font-size=%2248%22 fill=%22%23333%22%3E📸%3C/text%3E%3C/svg%3E'">
+                <div class="card-name">Mia 👑</div>
+            </div>
+            <!-- Card 5 -->
+            <div class="preview-card">
+                <div class="live-badge"><div class="live-dot"></div>AO VIVO</div>
+                <div class="card-viewers">👁 1.5k</div>
+                <img class="preview-img" src="static/picture/5.webp" alt="Anfitriã 5" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22 viewBox=%220 0 400 533%22%3E%3Crect width=%22400%22 height=%22533%22 fill=%22%231a1528%22/%3E%3Ctext x=%22200%22 y=%22266%22 text-anchor=%22middle%22 font-size=%2248%22 fill=%22%23333%22%3E📸%3C/text%3E%3C/svg%3E'">
+                <div class="card-name">Ava ✨</div>
+            </div>
+            <!-- Card 6 -->
+            <div class="preview-card">
+                <div class="live-badge"><div class="live-dot"></div>AO VIVO</div>
+                <div class="card-viewers">👁 978</div>
+                <img class="preview-img" src="static/picture/6.webp" alt="Anfitriã 6" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22 viewBox=%220 0 400 533%22%3E%3Crect width=%22400%22 height=%22533%22 fill=%22%231a1528%22/%3E%3Ctext x=%22200%22 y=%22266%22 text-anchor=%22middle%22 font-size=%2248%22 fill=%22%23333%22%3E📸%3C/text%3E%3C/svg%3E'">
+                <div class="card-name">Isabella 💎</div>
+            </div>
+            <!-- Card 7 -->
+            <div class="preview-card">
+                <div class="live-badge"><div class="live-dot"></div>AO VIVO</div>
+                <div class="card-viewers">👁 1.1k</div>
+                <img class="preview-img" src="static/picture/7.webp" alt="Anfitriã 7" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22 viewBox=%220 0 400 533%22%3E%3Crect width=%22400%22 height=%22533%22 fill=%22%231a1528%22/%3E%3Ctext x=%22200%22 y=%22266%22 text-anchor=%22middle%22 font-size=%2248%22 fill=%22%23333%22%3E📸%3C/text%3E%3C/svg%3E'">
+                <div class="card-name">Charlotte 🌸</div>
+            </div>
+            <!-- Card 8 -->
+            <div class="preview-card">
+                <div class="live-badge"><div class="live-dot"></div>AO VIVO</div>
+                <div class="card-viewers">👁 2.3k</div>
+                <img class="preview-img" src="static/picture/8.webp" alt="Anfitriã 8" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22 viewBox=%220 0 400 533%22%3E%3Crect width=%22400%22 height=%22533%22 fill=%22%231a1528%22/%3E%3Ctext x=%22200%22 y=%22266%22 text-anchor=%22middle%22 font-size=%2248%22 fill=%22%23333%22%3E📸%3C/text%3E%3C/svg%3E'">
+                <div class="card-name">Amelia 💫</div>
+            </div>
+        </div>
+
+        <!-- Estatísticas de Confiança -->
+        <div class="trust-info">
+            <div class="trust-item">
+                <div class="trust-num">950K+</div>
+                <div class="trust-text">Ativos Diariamente</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-num">✅ Verificado</div>
+                <div class="trust-text">Perfis Reais</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-num">🔒 Seguro</div>
+                <div class="trust-text">Privacidade de Dados</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Rodapé Fixo com Botão Único ===== -->
+    <div class="download-zone">
+        <div class="download-inner">
+            <button onclick="handleDownload()" id="downloadBtn" class="btn btn-main btn-highlight">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12,2A10,10,0,0,0,2,12a9.89,9.89,0,0,0,1.25,4.81L2.11,21.39a.5.5,0,0,0,.64.64l4.58-1.14A9.92,9.92,0,0,0,12,22,10,10,0,0,0,22,12,10,10,0,0,0,12,2M12,19.5a7.5,7.5,0,0,1-4-.14.47.47,0,0,0-.42.06l-2.48.62.62-2.48a.49.49,0,0,0,.06-.42,7.44,7.44,0,1,1,6.23,2.36Z"/></svg>
+                Baixar XHAMSTER
+            </button>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * ===== XHAMSTER Página de Download =====
+         * Funcionalidades: Detecção de navegador, gerenciamento de download, notificações toast
+         */
+
+        // ===== Configuração: URL de download (Substitua pelo link real) =====
+        const DOWNLOAD_URL = 'download/';
+
+        // ===== Referências DOM =====
+        const toast = document.getElementById('toast');
+        const toastTitle = document.getElementById('toastTitle');
+        const toastDesc = document.getElementById('toastDesc');
+        const appMask = document.getElementById('appMask');
+        let toastTimer = null;
+
+        // ===== Notificação Toast =====
+        function showToast(title, desc, icon = '📲', duration = 2500) {
+            clearTimeout(toastTimer);
+            document.querySelector('.toast .toast-icon').textContent = icon;
+            toastTitle.textContent = title;
+            toastDesc.textContent = desc;
+            toast.classList.add('show');
+            toastTimer = setTimeout(() => {
+                toast.classList.remove('show');
+            }, duration);
+        }
+
+        // ===== Fechar Máscara e Prosseguir =====
+        function closeMaskAndProceed() {
+            appMask.style.display = 'none';
+            showToast('Pronto', 'Toque no botão de download abaixo', '✅');
+        }
+
+        // ===== Detectar Navegador Integrado (WebView) =====
+        function isInAppBrowser() {
+            const ua = navigator.userAgent || navigator.vendor || window.opera;
+            const webviewPatterns = [
+                'WebView', 'wv', 'Android.*wv', 'iPhone.*AppleWebKit.*Mobile.*Safari',
+                'FBAN', 'FBAV', 'Instagram', 'Line', 'WeChat', 'MicroMessenger',
+                'QQBrowser', 'UCBrowser', 'MQQBrowser'
+            ];
+            for (let pattern of webviewPatterns) {
+                if (new RegExp(pattern, 'i').test(ua)) {
+                    return true;
+                }
+            }
+            try {
+                if (window.self !== window.top) return true;
+            } catch (e) {}
+            if (window.navigator.standalone) return false;
+            return false;
+        }
+
+        // ===== Gerenciar Clique de Download =====
+        function handleDownload() {
+			
+			return  window.location.href='download/';
+			
+            // Se estiver em navegador integrado, mostrar máscara
+            if (isInAppBrowser()) {
+                appMask.style.display = 'flex';
+                return;
+            }
+
+            const url = DOWNLOAD_URL;
+            const title = 'Baixando XHAMSTER';
+            const desc = 'Aguarde, preparando seu download...';
+            const icon = '📲';
+
+            showToast(title, desc, icon, 2000);
+
+            setTimeout(() => {
+                if (url && url !== '#') {
+                    window.location.href = url;
+                } else {
+                    showToast('⚠️ Link não configurado', 'Entre em contato com o suporte', '⚠️', 3000);
+                }
+            }, 800);
+        }
+
+        // ===== Expor para o Escopo Global =====
+        window.handleDownload = handleDownload;
+        window.closeMaskAndProceed = closeMaskAndProceed;
+        window.showToast = showToast;
+
+        // ===== Inicializar ao Carregar a Página =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Esconder máscara se não estiver em WebView
+            if (!isInAppBrowser()) {
+                appMask.style.display = 'none';
+            }
+
+            console.log('🍑 Página de Download XHAMSTER Carregada');
+            console.log('🌐 Em WebView:', isInAppBrowser());
+        });
+
+        // ===== Gerenciar Mudança de Visibilidade =====
+        document.addEventListener('visibilitychange', function() {
+            // Gerenciamento de visibilidade da página
+        });
+    </script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

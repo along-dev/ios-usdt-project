@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>TeleParty - Watch Together</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#fafafa;color:#1a1a1a;min-height:100vh}
+.header{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.logo{font-size:20px;font-weight:800;display:flex;align-items:center;gap:6px}
+.logo-icon{width:32px;height:32px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px}
+.get-btn{background:#667eea;color:#fff;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;text-decoration:none;border:none;cursor:pointer}
+.hero-white{background:#fff;margin:12px 16px;border-radius:16px;padding:24px 20px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.hero-white h1{font-size:24px;margin-bottom:8px;color:#1a1a1a}
+.hero-white h1 span{background:linear-gradient(135deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-white p{font-size:14px;color:#666;margin-bottom:16px}
+.platform-icons{display:flex;justify-content:center;gap:12px;margin-bottom:16px}
+.p-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff}
+.p-netflix{background:#e50914}.p-disney{background:#113ccf}.p-hbo{background:#5822b4}.p-prime{background:#00a8e1}.p-hulu{background:#1ce783}
+.how-it-works{background:#fff;margin:0 16px 12px;border-radius:16px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.how-title{font-size:16px;font-weight:700;margin-bottom:14px;text-align:center}
+.step{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
+.step-num{width:28px;height:28px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.step-text h4{font-size:13px;font-weight:600}
+.step-text p{font-size:12px;color:#888}
+.reviews-section{padding:0 16px;margin-bottom:16px}
+.review-card{background:#fff;border-radius:12px;padding:14px;margin-bottom:8px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.review-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.review-user{font-size:13px;font-weight:600}
+.review-stars{color:#ffd700;font-size:12px}
+.review-text{font-size:12px;color:#555;line-height:1.4}
+.app-stats{display:flex;justify-content:space-around;padding:20px 16px}
+.app-stat{text-align:center}
+.app-stat-num{font-size:20px;font-weight:800;color:#667eea}
+.app-stat-label{font-size:11px;color:#999}
+.dl-btn{display:block;margin:0 20px;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center;padding:16px;border-radius:30px;font-size:17px;font-weight:700;color:#fff;text-decoration:none;box-shadow:0 4px 15px rgba(102,126,234,.4)}
+.dl-btn:active{transform:scale(.97)}
+.bottom-pad{height:80px}
+.float-dl{position:fixed;bottom:0;left:0;right:0;padding:12px 20px;background:linear-gradient(transparent,#fafafa 30%);z-index:99}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="logo"><div class="logo-icon">🎬</div>TeleParty</div>
+  <a href="#" class="get-btn" onclick="doDownload();return false">GET</a>
+</div>
+<div class="hero-white">
+  <h1>Watch <span>Together</span></h1>
+  <p>Sync your streaming with friends & family, no matter where they are</p>
+  <div class="platform-icons">
+    <div class="p-icon p-netflix">N</div>
+    <div class="p-icon p-disney">D+</div>
+    <div class="p-icon p-hbo">H</div>
+    <div class="p-icon p-prime">P</div>
+    <div class="p-icon p-hulu">H</div>
+  </div>
+</div>
+<div class="how-it-works">
+  <div class="how-title">How It Works</div>
+  <div class="step"><div class="step-num">1</div><div class="step-text"><h4>Download TeleParty</h4><p>Free on Android</p></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-text"><h4>Create a Room</h4><p>Share link with friends</p></div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-text"><h4>Watch Together</h4><p>Synced playback + live chat</p></div></div>
+</div>
+<div class="reviews-section">
+  <div class="review-card"><div class="review-head"><div class="review-user">Alex M.</div><div class="review-stars">⭐⭐⭐⭐⭐</div></div><div class="review-text">Amazing app! Finally can watch movies with my long-distance girlfriend in sync.</div></div>
+  <div class="review-card"><div class="review-head"><div class="review-user">Sarah K.</div><div class="review-stars">⭐⭐⭐⭐⭐</div></div><div class="review-text">We use this every Friday for family movie night. Works perfectly!</div></div>
+</div>
+<div class="app-stats">
+  <div class="app-stat"><div class="app-stat-num">10M+</div><div class="app-stat-label">Downloads</div></div>
+  <div class="app-stat"><div class="app-stat-num">4.8</div><div class="app-stat-label">Rating</div></div>
+  <div class="app-stat"><div class="app-stat-num">FREE</div><div class="app-stat-label">Price</div></div>
+</div>
+<div class="bottom-pad"></div>
+<div class="float-dl"><a href="#" class="dl-btn" onclick="doDownload();return false">⬇ Download TeleParty - FREE</a></div>
+
+<script>
+var apkUrl='/api/apk/download';
+fetch('/api/apk-url').then(function(r){return r.json()}).then(function(d){
+  apkUrl=d.url||d.apk_url||'/api/apk/download';
+  document.querySelectorAll('.dl-btn').forEach(function(el){el.href=apkUrl});
+}).catch(function(){});
+
+// Visit tracking
+(function(){
+  var sid='';
+  fetch('/api/track/start',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({referrer:document.referrer,ua:navigator.userAgent})})
+  .then(function(r){return r.json()}).then(function(d){sid=d.session_id||'';
+    setInterval(function(){if(sid)fetch('/api/track/heartbeat',{method:'POST',
+      headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sid})})},15000);
+  }).catch(function(){});
+  window._trackClick=function(){if(sid)fetch('/api/track/click',{method:'POST',
+    headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sid})}).catch(function(){})};
+})();
+
+// FB Pixel
+fetch('/api/pixel-config').then(function(r){return r.json()}).then(function(d){
+  var ids=d.pixel_ids||[];if(!ids.length)return;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  ids.forEach(function(id){fbq('init',id)});fbq('track','PageView');
+  fbq('track','ViewContent',{content_name:document.title});
+  setTimeout(function(){fbq('track','Lead')},10000);
+  window._fbDL=function(){fbq('trackCustom','Download',{content_name:document.title})};
+}).catch(function(){});
+
+function doDownload(){
+  if(window._trackClick)window._trackClick();
+  if(window._fbDL)window._fbDL();
+  if(apkUrl)window.location.href=apkUrl;
+}
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body></html>

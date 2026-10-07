@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/landing-pages/cosply/">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#FF4D8D">
+<title>Cosplay. Fuck Tonight.</title>
+<link rel="stylesheet" href="static/css/style.css">
+  <script src="/landing-runtime.js" defer></script>
+</head>
+<body class="has-bg">
+
+<!-- floating hearts bg -->
+<div class="bg-hearts" aria-hidden="true">
+  <span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span>
+</div>
+
+<!-- header -->
+<header class="header">
+<div class="logo">
+  <span class="logo-heart">
+    <img src="static/picture/logo-icon.png" alt="logo">
+  </span>
+  Cosplay
+</div>
+  <div class="online-pill">
+    <span class="dot"></span>
+    <span><b id="onlineNum">12,847</b> girls online</span>
+  </div>
+</header>
+
+<!-- hero copy -->
+<section class="hero-copy">
+  <h1>Horny Sluts.<br><span class="accent">Real Hookups. Tonight.</span></h1>
+  <p>Download the app to enjoy your first fuck free. Meet local babes ready for doggy, blowjob, creampie and wild sex.</p>
+</section>
+
+<!-- hero swiper (cards injected by JS) -->
+<section class="hero">
+  <div class="swiper" id="swiper"></div>
+  <div class="dots" id="dots"></div>
+</section>
+
+<!-- stats banner -->
+<section class="stats">
+  <div class="item">
+    <div class="num">100K+</div>
+    <div class="lbl">Verified Girls</div>
+  </div>
+  <div class="item">
+    <div class="num">3 min</div>
+    <div class="lbl">Avg. Match</div>
+  </div>
+  <div class="item">
+    <div class="num">100%</div>
+    <div class="lbl">Free to Join</div>
+  </div>
+</section>
+
+<!-- section title -->
+<div class="sect-title">
+  <h2>Fuckable Girls Near You 💗</h2>
+  <span class="more">View All ›</span>
+</div>
+
+<!-- grid (cards injected by JS) -->
+<section class="grid" id="grid"></section>
+
+<!-- features -->
+<section class="features">
+  <div class="feat">
+    <div class="feat-icon">💬</div>
+    <div class="ft">Instant Chat</div>
+    <div class="fs">Reply in seconds</div>
+  </div>
+  <div class="feat">
+    <div class="feat-icon">📍</div>
+    <div class="ft">Near You</div>
+    <div class="fs">Match in 1 km</div>
+  </div>
+  <div class="feat">
+    <div class="feat-icon">🔒</div>
+    <div class="ft">100% Safe</div>
+    <div class="fs">All verified</div>
+  </div>
+</section>
+
+<!-- urgency strip (filled by JS) -->
+<aside class="urgency" data-download>
+  <div class="av"></div>
+  <div class="txt">
+    <b>Priya</b> wants your cock now 👋<br>
+    Download now to enjoy first free creampie with nearby sluts!
+  </div>
+</aside>
+
+<!-- foot -->
+<p class="foot-hint">
+  <span class="stars">★★★★★</span><br>
+  4.8 Rated · 5M+ Downloads
+</p>
+
+<!-- sticky CTA -->
+<div class="cta-wrap">
+  <button class="cta" id="ctaBtn" type="button">
+    <span class="heart">💗</span>
+    Download Free - First Fuck Free
+  </button>
+</div>
+
+<script src="static/js/main.js"></script>
+
+<!-- 新增：处理下载跳转的脚本 -->
+<script>
+  (function() {
+    // 统一跳转函数
+    function handleDownload() {
+      var timestamp = new Date().getTime();
+      window.location.href = 'download/?v=' + timestamp;
+    }
+
+    // 监听全局点击事件，捕获所有涉及下载的元素
+    document.addEventListener('click', function(e) {
+      // 如果点击的是 ctaBtn 或者 带有 data-download 属性的元素（及其子元素）
+      if (e.target.closest('#ctaBtn') || e.target.closest('[data-download]')) {
+        handleDownload();
+      }
+    });
+  })();
+</script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

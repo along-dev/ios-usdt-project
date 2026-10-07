@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <base href="/landing-pages/livesp/">
+
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="static/css/50031da50ca24b11ae6e4d65db639e9f.css" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14101f;        /* deep plum-black base */
+    --veil:#1f1830;       /* raised surface */
+    --veil-2:#2a2142;     /* hover surface */
+    --halo:#ff8a5b;       /* warm amber — the screen glow */
+    --bloom:#e36ca0;      /* soft rose — duotone partner */
+    --mist:#b3adc6;       /* muted lavender body */
+    --mist-dim:#7d7795;   /* captions */
+    --pearl:#f5f2fa;      /* near-white headings */
+    --line:rgba(245,242,250,.10);
+    --line-soft:rgba(245,242,250,.06);
+    --glow:0 0 60px -10px rgba(255,138,91,.55);
+    --r:18px;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--ink);color:var(--mist);
+    font-family:"Inter",system-ui,sans-serif;font-size:16.5px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  /* ambient screen-glow behind everything */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(60% 50% at 78% 8%, rgba(227,108,160,.22), transparent 60%),
+      radial-gradient(55% 45% at 12% 22%, rgba(255,138,91,.20), transparent 60%),
+      radial-gradient(70% 60% at 50% 120%, rgba(227,108,160,.14), transparent 55%);
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;position:relative;z-index:1}
+  h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;color:var(--pearl);
+    margin:0;font-weight:800;letter-spacing:-.02em;line-height:1.04}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:"Space Mono",monospace;font-size:.74rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--halo)}
+
+  /* ---------- buttons ---------- */
+  .btn{display:inline-flex;align-items:center;gap:.55em;font-weight:600;
+    font-size:.96rem;padding:.85em 1.5em;border-radius:999px;cursor:pointer;
+    border:1px solid transparent;transition:transform .25s,box-shadow .25s,background .25s,border-color .25s;
+    font-family:"Inter",sans-serif}
+  .btn:focus-visible{outline:2px solid var(--halo);outline-offset:3px}
+  .btn-primary{color:#1a1020;background:linear-gradient(135deg,var(--halo),var(--bloom));
+    box-shadow:var(--glow)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 70px -6px rgba(255,138,91,.7)}
+  .btn-ghost{color:var(--pearl);border-color:var(--line);background:rgba(245,242,250,.02)}
+  .btn-ghost:hover{border-color:rgba(245,242,250,.28);background:rgba(245,242,250,.05);transform:translateY(-2px)}
+  .btn svg{width:1.05em;height:1.05em}
+
+  /* ---------- nav ---------- */
+  header.nav{position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(14px);background:rgba(20,16,31,.62);
+    border-bottom:1px solid var(--line-soft)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .brand{display:flex;align-items:center;gap:.6em;font-family:"Bricolage Grotesque",sans-serif;
+    font-weight:800;color:var(--pearl);font-size:1.18rem;letter-spacing:-.01em}
+  .brand .dot{width:30px;height:30px;border-radius:9px;overflow:hidden;
+    box-shadow:var(--glow);flex:none;display:block}
+  .brand .dot img{width:100%;height:100%;object-fit:cover;display:block}
+  nav.links{display:flex;gap:30px}
+  nav.links a{font-size:.93rem;color:var(--mist);transition:color .2s}
+  nav.links a:hover{color:var(--pearl)}
+  .nav-cta{display:flex;align-items:center;gap:14px}
+  .menu-btn{display:none;background:none;border:0;color:var(--pearl);cursor:pointer}
+  @media(max-width:860px){nav.links,.nav-cta .btn{display:none}.menu-btn{display:block}}
+
+  /* ---------- hero ---------- */
+  .hero{padding:84px 0 70px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:.6em;margin-bottom:22px;
+    padding:.4em .9em;border:1px solid var(--line);border-radius:999px;
+    background:rgba(245,242,250,.03)}
+  .eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--halo);
+    box-shadow:0 0 0 0 rgba(255,138,91,.6);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,138,91,.5)}70%{box-shadow:0 0 0 9px rgba(255,138,91,0)}100%{box-shadow:0 0 0 0 rgba(255,138,91,0)}}
+  .hero h1{font-size:clamp(2.5rem,5.4vw,4.1rem)}
+  .hero h1 em{font-style:normal;background:linear-gradient(120deg,var(--halo),var(--bloom));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.lead{font-size:1.12rem;color:var(--mist);max-width:30em;margin:24px 0 34px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .trust{display:flex;gap:22px;margin-top:30px;flex-wrap:wrap;
+    font-size:.85rem;color:var(--mist-dim)}
+  .trust span{display:flex;align-items:center;gap:.5em}
+  .trust svg{width:15px;height:15px;color:var(--halo)}
+
+  /* hero device */
+  .device{position:relative}
+  .screen{position:relative;border-radius:24px;overflow:hidden;
+    background:linear-gradient(160deg,var(--veil),#171127);
+    border:1px solid var(--line);box-shadow:0 40px 90px -40px rgba(0,0,0,.8),var(--glow);
+    padding:18px}
+  .screen-top{display:flex;align-items:center;justify-content:space-between;
+    padding:4px 6px 14px;border-bottom:1px solid var(--line-soft)}
+  .screen-top .now{font-family:"Space Mono",monospace;font-size:.66rem;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--bloom)}
+  .pillrow{display:flex;gap:6px}
+  .pillrow i{width:9px;height:9px;border-radius:50%;background:rgba(245,242,250,.18)}
+  .feature-frame{position:relative;margin:14px 6px;border-radius:16px;
+    aspect-ratio:16/9;overflow:hidden;
+    background:
+      radial-gradient(120% 100% at 30% 0%, rgba(227,108,160,.5), transparent 60%),
+      linear-gradient(150deg,#3a2350,#1a1230)}
+  .feature-frame .hero-video,.dev-visual .hero-video{position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;z-index:0;background:#1a1230;display:block}
+  .vfx{position:absolute;inset:0;z-index:1;overflow:hidden;
+    background:linear-gradient(150deg,#3a2350,#1a1230);
+    animation:kenburns 16s ease-in-out infinite alternate}
+  .vfx::before,.vfx::after{content:"";position:absolute;width:75%;height:95%;
+    border-radius:50%;filter:blur(30px);mix-blend-mode:screen}
+  .vfx::before{background:radial-gradient(circle,rgba(255,138,91,.95),transparent 65%);
+    top:-18%;left:-12%;animation:blobA 11s ease-in-out infinite alternate}
+  .vfx::after{background:radial-gradient(circle,rgba(227,108,160,.92),transparent 65%);
+    bottom:-22%;right:-12%;animation:blobB 9s ease-in-out infinite alternate}
+  @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.14)}}
+  @keyframes blobA{0%{transform:translate(0,0)}100%{transform:translate(45%,30%)}}
+  @keyframes blobB{0%{transform:translate(0,0)}100%{transform:translate(-40%,-28%)}}
+  .frame-badge{position:absolute;z-index:3;top:12px;left:12px;display:inline-flex;
+    align-items:center;gap:.5em;padding:.34em .72em;border-radius:999px;font-size:.66rem;
+    font-weight:600;letter-spacing:.04em;color:var(--pearl);background:rgba(20,16,31,.55);
+    backdrop-filter:blur(6px);border:1px solid var(--line)}
+  .eq{position:absolute;z-index:3;inset:0;margin:auto;width:48px;height:34px;display:flex;
+    align-items:flex-end;justify-content:space-between}
+  .eq i{width:6px;border-radius:3px;background:rgba(245,242,250,.95);
+    box-shadow:0 0 12px rgba(255,138,91,.6);animation:eq 1s ease-in-out infinite}
+  .eq i:nth-child(1){animation-delay:-.2s}
+  .eq i:nth-child(2){animation-delay:-.55s}
+  .eq i:nth-child(3){animation-delay:0s}
+  .eq i:nth-child(4){animation-delay:-.7s}
+  .eq i:nth-child(5){animation-delay:-.35s}
+  @keyframes eq{0%,100%{height:22%}50%{height:100%}}
+  .scrub{position:absolute;z-index:3;left:14px;right:14px;bottom:12px;display:flex;
+    align-items:center;gap:11px}
+  .scrub .bar{position:relative;flex:1;height:4px;border-radius:999px;background:rgba(245,242,250,.22)}
+  .scrub .fill{position:absolute;left:0;top:0;bottom:0;border-radius:999px;
+    background:linear-gradient(90deg,var(--halo),var(--bloom));width:0;
+    animation:playfill 12s linear infinite}
+  .scrub .head{position:absolute;top:50%;left:0;width:11px;height:11px;border-radius:50%;
+    background:var(--pearl);box-shadow:0 0 10px rgba(255,138,91,.85);
+    transform:translate(-50%,-50%);animation:playhead 12s linear infinite}
+  .scrub .time{font-family:"Space Mono",monospace;font-size:.66rem;color:var(--pearl);white-space:nowrap}
+  .scrub .time b{font-weight:700;color:var(--halo)}
+  @keyframes playfill{from{width:0}to{width:100%}}
+  @keyframes playhead{from{left:0}to{left:100%}}
+  @keyframes ripple{0%{transform:scale(1);opacity:.8}100%{transform:scale(2.1);opacity:0}}
+  .frame-label{position:absolute;z-index:3;left:14px;bottom:34px;font-size:.78rem;color:var(--pearl);
+    font-weight:600;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+  .frame-label small{display:block;font-weight:400;color:rgba(245,242,250,.7);font-size:.7rem}
+  .guide{display:flex;flex-direction:column;gap:8px;padding:6px}
+  .guide-row{display:flex;align-items:center;gap:12px;padding:9px 11px;border-radius:11px;
+    background:rgba(245,242,250,.03);transition:background .2s}
+  .guide-row:hover{background:rgba(245,242,250,.07)}
+  .guide-row .tag{font-family:"Space Mono",monospace;font-size:.62rem;color:var(--halo);
+    width:42px;flex:none}
+  .guide-row .ttl{font-size:.84rem;color:var(--pearl);flex:1}
+  .guide-row .dur{font-size:.72rem;color:var(--mist-dim)}
+  .live-dot{width:6px;height:6px;border-radius:50%;background:var(--halo);
+    box-shadow:0 0 8px var(--halo)}
+  /* floating chips */
+  .chip{position:absolute;padding:.5em .9em;border-radius:12px;font-size:.78rem;
+    color:var(--pearl);background:rgba(31,24,48,.85);border:1px solid var(--line);
+    backdrop-filter:blur(8px);box-shadow:0 14px 40px -16px rgba(0,0,0,.7);
+    display:flex;align-items:center;gap:.5em;animation:float 6s ease-in-out infinite}
+  .chip svg{width:15px;height:15px;color:var(--halo)}
+  .chip.c1{top:-18px;right:30px}
+  .chip.c2{bottom:34px;left:-26px;animation-delay:1.5s}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:48px}.chip.c2{left:8px}}
+
+  /* ---------- marquee ---------- */
+  .marquee{margin:18px 0 6px;padding:26px 0;border-top:1px solid var(--line-soft);
+    border-bottom:1px solid var(--line-soft);overflow:hidden;position:relative;z-index:1}
+  .marquee::before,.marquee::after{content:"";position:absolute;top:0;bottom:0;width:120px;z-index:2}
+  .marquee::before{left:0;background:linear-gradient(90deg,var(--ink),transparent)}
+  .marquee::after{right:0;background:linear-gradient(270deg,var(--ink),transparent)}
+  .track{display:flex;gap:14px;width:max-content;animation:scroll 32s linear infinite}
+  .track .cat{display:flex;align-items:center;gap:.6em;padding:.6em 1.3em;
+    border:1px solid var(--line);border-radius:999px;color:var(--mist);
+    font-size:.95rem;white-space:nowrap}
+  .track .cat b{color:var(--pearl);font-weight:600}
+  .track .cat svg{width:16px;height:16px;color:var(--bloom)}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---------- sections ---------- */
+  section{padding:90px 0;position:relative;z-index:1}
+  .sec-head{max-width:34em;margin-bottom:52px}
+  .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin:14px 0 0}
+  .sec-head p{margin-top:16px;color:var(--mist)}
+
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{padding:32px 28px;border-radius:var(--r);border:1px solid var(--line);
+    background:linear-gradient(180deg,rgba(245,242,250,.035),rgba(245,242,250,.01));
+    transition:transform .3s,border-color .3s,background .3s}
+  .card:hover{transform:translateY(-6px);border-color:rgba(255,138,91,.4);
+    background:linear-gradient(180deg,rgba(255,138,91,.06),rgba(245,242,250,.01))}
+  .card .ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;
+    background:rgba(255,138,91,.12);border:1px solid rgba(255,138,91,.2);margin-bottom:20px}
+  .card .ic svg{width:22px;height:22px;color:var(--halo)}
+  .card h3{font-size:1.25rem;margin-bottom:10px}
+  .card p{font-size:.95rem}
+  @media(max-width:860px){.features{grid-template-columns:1fr}}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);
+    border-radius:var(--r);overflow:hidden}
+  .step{padding:38px 30px;border-right:1px solid var(--line);position:relative}
+  .step:last-child{border-right:0}
+  .step .num{font-family:"Space Mono",monospace;font-size:.9rem;color:var(--halo);
+    letter-spacing:.1em}
+  .step h3{font-size:1.2rem;margin:16px 0 10px}
+  .step p{font-size:.92rem}
+  @media(max-width:860px){.steps{grid-template-columns:1fr}.step{border-right:0;border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}}
+
+  /* devices */
+  .devices-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  .dev-list{display:flex;flex-direction:column;gap:6px;margin-top:28px}
+  .dev-item{display:flex;align-items:center;gap:16px;padding:16px;border-radius:14px;
+    transition:background .2s}
+  .dev-item:hover{background:rgba(245,242,250,.04)}
+  .dev-item .ic{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;
+    background:rgba(227,108,160,.12);border:1px solid rgba(227,108,160,.22);flex:none}
+  .dev-item .ic svg{width:20px;height:20px;color:var(--bloom)}
+  .dev-item b{color:var(--pearl);font-weight:600;display:block}
+  .dev-item span{font-size:.86rem;color:var(--mist-dim)}
+  .dev-visual{aspect-ratio:1/1;border-radius:24px;border:1px solid var(--line);
+    background:
+      radial-gradient(70% 60% at 50% 30%, rgba(255,138,91,.22), transparent 60%),
+      radial-gradient(60% 50% at 70% 90%, rgba(227,108,160,.22), transparent 60%),
+      var(--veil);
+    display:grid;place-items:center;position:relative;overflow:hidden}
+  .dev-visual .orb{width:120px;height:120px;border-radius:50%;z-index:3;
+    background:linear-gradient(135deg,var(--halo),var(--bloom));box-shadow:var(--glow);
+    display:grid;place-items:center;animation:orbpulse 3s ease-in-out infinite}
+  .dev-visual .orb svg{width:54px;height:54px;color:#1a1020}
+  @keyframes orbpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+  .dev-visual .ripple{position:absolute;z-index:2;width:120px;height:120px;border-radius:50%;
+    border:1px solid rgba(255,138,91,.45);animation:ripple 3s infinite ease-out}
+  @media(max-width:860px){.devices-grid{grid-template-columns:1fr;gap:36px}.dev-visual{max-width:340px}}
+
+  /* faq */
+  .faq{max-width:760px;margin:0 auto}
+  .q{border-bottom:1px solid var(--line)}
+  .q button{width:100%;display:flex;align-items:center;justify-content:space-between;
+    gap:20px;padding:24px 4px;background:none;border:0;cursor:pointer;text-align:left;
+    color:var(--pearl);font-family:"Bricolage Grotesque",sans-serif;font-weight:600;
+    font-size:1.08rem}
+  .q button:focus-visible{outline:2px solid var(--halo);outline-offset:3px;border-radius:6px}
+  .q .ico{flex:none;width:24px;height:24px;border-radius:50%;border:1px solid var(--line);
+    display:grid;place-items:center;transition:transform .3s,border-color .3s}
+  .q .ico::before,.q .ico::after{content:"";position:absolute;background:var(--halo);
+    border-radius:2px}
+  .q .ico::before{width:11px;height:2px}
+  .q .ico::after{width:2px;height:11px;transition:transform .3s}
+  .q[aria-expanded="true"] .ico{transform:rotate(180deg);border-color:rgba(255,138,91,.5)}
+  .q[aria-expanded="true"] .ico::after{transform:scaleY(0)}
+  .q .ans{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .q .ans p{padding:0 4px 24px;margin:0;color:var(--mist);font-size:.96rem}
+
+  /* final cta */
+  .final{text-align:center;padding:96px 0}
+  .final .box{border:1px solid var(--line);border-radius:28px;padding:64px 32px;
+    background:
+      radial-gradient(80% 120% at 50% -10%, rgba(255,138,91,.18), transparent 60%),
+      linear-gradient(180deg,rgba(245,242,250,.04),rgba(245,242,250,.01))}
+  .final h2{font-size:clamp(2rem,4.2vw,3rem);max-width:14em;margin:0 auto 18px}
+  .final p{max-width:30em;margin:0 auto 32px;color:var(--mist)}
+  .final .hero-cta{justify-content:center}
+
+  /* footer */
+  footer.site{border-top:1px solid var(--line-soft);padding:54px 0 40px;position:relative;z-index:1}
+  .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px}
+  .foot-grid .brand{margin-bottom:14px}
+  .foot-cols{display:flex;gap:64px;flex-wrap:wrap}
+  .foot-col h4{font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--mist-dim);margin:0 0 16px}
+  .foot-col a{display:block;font-size:.92rem;color:var(--mist);margin-bottom:11px;transition:color .2s}
+  .foot-col a:hover{color:var(--pearl)}
+  .foot-bottom{margin-top:44px;padding-top:24px;border-top:1px solid var(--line-soft);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-size:.82rem;color:var(--mist-dim)}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+  <script src="/landing-runtime.js" defer></script>
+</head>
+<body>
+
+<header class="nav">
+<div class="wrap nav-in">
+    <a class="brand" href="#top">
+      
+      LiveSportX
+    </a>
+    <nav class="links">
+      <a href="#browse">Explorar</a>
+      <a href="#features">Funciones</a>
+      <a href="#devices">Dispositivos</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="download/">Descargar</a>
+    </div>
+    <button class="menu-btn" aria-label="Abrir menú">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <span class="eyebrow mono"><span class="pulse"></span> Streaming simplificado</span>
+        <h1>Todo lo que vale la pena ver, en un solo lugar <em>tranquilo</em>.</h1>
+        <p class="lead">Canales en vivo, películas y series de las fuentes que eliges — organizados, buscables y listos en cada pantalla que tienes.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="download/">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+            Descargar
+          </a>
+          <a class="btn btn-ghost" href="#how">Ver cómo funciona</a>
+        </div>
+        <div class="trust">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Sin desorden ni ruido</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Guardado en todos los dispositivos</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Retoma donde lo dejaste</span>
+        </div>
+      </div>
+
+      <div class="device reveal">
+        <div class="screen">
+          <div class="screen-top">
+            <span class="now">Reproduciendo ahora</span>
+            <div class="pillrow"><i></i><i></i><i></i></div>
+          </div>
+          <div class="feature-frame">
+            <video class="hero-video" autoplay muted loop playsinline poster="">
+              <source src="1.MP4" type="video/mp4">
+            </video>
+            <span class="frame-badge"><span class="live-dot"></span> Reproduciendo ahora</span>
+            <div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="frame-label">Mejores momentos de la tarde<small>Destacado · En vivo</small></div>
+            <div class="scrub">
+              <span class="bar"><span class="fill"></span><span class="head"></span></span>
+              <span class="time"><b id="t-cur">0:00</b> / 3:40</span>
+            </div>
+          </div>
+          <div class="guide">
+            <div class="guide-row"><span class="tag">20:00</span><span class="ttl">Mejores momentos de la tarde</span><span class="live-dot"></span><span class="dur">En vivo</span></div>
+            <div class="guide-row"><span class="tag">20:45</span><span class="ttl">Vista mundial – Diario</span><span class="dur">45m</span></div>
+            <div class="guide-row"><span class="tag">21:30</span><span class="ttl">El gran documental</span><span class="dur">1h 10m</span></div>
+          </div>
+        </div>
+        <div class="chip c1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg> Busca una vez, encuentra todo</div>
+        <div class="chip c2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg> Continúa donde lo dejaste</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" id="browse" aria-hidden="true">
+    <div class="track">
+      <span class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M5 12a7 7 0 0114 0"/></svg> <b>En vivo</b></span>
+      <span class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg> <b>Deportes</b></span>
+      <span class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg> <b>Películas</b></span>
+      <span class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l9-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="15" cy="16" r="3"/></svg> <b>Música</b></span>
+      <span class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg> <b>Noticias</b></span>
+      <span class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M8 3l4 4 4-4"/></svg> <b>Series</b></span>
+      <span class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0116 0"/></svg> <b>Infantil</b></span>
+      <span class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 000 18"/></svg> <b>Documentales</b></span>
+      <!-- duplicate for seamless loop -->
+      <span class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M5 12a7 7 0 0114 0"/></svg> <b>En vivo</b></span>
+      <span class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg> <b>Deportes</b></span>
+      <span class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg> <b>Películas</b></span>
+      <span class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l9-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="15" cy="16" r="3"/></svg> <b>Música</b></span>
+      <span class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg> <b>Noticias</b></span>
+      <span class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M8 3l4 4 4-4"/></svg> <b>Series</b></span>
+      <span class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0116 0"/></svg> <b>Infantil</b></span>
+      <span class="cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 000 18"/></svg> <b>Documentales</b></span>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="mono">Por qué LiveSportX</span>
+        <h2>Diseñado para no interponerse en tu camino.</h2>
+        <p>Tres ideas simples hacen el trabajo: una biblioteca, cada pantalla y un lugar que recuerda dónde lo dejaste.</p>
+      </div>
+      <div class="features">
+        <div class="card reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+          <h3>Una sola biblioteca</h3>
+          <p>Reúne tus canales y listas. Busca una vez y todo aparece — sin saltar entre apps.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 20h8M12 17v3"/></svg></div>
+          <h3>Cada pantalla</h3>
+          <p>Teléfono, tablet, TV o navegador. Tus listas y ajustes se sincronizan donde sea que inicies sesión.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <h3>Retoma desde cualquier lugar</h3>
+          <p>Para en el bus, termina en el sofá. Los puntos de reanudación se sincronizan en segundo plano para que nunca pierdas tu lugar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="mono">Cómo funciona</span>
+        <h2>Confíguralo en tres pasos.</h2>
+      </div>
+      <div class="steps reveal">
+        <div class="step">
+          <span class="num">01</span>
+          <h3>Añade tus fuentes</h3>
+          <p>Apunta LiveSportX a los canales y listas que ya usas. Los lee y organiza todo de forma clara.</p>
+        </div>
+        <div class="step">
+          <span class="num">02</span>
+          <h3>Organiza en listas</h3>
+          <p>Agrupa por estado de ánimo, persona o momento. Arrastra, renombra y fija lo que más usas.</p>
+        </div>
+        <div class="step">
+          <span class="num">03</span>
+          <h3>Mira en cualquier pantalla</h3>
+          <p>Abre LiveSportX donde sea, dale a reproducir y continúa exactamente donde lo dejaste.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEVICES -->
+  <section id="devices">
+    <div class="wrap devices-grid">
+      <div class="reveal">
+        <span class="mono">Dispositivos</span>
+        <h2 style="font-size:clamp(1.9rem,3.6vw,2.7rem);margin-top:14px">Hecho para las pantallas que ya usas.</h2>
+        <div class="dev-list">
+          <div class="dev-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div><div><b>Teléfono</b><span>Selección rápida y una guía limpia, a un pulgar de distancia.</span></div></div>
+          <div class="dev-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M11 18h2"/></svg></div><div><b>Tablet</b><span>Una cuadrícula más amplia para explorar en movimiento.</span></div></div>
+          <div class="dev-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 20h8M12 17v3"/></svg></div><div><b>TV</b><span>Diseño recostado pensado para el mando a distancia.</span></div></div>
+          <div class="dev-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 000 18"/></svg></div><div><b>Web</b><span>Sin instalación — ábrelo en cualquier navegador.</span></div></div>
+        </div>
+      </div>
+      <div class="dev-visual reveal">
+        <video class="hero-video" autoplay muted loop playsinline poster="">
+          <source src="2.MP4" type="video/mp4">
+        </video>
+        <span class="frame-badge"><span class="live-dot"></span> Reproduciendo ahora</span>
+        <div class="scrub">
+          <span class="bar"><span class="fill"></span><span class="head"></span></span>
+          <span class="time"><b id="t-cur2">0:00</b> / 2:18</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head reveal" style="margin:0 auto 52px;text-align:center">
+        <span class="mono">Preguntas</span>
+        <h2>Bueno saberlo.</h2>
+      </div>
+      <div class="faq reveal">
+        <div class="q">
+          <button aria-expanded="false">¿Qué es exactamente LiveSportX?<span class="ico"></span></button>
+          <div class="ans"><p>LiveSportX es un lugar para reunir los canales y listas que ya usas, organizarlos y verlos en cualquier pantalla — con tu posición guardada mientras cambias de dispositivo.</p></div>
+        </div>
+        <div class="q">
+          <button aria-expanded="false">¿Necesito una cuenta para empezar?<span class="ico"></span></button>
+          <div class="ans"><p>Puedes explorar de inmediato. Iniciar sesión es lo que mantiene tus listas y puntos de reanudación sincronizados en tu teléfono, tablet, TV y la web.</p></div>
+        </div>
+        <div class="q">
+          <button aria-expanded="false">¿Qué dispositivos son compatibles?<span class="ico"></span></button>
+          <div class="ans"><p>Teléfonos, tablets, TVs y cualquier navegador moderno. El diseño se adapta a cada pantalla para que se sienta natural donde sea que lo abras.</p></div>
+        </div>
+        <div class="q">
+          <button aria-expanded="false">¿Puedo organizar las cosas a mi manera?<span class="ico"></span></button>
+          <div class="ans"><p>Sí. Crea listas según el estado de ánimo, personas o momentos, luego arrastra, renombra y fija para que lo que más usas siempre esté arriba.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final" id="start">
+    <div class="wrap">
+      <div class="box reveal">
+        <span class="mono">Listo cuando tú lo estés</span>
+        <h2 style="margin-top:16px">Una forma más tranquila de ver está a un toque de distancia.</h2>
+        <p>Empieza con la pantalla que tienes delante. Todo lo demás te sigue desde ahí.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="download/">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+            Descargar
+          </a>
+          <a class="btn btn-ghost" href="#features">Explorar funciones</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top">
+          
+          LiveSportX
+        </a>
+        <p style="max-width:24em;font-size:.9rem">Todo lo que vale la pena ver, en un solo lugar tranquilo.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Producto</h4>
+          <a href="#features">Funciones</a>
+          <a href="#devices">Dispositivos</a>
+          <a href="#faq">Preguntas</a>
+        </div>
+        <div class="foot-col">
+          <h4>Empresa</h4>
+          <a href="#">Acerca de</a>
+          <a href="#">Contacto</a>
+          <a href="#">Prensa</a>
+        </div>
+        <div class="foot-col">
+          <h4>Legal</h4>
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 LiveSportX. Plantilla — reemplaza con tu propio contenido.</span>
+      <span>Diseñado para ser editado.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // scroll reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // live timecodes synced to the 12s scrub loop
+  function liveClock(el, total, loop){
+    if(!el) return;
+    setInterval(()=>{
+      const p = (performance.now() % loop) / loop;
+      const s = Math.floor(p * total);
+      el.textContent = Math.floor(s/60) + ':' + String(s%60).padStart(2,'0');
+    }, 200);
+  }
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    liveClock(document.getElementById('t-cur'), 220, 12000);
+    liveClock(document.getElementById('t-cur2'), 138, 12000);
+  }
+
+  // faq accordion
+  document.querySelectorAll('.q button').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const open = btn.getAttribute('aria-expanded')==='true';
+      const ans = btn.nextElementSibling;
+      btn.setAttribute('aria-expanded', String(!open));
+      ans.style.maxHeight = open ? null : ans.scrollHeight + 'px';
+    });
+  });
+
+  // Meta Pixel: track download/sign-up clicks as Lead
+  document.querySelectorAll('a[href="download/"]').forEach(a=>{
+    a.addEventListener('click',()=>{
+      if(typeof fbq==='function'){ fbq('track','Lead'); }
+    });
+  });
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

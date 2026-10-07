@@ -1,0 +1,333 @@
+
+  :root{
+    --blue:#4057E3;
+    --blue-dark:#2C3FB0;
+    --green:#31C67C;
+    --teal:#006D67;
+    --gray:#58595B;
+    --pink:#BA3662;
+    --yellow:#EECF4E;
+    --white:#FFFFFF;
+    --ink:#14161A;
+    --line:#E7E8EC;
+    --bg-soft:#F5F6FA;
+  }
+  html{ background:#FFFFFF; color-scheme:light; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:#FFFFFF;
+    min-height:100%;
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    line-height:1.5;
+  }
+  h1,h2,h3,h4,.display{
+    font-family:'Manrope',sans-serif;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  a{color:inherit; text-decoration:none;}
+  img{display:block; max-width:100%;}
+  .wrap{max-width:1140px; margin:0 auto; padding:0 28px;}
+  section{position:relative;}
+
+  ::selection{background:var(--yellow); color:var(--ink);}
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--blue);
+    outline-offset:3px;
+    border-radius:6px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.94);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:88px;
+  }
+  .brand-logo{ height:48px; width:auto; }
+  .nav-cta{
+    background:var(--blue); color:var(--white);
+    padding:12px 22px; border-radius:100px;
+    font-weight:700; font-size:14px;
+    white-space:nowrap;
+    transition:background .15s ease, transform .15s ease;
+  }
+  .nav-cta:hover{background:var(--blue-dark); transform:translateY(-1px);}
+
+  /* HERO */
+  .hero{
+    padding:56px 0 90px;
+  }
+  .hero-logo-badge{
+    display:inline-flex;
+    align-items:center;
+    margin-bottom:32px;
+  }
+  .hero-logo-badge .brand-logo{ height:56px; }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+  }
+  .offer-pill{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--bg-soft);
+    border:1px solid var(--line);
+    padding:8px 16px 8px 8px;
+    border-radius:100px;
+    font-size:13px; font-weight:700;
+    color:var(--ink);
+    margin-bottom:24px;
+  }
+  .offer-pill .badge{
+    background:var(--yellow);
+    color:var(--ink);
+    font-weight:800;
+    padding:3px 10px;
+    border-radius:100px;
+    font-size:12px;
+  }
+  .hero h1{
+    font-size:clamp(32px, 4.6vw, 52px);
+    font-weight:800;
+    line-height:1.08;
+    margin-bottom:22px;
+    max-width:600px;
+  }
+  .hero h1 .hl{
+    color:var(--blue);
+  }
+  .hero p.sub{
+    font-size:18px;
+    color:var(--gray);
+    max-width:480px;
+    margin-bottom:34px;
+    line-height:1.6;
+  }
+  .btn-primary{
+    background:var(--blue);
+    color:var(--white);
+    padding:17px 30px;
+    border-radius:100px;
+    font-weight:700;
+    font-size:16px;
+    display:inline-flex; align-items:center; gap:10px;
+    transition:transform .15s ease, background .15s ease, box-shadow .15s ease;
+    box-shadow:0 10px 24px rgba(64,87,227,0.22);
+  }
+  .btn-primary:hover{transform:translateY(-2px); background:var(--blue-dark);}
+  .btn-primary svg{width:18px; height:18px;}
+
+  .hero-note{
+    margin-top:16px;
+    font-size:13px;
+    color:var(--gray);
+  }
+
+  /* SAVINGS CARD — signature element, built from brand's rounded-rectangle language */
+  .savings-card{
+    background:var(--bg-soft);
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:32px;
+  }
+  .savings-head{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:22px;
+  }
+  .savings-head .t{
+    font-size:13px; font-weight:700;
+    text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--gray);
+  }
+  .savings-head .amt{
+    font-family:'Manrope',sans-serif;
+    font-weight:800; font-size:15px;
+    color:var(--teal);
+  }
+  .months-row{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:12px;
+    margin-bottom:20px;
+  }
+  .month-block{
+    border-radius:16px;
+    padding:18px 14px;
+    text-align:center;
+    color:var(--white);
+  }
+  .month-block:nth-child(1){background:var(--blue);}
+  .month-block:nth-child(2){background:var(--teal);}
+  .month-block:nth-child(3){background:var(--pink);}
+  .month-block .m{font-size:12px; font-weight:700; opacity:0.85; text-transform:uppercase; letter-spacing:0.05em;}
+  .month-block .pct{font-family:'Manrope',sans-serif; font-size:26px; font-weight:800; margin-top:6px;}
+  .savings-total{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:20px 22px;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .savings-total .label{font-size:13.5px; color:var(--gray); font-weight:600;}
+  .savings-total .value{font-family:'Manrope',sans-serif; font-size:24px; font-weight:800; color:var(--ink);}
+  .savings-foot{font-size:12px; color:var(--gray); margin-top:16px; line-height:1.55;}
+
+  /* TRUST STRIP */
+  .trust{
+    padding:36px 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:var(--bg-soft);
+  }
+  .trust .wrap{
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px;
+  }
+  .trust-item{display:flex; flex-direction:column;}
+  .trust-item strong{font-family:'Manrope',sans-serif; font-size:26px; font-weight:800; color:var(--blue);}
+  .trust-item span{font-size:13px; color:var(--gray); margin-top:4px;}
+
+  /* HOW IT WORKS */
+  section.steps{padding:100px 0 90px;}
+  .section-head{max-width:600px; margin-bottom:56px;}
+  .section-head .kicker{
+    color:var(--blue); font-weight:700; font-size:13px;
+    text-transform:uppercase; letter-spacing:0.07em; margin-bottom:12px; display:block;
+  }
+  .section-head h2{font-size:clamp(28px,3.4vw,38px); font-weight:800; line-height:1.18;}
+  .section-head p{color:var(--gray); margin-top:14px; font-size:16px; line-height:1.65;}
+
+  .steps-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+  }
+  .step{
+    background:var(--bg-soft);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:32px 26px;
+  }
+  .step .num{
+    font-family:'Manrope',sans-serif;
+    font-size:14px; font-weight:800;
+    color:var(--white);
+    background:var(--blue);
+    width:32px; height:32px;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%;
+    margin-bottom:20px;
+  }
+  .step:nth-child(2) .num{background:var(--teal);}
+  .step:nth-child(3) .num{background:var(--pink);}
+  .step h3{font-size:18.5px; font-weight:800; margin-bottom:10px;}
+  .step p{color:var(--gray); font-size:14.5px; line-height:1.6;}
+
+  /* BENEFITS */
+  section.benefits{padding:0 0 100px;}
+  .benefits-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:18px;
+  }
+  .benefit{
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:24px 20px;
+  }
+  .benefit .icon{
+    width:42px; height:42px;
+    border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:16px;
+    color:var(--white);
+  }
+  .benefit:nth-child(1) .icon{background:var(--blue);}
+  .benefit:nth-child(2) .icon{background:var(--teal);}
+  .benefit:nth-child(3) .icon{background:var(--green);}
+  .benefit:nth-child(4) .icon{background:var(--pink);}
+  .benefit h4{font-size:15px; font-weight:800; margin-bottom:8px;}
+  .benefit p{font-size:13.5px; color:var(--gray); line-height:1.55;}
+
+  /* FAQ */
+  section.faq{padding:0 0 100px;}
+  .faq-list{max-width:740px;}
+  .faq-item{
+    border-bottom:1px solid var(--line);
+    padding:22px 0;
+  }
+  .faq-q{
+    display:flex; align-items:center; justify-content:space-between;
+    cursor:pointer;
+    font-weight:700; font-size:16px;
+    gap:16px;
+  }
+  .faq-q .plus{
+    font-size:20px; color:var(--blue);
+    transition:transform .2s ease;
+    flex-shrink:0;
+  }
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0; overflow:hidden;
+    transition:max-height .25s ease;
+    color:var(--gray); font-size:14.5px; line-height:1.7;
+  }
+  .faq-item.open .faq-a{max-height:220px; margin-top:14px;}
+
+  /* FINAL CTA */
+  section.final{
+    padding:90px 0 100px;
+    text-align:center;
+    background:var(--bg-soft);
+    color:var(--ink);
+  }
+  section.final .brand-logo{
+    height:48px;
+    margin:0 auto 32px;
+  }
+  section.final h2{
+    color:var(--ink);
+    font-size:clamp(28px,4vw,42px);
+    font-weight:800;
+    margin-bottom:16px;
+    max-width:620px;
+    margin-left:auto; margin-right:auto;
+    line-height:1.15;
+  }
+  section.final p{color:var(--gray); max-width:480px; margin:0 auto 34px; font-size:16px;}
+
+  footer{
+    padding:32px 0;
+    border-top:1px solid var(--line);
+    font-size:13px; color:var(--gray);
+  }
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; align-items:center;}
+  footer .brand-logo{height:30px;}
+
+  @media (max-width: 900px){
+    .hero-grid{grid-template-columns:1fr; gap:44px;}
+    .steps-grid{grid-template-columns:1fr;}
+    .benefits-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width: 560px){
+    .benefits-grid{grid-template-columns:1fr;}
+    .months-row{grid-template-columns:1fr; }
+    nav .wrap{height:72px;}
+    .brand-logo{height:32px;}
+  }

@@ -1,0 +1,20 @@
+您正在使用config的默认值,config的路径为config.yaml
+
+2026/10/04 15:18:59 [35mE:/USDT项目/01-backend-go/initialize/gorm_mysql.go:25
+[0m[31m[error] [0mfailed to initialize database, got error dial tcp 127.0.0.1:13399: connectex: No connection could be made because the target machine actively refused it.
+2026/10/04 - 15:18:59.708	warn	E:/USDT项目/01-backend-go/initialize/ensure_seed.go:37	[T26] GVA_DB 为 nil ⇒ 跳过建表与 seed
+2026/10/04 - 15:18:59.738	info	E:/USDT项目/01-backend-go/initialize/redis.go:23	redis connect ping response:	{"pong": "PONG"}
+panic: runtime error: invalid memory address or nil pointer dereference
+[signal 0xc0000005 code=0x0 addr=0x28 pc=0x4981d2]
+
+goroutine 1 [running]:
+gorm.io/gorm.(*DB).getInstance(0x0?)
+	C:/Users/pro9 i5 16 256/go/pkg/mod/gorm.io/gorm@v1.22.5/gorm.go:355 +0x12
+gorm.io/gorm.(*DB).Find(0x1?, {0xede0e0, 0x20e4900}, {0x0, 0x0, 0x0})
+	C:/Users/pro9 i5 16 256/go/pkg/mod/gorm.io/gorm@v1.22.5/finisher_api.go:159 +0x36
+github.com/flipped-aurora/gin-vue-admin/server/blockchain.LoadRpcList(...)
+	E:/USDT项目/01-backend-go/blockchain/scan.go:17
+github.com/flipped-aurora/gin-vue-admin/server/core.RunWindowsServer()
+	E:/USDT项目/01-backend-go/core/server.go:43 +0x66
+main.main()
+	E:/USDT项目/01-backend-go/main.go:42 +0xaa

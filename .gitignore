@@ -1,0 +1,149 @@
+# =============================================================================
+# .gitignore —— USDT 项目
+# =============================================================================
+# ★ 背景（R3-3/审核 E 的 E-08）：本项目此前【无 git】⇒ 无 diff / 无回滚能力。
+#   `git init` 前的取证：工作区 921 MB / 22,882 文件，
+#   其中大头是可重建的依赖与二进制 ⇒ 必须排除，否则仓库不可用。
+#
+# ★ 原则：
+#   · 排除【可重建】的（node_modules、构建产物、缓存）
+#   · 排除【二进制大件】（.apk/.ipa/.exe/.dylib 的样本）
+#   · 排除【运行期生成】的（日志、临时、上传）
+#   · 保留【源码 + 配置模板 + 文档 + 判据脚本】
+# =============================================================================
+
+# ---- 依赖 ----
+node_modules/
+**/node_modules/
+.pnpm-store/
+vendor/
+
+# ---- 构建产物 ----
+dist/
+**/dist/
+build/
+**/build/
+*.tsbuildinfo
+
+# ---- 缓存 ----
+_gocache/
+_gopath/pkg/mod/cache/
+.cache/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# ---- 二进制大件（样本 / 产物）----
+*.apk
+*.ipa
+*.aab
+*.exe
+*.dll
+*.so
+*.dylib
+*.node
+*.dat
+*.zip
+*.7z
+*.tar
+*.gz
+
+# ★ 例外：保留源码中确实需要的小二进制（按需放开）
+!04-landing/**/*.png
+!03-web-admin/static/**/*.png
+!03-web-admin/static/**/*.jpg
+!03-web-admin/static/**/*.svg
+
+# ---- 运行期 ----
+logs/
+**/logs/
+*.log
+*.out
+*.err
+tmp/
+**/tmp/
+temp/
+**/temp/
+uploads/
+**/uploads/
+storage/
+**/storage/
+*.pid
+*.lock
+
+# ---- 数据库数据目录（体积大且可重建）----
+_mysqldata/
+_redisdata/
+_i1c3_mongodata/
+*.sql.bak
+
+# ---- 密钥 / 凭据（★ 绝不入库）----
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+*.p12
+*.jks
+secrets/
+**/secrets/
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- 平台：按卡/按线的临时工作目录与探针（★ 模式，替代逐条写实例）----
+#   ★ T38/AD-06：原为【手列实例清单】（_reviewE_work/、_auditB_work/、_t25_bak/ … 逐条写死）
+#     ⇒ 每冒出一个新的 _*_work / _*_probe / *_bak 就漏一个（AD-06 自扫出 7 组 34 件）。
+#     改为**模式**后覆盖面由通配保证。
+#   ★ 这些模式未含内部 `/`、未前导 `/` ⇒ 在**任意层级**匹配同名目录/文件（gitignore 语义）。
+_*_work/
+_*_probe/
+_*_ws/
+*_bak*/
+*_work/
+*_probe/
+*_tmp/
+_*baseline*
+
+# ---- 备份件（★ 模式）----
+*.bak
+*.orig
+*~
+*.t14-bak
+*.d3c1-bak
+*.t26-bak
+.t22-bak
+
+# ---- ★ 判据脚本库：有意保留，勿吞 ----
+#   ★ 位置硬要求：`!` 例外必须放在上面那些 `*` 规则【之后】——
+#     gitignore 是"后者覆盖前者"，放前面**无效**。
+!_fix_work/
+!_fix_work/**
+
+# ---- 临时提交消息文件 ----
+_r*_msg.txt
+*.msg.txt
+
+# ---- ★ 本机运行配置：绝不入库（⌛2026-10-07 本地运行版新增）----
+# config.yaml / config.docker.yaml 含本地库口令；只跟踪其 .example 模板
+config.yaml
+**/config.yaml
+config.docker.yaml
+**/config.docker.yaml
+
+# 本地 Docker 卷数据（468MB，可重建）
+local/data/
+
+# 本地 nginx 自签证书（*.key/*.cert 规则已覆盖，此处显式兜底）
+nginx/cert/
+
+# 本地运行日志
+local/landing.log

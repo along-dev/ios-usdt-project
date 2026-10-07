@@ -1,0 +1,2059 @@
+<!doctype html>
+<html lang="es-MX"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ZonaViva | Mundial, series cortas y TV gratis</title>
+  <meta name="description" content="Landing page de ZonaViva: partidos, novelas cortas y TV en vivo en una app ligera para Mexico.">
+  <!-- Meta Pixel placeholder:
+    1. Replace YOUR_META_PIXEL_ID with your real Pixel ID.
+    2. Keep the fbq('track', 'PageView') call for page views.
+    3. Download button clicks are tracked near the bottom as DownloadClick.
+  -->
+  <!-- pixel replaced by dynamic loader -->
+  <style>
+    :root {
+      --ink: #f8fafc;
+      --muted: #cbd5e1;
+      --dark: #07120f;
+      --panel: rgba(9, 22, 19, 0.74);
+      --line: rgba(255, 255, 255, 0.16);
+      --green: #00a85a;
+      --green-2: #39df89;
+      --red: #e33737;
+      --gold: #ffd166;
+      --white: #ffffff;
+      --shadow: 0 22px 70px rgba(0, 0, 0, 0.36);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #08110f;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 20% 8%, rgba(0, 168, 90, 0.24), transparent 24rem),
+        radial-gradient(circle at 90% 12%, rgba(227, 55, 55, 0.22), transparent 22rem),
+        linear-gradient(180deg, #06110f 0%, #0a1412 46%, #101311 100%);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: grid;
+      align-items: center;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background-image:
+        linear-gradient(90deg, rgba(4, 12, 10, 0.94) 0%, rgba(4, 12, 10, 0.78) 38%, rgba(4, 12, 10, 0.22) 74%, rgba(4, 12, 10, 0.74) 100%),
+        url("/images/zonaviva/hero-mexico-streaming.webp");
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.02);
+      filter: saturate(1.08) brightness(1.04);
+      animation: heroDrift 14s ease-in-out infinite alternate;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      z-index: -1;
+      height: 16rem;
+      background: linear-gradient(180deg, transparent, #0a1412 74%);
+    }
+
+    .shell {
+      width: min(1160px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 5;
+      padding: 18px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 900;
+      font-size: 1.14rem;
+      letter-spacing: 0;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--green), var(--red));
+      box-shadow: 0 10px 28px rgba(0, 168, 90, 0.28);
+      font-weight: 950;
+    }
+
+    .brand-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 10px 28px rgba(0, 168, 90, 0.28);
+      flex: 0 0 auto;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-grid {
+      padding: 98px 0 54px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.98fr) minmax(330px, 0.58fr);
+      gap: 42px;
+      align-items: center;
+    }
+
+    .pill {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 999px;
+      background: rgba(4, 12, 10, 0.62);
+      color: #e8fff2;
+      font-size: 0.9rem;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--green-2);
+      box-shadow: 0 0 0 7px rgba(57, 223, 137, 0.15);
+    }
+
+    h1 {
+      margin: 20px 0 18px;
+      max-width: 790px;
+      font-size: clamp(2.55rem, 7vw, 5.9rem);
+      line-height: 0.91;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .accent {
+      color: var(--gold);
+      text-shadow: 0 0 28px rgba(255, 209, 102, 0.18);
+    }
+
+    .lead {
+      max-width: 630px;
+      margin: 0 0 26px;
+      color: #e6edf0;
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      line-height: 1.45;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin: 26px 0 22px;
+    }
+
+    .btn {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 0;
+      border-radius: 8px;
+      padding: 0 20px;
+      font-size: 1rem;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform 0.18s ease, filter 0.18s ease, background 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+      color: #04110c;
+      background: linear-gradient(135deg, var(--green-2), var(--gold));
+      box-shadow: 0 18px 45px rgba(57, 223, 137, 0.28);
+      animation: ctaPulse 2.8s ease-in-out infinite;
+    }
+
+    .btn-primary::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.56) 46%, transparent 74%);
+      transform: translateX(-130%);
+      animation: ctaShine 3.8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .btn-secondary {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.11);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .proof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .proof span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+    }
+
+    .download-panel {
+      align-self: end;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .phone-frame {
+      position: relative;
+      padding: 12px;
+      border-radius: 28px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.28), rgba(255,255,255,0.05));
+      border: 1px solid rgba(255,255,255,0.20);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.25);
+    }
+
+    .phone-screen {
+      min-height: 510px;
+      border-radius: 21px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.82)),
+        url("/images/zonaviva/hero-mexico-streaming.webp");
+      background-size: cover;
+      background-position: 67% center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 18px;
+    }
+
+    .screen-chip {
+      width: fit-content;
+      padding: 7px 10px;
+      border-radius: 8px;
+      background: var(--red);
+      font-size: 0.76rem;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .screen-title {
+      margin: 12px 0 10px;
+      font-size: 1.78rem;
+      line-height: 1.02;
+      font-weight: 950;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .mini {
+      min-height: 66px;
+      padding: 9px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.13);
+      border: 1px solid rgba(255,255,255,0.14);
+      font-size: 0.78rem;
+      font-weight: 850;
+    }
+
+    .urgency {
+      padding: 12px 0;
+      background: linear-gradient(90deg, var(--green), #f7f7f7, var(--red));
+      color: #07120f;
+      font-weight: 950;
+      text-align: center;
+    }
+
+    .lottery {
+      padding: 58px 0 50px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 209, 102, 0.18), transparent 18rem),
+        linear-gradient(180deg, #07120f, #091814);
+      overflow: hidden;
+    }
+
+    .lottery-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.9fr) minmax(300px, 1.1fr);
+      gap: 30px;
+      align-items: center;
+    }
+
+    .lottery-copy h2 {
+      margin: 0 0 14px;
+      max-width: 560px;
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      line-height: 0.98;
+    }
+
+    .lottery-copy p {
+      margin: 0 0 18px;
+      max-width: 510px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.55;
+    }
+
+    .lottery-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .lottery-tags span {
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.08);
+      color: #e9fff3;
+      font-size: 0.88rem;
+      font-weight: 850;
+    }
+
+    .wheel-wrap {
+      display: grid;
+      justify-items: center;
+      gap: 14px;
+    }
+
+    .wheel-shell {
+      position: relative;
+      width: min(330px, 82vw);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      filter: drop-shadow(0 24px 42px rgba(0, 0, 0, 0.36));
+    }
+
+    .wheel-pointer {
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      z-index: 4;
+      width: 0;
+      height: 0;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      border-top: 34px solid var(--gold);
+      transform: translateX(-50%);
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35));
+    }
+
+    .wheel {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 8px solid rgba(255, 255, 255, 0.92);
+      background:
+        conic-gradient(
+          from -22.5deg,
+          #00a85a 0deg 45deg,
+          #ffd166 45deg 90deg,
+          #e33737 90deg 135deg,
+          #155e75 135deg 180deg,
+          #38d982 180deg 225deg,
+          #f59e0b 225deg 270deg,
+          #7f1d1d 270deg 315deg,
+          #111827 315deg 360deg
+        );
+      transition: transform 4.2s cubic-bezier(0.12, 0.68, 0.12, 1);
+      box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.16);
+    }
+
+    .wheel::after {
+      content: "";
+      position: absolute;
+      inset: 50%;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(135deg, #f7f7f7, #dfffe9);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.28);
+    }
+
+    .wheel-label {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 2;
+      width: 86px;
+      margin-left: -43px;
+      margin-top: -12px;
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 950;
+      line-height: 1.05;
+      text-align: center;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      transform: rotate(var(--angle)) translateY(-114px) rotate(calc(-1 * var(--angle)));
+    }
+
+    .wheel-label b {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 4px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      color: #07120f;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    .wheel-label em {
+      display: block;
+      font-style: normal;
+    }
+
+    .wheel-center {
+      position: absolute;
+      inset: 50%;
+      z-index: 5;
+      width: 62px;
+      height: 62px;
+      border: 0;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(135deg, var(--green-2), var(--gold));
+      color: #06110f;
+      font-weight: 950;
+      cursor: pointer;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.32);
+    }
+
+    .wheel-result {
+      min-height: 44px;
+      width: min(360px, 100%);
+      padding: 11px 13px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.08);
+      color: #f7fff9;
+      font-weight: 850;
+      text-align: center;
+      line-height: 1.35;
+    }
+
+    .lucky-board {
+      width: min(360px, 100%);
+      display: grid;
+      gap: 12px;
+      justify-items: center;
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 209, 102, 0.18);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 209, 102, 0.18), transparent 12rem),
+        linear-gradient(180deg, rgba(33, 21, 10, 0.72), rgba(6, 17, 15, 0.72));
+    }
+
+    .lucky-grid {
+      position: relative;
+      width: min(350px, 88vw);
+      aspect-ratio: 1;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #15100b url("/images/zonaviva/lucky-prize-grid.webp") center / cover no-repeat;
+      border: 1px solid rgba(255, 209, 102, 0.42);
+      box-shadow: 0 22px 54px rgba(0, 0, 0, 0.38), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+      animation: prizeBoardGlow 2.8s ease-in-out infinite;
+    }
+
+    .lucky-grid::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent 32.8%, rgba(255,255,255,0.72) 33%, transparent 33.7%, transparent 66.2%, rgba(255,255,255,0.72) 66.5%, transparent 67.2%),
+        linear-gradient(180deg, transparent 32.8%, rgba(255,255,255,0.72) 33%, transparent 33.7%, transparent 66.2%, rgba(255,255,255,0.72) 66.5%, transparent 67.2%);
+      opacity: 0.42;
+      pointer-events: none;
+    }
+
+    .lucky-grid::after {
+      content: "";
+      position: absolute;
+      inset: -35%;
+      background: linear-gradient(115deg, transparent 38%, rgba(255, 255, 255, 0.24) 48%, transparent 58%);
+      transform: translateX(-45%) rotate(8deg);
+      animation: gridSweep 3.2s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes prizeBoardGlow {
+      0%, 100% {
+        box-shadow: 0 22px 54px rgba(0, 0, 0, 0.38), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+      }
+      50% {
+        box-shadow: 0 24px 60px rgba(255, 209, 102, 0.18), inset 0 0 22px rgba(255, 209, 102, 0.16);
+      }
+    }
+
+    @keyframes gridSweep {
+      0%, 42% {
+        transform: translateX(-60%) rotate(8deg);
+        opacity: 0;
+      }
+      52% {
+        opacity: 1;
+      }
+      78%, 100% {
+        transform: translateX(60%) rotate(8deg);
+        opacity: 0;
+      }
+    }
+
+    .lucky-cell {
+      position: absolute;
+      width: 33.333%;
+      height: 33.333%;
+      border: 0;
+      background: transparent;
+      animation: tileBreath 2.6s ease-in-out infinite;
+      animation-delay: calc(var(--i, 0) * 120ms);
+    }
+
+    .lucky-cell.is-active {
+      box-shadow: inset 0 0 0 5px var(--gold), inset 0 0 32px rgba(255, 209, 102, 0.82);
+      background: rgba(255, 209, 102, 0.16);
+    }
+
+    .lucky-cell:nth-child(1) { --i: 1; }
+    .lucky-cell:nth-child(2) { --i: 2; }
+    .lucky-cell:nth-child(3) { --i: 3; }
+    .lucky-cell:nth-child(4) { --i: 4; }
+    .lucky-cell:nth-child(5) { --i: 5; }
+    .lucky-cell:nth-child(6) { --i: 6; }
+    .lucky-cell:nth-child(7) { --i: 7; }
+    .lucky-cell:nth-child(8) { --i: 8; }
+    .lucky-cell:nth-child(9) { --i: 9; }
+
+    @keyframes tileBreath {
+      0%, 100% {
+        background: transparent;
+      }
+      50% {
+        background: rgba(255, 255, 255, 0.035);
+      }
+    }
+
+    .lucky-start {
+      min-height: 52px;
+      min-width: min(280px, 82vw);
+      border: 0;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ffd166, #ff3d20);
+      color: #160c05;
+      font-size: 1.02rem;
+      font-weight: 950;
+      cursor: pointer;
+      box-shadow: 0 14px 34px rgba(255, 112, 43, 0.34);
+      position: relative;
+      overflow: hidden;
+      animation: buttonPulse 1.45s ease-in-out infinite;
+    }
+
+    .lucky-start::after {
+      content: "";
+      position: absolute;
+      inset: -80% -30%;
+      background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.42) 50%, transparent 65%);
+      transform: translateX(-60%);
+      animation: buttonShine 2s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .lucky-start:disabled {
+      cursor: wait;
+      opacity: 0.86;
+      animation: none;
+    }
+
+    @keyframes buttonPulse {
+      0%, 100% {
+        box-shadow: 0 14px 34px rgba(255, 112, 43, 0.34);
+        filter: brightness(1);
+      }
+      50% {
+        box-shadow: 0 18px 42px rgba(255, 112, 43, 0.52);
+        filter: brightness(1.08);
+      }
+    }
+
+    @keyframes buttonShine {
+      0%, 35% {
+        transform: translateX(-70%);
+      }
+      70%, 100% {
+        transform: translateX(70%);
+      }
+    }
+
+    .lottery-note {
+      width: fit-content;
+      max-width: 100%;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(255, 209, 102, 0.22), rgba(255, 61, 32, 0.18));
+      border: 1px solid rgba(255, 209, 102, 0.42);
+      color: #fff7d6;
+      font-size: 0.92rem;
+      font-weight: 950;
+      line-height: 1.45;
+      text-align: center;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+    }
+
+    .prize-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: none;
+      place-items: center;
+      padding: 18px;
+      background: rgba(4, 3, 3, 0.74);
+      backdrop-filter: blur(10px);
+    }
+
+    .prize-modal.is-open {
+      display: grid;
+    }
+
+    .prize-card {
+      position: relative;
+      width: min(380px, 100%);
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(187, 104, 28, 0.72);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(115, 40, 22, 0.58), transparent 10rem),
+        linear-gradient(180deg, #311209 0%, #3b0308 58%, #120605 100%);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.62), 0 0 0 1px rgba(255, 209, 102, 0.05);
+      text-align: center;
+      transform: translateY(0);
+      animation: popPrize 220ms ease-out;
+    }
+
+    .prize-x {
+      position: absolute;
+      top: 13px;
+      right: 13px;
+      width: 34px;
+      height: 34px;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: #fff4e8;
+      font-size: 1.7rem;
+      line-height: 1;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    @keyframes popPrize {
+      from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .prize-art {
+      width: 150px;
+      aspect-ratio: 1;
+      display: block;
+      margin: 6px auto 14px;
+      border-radius: 16px;
+      border: 2px solid rgba(255, 244, 232, 0.78);
+      background:
+        linear-gradient(135deg, rgba(255, 209, 102, 0.16), rgba(255, 59, 48, 0.08)),
+        url("/images/zonaviva/lucky-prize-grid.webp") center / 300% 300% no-repeat;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35), inset 0 0 18px rgba(255, 209, 102, 0.12);
+    }
+
+    .prize-body {
+      padding: 27px 18px 20px;
+    }
+
+    .prize-body h3 {
+      margin: 0 30px 8px;
+      font-size: 1.48rem;
+      line-height: 1.08;
+    }
+
+    .prize-body p {
+      margin: 0 0 13px;
+      color: #dac6c6;
+      line-height: 1.42;
+      font-weight: 760;
+      font-size: 0.9rem;
+    }
+
+    .prize-status {
+      display: grid;
+      gap: 5px;
+      margin: 0 0 14px;
+      color: #ead4d4;
+      font-size: 0.86rem;
+      line-height: 1.32;
+      font-weight: 820;
+    }
+
+    .prize-status span {
+      display: block;
+    }
+
+    .prize-status strong {
+      color: #fff4e8;
+    }
+
+    .prize-notice {
+      margin: 0 0 15px;
+      padding: 13px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(231, 157, 55, 0.62);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 209, 102, 0.18), transparent 7rem),
+        linear-gradient(180deg, rgba(99, 47, 17, 0.96), rgba(67, 27, 12, 0.96));
+      color: #fff3cf;
+      font-size: 0.82rem;
+      line-height: 1.42;
+      font-weight: 900;
+    }
+
+    .prize-actions {
+      display: grid;
+      gap: 10px;
+      justify-items: center;
+    }
+
+    .prize-actions .btn {
+      min-width: min(225px, 100%);
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ff3b30, #cf0016);
+      color: #fff;
+      box-shadow: 0 14px 34px rgba(218, 0, 22, 0.34);
+    }
+
+    .prize-close {
+      min-height: 42px;
+      min-width: min(185px, 100%);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 999px;
+      color: var(--white);
+      background: rgba(255,255,255,0.1);
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .section {
+      padding: 68px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      margin: 0;
+      max-width: 720px;
+      font-size: clamp(2rem, 4.5vw, 3.6rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .section-copy {
+      max-width: 390px;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .feature-card,
+    .step,
+    .quote {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.07);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.17);
+    }
+
+    .feature-card {
+      min-height: 244px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .feature-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -20% -35% 16%;
+      height: 150px;
+      background: linear-gradient(135deg, rgba(57, 223, 137, 0.2), rgba(227, 55, 55, 0.22));
+      transform: rotate(-8deg);
+    }
+
+    .icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      font-size: 1.25rem;
+    }
+
+    .feature-card h3,
+    .step h3 {
+      position: relative;
+      z-index: 1;
+      margin: 18px 0 10px;
+      font-size: 1.32rem;
+      line-height: 1.08;
+    }
+
+    .feature-card p,
+    .step p,
+    .quote p {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      counter-reset: steps;
+    }
+
+    .step {
+      min-height: 190px;
+      padding: 22px;
+      counter-increment: steps;
+    }
+
+    .step::before {
+      content: "0" counter(steps);
+      color: var(--gold);
+      font-weight: 950;
+      font-size: 0.96rem;
+    }
+
+    .content-band {
+      padding: 54px 0 58px;
+      background:
+        linear-gradient(180deg, rgba(4, 12, 10, 0.96), rgba(8, 17, 15, 1)),
+        #08110f;
+      color: var(--ink);
+      overflow: hidden;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 0.86fr 1.14fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .content-grid > * {
+      min-width: 0;
+    }
+
+    .content-kicker {
+      width: fit-content;
+      margin: 0 0 12px;
+      padding: 7px 10px;
+      border-radius: 8px;
+      background: rgba(57, 223, 137, 0.14);
+      color: #baffd9;
+      font-size: 0.82rem;
+      font-weight: 950;
+    }
+
+    .poster-track {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      padding: 2px;
+    }
+
+    .poster {
+      position: relative;
+      aspect-ratio: 0.68;
+      border-radius: 8px;
+      padding: 13px;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      color: #fff;
+      font-weight: 950;
+      line-height: 1.05;
+      isolation: isolate;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.32);
+      transform: translateY(0);
+      transition: transform 0.24s ease, box-shadow 0.24s ease, filter 0.24s ease;
+      animation: posterFloat 6s ease-in-out infinite;
+      animation-delay: var(--float-delay, 0s);
+    }
+
+    .poster:hover {
+      transform: translateY(-4px);
+      filter: brightness(1.06);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.42);
+    }
+
+    .poster::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(0,0,0,0.02) 34%, rgba(0,0,0,0.88) 100%);
+    }
+
+    .poster small {
+      margin-bottom: 7px;
+      color: var(--gold);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .poster strong {
+      font-size: 1.08rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+    }
+
+    .poster-football { background-image: url("/images/zonaviva/poster-football.webp"); }
+    .poster-drama { background-image: url("/images/zonaviva/poster-drama.webp"); --float-delay: 0.5s; }
+    .poster-tv { background-image: url("/images/zonaviva/poster-tv.webp"); --float-delay: 1s; }
+    .poster-goals { background-image: url("/images/zonaviva/poster-goals.webp"); --float-delay: 1.5s; }
+    .poster-drama-express { background-image: url("/images/zonaviva/poster-drama-express.webp"); --float-delay: 2s; }
+    .poster-family-tv { background-image: url("/images/zonaviva/poster-family-tv.webp"); --float-delay: 2.5s; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes heroDrift {
+      from {
+        transform: scale(1.03) translate3d(-0.8%, -0.4%, 0);
+      }
+      to {
+        transform: scale(1.07) translate3d(1.1%, 0.8%, 0);
+      }
+    }
+
+    @keyframes ctaPulse {
+      0%, 100% {
+        box-shadow: 0 18px 45px rgba(57, 223, 137, 0.28);
+      }
+      50% {
+        box-shadow: 0 18px 58px rgba(255, 209, 102, 0.42);
+      }
+    }
+
+    @keyframes ctaShine {
+      0%, 52% {
+        transform: translateX(-130%);
+      }
+      76%, 100% {
+        transform: translateX(130%);
+      }
+    }
+
+    @keyframes posterFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .content-copy h2 {
+      color: var(--white);
+    }
+
+    .content-copy p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.6;
+    }
+
+    .ticks {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .tick {
+      padding: 13px 14px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--white);
+      font-weight: 900;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+    }
+
+    .quotes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .quote {
+      padding: 22px;
+    }
+
+    .quote strong {
+      display: block;
+      margin-top: 18px;
+      color: var(--gold);
+    }
+
+    .faq {
+      max-width: 850px;
+      display: grid;
+      gap: 10px;
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.07);
+      padding: 18px 20px;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 900;
+    }
+
+    details p {
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 12px 0 0;
+    }
+
+    .final-cta {
+      padding: 72px 0 92px;
+      text-align: center;
+      background:
+        linear-gradient(90deg, rgba(0,168,90,0.22), rgba(227,55,55,0.18)),
+        #0b1512;
+    }
+
+    .final-cta p {
+      color: var(--muted);
+      max-width: 620px;
+      margin: 16px auto 26px;
+      line-height: 1.55;
+    }
+
+    .disclaimer {
+      max-width: 760px;
+      margin: 18px auto 0;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.78rem;
+      line-height: 1.45;
+    }
+
+    .mobile-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 20;
+      display: none;
+      padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+      background: rgba(6, 17, 15, 0.9);
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(16px);
+    }
+
+    .mobile-bar .btn {
+      width: 100%;
+      min-height: 48px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        min-height: auto;
+      }
+
+      .hero::before {
+        background-image:
+          linear-gradient(180deg, rgba(4, 12, 10, 0.60) 0%, rgba(4, 12, 10, 0.36) 44%, rgba(4, 12, 10, 0.90) 100%),
+          url("/images/zonaviva/hero-mexico-streaming.webp");
+        background-position: 72% 62%;
+        filter: saturate(1.2) brightness(1.24) contrast(1.06);
+      }
+
+      .nav-link {
+        display: none;
+      }
+
+      .hero-grid,
+      .feature-grid,
+      .steps,
+      .quotes {
+        grid-template-columns: 1fr;
+      }
+
+      .content-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .lottery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        padding-top: 96px;
+      }
+
+      .download-panel {
+        max-width: 430px;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-copy {
+        margin-top: 14px;
+      }
+
+      .mobile-bar {
+        display: block;
+      }
+    }
+
+    @media (max-width: 560px) {
+      body {
+        padding-bottom: 72px;
+      }
+
+      .shell {
+        width: min(100% - 24px, 1160px);
+      }
+
+      .hero-grid {
+        gap: 16px;
+        min-height: 680px;
+        align-content: start;
+        padding-top: 98px;
+        padding-bottom: 30px;
+      }
+
+      .pill {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-top: 42px;
+        font-size: clamp(1.86rem, 9.3vw, 2.6rem);
+        line-height: 1.02;
+      }
+
+      .lead {
+        margin-top: 212px;
+        margin-bottom: 0;
+        font-size: 1rem;
+        line-height: 1.56;
+      }
+
+      .cta-row {
+        display: none;
+      }
+
+      .cta-row .btn {
+        width: 100%;
+      }
+
+      .cta-row .btn-secondary {
+        display: none;
+      }
+
+      .phone-screen {
+        min-height: 360px;
+      }
+
+      .download-panel {
+        display: none;
+      }
+
+      .proof {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .hero .proof {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 7px;
+        margin-top: 28px;
+      }
+
+      .hero .proof span {
+        justify-content: center;
+        padding: 9px 6px;
+        font-size: 0.78rem;
+        text-align: center;
+      }
+
+      .poster-track {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        padding: 0;
+      }
+
+      .poster {
+        aspect-ratio: 0.94;
+        min-height: 0;
+        padding: 10px;
+      }
+
+      .poster small {
+        font-size: 0.65rem;
+      }
+
+      .poster strong {
+        font-size: 0.92rem;
+      }
+
+      .ticks {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section {
+        padding: 52px 0;
+      }
+
+      .content-band {
+        padding: 4px 0 42px;
+      }
+
+      .content-grid {
+        flex-direction: column-reverse;
+      }
+
+      .content-copy h2 {
+        font-size: clamp(1.65rem, 8vw, 2.1rem);
+      }
+
+      .content-copy p {
+        font-size: 0.98rem;
+      }
+
+      .lottery {
+        padding: 8px 0 34px;
+        margin-top: -34px;
+      }
+
+      .lottery-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        align-items: start;
+      }
+
+      .wheel-wrap {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .lottery-copy {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .lottery-copy h2 {
+        margin-bottom: 6px;
+        font-size: clamp(1.28rem, 6.3vw, 1.55rem);
+        line-height: 1.05;
+      }
+
+      .lottery-copy p {
+        margin-bottom: 0;
+        font-size: 0.78rem;
+        line-height: 1.28;
+      }
+
+      .lottery-copy .content-kicker {
+        margin-bottom: 6px;
+        font-size: 0.68rem;
+      }
+
+      .lottery-copy .btn {
+        min-height: 38px;
+        width: 100%;
+        padding: 0 10px;
+        font-size: 0.82rem;
+      }
+
+      .lottery-tags {
+        display: none;
+      }
+
+      .lottery-tags span {
+        text-align: center;
+        font-size: 0.78rem;
+      }
+
+      .wheel-shell {
+        width: min(242px, 62vw);
+      }
+
+      .wheel-label {
+        width: 42px;
+        margin-left: -21px;
+        margin-top: -18px;
+        transform: rotate(var(--angle)) translateY(-83px) rotate(calc(-1 * var(--angle)));
+      }
+
+      .wheel-label b {
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
+      }
+
+      .wheel-label em {
+        display: none;
+      }
+
+      .wheel::after {
+        width: 52px;
+        height: 52px;
+      }
+
+      .wheel-center {
+        width: 54px;
+        height: 54px;
+        font-size: 0.76rem;
+      }
+
+      .wheel {
+        border-width: 6px;
+      }
+
+      .wheel-pointer {
+        top: -4px;
+        border-left-width: 14px;
+        border-right-width: 14px;
+        border-top-width: 26px;
+      }
+
+      .wheel-result {
+        grid-column: 1 / -1;
+        min-height: 34px;
+        padding: 8px 10px;
+        font-size: 0.78rem;
+      }
+
+      #beneficios {
+        padding: 42px 0 34px;
+      }
+
+      #beneficios .section-head {
+        margin-bottom: 18px;
+      }
+
+      #beneficios h2 {
+        font-size: clamp(1.72rem, 8.5vw, 2.15rem);
+        line-height: 1.02;
+      }
+
+      #beneficios .section-copy {
+        display: none;
+      }
+
+      #beneficios .feature-grid {
+        gap: 10px;
+      }
+
+      #beneficios .feature-card {
+        min-height: 0;
+        padding: 16px;
+        display: grid;
+        grid-template-columns: 42px 1fr;
+        gap: 12px;
+        align-items: start;
+      }
+
+      #beneficios .feature-card::after {
+        height: 82px;
+      }
+
+      #beneficios .icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+      }
+
+      #beneficios .feature-card h3 {
+        margin: 0 0 7px;
+        font-size: 1.08rem;
+      }
+
+      #beneficios .feature-card p {
+        font-size: 0.92rem;
+        line-height: 1.4;
+      }
+    }
+  </style>
+</head>
+<body>
+  <noscript>
+    <img height="1" width="1" style="display:none" alt=""
+      src="https://www.facebook.com/tr?id=YOUR_META_PIXEL_ID&ev=PageView&noscript=1">
+  </noscript>
+  <main class="page">
+    <section class="hero">
+      <nav class="nav" aria-label="Principal">
+        <div class="shell nav-inner">
+          <a class="brand" href="#top" aria-label="ZonaViva inicio">
+            <img class="brand-logo" src="/images/zonaviva/app-logo.webp" alt="ZonaViva">
+            <span>ZonaViva</span>
+          </a>
+          <div class="nav-actions">
+            <a class="nav-link" href="#contenido">Contenido</a>
+            <a class="nav-link" href="#como">Instalacion</a>
+            <a class="btn btn-secondary" href="https://example.com/vivatv-plus.apk" data-download="" data-placement="nav">Descargar</a>
+          </div>
+        </div>
+      </nav>
+
+      <div id="top" class="shell hero-grid">
+        <div>
+          <div class="pill"><span class="pulse"></span> App ligera para Mexico</div>
+          <h1>Futbol mundial, series cortas y TV en vivo <span class="accent">en una sola app.</span></h1>
+          <p class="lead">Entra, elige y reproduce. Partidos, canales populares y dramas verticales listos para ver desde tu celular, sin vueltas y sin tarjetas.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary dl-btn" href="https://example.com/vivatv-plus.apk" data-download="" data-placement="hero">Descargar gratis</a>
+            <a class="btn btn-secondary" href="#contenido">Ver que incluye</a>
+          </div>
+          <div class="proof" aria-label="Beneficios principales">
+            <span>Sin registro</span>
+            <span>Android APK</span>
+            <span>Gratis</span>
+          </div>
+        </div>
+
+        <aside class="download-panel" aria-label="Vista previa de la app">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <span class="screen-chip">Ahora en vivo</span>
+              <div class="screen-title">Partido, novela o canal: tu mandas.</div>
+              <div class="mini-grid">
+                <div class="mini">Futbol</div>
+                <div class="mini">Short dramas</div>
+                <div class="mini">TV live</div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="sorteo" class="lottery">
+      <div class="shell lottery-grid">
+        <div class="lottery-copy">
+          <div class="content-kicker">Regalo para nuevos usuarios</div>
+          <h2>Gira gratis y reclama tu premio.</h2>
+          <p>Juega el sorteo, gana un regalo y descarga ZonaViva para reclamarlo.</p>
+        </div>
+
+        <div class="wheel-wrap" aria-label="Ruleta de regalos para nuevos usuarios">
+          <div class="lucky-board">
+            <div class="lottery-note" id="wheelResult">Oportunidades restantes: 3</div>
+            <div class="lucky-grid" id="giftWheel">
+              <span class="lucky-cell" data-index="0" style="left:0;top:0"></span>
+              <span class="lucky-cell" data-index="1" style="left:33.333%;top:0"></span>
+              <span class="lucky-cell" data-index="2" style="left:66.666%;top:0"></span>
+              <span class="lucky-cell" data-index="3" style="left:0;top:33.333%"></span>
+              <span class="lucky-cell" data-index="4" style="left:33.333%;top:33.333%"></span>
+              <span class="lucky-cell" data-index="5" style="left:66.666%;top:33.333%"></span>
+              <span class="lucky-cell" data-index="6" style="left:0;top:66.666%"></span>
+              <span class="lucky-cell" data-index="7" style="left:33.333%;top:66.666%"></span>
+              <span class="lucky-cell" data-index="8" style="left:66.666%;top:66.666%"></span>
+            </div>
+            <button class="lucky-start" type="button" id="spinWheel">Iniciar sorteo</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="prize-modal" id="prizeModal" aria-hidden="true">
+      <div class="prize-card" role="dialog" aria-modal="true" aria-labelledby="prizeTitle">
+        <button class="prize-x" type="button" id="closePrizeX" aria-label="Cerrar">&times;</button>
+        <div class="prize-art" id="prizeArt"></div>
+        <div class="prize-body">
+          <h3 id="prizeTitle">Resultado del premio</h3>
+          <p id="prizeText">Ganaste un regalo.</p>
+          <div class="prize-status" id="prizeStatus">
+            <span><strong>Estado:</strong> Pendiente de activacion</span>
+            <span><strong>Motivo:</strong> Descarga la APP para activar tu premio.</span>
+            <span><strong>Envio:</strong> Gratis al completar tus datos.</span>
+          </div>
+          <div class="prize-notice" id="prizeNotice">Tu premio queda reservado por 30 minutos. Descarga ZonaViva ahora y reclama tu regalo gratis.</div>
+          <div class="prize-actions">
+            <a class="btn btn-primary dl-btn" href="https://example.com/vivatv-plus.apk" data-download="" data-placement="prize-modal">Descargar APP ahora</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="urgency">Copa mundial de futbol + entretenimiento diario: descarga antes del proximo partido.</div>
+
+    <section id="beneficios" class="section reveal">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Lo que mas engancha, directo al primer toque.</h2>
+          <p class="section-copy">Disenada para campanas de adquisicion: el usuario entiende el valor en segundos y tiene siempre un boton de descarga cerca.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="icon">01</span>
+            <div>
+              <h3>Partidos y momentos clave</h3>
+              <p>Acceso rapido a eventos de futbol, previas, repeticiones y senales deportivas segun disponibilidad.</p>
+            </div>
+          </article>
+          <article class="feature-card">
+            <span class="icon">02</span>
+            <div>
+              <h3>Series cortas adictivas</h3>
+              <p>Dramas verticales para ver en ratos libres: capitulos breves, historias intensas y avance continuo.</p>
+            </div>
+          </article>
+          <article class="feature-card">
+            <span class="icon">03</span>
+            <div>
+              <h3>TV en vivo para todos</h3>
+              <p>Canales de entretenimiento, noticias, deportes y familia en una interfaz simple para celular.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contenido" class="content-band reveal">
+      <div class="shell content-grid">
+        <div class="content-copy">
+          <div class="content-kicker">Contenido real para enganchar</div>
+          <h2>Hecha para que el usuario no piense demasiado.</h2>
+          <p>El mensaje es claro: una app, tres razones fuertes para instalar. Futbol cuando hay partido, short dramas cuando hay descanso y TV en vivo para quedarse mas tiempo.</p>
+          <div class="ticks">
+            <div class="tick">Sin registro largo</div>
+            <div class="tick">Boton APK visible</div>
+            <div class="tick">Hecha para celular</div>
+            <div class="tick">Contenido en espanol</div>
+          </div>
+        </div>
+        <div class="poster-track" aria-label="Vista previa de contenido">
+          <div class="poster poster-football">
+            <small>Deportes</small>
+            <strong>Noche de futbol</strong>
+          </div>
+          <div class="poster poster-drama">
+            <small>Short drama</small>
+            <strong>Amor prohibido</strong>
+          </div>
+          <div class="poster poster-tv">
+            <small>TV en vivo</small>
+            <strong>Canales live</strong>
+          </div>
+          <div class="poster poster-goals">
+            <small>Highlights</small>
+            <strong>Goles del dia</strong>
+          </div>
+          <div class="poster poster-drama-express">
+            <small>Capitulos cortos</small>
+            <strong>Drama express</strong>
+          </div>
+          <div class="poster poster-family-tv">
+            <small>Familia</small>
+            <strong>TV familiar</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="como" class="section reveal">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Instalar toma menos de un minuto.</h2>
+          <p class="section-copy">La secuencia reduce friccion para trafico de anuncios, redes y WhatsApp.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <h3>Toca descargar</h3>
+            <p>El APK se baja directo en tu Android desde el boton principal.</p>
+          </article>
+          <article class="step">
+            <h3>Permite la instalacion</h3>
+            <p>Activa la autorizacion del navegador si tu telefono la solicita.</p>
+          </article>
+          <article class="step">
+            <h3>Abre y mira</h3>
+            <p>Elige futbol, TV o drama corto y empieza a reproducir al instante.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Mensajes que venden confianza.</h2>
+          <p class="section-copy">Testimonios cortos, concretos y cercanos para usuarios mexicanos.</p>
+        </div>
+        <div class="quotes">
+          <article class="quote">
+            <p>"La baje por el partido y me quede viendo una serie corta completa."</p>
+            <strong>Daniel, CDMX</strong>
+          </article>
+          <article class="quote">
+            <p>"No tuve que buscar en diez paginas. Abri la app y encontre que ver."</p>
+            <strong>Maria, Guadalajara</strong>
+          </article>
+          <article class="quote">
+            <p>"Me sirve para la TV en vivo y cuando hay futbol se vuelve indispensable."</p>
+            <strong>Raul, Monterrey</strong>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Preguntas rapidas.</h2>
+        </div>
+        <div class="faq">
+          <details open="">
+            <summary>La descarga es gratis?</summary>
+            <p>Si. El boton de descarga esta preparado para enlazar a tu APK o tienda cuando tengas el link definitivo.</p>
+          </details>
+          <details>
+            <summary>Puedo instalarla en mi Android?</summary>
+            <p>Si. Toca el boton de descarga, abre el archivo APK y sigue los pasos que muestra tu telefono.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="download" class="final-cta reveal">
+      <div class="shell">
+        <h2>Que no te cuenten el gol. Descarga ZonaViva ahora.</h2>
+        <p>Futbol, novelas cortas y TV en vivo en el bolsillo. Una experiencia simple, rapida y pensada para mirar mas.</p>
+        <a class="btn btn-primary dl-btn" href="https://example.com/vivatv-plus.apk" data-download="" data-placement="final">Descargar APK gratis</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="mobile-bar" aria-label="Descarga rapida">
+    <a class="btn btn-primary dl-btn" href="https://example.com/vivatv-plus.apk" data-download="" data-placement="sticky">Descargar gratis</a>
+  </div>
+
+  <script>
+    const DOWNLOAD_URL = "https://ln.run/9oaht";
+    const PIXEL_EVENT_NAME = "DownloadClick";
+
+    function trackDownloadClick(placement) {
+      if (typeof window.fbq === "function") {
+        window.fbq("trackCustom", PIXEL_EVENT_NAME, {
+          content_name: "ZonaViva APK",
+          content_category: "Android app",
+          button_placement: placement || "unknown"
+        });
+      }
+    }
+
+    document.querySelectorAll("[data-download]").forEach((button) => {
+      button.setAttribute("href", DOWNLOAD_URL);
+
+      button.addEventListener("click", (event) => {
+        const placement = button.getAttribute("data-placement");
+        trackDownloadClick(placement);
+
+        event.preventDefault();
+        window.setTimeout(() => {
+          window.location.href = DOWNLOAD_URL;
+        }, 180);
+      });
+    });
+
+    const revealTargets = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealTargets.forEach((target) => revealObserver.observe(target));
+    } else {
+      revealTargets.forEach((target) => target.classList.add("is-visible"));
+    }
+
+    const wheel = document.getElementById("giftWheel");
+    const spinButton = document.getElementById("spinWheel");
+    const wheelResult = document.getElementById("wheelResult");
+    const prizeModal = document.getElementById("prizeModal");
+    const prizeArt = document.getElementById("prizeArt");
+    const prizeTitle = document.getElementById("prizeTitle");
+    const prizeText = document.getElementById("prizeText");
+    const prizeStatus = document.getElementById("prizeStatus");
+    const prizeNotice = document.getElementById("prizeNotice");
+    const closePrizeModal = document.getElementById("closePrizeModal");
+    const closePrizeX = document.getElementById("closePrizeX");
+    const prizeDownload = prizeModal ? prizeModal.querySelector("[data-placement='prize-modal']") : null;
+    const prizeCells = Array.from(document.querySelectorAll(".lucky-cell"));
+    const wheelPrizes = [
+      { name: "Mini trofeo", win: true },
+      { name: "Sin premio", win: false },
+      { name: "Balon mundial", win: true },
+      { name: "Ventilador USB", win: true },
+      { name: "Bicicleta", win: true },
+      { name: "Freidora de aire", win: true },
+      { name: "Power Bank", win: true },
+      { name: "Sin premio", win: false },
+      { name: "Audifonos AIR", win: true }
+    ];
+    const MAX_WHEEL_SPINS = 3;
+    const WHEEL_SPIN_KEY = "zonaviva_lottery_spins_v3";
+    let wheelBusy = false;
+
+    function getWheelSpins() {
+      return Number(window.localStorage.getItem(WHEEL_SPIN_KEY) || "0");
+    }
+
+    function setWheelSpins(value) {
+      window.localStorage.setItem(WHEEL_SPIN_KEY, String(value));
+    }
+
+    function updateWheelChanceText() {
+      if (!wheelResult) return;
+      const left = Math.max(0, MAX_WHEEL_SPINS - getWheelSpins());
+      wheelResult.textContent = left > 0
+        ? `Oportunidades restantes: ${left}`
+        : "Ya no quedan oportunidades.";
+    }
+
+    function setActivePrize(index) {
+      prizeCells.forEach((cell) => cell.classList.toggle("is-active", Number(cell.dataset.index) === index));
+    }
+
+    function openPrizeModal(prize, index) {
+      if (!prizeModal || !prizeArt || !prizeTitle || !prizeText) return;
+      const posX = (index % 3) * 50;
+      const posY = Math.floor(index / 3) * 50;
+      prizeArt.textContent = "";
+      prizeArt.style.backgroundImage = 'linear-gradient(135deg, rgba(57,223,137,0.18), rgba(255,209,102,0.18)), url("/images/zonaviva/lucky-prize-grid.webp")';
+      prizeArt.style.backgroundSize = "300% 300%";
+      prizeArt.style.backgroundPosition = `${posX}% ${posY}%`;
+      if (prize.win) {
+        prizeTitle.textContent = "Resultado del premio";
+        prizeText.textContent = `Ganaste ${prize.name}.`;
+        if (prizeStatus) {
+          prizeStatus.style.display = "";
+          prizeStatus.innerHTML = `
+            <span><strong>Estado:</strong> Pendiente de activacion</span>
+            <span><strong>Motivo:</strong> Descarga la APP para activar tu premio.</span>
+            <span><strong>Envio:</strong> Gratis al completar tus datos.</span>
+          `;
+        }
+        if (prizeNotice) {
+          prizeNotice.style.display = "";
+          prizeNotice.textContent = "Tu premio queda reservado por 30 minutos. Descarga ZonaViva ahora y reclama tu regalo gratis.";
+        }
+        if (prizeDownload) prizeDownload.style.display = "";
+        if (closePrizeModal) closePrizeModal.textContent = "Despues";
+      } else {
+        prizeTitle.textContent = prize.name;
+        prizeText.textContent = "Esta vez no salio premio. Si aun tienes oportunidad, vuelve a intentarlo.";
+        if (prizeStatus) prizeStatus.style.display = "none";
+        if (prizeNotice) prizeNotice.style.display = "none";
+        if (prizeDownload) prizeDownload.style.display = "none";
+        if (closePrizeModal) closePrizeModal.textContent = "Cerrar";
+      }
+      prizeModal.classList.add("is-open");
+      prizeModal.setAttribute("aria-hidden", "false");
+    }
+
+    function closeModal() {
+      if (!prizeModal) return;
+      prizeModal.classList.remove("is-open");
+      prizeModal.setAttribute("aria-hidden", "true");
+    }
+
+    if (closePrizeModal) {
+      closePrizeModal.addEventListener("click", closeModal);
+    }
+
+    if (closePrizeX) {
+      closePrizeX.addEventListener("click", closeModal);
+    }
+
+    if (prizeModal) {
+      prizeModal.addEventListener("click", (event) => {
+        if (event.target === prizeModal) closeModal();
+      });
+    }
+
+    if (wheel && spinButton && wheelResult && prizeCells.length) {
+      updateWheelChanceText();
+
+      spinButton.addEventListener("click", () => {
+        if (wheelBusy) return;
+        const usedSpins = getWheelSpins();
+        if (usedSpins >= MAX_WHEEL_SPINS) {
+          wheelResult.textContent = "Ya no quedan oportunidades.";
+          updateWheelChanceText();
+          return;
+        }
+
+        wheelBusy = true;
+        spinButton.disabled = true;
+        setWheelSpins(usedSpins + 1);
+
+        const selectedIndex = Math.floor(Math.random() * wheelPrizes.length);
+        const totalSteps = 24 + selectedIndex;
+        let step = 0;
+        wheelResult.textContent = "Sorteando...";
+
+        if (typeof window.fbq === "function") {
+          window.fbq("trackCustom", "LotterySpin", {
+            content_name: "ZonaViva lucky draw"
+          });
+        }
+
+        const drawTimer = window.setInterval(() => {
+          const activeIndex = step % wheelPrizes.length;
+          setActivePrize(activeIndex);
+          step += 1;
+          if (step > totalSteps) {
+            window.clearInterval(drawTimer);
+            setActivePrize(selectedIndex);
+            const prize = wheelPrizes[selectedIndex];
+            openPrizeModal(prize, selectedIndex);
+            updateWheelChanceText();
+            spinButton.disabled = false;
+            wheelBusy = false;
+          }
+        }, 95);
+      });
+    }
+  </script>
+
+
+
+<script>
+var apkUrl='/api/apk/download';
+fetch('/api/apk-url').then(function(r){return r.json()}).then(function(d){
+  apkUrl=d.url||d.apk_url||'/api/apk/download';
+  document.querySelectorAll('.dl-btn, .btn-primary, a[href="#descargar"], a[onclick*="track"]').forEach(function(el){
+    if(el.tagName==='A') el.href=apkUrl;
+  });
+}).catch(function(){});
+
+// Visit tracking
+(function(){
+  var sid='';
+  fetch('/api/track/start',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({referrer:document.referrer,ua:navigator.userAgent})})
+  .then(function(r){return r.json()}).then(function(d){sid=d.session_id||'';
+    setInterval(function(){if(sid)fetch('/api/track/heartbeat',{method:'POST',
+      headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sid})})},15000);
+  }).catch(function(){});
+  window._trackClick=function(){if(sid)fetch('/api/track/click',{method:'POST',
+    headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sid})}).catch(function(){})};
+})();
+
+// FB Pixel (dynamic)
+fetch('/api/pixel-config').then(function(r){return r.json()}).then(function(d){
+  var ids=d.pixel_ids||[];if(!ids.length)return;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  ids.forEach(function(id){fbq('init',id)});fbq('track','PageView');
+  fbq('track','ViewContent',{content_name:document.title});
+  setTimeout(function(){fbq('track','Lead')},10000);
+  window._fbDL=function(){fbq('trackCustom','Download',{content_name:document.title})};
+}).catch(function(){});
+
+// Override any existing download functions to use our tracking
+var origTrack = window.trackDownloadClick;
+window.trackDownloadClick = function() {
+  if(window._trackClick) window._trackClick();
+  if(window._fbDL) window._fbDL();
+  if(origTrack) origTrack.apply(this, arguments);
+  if(apkUrl) setTimeout(function(){ window.location.href = apkUrl; }, 200);
+};
+
+// Also intercept all download button clicks
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.btn-primary, [onclick*="trackDownloadClick"]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      if(window._trackClick) window._trackClick();
+      if(window._fbDL) window._fbDL();
+      if(apkUrl) setTimeout(function(){ window.location.href = apkUrl; }, 200);
+    });
+  });
+});
+</script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body></html>

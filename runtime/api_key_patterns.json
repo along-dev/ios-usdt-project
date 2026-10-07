@@ -1,0 +1,3 @@
+[
+  { "pattern": "rpc\\.ankr\\.com/(?:premium-http/)?[A-Za-z0-9-]+/[A-Za-z0-9_-]{20,}", "placeholder": "<REDACTED_APIKEY>", "note": "Ankr 多链 API key：rpc.ankr.com/<chain>/<key> 与 rpc.ankr.com/premium-http/<chain>/<key> 两形态（key 段 ≥20 位且不含引号/空白，故无 key 的裸 URL 不命中）" }
+]

@@ -1,0 +1,45 @@
+{
+ "status": 200,
+ "data": {
+  "Data": [
+   {
+    "Key": "WebSiteName",
+    "Title": "拉姆支付",
+    "Value": "-",
+    "ReadOnly": false
+   },
+   {
+    "Key": "IsDemo",
+    "Title": "是否为测试环境",
+    "Value": "false",
+    "ReadOnly": true
+   },
+   {
+    "Key": "System_Mode",
+    "Title": "系统模型",
+    "Value": "3",
+    "ReadOnly": false
+   },
+   {
+    "Key": "Merchant_BatchApply_CountLimit",
+    "Title": "代付UI批次提交最大代付数量限制",
+    "Value": "20",
+    "ReadOnly": false
+   },
+   {
+    "Key": "Merchant_GatewayUrl",
+    "Title": "商户后台地址",
+    "Value": "",
+    "ReadOnly": false
+   },
+   {
+    "Key": "Merchant_CallbackIp",
+    "Title": "回调商户Ip地址",
+    "Value": "",
+    "ReadOnly": false
+   }
+  ],
+  "Code": 0,
+  "Message": ""
+ }
+}

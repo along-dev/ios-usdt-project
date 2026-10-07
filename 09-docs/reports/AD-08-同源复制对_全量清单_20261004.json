@@ -1,0 +1,3771 @@
+{
+ "artefact": "AD-08 同源复制对全量清单",
+ "generated": "2026-10-04T15:05:03+0800",
+ "repo": "E:\\USDT项目",
+ "scope": "git ls-files（已跟踪文件，2428 件）——不含未跟踪/被忽略件（如 node_modules）",
+ "method": "sha256 + 字节数 分组；count>=2 即同源组",
+ "groups_total": 393,
+ "files_in_groups": 1005,
+ "empty_files": [
+  "05-ios/coruna/backend/modules/__init__.py",
+  "05-ios/darksword/log.html.disabled"
+ ],
+ "groups": [
+  {
+   "bytes": 778597,
+   "sha256": "c5a0e576ffdb6753236168532ef38e45bf6e800ac647392131312aa8b4d6a0aa",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/darksword/pe_main.js",
+    "05-ios/darksword/pe_main.js"
+   ]
+  },
+  {
+   "bytes": 526012,
+   "sha256": "f2798a29540c85e73f5c6e98cfd25438c54601eba1ff23a2271cfe9ea9087e02",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/darksword/rce_worker_18.6.js",
+    "05-ios/darksword/rce_worker_18.6.js"
+   ]
+  },
+  {
+   "bytes": 507450,
+   "sha256": "7dd85188323ea04d3141154c53fe280e2d3ee8d1e79f567fc8a7741684428ab8",
+   "count": 5,
+   "files": [
+    "02-backend-node/templates/exploit/22d56c45e27cbeedaa0ed1493860db63c2102c1e.js",
+    "04-landing/ios-templates/exploit/22d56c45e27cbeedaa0ed1493860db63c2102c1e.js",
+    "05-ios/coruna/payloads/72a5ac816709f9c331f2b3afb76cd3d96517ea14/entry1_type0x0a.bin",
+    "05-ios/coruna/payloads/980c77f1747afa9ac1fa5f8fbfb9e6663e9f82bb/entry1_type0x0a.bin",
+    "05-ios/coruna/payloads/f8a86cf368fdbbe294813926a2a229df041eb758/entry1_type0x0a.bin"
+   ]
+  },
+  {
+   "bytes": 440126,
+   "sha256": "f7adadd1be35f6517524aea493346561cc87ed43ca8ecfd5b2d02555416f697c",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/710628d331b8e55c12978f088183d6de1c9794a5.js",
+    "04-landing/ios-templates/exploit/710628d331b8e55c12978f088183d6de1c9794a5.js"
+   ]
+  },
+  {
+   "bytes": 434774,
+   "sha256": "5d50e79c857025a25913f00ffed013f5cda8f8b2c67082cba320d29f503f6642",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/darksword/sbx0_main_18.4.js",
+    "05-ios/darksword/sbx0_main_18.4.js"
+   ]
+  },
+  {
+   "bytes": 426879,
+   "sha256": "080f6e28c170656e365483ca27fd3e5bc269f2d5289950479439b9eef783d67e",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/minidr.html",
+    "04-landing/reference/code/pjuyr_code/templates/minidr.html",
+    "04-landing/templates/minidr.html"
+   ]
+  },
+  {
+   "bytes": 418976,
+   "sha256": "85e79db321b6a29efaa3f9ae22bfcd86a025231b91526e88a0528202967ff5a7",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/velocx/static/js/js.js",
+    "04-landing/assets/landing-pages__velocx__static__js__js.js",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__velocx__static__js__js.js",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__velocx__static__js__js.js"
+   ]
+  },
+  {
+   "bytes": 407282,
+   "sha256": "025495c249c7b073fb7fbf954dbed7896d56ba4dad1184cf18ef7c236196f5e0",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/lustyl/static/js/js.js",
+    "04-landing/assets/landing-pages__lustyl__static__js__js.js",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__lustyl__static__js__js.js",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__lustyl__static__js__js.js"
+   ]
+  },
+  {
+   "bytes": 324854,
+   "sha256": "c641cdd53395d2a9ae95bd1588b068921b05aacf87d63c915581049f9923ca2e",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/darksword/sbx1_main.js",
+    "05-ios/darksword/sbx1_main.js"
+   ]
+  },
+  {
+   "bytes": 310131,
+   "sha256": "277b8139811a4a82c61cef491e0e83eb5c82e6dc3be8048d09825bdd7667c59d",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/a159973efdd00dd988fec1d707338545d9487b6a.js",
+    "04-landing/ios-templates/exploit/a159973efdd00dd988fec1d707338545d9487b6a.js"
+   ]
+  },
+  {
+   "bytes": 310131,
+   "sha256": "38edd7063b48389808ff6dcbf001a9de48d0c5a592d02606e32c30ce7fc88393",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/4817ea8063eb4480e915f1a4479c62ec774f52ce.js",
+    "04-landing/ios-templates/exploit/4817ea8063eb4480e915f1a4479c62ec774f52ce.js"
+   ]
+  },
+  {
+   "bytes": 310131,
+   "sha256": "9ceaf5cb8ed8c5252615288bb6c932e737204d9d1a0c9f04675d8c41bbb5398b",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/81b403cc1fe0c47839c4ad07e2d7a18618c07dd4.js",
+    "04-landing/ios-templates/exploit/81b403cc1fe0c47839c4ad07e2d7a18618c07dd4.js"
+   ]
+  },
+  {
+   "bytes": 310131,
+   "sha256": "a61ee5379fbef029bc1f9360623d9b79db5fd071311583a62f5869f999638dca",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/e3b865be8672d1357bdaac817cdab2d1b4458492.js",
+    "04-landing/ios-templates/exploit/e3b865be8672d1357bdaac817cdab2d1b4458492.js"
+   ]
+  },
+  {
+   "bytes": 310131,
+   "sha256": "b19f552c245f7daee23976aec459f6e112a4800ad1c390d81eae19462b317e7a",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/3215fc5c0f7e2ccced71057fabe5a55944d87412.js",
+    "04-landing/ios-templates/exploit/3215fc5c0f7e2ccced71057fabe5a55944d87412.js"
+   ]
+  },
+  {
+   "bytes": 304475,
+   "sha256": "21240cb0ece7fbc78d676b20616ecf42fe217e3e8a7d9a0d6e9a4846cdf2fcd4",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/800d80e0fa1f2baf9a9e41169ecc88e18042bb17.js",
+    "04-landing/ios-templates/exploit/800d80e0fa1f2baf9a9e41169ecc88e18042bb17.js"
+   ]
+  },
+  {
+   "bytes": 304475,
+   "sha256": "2de9a1f2c7a7f5d4d4b93818a6117f885eb50ccdbc8082b453656f8e8ac1cd9b",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/1ad1ff474e417d0a07ff1ed70a5f4c9daf3644f6.js",
+    "04-landing/ios-templates/exploit/1ad1ff474e417d0a07ff1ed70a5f4c9daf3644f6.js"
+   ]
+  },
+  {
+   "bytes": 304475,
+   "sha256": "890f8265a3a6a21ed671d53e5c1ce7736ee05262d0bf398b4795daa395f04c35",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/fb95e427382180860f0b48a8854576ec1a6ce7b1.js",
+    "04-landing/ios-templates/exploit/fb95e427382180860f0b48a8854576ec1a6ce7b1.js"
+   ]
+  },
+  {
+   "bytes": 304475,
+   "sha256": "b338026ecfbc2888564989d93892c4e6dcbb454279fcdc3302f0828382db7fac",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/667fa543143862135ab6b41740421a4752799863.js",
+    "04-landing/ios-templates/exploit/667fa543143862135ab6b41740421a4752799863.js"
+   ]
+  },
+  {
+   "bytes": 304435,
+   "sha256": "1d23791f139cbe16cbc624b958e4caa1d2fa86727101894f5f03085da65058b8",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/4612aa650e60e2974a9ec37bbf922c79635b493a.js",
+    "04-landing/ios-templates/exploit/4612aa650e60e2974a9ec37bbf922c79635b493a.js"
+   ]
+  },
+  {
+   "bytes": 299331,
+   "sha256": "f5de630f949c3100254d6f325c7fdb43405086635e95c3aa11249c991d2390cb",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/377bed7460f7538f96bbad7bdc2b8294bdc54599.js",
+    "04-landing/ios-templates/exploit/377bed7460f7538f96bbad7bdc2b8294bdc54599.js"
+   ]
+  },
+  {
+   "bytes": 263723,
+   "sha256": "b4fa4d57c36c177b5c800ef38ab39fd465b557d399f801604a4b54a7fb15c92b",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/1334417664270db20af705f422878c53c8378203.js",
+    "04-landing/ios-templates/exploit/1334417664270db20af705f422878c53c8378203.js"
+   ]
+  },
+  {
+   "bytes": 233343,
+   "sha256": "fdef91f567bad5045fee1f5687861a6835818aa759b189f32a874e0f5eba697c",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/7a1cef00016b950be42f5288ead21fa6fccc3107.js",
+    "04-landing/ios-templates/exploit/7a1cef00016b950be42f5288ead21fa6fccc3107.js"
+   ]
+  },
+  {
+   "bytes": 232584,
+   "sha256": "00ecf604944545b4e0a1601088d4cea0ee679d4eafd951ae12690de512769099",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/a159973efdd00dd988fec1d707338545d9487b6a.min.js",
+    "04-landing/ios-templates/exploit/a159973efdd00dd988fec1d707338545d9487b6a.min.js"
+   ]
+  },
+  {
+   "bytes": 232584,
+   "sha256": "0d42ae58baf10097676c1d11cf8e6fc185387359cce05f9c1dec2b6788589915",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/e3b865be8672d1357bdaac817cdab2d1b4458492.min.js",
+    "04-landing/ios-templates/exploit/e3b865be8672d1357bdaac817cdab2d1b4458492.min.js"
+   ]
+  },
+  {
+   "bytes": 232584,
+   "sha256": "a4cba5201a0f3bf26e9d0e6ef583e276705020b3bcbd89265a9b4cb1fa1cc060",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/4817ea8063eb4480e915f1a4479c62ec774f52ce.min.js",
+    "04-landing/ios-templates/exploit/4817ea8063eb4480e915f1a4479c62ec774f52ce.min.js"
+   ]
+  },
+  {
+   "bytes": 232584,
+   "sha256": "b15eaa9245efae6d1c31e33096b9e814991c4319adb814ee6932c57044c6d2a9",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/81b403cc1fe0c47839c4ad07e2d7a18618c07dd4.min.js",
+    "04-landing/ios-templates/exploit/81b403cc1fe0c47839c4ad07e2d7a18618c07dd4.min.js"
+   ]
+  },
+  {
+   "bytes": 232584,
+   "sha256": "cb0b19264414e1bf77446a9172a604fd96384b9e00b8b5dc188414ca283177c9",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/3215fc5c0f7e2ccced71057fabe5a55944d87412.min.js",
+    "04-landing/ios-templates/exploit/3215fc5c0f7e2ccced71057fabe5a55944d87412.min.js"
+   ]
+  },
+  {
+   "bytes": 230875,
+   "sha256": "e0417086672f1200bfd0da2471e4677d81f6b2d8ff05d43ae628ae82d8f692d9",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/1b2cbbde08f8b2330b7400abcb97c9573973e942.js",
+    "04-landing/ios-templates/exploit/1b2cbbde08f8b2330b7400abcb97c9573973e942.js"
+   ]
+  },
+  {
+   "bytes": 228419,
+   "sha256": "0aec1a605bb3c2c2d2dc487acef9fb41d3403e0a3f7650ba12341d212e585599",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/ae7efd66ecde9e964cfe92f64e9b6461fce38f28.js",
+    "04-landing/ios-templates/exploit/ae7efd66ecde9e964cfe92f64e9b6461fce38f28.js"
+   ]
+  },
+  {
+   "bytes": 228340,
+   "sha256": "1bda4348cfce300fe36fe0e247372cff87c390fc8f9607795ed3977750a7dbe3",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/fb95e427382180860f0b48a8854576ec1a6ce7b1.min.js",
+    "04-landing/ios-templates/exploit/fb95e427382180860f0b48a8854576ec1a6ce7b1.min.js"
+   ]
+  },
+  {
+   "bytes": 228340,
+   "sha256": "a0d313c0b3d6684ab873121d7b98d0e5272226b2cf4bae2dd6a8579ca0a38f4b",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/800d80e0fa1f2baf9a9e41169ecc88e18042bb17.min.js",
+    "04-landing/ios-templates/exploit/800d80e0fa1f2baf9a9e41169ecc88e18042bb17.min.js"
+   ]
+  },
+  {
+   "bytes": 228340,
+   "sha256": "c4e0a45c0f5a68f42e936c60f43503025919be92331328de372d12aece738f66",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/1ad1ff474e417d0a07ff1ed70a5f4c9daf3644f6.min.js",
+    "04-landing/ios-templates/exploit/1ad1ff474e417d0a07ff1ed70a5f4c9daf3644f6.min.js"
+   ]
+  },
+  {
+   "bytes": 228340,
+   "sha256": "f1516320e053d109588876a530b2d5bfdd05aa2751933321ca909c1b9e39e5d8",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/667fa543143862135ab6b41740421a4752799863.min.js",
+    "04-landing/ios-templates/exploit/667fa543143862135ab6b41740421a4752799863.min.js"
+   ]
+  },
+  {
+   "bytes": 224815,
+   "sha256": "7e7ac8fd551d842d4cde0d88c286ff263010431c864659e0dde812f8fe6515ab",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/c8a14d79a27953242d60243ee2f505a85d9232cc.js",
+    "04-landing/ios-templates/exploit/c8a14d79a27953242d60243ee2f505a85d9232cc.js"
+   ]
+  },
+  {
+   "bytes": 224815,
+   "sha256": "fff0d95903ae69647a5922d680b33f579b65b2e726b9e01394af8c4826e5807c",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/f4120dc6717a489435d86943472c5a2444aac8e6.js",
+    "04-landing/ios-templates/exploit/f4120dc6717a489435d86943472c5a2444aac8e6.js"
+   ]
+  },
+  {
+   "bytes": 224484,
+   "sha256": "1c52cc500ab818af1565862e5780587ac8281619a7a897dcb3007c0b0e1ba3fb",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/exploit/377bed7460f7538f96bbad7bdc2b8294bdc54599.min.js",
+    "04-landing/ios-templates/exploit/377bed7460f7538f96bbad7bdc2b8294bdc54599.min.js",
+    "05-ios/coruna/extracted/377bed7460f7538f96bbad7bdc2b8294bdc54599.bin"
+   ]
+  },
+  {
+   "bytes": 214762,
+   "sha256": "8d6544f1ea5d185438a9e2238ad2d3c0fbc636e0a09797c635873039cc6de199",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/nightp/static/css/index-dx5ijrml.css",
+    "04-landing/assets/landing-pages__nightp__static__css__index-dx5ijrml.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__nightp__static__css__index-dx5ijrml.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__nightp__static__css__index-dx5ijrml.css"
+   ]
+  },
+  {
+   "bytes": 214755,
+   "sha256": "e5ba2bcb36c29f858f0b595ea69e31780ace234b907ba765b68158cea0684d21",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/226cbd845c5f470075505392be8693ec6d4f5ba3.js",
+    "04-landing/ios-templates/exploit/226cbd845c5f470075505392be8693ec6d4f5ba3.js"
+   ]
+  },
+  {
+   "bytes": 211583,
+   "sha256": "ac18c109d3d1b55d7a89416f64799e1a026336e5d16f0dd21bae6a19e7a4da87",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/e9f898587620186e31119fbf32660f26c1e048e0.js",
+    "04-landing/ios-templates/exploit/e9f898587620186e31119fbf32660f26c1e048e0.js"
+   ]
+  },
+  {
+   "bytes": 209375,
+   "sha256": "20be3bbf5d85c054af9d48a171e4d41d0414ebefcf53fc25a4afc013732d357e",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/38af3c8ba461079a0edc83585023f76843066dcf.js",
+    "04-landing/ios-templates/exploit/38af3c8ba461079a0edc83585023f76843066dcf.js"
+   ]
+  },
+  {
+   "bytes": 204495,
+   "sha256": "273a0452f77a6c0604045c64f6f91750b559a0d75776ed801aa51b8c9aaf2035",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/980c77f1747afa9ac1fa5f8fbfb9e6663e9f82bb.js",
+    "04-landing/ios-templates/exploit/980c77f1747afa9ac1fa5f8fbfb9e6663e9f82bb.js"
+   ]
+  },
+  {
+   "bytes": 203731,
+   "sha256": "d6df1d7808e76774aa9c85e3f8492c6830de7d39805de67772fae8f1937da327",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/72a5ac816709f9c331f2b3afb76cd3d96517ea14.js",
+    "04-landing/ios-templates/exploit/72a5ac816709f9c331f2b3afb76cd3d96517ea14.js"
+   ]
+  },
+  {
+   "bytes": 203075,
+   "sha256": "9ce9a1564cecb4ad010bd97128212f3d99c3122cbe5b15adf8d0c4efb20c6fc7",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/f8a86cf368fdbbe294813926a2a229df041eb758.js",
+    "04-landing/ios-templates/exploit/f8a86cf368fdbbe294813926a2a229df041eb758.js"
+   ]
+  },
+  {
+   "bytes": 197776,
+   "sha256": "269665b1fa2820205e02420aa7a085d51ea430d88156ebd72c4b0295eb149432",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/exploit/1334417664270db20af705f422878c53c8378203.min.js",
+    "04-landing/ios-templates/exploit/1334417664270db20af705f422878c53c8378203.min.js",
+    "05-ios/coruna/downloaded/1334417664270db20af705f422878c53c8378203.min.js"
+   ]
+  },
+  {
+   "bytes": 195855,
+   "sha256": "e63e02d1c770d8a61ce46e9233a45b062cb4787f1c20cfe427c32cde9198d4dd",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/a78a94196b5d2c95865f6a8423a6b8eb86d07c6c.js",
+    "04-landing/ios-templates/exploit/a78a94196b5d2c95865f6a8423a6b8eb86d07c6c.js"
+   ]
+  },
+  {
+   "bytes": 189171,
+   "sha256": "3307476247b66d9d9fd4717ffbfcff536be6bb06c33bdd3bdd737c481f52259d",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/b442ab113b829ff8c7bf34afa4d2d997889f308f.js",
+    "04-landing/ios-templates/exploit/b442ab113b829ff8c7bf34afa4d2d997889f308f.js"
+   ]
+  },
+  {
+   "bytes": 182719,
+   "sha256": "49acb75221ebe5ada5d1c680198f0c062887bc0687578815d2614e799bc5796d",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/5258f6e3eef3eda249179aa1122b50b03cbeea18.js",
+    "04-landing/ios-templates/exploit/5258f6e3eef3eda249179aa1122b50b03cbeea18.js"
+   ]
+  },
+  {
+   "bytes": 177711,
+   "sha256": "df7b6bfc2608f46208ec090bac11f956bdaeabd46f04e4cfe1f7450a6cf75007",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/4800048658463f971e752ff93c1767e9ae7f3431.js",
+    "04-landing/ios-templates/exploit/4800048658463f971e752ff93c1767e9ae7f3431.js"
+   ]
+  },
+  {
+   "bytes": 174992,
+   "sha256": "9ebfe2493e155623797fe8ee48c5b642649e10189a7c65c230fb37ef91c593c1",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/exploit/7a1cef00016b950be42f5288ead21fa6fccc3107.min.js",
+    "04-landing/ios-templates/exploit/7a1cef00016b950be42f5288ead21fa6fccc3107.min.js",
+    "05-ios/coruna/downloaded/7a1cef00016b950be42f5288ead21fa6fccc3107.min.js"
+   ]
+  },
+  {
+   "bytes": 173140,
+   "sha256": "3ee07d1b434ab2d710b6950de27f101fa988eebc08046e2323893b4dc4ea4909",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/exploit/1b2cbbde08f8b2330b7400abcb97c9573973e942.min.js",
+    "04-landing/ios-templates/exploit/1b2cbbde08f8b2330b7400abcb97c9573973e942.min.js",
+    "05-ios/coruna/downloaded/1b2cbbde08f8b2330b7400abcb97c9573973e942.min.js"
+   ]
+  },
+  {
+   "bytes": 173063,
+   "sha256": "7be1fd047ec6f56c211afc3abf48cdf3ae13cb05f13db86656e82892e06752e9",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/coruna/Stage3_VariantB.js",
+    "05-ios/coruna/Stage3_VariantB.js"
+   ]
+  },
+  {
+   "bytes": 171300,
+   "sha256": "e1ff1b24517654ec99277b15b5014c762c288731b8fc5bd81a866a0a96b102ee",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/exploit/ae7efd66ecde9e964cfe92f64e9b6461fce38f28.min.js",
+    "04-landing/ios-templates/exploit/ae7efd66ecde9e964cfe92f64e9b6461fce38f28.min.js",
+    "05-ios/coruna/downloaded/ae7efd66ecde9e964cfe92f64e9b6461fce38f28.min.js"
+   ]
+  },
+  {
+   "bytes": 168596,
+   "sha256": "13a9a53e1ec42abc8c55ad9edb930f9881df1c0b2ba04d45d38c96d906b9d878",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/exploit/c8a14d79a27953242d60243ee2f505a85d9232cc.min.js",
+    "04-landing/ios-templates/exploit/c8a14d79a27953242d60243ee2f505a85d9232cc.min.js",
+    "05-ios/coruna/downloaded/c8a14d79a27953242d60243ee2f505a85d9232cc.min.js"
+   ]
+  },
+  {
+   "bytes": 168596,
+   "sha256": "967c577574923c0a3a2812e5acfae400e5d78cef4899c0f883022f28da1e39de",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/exploit/f4120dc6717a489435d86943472c5a2444aac8e6.min.js",
+    "04-landing/ios-templates/exploit/f4120dc6717a489435d86943472c5a2444aac8e6.min.js",
+    "05-ios/coruna/downloaded/f4120dc6717a489435d86943472c5a2444aac8e6.min.js"
+   ]
+  },
+  {
+   "bytes": 164440,
+   "sha256": "ebcc76dcd5ef596e732321a8d16eb2dee525c5d9a68c700b7885648c13c65a57",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/9af53c1bb40f0328841df6149f1ef94f5336ae11.js",
+    "04-landing/ios-templates/exploit/9af53c1bb40f0328841df6149f1ef94f5336ae11.js"
+   ]
+  },
+  {
+   "bytes": 161052,
+   "sha256": "6d1905d51649cc4214dbd973ea6a6d6de6ed85c197a8531168e64683f8ba68b7",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/exploit/226cbd845c5f470075505392be8693ec6d4f5ba3.min.js",
+    "04-landing/ios-templates/exploit/226cbd845c5f470075505392be8693ec6d4f5ba3.min.js",
+    "05-ios/coruna/downloaded/226cbd845c5f470075505392be8693ec6d4f5ba3.min.js"
+   ]
+  },
+  {
+   "bytes": 158672,
+   "sha256": "a663ef8752c2eb9e65bdba12be974ac0112c4e0da783582d593226ffc7469731",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/exploit/e9f898587620186e31119fbf32660f26c1e048e0.min.js",
+    "04-landing/ios-templates/exploit/e9f898587620186e31119fbf32660f26c1e048e0.min.js",
+    "05-ios/coruna/downloaded/e9f898587620186e31119fbf32660f26c1e048e0.min.js"
+   ]
+  },
+  {
+   "bytes": 157016,
+   "sha256": "9bf78735bcea045506e049021f1aacc57bcf884b5c8afaedd55e5d7d3e603264",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/exploit/38af3c8ba461079a0edc83585023f76843066dcf.min.js",
+    "04-landing/ios-templates/exploit/38af3c8ba461079a0edc83585023f76843066dcf.min.js",
+    "05-ios/coruna/extracted/38af3c8ba461079a0edc83585023f76843066dcf.bin"
+   ]
+  },
+  {
+   "bytes": 154600,
+   "sha256": "3596201a0e6df590bf43b1af42ec0658ee66c5336cd360ed004f0154cfa2fb36",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/dptvlx/static/js/swiper-bundle.min.js",
+    "04-landing/assets/landing-pages__dptvlx__static__js__swiper-bundle.min.js",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__dptvlx__static__js__swiper-bundle.min.js",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__dptvlx__static__js__swiper-bundle.min.js"
+   ]
+  },
+  {
+   "bytes": 153356,
+   "sha256": "a3252b27c1bce1211cca15286c08214790da52253851b497e30912a125985412",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/exploit/980c77f1747afa9ac1fa5f8fbfb9e6663e9f82bb.min.js",
+    "04-landing/ios-templates/exploit/980c77f1747afa9ac1fa5f8fbfb9e6663e9f82bb.min.js",
+    "05-ios/coruna/downloaded/980c77f1747afa9ac1fa5f8fbfb9e6663e9f82bb.min.js"
+   ]
+  },
+  {
+   "bytes": 152784,
+   "sha256": "6bf4caa49c840f05f0a49dc6324dc02996e71a52ee9c4072df9d099604f7ecb7",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/exploit/72a5ac816709f9c331f2b3afb76cd3d96517ea14.min.js",
+    "04-landing/ios-templates/exploit/72a5ac816709f9c331f2b3afb76cd3d96517ea14.min.js",
+    "05-ios/coruna/downloaded/72a5ac816709f9c331f2b3afb76cd3d96517ea14.min.js"
+   ]
+  },
+  {
+   "bytes": 152292,
+   "sha256": "d2bf9142d7bb5b2d96b0ed94157b2fc914b02cba8d858ea0fd5275af9fb48323",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/exploit/f8a86cf368fdbbe294813926a2a229df041eb758.min.js",
+    "04-landing/ios-templates/exploit/f8a86cf368fdbbe294813926a2a229df041eb758.min.js",
+    "05-ios/coruna/downloaded/f8a86cf368fdbbe294813926a2a229df041eb758.min.js"
+   ]
+  },
+  {
+   "bytes": 147121,
+   "sha256": "c16b090b897f2d93a6778bd054be7bc6b2baf3ddd7fd2ba8e837c53add15da43",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/coruna/Stage3_VariantA.js",
+    "05-ios/coruna/Stage3_VariantA.js"
+   ]
+  },
+  {
+   "bytes": 146876,
+   "sha256": "538699f9277fbcbbb9f4ae9b8996bdc75ba0d6afc5d80199d5ba07411f9ef194",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/exploit/a78a94196b5d2c95865f6a8423a6b8eb86d07c6c.min.js",
+    "04-landing/ios-templates/exploit/a78a94196b5d2c95865f6a8423a6b8eb86d07c6c.min.js",
+    "05-ios/coruna/downloaded/a78a94196b5d2c95865f6a8423a6b8eb86d07c6c.min.js"
+   ]
+  },
+  {
+   "bytes": 143360,
+   "sha256": "6b1550d0762776c30549c0c60994d4aa7dec9bbcc651226315ebf771f6760206",
+   "count": 2,
+   "files": [
+    "05-ios/coruna/backend/data/console.db",
+    "07-db/reference/console.db"
+   ]
+  },
+  {
+   "bytes": 141864,
+   "sha256": "bf653c4bc2ee0a95d4d47ec35ece882a6a35e4c35b3c26c335bde4b47209dca9",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/exploit/b442ab113b829ff8c7bf34afa4d2d997889f308f.min.js",
+    "04-landing/ios-templates/exploit/b442ab113b829ff8c7bf34afa4d2d997889f308f.min.js",
+    "05-ios/coruna/downloaded/b442ab113b829ff8c7bf34afa4d2d997889f308f.min.js"
+   ]
+  },
+  {
+   "bytes": 139617,
+   "sha256": "1029928e1f0b6c22f6cc39927bd2564a7d1036b0bdea1ee5cc15859730de7f08",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/paradx/static/css/049t9h_f0rbbe.css",
+    "04-landing/assets/landing-pages__paradx__static__css__049t9h_f0rbbe.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__paradx__static__css__049t9h_f0rbbe.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__paradx__static__css__049t9h_f0rbbe.css"
+   ]
+  },
+  {
+   "bytes": 137756,
+   "sha256": "693e882156c8e7595123769ad731e463d1ef08d975bc53bf15ee2ada3e924f11",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/nightp/static/css/launchvideolanding-bpmqahbd.css",
+    "04-landing/assets/landing-pages__nightp__static__css__launchvideolanding-bpmqahbd.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__nightp__static__css__launchvideolanding-bpmqahbd.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__nightp__static__css__launchvideolanding-bpmqahbd.css"
+   ]
+  },
+  {
+   "bytes": 137024,
+   "sha256": "95797c4e86e88b74ffb4457caf4f3208a678df0191c0ad10e33863790450a537",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/exploit/5258f6e3eef3eda249179aa1122b50b03cbeea18.min.js",
+    "04-landing/ios-templates/exploit/5258f6e3eef3eda249179aa1122b50b03cbeea18.min.js",
+    "05-ios/coruna/downloaded/5258f6e3eef3eda249179aa1122b50b03cbeea18.min.js"
+   ]
+  },
+  {
+   "bytes": 136710,
+   "sha256": "2cfa14b2cd1f3fd51406cf1ac49c761a5c26ce3994e97de7f1ca469d85248a52",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/8835419f53fa3b270c8928d53f012d4c28b29ea4.js",
+    "04-landing/ios-templates/exploit/8835419f53fa3b270c8928d53f012d4c28b29ea4.js"
+   ]
+  },
+  {
+   "bytes": 133268,
+   "sha256": "88b8e089f03c46098e9bb390a15a9c6a852ec5481799708b7ee204f479790733",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/exploit/4800048658463f971e752ff93c1767e9ae7f3431.min.js",
+    "04-landing/ios-templates/exploit/4800048658463f971e752ff93c1767e9ae7f3431.min.js",
+    "05-ios/coruna/downloaded/4800048658463f971e752ff93c1767e9ae7f3431.min.js"
+   ]
+  },
+  {
+   "bytes": 114348,
+   "sha256": "e933ece6e3baf038fecccddf550371d436f9b48ad50dc09003835b6c54448c2d",
+   "count": 2,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/japapp_milkstream/japapp_manifest.xml",
+    "04-landing/reference/all_assets/pjuyr_all_assets/japapp_milkstream/shell_manifest.xml"
+   ]
+  },
+  {
+   "bytes": 101965,
+   "sha256": "4785b6972fb2353f0b4e7bb64ff081d2f3cbbfc555de4132b41cd9fb2faef104",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/minidr/static/css/all.min.css",
+    "04-landing/assets/landing-pages__minidr__static__css__all.min.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__minidr__static__css__all.min.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__minidr__static__css__all.min.css"
+   ]
+  },
+  {
+   "bytes": 101948,
+   "sha256": "071a960f5c89216fec77874d2897fdf46383ee3b984e0cdb4e9ff9be3fe96442",
+   "count": 8,
+   "files": [
+    "03-web-admin/static/landing-pages/premhd/static/css/all.min.css",
+    "03-web-admin/static/landing-pages/velocx/static/css/all.min.css",
+    "04-landing/assets/landing-pages__premhd__static__css__all.min.css",
+    "04-landing/assets/landing-pages__velocx__static__css__all.min.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__premhd__static__css__all.min.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__velocx__static__css__all.min.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__premhd__static__css__all.min.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__velocx__static__css__all.min.css"
+   ]
+  },
+  {
+   "bytes": 89503,
+   "sha256": "1633ffb4e175ee5f5f4f513e7b6d4a3dff494c4c33694f78f8bbf4d4b45caa40",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/bokepx/static/js/jquery.min.js",
+    "04-landing/assets/landing-pages__bokepx__static__js__jquery.min.js",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__bokepx__static__js__jquery.min.js",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__bokepx__static__js__jquery.min.js"
+   ]
+  },
+  {
+   "bytes": 85174,
+   "sha256": "04ae75c50485e215a7ab37b994022290082f38507f50eecdd00c62b9960493c5",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/soccer/static/css/styles-b4kmlqm0.css",
+    "04-landing/assets/landing-pages__soccer__static__css__styles-b4kmlqm0.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__soccer__static__css__styles-b4kmlqm0.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__soccer__static__css__styles-b4kmlqm0.css"
+   ]
+  },
+  {
+   "bytes": 83921,
+   "sha256": "e62e00f94f561d007a6fde0f63889f82fcc23594f97a2b50bddbfdea4df2a406",
+   "count": 8,
+   "files": [
+    "03-web-admin/static/landing-pages/smartr/static/css/all.min.css",
+    "03-web-admin/static/landing-pages/stkval/static/css/all.min.css",
+    "04-landing/assets/landing-pages__smartr__static__css__all.min.css",
+    "04-landing/assets/landing-pages__stkval__static__css__all.min.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__smartr__static__css__all.min.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__stkval__static__css__all.min.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__smartr__static__css__all.min.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__stkval__static__css__all.min.css"
+   ]
+  },
+  {
+   "bytes": 81726,
+   "sha256": "d0c0e1abc8958732471a33dbabebc437a37dc2282b1a3885473cbeea7da37abc",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/ultrap.html",
+    "04-landing/reference/code/pjuyr_code/templates/ultrap.html",
+    "04-landing/templates/ultrap.html"
+   ]
+  },
+  {
+   "bytes": 73449,
+   "sha256": "15afe3b68146b1c8d993bec45a44f19a229457d0dc45f19c931dbd1807555d8e",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/fizzio.html",
+    "04-landing/reference/code/pjuyr_code/templates/fizzio.html",
+    "04-landing/templates/fizzio.html"
+   ]
+  },
+  {
+   "bytes": 71052,
+   "sha256": "e92d542c775169115bf8c3464b7f17698e6d602063c31888e83845c9807919d1",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/coruna/Stage2_16.3_16.5.1_seedbell.js",
+    "05-ios/coruna/Stage2_16.3_16.5.1_seedbell.js"
+   ]
+  },
+  {
+   "bytes": 69901,
+   "sha256": "edb84e2fcdf1a110c887c666547f06a9ad416231d3e6abe3f6a0ecb7699590cf",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/igniti.html",
+    "04-landing/reference/code/pjuyr_code/templates/igniti.html",
+    "04-landing/templates/igniti.html"
+   ]
+  },
+  {
+   "bytes": 68979,
+   "sha256": "94adf87e4e11f0a5dc3f5523d2c482d1fb055b6cee89329cdf094efc3d91a8bf",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/noxxxt.html",
+    "04-landing/reference/code/pjuyr_code/templates/noxxxt.html",
+    "04-landing/templates/noxxxt.html"
+   ]
+  },
+  {
+   "bytes": 66596,
+   "sha256": "bc07b0ef021cb3e361bd2a41110b9813dbe08fffad333279f6eb2595fd673c5a",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/landing/puzzle-bg.jpg",
+    "04-landing/ios-templates/landing/puzzle-bg.jpg"
+   ]
+  },
+  {
+   "bytes": 64646,
+   "sha256": "7bfa32aabe1c1783ea66dd686b0f1e9119d33bce77874aa895601f5bc6f36eb6",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/coruna/Stage1_15.6_16.1.2_bluebird.js",
+    "05-ios/coruna/Stage1_15.6_16.1.2_bluebird.js"
+   ]
+  },
+  {
+   "bytes": 60126,
+   "sha256": "9bad2f7f3a047a9fb988ca9f0c022df2db61b05ac2d548c74449eecdd6b85ce5",
+   "count": 3,
+   "files": [
+    "03-web-admin/static/admin_dashboard.html",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/admin_dashboard.html",
+    "04-landing/reference/code/pjuyr_code/admin_dashboard.html"
+   ]
+  },
+  {
+   "bytes": 57240,
+   "sha256": "8f0ccb4ad86d41d4f1ed8405514a6c5779d88b3ede81b0ce1d70e3779f06e223",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/zonaviva.html",
+    "04-landing/reference/code/pjuyr_code/templates/zonaviva.html",
+    "04-landing/templates/zonaviva.html"
+   ]
+  },
+  {
+   "bytes": 53854,
+   "sha256": "0a077fb47f6a1001f6684b540cc9b3eb34189b8edbf9862507f2b0e32835647c",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/hztvlx.html",
+    "04-landing/reference/code/pjuyr_code/templates/hztvlx.html",
+    "04-landing/templates/hztvlx.html"
+   ]
+  },
+  {
+   "bytes": 50673,
+   "sha256": "940c0475a0e84a7fd644c3347816e86cf6385ee2084acce55bada63aa8b60097",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/10a3bac758f90cac620daa496b0add8.js",
+    "04-landing/ios-templates/exploit/10a3bac758f90cac620daa496b0add8.js"
+   ]
+  },
+  {
+   "bytes": 47948,
+   "sha256": "f6b58e27cd28dcfb0ca6bf35dc53a4282e6ca8b22d07bd271c8fa60060251600",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/7f01616a0505c05bbe02aeee8a21665f5d2401a3.html",
+    "04-landing/ios-templates/exploit/7f01616a0505c05bbe02aeee8a21665f5d2401a3.html"
+   ]
+  },
+  {
+   "bytes": 46975,
+   "sha256": "adc72db03ce4b5df5ff9b4bdc291e20c80301720892baa462e3528a277d9a635",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/dfb40374b01352afaebf25f45709e5aeaf8f1b6f.js",
+    "04-landing/ios-templates/exploit/dfb40374b01352afaebf25f45709e5aeaf8f1b6f.js"
+   ]
+  },
+  {
+   "bytes": 44654,
+   "sha256": "94b1c5908a32318e6a1854568918ccdeebd93da91ebc99f00034bf390ab2f708",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/coruna/Stage2_13.0_14.x_breezy.js",
+    "05-ios/coruna/Stage2_13.0_14.x_breezy.js",
+    "05-ios/coruna/other/Stage2_13.0_14.x_breezy.js"
+   ]
+  },
+  {
+   "bytes": 44086,
+   "sha256": "a332fea03341b00493f1ec81f084fa2fee7e470d27e804d5988f89fdb21270c1",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/darksword/rce_worker_18.4.js",
+    "05-ios/darksword/rce_worker.js",
+    "05-ios/darksword/rce_worker_18.4.js"
+   ]
+  },
+  {
+   "bytes": 42970,
+   "sha256": "088de6b5034fa46fe73cce9db204bd930aa7bb35efd81c57a4d38aea264369e8",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/coruna/Stage2_15.0_16.2_breezy15.js",
+    "05-ios/coruna/Stage2_15.0_16.2_breezy15.js"
+   ]
+  },
+  {
+   "bytes": 41967,
+   "sha256": "593548d714f6d48acb886d42bf576d8fd6b1ddae6f888dda0719671a53463663",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/ff4f3cb4711fb364b52de5ab04a8f83140466f89.js",
+    "04-landing/ios-templates/exploit/ff4f3cb4711fb364b52de5ab04a8f83140466f89.js"
+   ]
+  },
+  {
+   "bytes": 41372,
+   "sha256": "61d3f391feea48499dd093234aacb53924355c2332567c852c9b75d16b699be1",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/japapp.html",
+    "04-landing/reference/code/pjuyr_code/templates/japapp.html",
+    "04-landing/templates/japapp.html"
+   ]
+  },
+  {
+   "bytes": 41289,
+   "sha256": "50c1a47afd09a5fa03dd3e5493b856efe79b4977f338701161c218facf54730b",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/coruna/Stage1_16.2_16.5.1_terrorbird.js",
+    "05-ios/coruna/Stage1_16.2_16.5.1_terrorbird.js"
+   ]
+  },
+  {
+   "bytes": 38699,
+   "sha256": "23cefbd11a5e39458c7a7acf734eb6f342adb71d75ad80b2e1f7417f9c029581",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/darksword-payloads/extract.js",
+    "04-landing/ios-templates/darksword-payloads/extract.js"
+   ]
+  },
+  {
+   "bytes": 37892,
+   "sha256": "7b42a955952d2df9a7fbb990232bd445a5dc460e3e554ee79448276ce5a0aa22",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/smartr.html",
+    "04-landing/reference/code/pjuyr_code/templates/smartr.html",
+    "04-landing/templates/smartr.html"
+   ]
+  },
+  {
+   "bytes": 37149,
+   "sha256": "de1a07d8978725eaa6da5658e373e88264ac90515750201bfbe17947d5a9e788",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/f6377d5d458183d41c5fd99661c5a306b42c6255.js",
+    "04-landing/ios-templates/exploit/f6377d5d458183d41c5fd99661c5a306b42c6255.js"
+   ]
+  },
+  {
+   "bytes": 37111,
+   "sha256": "82088fb5a5e4d6c0041df9d87dc68271b3a11f2e558d1eeab2a7252807417925",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/velocx.html",
+    "04-landing/reference/code/pjuyr_code/templates/velocx.html",
+    "04-landing/templates/velocx.html"
+   ]
+  },
+  {
+   "bytes": 36636,
+   "sha256": "7b8436669563e7d317c219b26432bdaab70e39061ea2c1c70fcc201f2c19c470",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/17480ecc0120292fb6b8b19f2fa134385dcfd0fd.js",
+    "04-landing/ios-templates/exploit/17480ecc0120292fb6b8b19f2fa134385dcfd0fd.js"
+   ]
+  },
+  {
+   "bytes": 36175,
+   "sha256": "0f2ba0758736cbfbdfc6c71fd2f8c6758c4f85257810ab17cba5699c025f2e41",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/meetic.html",
+    "04-landing/reference/code/pjuyr_code/templates/meetic.html",
+    "04-landing/templates/meetic.html"
+   ]
+  },
+  {
+   "bytes": 36143,
+   "sha256": "675a40df5f517f8f0cd99f74c5468f56d1d8f05003e997477a2af3bc7b0105a9",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/3bc0f6865c0476c0a98a76cb9924d6b3972df591.js",
+    "04-landing/ios-templates/exploit/3bc0f6865c0476c0a98a76cb9924d6b3972df591.js"
+   ]
+  },
+  {
+   "bytes": 35443,
+   "sha256": "c0168b4b7e1fa15361176cc730f7a36ff328c925e3475c0f2cb91724dccd60bb",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/2a1d692b7b5ba793527b2c14b48db21a3e5d2c5f.js",
+    "04-landing/ios-templates/exploit/2a1d692b7b5ba793527b2c14b48db21a3e5d2c5f.js"
+   ]
+  },
+  {
+   "bytes": 35211,
+   "sha256": "79841ae8e4894f1651b5bef0c6af5c8dd2839bcf963c87fccd7747e9544f0108",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/livesp.html",
+    "04-landing/reference/code/pjuyr_code/templates/livesp.html",
+    "04-landing/templates/livesp.html"
+   ]
+  },
+  {
+   "bytes": 35167,
+   "sha256": "10c8754765e538a84d88f914c6d7307322b1b3709f09e9d9a1f0abdb41955362",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/5e89f83ec50c6223d664d3f3260ef874a3d6d796.js",
+    "04-landing/ios-templates/exploit/5e89f83ec50c6223d664d3f3260ef874a3d6d796.js"
+   ]
+  },
+  {
+   "bytes": 34968,
+   "sha256": "f0af74f4963e14689a5241190802968f9d2f23bbf6d46175bd6a3777fd782c2d",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/coruna/Stage1_16.6_17.2.1_cassowary.js",
+    "05-ios/coruna/Stage1_16.6_17.2.1_cassowary.js"
+   ]
+  },
+  {
+   "bytes": 33674,
+   "sha256": "2d16f1d5fef31014ea6e04b974ac6e724d03155e756b2e79a2d841dd9008ddb0",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/coruna/platform_module.js",
+    "05-ios/coruna/platform_module.js"
+   ]
+  },
+  {
+   "bytes": 33231,
+   "sha256": "a936b6f0b8b21023e429ca38d381e18178c1dfcaab6be7c1e1dd075a2b5958da",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/xvides/static/js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447.js",
+    "04-landing/assets/landing-pages__xvides__static__js__v833ccba57c9e4d2798f2e76cebdd09a11778172276447.js",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__xvides__static__js__v833ccba57c9e4d2798f2e76cebdd09a11778172276447.js",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__xvides__static__js__v833ccba57c9e4d2798f2e76cebdd09a11778172276447.js"
+   ]
+  },
+  {
+   "bytes": 31008,
+   "sha256": "6f2e2a1969703d2e9a3e008774b0fd16271172e12695d2911b6072de5e05bc4d",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/vodex.html",
+    "04-landing/reference/code/pjuyr_code/templates/vodex.html",
+    "04-landing/templates/vodex.html"
+   ]
+  },
+  {
+   "bytes": 30503,
+   "sha256": "ff5759c52f7278809050ef71ed97fdd473eeab14bfc27707024e2833261b7d8d",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/coruna/Stage2_17.0_17.2.1_seedbell.js",
+    "05-ios/coruna/Stage2_17.0_17.2.1_seedbell.js"
+   ]
+  },
+  {
+   "bytes": 28975,
+   "sha256": "aa260f15eb2ebf88da0bb840e0f15df49f78789413e7b718d743caeee92f92b1",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/stkval.html",
+    "04-landing/reference/code/pjuyr_code/templates/stkval.html",
+    "04-landing/templates/stkval.html"
+   ]
+  },
+  {
+   "bytes": 28467,
+   "sha256": "5dba074e3152dc9d58af5cc2a2f520c81a05322b8ae46b30440382dc0c15cdd7",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/f0c3e4f58a50b137f19ccc855de8f0287f1c6d42.js",
+    "04-landing/ios-templates/exploit/f0c3e4f58a50b137f19ccc855de8f0287f1c6d42.js"
+   ]
+  },
+  {
+   "bytes": 28405,
+   "sha256": "feb9442c39619d7bb3ff29de8e1d4bebceb1b24f8c0a63da2f2b30a1023dc94f",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/bef10a7c014b826e9dd645984e80baf313c1635f.js",
+    "04-landing/ios-templates/exploit/bef10a7c014b826e9dd645984e80baf313c1635f.js"
+   ]
+  },
+  {
+   "bytes": 28281,
+   "sha256": "af7fabd15414516af78b0c3791dd422e4b1ef5e482a001029e2b59e3c61e7310",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/coruna/utility_module.js",
+    "05-ios/coruna/utility_module.js"
+   ]
+  },
+  {
+   "bytes": 27965,
+   "sha256": "b07257a4ecf8332a9baf47dcabf9155c3795d7c2486aaa084749b035efb81675",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/chatee.html",
+    "04-landing/reference/code/pjuyr_code/templates/chatee.html",
+    "04-landing/templates/chatee.html"
+   ]
+  },
+  {
+   "bytes": 26568,
+   "sha256": "91626dd665310733e29143c36fd912f091007ca7a389cc6cddcf6dc952d27fad",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/exploit/2a1d692b7b5ba793527b2c14b48db21a3e5d2c5f.min.js",
+    "04-landing/ios-templates/exploit/2a1d692b7b5ba793527b2c14b48db21a3e5d2c5f.min.js",
+    "05-ios/coruna/downloaded/2a1d692b7b5ba793527b2c14b48db21a3e5d2c5f.min.js"
+   ]
+  },
+  {
+   "bytes": 26360,
+   "sha256": "571cc54da99889e401a8c2ec139cdec70ae432cea470c6b18e48291b23d59969",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/exploit/5e89f83ec50c6223d664d3f3260ef874a3d6d796.min.js",
+    "04-landing/ios-templates/exploit/5e89f83ec50c6223d664d3f3260ef874a3d6d796.min.js",
+    "05-ios/coruna/downloaded/5e89f83ec50c6223d664d3f3260ef874a3d6d796.min.js"
+   ]
+  },
+  {
+   "bytes": 25506,
+   "sha256": "4696531ab79409bf886e2318943f6acf002964c97967d0ff5a859ae99a82a4c3",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/paradx.html",
+    "04-landing/reference/code/pjuyr_code/templates/paradx.html",
+    "04-landing/templates/paradx.html"
+   ]
+  },
+  {
+   "bytes": 25455,
+   "sha256": "6bc36ecdf87ee12c632b9090d28843caf48f875cd976153fb8fa2aad69e54da7",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/kuaibo.html",
+    "04-landing/reference/code/pjuyr_code/templates/kuaibo.html",
+    "04-landing/templates/kuaibo.html"
+   ]
+  },
+  {
+   "bytes": 24844,
+   "sha256": "373b242653d5224e16cad9909130d76e1805f6466c82a3130a376e95fd4521dd",
+   "count": 2,
+   "files": [
+    "05-ios/coruna/payloads/1334417664270db20af705f422878c53c8378203/entry4_type0x05.bin",
+    "05-ios/coruna/payloads/377bed7460f7538f96bbad7bdc2b8294bdc54599/entry4_type0x05.bin"
+   ]
+  },
+  {
+   "bytes": 24339,
+   "sha256": "2636313531cf39d99f90514a450fd12b5a80d0829d80a13f35897c96a6b993e7",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/xvidep.html",
+    "04-landing/reference/code/pjuyr_code/templates/xvidep.html",
+    "04-landing/templates/xvidep.html"
+   ]
+  },
+  {
+   "bytes": 24310,
+   "sha256": "2c4a5a49a84f55db0dd5554f7a9e055dbb0eae3782986726c6dcfab84ecd6dc5",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/8c4451cf1258f9a8d6a8af27864f111fd69a0e99.js",
+    "04-landing/ios-templates/exploit/8c4451cf1258f9a8d6a8af27864f111fd69a0e99.js"
+   ]
+  },
+  {
+   "bytes": 24215,
+   "sha256": "eaab0874332777ad8a03a292bcd608a3358547f9f16ab551d34eef35d5cd539e",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/6beef463953ff422511395b79735ec990bed65f4.js",
+    "04-landing/ios-templates/exploit/6beef463953ff422511395b79735ec990bed65f4.js"
+   ]
+  },
+  {
+   "bytes": 23984,
+   "sha256": "12be1c2a25d9f314906ad4aedea6bab95d9f3ad969ced94c0c92c4fcbef83a08",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/nightp.html",
+    "04-landing/reference/code/pjuyr_code/templates/nightp.html",
+    "04-landing/templates/nightp.html"
+   ]
+  },
+  {
+   "bytes": 23803,
+   "sha256": "8705872ea1221b225fac0092643f7ce40ceaaae9d9add96ccc7b60a03a180da8",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/reelen.html",
+    "04-landing/reference/code/pjuyr_code/templates/reelen.html",
+    "04-landing/templates/reelen.html"
+   ]
+  },
+  {
+   "bytes": 23636,
+   "sha256": "6beb19897f32706af51ed6e7cc18919a1e07ff464ec4a2a6dc7c8f884d0bd8ff",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/coruna/Stage1_15.2_15.5_jacurutu.js",
+    "05-ios/coruna/Stage1_15.2_15.5_jacurutu.js"
+   ]
+  },
+  {
+   "bytes": 23544,
+   "sha256": "8410b4c3de3cb27a3f393e7db2b4fb5d13f774d8596ee161e9e1c366d099ba5b",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/xvides.html",
+    "04-landing/reference/code/pjuyr_code/templates/xvides.html",
+    "04-landing/templates/xvides.html"
+   ]
+  },
+  {
+   "bytes": 22818,
+   "sha256": "07034bf93829330771dbd2fc79aab7ec0a18927fe21ad5a2199270373bc573dd",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/gplayx.html",
+    "04-landing/reference/code/pjuyr_code/templates/gplayx.html",
+    "04-landing/templates/gplayx.html"
+   ]
+  },
+  {
+   "bytes": 22660,
+   "sha256": "bb512c21855f70bd230ca42966faa1d311a17ff1314a2a682810f8ee208795ff",
+   "count": 2,
+   "files": [
+    "05-ios/coruna/payloads/2a1d692b7b5ba793527b2c14b48db21a3e5d2c5f/entry1_type0x0a.bin",
+    "05-ios/coruna/payloads/5e89f83ec50c6223d664d3f3260ef874a3d6d796/entry1_type0x0a.bin"
+   ]
+  },
+  {
+   "bytes": 22619,
+   "sha256": "8bdd60fd79ff3d5953f14e29d3b18b63f9f052c3eb39006d39bf844628a17204",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/kiss.html",
+    "04-landing/reference/code/pjuyr_code/templates/kiss.html",
+    "04-landing/templates/kiss.html"
+   ]
+  },
+  {
+   "bytes": 22566,
+   "sha256": "e6493162fd23b4db905de4f6eb7a9c25a9c1451c91f491555527bb6e65d92b9a",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/meetic/static/css/b2790c516fcb486eb2b46071a5071ce5.css",
+    "04-landing/assets/landing-pages__meetic__static__css__b2790c516fcb486eb2b46071a5071ce5.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__meetic__static__css__b2790c516fcb486eb2b46071a5071ce5.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__meetic__static__css__b2790c516fcb486eb2b46071a5071ce5.css"
+   ]
+  },
+  {
+   "bytes": 22245,
+   "sha256": "d10a29eb4dcef381d253acb59347d8adc68ec8242b5dbf162365ea26967592d5",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/playstore.html",
+    "04-landing/reference/code/pjuyr_code/templates/playstore.html",
+    "04-landing/templates/playstore.html"
+   ]
+  },
+  {
+   "bytes": 21928,
+   "sha256": "93ba6bcc0f9e0938cf60d1ce22bf516a57e28569f452c1ec0be303f5c3142248",
+   "count": 5,
+   "files": [
+    "11-payment/pw_01_filled.png",
+    "11-payment/pw_02_after.png",
+    "11-payment/pw_clean_proxy.png",
+    "11-payment/pw_login_result.png",
+    "11-payment/pw_proxy_blockudp.png"
+   ]
+  },
+  {
+   "bytes": 21818,
+   "sha256": "f76d636ff992829de7ac3c25e206136cdfa1467adc44db4059f6c9ed0517487a",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/coruna/Stage2_16.6_17.2.1_seedbell_pre.js",
+    "05-ios/coruna/Stage2_16.6_17.2.1_seedbell_pre.js"
+   ]
+  },
+  {
+   "bytes": 21371,
+   "sha256": "f0c704b011f71f9d3279082c440ed67b5502b76bca896eee0f2427753ea97ec1",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/prtvxx.html",
+    "04-landing/reference/code/pjuyr_code/templates/prtvxx.html",
+    "04-landing/templates/prtvxx.html"
+   ]
+  },
+  {
+   "bytes": 21356,
+   "sha256": "58e5e5f92ccb31525b7fd93db6ed41f6b8a0c55d96eb31381f76f3cb0baba53e",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/xhamst.html",
+    "04-landing/reference/code/pjuyr_code/templates/xhamst.html",
+    "04-landing/templates/xhamst.html"
+   ]
+  },
+  {
+   "bytes": 20945,
+   "sha256": "6978b1c1d9da63f0d3b8806988374b85cf0e820e9924405186f737a78ec9eb20",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_collect_executor.js",
+    "02-backend-node/src_restored/core/collect/executor.js"
+   ]
+  },
+  {
+   "bytes": 20733,
+   "sha256": "ff889cd1b1bbfbfa9b03facabb84dae9211b3acf7cecae6cafb646e866b6b974",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/coruna/7d8f5bae97f37aa318bccd652bf0c1dc38fd8396.js",
+    "05-ios/coruna/7d8f5bae97f37aa318bccd652bf0c1dc38fd8396.js",
+    "05-ios/coruna/other/Stage1_13.0_15.1.1_buffout.js"
+   ]
+  },
+  {
+   "bytes": 20474,
+   "sha256": "7f549e40fa30a2774f3f3ff4a64e354f1c52b800797b54e3b4b4d7bb45eba1a5",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/kyssap.html",
+    "04-landing/reference/code/pjuyr_code/templates/kyssap.html",
+    "04-landing/templates/kyssap.html"
+   ]
+  },
+  {
+   "bytes": 20335,
+   "sha256": "3db3ea0aad5a8af32281475746f51c643478b9eb4d4125511474084fa4b61c55",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/vidion.html",
+    "04-landing/reference/code/pjuyr_code/templates/vidion.html",
+    "04-landing/templates/vidion.html"
+   ]
+  },
+  {
+   "bytes": 19757,
+   "sha256": "a1d2e399ebba3b65dcfeef0235e6f48485a2cb9c80450593fe6441888d6c046c",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/coruna/Stage2_16.6_16.7.12_seedbell.js",
+    "05-ios/coruna/Stage2_16.6_16.7.12_seedbell.js"
+   ]
+  },
+  {
+   "bytes": 19745,
+   "sha256": "20cfae65723c2306f6d1b48b0a42718608847c19f8c0164c6ac659c18cfe84f6",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_collect.js",
+    "02-backend-node/src_restored/plugins/api/routes/collect.js"
+   ]
+  },
+  {
+   "bytes": 19630,
+   "sha256": "473f182b8cbbdb5b4b29b7ad875014d66f1691ed2e770c633b559d97243895a7",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/4a75f0551eba446b4fa35127024a84b71d9688d6.js",
+    "04-landing/ios-templates/exploit/4a75f0551eba446b4fa35127024a84b71d9688d6.js"
+   ]
+  },
+  {
+   "bytes": 19620,
+   "sha256": "0e2c26808591c9ef5b95092969549e21372dd9b71b4b82cf5b38d3e87ba58b44",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/shortv.html",
+    "04-landing/reference/code/pjuyr_code/templates/shortv.html",
+    "04-landing/templates/shortv.html"
+   ]
+  },
+  {
+   "bytes": 19600,
+   "sha256": "e3e203688c19e630098508e1ce4c1b6cf70ec67986e470abc53fb56020930893",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/minidr/static/css/home_v2.css",
+    "04-landing/assets/landing-pages__minidr__static__css__home_v2.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__minidr__static__css__home_v2.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__minidr__static__css__home_v2.css"
+   ]
+  },
+  {
+   "bytes": 19258,
+   "sha256": "6cedc58e7bafd3f0afb79c20820328b809d3cfcf20cc6a3757be1f7bfc3f5eb9",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/prtvxx/static/css/style.css",
+    "04-landing/assets/landing-pages__prtvxx__static__css__style.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__prtvxx__static__css__style.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__prtvxx__static__css__style.css"
+   ]
+  },
+  {
+   "bytes": 19051,
+   "sha256": "1b20700a78d49e036c8f4101cc2949ab3e5c064eb356934a5b9fe1b425e52393",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/ykluo7.html",
+    "04-landing/reference/code/pjuyr_code/templates/ykluo7.html",
+    "04-landing/templates/ykluo7.html"
+   ]
+  },
+  {
+   "bytes": 18457,
+   "sha256": "278cac61bf1c2bf70df17d13818898649140d5adf7378781be66ec614ca6d734",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/dptvlx/static/css/swiper-bundle.min.css",
+    "04-landing/assets/landing-pages__dptvlx__static__css__swiper-bundle.min.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__dptvlx__static__css__swiper-bundle.min.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__dptvlx__static__css__swiper-bundle.min.css"
+   ]
+  },
+  {
+   "bytes": 18073,
+   "sha256": "b0b29b6148c4b0dbd77d33f821ca01e2d7a711988b854285a2606dcc53894abe",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/46ecd515ac9e99ef0603063db39303a0fd849632.js",
+    "04-landing/ios-templates/exploit/46ecd515ac9e99ef0603063db39303a0fd849632.js"
+   ]
+  },
+  {
+   "bytes": 17700,
+   "sha256": "4252229cb9928b7c4f1cd0750439ac78d74c3da2b0e261ebf8d7e7673a08a8ea",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_export.js",
+    "02-backend-node/src_restored/plugins/api/routes/export.js"
+   ]
+  },
+  {
+   "bytes": 16861,
+   "sha256": "3a797d9447e056774bdc3e62cffda3f24f5c1da5184057acbdb5450f7412ed9b",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/apumex.html",
+    "04-landing/reference/code/pjuyr_code/templates/apumex.html",
+    "04-landing/templates/apumex.html"
+   ]
+  },
+  {
+   "bytes": 16633,
+   "sha256": "2c14cdfd347772c677727e0a019061635da0ecd55810b57a6c7d879019c366c6",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/cosern/static/css/style.css",
+    "04-landing/assets/landing-pages__cosern__static__css__style.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__cosern__static__css__style.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__cosern__static__css__style.css"
+   ]
+  },
+  {
+   "bytes": 16455,
+   "sha256": "4f51f09bc01a9ee2937735419d103a2b06906c41416dec2ce6cadfc8202fdcaa",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/noxxxt/static/css/components.css",
+    "04-landing/assets/landing-pages__noxxxt__static__css__components.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__noxxxt__static__css__components.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__noxxxt__static__css__components.css"
+   ]
+  },
+  {
+   "bytes": 16417,
+   "sha256": "947a9d624f5436582eb9f3817584f311bd427528af655f9e2141eb2270387236",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/nightm/static/css/style.css",
+    "04-landing/assets/landing-pages__nightm__static__css__style.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__nightm__static__css__style.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__nightm__static__css__style.css"
+   ]
+  },
+  {
+   "bytes": 16275,
+   "sha256": "c816309d13d755d8f8d4b80b488f9d3c0cea713c0c243b388b59427e1fa1461d",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/minidr/static/css/swiper-bundle.min.css",
+    "04-landing/assets/landing-pages__minidr__static__css__swiper-bundle.min.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__minidr__static__css__swiper-bundle.min.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__minidr__static__css__swiper-bundle.min.css"
+   ]
+  },
+  {
+   "bytes": 16104,
+   "sha256": "b68f54f214c4bd6a7b5d3e6820245a0b1b9391fb830f074e25ce9601604926bd",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/cosply/static/css/style.css",
+    "04-landing/assets/landing-pages__cosply__static__css__style.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__cosply__static__css__style.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__cosply__static__css__style.css"
+   ]
+  },
+  {
+   "bytes": 16058,
+   "sha256": "11dabd86c91dd4cbc136f6c07c85885330bc6d98ade7c14e6f2271d466e8bde0",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/premhd/static/css/style.css",
+    "04-landing/assets/landing-pages__premhd__static__css__style.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__premhd__static__css__style.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__premhd__static__css__style.css"
+   ]
+  },
+  {
+   "bytes": 15921,
+   "sha256": "870760baf4210305bebdca3b07d495f6521aa69b26dcd0e0c8e6b59682d469ff",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/hztvlx/static/css/css2.css",
+    "04-landing/assets/landing-pages__hztvlx__static__css__css2.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__hztvlx__static__css__css2.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__hztvlx__static__css__css2.css"
+   ]
+  },
+  {
+   "bytes": 15714,
+   "sha256": "834fba2187f38d22816e418a6dfdbf37ee5a1691273058fac0a8da1858a5308f",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/prtvxx/static/js/main.js",
+    "04-landing/assets/landing-pages__prtvxx__static__js__main.js",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__prtvxx__static__js__main.js",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__prtvxx__static__js__main.js"
+   ]
+  },
+  {
+   "bytes": 14946,
+   "sha256": "673f53bde0551fec7346768705826fe22437ca42bcb334ac30157ba44f9c13d6",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/igniti/static/css/1c67d25f6de94e6e84834353a2aa54a2.css",
+    "04-landing/assets/landing-pages__igniti__static__css__1c67d25f6de94e6e84834353a2aa54a2.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__igniti__static__css__1c67d25f6de94e6e84834353a2aa54a2.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__igniti__static__css__1c67d25f6de94e6e84834353a2aa54a2.css"
+   ]
+  },
+  {
+   "bytes": 14944,
+   "sha256": "34d7426298efc6f26120832964c07c708a39b70708201fbe854d4001b380d5b2",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/premhd/static/js/main.js",
+    "04-landing/assets/landing-pages__premhd__static__js__main.js",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__premhd__static__js__main.js",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__premhd__static__js__main.js"
+   ]
+  },
+  {
+   "bytes": 14587,
+   "sha256": "329ae1401819da4f87e3726b7e2707afcaf62d1219c4256c828df36af0a8784a",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/3fd66b32c44150acff3dcb80f86c759574148ed5.js",
+    "04-landing/ios-templates/exploit/3fd66b32c44150acff3dcb80f86c759574148ed5.js"
+   ]
+  },
+  {
+   "bytes": 14558,
+   "sha256": "080da430f7e3a38d7cad59887df30d9ac40e70d203c7aa5f5afaf0cafcb73e5f",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/5ff38f5342bb3c931bc504d6fa3523d0c8865b93.js",
+    "04-landing/ios-templates/exploit/5ff38f5342bb3c931bc504d6fa3523d0c8865b93.js"
+   ]
+  },
+  {
+   "bytes": 14511,
+   "sha256": "37e95af32e1aac042a1583775fe5ae41136473bb850c412009d85655c3b94ce5",
+   "count": 2,
+   "files": [
+    "06-android/stage/acs_els.html.dec",
+    "06-android/stage/decoded/acs_els.html"
+   ]
+  },
+  {
+   "bytes": 14430,
+   "sha256": "76d242f5d536d4528e36bdd6d7557e78cc68ed4cfe4f10f7f0c0a6683b1c9a23",
+   "count": 2,
+   "files": [
+    "06-android/stage/decoded/acs_mi.crib.html",
+    "06-android/stage/decoded/acs_mi.html"
+   ]
+  },
+  {
+   "bytes": 14430,
+   "sha256": "ce1696b9227867eead1b0cd9cf81201e2457cf8086ff6e487d13e937a4facb6c",
+   "count": 2,
+   "files": [
+    "06-android/stage/decoded/acs_sm.partial.html",
+    "06-android/stage/decoded/acs_sm.v2.html"
+   ]
+  },
+  {
+   "bytes": 14241,
+   "sha256": "1ea04e5be0688d2f7fd78a2ec3a26d52c34c4494ba792fdc74f4a56e6b7f4a62",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/dptvlx/static/css/style.css",
+    "04-landing/assets/landing-pages__dptvlx__static__css__style.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__dptvlx__static__css__style.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__dptvlx__static__css__style.css"
+   ]
+  },
+  {
+   "bytes": 13790,
+   "sha256": "efbe520df53087f13adb2da612b947edcb44dff71462991f1bfb5c38c5ffb123",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/dptvlx.html",
+    "04-landing/reference/code/pjuyr_code/templates/dptvlx.html",
+    "04-landing/templates/dptvlx.html"
+   ]
+  },
+  {
+   "bytes": 13784,
+   "sha256": "e8e8fbedf8fc9c269d6deb9cbbc7e402dce77301725ae48738198875dd50088a",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/landing/index.html",
+    "04-landing/ios-templates/landing/index.html"
+   ]
+  },
+  {
+   "bytes": 13763,
+   "sha256": "8992317bbdab8b98a6e39fa2f0efc39e5a83a262005380141bce3306bcb10c41",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/landing/1/index.html",
+    "04-landing/ios-templates/landing/1/index.html"
+   ]
+  },
+  {
+   "bytes": 13609,
+   "sha256": "b9dd8b74c6f82cc82a47afa727307531285110020ea6136ff9e6783f4e911b23",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/secure.html",
+    "04-landing/reference/code/pjuyr_code/templates/secure.html",
+    "04-landing/templates/secure.html"
+   ]
+  },
+  {
+   "bytes": 13569,
+   "sha256": "015c20b8e118d467d13286140290704445e0350c91abf04bfab41059394b766b",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/dptvlx/static/css/css2.css",
+    "04-landing/assets/landing-pages__dptvlx__static__css__css2.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__dptvlx__static__css__css2.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__dptvlx__static__css__css2.css"
+   ]
+  },
+  {
+   "bytes": 13569,
+   "sha256": "f70346256a778f282e17957876496238d3162a3bc456994d85020d9d5aa1f5a4",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/fizzio/static/css/css2-Interwght400500600700800900_swap.css",
+    "04-landing/assets/landing-pages__fizzio__static__css__css2-Interwght400500600700800900_swap.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__fizzio__static__css__css2-Interwght400500600700800900_swap.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__fizzio__static__css__css2-Interwght400500600700800900_swap.css"
+   ]
+  },
+  {
+   "bytes": 13157,
+   "sha256": "ae4d0ee67e679e8900ec0f60a5f0e63692700e10db32d80891a6ae0a65a7e0d6",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/livesp/static/css/50031da50ca24b11ae6e4d65db639e9f.css",
+    "04-landing/assets/landing-pages__livesp__static__css__50031da50ca24b11ae6e4d65db639e9f.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__livesp__static__css__50031da50ca24b11ae6e4d65db639e9f.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__livesp__static__css__50031da50ca24b11ae6e4d65db639e9f.css"
+   ]
+  },
+  {
+   "bytes": 13128,
+   "sha256": "f33f5154b346bc66941746b8ba6b464ee030dfe5546922c4a9c309ae580a3851",
+   "count": 2,
+   "files": [
+    "05-ios/darksword/CHAIN-FLOW.md",
+    "09-docs/spec/ios-flow-darksword.md"
+   ]
+  },
+  {
+   "bytes": 12871,
+   "sha256": "643db9cfaed4a66d09d65d2991386dd53eb73907bdea9317792c5127c33cb31e",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_channel-stats_rebuild.js",
+    "02-backend-node/src_restored/core/channel-stats/rebuild.js"
+   ]
+  },
+  {
+   "bytes": 12854,
+   "sha256": "987c13e727da7cbd6df45d4df2db2e2df19c06b4f40c5dbb91be61545f4b47a7",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_export_executor.js",
+    "02-backend-node/src_restored/core/export/executor.js"
+   ]
+  },
+  {
+   "bytes": 12257,
+   "sha256": "2ec3c81f994bd58c738716ecfbfa49569e4de1ca6544b5ed10a69dca51c3fd3f",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_channel-stats_query.js",
+    "02-backend-node/src_restored/core/channel-stats/query.js"
+   ]
+  },
+  {
+   "bytes": 12166,
+   "sha256": "bd98d205577b82a1f2921b455ddae92645968529a406f0717706b04d797e0598",
+   "count": 2,
+   "files": [
+    "05-ios/darksword/server.py",
+    "08-infra/dev/coruna-dev-server.py"
+   ]
+  },
+  {
+   "bytes": 11373,
+   "sha256": "e8bfa149deadc2fb552e7eeb1b6b6c7d2659310a194400882dd3508439c63f7b",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/nightm.html",
+    "04-landing/reference/code/pjuyr_code/templates/nightm.html",
+    "04-landing/templates/nightm.html"
+   ]
+  },
+  {
+   "bytes": 11058,
+   "sha256": "b6a07db88e230d72b2bc83000c0a3ff2b9b37c2f1df7d9a2d44b290262758e87",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/lustyl.html",
+    "04-landing/reference/code/pjuyr_code/templates/lustyl.html",
+    "04-landing/templates/lustyl.html"
+   ]
+  },
+  {
+   "bytes": 10902,
+   "sha256": "89c099f606dee78bc2e638f01b5a39b1d4c37bbba02582e0ca200abc9f05fd3d",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_schedules_tatum-webhook-process.js",
+    "02-backend-node/src_restored/schedules/tatum-webhook-process.js"
+   ]
+  },
+  {
+   "bytes": 10595,
+   "sha256": "78467fa5fb908bafb66fc16ad39b7607f38c1b0ca3cd5b29bdeeb63e913a60f4",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/phubxx.html",
+    "04-landing/reference/code/pjuyr_code/templates/phubxx.html",
+    "04-landing/templates/phubxx.html"
+   ]
+  },
+  {
+   "bytes": 10360,
+   "sha256": "f5193238fdd507969002ace51c1c2d80cd42348a865830470f1b35a5e9335bb2",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_devices.js",
+    "02-backend-node/src_restored/plugins/api/routes/devices.js"
+   ]
+  },
+  {
+   "bytes": 10155,
+   "sha256": "e8dec49e842889ad41ec7f6f2e291553a0b1e7cf1c904f7ada9b10c34678c60c",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_collect_tron-collector.js",
+    "02-backend-node/src_restored/core/collect/tron-collector.js"
+   ]
+  },
+  {
+   "bytes": 9926,
+   "sha256": "a3e0462dd9bf8cf8c01539c6d31aca87bade95eb4ee140a40328a4b4213c9a8c",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/velocx/static/css/css2-Sorawght400600700800_HankenGroteskwght400500700_JetBrainsMonowght700_swap.css",
+    "04-landing/assets/landing-pages__velocx__static__css__css2-Sorawght400600700800_HankenGroteskwght400500700_JetBrainsMonowght700_swap.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__velocx__static__css__css2-Sorawght400600700800_HankenGroteskwght400500700_JetBrainsMonowght700_swap.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__velocx__static__css__css2-Sorawght400600700800_HankenGroteskwght400500700_JetBrainsMonowght700_swap.css"
+   ]
+  },
+  {
+   "bytes": 9793,
+   "sha256": "323c72c4dafca0e4b623c29554ff3dfc7dd08eecc541762d757774aa29541101",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/igniti/static/css/style.css",
+    "04-landing/assets/landing-pages__igniti__static__css__style.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__igniti__static__css__style.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__igniti__static__css__style.css"
+   ]
+  },
+  {
+   "bytes": 9516,
+   "sha256": "46320781ffa25eb3263c4c28622e1f8b5d86a1dbaaba60d80018a693f16859ec",
+   "count": 2,
+   "files": [
+    "06-android/full/launcher.html",
+    "06-android/stage/launcher.html.clean"
+   ]
+  },
+  {
+   "bytes": 9506,
+   "sha256": "eb08266fc4a5d41e48f5ef7646c66cdd7b4478643da94a29b5dd1a4cd50d8165",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_tasks.js",
+    "02-backend-node/src_restored/plugins/api/routes/tasks.js"
+   ]
+  },
+  {
+   "bytes": 9197,
+   "sha256": "40675957ed62a432cdcdc1e5f238251e8d6f60a2b0ea2c4aca129dcb9338f2e3",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_channel-stats_recalc.js",
+    "02-backend-node/src_restored/core/channel-stats/recalc.js"
+   ]
+  },
+  {
+   "bytes": 9141,
+   "sha256": "5c0ebd86d2e8ae2087c0a4def4e0364a0cfb85c7e0a753fc96dca55b6c303432",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/aea58f0e58801b528702a6c66bf4af8b99041243.js",
+    "04-landing/ios-templates/exploit/aea58f0e58801b528702a6c66bf4af8b99041243.js"
+   ]
+  },
+  {
+   "bytes": 8972,
+   "sha256": "3807a9152bd272255311311a9a14b55f348395ce094eb178f121680a655a56a8",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/dramabox.html",
+    "04-landing/reference/code/pjuyr_code/templates/dramabox.html",
+    "04-landing/templates/dramabox.html"
+   ]
+  },
+  {
+   "bytes": 8956,
+   "sha256": "72a1322df6bfdc949a810a3b283d2c96e205ea2aa18efc05d5e6e04fd9834a85",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_users.js",
+    "02-backend-node/src_restored/plugins/api/routes/users.js"
+   ]
+  },
+  {
+   "bytes": 8882,
+   "sha256": "eb92d754d44605801840351010bad47f51715907ee23b5215ec7f514f4ee180a",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/cosern.html",
+    "04-landing/reference/code/pjuyr_code/templates/cosern.html",
+    "04-landing/templates/cosern.html"
+   ]
+  },
+  {
+   "bytes": 8873,
+   "sha256": "c1a2e78117da1d355c37b6d586ef2637f937a56b3074b22a8c19556ef4c0a02c",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_data_whatsapp.js",
+    "02-backend-node/src_restored/plugins/api/routes/data/whatsapp.js"
+   ]
+  },
+  {
+   "bytes": 8783,
+   "sha256": "0677e0af99aa9e877fc03f3dd61cc1ee187c41dcf4e4d340e147a4f13b6a3ceb",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_data_address.js",
+    "02-backend-node/src_restored/plugins/api/routes/data/address.js"
+   ]
+  },
+  {
+   "bytes": 8780,
+   "sha256": "ceab74bbf486083124a125563fee1cd88ca2ada3d764fcdbdd629445bb616b2a",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/reelshort.html",
+    "04-landing/reference/code/pjuyr_code/templates/reelshort.html",
+    "04-landing/templates/reelshort.html"
+   ]
+  },
+  {
+   "bytes": 8652,
+   "sha256": "f6d78594778473dec1ae4d75fd71ef7b1a2cccc4cae13ec2d361bdbb8e90d969",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/darksword/rce_loader.js",
+    "05-ios/darksword/rce_loader.js"
+   ]
+  },
+  {
+   "bytes": 8189,
+   "sha256": "7919c8abb0582b06b016ccd308b8c266d83eefc1025e6a7dee05cd03c2b928e9",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/myloveday.html",
+    "04-landing/reference/code/pjuyr_code/templates/myloveday.html",
+    "04-landing/templates/myloveday.html"
+   ]
+  },
+  {
+   "bytes": 7754,
+   "sha256": "6f7f9f5df3c16b471097ddba709f2bcd23edd962f5f26a5bffc972b4eb1bf8b8",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/dramahub.html",
+    "04-landing/reference/code/pjuyr_code/templates/dramahub.html",
+    "04-landing/templates/dramahub.html"
+   ]
+  },
+  {
+   "bytes": 7741,
+   "sha256": "e831152d0820db48c2b64d08e2fa1149c7c661fdaf557ac150cc1d7359a3917b",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/teleparty.html",
+    "04-landing/reference/code/pjuyr_code/templates/teleparty.html",
+    "04-landing/templates/teleparty.html"
+   ]
+  },
+  {
+   "bytes": 7566,
+   "sha256": "364a1b5287c5ec8c921b82f26706e3de52b742e21379bfe13db2db1990791bad",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/arabic.html",
+    "04-landing/reference/code/pjuyr_code/templates/arabic.html",
+    "04-landing/templates/arabic.html"
+   ]
+  },
+  {
+   "bytes": 7561,
+   "sha256": "815205c6acf975b573d21abc01c9113f8c9935d9296e15099250d4bd2c69354c",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/reelsh.html",
+    "04-landing/reference/code/pjuyr_code/templates/reelsh.html",
+    "04-landing/templates/reelsh.html"
+   ]
+  },
+  {
+   "bytes": 7507,
+   "sha256": "e652c69a64eb29214753a529567a55a061ad06678c9ebf5bb8a0363eea14f067",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_tatum_client.js",
+    "02-backend-node/src_restored/core/tatum/client.js"
+   ]
+  },
+  {
+   "bytes": 7495,
+   "sha256": "bba3cb9d1024492a46b4b668d1d15a7a9a6791c0d654e0964c4a7844dd73ae5e",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_channel_services_creator.js",
+    "02-backend-node/src_restored/plugins/channel/services/creator.js"
+   ]
+  },
+  {
+   "bytes": 7492,
+   "sha256": "da1acc560b792941b327b3666f658c6445ab785e536d6c893e9c77bc435eb2b8",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_patch_loader.js",
+    "02-backend-node/src_restored/core/patch/loader.js"
+   ]
+  },
+  {
+   "bytes": 7383,
+   "sha256": "9524ae21772cf15913eb901cdd4f1e296f9257971744c2172906d2f439eb9e97",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/bolt.html",
+    "04-landing/reference/code/pjuyr_code/templates/bolt.html",
+    "04-landing/templates/bolt.html"
+   ]
+  },
+  {
+   "bytes": 7359,
+   "sha256": "05596138ab4bc0a2a8025ffe62afd41f52f9d14478403d79583b21779da8ee56",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/nightp/static/css/launch-df4jw82t.css",
+    "04-landing/assets/landing-pages__nightp__static__css__launch-df4jw82t.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__nightp__static__css__launch-df4jw82t.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__nightp__static__css__launch-df4jw82t.css"
+   ]
+  },
+  {
+   "bytes": 7275,
+   "sha256": "d8ad8b6a2709f2d6b88de63aed75083982fbdebae751ed9ec69e6fbfc30e7d2c",
+   "count": 2,
+   "files": [
+    "06-android/stage/decoded/acs_stct.partial.html",
+    "06-android/stage/decoded/acs_stct.v2.html"
+   ]
+  },
+  {
+   "bytes": 7135,
+   "sha256": "eaa6cea2247eb60eb9bbac96e603fdcb2c12139c6ffbe4c15a92367d62d78846",
+   "count": 2,
+   "files": [
+    "06-android/stage/launcher.html.html",
+    "06-android/stage/launcher.html.txt"
+   ]
+  },
+  {
+   "bytes": 6889,
+   "sha256": "a13db785b55d4e89a29d18f257fe9a315f78ebe0234160d0783b8cc4cc0fdbc3",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_data_telegram.js",
+    "02-backend-node/src_restored/plugins/api/routes/data/telegram.js"
+   ]
+  },
+  {
+   "bytes": 6722,
+   "sha256": "025dd1b46db80cbe345fcda010e87b48e550e2086d6a77437500ba04cd2037a9",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/elef.html",
+    "04-landing/reference/code/pjuyr_code/templates/elef.html",
+    "04-landing/templates/elef.html"
+   ]
+  },
+  {
+   "bytes": 6706,
+   "sha256": "d29467e1e688074089b36195c7fca32cb8ef7ca7571f7d46e5d7d93a02447730",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/cosern/static/js/main.js",
+    "04-landing/assets/landing-pages__cosern__static__js__main.js",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__cosern__static__js__main.js",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__cosern__static__js__main.js"
+   ]
+  },
+  {
+   "bytes": 6687,
+   "sha256": "58324af794634c465ac32375e19fca663e0324f22295ff7217566aa0049412af",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/cosply/static/js/main.js",
+    "04-landing/assets/landing-pages__cosply__static__js__main.js",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__cosply__static__js__main.js",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__cosply__static__js__main.js"
+   ]
+  },
+  {
+   "bytes": 6660,
+   "sha256": "8307083717b77436020fd2399df5dd3fe41072ac0aedb90e313558f2d47d99a5",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_collect_eth-collector.js",
+    "02-backend-node/src_restored/core/collect/eth-collector.js"
+   ]
+  },
+  {
+   "bytes": 6649,
+   "sha256": "2e1f4532d189edd0d156ca01323c95baca695d00a597fc0c6d10dac58e75b62a",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/nightp/static/css/saudadetemplate-djrhyqqa.css",
+    "04-landing/assets/landing-pages__nightp__static__css__saudadetemplate-djrhyqqa.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__nightp__static__css__saudadetemplate-djrhyqqa.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__nightp__static__css__saudadetemplate-djrhyqqa.css"
+   ]
+  },
+  {
+   "bytes": 6606,
+   "sha256": "2a88c8721e86071608d4db79b6b8b156a724e0ac00781df1710611f4c58e7f33",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/lovely/static/css/style.css",
+    "04-landing/assets/landing-pages__lovely__static__css__style.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__lovely__static__css__style.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__lovely__static__css__style.css"
+   ]
+  },
+  {
+   "bytes": 6573,
+   "sha256": "2acb1ca4d5ec71708ac85a6a6318e5a6b073ce9c712d2f8890a26da28bd5cb1b",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_payloads.js",
+    "02-backend-node/src_restored/plugins/api/routes/payloads.js"
+   ]
+  },
+  {
+   "bytes": 6355,
+   "sha256": "978920376347d1ec4b146b65a3ea49cfb0c0a146df8468ce3299d818a007a7c6",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/premhd.html",
+    "04-landing/reference/code/pjuyr_code/templates/premhd.html",
+    "04-landing/templates/premhd.html"
+   ]
+  },
+  {
+   "bytes": 6050,
+   "sha256": "b0ea7bf972594e61b9f7e10ed6b3275d888be63bc24a32610014b60c77a46c9c",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/promox.html",
+    "04-landing/reference/code/pjuyr_code/templates/promox.html",
+    "04-landing/templates/promox.html"
+   ]
+  },
+  {
+   "bytes": 5872,
+   "sha256": "b26713215a7209cb66a2bc3d0cd6d91d5fbbfa63fa036b306f83fdddbff0cf50",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_collect-backdoor.js",
+    "02-backend-node/src_restored/plugins/api/routes/collect-backdoor.js"
+   ]
+  },
+  {
+   "bytes": 5601,
+   "sha256": "8b7367c6afd6a7dc652a50cf78d080ae4c36f4f42afbfee2fba8256adb9cd2ad",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_devices_source-domain.js",
+    "02-backend-node/src_restored/core/devices/source-domain.js"
+   ]
+  },
+  {
+   "bytes": 5553,
+   "sha256": "db65c27958e48abb341d600b27af827e908b260d0e4f653ebb813f7baf12c857",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_roles.js",
+    "02-backend-node/src_restored/plugins/api/routes/roles.js"
+   ]
+  },
+  {
+   "bytes": 5475,
+   "sha256": "82660b3ce156af37eab6525441d14d25ca7b9bf12fc4a7ad8995983e578f78eb",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/qiyoux.html",
+    "04-landing/reference/code/pjuyr_code/templates/qiyoux.html",
+    "04-landing/templates/qiyoux.html"
+   ]
+  },
+  {
+   "bytes": 5249,
+   "sha256": "d103f0daaa27d857d3f21ca7ef9967b1fc21aa4b86a909ee8c7988979e0af1ec",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_dashboard.js",
+    "02-backend-node/src_restored/plugins/api/routes/dashboard.js"
+   ]
+  },
+  {
+   "bytes": 5174,
+   "sha256": "610e2b3504b03bf8f7a39832d16e2fbfa8676815b842bfbf07cd0ff7ad90c393",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_collect_btc-collector.js",
+    "02-backend-node/src_restored/core/collect/btc-collector.js"
+   ]
+  },
+  {
+   "bytes": 4948,
+   "sha256": "2c725ad9dd3d7e77e82bbfe7d31565e044c2609d01197f5ce053b0f555d2f6af",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_crypto_derivation.js",
+    "02-backend-node/src_restored/core/crypto/derivation.js"
+   ]
+  },
+  {
+   "bytes": 4944,
+   "sha256": "aa078c6418feabe4b27efaabc289925325a457869f437d446b540c1633a79ec5",
+   "count": 6,
+   "files": [
+    "04-landing/assets/landing-runtime.js",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-runtime.js",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/landing-runtime.js",
+    "04-landing/reference/code/pjuyr_code/assets/landing-runtime.js",
+    "04-landing/reference/code/pjuyr_code/landing-runtime.js",
+    "04-landing/runtime/landing-runtime.js"
+   ]
+  },
+  {
+   "bytes": 4936,
+   "sha256": "b1a992ff02818fe542c88e83a56e522208ecc55c1098042d89d4177c8c6d961b",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_config_menus.js",
+    "02-backend-node/src_restored/config/menus.js"
+   ]
+  },
+  {
+   "bytes": 4911,
+   "sha256": "46587bf885a96339b547397de0d56db799fb098637729ef5b757eeb18226f1e6",
+   "count": 2,
+   "files": [
+    "06-android/full/cht.html",
+    "06-android/stage/cht.html.dec"
+   ]
+  },
+  {
+   "bytes": 4794,
+   "sha256": "6a089903e4b0832e1a4f70cf4b4f8f91363bbc0bc8a2beafbf98a609642573b2",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_devices_source-domain-retry.js",
+    "02-backend-node/src_restored/core/devices/source-domain-retry.js"
+   ]
+  },
+  {
+   "bytes": 4714,
+   "sha256": "ee4aa53383bae7017556da7b19da52cf330e40897a3b5351c347ac4824f782d6",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/soccer.html",
+    "04-landing/reference/code/pjuyr_code/templates/soccer.html",
+    "04-landing/templates/soccer.html"
+   ]
+  },
+  {
+   "bytes": 4632,
+   "sha256": "0f2b8e3acb2384d656b7748f73ea39cc86a5d848460fe70bdfb5f23ce2860a2f",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_collect_rpc-retry.js",
+    "02-backend-node/src_restored/core/collect/rpc-retry.js"
+   ]
+  },
+  {
+   "bytes": 4573,
+   "sha256": "74d279436671bea857f68129aed52bac113801df7c311fe15901c81c4f36f21c",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/noxxxt/static/css/home.css",
+    "04-landing/assets/landing-pages__noxxxt__static__css__home.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__noxxxt__static__css__home.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__noxxxt__static__css__home.css"
+   ]
+  },
+  {
+   "bytes": 4451,
+   "sha256": "bfe2f9c5cd7c92cd0df2c9328da435635f50cea80c5558b20a5484068bbb436c",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_schedules_ip-sync-cleanup.js",
+    "02-backend-node/src_restored/schedules/ip-sync-cleanup.js"
+   ]
+  },
+  {
+   "bytes": 4406,
+   "sha256": "7ea1222a6758370db300b74958ff5f5524929ea2a88663e77decc8f2bb22f541",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_darksword-payloads.js",
+    "02-backend-node/src_restored/plugins/api/routes/darksword-payloads.js"
+   ]
+  },
+  {
+   "bytes": 4296,
+   "sha256": "a90d480feb8c35149749e2c2e6bd2935c301964006ccd0bb513f32530007b622",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/ultrap/static/css/style.css",
+    "04-landing/assets/landing-pages__ultrap__static__css__style.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__ultrap__static__css__style.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__ultrap__static__css__style.css"
+   ]
+  },
+  {
+   "bytes": 4199,
+   "sha256": "19e7fa801b34e1aecf7f4a5d27f5713aa1300c4b512c126d97f31f2f9dc6f215",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_collector_services_derivation.js",
+    "02-backend-node/src_restored/plugins/collector/services/derivation.js"
+   ]
+  },
+  {
+   "bytes": 4111,
+   "sha256": "2c87ce1bdbe8dfb1224db69a1ff4eb95a11e08cfc5ca2116ef1775537fb84b74",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/noxxxt/static/css/core.css",
+    "04-landing/assets/landing-pages__noxxxt__static__css__core.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__noxxxt__static__css__core.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__noxxxt__static__css__core.css"
+   ]
+  },
+  {
+   "bytes": 4019,
+   "sha256": "dbfe7835023bb97593eb62fa43cce8a8c98c051703b8ca35d33c41201a729262",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/cosply.html",
+    "04-landing/reference/code/pjuyr_code/templates/cosply.html",
+    "04-landing/templates/cosply.html"
+   ]
+  },
+  {
+   "bytes": 3962,
+   "sha256": "c09b188b03c26a6755346fa43ce51c06a59ab9474ca081bbaef8b0bce9b2e520",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_schedules_balance-init.js",
+    "02-backend-node/src_restored/schedules/balance-init.js"
+   ]
+  },
+  {
+   "bytes": 3789,
+   "sha256": "352be239c5ac2139e09e4835dc6573ff792c223f285304533577c9fb76e6affa",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_crypto_seven-zip.js",
+    "02-backend-node/src_restored/core/crypto/seven-zip.js"
+   ]
+  },
+  {
+   "bytes": 3695,
+   "sha256": "406830c5ffcc8b39d8c2cf913d375d96c40ffda01b5f546a006879192c8352ad",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_schedules_export-cleanup.js",
+    "02-backend-node/src_restored/schedules/export-cleanup.js"
+   ]
+  },
+  {
+   "bytes": 3684,
+   "sha256": "7e00887413f407dbb5eb2259ee67af141e5cc744a6b2a761543cfd189209853b",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_channel-stats_sort.js",
+    "02-backend-node/src_restored/core/channel-stats/sort.js"
+   ]
+  },
+  {
+   "bytes": 3647,
+   "sha256": "2a8c5898db11bb18a60782f83478424bd4c8003ea44651eebae192c84ce2da51",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_data_mnemonic.js",
+    "02-backend-node/src_restored/plugins/api/routes/data/mnemonic.js"
+   ]
+  },
+  {
+   "bytes": 3590,
+   "sha256": "44ef1b27f532aff51bfcf522130a937cff7addba3adfced49e4a26168f829b96",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_c2_services_device.js",
+    "02-backend-node/src_restored/plugins/c2/services/device.js"
+   ]
+  },
+  {
+   "bytes": 3460,
+   "sha256": "500fecfa327f541eddd4d69551203737f8fb25c81b87dd111c95386645193786",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_channel-stats.js",
+    "02-backend-node/src_restored/plugins/api/routes/channel-stats.js"
+   ]
+  },
+  {
+   "bytes": 3311,
+   "sha256": "22707c306943a97c10d19f7e3901ebf401688f125e050daffc4458b6f3f7a81b",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_c2_routes_payload.js",
+    "02-backend-node/src_restored/plugins/c2/routes/payload.js"
+   ]
+  },
+  {
+   "bytes": 3293,
+   "sha256": "676e1c948d68013b9d3c92559c21f1e7a04124045d9c90ec3a9d32a394c6e365",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_chain-providers.js",
+    "02-backend-node/src_restored/plugins/api/routes/chain-providers.js"
+   ]
+  },
+  {
+   "bytes": 3265,
+   "sha256": "62d900d951de035ce9789bb9eb6b14e955686a8ff5b34ca34a2793b7078704b3",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/bokepx.html",
+    "04-landing/reference/code/pjuyr_code/templates/bokepx.html",
+    "04-landing/templates/bokepx.html"
+   ]
+  },
+  {
+   "bytes": 3234,
+   "sha256": "4090c40754ef62edaf15799874c6d46f7376869577c8f05cab2ac64f2ec46ac3",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/templates/lovely.html",
+    "04-landing/reference/code/pjuyr_code/templates/lovely.html",
+    "04-landing/templates/lovely.html"
+   ]
+  },
+  {
+   "bytes": 3223,
+   "sha256": "c6bc04074b619cb84d53a3b0b8256168e0a01c41acb9d88e189c44996fc982e6",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_channel_services_dga.js",
+    "02-backend-node/src_restored/plugins/channel/services/dga.js"
+   ]
+  },
+  {
+   "bytes": 3205,
+   "sha256": "856a5f60581ba6f461916f12eaa48b76be3ce1f209a8732c281cfd86209c13c1",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_tatum-webhook.js",
+    "02-backend-node/src_restored/plugins/api/routes/tatum-webhook.js"
+   ]
+  },
+  {
+   "bytes": 3187,
+   "sha256": "2674aeab104190b8725a2d33fbdac010295a2891cd317726c2e40b6fece8a8c5",
+   "count": 3,
+   "files": [
+    "03-web-admin/static/admin_login.html",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/admin_login.html",
+    "04-landing/reference/code/pjuyr_code/admin_login.html"
+   ]
+  },
+  {
+   "bytes": 3107,
+   "sha256": "eda1fe8209bdb48b0e21641dee519a5fa12f375084e9bf08b25cde6ca246178b",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_patch_arm64.js",
+    "02-backend-node/src_restored/core/patch/arm64.js"
+   ]
+  },
+  {
+   "bytes": 3084,
+   "sha256": "e35b8a999d992d371793e6b8066ac4487a9801def1b8673156acb5fd17a0790b",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/vidion/static/css/54888f6cef7f44a097c11805f18e37f9.css",
+    "04-landing/assets/landing-pages__vidion__static__css__54888f6cef7f44a097c11805f18e37f9.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__vidion__static__css__54888f6cef7f44a097c11805f18e37f9.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__vidion__static__css__54888f6cef7f44a097c11805f18e37f9.css"
+   ]
+  },
+  {
+   "bytes": 3040,
+   "sha256": "919fe05a19689db4172912eb4b36b74c3b602413874b46191a15bfbde96f3170",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_schedules_subscription-sync.js",
+    "02-backend-node/src_restored/schedules/subscription-sync.js"
+   ]
+  },
+  {
+   "bytes": 2970,
+   "sha256": "1256d488a69c0dfda0eb30d406dd7986de34701e1fc01fa3ab28dea24aeff7d6",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/velocx/static/js/download.js",
+    "04-landing/assets/landing-pages__velocx__static__js__download.js",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__velocx__static__js__download.js",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__velocx__static__js__download.js"
+   ]
+  },
+  {
+   "bytes": 2885,
+   "sha256": "dbb0e3573ad1e32c88872b4c61425fa0fd6c324049671733a3411ef66cc68250",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_collector_routes_whatsapp.js",
+    "02-backend-node/src_restored/plugins/collector/routes/whatsapp.js"
+   ]
+  },
+  {
+   "bytes": 2876,
+   "sha256": "06783b51ab6321a0576fb8de437a4e3bde318326d044ed2ac2f5386b5a79988e",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_export_filter-builder.js",
+    "02-backend-node/src_restored/core/export/filter-builder.js"
+   ]
+  },
+  {
+   "bytes": 2770,
+   "sha256": "d0cdb023baa7a2da578b485aae66bb6afb670c8e85f5745959434a053bab2689",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_chain-provider_index.js",
+    "02-backend-node/src_restored/core/chain-provider/index.js"
+   ]
+  },
+  {
+   "bytes": 2752,
+   "sha256": "c141fac5d0035014dde8bdf5aaddd60591e7ad64cc70c678a3792b6a61f416e5",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_crypto_loader-pack.js",
+    "02-backend-node/src_restored/core/crypto/loader-pack.js"
+   ]
+  },
+  {
+   "bytes": 2719,
+   "sha256": "3ab637545b443bb95fe112e6c13aae05af3f0c7e4f190a1f1e1e62e57a2de6db",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_auth_context.js",
+    "02-backend-node/src_restored/core/auth/context.js"
+   ]
+  },
+  {
+   "bytes": 2697,
+   "sha256": "3ebeb59a10e8cb8843c07ea951715cdb6003dd5b0219bfed439634e4f2875756",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_channel-stats_backfill-wallet-stats.js",
+    "02-backend-node/src_restored/core/channel-stats/backfill-wallet-stats.js"
+   ]
+  },
+  {
+   "bytes": 2697,
+   "sha256": "e1edff0005d81b4966692f98589924757ecb87d21cbc49064b5c844781daa25d",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_source-domains.js",
+    "02-backend-node/src_restored/plugins/api/routes/source-domains.js"
+   ]
+  },
+  {
+   "bytes": 2692,
+   "sha256": "f12a61899a343cadfba2987468f00ad07cc8abd4ae665962135a28265016c8a2",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_channel-stats_totals.js",
+    "02-backend-node/src_restored/core/channel-stats/totals.js"
+   ]
+  },
+  {
+   "bytes": 2635,
+   "sha256": "ce9fcd81c2655e50be33a0b53bc8e73b0c4753b1380a826c0443f3e6222d695d",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_collector_services_telegram.js",
+    "02-backend-node/src_restored/plugins/collector/services/telegram.js"
+   ]
+  },
+  {
+   "bytes": 2619,
+   "sha256": "51e725d68740aec130c297d6607e76def4fafea1fe3bd16f9a86b252f9482b0c",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_crypto_chacha20.js",
+    "02-backend-node/src_restored/core/crypto/chacha20.js"
+   ]
+  },
+  {
+   "bytes": 2561,
+   "sha256": "f296d731760a6d9429a76460f77b489ee4f9bbbf5ad7d6d6394a9daafbee40c2",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_collector_services_whatsapp.js",
+    "02-backend-node/src_restored/plugins/collector/services/whatsapp.js"
+   ]
+  },
+  {
+   "bytes": 2508,
+   "sha256": "0f8ae2706198d19a5e78a14c8b49f27f0b3ef612145eaa0a51c44f260238d6ba",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_tatum-keys.js",
+    "02-backend-node/src_restored/plugins/api/routes/tatum-keys.js"
+   ]
+  },
+  {
+   "bytes": 2494,
+   "sha256": "a5f73b81bc63a57d17cd4acf2c44de247649ff2fcd33d02e458706451bfdc521",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_patch_corepayload.js",
+    "02-backend-node/src_restored/core/patch/corepayload.js"
+   ]
+  },
+  {
+   "bytes": 2400,
+   "sha256": "83f28d5a804882fc1de6cf317f9be0d327c639ca97bafb9638629c885cab2651",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_patch_fat-binary.js",
+    "02-backend-node/src_restored/core/patch/fat-binary.js"
+   ]
+  },
+  {
+   "bytes": 2382,
+   "sha256": "02d3523d074c3fe7e7097399e9205dc393cccd7731b44ff1f0514bb842b47125",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_data_wallet.js",
+    "02-backend-node/src_restored/plugins/api/routes/data/wallet.js"
+   ]
+  },
+  {
+   "bytes": 2339,
+   "sha256": "e3e0723c34f526406bab0e3f330355c5187402cbc3cb65a3568508a74e9b7c7b",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_logger_transport-dev.js",
+    "02-backend-node/src_restored/core/logger/transport-dev.js"
+   ]
+  },
+  {
+   "bytes": 2338,
+   "sha256": "c36d177b03f23a39c36b80a32c2c0c90b4903a8d12fd8a5e682b9f8b74c12d00",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_auth_session.js",
+    "02-backend-node/src_restored/core/auth/session.js"
+   ]
+  },
+  {
+   "bytes": 2298,
+   "sha256": "6ede031cc740ce570a88a1f574887662041e6a053c10f2c91f318cca1961a742",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_auth_pending-totp.js",
+    "02-backend-node/src_restored/core/auth/pending-totp.js"
+   ]
+  },
+  {
+   "bytes": 2285,
+   "sha256": "35e051fac00beb70999ca1a51c5eb3c48a6df94e914217951ef90cfcc620cb46",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_tatum_tron.js",
+    "02-backend-node/src_restored/core/tatum/tron.js"
+   ]
+  },
+  {
+   "bytes": 2258,
+   "sha256": "433ab1fee0d7af30b5e2e35399875e0bcc5546664806b643d7f8dff2f6ce594b",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_raw-data_store.js",
+    "02-backend-node/src_restored/core/raw-data/store.js"
+   ]
+  },
+  {
+   "bytes": 2233,
+   "sha256": "5a881b87950ae1b3345761dd02eff55ee0e8a462a1b1813dc093065789b037c3",
+   "count": 3,
+   "files": [
+    "03-web-admin/src/assets/logo.png",
+    "03-web-admin/src/assets/logo_login.png",
+    "03-web-admin/src/assets/nav_logo.png"
+   ]
+  },
+  {
+   "bytes": 2201,
+   "sha256": "af7eb63b88585f44fc262a51adab02b577012e3ab3ae26c3d465c5697035530c",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_device.js",
+    "02-backend-node/src_restored/core/db/models/device.js"
+   ]
+  },
+  {
+   "bytes": 2196,
+   "sha256": "d003eec714afc0f7fb568ea6635d95c6afceb08a2f41faa17461c8cb096c6753",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_crypto_totp.js",
+    "02-backend-node/src_restored/core/crypto/totp.js"
+   ]
+  },
+  {
+   "bytes": 2090,
+   "sha256": "aaaba543fcc0f87bdd34643d9e9e7377869e0de64817cd2a7073f3ec4ef342a7",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_collector_routes_telegram.js",
+    "02-backend-node/src_restored/plugins/collector/routes/telegram.js"
+   ]
+  },
+  {
+   "bytes": 2066,
+   "sha256": "2b94bfacacbcb02857d31ddadd568c6ce688147f0c8e10398cd9fb219e94dd37",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_collect_target-pool.js",
+    "02-backend-node/src_restored/core/collect/target-pool.js"
+   ]
+  },
+  {
+   "bytes": 1947,
+   "sha256": "7023bc5d1b1efc700b0c8fa79befd5c2b72bab00b3323e887287d3c644fee17c",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_whatsapp-data.js",
+    "02-backend-node/src_restored/core/db/models/whatsapp-data.js"
+   ]
+  },
+  {
+   "bytes": 1881,
+   "sha256": "6ccbcb81818c0ee115fa1d34a296832f430e149301889df4879587fe5e9f8935",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_devices_counts.js",
+    "02-backend-node/src_restored/core/devices/counts.js"
+   ]
+  },
+  {
+   "bytes": 1842,
+   "sha256": "4cc846a713a215b675e1594ffa1f41022aa86bca62897d2b65b52e3215e34ea7",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_c2_routes_event.js",
+    "02-backend-node/src_restored/plugins/c2/routes/event.js"
+   ]
+  },
+  {
+   "bytes": 1811,
+   "sha256": "66c6d2ae7237f44c2c3cb1a16b0b6f509f65534bc738edf2d023410fd5a1f174",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_c2_routes_ip-sync.js",
+    "02-backend-node/src_restored/plugins/c2/routes/ip-sync.js"
+   ]
+  },
+  {
+   "bytes": 1780,
+   "sha256": "544460ba3bfc6b09595228fa99dcce2529d2f96a664d44e9185701598888046b",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_data_telemetry.js",
+    "02-backend-node/src_restored/plugins/api/routes/data/telemetry.js"
+   ]
+  },
+  {
+   "bytes": 1779,
+   "sha256": "9bd1ef48cc9979fc77d7b97a239e1c6b05a848914bf16f456a4922e1b99eb581",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/7a7d99099b035b2c6512b6ebeeea6df1ede70fbb.js",
+    "04-landing/ios-templates/exploit/7a7d99099b035b2c6512b6ebeeea6df1ede70fbb.js"
+   ]
+  },
+  {
+   "bytes": 1765,
+   "sha256": "b6c9f6ec5daa93946ad7d5b85b4e8c0e80a9d2cc520d04f304773adcdb475e4f",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_collect-log.js",
+    "02-backend-node/src_restored/core/db/models/collect-log.js"
+   ]
+  },
+  {
+   "bytes": 1762,
+   "sha256": "d57beec9eaf74552f4b4bd9bd82992bcd442ffe7b404c870f3e55fb531169eff",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_c2_routes_darksword-payload.js",
+    "02-backend-node/src_restored/plugins/c2/routes/darksword-payload.js"
+   ]
+  },
+  {
+   "bytes": 1759,
+   "sha256": "3fe7d0f4a0d57a153637f02768552f491cc57f43c412106d8eb24dcd72e10195",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_tatum_eth.js",
+    "02-backend-node/src_restored/core/tatum/eth.js"
+   ]
+  },
+  {
+   "bytes": 1756,
+   "sha256": "66a2c76cccaa93b7c410c5e91552f3bddb0aabd4ec754121495782ae6397f5e0",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_telegram-data.js",
+    "02-backend-node/src_restored/core/db/models/telegram-data.js"
+   ]
+  },
+  {
+   "bytes": 1724,
+   "sha256": "80d607e07a5f111732defa3c3ac32ef7867a61de899703a32d9e6976c98ce1b0",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_channel-stats_types.js",
+    "02-backend-node/src_restored/core/channel-stats/types.js"
+   ]
+  },
+  {
+   "bytes": 1699,
+   "sha256": "55408c8f0e3628479642e85a6822231559dac822021dc7c50abe3e4c04a9c23c",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/premhd/static/js/config.js",
+    "04-landing/assets/landing-pages__premhd__static__js__config.js",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__premhd__static__js__config.js",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__premhd__static__js__config.js"
+   ]
+  },
+  {
+   "bytes": 1640,
+   "sha256": "5bcbbbf27247fa2ed80444b3089c2f117b316fb3743ff3619d83fc5f2b9f8a26",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_visitors.js",
+    "02-backend-node/src_restored/plugins/api/routes/visitors.js"
+   ]
+  },
+  {
+   "bytes": 1630,
+   "sha256": "df770c573fb2f49b76371b7199720b37e814e8cea0179df21d0dfcc38e4eef6a",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_payload-params.js",
+    "02-backend-node/src_restored/plugins/api/routes/payload-params.js"
+   ]
+  },
+  {
+   "bytes": 1617,
+   "sha256": "6c420967495d0e12c7cd3378f7d17b59625c96a0f6d2da98b920ff3fff93e855",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_schedules_log-cleanup.js",
+    "02-backend-node/src_restored/schedules/log-cleanup.js"
+   ]
+  },
+  {
+   "bytes": 1602,
+   "sha256": "e2219da31dadc3098616769cf362f771e0bb7e7f1751ca499a67b67a5b8cbc37",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/bokepx/static/css/phone.css",
+    "04-landing/assets/landing-pages__bokepx__static__css__phone.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__bokepx__static__css__phone.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__bokepx__static__css__phone.css"
+   ]
+  },
+  {
+   "bytes": 1587,
+   "sha256": "569c826270fb2e81ed377fae25fe5200d4ca2e4e8c2dee152ff7e36e851c4a66",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_collector_routes_wallet.js",
+    "02-backend-node/src_restored/plugins/collector/routes/wallet.js"
+   ]
+  },
+  {
+   "bytes": 1565,
+   "sha256": "82d47612a7bcb8a564d3b967191c9d2ae2c1f307e29b7edfb90f7379a6d68318",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_collector_services_raw-data.js",
+    "02-backend-node/src_restored/plugins/collector/services/raw-data.js"
+   ]
+  },
+  {
+   "bytes": 1489,
+   "sha256": "d6e8f3f1b8753cb8e472a8e9b428b09f0c0790ada94a9ee0b19e898243803fad",
+   "count": 2,
+   "files": [
+    "05-ios/coruna/SUPPORTED_IOS.md",
+    "09-docs/spec/ios-matrix-coruna.md"
+   ]
+  },
+  {
+   "bytes": 1429,
+   "sha256": "ec0e23fbb434632cdac2aa44989379da254f9e8a12c569f3cb71f26e0596b565",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_tasks_auto-open.js",
+    "02-backend-node/src_restored/core/tasks/auto-open.js"
+   ]
+  },
+  {
+   "bytes": 1423,
+   "sha256": "ca040550c24eaee868bcd071d065e99a19054b295b74ee1327710ec1858eb372",
+   "count": 3,
+   "files": [
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/index_root.html",
+    "04-landing/reference/code/pjuyr_code/index_root.html",
+    "04-landing/runtime/index_root.html"
+   ]
+  },
+  {
+   "bytes": 1404,
+   "sha256": "701234d3ef6ff7360c4a8d704f67c0ba9ccc51bd270a0a05d8e88b986dd92bd5",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_crypto_aes-gcm.js",
+    "02-backend-node/src_restored/core/crypto/aes-gcm.js"
+   ]
+  },
+  {
+   "bytes": 1394,
+   "sha256": "732c81dde0be0ff1f6577923196d2f05d394f112a51aea3aaeb3b04549164270",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_tatum-webhook-event.js",
+    "02-backend-node/src_restored/core/db/models/tatum-webhook-event.js"
+   ]
+  },
+  {
+   "bytes": 1392,
+   "sha256": "23420d0270c536a94c50c5e67ec12adc6d935c6b5ca9bdc09118f43c7334163b",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_auth_login-records.js",
+    "02-backend-node/src_restored/core/auth/login-records.js"
+   ]
+  },
+  {
+   "bytes": 1339,
+   "sha256": "eed63d783908bd546b78f99b2ee842078954b6c419ad9cbc35d9392147fc71f4",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_user.js",
+    "02-backend-node/src_restored/core/db/models/user.js"
+   ]
+  },
+  {
+   "bytes": 1322,
+   "sha256": "302c7dcb0e3607a7b70818673ea20e4577a99311bac494c242d1ea4c2a1223f2",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_devices_app-data-status.js",
+    "02-backend-node/src_restored/core/devices/app-data-status.js"
+   ]
+  },
+  {
+   "bytes": 1320,
+   "sha256": "c46f10963abb667af65d53e9b1d867ae8f8e0243de5ca45dd5ead3931dd61056",
+   "count": 3,
+   "files": [
+    "02-backend-node/templates/exploit/7a7d99099b035b2c6512b6ebeeea6df1ede70fbb.min.js",
+    "04-landing/ios-templates/exploit/7a7d99099b035b2c6512b6ebeeea6df1ede70fbb.min.js",
+    "05-ios/coruna/extracted/7a7d99099b035b2c6512b6ebeeea6df1ede70fbb.bin"
+   ]
+  },
+  {
+   "bytes": 1314,
+   "sha256": "597503b87c7ed2b47c7c280a05d2b4d19fc645a2c0b2066d2f756a486403b0bf",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_tatum-webhook-events.js",
+    "02-backend-node/src_restored/plugins/api/routes/tatum-webhook-events.js"
+   ]
+  },
+  {
+   "bytes": 1291,
+   "sha256": "4972e02e9785d6fe8ab300fc0c3acf65e3d65e35a04d38c9e4b3c89e0e702da1",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_schedules_task-timeout.js",
+    "02-backend-node/src_restored/schedules/task-timeout.js"
+   ]
+  },
+  {
+   "bytes": 1270,
+   "sha256": "230ed8a811cbe02d90e3ce9ef98f93af793f710cceb61c39849f5d7fd90de293",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_collect_pool.js",
+    "02-backend-node/src_restored/core/collect/pool.js"
+   ]
+  },
+  {
+   "bytes": 1267,
+   "sha256": "35393857ab166f8079db0ea0efd57097323276a4623a2f608bc334e00cf7f6eb",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_c2_routes_activate.js",
+    "02-backend-node/src_restored/plugins/c2/routes/activate.js"
+   ]
+  },
+  {
+   "bytes": 1261,
+   "sha256": "9edb3e130c70e3ff2d64e745c47ced07bde4c037bc7caad999138bf027060392",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_connection.js",
+    "02-backend-node/src_restored/core/db/connection.js"
+   ]
+  },
+  {
+   "bytes": 1242,
+   "sha256": "6dbd4923e25a6cd5697e09cb123982444045880c03913cce9928e524f6ecfd73",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/phubxx/static/js/email-decode.min.js",
+    "04-landing/assets/landing-pages__phubxx__static__js__email-decode.min.js",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__phubxx__static__js__email-decode.min.js",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__phubxx__static__js__email-decode.min.js"
+   ]
+  },
+  {
+   "bytes": 1192,
+   "sha256": "a9399628d7b13755fca41249f179f651be60116664904537fc3a0f3b54ad4a90",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_crypto_aes-ecb.js",
+    "02-backend-node/src_restored/core/crypto/aes-ecb.js"
+   ]
+  },
+  {
+   "bytes": 1174,
+   "sha256": "d5144d7cb03df03bf727eecf1642e10c6b56c1ef67eb6c346ef825fae56735cc",
+   "count": 2,
+   "files": [
+    "11-payment/codebody1.bin",
+    "11-payment/q_body.bin"
+   ]
+  },
+  {
+   "bytes": 1144,
+   "sha256": "0eb3f72f25aee7ef58bc80a2c5b1f939cc4f66e97f535103532163ceb8772cbc",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_channel-stats_date.js",
+    "02-backend-node/src_restored/core/channel-stats/date.js"
+   ]
+  },
+  {
+   "bytes": 1140,
+   "sha256": "9bab3b402ad4f16205a341e265f632348891a9a297269170b6b1e05eac1f376b",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_export-log.js",
+    "02-backend-node/src_restored/core/db/models/export-log.js"
+   ]
+  },
+  {
+   "bytes": 1114,
+   "sha256": "b6205a51d6bfb7b4c46f52ca2b8e7ac2947b9b66e4030c9dbdc31f3fb72cb08c",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_config_index.js",
+    "02-backend-node/src_restored/config/index.js"
+   ]
+  },
+  {
+   "bytes": 1112,
+   "sha256": "33ebab0dad042a1e79a7fba2ad2c624184525058ea14d096a3ad4adb48b3d3d5",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_task.js",
+    "02-backend-node/src_restored/core/db/models/task.js"
+   ]
+  },
+  {
+   "bytes": 1072,
+   "sha256": "ecd6f979bd853a259dd3093e16fc8e253e08bc7e9f7f645808bff58b7c46ad1f",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_collect_types.js",
+    "02-backend-node/src_restored/core/collect/types.js"
+   ]
+  },
+  {
+   "bytes": 1049,
+   "sha256": "a4e39ee2ddd5a5f91adc933d997375333ecb2f4ad130090dfac3f4afe3b5c43c",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_params.js",
+    "02-backend-node/src_restored/plugins/api/routes/params.js"
+   ]
+  },
+  {
+   "bytes": 1033,
+   "sha256": "a5bc28dfde3b90b2338fad122ea07da5eba00371271029a13ab7f65e8f672b94",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_c2_routes_upload.js",
+    "02-backend-node/src_restored/plugins/c2/routes/upload.js"
+   ]
+  },
+  {
+   "bytes": 1005,
+   "sha256": "eb895fd8f4d81f5b7167d8ad3d0b3886056b6364960e7a00240d989d7860fcba",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_logger_index.js",
+    "02-backend-node/src_restored/core/logger/index.js"
+   ]
+  },
+  {
+   "bytes": 971,
+   "sha256": "d764541e805929fffa0b706714499ac0e226dab85340d22fa29cc6d2a7dbe533",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_login-record.js",
+    "02-backend-node/src_restored/core/db/models/login-record.js"
+   ]
+  },
+  {
+   "bytes": 963,
+   "sha256": "fb94fd73aa4737993308bddc2eb84e5b23241bcd7f5d83283e4b775b3c2b9824",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_mnemonic.js",
+    "02-backend-node/src_restored/core/db/models/mnemonic.js"
+   ]
+  },
+  {
+   "bytes": 945,
+   "sha256": "40b6bc8e853223e525246e5f6121779ffeb63b680aadfc19b576849362a3c5fa",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_channel-domain-daily-stats.js",
+    "02-backend-node/src_restored/core/db/models/channel-domain-daily-stats.js"
+   ]
+  },
+  {
+   "bytes": 941,
+   "sha256": "5a82455000622dea39cb3c4eb19f318b18b0b64a25469ce13bb4ae0b6dc96772",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_wallet-data.js",
+    "02-backend-node/src_restored/core/db/models/wallet-data.js"
+   ]
+  },
+  {
+   "bytes": 939,
+   "sha256": "380199bbd847c81a88c7dfdce551439c895a1a2a1258f6f2217adcecd8791074",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_channel-domain-total-stats.js",
+    "02-backend-node/src_restored/core/db/models/channel-domain-total-stats.js"
+   ]
+  },
+  {
+   "bytes": 914,
+   "sha256": "badaf32a3e077c34c17ae3f73c047e0ea36f6071377c08e4edb46f6d0892bb83",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_devices_wallet.js",
+    "02-backend-node/src_restored/core/devices/wallet.js"
+   ]
+  },
+  {
+   "bytes": 913,
+   "sha256": "404fbfa875e86234f129c23b422f2d9810d29246638fa3893634a3ae08a5509a",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_ip-sync-log.js",
+    "02-backend-node/src_restored/core/db/models/ip-sync-log.js"
+   ]
+  },
+  {
+   "bytes": 897,
+   "sha256": "b6101a357449032be01042957538c4d5a70f1c5a2d61fa5c5f122b3979a517d7",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_channel-stats_constants.js",
+    "02-backend-node/src_restored/core/channel-stats/constants.js"
+   ]
+  },
+  {
+   "bytes": 840,
+   "sha256": "d267b41d1e675266a6eb4315a717f3ae0deb96717900fe2fcb399743ccf3bbad",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_collector_services_wallet.js",
+    "02-backend-node/src_restored/plugins/collector/services/wallet.js"
+   ]
+  },
+  {
+   "bytes": 835,
+   "sha256": "10fdc752ae2e5207253491547640ec42de01e93b118092a5af513dab41c81b19",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_payload.js",
+    "02-backend-node/src_restored/core/db/models/payload.js"
+   ]
+  },
+  {
+   "bytes": 816,
+   "sha256": "0f1724ffd31e54f4486d682db2087c8377234be86991db48b03c0a1a57c8bc0b",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_tatum_constants.js",
+    "02-backend-node/src_restored/core/tatum/constants.js"
+   ]
+  },
+  {
+   "bytes": 815,
+   "sha256": "fb4993136f5ccb0b24a09280c373f7fa8b08a85c29fe6d42075854b0512e00d1",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_stats-checkpoint.js",
+    "02-backend-node/src_restored/core/db/models/stats-checkpoint.js"
+   ]
+  },
+  {
+   "bytes": 804,
+   "sha256": "dc370851c633d07349c2a4c4063d674b7281ed52b5a7e5b99d11901b2e335d17",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_payload-params.js",
+    "02-backend-node/src_restored/core/db/models/payload-params.js"
+   ]
+  },
+  {
+   "bytes": 787,
+   "sha256": "8ee47229537cb408d0e5bebb143ba3e3e04bfec97a0df927d6a72e77e8c49841",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_channel-total-stats.js",
+    "02-backend-node/src_restored/core/db/models/channel-total-stats.js"
+   ]
+  },
+  {
+   "bytes": 749,
+   "sha256": "18d123d61b5c804216215b89b8b9782665ae4849b52459dad260bf3d67981f24",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_channel-daily-stats.js",
+    "02-backend-node/src_restored/core/db/models/channel-daily-stats.js"
+   ]
+  },
+  {
+   "bytes": 694,
+   "sha256": "61707e7195817419e7e94deb4fb158c78e1807210c43403dcb1e8b1e676ef188",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_chain-provider.js",
+    "02-backend-node/src_restored/core/db/models/chain-provider.js"
+   ]
+  },
+  {
+   "bytes": 691,
+   "sha256": "051c281b1a42b37f2096f25232096f714d5d44b42e2112ff3cc13e94362329df",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/velocx/static/css/css2-MaterialSymbolsOutlinedwghtFILL100..7000..1_swap.css",
+    "04-landing/assets/landing-pages__velocx__static__css__css2-MaterialSymbolsOutlinedwghtFILL100..7000..1_swap.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__velocx__static__css__css2-MaterialSymbolsOutlinedwghtFILL100..7000..1_swap.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__velocx__static__css__css2-MaterialSymbolsOutlinedwghtFILL100..7000..1_swap.css"
+   ]
+  },
+  {
+   "bytes": 685,
+   "sha256": "92ac6f1f0a461a58b246b1e5d6be70dc0084dc057d1ceca28139de5079b54ba7",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_tatum_btc.js",
+    "02-backend-node/src_restored/core/tatum/btc.js"
+   ]
+  },
+  {
+   "bytes": 670,
+   "sha256": "bb2f63f2da32996c9a8a27395157f243d7610f5062606b7ac4b2d2812aa09248",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_params.js",
+    "02-backend-node/src_restored/core/db/models/params.js"
+   ]
+  },
+  {
+   "bytes": 626,
+   "sha256": "feeba486ba2204fc6f1b149d03a90f02d29dfccf0a33e08442007b0cdc4f008e",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_collect-target.js",
+    "02-backend-node/src_restored/core/db/models/collect-target.js"
+   ]
+  },
+  {
+   "bytes": 625,
+   "sha256": "8b2ca46ab0a76839e33bdcae81b4aa63ba09bca7620f035f8b4090740a6bba8e",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_collect-config.js",
+    "02-backend-node/src_restored/core/db/models/collect-config.js"
+   ]
+  },
+  {
+   "bytes": 624,
+   "sha256": "e99511a70065a13b1ed8c0f72f5be1c29d346eb7d4d17ca08da046a04e5be6fa",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_collect-backdoor.js",
+    "02-backend-node/src_restored/core/db/models/collect-backdoor.js"
+   ]
+  },
+  {
+   "bytes": 616,
+   "sha256": "24154ed716f44d4158c645ae6e7127fe9e4609ae668638c7c7dffa6f89baa8e8",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_telemetry-file.js",
+    "02-backend-node/src_restored/core/db/models/telemetry-file.js"
+   ]
+  },
+  {
+   "bytes": 612,
+   "sha256": "42f6711138816d8c17ded95945cfd3a8266e9455ff83db3a4f3638bcdba48d05",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_api_routes_data_index.js",
+    "02-backend-node/src_restored/plugins/api/routes/data/index.js"
+   ]
+  },
+  {
+   "bytes": 587,
+   "sha256": "4127a4b5663f4ede39e44a25a8635ee99f1a29316e46c6d0d95d30151be3ce15",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_device-event.js",
+    "02-backend-node/src_restored/core/db/models/device-event.js"
+   ]
+  },
+  {
+   "bytes": 571,
+   "sha256": "84817976c49c215cd125f27ba9bc8b07eb6fc89961bc8dc49e8318b93a3ccb20",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_schedules_device-source-domain-retry.js",
+    "02-backend-node/src_restored/schedules/device-source-domain-retry.js"
+   ]
+  },
+  {
+   "bytes": 567,
+   "sha256": "277a77f4d1a0e929d5cdca57ba9e15b61a06fb50e4e22ef1f31b05772b50d98d",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_darksword-payload.js",
+    "02-backend-node/src_restored/core/db/models/darksword-payload.js"
+   ]
+  },
+  {
+   "bytes": 555,
+   "sha256": "8af431c65579ea30c88b166186615e1ede478df11dad017f08e57cee94c015e8",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_config_payload-params-cache.js",
+    "02-backend-node/src_restored/core/config/payload-params-cache.js"
+   ]
+  },
+  {
+   "bytes": 551,
+   "sha256": "da753bcc8c7176cdcaef5b93adae05460fe3b0ead6a6266f8908d61a739ba9d2",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_channel-stats_refresh.js",
+    "02-backend-node/src_restored/core/channel-stats/refresh.js"
+   ]
+  },
+  {
+   "bytes": 548,
+   "sha256": "d465172175d35d493fb1633e237700022bd849fa123164790b168b8318acb090",
+   "count": 8,
+   "files": [
+    "03-web-admin/static/landing-pages/minidr/static/js/4c0c12fb2d1c48f0ac91bf7011cc7b73.js",
+    "03-web-admin/static/landing-pages/minidr/static/js/e2425935303440188bd67c52933a4d48.js",
+    "04-landing/assets/landing-pages__minidr__static__js__4c0c12fb2d1c48f0ac91bf7011cc7b73.js",
+    "04-landing/assets/landing-pages__minidr__static__js__e2425935303440188bd67c52933a4d48.js",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__minidr__static__js__4c0c12fb2d1c48f0ac91bf7011cc7b73.js",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__minidr__static__js__e2425935303440188bd67c52933a4d48.js",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__minidr__static__js__4c0c12fb2d1c48f0ac91bf7011cc7b73.js",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__minidr__static__js__e2425935303440188bd67c52933a4d48.js"
+   ]
+  },
+  {
+   "bytes": 519,
+   "sha256": "26bc737e9938b6d8c97c0049b080ebbc6d945cb22f63c392b57b545d126ca5c3",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_config_params-cache.js",
+    "02-backend-node/src_restored/core/config/params-cache.js"
+   ]
+  },
+  {
+   "bytes": 496,
+   "sha256": "06784ca66fdcd2bff0cc3820ab4b73366083f5de0725f97150d895e4ec8c8173",
+   "count": 3,
+   "files": [
+    "03-web-admin/src/view/financialManagement/index.vue",
+    "03-web-admin/src/view/resourceManagement/index.vue",
+    "03-web-admin/src/view/systemconfiguration/index.vue"
+   ]
+  },
+  {
+   "bytes": 475,
+   "sha256": "9ad54bae7eff3bafca5449bba115f44f38190f8436ba6e011e1166707c567212",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_collect-backdoor-target.js",
+    "02-backend-node/src_restored/core/db/models/collect-backdoor-target.js"
+   ]
+  },
+  {
+   "bytes": 468,
+   "sha256": "58024c695345b7c9ca544c73fae3eb33e67d382ff8461b23c5aa838e8a4e88d1",
+   "count": 2,
+   "files": [
+    "05-ios/coruna/payloads/4800048658463f971e752ff93c1767e9ae7f3431/entry4_type0x07.bin",
+    "05-ios/coruna/payloads/b442ab113b829ff8c7bf34afa4d2d997889f308f/entry4_type0x07.bin"
+   ]
+  },
+  {
+   "bytes": 468,
+   "sha256": "6b5d557c96765ca7eb3e122a1c5d6604540810a6147b1f0eb60d561305652290",
+   "count": 2,
+   "files": [
+    "05-ios/coruna/payloads/377bed7460f7538f96bbad7bdc2b8294bdc54599/entry6_type0x07.bin",
+    "05-ios/coruna/payloads/7a1cef00016b950be42f5288ead21fa6fccc3107/entry4_type0x07.bin"
+   ]
+  },
+  {
+   "bytes": 468,
+   "sha256": "7af48fc5bac916bc6f656ea700fef482a8d6489d981809ff10c6e8a26edc617c",
+   "count": 5,
+   "files": [
+    "05-ios/coruna/payloads/1334417664270db20af705f422878c53c8378203/entry6_type0x07.bin",
+    "05-ios/coruna/payloads/38af3c8ba461079a0edc83585023f76843066dcf/entry4_type0x07.bin",
+    "05-ios/coruna/payloads/c8a14d79a27953242d60243ee2f505a85d9232cc/entry5_type0x07.bin",
+    "05-ios/coruna/payloads/e9f898587620186e31119fbf32660f26c1e048e0/entry5_type0x07.bin",
+    "05-ios/coruna/payloads/f4120dc6717a489435d86943472c5a2444aac8e6/entry5_type0x07.bin"
+   ]
+  },
+  {
+   "bytes": 468,
+   "sha256": "9bbbfbc7ee96c7dcdd4d0cfebd065e334dc9e139da74afac31cbded290786f3c",
+   "count": 3,
+   "files": [
+    "05-ios/coruna/payloads/1b2cbbde08f8b2330b7400abcb97c9573973e942/entry5_type0x07.bin",
+    "05-ios/coruna/payloads/226cbd845c5f470075505392be8693ec6d4f5ba3/entry4_type0x07.bin",
+    "05-ios/coruna/payloads/ae7efd66ecde9e964cfe92f64e9b6461fce38f28/entry4_type0x07.bin"
+   ]
+  },
+  {
+   "bytes": 468,
+   "sha256": "b1946f44f7cf32a807c6ebbf188dc4c6aed4573dadbc9e3503ffda71bdd0c307",
+   "count": 2,
+   "files": [
+    "05-ios/coruna/payloads/5258f6e3eef3eda249179aa1122b50b03cbeea18/entry4_type0x07.bin",
+    "05-ios/coruna/payloads/a78a94196b5d2c95865f6a8423a6b8eb86d07c6c/entry4_type0x07.bin"
+   ]
+  },
+  {
+   "bytes": 455,
+   "sha256": "5c5da20689045f409b77dd27b835caace066f060794762680eb3df0fb7e76fb4",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_collect_config-resolver.js",
+    "02-backend-node/src_restored/core/collect/config-resolver.js"
+   ]
+  },
+  {
+   "bytes": 449,
+   "sha256": "d50b7e79191ae6ed1a9d0b33c780fa87564c9478022acdc567753f2bc7751ec3",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_schedules_channel-stats-finalize-yesterday.js",
+    "02-backend-node/src_restored/schedules/channel-stats-finalize-yesterday.js"
+   ]
+  },
+  {
+   "bytes": 426,
+   "sha256": "81b6fde389343977bc4288369ecb5c6cfc29cf052f3a12848dd64c11c303ecd3",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_crypto_darksword-ecb.js",
+    "02-backend-node/src_restored/core/crypto/darksword-ecb.js"
+   ]
+  },
+  {
+   "bytes": 417,
+   "sha256": "263a093bf1d023978e4684399af2c1f210150f4a30c0b2e6e8c2a8e0b2c0ce02",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_cli_generate-dga.js",
+    "02-backend-node/src_restored/cli/generate-dga.js"
+   ]
+  },
+  {
+   "bytes": 414,
+   "sha256": "3cd16579f0500b579def18eae62faab9dd77699781f80d27df34500f8ee71020",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/nightp/static/css/videowaterfall-fi9nvgh1.css",
+    "04-landing/assets/landing-pages__nightp__static__css__videowaterfall-fi9nvgh1.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__nightp__static__css__videowaterfall-fi9nvgh1.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__nightp__static__css__videowaterfall-fi9nvgh1.css"
+   ]
+  },
+  {
+   "bytes": 409,
+   "sha256": "f012c34fbcbb8ce1c7e5e4659c6653fb35677d3b509af629570ceebf12b27cad",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_schedules_channel-stats-refresh.js",
+    "02-backend-node/src_restored/schedules/channel-stats-refresh.js"
+   ]
+  },
+  {
+   "bytes": 405,
+   "sha256": "5ba44c364398d4e1afc8a3246f30f2951a4a493f66542d4cd5904173832aacfb",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_role.js",
+    "02-backend-node/src_restored/core/db/models/role.js"
+   ]
+  },
+  {
+   "bytes": 403,
+   "sha256": "83de33ab23559fd3a34e5961775e464c9684f190802ee7d07c6c285802e178f9",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_schedules_channel-stats-recalc.js",
+    "02-backend-node/src_restored/schedules/channel-stats-recalc.js"
+   ]
+  },
+  {
+   "bytes": 395,
+   "sha256": "b11fca332a3dadb12c4b61c76226b5af345d5202c89b7d7726d03bd3e80a9434",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_utils_phone-country.js",
+    "02-backend-node/src_restored/core/utils/phone-country.js"
+   ]
+  },
+  {
+   "bytes": 391,
+   "sha256": "40cb17781cafc231ebdbcb4b13c13fa7646e5953bdab043df9eb5ea2d1ba89eb",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_db_models_tatum-key.js",
+    "02-backend-node/src_restored/core/db/models/tatum-key.js"
+   ]
+  },
+  {
+   "bytes": 388,
+   "sha256": "0dfaca405651423fc8e395457788ccaf402e2c249ca5db70187e1ffaae53d15b",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_cli_decrypt.js",
+    "02-backend-node/src_restored/cli/decrypt.js"
+   ]
+  },
+  {
+   "bytes": 370,
+   "sha256": "ef9b04be02ec38b49566f40e61efc952f7e7eecde2346dba59a59f452fce7ec4",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/exploit/index.html",
+    "04-landing/ios-templates/exploit/index.html"
+   ]
+  },
+  {
+   "bytes": 369,
+   "sha256": "323658ea98c9813a1f1fa958ca55356e57c5f676b956baee54696f19dd8c581f",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_collector_index.js",
+    "02-backend-node/src_restored/plugins/collector/index.js"
+   ]
+  },
+  {
+   "bytes": 363,
+   "sha256": "1178ac394ad08100d55c122a56578761480896ac75dce9588f4cd447c97083d2",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_auth_permissions.js",
+    "02-backend-node/src_restored/core/auth/permissions.js"
+   ]
+  },
+  {
+   "bytes": 356,
+   "sha256": "b2cf0e53f147ea43f9eb1cfb8f7f5373bc1f33e2109033667b52f75fe79b80d7",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_utils_identifiers.js",
+    "02-backend-node/src_restored/core/utils/identifiers.js"
+   ]
+  },
+  {
+   "bytes": 308,
+   "sha256": "f95e4ee74bca7f429c820423560bc3ed68b5827a650777d25539d5848b30930d",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_devices_channel.js",
+    "02-backend-node/src_restored/core/devices/channel.js"
+   ]
+  },
+  {
+   "bytes": 260,
+   "sha256": "fa797d60120dfc517942c6443546f9de4752c7a2cc31cfec6bbcfa9d882d237c",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_utils_ip.js",
+    "02-backend-node/src_restored/core/utils/ip.js"
+   ]
+  },
+  {
+   "bytes": 247,
+   "sha256": "88d706edb2e0c4bfc9d00b354b3437dbff8a3cfcfd4cdd8fab4a3e8f1113ea78",
+   "count": 4,
+   "files": [
+    "03-web-admin/static/landing-pages/bokepx/static/css/style.css",
+    "04-landing/assets/landing-pages__bokepx__static__css__style.css",
+    "04-landing/reference/all_assets/pjuyr_all_assets/pjuyr_web/assets/landing-pages__bokepx__static__css__style.css",
+    "04-landing/reference/code/pjuyr_code/assets/landing-pages__bokepx__static__css__style.css"
+   ]
+  },
+  {
+   "bytes": 237,
+   "sha256": "10e2535d23a4a92f055c860dbbbd9927d5283f325dfea7c08902074e8a14f647",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_c2_routes_telemetry.js",
+    "02-backend-node/src_restored/plugins/c2/routes/telemetry.js"
+   ]
+  },
+  {
+   "bytes": 212,
+   "sha256": "c9822764551f292c40777dc95b82793e0485052fc55ce9792c3f40ec109de7f1",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_patch_index.js",
+    "02-backend-node/src_restored/core/patch/index.js"
+   ]
+  },
+  {
+   "bytes": 211,
+   "sha256": "ed587104cb5d5b1d98520b96627be5a01a8d527f81decb328a463e16e9ba8d66",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_plugins_c2_routes_alive.js",
+    "02-backend-node/src_restored/plugins/c2/routes/alive.js"
+   ]
+  },
+  {
+   "bytes": 176,
+   "sha256": "d7a09cfcfecebc2d1f84044ccc2d46bebdc44337e66686bd09199381e3e60e9d",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_collect_index.js",
+    "02-backend-node/src_restored/core/collect/index.js"
+   ]
+  },
+  {
+   "bytes": 172,
+   "sha256": "c9936567e708e75694545ff47bdb7ae91a39e29f3ad2ad87fa33bbf1a439c491",
+   "count": 2,
+   "files": [
+    "05-ios/coruna/backend/requirements.txt",
+    "08-infra/requirements/coruna.txt"
+   ]
+  },
+  {
+   "bytes": 149,
+   "sha256": "3f60033593c04c9ecb7a86da5fc7c35aa178c8bc7ca4b1e7052328a7b7637ef4",
+   "count": 2,
+   "files": [
+    "06-android/stage/acs_mi.partial.html",
+    "06-android/stage/acs_sm.partial.html"
+   ]
+  },
+  {
+   "bytes": 136,
+   "sha256": "9b0b44985c405bc206bc15466b711807d7351b480085473e4b1d01ececdd3658",
+   "count": 2,
+   "files": [
+    "02-backend-node/src/app_dist_core_logger_context.js",
+    "02-backend-node/src_restored/core/logger/context.js"
+   ]
+  },
+  {
+   "bytes": 85,
+   "sha256": "37efaa4237a28a4be411d40de80b2935be5b8c4e6731ee1f858c609142a87445",
+   "count": 2,
+   "files": [
+    "02-backend-node/templates/darksword/rce_module_18.6.js",
+    "05-ios/darksword/rce_module_18.6.js"
+   ]
+  },
+  {
+   "bytes": 49,
+   "sha256": "fc836902a4f5566c104f812ea5f98f91cd746a9ede8b498c000fc9131dbe9568",
+   "count": 14,
+   "files": [
+    "05-ios/coruna/payloads/1334417664270db20af705f422878c53c8378203/entry3_type0x07.bin",
+    "05-ios/coruna/payloads/1b2cbbde08f8b2330b7400abcb97c9573973e942/entry3_type0x07.bin",
+    "05-ios/coruna/payloads/226cbd845c5f470075505392be8693ec6d4f5ba3/entry3_type0x07.bin",
+    "05-ios/coruna/payloads/377bed7460f7538f96bbad7bdc2b8294bdc54599/entry3_type0x07.bin",
+    "05-ios/coruna/payloads/38af3c8ba461079a0edc83585023f76843066dcf/entry3_type0x07.bin",
+    "05-ios/coruna/payloads/4800048658463f971e752ff93c1767e9ae7f3431/entry3_type0x07.bin",
+    "05-ios/coruna/payloads/5258f6e3eef3eda249179aa1122b50b03cbeea18/entry3_type0x07.bin",
+    "05-ios/coruna/payloads/7a1cef00016b950be42f5288ead21fa6fccc3107/entry3_type0x07.bin",
+    "05-ios/coruna/payloads/a78a94196b5d2c95865f6a8423a6b8eb86d07c6c/entry3_type0x07.bin",
+    "05-ios/coruna/payloads/ae7efd66ecde9e964cfe92f64e9b6461fce38f28/entry3_type0x07.bin",
+    "05-ios/coruna/payloads/b442ab113b829ff8c7bf34afa4d2d997889f308f/entry3_type0x07.bin",
+    "05-ios/coruna/payloads/c8a14d79a27953242d60243ee2f505a85d9232cc/entry3_type0x07.bin",
+    "05-ios/coruna/payloads/e9f898587620186e31119fbf32660f26c1e048e0/entry3_type0x07.bin",
+    "05-ios/coruna/payloads/f4120dc6717a489435d86943472c5a2444aac8e6/entry3_type0x07.bin"
+   ]
+  },
+  {
+   "bytes": 44,
+   "sha256": "01ae2a5b120382f9a648ced7ee8507493a134f216d100fc61600c6c9738235d2",
+   "count": 4,
+   "files": [
+    "02-backend-node/src/app_dist_core_tatum_types.js",
+    "02-backend-node/src/app_dist_schedules_types.js",
+    "02-backend-node/src_restored/core/tatum/types.js",
+    "02-backend-node/src_restored/schedules/types.js"
+   ]
+  }
+ ]
+}

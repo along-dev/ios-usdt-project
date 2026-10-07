@@ -1,0 +1,17 @@
+Myavlive cc 配置表（XOR解码结果，2026-08-30）
+================================================
+version a        = BT-v5.0.0
+markers  g..j    = [>SKT<] [>DAT<] [>LIN<] [>ARY<]
+rec keys k..u    = CN, ID, RecNam, onerestrct, Wscr, Hscr,
+                   Rec_Activitys, Rec_Notifications, Rec_links, Rec_apps, Liv_scr
+perm w0..z0/a0..s0 = TimeStamp, AccessibilityService, ReadContacts, ReadSMS,
+                   liv_skli, liv_skread, hid_bro, web_bro, web_pas, enb_trk,
+                   up/down/left/right, alert_ico, setup_ok, red_e, red_ip, red_k,
+                   repl_ply, ply_notavl
+浏览器监控表(Y0..n1):
+  Brave, Opera, DuckDuckGo, Opera Mini, Microsoft Edge, ColorOS,
+  AOSP browser, TunnyBrowser（各自带 URL-bar 资源ID）
+C2: cc.c = "" (空) -> cc.c() 回退 ws://127.0.0.1:8080/
+    FRP serverAddr/authToken/leaseId 由 C2 WebSocket 实时租约下发
+    字符串混淆: k50.a/l50.a = XOR(data, 重复key) -> UTF-8；分隔符 "<"
+结论：与 MilkStream 相同，生产 C2 域名打包时注入，本构建未携带。

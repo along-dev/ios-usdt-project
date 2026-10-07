@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <base href="/landing-pages/qiyoux/">
+
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>qiyou</title>
+  <style>
+    :root {
+      --bg: #050505;
+      --panel: #2a2a2f;
+      --active: #19c7c1;
+      --text: #f5f7fa;
+      --radius: 16px;
+      --banner-radius: 12px;
+      font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: #000;
+      color: var(--text);
+    }
+
+    .app {
+      width: min(100vw, 390px);
+      height: 100vh;
+      margin: 0 auto;
+      padding: 12px 8px 12px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .hero-frame {
+      margin-bottom: 12px;
+    }
+
+    .hero-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--banner-radius);
+    }
+
+    .tab-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding: 8px;
+      background: var(--panel);
+      border-radius: var(--radius);
+    }
+
+    .tab-button {
+      border: 0;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1;
+      padding: 12px 8px;
+      cursor: pointer;
+      transition: background-color 180ms ease, color 180ms ease;
+    }
+
+    .tab-button.is-active {
+      background: #67d4d0;
+      color: #0b1111;
+    }
+
+    .banner-frame {
+      margin-top: 12px;
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 84px;
+    }
+
+    .banner-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+    }
+
+    .download-bar {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      position: fixed;
+      left: 50%;
+      bottom: 12px;
+      transform: translateX(-50%);
+      width: min(calc(100vw - 16px), 374px);
+      padding: 0 10px;
+      z-index: 10;
+    }
+
+    .bottom-mask {
+      position: fixed;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: min(100vw, 390px);
+      height: 72px;
+      background: #000;
+      pointer-events: none;
+      z-index: 6;
+    }
+
+    .download-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 5px 10px; /* 增加内边距，不让文字贴边 */
+      border: 0;
+      border-radius: 999px;
+      background: #61d8d3;
+      color: #051011;
+      font-size: 0.85rem; /* 调小字体大小以适应双列按钮 */
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0;
+      text-align: center; /* 长英文单词换行时保持居中 */
+      line-height: 1.2; 
+    }
+
+    @media (max-width: 640px) {
+      .tab-button {
+        font-size: 0.98rem;
+      }
+      .download-button {
+        font-size: 0.75rem; /* 针对超小屏幕手机进一步缩放字体，防止跑出来 */
+      }
+    }
+  </style>
+  <script src="/landing-runtime.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <section class="hero-frame" aria-label="头部横幅">
+      <img
+        class="hero-image"
+        src="static/picture/headerboxbg.22fb7808.png"
+        alt="头部横幅"
+      >
+    </section>
+
+    <section class="tab-bar" aria-label="栏目切换">
+      <button class="tab-button is-active" type="button" data-title="热门" data-image="static/picture/content1.34af29cd.png">
+        Popular
+      </button>
+      <button class="tab-button" type="button" data-title="淫乱" data-image="static/picture/content2.313dfa79.png">
+        Promiscuous
+      </button>
+      <button class="tab-button" type="button" data-title="交友" data-image="static/picture/content3.ff0108be.png">
+        Making friends
+      </button>
+    </section>
+
+    <section class="banner-frame" aria-live="polite">
+      <img
+        class="banner-image"
+        id="bannerImage"
+        src="static/picture/content1.34af29cd.png"
+        alt="热门栏目横幅"
+      >
+    </section>
+
+    <section class="download-bar" aria-label="下载入口">
+      <a href="download/" class="download-button">High-speed download</a>
+      <a href="download/" class="download-button">Alternative Download</a>
+    </section>
+
+    <div class="bottom-mask" aria-hidden="true"></div>
+  </main>
+  <script>
+    const tabs = document.querySelectorAll(".tab-button");
+    const bannerImage = document.getElementById("bannerImage");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((button) => button.classList.remove("is-active"));
+        tab.classList.add("is-active");
+
+        const title = tab.dataset.title || "";
+        const image = tab.dataset.image || "";
+
+        bannerImage.src = image;
+        bannerImage.alt = `${title}栏目横幅`;
+      });
+    });
+  </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

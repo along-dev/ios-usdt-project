@@ -1,0 +1,23 @@
+=== T31 确定性并发判据 · API=http://127.0.0.1:8900 · DB=qk_e2e_test ===
+  [OK] /health 200
+
+===== public（wallet.region=1，首插 role=1，期望 3 笔）=====
+  并发耗时 2.12s ｜ 响应：c1=0(st=200,bill=39,dup=False) c2=0(st=200,bill=39,dup=True)
+  库：rows=3 roles=['1', '2', '3'] ｜ 首行 id=39 role=1 ｜ 重复 role 组=[]
+  [PASS] public·V1 两条响应都 code==0: c1=0 c2=0
+  [PASS] public·V2 bill 不翻倍: 行数=3（应 3）
+  [PASS] public·V3 (transfer_hash,role) 无重复行: 重复组=[]
+  [PASS] public·V4 恰一次 duplicated=false: dup1=False dup2=True
+  [PASS] public·V6 幂等响应＝「首次那笔」(role=1): bill1=39 bill2=39 库首行 id=39 role=1
+
+===== private（wallet.region=2，首插 role=4，期望 1 笔）=====
+  并发耗时 2.12s ｜ 响应：c1=0(st=200,bill=42,dup=False) c2=0(st=200,bill=42,dup=True)
+  库：rows=1 roles=['4'] ｜ 首行 id=42 role=4 ｜ 重复 role 组=[]
+  [PASS] private·V1 两条响应都 code==0: c1=0 c2=0
+  [PASS] private·V2 bill 不翻倍: 行数=1（应 1）
+  [PASS] private·V3 (transfer_hash,role) 无重复行: 重复组=[]
+  [PASS] private·V4 恰一次 duplicated=false: dup1=False dup2=True
+  [PASS] private·V6 幂等响应＝「首次那笔」(role=4): bill1=42 bill2=42 库首行 id=42 role=4
+
+=== 10/10 通过 ===
+RESULT=GREEN  T31：并发重复提交已收敛为幂等（C-6 成立）

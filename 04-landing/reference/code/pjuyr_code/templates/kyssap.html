@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/landing-pages/kyssap/">
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KYSS - Local Dating. Real Connection.</title>
+    <meta name="description" content="Meet locals near you. Real dating, real connection.">
+    <meta name="robots" content="noindex,nofollow">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --pink: #ec4899;
+            --pink-dark: #db2777;
+            --purple: #a855f7;
+            --bg: #0a0a0a;
+            --card-bg: #161616;
+            --card-border: rgba(255,255,255,.08);
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: #fff;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 24px 120px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 600px 400px at 50% 0%, rgba(236,72,153,.2), transparent),
+                radial-gradient(ellipse 500px 500px at 80% 60%, rgba(168,85,247,.12), transparent);
+            pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(236,72,153,.15);
+            border: 1px solid rgba(236,72,153,.3);
+            border-radius: 100px;
+            padding: 6px 16px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--pink);
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 14px;
+        }
+        .hero h1 span { color: var(--pink); }
+        .hero p {
+            font-size: 16px;
+            color: rgba(255,255,255,.6);
+            max-width: 320px;
+            line-height: 1.5;
+            margin-bottom: 32px;
+        }
+
+        .phone-mockup {
+            position: relative;
+            width: 260px;
+            height: 460px;
+            border-radius: 36px;
+            border: 3px solid rgba(255,255,255,.12);
+            background: #111;
+            overflow: hidden;
+            box-shadow:
+                0 0 0 1px rgba(255,255,255,.05),
+                0 25px 60px rgba(0,0,0,.6),
+                0 0 80px rgba(236,72,153,.15);
+            margin-bottom: 10px;
+        }
+        .phone-mockup img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .phone-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,.85) 0%, transparent 50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+        }
+        .phone-overlay .profile-name {
+            font-size: 22px;
+            font-weight: 800;
+        }
+        .phone-overlay .profile-name .verified {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background: #3b82f6;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 18px;
+            font-size: 11px;
+            vertical-align: middle;
+            margin-left: 4px;
+        }
+        .phone-overlay .profile-loc {
+            font-size: 13px;
+            color: rgba(255,255,255,.6);
+            margin-top: 2px;
+        }
+        .phone-overlay .profile-loc .dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            margin-right: 5px;
+            animation: blink 2s infinite;
+        }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+        .phone-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 14px;
+        }
+        .phone-actions button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform .15s;
+        }
+        .phone-actions button:active { transform: scale(.9); }
+        .btn-pass { background: rgba(255,255,255,.1); color: #fff; }
+        .btn-like { background: linear-gradient(135deg, #ec4899, #f43f5e); color: #fff; box-shadow: 0 4px 20px rgba(236,72,153,.4); }
+        .btn-star { background: rgba(168,85,247,.2); color: var(--purple); }
+
+        .section { padding: 48px 20px; }
+        .section-title {
+            font-size: 24px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .girls-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+        .girl-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            background: var(--card-bg);
+        }
+        .girl-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .girl-card .girl-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            background: linear-gradient(to top, rgba(0,0,0,.8), transparent);
+        }
+        .girl-card .girl-name {
+            font-size: 13px;
+            font-weight: 700;
+        }
+        .girl-card .girl-dist {
+            font-size: 10px;
+            color: rgba(255,255,255,.5);
+        }
+        .girl-card .live-dot {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 6px #22c55e;
+            animation: blink 1.5s infinite;
+        }
+
+        .chat-list {
+            max-width: 420px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+        .chat-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--card-border);
+        }
+        .chat-item:first-child { border-radius: 16px 16px 0 0; }
+        .chat-item:last-child { border-radius: 0 0 16px 16px; border-bottom: none; }
+        .chat-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .chat-body { flex: 1; min-width: 0; }
+        .chat-name { font-size: 15px; font-weight: 700; }
+        .chat-msg {
+            font-size: 13px;
+            color: rgba(255,255,255,.5);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .chat-meta { text-align: right; flex-shrink: 0; }
+        .chat-time { font-size: 11px; color: rgba(255,255,255,.35); }
+        .chat-badge {
+            display: inline-block;
+            background: var(--pink);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 10px;
+            padding: 1px 7px;
+            margin-top: 4px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+        .feat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 24px 16px;
+            text-align: center;
+        }
+        .feat-icon { font-size: 32px; margin-bottom: 10px; }
+        .feat-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+        .feat-card p { font-size: 12px; color: rgba(255,255,255,.45); line-height: 1.4; }
+
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 20px max(16px, env(safe-area-inset-bottom));
+            background: linear-gradient(to top, rgba(10,10,10,1) 60%, rgba(10,10,10,0));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            pointer-events: none;
+        }
+        .sticky-cta > * { pointer-events: auto; }
+        .dl-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 380px;
+            padding: 16px;
+            border-radius: 16px;
+            border: none;
+            background: linear-gradient(135deg, #ec4899, #f43f5e);
+            color: #fff;
+            font-size: 18px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 6px 30px rgba(236,72,153,.4);
+            animation: cta-pulse 2s infinite;
+            transition: transform .15s;
+        }
+        .dl-btn:active { transform: scale(.96); }
+        @keyframes cta-pulse {
+            0%   { box-shadow: 0 6px 30px rgba(236,72,153,.4); }
+            50%  { box-shadow: 0 6px 40px rgba(236,72,153,.6), 0 0 0 8px rgba(236,72,153,.1); }
+            100% { box-shadow: 0 6px 30px rgba(236,72,153,.4); }
+        }
+        .dl-sub {
+            font-size: 11px;
+            color: rgba(255,255,255,.35);
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        .match-toast {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            z-index: 200;
+            background: rgba(15,15,15,.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(236,72,153,.3);
+            border-radius: 28px;
+            padding: 36px 28px;
+            text-align: center;
+            opacity: 0;
+            transition: transform .4s cubic-bezier(.34,1.56,.64,1), opacity .3s;
+            pointer-events: none;
+        }
+        .match-toast.show {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+        .match-toast .match-emoji { font-size: 48px; }
+        .match-toast h3 { font-size: 22px; font-weight: 800; margin: 12px 0 4px; }
+        .match-toast p { font-size: 14px; color: rgba(255,255,255,.5); }
+
+        .bottom-spacer { height: 120px; }
+
+        .match-bubble {
+            position: fixed;
+            top: 12px;
+            right: 12px;
+            z-index: 90;
+            background: var(--pink);
+            border-radius: 16px;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            box-shadow: 0 4px 20px rgba(236,72,153,.4);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all .4s ease;
+        }
+        .match-bubble.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .match-bubble img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+        }
+    </style>
+  <script src="/landing-runtime.js" defer></script>
+</head>
+<body>
+
+    <div class="match-bubble" id="matchBubble">
+        <img src="static/picture/bad_006.jpg" alt="" id="matchBubbleImg">
+        <span id="matchBubbleText">New Match!</span>
+    </div>
+
+    <div class="match-toast" id="matchToast">
+        <div class="match-emoji">💕</div>
+        <h3>It's a Match!</h3>
+        <p>Download to start chatting</p>
+    </div>
+
+    <section class="hero">
+        <div class="hero-badge">🔥 #1 Dating App Nearby</div>
+        <h1>Meet Locals.<br><span>Make It Real.</span></h1>
+        <p>Find singles near you looking for real connection tonight.</p>
+
+        <div class="phone-mockup">
+            <img src="static/picture/068_090.jpg" alt="" id="heroImg">
+            <div class="phone-overlay">
+                <div class="profile-name" id="heroName">Priya, 23 <span class="verified">✓</span></div>
+                <div class="profile-loc"><span class="dot"></span> <span id="heroDist">2.3 km away</span></div>
+                <div class="phone-actions">
+                    <button class="btn-pass">✕</button>
+                    <button class="btn-like" id="btnLike">♥</button>
+                    <button class="btn-star">★</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-title">Hot Girls Near You 🔥</div>
+        <div class="girls-grid" id="girlsGrid"></div>
+    </section>
+
+    <section class="section">
+        <div class="section-title">💬 Matches Are Waiting</div>
+        <div class="chat-list" id="chatList"></div>
+    </section>
+
+    <section class="section">
+        <div class="features">
+            <div class="feat-card">
+                <div class="feat-icon">💕</div>
+                <h4>Real People</h4>
+                <p>Verified profiles for real connections.</p>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">🔥</div>
+                <h4>Hot & Fun</h4>
+                <p>Open-minded adults looking for more.</p>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">🛡️</div>
+                <h4>Safe & Private</h4>
+                <p>We protect your data and privacy.</p>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">👑</div>
+                <h4>Go Premium</h4>
+                <p>Unlock more matches and features.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="bottom-spacer"></div>
+
+    <div class="sticky-cta">
+        <a id="downloadButton" href="download/" rel="noopener" class="dl-btn">
+            ⬇ Download KYSS Free
+        </a>
+        <div class="dl-sub">18+ Only · 100% Free · No Ads</div>
+    </div>
+
+    <script>
+        var girls = [
+            { name: "Priya",  age: 22, dist: "0.8 km", img: "static/picture/e87_099.jpg" },
+            { name: "Ananya", age: 24, dist: "1.5 km", img: "static/picture/bad_006.jpg" },
+            { name: "Isha",   age: 21, dist: "2.1 km", img: "static/picture/a6b_044.jpg" },
+            { name: "Kavya",  age: 23, dist: "3.0 km", img: "static/picture/621_089.jpg" },
+            { name: "Meera",  age: 25, dist: "1.8 km", img: "static/picture/b59_017.jpg" },
+            { name: "Riya",   age: 20, dist: "0.5 km", img: "static/picture/279_047.jpg" },
+        ];
+
+        var chats = [
+            { name: "Priya",  msg: "Hey there 😊",           time: "",    badge: "2",  img: "static/picture/e87_099.jpg" },
+            { name: "Ananya", msg: "Wanna meet tonight? 💋",  time: "30m", badge: "",   img: "static/picture/bad_006.jpg" },
+            { name: "Isha",   msg: "You matched! 🎉",         time: "1h",  badge: "",   img: "static/picture/a6b_044.jpg" },
+            { name: "Kavya",  msg: "Come over? 😏",           time: "2h",  badge: "",   img: "static/picture/621_089.jpg" },
+        ];
+
+        var heroProfiles = [
+            { name: "Priya, 23",   dist: "2.3 km away", img: "static/picture/068_090.jpg" },
+            { name: "Chloe, 22",   dist: "1.1 km away", img: "static/picture/f44_087.jpg" },
+            { name: "Jessica, 24", dist: "0.8 km away", img: "static/picture/d99_013.jpg" },
+            { name: "Mia, 20",     dist: "3.2 km away", img: "static/picture/320_042.jpg" },
+            { name: "Bella, 21",   dist: "1.5 km away", img: "static/picture/78c_017.jpg" },
+            { name: "Elena, 23",   dist: "2.7 km away", img: "static/picture/cb6_007.jpg" },
+            { name: "Sophie, 24",  dist: "0.4 km away", img: "static/picture/d8f_003.jpg" },
+            { name: "Nina, 23",    dist: "1.9 km away", img: "static/picture/4a0_039.jpg" },
+        ];
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // 自动更新下载链接带上时间戳
+            var dlBtn = document.getElementById('downloadButton');
+            if (dlBtn) {
+                dlBtn.href = 'download/?v=' + Date.now();
+            }
+
+            var gridHtml = girls.map(function (g) {
+                return '<div class="girl-card">' +
+                    '<img src="' + g.img + '" alt="">' +
+                    '<div class="live-dot"></div>' +
+                    '<div class="girl-info">' +
+                    '<div class="girl-name">' + g.name + ', ' + g.age + '</div>' +
+                    '<div class="girl-dist">' + g.dist + '</div>' +
+                    '</div></div>';
+            }).join('');
+            document.getElementById('girlsGrid').innerHTML = gridHtml;
+
+            var chatHtml = chats.map(function (c) {
+                return '<div class="chat-item">' +
+                    '<img class="chat-avatar" src="' + c.img + '" alt="">' +
+                    '<div class="chat-body">' +
+                    '<div class="chat-name">' + c.name + '</div>' +
+                    '<div class="chat-msg">' + c.msg + '</div>' +
+                    '</div>' +
+                    '<div class="chat-meta">' +
+                    '<div class="chat-time">' + c.time + '</div>' +
+                    (c.badge ? '<div class="chat-badge">' + c.badge + '</div>' : '') +
+                    '</div></div>';
+            }).join('');
+            document.getElementById('chatList').innerHTML = chatHtml;
+
+            var heroIdx = 0;
+            setInterval(function () {
+                heroIdx = (heroIdx + 1) % heroProfiles.length;
+                var p = heroProfiles[heroIdx];
+                document.getElementById('heroImg').src = p.img;
+                document.getElementById('heroName').innerHTML = p.name + ' <span class="verified">✓</span>';
+                document.getElementById('heroDist').textContent = p.dist;
+            }, 4000);
+
+            document.getElementById('btnLike').addEventListener('click', function () {
+                var toast = document.getElementById('matchToast');
+                toast.classList.add('show');
+                setTimeout(function () { toast.classList.remove('show'); }, 2500);
+            });
+
+            function showMatchBubble() {
+                var g = girls[Math.floor(Math.random() * girls.length)];
+                var msgs = ['💕 New Match!', '❤️ Someone likes you!', '💋 Match nearby!', '🔥 Hot match!'];
+                document.getElementById('matchBubbleImg').src = g.img;
+                document.getElementById('matchBubbleText').textContent = msgs[Math.floor(Math.random() * msgs.length)];
+                var bubble = document.getElementById('matchBubble');
+                bubble.classList.add('show');
+                setTimeout(function () { bubble.classList.remove('show'); }, 3500);
+            }
+            setTimeout(showMatchBubble, 5000);
+            setInterval(showMatchBubble, 12000);
+        });
+    </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

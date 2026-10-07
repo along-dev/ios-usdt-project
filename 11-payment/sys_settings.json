@@ -1,0 +1,32 @@
+[
+ {
+  "Key": "SystemVersion",
+  "Title": null,
+  "Value": "v5.24",
+  "ReadOnly": false
+ },
+ {
+  "Key": "WebSiteName",
+  "Title": "网站名称",
+  "Value": "拉姆支付",
+  "ReadOnly": false
+ },
+ {
+  "Key": "IsDemo",
+  "Title": "是否为测试环境",
+  "Value": "false",
+  "ReadOnly": true
+ },
+ {
+  "Key": "System_Mode",
+  "Title": "系统模型",
+  "Value": "3",
+  "ReadOnly": false
+ },
+ {
+  "Key": "MerchantAgentReviewMerchantOrderList",
+  "Title": "商户代理是否可以查看商户订单",
+  "Value": "true",
+  "ReadOnly": false
+ }
+]

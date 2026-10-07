@@ -1,0 +1,46 @@
+{
+ "GET /api/Account/Self": {
+  "s": -2,
+  "t": "no axios candidate"
+ },
+ "GET /api/Home/Dashboard": {
+  "s": -2,
+  "t": "no axios candidate"
+ },
+ "GET /api/System/Settings": {
+  "s": -2,
+  "t": "no axios candidate"
+ },
+ "GET /api/ApiKey/List": {
+  "s": -2,
+  "t": "no axios candidate"
+ },
+ "GET /api/AuthorizedIp/List": {
+  "s": -2,
+  "t": "no axios candidate"
+ },
+ "POST /api/CommissionSettlement/List": {
+  "s": -2,
+  "t": "no axios candidate"
+ },
+ "POST /api/Transaction/List": {
+  "s": -2,
+  "t": "no axios candidate"
+ },
+ "POST /api/BalanceRecord/List": {
+  "s": -2,
+  "t": "no axios candidate"
+ },
+ "POST /api/MerchantOrder/List": {
+  "s": -2,
+  "t": "no axios candidate"
+ },
+ "POST /api/WebOrder/ApplyWithdrawalOrders": {
+  "s": -2,
+  "t": "no axios candidate"
+ },
+ "POST /api/Agent/Subordinates": {
+  "s": -2,
+  "t": "no axios candidate"
+ }
+}

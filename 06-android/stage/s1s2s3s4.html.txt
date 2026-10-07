@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading</title>
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: #0d0d0d;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+
+        .splash-screen {
+            text-align: center;
+        }
+
+
+        .icon img {
+            width: 80px;
+            height: 80px;
+            opacity: 0;
+            transform: scale(0.7);
+            animation: iconFadeIn 1.2s ease-out forwards;
+        }
+
+        .icon {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .loader {
+            width: 180px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 30px auto 0;
+            position: relative;
+        }
+
+        .loader::before {
+            content: "";
+            position: absolute;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, #4facfe, #00f2fe, transparent);
+            animation: loadingMove 1.4s ease-in-out infinite;
+            border-radius: 10px;
+        }
+
+        /* Animations */
+        @keyframes iconFadeIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 5px rgba(79, 172, 254, 0.3));
+            }
+
+            to {
+                filter: drop-shadow(0 0 5px rgba(0, 242, 254, 0.6));
+            }
+        }
+
+        @keyframes loadingMove {
+            0% {
+                left: -40%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+
+        .footer-text {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="splash-screen">
+    <div class="icon">
+        <img src="data:image/png;base64,[BASE-ICO]" alt="App Icon" onerror="this.style.display='none'">
+    </div>
+
+    <div class="loader"></div>
+</div>
+
+<div class="footer-text" id="footer-text">
+    © 2026 APPNAME. All Rights Reserved.
+</div>
+
+<script>
+        const translations = {
+            en: `© 2026 APPNAME. All Rights Reserved.`,
+            ar: "© 2026 APPNAME. جميع الحقوق محفوظة.",
+            zh: "© 2026 APPNAME。版权所有。",
+            ru: "© 2026 APPNAME. Все права защищены.",
+            tr: "© 2026 APPNAME. Tüm Hakları Saklıdır."
+        };
+
+        const setLanguage = (lang) => {
+            const footerText = document.getElementById("footer-text");
+            footerText.textContent = translations[lang] || translations.en;
+        };
+
+        setLanguage('[LNG]');
+    </script>
+
+</body>
+
+</html>

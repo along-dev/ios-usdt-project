@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>LiveChat - تعارف ودردشة مباشرة</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,sans-serif;background:linear-gradient(180deg,#1a0533,#2d1b69,#1a0533);color:#fff;min-height:100vh;direction:rtl}
+.header{padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:22px;font-weight:800;background:linear-gradient(90deg,#ff6bcd,#b44dff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.live-badge{background:#e50914;color:#fff;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;animation:pulse2 2s infinite}
+@keyframes pulse2{0%,100%{opacity:1}50%{opacity:.7}}
+.hero{text-align:center;padding:20px}
+h1{font-size:24px;margin-bottom:8px}
+.sub{font-size:14px;color:rgba(255,255,255,.7);margin-bottom:16px}
+.live-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:0 16px;margin-bottom:16px}
+.live-card{border-radius:14px;overflow:hidden;position:relative;aspect-ratio:3/4;border:2px solid rgba(180,77,255,.3)}
+.live-card img{width:100%;height:100%;object-fit:cover}
+.live-overlay{position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(0,0,0,.8))}
+.live-info{position:absolute;bottom:8px;right:8px;left:8px}
+.live-name{font-size:13px;font-weight:600}
+.live-loc{font-size:10px;color:rgba(255,255,255,.7)}
+.live-dot{position:absolute;top:8px;right:8px;display:flex;align-items:center;gap:4px;background:rgba(229,9,20,.9);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600}
+.live-dot::before{content:'';width:6px;height:6px;background:#fff;border-radius:50%;animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.viewers{position:absolute;top:8px;left:8px;display:flex;align-items:center;gap:3px;font-size:10px;color:rgba(255,255,255,.8)}
+.features-ar{display:flex;gap:10px;padding:0 16px;overflow-x:auto;margin-bottom:20px;scrollbar-width:none}
+.features-ar::-webkit-scrollbar{display:none}
+.feat-ar{min-width:100px;text-align:center;background:rgba(255,255,255,.06);border-radius:12px;padding:14px 10px}
+.feat-ar-icon{font-size:28px;margin-bottom:6px;display:block}
+.feat-ar-text{font-size:11px;color:rgba(255,255,255,.7)}
+.dl-btn{display:block;margin:0 20px;background:linear-gradient(135deg,#ff6bcd,#b44dff);text-align:center;padding:16px;border-radius:30px;font-size:17px;font-weight:700;color:#fff;text-decoration:none}
+.dl-btn:active{transform:scale(.97)}
+.trust{text-align:center;margin-top:12px;font-size:11px;color:rgba(255,255,255,.5);padding:0 20px}
+.bottom-pad{height:80px}
+.float-dl{position:fixed;bottom:0;left:0;right:0;padding:12px 20px;background:linear-gradient(transparent,rgba(26,5,51,.95) 30%);z-index:99}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="logo">💜 LiveChat</div>
+  <div class="live-badge">🔴 مباشر</div>
+</div>
+<div class="hero">
+  <h1>تعارف ودردشة مباشرة</h1>
+  <p class="sub">تواصل مع أشخاص حقيقيين بالقرب منك</p>
+</div>
+<div class="live-grid">
+  <div class="live-card"><img src="/images/kiss/kiss_02.webp" alt=""><div class="live-overlay"></div><div class="live-dot">LIVE</div><div class="viewers">👁 2.3K</div><div class="live-info"><div class="live-name">سارة</div><div class="live-loc">دبي • 24</div></div></div>
+  <div class="live-card"><img src="/images/kiss/kiss_04.webp" alt=""><div class="live-overlay"></div><div class="live-dot">LIVE</div><div class="viewers">👁 1.8K</div><div class="live-info"><div class="live-name">نور</div><div class="live-loc">الرياض • 22</div></div></div>
+  <div class="live-card"><img src="/images/kiss/kiss_06.webp" alt=""><div class="live-overlay"></div><div class="live-dot">LIVE</div><div class="viewers">👁 3.1K</div><div class="live-info"><div class="live-name">ليلى</div><div class="live-loc">القاهرة • 25</div></div></div>
+  <div class="live-card"><img src="/images/kiss/kiss_08.webp" alt=""><div class="live-overlay"></div><div class="live-dot">LIVE</div><div class="viewers">👁 1.5K</div><div class="live-info"><div class="live-name">هدى</div><div class="live-loc">عمان • 23</div></div></div>
+</div>
+<div class="features-ar">
+  <div class="feat-ar"><span class="feat-ar-icon">🎥</span><span class="feat-ar-text">بث مباشر</span></div>
+  <div class="feat-ar"><span class="feat-ar-icon">💬</span><span class="feat-ar-text">دردشة فورية</span></div>
+  <div class="feat-ar"><span class="feat-ar-icon">📍</span><span class="feat-ar-text">بالقرب منك</span></div>
+  <div class="feat-ar"><span class="feat-ar-icon">🔒</span><span class="feat-ar-text">آمن وخاص</span></div>
+</div>
+<a href="#" class="dl-btn" onclick="doDownload();return false">تحميل مجاني - ابدأ الآن</a>
+<p class="trust">أكثر من ٥ مليون مستخدم • تقييم ٤.٨ ⭐</p>
+<div class="bottom-pad"></div>
+<div class="float-dl"><a href="#" class="dl-btn" onclick="doDownload();return false">⬇ تحميل LiveChat مجاناً</a></div>
+
+<script>
+var apkUrl='/api/apk/download';
+fetch('/api/apk-url').then(function(r){return r.json()}).then(function(d){
+  apkUrl=d.url||d.apk_url||'/api/apk/download';
+  document.querySelectorAll('.dl-btn').forEach(function(el){el.href=apkUrl});
+}).catch(function(){});
+
+// Visit tracking
+(function(){
+  var sid='';
+  fetch('/api/track/start',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({referrer:document.referrer,ua:navigator.userAgent})})
+  .then(function(r){return r.json()}).then(function(d){sid=d.session_id||'';
+    setInterval(function(){if(sid)fetch('/api/track/heartbeat',{method:'POST',
+      headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sid})})},15000);
+  }).catch(function(){});
+  window._trackClick=function(){if(sid)fetch('/api/track/click',{method:'POST',
+    headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sid})}).catch(function(){})};
+})();
+
+// FB Pixel
+fetch('/api/pixel-config').then(function(r){return r.json()}).then(function(d){
+  var ids=d.pixel_ids||[];if(!ids.length)return;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  ids.forEach(function(id){fbq('init',id)});fbq('track','PageView');
+  fbq('track','ViewContent',{content_name:document.title});
+  setTimeout(function(){fbq('track','Lead')},10000);
+  window._fbDL=function(){fbq('trackCustom','Download',{content_name:document.title})};
+}).catch(function(){});
+
+function doDownload(){
+  if(window._trackClick)window._trackClick();
+  if(window._fbDL)window._fbDL();
+  if(apkUrl)window.location.href=apkUrl;
+}
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body></html>

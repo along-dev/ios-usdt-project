@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/landing-pages/lovely/">
+
+<meta charset="UTF-8">
+  <title>Myloveday - Connect with Amazing Girls</title>
+  <meta name="description" content="Log in with WhatsApp to video chat with real women.">
+  <meta name="keywords" content="myloveday, video chat, whatsapp, dating, social, connections">
+  <meta property="og:title" content="Myloveday - Connect with Amazing Girls">
+  <meta property="og:description" content="Log in with WhatsApp to video chat with real women.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/landing-pages/lovely/images/diFScj.jpg">
+  <!-- Meta Pixel Code -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="icon" href="static/image/changtu.jpg">
+  <script src="/landing-runtime.js" defer></script>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <div class="description"></div>
+    </div>
+    <div class="main-image-section">
+      <div class="scrolling-images">
+        <div class="scrolling-image"></div>
+        <div class="scrolling-image"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="left-container">
+    <div class="title-text">Myloveday</div>
+    <div class="left-image-text-container">
+      <div class="left-image">
+        <img src="static/picture/cs1.jpg" alt="Imagen adicional">
+      </div>
+      <div class="text-label">Log in with WhatsApp to video chat with real women.</div>
+    </div>
+  </div>
+
+  <div class="thumbnails">
+    <div class="thumbnails-container">
+      <img src="static/picture/2.jpg" class="thumbnail">
+      <img src="static/picture/3.jpg" class="thumbnail">
+      <img src="static/picture/4.jpg" class="thumbnail">
+      <img src="static/picture/5.jpg" class="thumbnail">
+      <img src="static/picture/6.jpg" class="thumbnail">
+      <img src="static/picture/7.jpg" class="thumbnail">
+      <img src="static/picture/8.jpg" class="thumbnail">
+    </div>
+  </div>
+
+  <!-- 修改点 1: 将 href 从 # 改为 download/ -->
+  <a href="download/" class="download-button" id="downloadButton">
+    <span>Download</span>
+  </a>
+
+  <script>
+(function() {
+  const baseLink = 'download/';
+  updateAllLinks(baseLink);
+  
+  const downloadBtn = document.getElementById('downloadButton');
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', function() {
+      if (typeof fbq !== 'undefined') {
+        fbq('trackCustom', 'ClickDownload');
+        fbq('track', 'Lead');
+      }
+    });
+  }
+
+  function updateAllLinks(link) {
+    const links = document.querySelectorAll('a[href]');
+    links.forEach(linkEl => {
+      linkEl.href = link;
+    });
+    const adBtn = document.getElementById('adBtn');
+    if (adBtn) adBtn.href = link;
+  }
+})();
+</script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

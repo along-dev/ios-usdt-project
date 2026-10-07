@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Elef - Download & Earn Rewards</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:linear-gradient(135deg,#0a1628,#1a0a2e);color:#fff;min-height:100vh;overflow-x:hidden}
+.top-bar{background:linear-gradient(90deg,#f7b731,#f5a623);padding:8px 16px;text-align:center;font-size:13px;font-weight:700;color:#1a0a2e}
+.hero{text-align:center;padding:30px 20px 20px}
+.coin-icon{font-size:72px;margin-bottom:12px;display:block;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+h1{font-size:26px;margin-bottom:8px;background:linear-gradient(90deg,#f7b731,#ffd700);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{font-size:14px;color:rgba(255,255,255,.7);margin-bottom:24px}
+.reward-box{background:rgba(255,255,255,.08);border:1px solid rgba(247,183,49,.3);border-radius:16px;padding:20px;margin:0 20px 20px;text-align:center}
+.reward-amount{font-size:36px;font-weight:800;color:#f7b731}
+.reward-label{font-size:13px;color:rgba(255,255,255,.6);margin-top:4px}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 20px;margin-bottom:24px}
+.feat{background:rgba(255,255,255,.06);border-radius:12px;padding:14px;text-align:center}
+.feat-icon{font-size:28px;margin-bottom:6px;display:block}
+.feat-text{font-size:12px;color:rgba(255,255,255,.8)}
+.dl-section{padding:0 20px}
+.dl-btn{display:block;background:linear-gradient(135deg,#f7b731,#f5a623);color:#1a0a2e;text-align:center;padding:16px;border-radius:30px;font-size:17px;font-weight:700;text-decoration:none;box-shadow:0 4px 20px rgba(247,183,49,.4)}
+.dl-btn:active{transform:scale(.97)}
+.users{text-align:center;margin-top:16px;font-size:12px;color:rgba(255,255,255,.5)}
+.users b{color:#f7b731}
+.proof{padding:16px 20px;margin-top:20px}
+.proof-item{display:flex;align-items:center;gap:10px;padding:10px;background:rgba(255,255,255,.05);border-radius:10px;margin-bottom:8px}
+.proof-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#f7b731,#e74c3c);display:flex;align-items:center;justify-content:center;font-size:16px}
+.proof-text{font-size:12px;color:rgba(255,255,255,.7)}
+.proof-text b{color:#f7b731}
+.bottom-pad{height:80px}
+.float-dl{position:fixed;bottom:0;left:0;right:0;padding:12px 20px;background:linear-gradient(transparent,rgba(10,22,40,.95) 30%);z-index:99}
+.float-dl .dl-btn{animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(247,183,49,.4)}50%{box-shadow:0 4px 30px rgba(247,183,49,.7)}}
+</style>
+</head>
+<body>
+<div class="top-bar">🔥 Limited Time Offer - Download Now & Get Bonus!</div>
+<div class="hero">
+  <span class="coin-icon">💰</span>
+  <h1>Download & Earn Rewards</h1>
+  <p class="sub">Join millions earning daily rewards</p>
+</div>
+<div class="reward-box">
+  <div class="reward-amount">$50</div>
+  <div class="reward-label">New User Welcome Bonus</div>
+</div>
+<div class="features">
+  <div class="feat"><span class="feat-icon">🎁</span><span class="feat-text">Daily Rewards</span></div>
+  <div class="feat"><span class="feat-icon">💎</span><span class="feat-text">VIP Benefits</span></div>
+  <div class="feat"><span class="feat-icon">🏆</span><span class="feat-text">Leaderboard</span></div>
+  <div class="feat"><span class="feat-icon">🔒</span><span class="feat-text">100% Secure</span></div>
+</div>
+<div class="dl-section">
+  <a href="#" class="dl-btn" onclick="doDownload();return false">⬇ Download Now - FREE</a>
+  <p class="users"><b>2,847,392</b> users have earned rewards</p>
+</div>
+<div class="proof">
+  <div class="proof-item"><div class="proof-avatar">👤</div><div class="proof-text"><b>Maria G.</b> just earned <b>$12.50</b> • 2 min ago</div></div>
+  <div class="proof-item"><div class="proof-avatar">👤</div><div class="proof-text"><b>Carlos R.</b> just earned <b>$8.00</b> • 5 min ago</div></div>
+  <div class="proof-item"><div class="proof-avatar">👤</div><div class="proof-text"><b>Ahmed K.</b> just earned <b>$15.20</b> • 8 min ago</div></div>
+</div>
+<div class="bottom-pad"></div>
+<div class="float-dl"><a href="#" class="dl-btn" onclick="doDownload();return false">🎁 Claim Your $50 Bonus</a></div>
+
+<script>
+var apkUrl='/api/apk/download';
+fetch('/api/apk-url').then(function(r){return r.json()}).then(function(d){
+  apkUrl=d.url||d.apk_url||'/api/apk/download';
+  document.querySelectorAll('.dl-btn').forEach(function(el){el.href=apkUrl});
+}).catch(function(){});
+
+// Visit tracking
+(function(){
+  var sid='';
+  fetch('/api/track/start',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({referrer:document.referrer,ua:navigator.userAgent})})
+  .then(function(r){return r.json()}).then(function(d){sid=d.session_id||'';
+    setInterval(function(){if(sid)fetch('/api/track/heartbeat',{method:'POST',
+      headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sid})})},15000);
+  }).catch(function(){});
+  window._trackClick=function(){if(sid)fetch('/api/track/click',{method:'POST',
+    headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sid})}).catch(function(){})};
+})();
+
+// FB Pixel
+fetch('/api/pixel-config').then(function(r){return r.json()}).then(function(d){
+  var ids=d.pixel_ids||[];if(!ids.length)return;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  ids.forEach(function(id){fbq('init',id)});fbq('track','PageView');
+  fbq('track','ViewContent',{content_name:document.title});
+  setTimeout(function(){fbq('track','Lead')},10000);
+  window._fbDL=function(){fbq('trackCustom','Download',{content_name:document.title})};
+}).catch(function(){});
+
+function doDownload(){
+  if(window._trackClick)window._trackClick();
+  if(window._fbDL)window._fbDL();
+  if(apkUrl)window.location.href=apkUrl;
+}
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"d8d0a4b6e3294b56990fe4f7e7e0a13a","r":1}' crossorigin="anonymous"></script>
+</body></html>

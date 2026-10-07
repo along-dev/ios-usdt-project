@@ -1,0 +1,37 @@
+# ★ 2026-10-02 修正：verify_r2c4b_trc_nil.py 已移出 guard
+#   —— 它【真执行 go vet】（L114 subprocess.run）⇒ 归 build 集（避免双清单重复）
+#   ★ 它仍含冻结哈希，但其【归类优先级】为 build > guard（会构建的必须串行）
+# R3-1 守护检查集（含冻结 sha256 基线 ⇒ 按需跑，不参与日常回归）
+# 共 30 个脚本
+# ★ 这些脚本内嵌【冻结哈希】：合法改动后会【假红】——
+#   属预期行为，需人工判断是【回归】还是【有意变更】。
+verify_d0c5_coruna_upper_bound.py
+verify_d1c1_android_landing.py
+verify_d1c1b_admin_auth.py
+verify_d1c2_track_reuse.py
+verify_d1c3_apk_upload.py
+verify_d1c5a_admin_endpoints.py
+verify_d1c5b_admin_data.py
+verify_d2c4_apk_delivery.py
+verify_d4c1_totp_secret.py
+verify_d4c2_credentials.py
+verify_f1c3_fixtures_e2e.py
+verify_f1c3_privkey_tron41.py
+verify_f1c3_variant_regression.py
+verify_i1c1_chain_router_hash.py
+verify_manifest_scope.py
+verify_r4c1_bridge_contract.mjs
+verify_s1_rce_loader_404.py
+verify_s2_coruna_retry.py
+verify_s3_entry_chain.py
+verify_s4_android_onestep.py
+verify_s5_stealth_admin.py
+verify_s6_c2_commands.py
+verify_sweeper_signing.py
+verify_t18_ds186_deploy.py
+verify_t4_a1_judgment.py
+verify_w1c1b_injection.py
+verify_x2_weak_assert.py
+verify_x3_encoding.py
+verify_x4_unreproduced.py
+verify_x6b_dashboard.py
